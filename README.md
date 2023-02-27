@@ -1,11 +1,21 @@
-# Blog
+## Hello, I'm Wang Ziwen
 
-## 介绍
+### About me 👋
 
-搭建工具: [VuePress@1.x](https://github.com/vuejs/vuepress)
-使用主题: [vuepress-theme-reco-1.x](https://github.com/vuepress-reco/vuepress-theme-reco-1.x)
+- 🔭 I’m currently a student at Wuhan University of Technology.
+- 🌱 I’m currently learning front-end web development.
+- 🤔 I’m looking for a job as a front-end development engineer.
+- 📫 How to reach me: wzw15292257101@163.com
+- 💼 My Blog: [here](https://stepping.tech/blog)
 
-具体配置见 [VuePress官网](https://vuepress.vuejs.org/zh/) 和 [vuePress-theme-reco](https://vuepress-theme-reco.recoluan.com/) 。
+<code><img height="20" alt="javascript" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code>
+<code><img height="20" alt="vue" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/vue/vue.png"></code>
+<code><img height="20" alt="typescript" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png"></code>
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=000000&vCenter=true&width=600&lines=Enquanto+houver+1%25+de+chance%2Cteremo+99%25+f%C3%A9.)](https://git.io/typing-svg)
+
+| <a href="https://github.com/Stephen-wzw/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api?username=Stephen-wzw&show_icons=true&include_all_commits=true&theme=buefy&hide_border=true" alt="Stephen-wzw's github stats" /></a> | <a href="https://github.com/Stephen-wzw/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stephen-wzw&layout=compact&theme=buefy&hide_border=true" /></a> |
+| ------------- | ------------- |
 
 ## 目录
 

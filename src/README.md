@@ -30,9 +30,9 @@ projects:
     link: https://link.to.your.article
 
   - icon: friend
-    name: friend name
-    desc: Detailed description of friend
-    link: https://link.to.your.friend
+    name: 杨小白
+    desc: The best way to predict the future is to invent it.
+    link: https://yangxiaobai.top/
 
-footer: customize your footer text
+footer: 'No' means Next Opportunity. 
 ---

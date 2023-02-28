@@ -5,7 +5,6 @@ icon: home
 title: Home
 heroText: Frontend knowledge base
 bgImage: /hero.webp
-heroImageStyle:
 tagline: Enquanto houver 1% de chance,teremo 99% fé.
 heroFullScreen: true
 projects:
@@ -29,7 +28,7 @@ projects:
     desc: Detailed description of the article
     link: https://link.to.your.article
 
-  - icon: friend
+  - icon: https://yangxiaobai.top/gallery/photo/fixImg/avatar.webp
     name: 杨小白
     desc: The best way to predict the future is to invent it.
     link: https://yangxiaobai.top/

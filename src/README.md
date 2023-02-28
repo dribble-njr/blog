@@ -34,5 +34,5 @@ projects:
     desc: The best way to predict the future is to invent it.
     link: https://yangxiaobai.top/
 
-footer: 'No' means Next Opportunity. 
+footer: No means Next Opportunity.
 ---

@@ -38,7 +38,7 @@ tags:
 
 对 URL 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。
 
-<img src="./img/0001/message.png" alt="消息格式" style="zoom:60%;" />
+<img src="../../../assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;" />
 
 ## 向 DNS 服务器查询域名 IP 地址
 

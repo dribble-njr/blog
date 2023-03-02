@@ -1,13 +1,13 @@
 {
   "name": "my-blog",
   "version": "2.0.0",
-  "description": "Personal frontend knowledge base",
+  "description": "Personal frontend knowledge base, 构件前端知识体系",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "vuepress build src",
-    "clean-dev": "vuepress dev src --clean-cache",
-    "dev": "vuepress dev src",
+    "build": "vuepress build docs",
+    "clean-dev": "vuepress dev docs --clean-cache",
+    "dev": "vuepress dev docs",
     "update-package": "pnpm dlx vp-update"
   },
   "devDependencies": {

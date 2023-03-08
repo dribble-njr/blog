@@ -14,7 +14,7 @@
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=000000&vCenter=true&width=600&lines=Enquanto+houver+1%25+de+chance%2Cteremo+99%25+f%C3%A9.)](https://git.io/typing-svg)
 
-| <a href="https://github.com/Stephen-wzw/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api?username=Stephen-wzw&show_icons=true&include_all_commits=true&theme=buefy&hide_border=true" alt="Stephen-wzw's github stats" /></a> | <a href="https://github.com/Stephen-wzw/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Stephen-wzw&layout=compact&theme=buefy&hide_border=true" /></a> |
+| <a href="https://github.com/dribble-njr/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api?username=dribble-njr&show_icons=true&include_all_commits=true&theme=buefy&hide_border=true" alt="dribble-njr's github stats" /></a> | <a href="https://github.com/dribble-njr/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=dribble-njr&layout=compact&theme=buefy&hide_border=true" /></a> |
 | ------------- | ------------- |
 
 ## 目录

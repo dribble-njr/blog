@@ -6,8 +6,8 @@ export default hopeTheme({
   hostname: 'https://mister-hope.github.io',
 
   author: {
-    name: 'Mr.Wang',
-    url: 'https://github.com/Stephen-wzw/blog',
+    name: 'njr',
+    url: 'https://github.com/dribble-njr/blog',
     email: 'wzw15292257101@163.com'
   },
 
@@ -19,7 +19,7 @@ export default hopeTheme({
   iconAssets: '//at.alicdn.com/t/c/font_3926422_mtzwtve9jwe.css',
   iconPrefix: 'iconfont icon-',
 
-  repo: 'https://github.com/Stephen-wzw/blog',
+  repo: 'https://github.com/dribble-njr/blog',
   docsBranch: 'master',
   docsDir: 'docs',
 
@@ -38,7 +38,7 @@ export default hopeTheme({
     avatar: '/avatar.jpg',
     roundAvatar: true,
     medias: {
-      GitHub: 'https://github.com/Stephen-wzw',
+      GitHub: 'https://github.com/dribble-njr',
       JueJin: [
         'https://juejin.cn/user/3553264960014669',
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#1E80FF"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13.9933 10.3857H13.9945L16.1122 8.70171L13.9945 7.00237L13.9922 7L11.8781 8.69816L13.9922 10.3845L13.9933 10.3857ZM13.9945 15.6981L13.9956 15.6969L19.4587 11.387L17.9774 10.1972L13.9956 13.3387L13.9945 13.3399L13.9933 13.3411L10.0115 10.1996L8.53143 11.3893L13.9933 15.6993L13.9945 15.6981ZM13.992 18.6441L13.9944 18.6429L21.3084 12.8717L22.7897 14.0615L19.4621 16.6864L13.9944 20.9999L5.3424 14.1777L5.2002 14.0651L6.68149 12.8753L13.992 18.6441Z" fill="white"/></svg>'
@@ -76,7 +76,7 @@ export default hopeTheme({
     comment: {
       // You should generate and use your own comment service
       provider: 'Waline',
-      serverURL: 'https://blog-lozrb7adi-stephen-wzw.vercel.app/'
+      serverURL: 'https://blog-2k2sd2n9p-dribble-njr.vercel.app/'
     },
 
     // all features are enabled for demo, only preserve features you need here

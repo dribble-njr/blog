@@ -157,7 +157,7 @@ ready in 547ms.
 
 用浏览器打开并查看网络，请求数极大减少，这是由于 Vite 帮我们在内部做了处理。
 
-![vite](../../../../assets/image/frontend/tool/vite/001/esm-vite.png)
+![vite](/assets/image/frontend/tool/vite/001/esm-vite.png)
 
 ## css
 

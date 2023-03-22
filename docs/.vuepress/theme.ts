@@ -16,7 +16,7 @@ export default hopeTheme({
   navbar: Navbar,
   sidebar: Sidebar,
 
-  iconAssets: '//at.alicdn.com/t/c/font_3926422_2v6urabrwiu.css',
+  iconAssets: '//at.alicdn.com/t/c/font_3926422_nwhvguyhfk.css',
   iconPrefix: 'iconfont icon-',
 
   repo: 'https://github.com/dribble-njr/blog',

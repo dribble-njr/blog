@@ -19,7 +19,7 @@ tags:
 
 浏览器要做的第一步工作就是对 URL 进行解析，从而生成发送给 Web 服务器的请求消息。
 
-<img src="../../../assets/image/computer-science/networking/010/parse-url.png" alt="Web浏览器解析URL" style="zoom:60%;" />
+<img src="/assets/image/computer-science/networking/010/parse-url.png" alt="Web浏览器解析URL" style="zoom:60%;" />
 
 ### 省略文件名的情况
 
@@ -38,7 +38,7 @@ tags:
 
 对 URL 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。
 
-<img src="../../../assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;" />
+<img src="/assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;" />
 
 ## 向 DNS 服务器查询域名 IP 地址
 
@@ -52,13 +52,13 @@ DNS 服务器保存了域名和 IP 的对应关系。
 
 根域的服务器信息保存在互联网中的所有 DNS 服务器中，这样任意一台服务器都可以找到并访问根服务器，从而找到其它服务器。
 
-![DNS](../../../assets/image/computer-science/networking/010/DNS.png)
+![DNS](/assets/image/computer-science/networking/010/DNS.png)
 
 ## 协议栈
 
 通过 DNS 获取到服务器的 IP 地址后，浏览器就可以通过 socket 库把 HTTP 报文的传输工作委托给操作系统中的**协议栈**。
 
-![客户端](../../../assets/image/computer-science/networking/010/TCP-IP.png)
+![客户端](/assets/image/computer-science/networking/010/TCP-IP.png)
 
 其中应用程序当然为应用层，协议栈中的 TCP/UDP 为传输层，他们会接收应用程序的委托执行收发数据的操作。
 

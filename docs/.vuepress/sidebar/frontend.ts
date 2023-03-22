@@ -12,7 +12,10 @@ export default [
         collapsible: true,
         children: [
           '',
-          '001-html-history'
+          '001-html-history',
+          '002-quick-start',
+          '003-doctype',
+          '004-character-encoding'
         ]
       },
       {

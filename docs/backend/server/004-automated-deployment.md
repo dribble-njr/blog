@@ -19,11 +19,11 @@ tags:
 
 登录宝塔面板，可以参考[配置宝塔面板](0003、配置宝塔面板.md)。点击左侧网站 -> 添加站点。
 
-![添加站点](../../../assets/image/backend/server/004/step1-add-site.png)
+![添加站点](/assets/image/backend/server/004/step1-add-site.png)
 
 新增之后，点击设置 -> 配置文件。这三项按自己的情况配置，在后面 [git hooks](./004-automated-deployment.md#配置-hooks) 中会将 dist 文件推送到 `root` 配置项设置的文件夹下。
 
-![配置nginx](../../../assets/image/backend/server/004/step2-nginx-conf.png)
+![配置nginx](/assets/image/backend/server/004/step2-nginx-conf.png)
 
 先测试下 nginx 有没有配置成功，本地打包文件：
 
@@ -164,13 +164,13 @@ sh : 无法将“sh”项识别为 cmdlet、函数、脚本文件或可运行程
    
 4. 配置 code runner：文件 -> 首选项 -> 设置 -> 搜索 code runner
    
-   ![配置 code runner](../../../assets/image/backend/server/004/step3-code-runner.png)
+   ![配置 code runner](/assets/image/backend/server/004/step3-code-runner.png)
 
 5. 打开终端，输入 `bash` 切换到 bash 环境，点击右上角的三角形即可运行。
 
 现在随便更新点内容，并执行 `deploy.sh` 脚本：
 
-![成功](../../../assets/image/backend/server/004/step4-complete.png)
+![成功](/assets/image/backend/server/004/step4-complete.png)
 
 再次访问 `http://xxx.xxx.xxx.xxx:端口号` 发现已经更新了。
 

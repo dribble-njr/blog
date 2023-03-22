@@ -11,7 +11,7 @@ tag:
 
 登录阿里云控制台 -> 云服务 ECS -> 网络与安全 -> 密钥对 -> 创建密钥对
 
-![创建密钥对](../../../assets/image/backend/server/001/step1-create-ssh.png)
+![创建密钥对](/assets/image/backend/server/001/step1-create-ssh.png)
 
 创建成功之后，浏览器会自动下载一个 `.pem` 私钥文件，记住这个文件的位置，之后要用。
 
@@ -19,13 +19,13 @@ tag:
 
 选中刚才创建的密钥对，点击右侧**绑定密钥对**，将密钥对绑定到实例。
 
-![绑定密钥对](../../../assets/image/backend/server/001/step2-bind-ssh.png)
+![绑定密钥对](/assets/image/backend/server/001/step2-bind-ssh.png)
 
 ## 添加安全组规则
 
 云服务 ECS -> 网络与安全 -> 安全组 -> 入方向 -> 手动添加
 
-![添加安全组规则](../../../assets/image/backend/server/001/step3-add-port.png)
+![添加安全组规则](/assets/image/backend/server/001/step3-add-port.png)
 
 执行完后重启实例。
 
@@ -66,4 +66,4 @@ tag:
 
 接下来在阿里云控制台使用 Workbench 远程连接，可以发现密码登录已经被禁用了，只能使用密钥登录：
 
-![密码登录失败](../../../assets/image/backend/server/001/step4-pw-fail.png)
+![密码登录失败](/assets/image/backend/server/001/step4-pw-fail.png)

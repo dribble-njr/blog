@@ -21,9 +21,9 @@ yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_
 
 大概过两分钟即可安装成功，复制外网面板地址到浏览器打开，输入下面的 `username` 和 `password`。进去之后会弹出 `推荐安装套件`，因为只要部署 `vuepress`， 因此这里安装 `nginx` 就好。选择编译安装，更加稳定。
 
-![安装宝塔](../../../assets/image/backend/server/003/step1-install-bt.png)
+![安装宝塔](/assets/image/backend/server/003/step1-install-bt.png)
 
-![安装nginx](../../../assets/image/backend/server/003/step2-install-nginx.png)
+![安装nginx](/assets/image/backend/server/003/step2-install-nginx.png)
 
 如果之后忘记用户名和密码，可以通过以下命令查找：
 

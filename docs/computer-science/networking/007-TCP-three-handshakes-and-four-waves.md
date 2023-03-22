@@ -1,9 +1,9 @@
 ---
 title: TCP 三次握手与四次挥手
 date: 2022-05-06
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - TCP
 ---
 
@@ -13,7 +13,7 @@ tags:
 
 三报文握手具体过程（客户端和服务端交换三个报文段）：
 
-![三次握手](../../../assets/image/computer-science/networking/007/three.png)
+![三次握手](/assets/image/computer-science/networking/007/three.png)
 
 **第一次握手：**
 
@@ -43,7 +43,7 @@ tags:
 
 四报文挥手来释放连接（现二者均处于连接已建立状态，假设客户端主动关闭 TCP 连接）：
 
-![四次挥手](../../../assets/image/computer-science/networking/007/four.png)
+![四次挥手](/assets/image/computer-science/networking/007/four.png)
 
 **第一次挥手：**
 

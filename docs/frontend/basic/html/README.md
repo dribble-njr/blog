@@ -14,6 +14,7 @@ star: true
 ## 目录
 
 - [历史](001-html-history.md)
+- [快速开始](002-quick-start.md)
 
 ## 学习资料
 

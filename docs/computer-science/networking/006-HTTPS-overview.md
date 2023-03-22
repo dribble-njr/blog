@@ -1,9 +1,9 @@
 ---
 title: HTTPS 略解
 date: 2022-05-05
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - HTTP
  - HTTPS
 ---
@@ -17,9 +17,9 @@ tags:
 * HTTP 端口号为 80，HTTPS 端口号为 443；
 * HTTPS 需要向 CA 申请数字证书。
 
-![http](../../../assets/image/computer-science/networking/006/HTTP.png)
+![http](/assets/image/computer-science/networking/006/HTTP.png)
 
-![https](../../../assets/image/computer-science/networking/006/HTTPS.png)
+![https](/assets/image/computer-science/networking/006/HTTPS.png)
 
 ### HTTPS 缺点
 
@@ -62,7 +62,7 @@ HTTPS 使用混合加密算法解决数据安全传输问题，即**对称加密
 1. 计算量比较大，加密解密速度比对称加密慢；
 2. 中间人攻击：中间人进行拦截，无法保证公钥是接收方提供的。
 
-![中间人攻击](../../../assets/image/computer-science/networking/006/mid-attack.png)
+![中间人攻击](/assets/image/computer-science/networking/006/mid-attack.png)
 
 ## 数字证书和数字签名
 
@@ -80,7 +80,7 @@ HTTPS 使用混合加密算法解决数据安全传输问题，即**对称加密
 
 前面提到，HTTPS 使用了混合加密解决安全传输问题，整个工作过程分为三大步：证书验证、非对称加密和对称加密。
 
-![https工作流程](../../../assets/image/computer-science/networking/006/https-flow.png)
+![https工作流程](/assets/image/computer-science/networking/006/https-flow.png)
 
 **证书验证：**
 

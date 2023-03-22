@@ -1,9 +1,9 @@
 ---
 title: Vite 初体验
 date: 2022-05-18
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目打包
   - Vite
 ---
@@ -133,7 +133,7 @@ hello-vite
 
 但是，我们查看网络，可以看到浏览器将整个库都请求下来了，如果每个库都这样，那请求的资源将不可想象。
 
-![原生问题](../../../../assets/image/frontend/tool/vite/001/esm-problem.png)
+![原生问题](/assets/image/frontend/tool/vite/001/esm-problem.png)
 
 现在我们更改下模块路径，并使用 `vite` 启动服务：
 
@@ -461,8 +461,8 @@ module.exports = {
 
 以前的打包模式，项目启动时，需要先将所有文件打包成一个文件 bundle.js ，然后在 html 引入，这个 多文件 -> bundle.js 的过程是非常耗时间的。
 
-![bundle](../../../../assets/image/frontend/tool/vite/001/bundle.png)
+![bundle](/assets/image/frontend/tool/vite/001/bundle.png)
 
 而 Vite 以原生 ESM 方式提供源码，Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。
 
-![vite](../../../../assets/image/frontend/tool/vite/001/vite.png)
+![vite](/assets/image/frontend/tool/vite/001/vite.png)

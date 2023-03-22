@@ -15,6 +15,8 @@ star: true
 
 - [历史](001-html-history.md)
 - [快速开始](002-quick-start.md)
+- [DOCTYPE](003-doctype.md)
+- [字符编码](004-character-encoding.md)
 
 ## 学习资料
 

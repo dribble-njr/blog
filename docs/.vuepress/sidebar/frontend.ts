@@ -1,6 +1,7 @@
 export default [
   {
     text: '基础知识',
+    icon: 'knowledge',
     collapsible: true,
     prefix: '/frontend/basic/',
     children: [
@@ -10,7 +11,8 @@ export default [
         prefix: 'html/',
         collapsible: true,
         children: [
-          ''
+          '',
+          '001-html-history'
         ]
       },
       {

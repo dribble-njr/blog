@@ -1,7 +1,7 @@
 export default [
   {
     text: '基础知识',
-    icon: 'knowledge',
+    icon: 'jcy-knowledge-filled',
     collapsible: true,
     prefix: '/frontend/basic/',
     children: [
@@ -73,7 +73,7 @@ export default [
   {
     text: '浏览器',
     collapsible: true,
-    icon: 'browser',
+    icon: 'browser-5',
     children: ['/frontend/browser']
   },
   {

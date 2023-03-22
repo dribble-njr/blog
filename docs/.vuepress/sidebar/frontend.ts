@@ -73,7 +73,7 @@ export default [
   {
     text: '浏览器',
     collapsible: true,
-    icon: 'browser-5',
+    icon: 'browser-',
     children: ['/frontend/browser']
   },
   {

@@ -7,16 +7,22 @@ export default [
       {
         text: 'HTML',
         icon: 'html5',
-        children: []
+        prefix: 'html/',
+        collapsible: true,
+        children: [
+          ''
+        ]
       },
       {
         text: 'CSS',
         icon: 'css',
+        collapsible: true,
         children: []
       },
       {
         text: 'JavaScript',
         icon: 'javascript',
+        collapsible: true,
         children: []
       },
     ]

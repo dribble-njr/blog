@@ -219,7 +219,7 @@ utf-8 字符集包含了大多数人类书面语言的字符。基本上它能�
 
 W3C 也将 UTF-8 标记为推荐的字符编码，所以建议在任何 HTML 文件中都添加此标签。
 
-详情请见 [字符编码](004-charset.md)
+详情请见 [字符编码](../../../computer-science/operating-system/001-character-encoding.md)
 
 :::
 

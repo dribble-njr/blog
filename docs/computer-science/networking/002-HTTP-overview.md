@@ -1,9 +1,9 @@
 ---
 title: HTTP 概述
 date: 2022-04-20
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - HTTP
 ---
 

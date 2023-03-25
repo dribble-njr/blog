@@ -2,7 +2,8 @@
 title: 快速开始
 date: 2023-03-22
 icon: STARTUP
-category: HTML
+category: 
+  - HTML
 tag:
   - frontend
   - html

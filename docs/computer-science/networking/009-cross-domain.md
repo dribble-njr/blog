@@ -1,9 +1,9 @@
 ---
 title: 跨域
 date: 2022-05-06
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - 跨域
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: webpack 基础打包
 date: 2022-04-29
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目打包
   - webpack
 ---

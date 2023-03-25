@@ -1,9 +1,9 @@
 ---
 title: 网络模型
 date: 2022-05-06
-categories:
+category:
  - 计算机网络
-tags:
+tag:
  - TCP/IP 模型
 ---
 

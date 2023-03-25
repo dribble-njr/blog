@@ -1,9 +1,9 @@
 ---
 title: 配置宝塔面板
 date: 2021-05-12
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目部署
 ---
 

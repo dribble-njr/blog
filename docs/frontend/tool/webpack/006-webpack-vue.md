@@ -1,9 +1,9 @@
 ---
 title: webpack-vue
 date: 2022-05-16
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目打包
   - webpack
 ---

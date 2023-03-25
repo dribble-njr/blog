@@ -13,6 +13,6 @@ export default [
     text: '操作系统',
     collapsible: true,
     prefix: '/computer-science/operating-system/',
-    children: ['001-character-encoding']
+    children: ['', '001-character-encoding']
   }
 ]

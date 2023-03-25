@@ -1,9 +1,9 @@
 ---
 title: HTTP 缓存
 date: 2022-05-04
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - HTTP
 ---
 

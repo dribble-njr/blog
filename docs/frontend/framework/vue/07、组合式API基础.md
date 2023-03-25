@@ -1,9 +1,9 @@
 ---
 title: 组合式 API 基础
 date: 2022-05-30
-categories:
+category:
   - Vue
-tags:
+tag:
   - 组合式 API
 ---
 

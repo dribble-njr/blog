@@ -1,9 +1,9 @@
 ---
 title: Vuex 原理及源码阅读
 date: 2022-03-28
-categories:
+category:
   - Vue
-tags:
+tag:
   - 源码阅读
   - Vuex
 ---

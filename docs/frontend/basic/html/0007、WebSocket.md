@@ -2,9 +2,9 @@
 title: WebSocket
 date: 2022-07-25
 publish: false
-categories:
+category: 
   - HTML
-tags:
+tag:
   - HTML5
 ---
 

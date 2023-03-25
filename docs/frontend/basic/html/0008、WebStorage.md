@@ -1,9 +1,9 @@
 ---
 title: cookie、localStorage 和 sessionStorage
 date: 2022-08-02
-categories:
+category: 
   - HTML
-tags:
+tag:
   - 前端存储
   - HTML5
 ---

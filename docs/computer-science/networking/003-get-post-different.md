@@ -1,7 +1,7 @@
 ---
 title: GET 和 POST 的区别
 date: 2022-04-24
-categories:
+category:
  - 浏览器
 tags:
  - HTTP
@@ -66,7 +66,5 @@ GET 可以带 Request Body，但不能保证一定能被接收到。如果你用
 [https - What is the difference between GET and POST encryption? - Stack Overflow](https://stackoverflow.com/questions/3063530/what-is-the-difference-between-get-and-post-encryption)
 
 [99%的人都理解错了HTTP中GET与POST的区别 (qq.com)](https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&mid=100000054&idx=1&sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd)
-
-[HTTP Methods GET vs POST (w3schools.com)](https://www.w3schools.com/tags/ref_httpmethods.asp)
 
 [面试官：说一下 GET 和 POST 的区别？ · Issue #145 · febobo/web-interview (github.com)](https://github.com/febobo/web-interview/issues/145)

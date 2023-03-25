@@ -1,9 +1,9 @@
 ---
 title: provide 和 inject
 date: 2022-05-24
-categories:
+category:
   - Vue
-tags:
+tag:
   - 组件通信
   - 深入组件
 ---

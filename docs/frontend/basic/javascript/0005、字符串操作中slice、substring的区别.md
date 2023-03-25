@@ -1,9 +1,9 @@
 ---
 title: String.slice() 和 String.substring()
 date: 2022-04-20
-categories:
+category:
   - JavaScript
-tags:
+tag:
   - 字符串
 ---
 

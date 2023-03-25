@@ -1,9 +1,9 @@
 ---
 title: 移动端适配方案 postcss-px-to-viewport
 date: 2022-03-23
-categories:
+category:
   - CSS
-tags:
+tag:
   - 移动端适配
 ---
 

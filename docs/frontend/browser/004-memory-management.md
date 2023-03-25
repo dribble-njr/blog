@@ -1,9 +1,9 @@
 ---
 title: JavaScript 内存管理
 date: 2022-01-13
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - 垃圾回收
 ---
 

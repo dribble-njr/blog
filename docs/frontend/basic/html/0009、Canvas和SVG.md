@@ -1,9 +1,9 @@
 ---
 title: Canvas 和 SVG 的区别
 date: 2022-08-02
-categories:
+category: 
   - HTML
-tags:
+tag:
   - Canvas
   - HTML5
   - SVG

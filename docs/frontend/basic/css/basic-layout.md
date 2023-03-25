@@ -1,9 +1,9 @@
 ---
 title: 基本布局
 date: 2021-09-12
-categories:
+category:
   - CSS
-tags:
+tag:
   - 布局
 ---
 

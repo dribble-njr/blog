@@ -1,9 +1,9 @@
 ---
 title: Symbol 和 BigInt
 date: 2022-08-23
-categories:
+category:
   - JavaScript
-tags:
+tag:
   - 数据类型
   - Symbol
   - BigInt

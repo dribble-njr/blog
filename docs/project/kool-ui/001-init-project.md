@@ -1,9 +1,9 @@
 ---
 title: 从零开发组件库（一）：搭建项目
 date: 2023-01-14
-categories:
+category:
   - Project
-tags:
+tag:
   - 项目
   - 组件库
   - React

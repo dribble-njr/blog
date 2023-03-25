@@ -1,9 +1,9 @@
 ---
 title: 组件的 v-model
 date: 2022-05-26
-categories:
+category:
   - Vue
-tags:
+tag:
   - 深入组件
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: 手写 call、apply、bind
 date: 2022-04-27
-categories:
+category:
   - JavaScript
-tags:
+tag:
   - this
   - 手写代码
 ---

@@ -1,9 +1,9 @@
 ---
 title: 浏览器概述
 date: 2022-01-13
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - 浏览器
 ---
 

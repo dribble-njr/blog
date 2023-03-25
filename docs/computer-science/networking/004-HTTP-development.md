@@ -1,9 +1,9 @@
 ---
 title: HTTP 性能演变
 date: 2022-04-26
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - HTTP
 ---
 

@@ -6,5 +6,6 @@ export const Sidebar = sidebar({
   '/backend/': backend,
   '/computer-science/': computerScience,
   '/frontend/': frontend,
-  '/project/': project
+  '/project/': project,
+  '/': ['']
 })

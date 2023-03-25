@@ -1,9 +1,9 @@
 ---
 title: 自动部署 Vuepress 到服务器
 date: 2021-05-12
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目部署
 ---
 

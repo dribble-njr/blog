@@ -1,9 +1,9 @@
 ---
 title: 实现脚手架 ————（一）项目初始化
 date: 2022-05-23
-categories:
+category:
   - Node
-tags:
+tag:
   - CLI
 ---
 

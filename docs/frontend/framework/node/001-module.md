@@ -1,9 +1,9 @@
 ---
 title: 模块化
 date: 2022-08-10
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 模块化
   - ESM
   - CJS

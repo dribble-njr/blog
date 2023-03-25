@@ -1,9 +1,9 @@
 ---
 title: 浏览器渲染原理
 date: 2021-12-16
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - 浏览器渲染
 ---
 

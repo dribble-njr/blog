@@ -1,9 +1,9 @@
 ---
 title: webpack 打包其他资源
 date: 2022-05-13
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目打包
   - webpack
 ---

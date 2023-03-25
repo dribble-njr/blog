@@ -2,7 +2,8 @@
 title: DOCTYPE
 date: 2023-03-22
 icon: doc
-category: HTML
+category: 
+  - HTML
 tag:
   - frontend
   - html

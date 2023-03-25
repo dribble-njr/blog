@@ -1,9 +1,9 @@
 ---
 title: src 和 href 的区别
 date: 2022-04-28
-categories:
+category: 
   - HTML
-tags:
+tag:
   - HTML
 ---
 

@@ -1,9 +1,9 @@
 ---
 title: webpack-server
 date: 2022-05-17
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目打包
   - webpack
 ---

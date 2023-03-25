@@ -1,9 +1,9 @@
 ---
 title: TCP 与 UDP 的区别
 date: 2022-05-06
-categories:
+category:
  - 计算机网络
-tags:
+tag:
  - TCP
  - UDP
 ---

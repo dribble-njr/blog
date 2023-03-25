@@ -1,9 +1,9 @@
 ---
 title: 输入 URL 后发生了什么
 date: 2021-12-11
-categories:
+category:
  - 浏览器
-tags:
+tag:
  - vue
 ---
 

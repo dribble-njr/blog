@@ -1,9 +1,9 @@
 ---
 title: webpack 打包 CSS
 date: 2022-05-06
-categories:
+category:
   - 工程化
-tags:
+tag:
   - 项目打包
   - webpack
 ---

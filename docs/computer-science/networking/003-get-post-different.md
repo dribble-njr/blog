@@ -3,7 +3,7 @@ title: GET 和 POST 的区别
 date: 2022-04-24
 category:
  - 浏览器
-tags:
+tag:
  - HTTP
 ---
 

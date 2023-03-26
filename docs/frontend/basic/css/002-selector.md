@@ -1,11 +1,16 @@
 ---
 title: 选择器
 date: 2022-08-03
+icon: selector
 category:
   - CSS
 tag:
-  - 选择器
+  - frontend
+  - selector
+  - basic-knowledge
 ---
+
+CSS 中可以通过选择器来选中 HTML 文档中的元素。
 
 ## 种类
 

@@ -21,8 +21,14 @@ export default [
       {
         text: 'CSS',
         icon: 'css',
+        prefix: 'css/',
         collapsible: true,
-        children: []
+        children: [
+          '',
+          '001-quick-start',
+          '002-selector',
+          '003-box-model'
+        ]
       },
       {
         text: 'JavaScript',

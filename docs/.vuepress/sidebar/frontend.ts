@@ -27,7 +27,8 @@ export default [
           '',
           '001-quick-start',
           '002-selector',
-          '003-box-model'
+          '003-box-model',
+          '004-text-font'
         ]
       },
       {

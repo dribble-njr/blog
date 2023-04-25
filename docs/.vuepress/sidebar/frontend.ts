@@ -28,7 +28,8 @@ export default [
           '001-quick-start',
           '002-selector',
           '003-box-model',
-          '004-text-font'
+          '004-text-font',
+          '005-cascade-inheritance'
         ]
       },
       {

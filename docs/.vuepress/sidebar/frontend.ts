@@ -29,7 +29,8 @@ export default [
           '002-selector',
           '003-box-model',
           '004-text-font',
-          '005-cascade-inheritance'
+          '005-cascade-inheritance',
+          '006-background-border'
         ]
       },
       {

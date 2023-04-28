@@ -58,7 +58,7 @@ h 是 heading 的缩写，p 是 paragraph 的缩写。
 ::: normal-demo 图片
 
 ```html
-<img width="50px" src="/assets/image/frontend/basic/html/002/avatar.jpg">
+<img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg">
 ```
 
 :::
@@ -111,7 +111,7 @@ a 是 anchor（锚）的缩写。
 
 ```html
 <a href="/">
-  <img width="50px" src="/assets/image/frontend/basic/html/002/avatar.jpg">
+  <img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg">
 </a>
 ```
 

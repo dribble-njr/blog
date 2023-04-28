@@ -83,7 +83,7 @@ HTML 文档由元素和文本组成，例如在上述的例子中：
 ::: normal-demo 空元素
 
 ```html
-<img width="50px" src="/assets/image/frontend/basic/html/002/avatar.jpg">
+<img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg">
 ```
 
 :::

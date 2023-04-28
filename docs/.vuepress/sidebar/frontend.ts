@@ -15,7 +15,8 @@ export default [
           '001-html-history',
           '002-quick-start',
           '003-doctype',
-          '004-common-element'
+          '004-common-element',
+          '005-advanced-element'
         ]
       },
       {

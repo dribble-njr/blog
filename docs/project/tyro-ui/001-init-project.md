@@ -14,10 +14,10 @@ tag:
 
 ## 初始化项目
 
-新建 `kool-ui` 项目并初始化。
+新建 `tyro-ui` 项目并初始化。
 
 ```bash
-mkdir kool-ui && cd kool-ui
+mkdir tyro-ui && cd tyro-ui
 npm init -y
 ```
 
@@ -33,10 +33,64 @@ git init
 node_modules
 ```
 
+使用 `dumi` 建立文档站：
+
+::: tip
+
+由于会出现 `Issues with peer dependencies found` 错误，因此需要开启 `pnpm peer dependencies auto-install`。
+
+在项目根目录下新建 `.npmrc` 文件，添加 `auto-install-peers = true` 内容。
+
+:::
+
+再安装 `dumi`：
+
+```bash
+pnpm add dumi -D
+```
+
+新建配置文件 **.dumirc.ts**
+
+```ts
+import { defineConfig } from 'dumi'
+
+export default defineConfig({
+  title: 'tyro-ui',
+  // 更多配置项...
+})
+```
+
+根目录下新建 `docs` 文件夹，并添加 `index.md`，输入以下内容：
+
+```md
+---
+hero:
+  title: library
+  description: A react library developed with dumi
+  actions:
+    - text: Hello
+      link: /
+    - text: World
+      link: /
+features:
+  - title: Hello
+    emoji: 💎
+    description: Put hello description here
+  - title: World
+    emoji: 🌈
+    description: Put world description here
+  - title: '!'
+    emoji: 🚀
+    description: Put ! description here
+---
+
+tyro-ui
+```
+
 ### TypeScript
 
 ```bash
-yarn add typescript --dev
+pnpm add typescript -D
 ```
 
 **tsconfig.json**
@@ -56,7 +110,7 @@ yarn add typescript --dev
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "typings.d.ts"],
+  "include": [".dumi/**/*", ".dumirc.ts", "src/**/*"],
   "exclude": ["node_modules"]
 }
 ```
@@ -65,14 +119,53 @@ yarn add typescript --dev
 
 ```bash
 # 开发时依赖，宿主环境一定存在
-yarn add react react-dom @types/react-dom -D
+pnpm add react react-dom @types/react @types/react-dom -D
 
 # 运行时依赖，宿主环境可能不存在
 # 无法保证宿主环境也使用 typescript，故使用 prop-types 保证 javascript 用户也能得到友好的运行时报错信息
-yarn add prop-types
+pnpm add prop-types
 ```
 
+### demo
 
+在 `src/Foo` 下新建 `index.tsx` 和 `index.md`，分别为：
+
+**src/Foo/index.tsx**
+
+```tsx
+import React, { type FC } from 'react'
+
+const Foo: FC<{ title: string }> = (props) => <h4>{props.title}</h4>
+
+export default Foo
+```
+
+**src/Foo/index.md**
+
+```md
+# Foo
+
+This is an example component.
+
+```jsx
+import { Foo } from 'tyro-ui';
+
+export default () => <Foo title="Hello dumi!" />
+```
+
+```
+
+```
+
+在 `src` 下新建 `index.tsx`：
+
+**index.tsx**
+
+```tsx
+export { default as Foo } from './Foo'
+```
+
+此时运行 `npm run dev` 即可使用组件库文档进行页面调试。
 
 ## 规范
 
@@ -86,7 +179,7 @@ VSCode 需要安装 `EditorConfig for VS Code` 插件。
 
 **`.editorconfig`**
 
-```shell
+```bash
 # http://editorconfig.org
 
 root = true
@@ -108,11 +201,30 @@ trim_trailing_whitespace = false
 
 ESLint 是一个Javascript Linter，帮助我们规范代码质量，提高团队开发效率。
 
-安装 `eslint` 并初始化，会自动生成配置文件。
+安装 `eslint` 并新建配置文件 `.eslintrc.js`。
 
 ```bash
-yarn add eslint -D
-npx eslint --init
+pnpm add eslint -D
+```
+
+```javascript
+
+```
+module.exports = {
+  env: {
+    "browser": true,
+    "es2021": true
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parserOptions: {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+}
 ```
 
 如果想要在项目中安装 `jest`，则需要在配置文件中的 `env` 加上下面这一行：
@@ -121,7 +233,6 @@ npx eslint --init
   env: {
     browser: true,
     es2021: true,
-    node: true,
 +   jest: true
   },
 ```
@@ -140,7 +251,7 @@ npx eslint --init
 还需要在项目中安装与 `TypeScript` 相关的插件：
 
 ```bash
-yarn add -D eslint-plugin-import @typescript-eslint/parser eslint-import-resolver-typescript
+pnpm add -D eslint-plugin-import @typescript-eslint/parser eslint-import-resolver-typescript
 ```
 
 最后在 `.eslintrc.js` 中添加 `settings`：
@@ -161,15 +272,15 @@ yarn add -D eslint-plugin-import @typescript-eslint/parser eslint-import-resolve
 
 首先安装 `prettier` 及相关依赖插件：
 
-```shell
-yarn add prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react-hooks -D
+```bash
+pnpm add prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react-hooks -D
 ```
 
 为了使用刚才安装的插件，需要对 `.eslintrc.js` 中的 `plugins` 进行修改：
 
 ```diff
-- "plugins": ["react", "@typescript-eslint"]
-+ "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"]
+- plugins: ["react", "@typescript-eslint"]
++ plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"]
 ```
 
 `prettier` 基本的配置文件如下：
@@ -218,30 +329,20 @@ yarn add prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-re
 `Stylelint`  是一个强大、先进的 CSS 代码检查器（linter），可以帮助你规避 CSS 代码中的错误并保持一致的编码风格。
 
 > https://stylelint.io/
->
-> https://zhuanlan.zhihu.com/p/493920283
 
 安装依赖
 
-- `stylelint` - Stylelint 本体
-- `stylelint-config-prettier` - 关闭 Stylelint 中与 Prettier 中会发生冲突的规则
-- `stylelint-config-standard` - Stylelint 官方推荐规则
-- `stylelint-config-standard-scss` - 针对 Scss 的标准可共享配置
-- `stylelint-config-prettier-scss` - 关闭 Scss 中与 Prettier 中会发生冲突的规则
-- `stylelint-scss` - Stylelint (以插件的形式)特定于 Scss 的 linting 规则的集合
-
 ```bash
-yarn add stylelint stylelint-config-standard stylelint-config-prettier stylelint-config-standard-scss stylelint-config-prettier-scss stylelint-scss -D
-
 # 如果项目中使用 scss
-yarn add postcss-scss -D
+pnpm add stylelint stylelint-config-standard-scss -D
+pnpm add postcss-scss -D
 ```
 
 配置文件 `.stylelintrc.js`：
 
 ```js
 module.exports = {
-  extends: ['stylelint-config-standard'],
+  extends: 'stylelint-config-standard-scss',
   // rule覆盖（根据自己喜好来配置）
   rules: {
     'string-quotes': 'single',
@@ -290,20 +391,14 @@ node_modules
 `husky` 可以管理 `git` 中的 `hooks`，初始化应该执行如下命令：
 
 ```bash
-npx husky-init && yarn
+pnpm dlx husky-init && pnpm install # pnpm
 ```
 
-执行上面这条命令实际上相当于执行了以下三个操作：
+::: tip
 
-1. 安装依赖：`yarn add husky -D`
-2. 在 `package.json` 中添加脚本，运行命令后会在项目根目录创建 `.husky` 文件夹。
-   
-   ```bash
-   npm pkg set scripts.prepare="husky install"
-   npm run prepare
-   ```
-   
-3. 添加一个 `Hook`：`npx husky add .husky/pre-commit "npm test"`
+它将设置 `husky`，修改 `package.json` 并创建一个你可以编辑的预提交钩子样本。默认情况下，它将在你提交时运行 `npm test`。
+
+:::
 
 然后修改 `pre-commit`：
 
@@ -320,22 +415,28 @@ npx husky-init && yarn
 
 1. 我们只修改了个别的文件，没有必要检测所有的文件代码格式
 2. 它只能给我们提示出对应的错误，我们还需要手动的进行代码修改
-3. 修改后需要手动`git add .`
+3. 修改后需要手动 `git add .`
 
 这时可以使用 `lint-staged` 解决这个问题，它只会检查在暂存区的代码。
 
 安装：
 
 ```bash
-yarn add lint-staged -D
+pnpm add lint-staged -D
 ```
 
 修改 `.husky` 中的 `pre-commit`：
 
 ```diff
-- npm run lint
-+ npx npx lint-staged
+- npm test
++ npx --no-install lint-staged
 ```
+
+::: tip
+
+`--no-install` 强制使用本地模块，不下载远程模块，如果本地不存在该模块，就会报错。
+
+:::
 
 在 `package.json` 中配置：
 
@@ -374,13 +475,13 @@ yarn add lint-staged -D
 > http://commitizen.github.io/cz-cli/
 
 ```bash
-yarn add commitizen -D
+pnpm add commitizen -D
 ```
 
 安装完成后，一般我们都采用符合 Angular 的 `Commit message` 格式的提交规范，运行以下命令生成符合 Angular 提交规范格式的 `Commit message`：
 
 ```bash
-npx --no-install commitizen init cz-conventional-changelog --yarn --dev --exact
+npx --no-install commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact
 ```
 
 `package.json` 中会自动生成以下配置：
@@ -411,7 +512,7 @@ npx --no-install commitizen init cz-conventional-changelog --yarn --dev --exact
 
 ```bash
 # For Windows:
-yarn add @commitlint/config-conventional @commitlint/cli -D
+pnpm add @commitlint/config-conventional @commitlint/cli -D
 
 # Configure commitlint to use conventional config
 echo "module.exports = { ignores: [(commit) => commit.includes('init')], extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
@@ -432,18 +533,18 @@ CHANGELOG 记录项目所有的 `commit` 信息并归类版本，可以快速跳
 首先安装 `standard-version`：
 
 ```bash
-yarn add standard-version -D
+pnpm add standard-version -D
 ```
 
 然后在 `package.json` 的 `scripts` 中添加命令：
 
 ```json
 "scripts": {
-	"release": "standard-version"
+	"standard-version": "standard-version"
 }
 ```
 
-当 `commit type` 是 `feat` 和 `fix` 的时候执行这个命令，它会自增版本号。
+当 `commit type` 是 `feat` 和 `fix` 的时候执行 `npm run standard-version`，它会自增版本号。
 
 `standard-version` 提供自定义配置不同类型对应显示文案，在根目录新建 `.versionrc.js` 文件：
 
@@ -473,15 +574,13 @@ module.exports = {
 安装
 
 ```bash
-yarn add jest -D
+pnpm add jest -D
 ```
-
-
 
 ## 构建工具
 
 使用 `webpack` 作为构建工具。
 
 ```bash
-yarn add webpack webpack-cli -D
+pnpm add webpack webpack-cli -D
 ```

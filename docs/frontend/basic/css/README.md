@@ -16,6 +16,9 @@ star: true
 - [快速开始](001-quick-start.md)
 - [选择器](002-selector.md)
 - [盒模型](003-box-model.md)
+- [文本与字体](004-text-font.md)
+- [层叠与继承](005-cascade-inheritance.md)
+- [背景与边框](006-background-border.md)
 
 ## 学习资料
 

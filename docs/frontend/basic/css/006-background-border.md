@@ -22,7 +22,7 @@ CSS 中的 `background` 属性可以为元素设置背景颜色、图片、渐�
 
 ```css
 p {
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
 }
 ```
 
@@ -32,7 +32,7 @@ p {
 
 ```css
 div {
-  background-image: url("background.jpg");
+  background-image: url('background.jpg');
 }
 ```
 
@@ -53,7 +53,7 @@ div {
 
 ```css
 div {
-  background-image: url("background.jpg");
+  background-image: url('background.jpg');
   background-repeat: repeat-x;
 }
 ```
@@ -64,7 +64,7 @@ div {
 
 ```css
 div {
-  background-image: url("background.jpg");
+  background-image: url('background.jpg');
   background-size: 10px 20px;
 }
 ```
@@ -78,7 +78,7 @@ div {
 
 ```css
 div {
-  background-image: url("background.jpg");
+  background-image: url('background.jpg');
   background-size: cover;
 }
 ```
@@ -140,7 +140,7 @@ div {
 简写属性，通常使用语法如下：
 
 ```
-background = 
+background =
   <'background-color'>            ||
   <bg-image>                      ||
   <bg-position> [ / <bg-size> ]?  ||
@@ -190,10 +190,10 @@ div {
 上述三个属性的简写属性，基本语法如下：
 
 ```
-border = 
+border =
   <line-width>  ||
   <line-style>  ||
-  <color>       
+  <color>
 ```
 
 ::: normal-demo border
@@ -205,6 +205,140 @@ border =
 ```css
 div {
   border: 1px solid black;
+}
+```
+
+:::
+
+### 使用边框画三角形
+
+可以利用 `border` 属性特性画三角形。
+
+每个 HTML 元素的盒模型由内容区域、内边距区域、边框区域和外边距区域构成。边框区域的宽度、样式和颜色由 `border` 属性控制。
+
+当你设置一个元素的一个或几个边框，这个元素会产生视觉效果，就像它有一只或几只“箭头”指向特定方向。这是因为边框实际上是从中心点斜向外延伸的。比如，如果你设置了元素的顶边框，这个元素就会看起来有一只“箭头”指向上方。
+
+所以，你可以通过使用透明边框和可见边框的组合，让元素看起来像一个三角形。
+
+::: normal-demo 原理
+
+```html
+<div class="flex">
+  <div class="box1"></div>
+  <div class="box2"></div>
+</div>
+```
+
+```css
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: #f00;
+
+  box-sizing: border-box;
+
+  border: 30px solid;
+  border-color: orange blue green purple;
+}
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: #f00;
+
+  box-sizing: border-box;
+
+  border: 50px solid;
+  border-color: orange blue green purple;
+}
+```
+
+:::
+
+::: normal-demo 三角形
+
+```html
+<div class="flex">
+  <div class="up"></div>
+  <div class="down"></div>
+  <div class="left"></div>
+  <div class="right"></div>
+  <div class="topleft"></div>
+  <div class="topright"></div>
+  <div class="bottomleft"></div>
+  <div class="bottomright"></div>
+</div>
+```
+
+```css
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+.up {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid red;
+}
+
+.down {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 60px solid red;
+}
+
+.left {
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-right: 60px solid red;
+  border-bottom: 30px solid transparent;
+}
+
+.right {
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-left: 60px solid red;
+  border-bottom: 30px solid transparent;
+}
+
+.topleft {
+  width: 0;
+  height: 0;
+  border-top: 60px solid red;
+  border-right: 60px solid transparent;
+}
+
+.topright {
+  width: 0;
+  height: 0;
+  border-top: 60px solid red;
+  border-left: 60px solid transparent;
+}
+
+.bottomleft {
+  width: 0;
+  height: 0;
+  border-bottom: 60px solid red;
+  border-right: 60px solid transparent;
+}
+
+.bottomright {
+  width: 0;
+  height: 0;
+  border-bottom: 60px solid red;
+  border-left: 60px solid transparent;
 }
 ```
 

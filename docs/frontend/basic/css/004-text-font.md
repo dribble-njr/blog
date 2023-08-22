@@ -2,7 +2,7 @@
 title: 文本和字体
 date: 2023-03-28
 icon: font
-category: 
+category:
   - CSS
 tag:
   - frontend
@@ -115,9 +115,7 @@ selector {
 ::: normal-demo 内联元素水平垂直居中
 
 ```html
-<p>
-  常用来做水平垂直居中。
-</p>
+<p>常用来做水平垂直居中。</p>
 ```
 
 ```css
@@ -133,7 +131,7 @@ p {
 
 ## 字体样式
 
-字体样式作用于字体的属性，会直接应用到文本中，比如使用哪种字体，字体的大小是怎样的，字体是粗体还是斜体，等等。 
+字体样式作用于字体的属性，会直接应用到文本中，比如使用哪种字体，字体的大小是怎样的，字体是粗体还是斜体，等等。
 
 ### `color`
 
@@ -175,17 +173,76 @@ p {
 
 `font-family` 用于设置文字的字体名称，可以设置一个或多个字体，浏览器会选择列表中第一个该计算机有安装的字体。
 
-::: normal-demo font-size
+标准的 Web fonts 包括一些基本字体，如 Arial，Georgia，Times New Roman 等。但是很多时候，为了提供更独特和富有吸引力的用户界面，会使用特别的字体，需要载入外部的 Web fonts。
+
+使用 Web fonts 的步骤：
+
+1. `@font-face` 加载一个自定义的字体;
+2. `font-family` 使用字体。
+
+```css
+@font-face {
+  font-family: 'MyFont';
+  src: url('myfont.woff2') format('woff2'), url('myfont.woff') format('woff');
+}
+
+body {
+  font-family: 'MyFont', Fallback, sans-serif;
+}
+```
+
+::: tip
+
+`src` 用于指定字体资源：
+
+- `url` 指定资源的路径
+- `format` 用于帮助浏览器快速识别字体的格式;
+
+:::
+
+字体可以设计成各式各样的形状，那么能不能把字体直接设计成图标的样子呢？
+
+当然可以，这个就叫做字体图标。
+
+字体图标的好处：
+
+- 放大不会失真
+- 可以任意切换颜色
+- 用到很多个图标时，文件相对图片较小
+
+字体图标的使用：
+
+- 登录 [阿里 icons](https://www.iconfont.cn/)
+- 下载代码，并且拷贝到项目中
+
+::: normal-demo 字体图标
 
 ```html
-<p>改变字体</p>
+<i class="iconfont">&#xe626;</i>
 ```
 
 ```css
-p {
-  font-family: '楷体';
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/c/font_3926422_ow6xq98wxi.woff2?t=1682664437328') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3926422_ow6xq98wxi.woff?t=1682664437328') format('woff'),
+       url('//at.alicdn.com/t/c/font_3926422_ow6xq98wxi.ttf?t=1682664437328') format('truetype');
+}
+
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
 ```
+
+:::
+
+::: tip
+
+其他更多使用方式：[iconfonts 代码应用](https://www.iconfont.cn/help/detail?spm=a313x.help_detail.i1.d8d11a391.7bb83a81XO2rxN&helptype=code)。
 
 :::
 

@@ -31,7 +31,8 @@ export default [
           '003-box-model',
           '004-text-font',
           '005-cascade-inheritance',
-          '006-background-border'
+          '006-background-border',
+          '007-position',
         ]
       },
       {

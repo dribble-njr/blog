@@ -33,6 +33,7 @@ export default [
           '005-cascade-inheritance',
           '006-background-border',
           '007-position',
+          '008-float',
         ]
       },
       {

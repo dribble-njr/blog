@@ -20,6 +20,7 @@ star: true
 - [层叠与继承](005-cascade-inheritance.md)
 - [背景与边框](006-background-border.md)
 - [定位](007-position.md)
+- [浮动](008-float.md)
 
 ## 学习资料
 

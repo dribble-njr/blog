@@ -3,7 +3,7 @@ import { Navbar } from './navbar.js'
 import { Sidebar } from './sidebar.js'
 
 export default hopeTheme({
-  hostname: 'https://mister-hope.github.io',
+  hostname: 'https://dribble-njr.github.io',
 
   author: {
     name: 'njr',
@@ -16,7 +16,7 @@ export default hopeTheme({
   navbar: Navbar,
   sidebar: Sidebar,
 
-  iconAssets: '//at.alicdn.com/t/c/font_3926422_niswvjjypzo.css',
+  iconAssets: '//at.alicdn.com/t/c/font_3926422_8fxn0q41up6.css',
   iconPrefix: 'iconfont icon-',
 
   repo: 'https://github.com/dribble-njr/blog',
@@ -76,7 +76,7 @@ export default hopeTheme({
     comment: {
       // You should generate and use your own comment service
       provider: 'Waline',
-      serverURL: 'https://blog-2k2sd2n9p-dribble-njr.vercel.app/'
+      serverURL: 'https://blog-api-dribble-njr.vercel.app/'
     },
 
     // all features are enabled for demo, only preserve features you need here

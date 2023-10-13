@@ -21,6 +21,7 @@ star: true
 - [背景与边框](006-background-border.md)
 - [定位](007-position.md)
 - [浮动](008-float.md)
+- [弹性盒](009-flex.md)
 
 ## 学习资料
 

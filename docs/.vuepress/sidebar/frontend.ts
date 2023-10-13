@@ -34,6 +34,7 @@ export default [
           '006-background-border',
           '007-position',
           '008-float',
+          '009-flex',
         ]
       },
       {

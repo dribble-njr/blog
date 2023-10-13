@@ -17,6 +17,7 @@ star: true
 - [快速开始](002-quick-start.md)
 - [DOCTYPE](003-doctype.md)
 - [常用元素](004-common-element.md)
+- [高级元素](005-advanced-element.md)
 
 ## 学习资料
 

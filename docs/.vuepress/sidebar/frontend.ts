@@ -35,6 +35,8 @@ export default [
           '007-position',
           '008-float',
           '009-flex',
+          '010-unit',
+          '011-center',
         ]
       },
       {

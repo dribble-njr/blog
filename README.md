@@ -37,6 +37,8 @@
 - [定位](./docs/frontend/basic/css/007-position.md)
 - [浮动](./docs/frontend/basic/css/008-float.md)
 - [弹性盒](./docs/frontend/basic/css/009-flex.md)
+- [样式单位](./docs/frontend/basic/css/010-unit.md)
+- [居中](./docs/frontend/basic/css/011-center.md)
 
 ### JavaScript
 

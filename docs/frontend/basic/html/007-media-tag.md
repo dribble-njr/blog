@@ -1,6 +1,7 @@
 ---
 title: 视频和音频
 date: 2022-07-25
+icon: duomeit
 category: 
   - HTML
 tag:
@@ -13,7 +14,7 @@ HTML5 中加入了视频和音频标签，增强网页的表达能力。
 
 以下就是使用 `<audio>` 的最简单例子，其中 `controls` 属性为音频控件，`autopaly` 为是否自动播放，`loop` 为循环播放。
 
-详细属性见[MDN audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
+详细属性见 [MDN audio](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)。
 
 ```html
 <audio controls src="xxx" autopaly loop></audio>
@@ -23,7 +24,7 @@ HTML5 中加入了视频和音频标签，增强网页的表达能力。
 
 一些属性的含义与 `<audio>` 音频元素相同。
 
-详细属性见[MDN video](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video)
+详细属性见 [MDN video](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video)。
 
 ```html
 <video controls src="xxx" autopaly loop></video>

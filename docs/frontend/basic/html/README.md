@@ -18,6 +18,8 @@ star: true
 - [DOCTYPE](003-doctype.md)
 - [常用元素](004-common-element.md)
 - [高级元素](005-advanced-element.md)
+- [语义话标签](006-semantically-meaningful-tags.md)
+- [视频和音频](007-media-tag.md)
 
 ## 学习资料
 

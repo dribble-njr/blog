@@ -18,6 +18,7 @@ export default [
           '004-common-element',
           '005-advanced-element',
           '006-semantically-meaningful-tags',
+          '007-media-tag'
         ]
       },
       {

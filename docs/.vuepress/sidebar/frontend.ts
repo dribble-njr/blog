@@ -16,7 +16,8 @@ export default [
           '002-quick-start',
           '003-doctype',
           '004-common-element',
-          '005-advanced-element'
+          '005-advanced-element',
+          '006-semantically-meaningful-tags',
         ]
       },
       {
@@ -36,7 +37,7 @@ export default [
           '008-float',
           '009-flex',
           '010-unit',
-          '011-center',
+          '011-center'
         ]
       },
       {
@@ -44,18 +45,14 @@ export default [
         icon: 'javascript',
         collapsible: true,
         children: []
-      },
+      }
     ]
   },
   {
     text: '前端框架和库',
     collapsible: true,
     prefix: '/frontend/framework/',
-    children: [
-      'vue',
-      'react',
-      'node'
-    ]
+    children: ['vue', 'react', 'node']
   },
   {
     text: '前端工具和技术',
@@ -103,5 +100,10 @@ export default [
     text: '前端最佳实践',
     collapsible: true,
     children: ['/frontend/best-practice/']
+  },
+  {
+    text: '前端工程化',
+    collapsible: true,
+    children: ['/frontend/engineering/']
   }
 ]

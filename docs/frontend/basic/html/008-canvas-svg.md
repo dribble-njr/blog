@@ -1,7 +1,8 @@
 ---
 title: Canvas 和 SVG 的区别
 date: 2022-08-02
-category: 
+icon: canvas-graphics
+category:
   - HTML
 tag:
   - Canvas
@@ -18,18 +19,18 @@ Canvas 是画布，通过 JavaScript 来绘制 2D 图形，是逐像素进行绘
 ```
 
 ```js
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById('canvas')
 
 // 确保浏览器支持<canvas>
 if (canvas.getContext) {
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext('2d')
 
   // 绘制红色矩形
-  ctx.fillStyle = "#ff0000";
-  ctx.fillRect(10, 10, 50, 50);
+  ctx.fillStyle = '#ff0000'
+  ctx.fillRect(10, 10, 50, 50)
   // 绘制半透明蓝色矩形
-  ctx.fillStyle = "rgba(0,0,255,0.5)";
-  ctx.fillRect(30, 30, 50, 50);
+  ctx.fillStyle = 'rgba(0,0,255,0.5)'
+  ctx.fillRect(30, 30, 50, 50)
 }
 ```
 
@@ -37,11 +38,11 @@ if (canvas.getContext) {
 
 特点如下：
 
-* 依赖分辨率
-* 不支持事件处理器
-* 弱的文本渲染能力
-* 能够以 .png 或 .jpg 格式保存图片
-* 最适合图像密集型的游戏，其中的许多对象会被频繁绘制
+- 依赖分辨率
+- 不支持事件处理器
+- 弱的文本渲染能力
+- 能够以 .png 或 .jpg 格式保存图片
+- 最适合图像密集型的游戏，其中的许多对象会被频繁绘制
 
 ## SVG
 
@@ -66,8 +67,8 @@ if (canvas.getContext) {
 
 其特点如下：
 
-* 不依赖分辨率
-* 支持事件处理器
-* 最适合带有大型渲染区域的应用程序（比如谷歌地图）
-* 复杂度高会减慢渲染速度
-* 不适合游戏应用
+- 不依赖分辨率
+- 支持事件处理器
+- 最适合带有大型渲染区域的应用程序（比如谷歌地图）
+- 复杂度高会减慢渲染速度
+- 不适合游戏应用

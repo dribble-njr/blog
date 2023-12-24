@@ -17,9 +17,9 @@ tag:
 
 CSS3 的新布局模式，是一种当页面需要适应不同屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。
 
-flex 弹性盒是一个一维布局模型，可以在界面中的项目之间提供空间分布和强大对齐功能的布局方式。
+flex 弹性盒是一个 **一维布局** 模型，可以在界面中的项目之间提供空间分布和强大对齐功能的布局方式。
 
-所谓一维布局模型是指：flex 在同一时刻只控制行或列。这和二维布局模型 Grid Layout （同时控制行和列）相反。
+所谓一维布局模型是指：flex 在同一时刻只控制行或列。这和 **二维布局模型** Grid Layout （同时控制行和列）相反。
 
 ### 1.2 flexbox 的两个轴
 
@@ -93,7 +93,6 @@ flexbox 不会对文档的书写模式提供假设。过去，CSS 的书写模�
 **取值**：
 
 - `stretch`（默认值）：如项目没有设置高度，或者高度为 auto，则占满整个容器
-
 - `flex-start`：起始线对齐
 - `flex-end`：终止线对齐
 - `center`：居中对齐
@@ -101,7 +100,7 @@ flexbox 不会对文档的书写模式提供假设。过去，CSS 的书写模�
 
 ### 2.6 align-content
 
-`align-content` 用于控制多行项目的对齐方式，如果项目**只有一行则不会起作用**。
+`align-content` 用于控制多行项目在交叉轴上的对齐方式，如果项目**只有一行则不会起作用**。
 
 **取值**：
 
@@ -112,6 +111,41 @@ flexbox 不会对文档的书写模式提供假设。过去，CSS 的书写模�
 - `space-between`：同上
 - `space-around`：同上
 - `space-evenly`：同上
+
+::: normal-demo
+
+```html
+<div>
+  <p>p1</p>
+  <p>p2</p>
+  <p>p3</p>
+  <p>p4</p>
+  <p>p5</p>
+</div>
+```
+
+```css
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-between;
+  flex-flow: row wrap;
+
+  width: 300px;
+  height: 100px;
+  border: 1px solid #eee;
+}
+
+p {
+  box-sizing: border-box;
+  width: 100px;
+  border: 1px solid #d9d9d9;
+  margin: 0 10px;
+}
+```
+
+:::
 
 ## 三、项目属性
 

@@ -39,7 +39,8 @@ export default [
           '008-float',
           '009-flex',
           '010-unit',
-          '011-center'
+          '011-center',
+          '012-grid'
         ]
       },
       {
@@ -101,11 +102,19 @@ export default [
   {
     text: '前端最佳实践',
     collapsible: true,
-    children: ['/frontend/best-practice/']
+    prefix: '/frontend/best-practice/',
+    children: ['001-sortable']
   },
   {
     text: '前端工程化',
     collapsible: true,
-    children: ['/frontend/engineering/']
+    prefix: '/frontend/engineering/',
+    children: [
+      '',
+      '001-modularization',
+      '002-package-manager',
+      '003-tool',
+      '004-project-standards'
+    ]
   }
 ]

@@ -16,7 +16,7 @@ export default hopeTheme({
   navbar: Navbar,
   sidebar: Sidebar,
 
-  iconAssets: '//at.alicdn.com/t/c/font_3926422_p0ruocpvac.css',
+  iconAssets: '//at.alicdn.com/t/c/font_3926422_w31q1a1xcg.css',
   iconPrefix: 'iconfont icon-',
 
   repo: 'https://github.com/dribble-njr/blog',
@@ -46,7 +46,7 @@ export default hopeTheme({
       Email: 'mailto:wzw15292257101@163.com',
       Gmail: 'mailto:wzw15292257101@gmail.com'
     },
-    description: '一个前端开发者',
+    description: '前端开发',
     intro: '/intro.html'
   },
 

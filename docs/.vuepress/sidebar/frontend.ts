@@ -1,13 +1,13 @@
 export default [
   {
     text: '基础知识',
-    icon: 'jcy-knowledge-filled',
+    icon: 'knowledge',
     collapsible: true,
     prefix: '/frontend/basic/',
     children: [
       {
         text: 'HTML',
-        icon: 'html5',
+        icon: 'html-',
         prefix: 'html/',
         collapsible: true,
         children: [
@@ -24,7 +24,7 @@ export default [
       },
       {
         text: 'CSS',
-        icon: 'css',
+        icon: 'suffix-css',
         prefix: 'css/',
         collapsible: true,
         children: [
@@ -45,7 +45,7 @@ export default [
       },
       {
         text: 'JavaScript',
-        icon: 'javascript',
+        icon: 'js',
         collapsible: true,
         children: []
       }
@@ -91,7 +91,7 @@ export default [
   {
     text: '浏览器',
     collapsible: true,
-    icon: 'browser-',
+    icon: 'liulanqi',
     children: ['/frontend/browser']
   },
   {
@@ -102,8 +102,14 @@ export default [
   {
     text: '前端最佳实践',
     collapsible: true,
+    icon: 'zuijiashijian',
     prefix: '/frontend/best-practice/',
-    children: ['001-sortable']
+    children: [
+      '001-sortable',
+      '002-annotation',
+      '003-file-upload',
+      '004-global-upload'
+    ]
   },
   {
     text: '前端工程化',

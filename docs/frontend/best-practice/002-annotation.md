@@ -9,6 +9,12 @@ tag:
   - 图片批注
 ---
 
+::: info
+
+demo: https://codesandbox.io/p/sandbox/image-annotation-pht676?file=%2Fsrc%2FApp.js%3A210%2C56
+
+:::
+
 实现图片批注有两种方案，一种是通过 `SVG` 绘制，一种是通过 `Canvas` 绘制。以下是两者对比：
 
 | 特点       | Canvas                           | SVG                                 |

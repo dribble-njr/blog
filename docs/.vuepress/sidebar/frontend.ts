@@ -60,6 +60,7 @@ export default [
   {
     text: '前端工具和技术',
     collapsible: true,
+    icon: 'gongju',
     prefix: '/frontend/tool/',
     children: [
       {
@@ -85,6 +86,13 @@ export default [
         prefix: 'vite/',
         icon: 'lightning',
         children: ['001-hello-vite']
+      },
+      {
+        text: 'Rspack',
+        collapsible: true,
+        prefix: 'rspack/',
+        icon: 'lightning',
+        children: ['001-hello-rspack']
       }
     ]
   },
@@ -114,6 +122,7 @@ export default [
   {
     text: '前端工程化',
     collapsible: true,
+    icon: 'gongcheng-',
     prefix: '/frontend/engineering/',
     children: [
       '',

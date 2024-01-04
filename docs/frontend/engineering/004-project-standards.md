@@ -3,7 +3,7 @@ title: 项目规范
 date: 2023-11-21
 icon: STARTUP
 category:
-  - 工程话
+  - 工程化
 tag:
   - frontend
   - 代码规范

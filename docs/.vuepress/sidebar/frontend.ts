@@ -129,7 +129,10 @@ export default [
       '001-modularization',
       '002-package-manager',
       '003-tool',
-      '004-project-standards'
+      '004-project-standards',
+      '005-qwik',
+      '006-react-server-component',
+      '007-hydration-is-pure-overhead'
     ]
   }
 ]

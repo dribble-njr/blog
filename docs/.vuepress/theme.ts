@@ -35,7 +35,7 @@ export default hopeTheme({
   ],
 
   blog: {
-    avatar: '/avatar.jpg',
+    avatar: '/avatar.jpeg',
     roundAvatar: true,
     medias: {
       GitHub: 'https://github.com/dribble-njr',

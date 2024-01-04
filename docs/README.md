@@ -5,7 +5,7 @@ icon: home
 title: Home
 heroText: Frontend knowledge base
 bgImage: /hero.webp
-tagline: Enquanto houver 1% de chance,teremo 99% fé.
+tagline: Enquanto houver 1% de chance, teremo 99% fé.
 heroFullScreen: true
 projects:
   - icon: project
@@ -32,6 +32,11 @@ projects:
     name: 杨小白
     desc: The best way to predict the future is to invent it.
     link: https://yangxiaobai.top/
+
+  - icon: https://yzjnnff.github.io/blog/avatar.jpg
+    name: YanZJNNFF
+    desc: No tomato sauce, please.
+    link: https://yzjnnff.github.io/blog/
 
 footer: No means Next Opportunity.
 ---

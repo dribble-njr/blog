@@ -3,7 +3,7 @@ title: 全局上传组件
 date: 2023-11-22
 icon: shangchuan
 category:
-  - BestPracitce
+  - practice
 tag:
   - frontend
   - 图片批注

@@ -3,7 +3,7 @@ title: 拖拽排序
 date: 2023-11-23
 icon: tuozhuai
 category:
-  - BestPracitce
+  - practice
 tag:
   - frontend
   - 拖拽排序

@@ -40,7 +40,8 @@ export default [
           '009-flex',
           '010-unit',
           '011-center',
-          '012-grid'
+          '012-grid',
+          '013-BFC'
         ]
       },
       {
@@ -155,12 +156,13 @@ export default [
     text: '实践',
     collapsible: true,
     icon: 'codelibrary-fill',
-    prefix: '/frontend/best-practice/',
+    prefix: '/frontend/practice/',
     children: [
       '001-sortable',
       '002-annotation',
       '003-file-upload',
-      '004-global-upload'
+      '004-global-upload',
+      '005-postcss-px-to-viewport'
     ]
   },
   {

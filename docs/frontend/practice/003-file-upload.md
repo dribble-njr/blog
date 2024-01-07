@@ -3,7 +3,7 @@ title: 常见文件上传场景
 date: 2023-12-28
 icon: wenjianshangchuan
 category:
-  - BestPracitce
+  - practice
 tag:
   - frontend
   - 文件上传

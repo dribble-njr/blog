@@ -211,8 +211,10 @@ div {
 
 - 实现 pc 端三栏布局，中间一栏最先渲染
 - 实现两边宽度固定，中间自适应
-- 效果图
-  ![三栏布局](./img/layout/three-cols.png)
+
+效果如下：
+
+![three-cols](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/three-cols.png)
 
 ### 圣杯布局
 

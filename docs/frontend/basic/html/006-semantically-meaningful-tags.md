@@ -10,7 +10,7 @@ tag:
 
 HTML5 中加入了一些语义化标签，来更清晰的表达文档结构。
 
-![语义化](./img/0004/tag.png)
+![语义化标签](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/tag.png)
 
 - `<header>`：页眉。
 - `<nav>`：导航栏。

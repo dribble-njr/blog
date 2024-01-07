@@ -1,13 +1,13 @@
 export default [
   {
     text: '基础知识',
-    icon: 'knowledge',
+    icon: 'jichusheshi',
     collapsible: true,
     prefix: '/frontend/basic/',
     children: [
       {
         text: 'HTML',
-        icon: 'html-',
+        icon: 'html5',
         prefix: 'html/',
         collapsible: true,
         children: [
@@ -24,7 +24,7 @@ export default [
       },
       {
         text: 'CSS',
-        icon: 'suffix-css',
+        icon: 'css3',
         prefix: 'css/',
         collapsible: true,
         children: [
@@ -52,13 +52,52 @@ export default [
     ]
   },
   {
-    text: '前端框架和库',
+    text: '框架和库',
     collapsible: true,
+    icon: 'framework',
     prefix: '/frontend/framework/',
-    children: ['vue', 'react', 'node']
+    children: [
+      {
+        text: 'React',
+        collapsible: true,
+        prefix: 'react/',
+        icon: 'react',
+        children: []
+      },
+      {
+        text: 'Vue',
+        collapsible: true,
+        prefix: 'vue/',
+        icon: 'vue',
+        children: []
+      },
+      {
+        text: 'Node',
+        collapsible: true,
+        prefix: 'node/',
+        icon: 'node',
+        children: []
+      }
+    ]
   },
   {
-    text: '前端工具和技术',
+    text: '工程化',
+    collapsible: true,
+    icon: 'jiejiangongcheng',
+    prefix: '/frontend/engineering/',
+    children: [
+      '',
+      '001-modularization',
+      '002-package-manager',
+      '003-tool',
+      '004-project-standards',
+      '005-qwik',
+      '006-react-server-component',
+      '007-hydration-is-pure-overhead'
+    ]
+  },
+  {
+    text: '工具和技术',
     collapsible: true,
     icon: 'gongju',
     prefix: '/frontend/tool/',
@@ -97,20 +136,9 @@ export default [
     ]
   },
   {
-    text: '浏览器',
+    text: '实践',
     collapsible: true,
-    icon: 'liulanqi',
-    children: ['/frontend/browser']
-  },
-  {
-    text: '前端性能优化',
-    collapsible: true,
-    children: ['/frontend/performance/']
-  },
-  {
-    text: '前端最佳实践',
-    collapsible: true,
-    icon: 'zuijiashijian',
+    icon: 'codelibrary-fill',
     prefix: '/frontend/best-practice/',
     children: [
       '001-sortable',
@@ -120,19 +148,10 @@ export default [
     ]
   },
   {
-    text: '前端工程化',
+    text: '浏览器',
     collapsible: true,
-    icon: 'gongcheng-',
-    prefix: '/frontend/engineering/',
-    children: [
-      '',
-      '001-modularization',
-      '002-package-manager',
-      '003-tool',
-      '004-project-standards',
-      '005-qwik',
-      '006-react-server-component',
-      '007-hydration-is-pure-overhead'
-    ]
+    icon: 'gugeliulanqi',
+    prefix: '/frontend/browser/',
+    children: ['/frontend/browser/']
   }
 ]

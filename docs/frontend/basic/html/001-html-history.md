@@ -1,8 +1,8 @@
 ---
-title: HTML 历史
+title: 历史
 date: 2023-03-22
 icon: history
-category: 
+category:
   - HTML
 tag:
   - frontend
@@ -40,7 +40,7 @@ XHTML 1.0 对 HTML4 进行了重新表述，除了加入新的序列化之外，
 
 2008 年，WHATWG 与 W3C 共同交付 **HTML5**，并于 2014 年 10 月 28 日完成标准化。
 
-2019年，WHATWG 和 W3C 签署了一项协议，双方合作开发 HTML 的单一版本: [HTML Living Standard](https://html.spec.whatwg.org/multipage/)。
+2019 年，WHATWG 和 W3C 签署了一项协议，双方合作开发 HTML 的单一版本: [HTML Living Standard](https://html.spec.whatwg.org/multipage/)。
 
 ::: tip 总结
 

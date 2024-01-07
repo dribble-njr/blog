@@ -75,7 +75,7 @@ export default [
         text: 'Node',
         collapsible: true,
         prefix: 'node/',
-        icon: 'node',
+        icon: 'nodejs',
         children: []
       }
     ]
@@ -86,55 +86,71 @@ export default [
     icon: 'jiejiangongcheng',
     prefix: '/frontend/engineering/',
     children: [
-      '',
-      '001-modularization',
-      '002-package-manager',
-      '003-tool',
-      '004-project-standards',
-      '005-qwik',
-      '006-react-server-component',
-      '007-hydration-is-pure-overhead'
-    ]
-  },
-  {
-    text: '工具和技术',
-    collapsible: true,
-    icon: 'gongju',
-    prefix: '/frontend/tool/',
-    children: [
       {
-        text: 'Webpack',
+        text: '基础概念',
         collapsible: true,
-        prefix: 'webpack/',
-        icon: 'webpack',
+        icon: 'jichusheshi',
+        prefix: 'basic/',
         children: [
-          '001-webpack-basic',
-          '002-webpack-css',
-          '003-webpack-assets',
-          '004-webpack-plugin',
-          '005-webpack-babel',
-          '006-webpack-vue',
-          '007-webpack-dev-server',
-          '008-webpack-resolve',
-          '009-webpack-env-split'
+          '001-modularization',
+          '002-package-manager',
+          '003-tool',
+          '004-project-standards'
         ]
       },
       {
-        text: 'Vite',
+        text: '打包工具',
         collapsible: true,
-        prefix: 'vite/',
-        icon: 'lightning',
-        children: ['001-hello-vite']
+        icon: 'auto-set-up',
+        prefix: 'build-tool/',
+        children: [
+          {
+            text: 'Webpack',
+            collapsible: true,
+            prefix: 'webpack/',
+            icon: 'webpack',
+            children: [
+              '001-webpack-basic',
+              '002-webpack-css',
+              '003-webpack-assets',
+              '004-webpack-plugin',
+              '005-webpack-babel',
+              '006-webpack-vue',
+              '007-webpack-dev-server',
+              '008-webpack-resolve',
+              '009-webpack-env-split'
+            ]
+          },
+          {
+            text: 'Vite',
+            collapsible: true,
+            prefix: 'vite/',
+            icon: 'vite',
+            children: ['001-hello-vite']
+          },
+          {
+            text: 'Rspack',
+            collapsible: true,
+            prefix: 'rspack/',
+            icon: 'r-mark',
+            children: ['001-hello-rspack']
+          }
+        ]
       },
       {
-        text: 'Rspack',
+        text: '服务端渲染',
         collapsible: true,
-        prefix: 'rspack/',
-        icon: 'lightning',
-        children: ['001-hello-rspack']
+        icon: '7',
+        prefix: 'ssr/',
+        children: [
+          '005-qwik',
+          '006-react-server-component',
+          '007-hydration-is-pure-overhead'
+        ]
       }
     ]
   },
+
   {
     text: '实践',
     collapsible: true,

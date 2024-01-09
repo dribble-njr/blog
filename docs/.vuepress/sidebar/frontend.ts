@@ -96,7 +96,8 @@ export default [
           '001-modularization',
           '002-package-manager',
           '003-tool',
-          '004-project-standards'
+          '004-project-standards',
+          '005-yeoman'
         ]
       },
       {
@@ -151,7 +152,6 @@ export default [
       }
     ]
   },
-
   {
     text: '实践',
     collapsible: true,

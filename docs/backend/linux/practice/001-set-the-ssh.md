@@ -1,17 +1,25 @@
 ---
 title: 服务器设置 ssh 密钥登录
 date: 2021-05-12
+icon: key
 category:
-  - 工程化
+  - linux
 tag:
-  - 项目部署
+  - centos
+  - ssh
 ---
+
+::: tip
+
+使用密码登录服务器并不安全，因此我们需要设置密钥登录。
+
+:::
 
 ## 创建密钥对
 
-登录阿里云控制台 -> 云服务 ECS -> 网络与安全 -> 密钥对 -> 创建密钥对
+登录阿里云控制台 -> 云服务 ECS -> 网络与安全 -> 密钥对 -> 创建密钥对。
 
-![创建密钥对](/assets/image/backend/server/001/step1-create-ssh.png)
+![step1-create-ssh](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-create-ssh.png)
 
 创建成功之后，浏览器会自动下载一个 `.pem` 私钥文件，记住这个文件的位置，之后要用。
 
@@ -19,13 +27,13 @@ tag:
 
 选中刚才创建的密钥对，点击右侧**绑定密钥对**，将密钥对绑定到实例。
 
-![绑定密钥对](/assets/image/backend/server/001/step2-bind-ssh.png)
+![step2-bind-ssh](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-bind-ssh.png)
 
 ## 添加安全组规则
 
-云服务 ECS -> 网络与安全 -> 安全组 -> 入方向 -> 手动添加
+云服务 ECS -> 网络与安全 -> 安全组 -> 入方向 -> 手动添加。
 
-![添加安全组规则](/assets/image/backend/server/001/step3-add-port.png)
+![step3-add-port](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step3-add-port.png)
 
 执行完后重启实例。
 
@@ -44,12 +52,12 @@ tag:
    ```
 
 3. 输入以下命令修改 config 文件
-   
+
    ```shell
    vi /etc/ssh/sshd_config
    ```
 
-4. 按  `i`  进入编辑模式
+4. 按 `i` 进入编辑模式
 
    ```shell
    #禁用密码验证
@@ -64,6 +72,6 @@ tag:
    service sshd restart
    ```
 
-接下来在阿里云控制台使用 Workbench 远程连接，可以发现密码登录已经被禁用了，只能使用密钥登录：
+接下来在阿里云控制台使用 Workbench 远程连接，可以发现密码登录已经被禁用了，只能使用密钥登录。
 
-![密码登录失败](/assets/image/backend/server/001/step4-pw-fail.png)
+![step4-pw-fail](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step4-pw-fail.png)

@@ -1,29 +1,33 @@
 ---
 title: 自动部署 Vuepress 到服务器
 date: 2021-05-12
+icon: vuepress
 category:
-  - 工程化
+  - linux
 tag:
   - 项目部署
+  - vuepress
 ---
 
-:::tip
+::: tip
+
 服务器：centos 7.9
 
 本地电脑：Windows 10
+
 :::
 
 ## 服务器端
 
 ### 配置 nginx
 
-登录宝塔面板，可以参考[配置宝塔面板](0003、配置宝塔面板.md)。点击左侧网站 -> 添加站点。
+登录宝塔面板，可以参考 [配置宝塔面板](0003、配置宝塔面板.md)。点击左侧网站 -> 添加站点。
 
-![添加站点](/assets/image/backend/server/004/step1-add-site.png)
+![step1-add-site](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-add-site.png)
 
 新增之后，点击设置 -> 配置文件。这三项按自己的情况配置，在后面 [git hooks](./004-automated-deployment.md#配置-hooks) 中会将 dist 文件推送到 `root` 配置项设置的文件夹下。
 
-![配置nginx](/assets/image/backend/server/004/step2-nginx-conf.png)
+![step2-nginx-conf](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-nginx-conf.png)
 
 先测试下 nginx 有没有配置成功，本地打包文件：
 
@@ -35,13 +39,15 @@ yarn build
 
 接着输入 `http://xxx.xxx.xxx.xxx:端口号`，就能访问成功了。
 
-:::tip
+::: tip
+
 地址得用 http 协议，因为我们还没有配置 ssl 证书。
+
 :::
 
 ### 配置 git 仓库
 
-在[搭建 git 私服](./002-build-git-server.md)中已经搭建好了 git 私服，因此只需要初始化 `vuepress.git` 仓库即可。
+在 [搭建 git 私服](./002-build-git-server.md) 中已经搭建好了 git 私服，因此只需要初始化 `vuepress.git` 仓库即可。
 
 ```bash
 cd /home/git
@@ -54,7 +60,11 @@ git init --bare vuepress.git
 
 先切换到 root 用户（`ctrl + d`），在 home 文件夹下创建一个临时存放 dist 文件夹的地方。
 
-> 我这里选择存放到 home 文件夹下，但是 git 用户是没有权限的，因此切换到 root 用户，也可以存放到其他文件夹。
+::: tip
+
+我这里选择存放到 home 文件夹下，但是 git 用户是没有权限的，因此切换到 root 用户，也可以存放到其他文件夹。
+
+:::
 
 ```bash
 cd /home
@@ -143,7 +153,11 @@ git push -f git@119.23.65.118:/home/git/vuepress.git master
 cd -
 ```
 
-> 了解更多 git 命令，可以查询[官方文档](https://git-scm.com/docs)。
+::: tip
+
+了解更多 git 命令，可以查询[官方文档](https://git-scm.com/docs)。
+
+:::
 
 ## 测试
 
@@ -157,32 +171,22 @@ sh : 无法将“sh”项识别为 cmdlet、函数、脚本文件或可运行程
 了解到 windows 上可以使用 git bash 执行 shell 脚本，但我可不想每次执行的时候都打开 git bash，当然得找如何在 vscode 中执行 shell 脚本的办法。
 
 1. 首先得在 vscode 中安装 code runner，之前一直用它来调试力扣上的题，已经安装过了。
-   
 2. 安装 git bash，这个不用说，安装 git 的时候就已经有了
-   
-3. 配置 bash 环境，找到bash.exe的安装目录，将它的位置添加到系统的环境变量中。
-   
+3. 配置 bash 环境，找到 bash.exe 的安装目录，将它的位置添加到系统的环境变量中。
 4. 配置 code runner：文件 -> 首选项 -> 设置 -> 搜索 code runner
-   
-   ![配置 code runner](/assets/image/backend/server/004/step3-code-runner.png)
-
 5. 打开终端，输入 `bash` 切换到 bash 环境，点击右上角的三角形即可运行。
+
+![step3-code-runner](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step3-code-runner.png)
 
 现在随便更新点内容，并执行 `deploy.sh` 脚本：
 
-![成功](/assets/image/backend/server/004/step4-complete.png)
+![step4-complete](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step4-complete.png)
 
 再次访问 `http://xxx.xxx.xxx.xxx:端口号` 发现已经更新了。
 
 ## 参考链接
 
-[只需三步， 部署Vuepress 并实现本地一行命令更新部署到服务器](http://chanwingwah.info/article/604eb2273c8ec67668f6fd41)
-
-[使用git hooks(post-receive)实现简单的远程自动部署](https://www.imqianduan.com/git-svn/335.html)
-
-[将Hexo部署到阿里云轻量服务器（保姆级教程）](https://hjxlog.com/posts/20191130a1.html#7-%E9%85%8D%E7%BD%AENginx)
-
-[VSCode: Windows 下配置 VSCode运行shell](https://www.cnblogs.com/yongdaimi/p/15247771.html)
-
-> 折腾了好久，因为实习的关系一直断断续续的研究，终于在这个周末抽了一天时间完成了。
-> 现在就等域名备案了。
+- [只需三步， 部署 Vuepress 并实现本地一行命令更新部署到服务器](http://chanwingwah.info/article/604eb2273c8ec67668f6fd41)
+- [使用 git hooks(post-receive)实现简单的远程自动部署](https://www.imqianduan.com/git-svn/335.html)
+- [将 Hexo 部署到阿里云轻量服务器（保姆级教程）](https://hjxlog.com/posts/20191130a1.html#7-%E9%85%8D%E7%BD%AENginx)
+- [VSCode: Windows 下配置 VSCode 运行 shell](https://www.cnblogs.com/yongdaimi/p/15247771.html)

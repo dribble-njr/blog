@@ -1,32 +1,38 @@
 ---
 title: 搭建 git 私服
 date: 2021-05-12
+icon: git1
 category:
-  - 工程化
+  - linux
 tag:
   - 项目部署
+  - git
 ---
 
 ::: tip
+
 **git 私服作用：**
-* 自己电脑和公司（或者实验室）电脑随时同步资料
-* GitHub、Gitee 私有仓库都是限流的，文件一旦多了，或者有图片文件，git pull 的时候半天拉不下来
-* 保存一些隐私文件
+
+- 自己电脑和公司（或者实验室）电脑随时同步资料
+- GitHub、Gitee 私有仓库都是限流的，文件一旦多了，或者有图片文件，`git pull` 的时候半天拉不下来
+- 保存一些隐私文件
+
 :::
 
 ## 开始搭建
 
-* 服务器：centos7.9
-* 本地电脑: Windows10
+- 服务器：centos7.9
+- 本地电脑: Windows10
 
 如果服务器没装 git 可以使用以下命令安装：
 
 ```bash
 yum install git
 ```
+
 ## 创建 git 用户
 
-创建一个 Git 的 Linux 账户，这个账户只做 Git 私服的操作，之后就要设置 Linux Git 账户的密码，但由于我之前已经[设置了 ssh 登录](./001-set-the-ssh.md)，因此不用设置密码。
+创建一个 Git 的 Linux 账户，这个账户只做 Git 私服的操作，之后就要设置 Linux Git 账户的密码，但由于我之前已经 [设置了 ssh 登录](./001-set-the-ssh.md)，因此不用设置密码。
 
 ```bash
 adduser git
@@ -161,10 +167,12 @@ git init --bare
 
 ## 客户端连接远程仓库
 
-在自己的电脑上创建一个文件夹也叫做 `world`
+在自己的电脑上创建一个文件夹也叫做 `world`。
 
 :::tip
+
 其实这里命名是随意的，但是我们为了和 Git 服务端的仓库名称保持同步。这样更直观我们操作的是哪一个仓库。
+
 :::
 
 ```bash
@@ -198,6 +206,5 @@ git push -u origin master
 
 ## 参考链接
 
-[手把手来搭建Git私服！](https://mp.weixin.qq.com/s/8m5zK29sX0D9NM_YB8KDNQ)
-
-[WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed)
+- [手把手来搭建 Git 私服！](https://mp.weixin.qq.com/s/8m5zK29sX0D9NM_YB8KDNQ)
+- [WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED](https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed)

@@ -9,6 +9,14 @@ tag:
   - yeoman
 ---
 
+::: waring
+
+`yo@5.0.0` 引入了一个破坏性的更新，会导致 [instantiatedGenerator.run is not a function](https://github.com/yeoman/generator-generator/issues/258)，需要降级到 `@4.x`。
+
+降级后仍有报错，可能是 `generator-node` 的问题，垃圾项目没人维护。
+
+:::
+
 Yeoman 是一个通用的脚手架系统，允许创建任何类型的应用程序。它可以快速启动新项目，并简化现有项目的维护工作。
 
 Yeoman 与语言无关。它可以生成任何语言（Web、Java、Python、C# 等）的项目。

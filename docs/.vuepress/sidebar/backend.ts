@@ -21,7 +21,8 @@ export default [
           '001-set-the-ssh',
           '002-build-git-server',
           '003-configure-bt',
-          '004-automated-deployment'
+          '004-automated-deployment',
+          '005-install-docker'
         ]
       }
     ]

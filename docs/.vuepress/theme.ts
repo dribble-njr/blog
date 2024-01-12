@@ -75,8 +75,11 @@ export default hopeTheme({
 
     comment: {
       // You should generate and use your own comment service
-      provider: 'Waline',
-      serverURL: 'https://blog-api-dribble-njr.vercel.app/'
+      provider: 'Giscus',
+      repo: 'dribble-njr/blog',
+      repoId: 'R_kgDOGc6nbw',
+      category: 'Announcements',
+      categoryId: 'DIC_kwDOGc6nb84CcXd-'
     },
 
     // all features are enabled for demo, only preserve features you need here

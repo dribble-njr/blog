@@ -25,6 +25,7 @@
     "flowchart.ts": "^3.0.0",
     "katex": "^0.16.9",
     "mermaid": "^10.6.1",
-    "reveal.js": "^5.0.4"
+    "reveal.js": "^5.0.4",
+    "vuepress-plugin-feed2": "2.0.0-rc.11"
   }
 }

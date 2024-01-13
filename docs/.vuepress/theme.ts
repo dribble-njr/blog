@@ -135,6 +135,8 @@ export default hopeTheme(
       },
 
       feed: {
+        atom: true,
+        json: true,
         rss: true
       }
 

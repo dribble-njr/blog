@@ -1,5 +1,5 @@
 ---
-title: 使用 SVG 实现签名动画效果
+title: SVG 实现签名动画效果
 date: 2024-01-13
 icon: signature
 category:
@@ -222,4 +222,52 @@ path {
   stroke: #303030;
   opacity: 0;
 }
+```
+
+## 适配 vuepress
+
+这里使用的是 `vuepress-theme-hope` 主题，参考 [替换主题组件](https://theme-hope.vuejs.press/zh/guide/advanced/replace.html) 中通过导航栏组件别名替换了默认的导航栏组件。
+
+```js
+alias: {
+  '@theme-hope/modules/navbar/components/NavbarBrand': path.resolve(
+    __dirname,
+    './components/NavLogo.vue'
+  )
+}
+```
+
+## 适配深色主题
+
+`vuepress` 并未提供是否为深色主题的接口，需要监听 `data-theme` 属性变化，来判断是否为深色主题。
+
+```js
+import { onUnmounted, onMounted, ref } from 'vue'
+
+const isDarkMode = ref(false)
+
+onMounted(() => {
+  const html = document.documentElement
+
+  console.log(html, '===')
+
+  isDarkMode.value = html.dataset.theme === 'dark'
+
+  // watch theme change
+  const observer = new MutationObserver(() => {
+    isDarkMode.value = html.dataset.theme === 'dark'
+    console.log(isDarkMode.value, '---')
+  })
+
+  observer.observe(html, {
+    attributeFilter: ['data-theme'],
+    attributes: true
+  })
+
+  onUnmounted(() => {
+    observer.disconnect()
+  })
+})
+
+console.log(isDarkMode.value, '---')
 ```

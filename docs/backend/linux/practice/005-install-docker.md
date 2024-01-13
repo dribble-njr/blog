@@ -1,7 +1,7 @@
 ---
 title: centos 安装 docker
 date: 2024-01-12
-icon:
+icon: docker
 category:
   - linux
 tag:

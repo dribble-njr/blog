@@ -4,7 +4,7 @@ import { Sidebar } from './sidebar.js'
 
 export default hopeTheme(
   {
-    hostname: 'https://dribble-njr.github.io',
+    // hostname: 'https://dribble-njr.github.io/blog',
 
     author: {
       name: 'njr',
@@ -24,7 +24,7 @@ export default hopeTheme(
       end: ['Language', 'Repo', 'Outlook', 'Search']
     },
 
-    iconAssets: '//at.alicdn.com/t/c/font_3926422_522ntjmzzt5.css',
+    iconAssets: '//at.alicdn.com/t/c/font_3926422_161abyn3nnu.css',
     iconPrefix: 'iconfont icon-',
 
     repo: 'https://github.com/dribble-njr/blog',

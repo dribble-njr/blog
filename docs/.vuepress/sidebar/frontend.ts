@@ -162,7 +162,8 @@ export default [
       '002-annotation',
       '003-file-upload',
       '004-global-upload',
-      '005-postcss-px-to-viewport'
+      '005-postcss-px-to-viewport',
+      '006-animation-svg'
     ]
   },
   {

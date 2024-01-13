@@ -1,1 +1,0 @@
-import{_ as t,o as a,c,a as e,b as n}from"./app-F3nAbBot.js";const o={},s=e("h1",{id:"浏览器",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#浏览器","aria-hidden":"true"},"#"),n(" 浏览器")],-1),r=e("p",null,"这里是关于浏览器的文章。",-1),_=[s,r];function d(i,l){return a(),c("div",null,_)}const f=t(o,[["render",d],["__file","index.html.vue"]]);export{f as default};

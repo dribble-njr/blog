@@ -15,7 +15,7 @@ export default [
       {
         text: '实践',
         collapsible: true,
-        icon: 'codelibrary-fill',
+        icon: 'practice',
         prefix: 'practice/',
         children: [
           '001-set-the-ssh',
@@ -30,6 +30,16 @@ export default [
   {
     text: '数据库',
     collapsible: true,
-    children: ['/backend/database']
+    icon: 'database',
+    prefix: 'database/',
+    children: [
+      {
+        text: 'MySQL',
+        collapsible: true,
+        icon: 'mysql',
+        prefix: 'mysql/',
+        children: ['001-install-mysql']
+      }
+    ]
   }
 ]

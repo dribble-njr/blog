@@ -155,7 +155,7 @@ export default [
   {
     text: '实践',
     collapsible: true,
-    icon: 'codelibrary-fill',
+    icon: 'practice',
     prefix: '/frontend/practice/',
     children: [
       '001-sortable',

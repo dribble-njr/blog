@@ -1,7 +1,7 @@
 export default [
   {
     text: '基础知识',
-    icon: 'jichusheshi',
+    icon: 'basic',
     collapsible: true,
     prefix: '/frontend/basic/',
     children: [
@@ -90,7 +90,7 @@ export default [
       {
         text: '基础概念',
         collapsible: true,
-        icon: 'jichusheshi',
+        icon: 'basic',
         prefix: 'basic/',
         children: [
           '001-modularization',

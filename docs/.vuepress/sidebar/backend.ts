@@ -8,7 +8,7 @@ export default [
       {
         text: '基础概念',
         collapsible: true,
-        icon: 'jichusheshi',
+        icon: 'basic',
         prefix: 'basic/',
         children: []
       },
@@ -33,6 +33,13 @@ export default [
     icon: 'database',
     prefix: 'database/',
     children: [
+      {
+        text: '基础知识',
+        collapsible: true,
+        icon: 'basic',
+        prefix: 'basic/',
+        children: ['001-hello-database']
+      },
       {
         text: 'MySQL',
         collapsible: true,

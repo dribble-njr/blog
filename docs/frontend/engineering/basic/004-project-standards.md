@@ -48,26 +48,22 @@ pnpm add eslint -D
 ```
 
 ```javascript
-
-```
-
 module.exports = {
-env: {
-"browser": true,
-"es2021": true
-},
-extends: [
-'eslint:recommended',
-'plugin:react/recommended',
-'plugin:@typescript-eslint/recommended'
-],
-parserOptions: {
-"ecmaVersion": "latest",
-"sourceType": "module"
-},
+  env: {
+    browser: true,
+    es2021: true
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  }
 }
-
-````
+```
 
 如果想要在项目中安装 `jest`，则需要在配置文件中的 `env` 加上下面这一行：
 
@@ -77,7 +73,7 @@ parserOptions: {
     es2021: true,
 +   jest: true
   },
-````
+```
 
 如果想和 `prettier` 一起使用则需要在 `extends` 中加入：
 

@@ -38,7 +38,7 @@ export default [
         collapsible: true,
         icon: 'basic',
         prefix: 'basic/',
-        children: ['001-hello-database']
+        children: ['001-hello-database', '002-relation-model']
       },
       {
         text: 'MySQL',

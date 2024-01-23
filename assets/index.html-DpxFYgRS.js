@@ -1,1 +1,0 @@
-const e=JSON.parse('{"key":"v-4a4e7b10","path":"/frontend/engineering/build-tool/","title":"Build Tool","lang":"zh-CN","frontmatter":{"title":"Build Tool","article":false,"feed":false,"sitemap":false},"headers":[],"git":{},"readingTime":{"minutes":0,"words":1},"filePathRelative":null,"excerpt":""}');export{e as data};

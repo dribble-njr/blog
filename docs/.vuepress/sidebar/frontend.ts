@@ -163,7 +163,8 @@ export default [
       '003-file-upload',
       '004-global-upload',
       '005-postcss-px-to-viewport',
-      '006-animation-svg'
+      '006-animation-svg',
+      '007-offline-export-in-highcharts'
     ]
   },
   {

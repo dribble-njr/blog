@@ -1,6 +1,7 @@
 import { getDirname, path } from '@vuepress/utils'
 import { defineUserConfig } from 'vuepress'
-import theme from './theme.js'
+import orderedHeader from 'vuepress-plugin-ordered-header'
+import theme from './theme.ts'
 
 const __dirname = getDirname(import.meta.url)
 
@@ -15,8 +16,9 @@ export default defineUserConfig({
       __dirname,
       './components/NavLogo.vue'
     )
-  }
+  },
 
+  plugins: [orderedHeader]
   // Enable it with pwa
   // shouldPrefetch: false,
 })

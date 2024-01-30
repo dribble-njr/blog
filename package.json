@@ -26,6 +26,7 @@
     "katex": "^0.16.9",
     "mermaid": "^10.7.0",
     "reveal.js": "^5.0.4",
-    "vuepress-plugin-feed2": "2.0.0-rc.11"
+    "vuepress-plugin-feed2": "2.0.0-rc.11",
+    "vuepress-plugin-ordered-header": "^0.0.1"
   }
 }

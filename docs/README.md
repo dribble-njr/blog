@@ -9,9 +9,9 @@ tagline: Enquanto houver 1% de chance, teremo 99% fé.
 heroFullScreen: true
 projects:
   - icon: project
-    name: project name
-    desc: project detailed description
-    link: https://your.project.link
+    name: Vuepress Plugin Ordered Header
+    desc: A vuepress plugin for ordering headers in the sidebar.
+    link: https://github.com/dribble-njr/vuepress-plugin-ordered-header.git
 
   - icon: link
     name: link name

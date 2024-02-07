@@ -3,3 +3,14 @@
   width: 28px !important;
   height: 28px !important;
 }
+@media (prefers-color-scheme: dark) {
+  figure {
+    img {
+      filter: brightness(0.8) contrast(1.2);
+    }
+  }
+
+  .pswp__img {
+    filter: brightness(0.8) contrast(1.2);
+  }
+}

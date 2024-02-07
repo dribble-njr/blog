@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as t,a as n}from"./app-iydmn_eB.js";const o={},_=n("p",null,"在计算机中，所有数据都是以二进制数的形式存储的，字符也不例外。为了表示字符，我们需要建立一套「字符集」，规定每个字符和二进制数之间的一一对应关系。有了字符集之后，计算机就可以通过查表完成二进制数到字符的转换。",-1),a=[_];function r(s,l){return c(),t("div",null,a)}const i=e(o,[["render",r],["__file","001-character-encoding.html.vue"]]);export{i as default};

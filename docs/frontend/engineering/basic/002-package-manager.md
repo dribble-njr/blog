@@ -10,3 +10,7 @@ tag:
   - yarn
   - pnpm
 ---
+
+## npm
+
+https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally

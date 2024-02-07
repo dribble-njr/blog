@@ -1,10 +1,11 @@
 ---
 title: HTTP 缓存
 date: 2022-05-04
+icon: cache
 category:
- - 浏览器
+  - 计算机网络
 tag:
- - HTTP
+  - HTTP
 ---
 
 对于一些相同的请求，通过复用以前获取的资源，显著提高网页的性能。Web 缓存减少了等待时间和流量，因此减少了显示资源的渲染时间。
@@ -17,8 +18,8 @@ HTTP 缓存的实现有两种方式，分别是**强制缓存**和**协商缓存
 
 强缓存是利用下面这两个字段实现的，它们都用来表示资源在客户端缓存的有效期。
 
-* `Expires`：绝对时间；
-* `Cache-Control`：缓存指令。
+- `Expires`：绝对时间；
+- `Cache-Control`：缓存指令。
 
 ### Expires
 
@@ -56,8 +57,8 @@ Cache-Control: max-age=20000
 
 协商缓存通过两种头部实现：
 
-* 请求头部的 `If-Modified-Since` 和响应头部的 `Last-Modified`；
-* 请求头部的 `If-None-Match` 和响应头部的 `ETag`。
+- 请求头部的 `If-Modified-Since` 和响应头部的 `Last-Modified`；
+- 请求头部的 `If-None-Match` 和响应头部的 `ETag`。
 
 ### `If-Modified-Since` 和 `Last-Modified`
 
@@ -66,10 +67,10 @@ Cache-Control: max-age=20000
 响应头 `Last-Modified` 存放的是资源最后修改时间：
 
 ```js
-Last-Modified: Wed, 21 Oct 2015 07:28:00 GMT 
+Last-Modified: Wed, 21 Oct 2015 07:28:00 GMT
 ```
 
-请求头中的 `If-Modified-Since` 含义为资源从xxx时间后是否有更新：
+请求头中的 `If-Modified-Since` 含义为资源从 xxx 时间后是否有更新：
 
 ```js
 If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT
@@ -87,7 +88,7 @@ If-Modified-Since: Wed, 21 Oct 2015 07:28:00 GMT
 `ETag` 是资源的特定版本的标识符，响应头会根据返回内容返回一个标识符，具体返回值看服务器的计算策略，可能如下所示：
 
 ```js
-ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
+ETag: '33a64df551425fcc55e4d42a148795d9f25f89d4'
 ```
 
 当客户端收到这个响应后，会将这个 `ETag` 保存起来，等下个请求时，会将它放到请求体的 `If-None-Match` 字段中：

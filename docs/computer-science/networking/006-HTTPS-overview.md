@@ -1,21 +1,22 @@
 ---
 title: HTTPS 略解
 date: 2022-05-05
+icon: creative
 category:
- - 浏览器
+  - 计算机网络
 tag:
- - HTTP
- - HTTPS
+  - HTTP
+  - HTTPS
 ---
 
 ## HTTP 和 HTTPS
 
 ### 区别
 
-* HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；
-* HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；
-* HTTP 端口号为 80，HTTPS 端口号为 443；
-* HTTPS 需要向 CA 申请数字证书。
+- HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；
+- HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；
+- HTTP 端口号为 80，HTTPS 端口号为 443；
+- HTTPS 需要向 CA 申请数字证书。
 
 ![http](/assets/image/computer-science/networking/006/HTTP.png)
 
@@ -23,10 +24,10 @@ tag:
 
 ### HTTPS 缺点
 
-* 在相同网络环境中，HTTPS 相比 HTTP 无论是响应时间还是耗电量都有大幅度上升；
-* HTTPS 的安全是有范围的，在黑客攻击、服务器劫持等情况下几乎起不到作用；
-* 在现有的证书机制下，中间人攻击依然有可能发生；
-* HTTPS 需要更多的服务器资源，也会导致成本的升高。
+- 在相同网络环境中，HTTPS 相比 HTTP 无论是响应时间还是耗电量都有大幅度上升；
+- HTTPS 的安全是有范围的，在黑客攻击、服务器劫持等情况下几乎起不到作用；
+- 在现有的证书机制下，中间人攻击依然有可能发生；
+- HTTPS 需要更多的服务器资源，也会导致成本的升高。
 
 ## 加密算法
 
@@ -68,7 +69,7 @@ HTTPS 使用混合加密算法解决数据安全传输问题，即**对称加密
 
 中间人攻击使我们无法验证公钥的真假。因此引入**数字证书**，用它来证明身份是真实的，并且防止被中间人攻击。
 
-由数字证书认证机构（Certificate Authority，简称CA）负责给用户签发数字证书，证书中包括：签发者、使用者公钥、使用的 HASH 算法、证书到期时间等。
+由数字证书认证机构（Certificate Authority，简称 CA）负责给用户签发数字证书，证书中包括：签发者、使用者公钥、使用的 HASH 算法、证书到期时间等。
 
 但是问题来了，如果中间人篡改了证书，如何保证身份证明是有效的？这时需要引进**数字签名**。
 
@@ -105,6 +106,6 @@ HTTPS 使用混合加密算法解决数据安全传输问题，即**对称加密
 
 [\[信息安全\] 2.密码工具箱（续）](https://www.cnblogs.com/linianhui/p/security-complex-toolbox.html)
 
-[\[信息安全\] 3.HTTPS工作流程](https://www.cnblogs.com/linianhui/p/security-https-workflow.html)
+[\[信息安全\] 3.HTTPS 工作流程](https://www.cnblogs.com/linianhui/p/security-https-workflow.html)
 
 [HTTPS 详解一：附带最精美详尽的 HTTPS 原理图](https://segmentfault.com/a/1190000021494676)

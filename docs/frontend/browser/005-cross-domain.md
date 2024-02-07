@@ -2,9 +2,9 @@
 title: 跨域
 date: 2022-05-06
 category:
- - 浏览器
+  - 浏览器
 tag:
- - 跨域
+  - 跨域
 ---
 
 跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。
@@ -17,17 +17,17 @@ tag:
 
 请求方法：
 
-* HEAD
-* GET
-* POST
-  
+- HEAD
+- GET
+- POST
+
 请求头：
 
-* Accept
-* Accept-Language
-* Content-Language
-* Last-Event-ID
-* Content-Type
+- Accept
+- Accept-Language
+- Content-Language
+- Last-Event-ID
+- Content-Type
 
 对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。
 

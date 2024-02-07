@@ -1,11 +1,12 @@
 ---
 title: TCP 与 UDP 的区别
 date: 2022-05-06
+icon: vs
 category:
- - 计算机网络
+  - 计算机网络
 tag:
- - TCP
- - UDP
+  - TCP
+  - UDP
 ---
 
 TCP 和 UDP 都是传输层协议，属于 TCP/IP 协议族。

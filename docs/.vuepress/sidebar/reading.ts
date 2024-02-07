@@ -4,7 +4,7 @@ export default [
     icon: 'git',
     collapsible: true,
     prefix: '/reading/pro-git',
-    children: ['', '01-getting-started', '02-git-basics']
+    children: ['01-getting-started', '02-git-basics']
   },
   {
     text: 'Patterns',
@@ -17,7 +17,7 @@ export default [
         collapsible: true,
         prefix: 'vanilla/',
         icon: 'js',
-        children: ['']
+        children: ['', '01-command-pattern', '02-factory-pattern']
       }
     ]
   }

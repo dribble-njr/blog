@@ -1,1 +1,0 @@
-import{_ as e,o as t,c,a as n}from"./app-iydmn_eB.js";const o={},_=n("p",null,"学习 JavaScript 过程中的笔记。",-1),s=[_];function a(r,l){return t(),c("div",null,s)}const d=e(o,[["render",a],["__file","index.html.vue"]]);export{d as default};

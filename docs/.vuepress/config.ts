@@ -1,5 +1,6 @@
 import { getDirname, path } from '@vuepress/utils'
 import { defineUserConfig } from 'vuepress'
+import { viteBundler } from '@vuepress/bundler-vite'
 import orderedHeader from 'vuepress-plugin-ordered-header'
 import excerptPlugin from './plugin/index.js'
 import theme from './theme.ts'
@@ -25,7 +26,12 @@ export default defineUserConfig({
     headers: {
       level: [2, 3, 4]
     }
-  }
+  },
+
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {}
+  })
 
   // Enable it with pwa
   // shouldPrefetch: false,

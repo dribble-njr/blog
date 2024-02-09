@@ -24,7 +24,7 @@ export default hopeTheme(
       end: ['Language', 'Repo', 'Outlook', 'Search']
     },
 
-    iconAssets: '//at.alicdn.com/t/c/font_3926422_mbwiuwf4tb.css',
+    iconAssets: '//at.alicdn.com/t/c/font_3926422_te7g1vrec2e.css',
     iconPrefix: 'iconfont icon-',
 
     repo: 'https://github.com/dribble-njr/blog',
@@ -88,6 +88,14 @@ export default hopeTheme(
         repoId: 'R_kgDOGc6nbw',
         category: 'Announcements',
         categoryId: 'DIC_kwDOGc6nb84CcXd-'
+      },
+
+      docsearch: {
+        // 你的选项
+        // appId, apiKey 和 indexName 是必填的
+        appId: '087S25VL4O',
+        apiKey: 'f2b6c414504143d2399831269d41e2ce',
+        indexName: 'dribble-njrio'
       },
 
       // all features are enabled for demo, only preserve features you need here

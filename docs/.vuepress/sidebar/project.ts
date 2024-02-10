@@ -1,12 +1,19 @@
 export default [
+  //   {
+  //     text: 'kool-ui',
+  //     collapsible: true,
+  //     children: ['/project/kool-ui']
+  //   },
+  //   {
+  //     text: 'mini-vue-cli',
+  //     collapsible: true,
+  //     children: ['/project/mini-vue-cli']
+  //   }
   {
-    text: 'kool-ui',
+    text: 'github-auto-commit',
+    icon: 'github-fill',
     collapsible: true,
-    children: ['/project/kool-ui']
-  },
-  {
-    text: 'mini-vue-cli',
-    collapsible: true,
-    children: ['/project/mini-vue-cli']
+    prefix: '/project/github-auto-commit/',
+    children: ['']
   }
 ]

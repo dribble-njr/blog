@@ -6,10 +6,11 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 09 Feb 2024 03:48:40 GMT</pubDate>
-    <lastBuildDate>Fri, 09 Feb 2024 03:48:40 GMT</lastBuildDate>
+    <pubDate>Sat, 10 Feb 2024 09:02:24 GMT</pubDate>
+    <lastBuildDate>Sat, 10 Feb 2024 09:02:24 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Project</category>
     <category>READING</category>
     <category>计算机网络</category>
     <category>浏览器</category>
@@ -20,10 +21,118 @@
     <category>工程化</category>
     <category>CSS</category>
     <category>HTML</category>
-    <category>Project</category>
     <category>operating-system</category>
     <category>LeetCode</category>
     <category>Node</category>
+    <item>
+      <title>使用 Actions 自动点亮 GitHub 热点图</title>
+      <link>https://dribble-njr.github.io/blog/blog/project/github-auto-commit/</link>
+      <guid>https://dribble-njr.github.io/blog/blog/project/github-auto-commit/</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">使用 Actions 自动点亮 GitHub 热点图</source>
+      <description>灵感来源：某天在 GitHub 上看到一个用户的热点图，发现他每天都有提交记录，非常帅！ 于是先搜搜有没有自动提交的工具，但是找到的结果有些需要在本地运行；有些则没有检查当天是否有提交记录，如果有提交当然不希望有一个虚拟的提交。 于是就有了这个项目，使用 GitHub Actions 自动提交代码，保持 GitHub 热点图常绿。 项目地址：githu...</description>
+      <category>Project</category>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>灵感来源：某天在 GitHub 上看到一个用户的热点图，发现他每天都有提交记录，非常帅！</p>
+<p>于是先搜搜有没有自动提交的工具，但是找到的结果有些需要在本地运行；有些则没有检查当天是否有提交记录，如果有提交当然不希望有一个虚拟的提交。</p>
+<p>于是就有了这个项目，使用 GitHub Actions 自动提交代码，保持 GitHub 热点图常绿。</p>
+<p>项目地址：<a href="https://github.com/dribble-njr/github-auto-commit" target="_blank" rel="noopener noreferrer">github-auto-commit</a>。</p>
+<h2>功能特点</h2>
+<ul>
+<li><strong>自动提交与推送</strong>: 如果所有代码仓库今天没有任何提交，工作流程将自动提交一个虚拟的提交，并将其推送到代码仓库。</li>
+<li><strong>支持配置</strong>: 可以根据自己的需求进行配置，包括调整定时任务时间、更改 Git 设置信息以及自定义提交信息等。</li>
+</ul>
+<h2>使用方法</h2>
+<ol>
+<li><strong>Fork 本仓库</strong>: 首先，将本仓库 Fork 到你自己的 GitHub 账号下。</li>
+<li><strong>生成个人访问令牌（PAT）</strong>: 在 GitHub 设置中生成一个具有 <code>repo</code> 权限范围的个人访问令牌。</li>
+<li><strong>设置仓库 Secrets</strong>: 在仓库的设置中，添加一个名为 <code>TOKEN</code> 的 Secrets，将在步骤 2 中生成的 PAT 值作为其值。</li>
+</ol>
+<h2>配置</h2>
+<p>可以根据自己的需求对工作流程进行以下配置：</p>
+<ol>
+<li><strong>调整定时任务时间</strong>: 可以在工作流程文件中修改 <code>schedule</code> 部分的 cron 表达式，以更改工作流程的触发时间。</li>
+<li><strong>更改 Git 设置信息</strong>: 在工作流程文件中的 <code>Set up Git</code> 步骤中，更改 Git 的用户邮箱和用户名。</li>
+<li><strong>自定义提交信息</strong>: 在工作流程文件的最后一步中，根据需要修改 <code>date_today</code>、<code>time_start</code>、<code>time_end</code>、<code>repo</code> 和 <code>commit_message</code> 等变量，以调整自动提交的内容和提交信息。</li>
+</ol>
+<h2>实现</h2>
+<p>整体工作原理是使用 GitHub Actions 实现定时触发任务。</p>
+<p>使用 GitHub 提供的 API 来获取用户所有的代码仓库，并获取取每个仓库的提交信息。</p>
+<p>如果在所有仓库中都没有找到今天的提交记录，工作流程会自动创建一个虚拟的提交并推送到代码仓库中。</p>
+<p>完整代码如下：</p>
+<div class="language-yaml" data-ext="yml" data-title="yml"><pre class="language-yaml"><code><span class="token key atrule">name</span><span class="token punctuation">:</span> Auto Commit
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">schedule</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">cron</span><span class="token punctuation">:</span> <span class="token string">'50 15 * * *'</span> <span class="token comment"># run at 23:50 in China time</span>
+  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">check_commits</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout this repository
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Set up Git
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          # You should set your email and name here.</span>
+
+          git config <span class="token punctuation">-</span><span class="token punctuation">-</span>global user.email "wzw15292257101@163.com"
+          git config <span class="token punctuation">-</span><span class="token punctuation">-</span>global user.name "dribble<span class="token punctuation">-</span>njr"
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Get all repositories
+        <span class="token key atrule">id</span><span class="token punctuation">:</span> get<span class="token punctuation">-</span>repos
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          echo "Fetching all repositories..."
+          response=$(curl -s -w "\n%{http_code}" -H "Authorization: token ${{ secrets.TOKEN }}" "https://api.github.com/user/repos?type=all")
+          http_code=$(echo "$response" | tail -n1)
+          response_body=$(echo "$response" | sed '$d')</span>
+
+          echo "<span class="token punctuation">[</span>HTTP status code<span class="token punctuation">]</span><span class="token punctuation">:</span> $http_code"
+
+          contained_repos=$(echo "$response_body" <span class="token punctuation">|</span> jq <span class="token punctuation">-</span>r '.<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">|</span> .full_name')
+          <span class="token key atrule">echo "Contained repositories</span><span class="token punctuation">:</span> $contained_repos"
+
+          echo "<span class="token punctuation">:</span><span class="token punctuation">:</span>set<span class="token punctuation">-</span>output name=repos<span class="token punctuation">:</span><span class="token punctuation">:</span>$(echo "$contained_repos" <span class="token punctuation">|</span> tr '\n' '<span class="token punctuation">,</span>')" <span class="token comment"># output repos</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Read repositories list and check commits
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          # Set custom timezone and other config by yourself.</span>
+
+          date_today=$(TZ='Asia/Shanghai' date <span class="token punctuation">-</span>I) <span class="token comment"># Date part</span>
+          time_start="$<span class="token punctuation">{</span>date_today<span class="token punctuation">}</span>T00<span class="token punctuation">:</span>00<span class="token punctuation">:</span>00"
+          time_end="$<span class="token punctuation">{</span>date_today<span class="token punctuation">}</span>T23<span class="token punctuation">:</span>55<span class="token punctuation">:</span>00"
+          repo="https<span class="token punctuation">:</span>//github.com/dribble<span class="token punctuation">-</span>njr/github<span class="token punctuation">-</span>auto<span class="token punctuation">-</span>commit.git"
+          commit_message="Auto commit on $(TZ='Asia/Shanghai' date '+%Y<span class="token punctuation">-</span>%m<span class="token punctuation">-</span>%d %H<span class="token punctuation">:</span>%M<span class="token punctuation">:</span>%S')"
+
+          commits_exist=false
+          echo "Checking commits between $time_start and $time_end"
+
+          IFS='<span class="token punctuation">,</span> ' read <span class="token punctuation">-</span>r <span class="token punctuation">-</span>a repos &lt;&lt;&lt; "$<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.get<span class="token punctuation">-</span>repos.outputs.repos <span class="token punctuation">}</span><span class="token punctuation">}</span>"
+          for repo in "$<span class="token punctuation">{</span>repos<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token punctuation">}</span>"; do
+            echo "Checking commits for $repo"
+            <span class="token key atrule">commit_today=$(curl -H "Authorization</span><span class="token punctuation">:</span> token $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>" <span class="token punctuation">-</span>s "https<span class="token punctuation">:</span>//api.github.com/repos/$repo/commits<span class="token punctuation">?</span>since=$time_start<span class="token important">&amp;until=$time_end")</span>
+            if echo "$commit_today" <span class="token punctuation">|</span> jq <span class="token punctuation">-</span>e '.<span class="token punctuation">[</span><span class="token punctuation">]</span>' <span class="token punctuation">&gt;</span> /dev/null; then
+                echo "Commits today in $repo<span class="token punctuation">:</span>"
+                echo "$commit_today"
+                commits_exist=true
+                break
+            fi
+          done
+
+          if <span class="token punctuation">[</span><span class="token punctuation">[</span> "$commits_exist" == "false" <span class="token punctuation">]</span><span class="token punctuation">]</span>; then
+            echo "No commits found today across all repositories. Creating a dummy commit<span class="token punctuation">...</span>"
+            git clone $repo
+            cd github<span class="token punctuation">-</span>auto<span class="token punctuation">-</span>commit
+            echo "$date_today No commits found today<span class="token punctuation">,</span> auto commited." <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> dummy.txt
+            git add dummy.txt
+            git commit <span class="token punctuation">-</span>m "$commit_message"
+            git push https<span class="token punctuation">:</span>//$<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>@github.com/$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.repository <span class="token punctuation">}</span><span class="token punctuation">}</span>.git
+          else
+            echo "Commits found today."
+          fi
+</code></pre></div>]]></content:encoded>
+    </item>
     <item>
       <title>服务器上的 Git</title>
       <link>https://dribble-njr.github.io/blog/blog/reading/pro-git/04-git-server.html</link>
@@ -9960,14 +10069,6 @@ sessionStorage<span class="token punctuation">.</span><span class="token functio
 <li>localStorage 和 sessionStorage：不参与服务器通信</li>
 </ul>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>Web Worker</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/html/0010%E3%80%81WebWorker.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/html/0010%E3%80%81WebWorker.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Web Worker</source>
-      <category>HTML</category>
-      <pubDate>Tue, 02 Aug 2022 00:00:00 GMT</pubDate>
     </item>
   </channel>
 </rss>

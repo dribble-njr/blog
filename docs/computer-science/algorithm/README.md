@@ -1,7 +1,8 @@
 ---
-title: LeetCode
+title: Algorithm
 publish: false
 ---
 
-* [二叉树](0001、二叉树.md)
-* [二叉搜索树](0002、二叉搜索树.md)
+使用 `TypeScript`，按照数据结构和算法的分类，整理了一些常见的算法题。
+
+- [数组](01-array.md)

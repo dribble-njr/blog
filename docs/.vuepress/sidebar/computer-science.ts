@@ -3,7 +3,8 @@ export default [
     text: '算法',
     collapsible: true,
     icon: 'suanfa',
-    children: ['/computer-science/algorithm']
+    prefix: '/computer-science/algorithm',
+    children: ['01-array']
   },
   {
     text: '计算机网络',

@@ -200,6 +200,61 @@ function threeSumClosest(nums: number[], target: number): number {
 }
 ```
 
+### 四数之和
+
+::: tip 原题链接
+
+[18. 四数之和](https://leetcode-cn.com/problems/4sum)
+
+:::
+
+思路：参照 [三数之和](#三数之和)，使用双指针，先对数组进行排序，然后遍历数组，使用双指针分别指向当前元素的下一个元素和数组的最后一个元素，计算四数之和，然后移动指针。
+
+::: warning 易错提示
+
+- 在遍历数组时，需要判断是否和前一个元素相等，如果相等则跳过。
+- `i` 从 0 开始，`j` 从 `i + 1` 开始，`left` 从 `j + 1` 开始，`right` 从 `nums.length - 1` 开始。
+
+:::
+
+```ts
+function fourSum(nums: number[], target: number): number[][] {
+  const res = []
+  nums.sort((a, b) => a - b)
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i > 0 && nums[i] === nums[i - 1]) continue
+
+    for (let j = i + 1; j < nums.length; j++) {
+      if (j > i + 1 && nums[j] === nums[j - 1]) continue
+
+      let left = j + 1,
+        right = nums.length - 1
+
+      while (left < right) {
+        const sum = nums[i] + nums[j] + nums[left] + nums[right]
+
+        if (sum > target) {
+          right--
+        } else if (sum < target) {
+          left++
+        } else {
+          res.push([nums[i], nums[j], nums[left], nums[right]])
+
+          while (left < right && nums[left] === nums[left + 1]) left++
+          while (left < right && nums[right] === nums[right - 1]) right--
+
+          left++
+          right--
+        }
+      }
+    }
+  }
+
+  return res
+}
+```
+
 ## 双指针
 
 ### 接雨水

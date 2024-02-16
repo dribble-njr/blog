@@ -133,6 +133,73 @@ function threeSum(nums: number[]): number[][] {
 }
 ```
 
+### 最接近的三数之和
+
+::: tip 原题链接
+
+[16. 最接近的三数之和](https://leetcode-cn.com/problems/3sum-closest)
+
+:::
+
+#### 暴力解法
+
+思路：使用三重循环，遍历数组，计算三数之和，然后比较与目标值的差值，找到最接近的结果。
+
+```ts
+function threeSumClosest(nums: number[], target: number): number {
+  let res = nums[0] + nums[1] + nums[2]
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      for (let k = j + 1; k < nums.length; k++) {
+        const sum = nums[i] + nums[j] + nums[k]
+
+        if (Math.abs(sum - target) < Math.abs(res - target)) {
+          res = sum
+        }
+      }
+    }
+  }
+
+  return res
+}
+```
+
+#### 双指针
+
+思路：使用双指针，先对数组进行排序，然后遍历数组，使用双指针分别指向当前元素的下一个元素和数组的最后一个元素，计算三数之和，然后移动指针。
+
+```ts
+function threeSumClosest(nums: number[], target: number): number {
+  let res = nums[0] + nums[1] + nums[2]
+
+  nums.sort((a, b) => a - b)
+
+  for (let i = 0; i < nums.length; i++) {
+    let left = i + 1
+    let right = nums.length - 1
+
+    while (left < right) {
+      const sum = nums[i] + nums[left] + nums[right]
+
+      if (Math.abs(sum - target) < Math.abs(res - target)) {
+        res = sum
+      }
+
+      if (sum > target) {
+        right--
+      } else if (sum < target) {
+        left++
+      } else {
+        return res
+      }
+    }
+  }
+
+  return res
+}
+```
+
 ## 双指针
 
 ### 接雨水

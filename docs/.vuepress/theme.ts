@@ -12,6 +12,8 @@ export default hopeTheme(
       email: 'wzw15292257101@163.com'
     },
 
+    headerDepth: 3,
+
     favicon: '/favicon.ico',
 
     navbar: Navbar,

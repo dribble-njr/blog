@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-02-16T14:18:56.993Z</updated>
+  <updated>2024-02-17T12:41:30.823Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -30,7 +30,7 @@
     <title type="text">数组</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html"/>
-    <updated>2024-02-16T14:16:59.000Z</updated>
+    <updated>2024-02-17T12:40:02.000Z</updated>
     <summary type="html"><![CDATA[<p><code>JavaScript</code> 中数组是一种特殊的对象，用于存储多个值。数组的每个元素都有一个数字索引，用于访问数组中的元素。</p>
 <p>常见初始化数组的方式：</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
@@ -264,6 +264,43 @@
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+</code></pre></div><h3>删除有序数组中的重复项</h3>
+<div class="hint-container tip">
+<p class="hint-container-title">原题链接</p>
+<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener noreferrer">26. 删除有序数组中的重复项</a></p>
+</div>
+<p>思路：使用双指针，一个指针用于遍历数组，另一个指针用于指向不重复的元素。</p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">removeDuplicates</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+
+  <span class="token keyword">let</span> slow <span class="token operator">=</span> <span class="token number">0</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> fast <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> fast <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> fast<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span> <span class="token operator">!==</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      slow<span class="token operator">++</span>
+      nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> slow <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3>移除元素</h3>
+<div class="hint-container tip">
+<p class="hint-container-title">原题链接</p>
+<p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener noreferrer">27. 移除元素</a></p>
+</div>
+<p>思路：使用双指针，一个指针用于遍历数组，另一个指针用于指向不等于目标值的元素。</p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">removeElement</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> val<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> slow <span class="token operator">=</span> <span class="token number">0</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> fast <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> fast <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> fast<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span> <span class="token operator">!==</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      nums<span class="token punctuation">[</span>slow<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> slow
 <span class="token punctuation">}</span>
 </code></pre></div>]]></content>
     <category term="algorithm"/>

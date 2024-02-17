@@ -290,3 +290,54 @@ function maxArea(height: number[]): number {
   return res
 }
 ```
+
+### 删除有序数组中的重复项
+
+::: tip 原题链接
+
+[26. 删除有序数组中的重复项](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array)
+
+:::
+
+思路：使用双指针，一个指针用于遍历数组，另一个指针用于指向不重复的元素。
+
+```ts
+function removeDuplicates(nums: number[]): number {
+  if (nums.length === 0) return 0
+
+  let slow = 0
+
+  for (let fast = 1; fast < nums.length; fast++) {
+    if (nums[slow] !== nums[fast]) {
+      slow++
+      nums[slow] = nums[fast]
+    }
+  }
+
+  return slow + 1
+}
+```
+
+### 移除元素
+
+::: tip 原题链接
+
+[27. 移除元素](https://leetcode-cn.com/problems/remove-element)
+
+:::
+
+思路：使用双指针，一个指针用于遍历数组，另一个指针用于指向不等于目标值的元素。
+
+```ts
+function removeElement(nums: number[], val: number): number {
+  let slow = 0
+
+  for (let fast = 0; fast < nums.length; fast++) {
+    if (nums[fast] !== val) {
+      nums[slow++] = nums[fast]
+    }
+  }
+
+  return slow
+}
+```

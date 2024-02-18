@@ -4,13 +4,13 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-02-17T12:41:30.823Z</updated>
+  <updated>2024-02-18T11:16:03.183Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="READING"/>
   <category term="algorithm"/>
   <category term="Project"/>
-  <category term="READING"/>
   <category term="计算机网络"/>
   <category term="浏览器"/>
   <category term="reading"/>
@@ -26,6 +26,95 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">注重实效的哲学</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html"/>
+    <updated>2024-02-18T11:14:31.000Z</updated>
+    <summary type="html"><![CDATA[<h2>我的源码让猫吃了</h2>
+<ul>
+<li>为问题负责，提供解决方案。</li>
+</ul>
+<h2>软件的熵</h2>
+<ul>
+<li>不要容忍破窗。</li>
+</ul>
+<h2>石头汤与煮青蛙</h2>
+<ul>
+<li>主动 Own 一件事情。</li>
+<li>持续观察周围的事情，不局限于自己的工作。</li>
+</ul>
+<h2>足够好的软件</h2>
+<ul>
+<li>让质量成为需求问题（先交付再持续根据用户反馈进行优化）。</li>
+<li>不要过度设计。</li>
+</ul>
+<h2>你的知识资产</h2>
+<p>经营你的资产：</p>
+<ul>
+<li>不断学习，不断提升自己的技能。</li>
+<li>保持学习的广度。</li>
+<li>在新的技术流行之前学习。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2>我的源码让猫吃了</h2>
+<ul>
+<li>为问题负责，提供解决方案。</li>
+</ul>
+<h2>软件的熵</h2>
+<ul>
+<li>不要容忍破窗。</li>
+</ul>
+<h2>石头汤与煮青蛙</h2>
+<ul>
+<li>主动 Own 一件事情。</li>
+<li>持续观察周围的事情，不局限于自己的工作。</li>
+</ul>
+<h2>足够好的软件</h2>
+<ul>
+<li>让质量成为需求问题（先交付再持续根据用户反馈进行优化）。</li>
+<li>不要过度设计。</li>
+</ul>
+<h2>你的知识资产</h2>
+<p>经营你的资产：</p>
+<ul>
+<li>不断学习，不断提升自己的技能。</li>
+<li>保持学习的广度。</li>
+<li>在新的技术流行之前学习。</li>
+</ul>
+<p>目标：</p>
+<ul>
+<li>每年至少学习一种新语言（或框架）。</li>
+<li>每季度阅读一本技术书籍。</li>
+<li>也要阅读一些非技术类的书籍。</li>
+<li>上课。</li>
+<li>参加技术会议。</li>
+<li>试验不同的环境。</li>
+<li>订阅技术杂志，跟上潮流。</li>
+</ul>
+<p>在学习时，需要批判地进行思考，不要盲目地接受。</p>
+<h2>交流</h2>
+<ul>
+<li>知道你要说什么。</li>
+<li>了解你的听众。</li>
+<li>选择时机。</li>
+<li>选择风格。</li>
+<li>让文档美观。</li>
+<li>让听众参与。</li>
+<li>做倾听者，如果你不听观众说话，那观众也不会听你说话。</li>
+<li>记得回复他人。</li>
+</ul>
+]]></content>
+    <category term="READING"/>
+    <published>2024-02-18T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">注重实效的途径</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html"/>
+    <updated>2024-02-18T11:14:31.000Z</updated>
+    <category term="READING"/>
+    <published>2024-02-18T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">数组</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html</id>
@@ -10955,76 +11044,5 @@ Content-Type: text/html
 ]]></content>
     <category term="HTML"/>
     <published>2022-04-30T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">script 标签中 defer 和 async 的区别</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/0005%E3%80%81script%E6%A0%87%E7%AD%BE%E4%B8%ADdefer%E5%92%8Casync%E7%9A%84%E5%8C%BA%E5%88%AB.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/0005%E3%80%81script%E6%A0%87%E7%AD%BE%E4%B8%ADdefer%E5%92%8Casync%E7%9A%84%E5%8C%BA%E5%88%AB.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<p>HTML 中在页面插入 JavaScript 的主要方式就是使用 <code>&lt;script&gt;</code> 元素，可以直接在页面中嵌入 JavaScript 代码，但是一般来说，通常会通过 <code>src</code> 属性来引入外部脚本。</p>
-<p>在中提到了 <code>src</code> 会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。这样就会阻塞后续文档的加载。</p>
-<p>而使用 <code>defer</code> 和 <code>async</code> 都可以<strong>异步加载</strong>外部的 JavaScript 脚本，主要区别如下：</p>]]></summary>
-    <content type="html"><![CDATA[<p>HTML 中在页面插入 JavaScript 的主要方式就是使用 <code>&lt;script&gt;</code> 元素，可以直接在页面中嵌入 JavaScript 代码，但是一般来说，通常会通过 <code>src</code> 属性来引入外部脚本。</p>
-<p>在中提到了 <code>src</code> 会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。这样就会阻塞后续文档的加载。</p>
-<p>而使用 <code>defer</code> 和 <code>async</code> 都可以<strong>异步加载</strong>外部的 JavaScript 脚本，主要区别如下：</p>
-<ul>
-<li><strong>执行顺序</strong>：多个带 <code>async</code> 属性的标签，不能保证加载的顺序；多个带 <code>defer</code> 属性的标签，按照加载顺序执行；</li>
-<li><strong>脚本何时执行</strong>：<code>async</code> 属性表示脚本加载完成后立即执行，不会等到文档解析完成。<code>defer</code> 属性表示脚本加载完成后还需等到所有元素解析完成，即 <code>DOMContentLoaded</code> 事件触发前完成。</li>
-</ul>
-]]></content>
-    <category term="HTML"/>
-    <published>2022-07-25T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">WebSocket</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/0007%E3%80%81WebSocket.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/0007%E3%80%81WebSocket.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<p>WebSocket 是 HTML5 一种协议，是在 http 协议上实现了 socket 协议的长链接，只需要客户端和服务端建立一次连接，就可以互相传送数据。</p>
-<p>主要应用在网页即时通讯和服务端消息推送中，使客户端和服务端之间的交互变得更加简单。</p>
-<p>http 协议是客户端请求，服务端响应，而 socket 协议可以使服务端主动向客户端发送消息。</p>
-<h2>传统 ajax 对比</h2>
-<p>ajax 轮询，如果同时请求认输更多会出现高并发情况，</p>
-<p>客户端可以让客户端和服务端链接，这个链接不会诶关闭，无序平凡建立同搭配，减小服务器压力</p>
-<h2>2. 主要应用场景和工作原理</h2>]]></summary>
-    <content type="html"><![CDATA[<p>WebSocket 是 HTML5 一种协议，是在 http 协议上实现了 socket 协议的长链接，只需要客户端和服务端建立一次连接，就可以互相传送数据。</p>
-<p>主要应用在网页即时通讯和服务端消息推送中，使客户端和服务端之间的交互变得更加简单。</p>
-<p>http 协议是客户端请求，服务端响应，而 socket 协议可以使服务端主动向客户端发送消息。</p>
-<h2>传统 ajax 对比</h2>
-<p>ajax 轮询，如果同时请求认输更多会出现高并发情况，</p>
-<p>客户端可以让客户端和服务端链接，这个链接不会诶关闭，无序平凡建立同搭配，减小服务器压力</p>
-<h2>2. 主要应用场景和工作原理</h2>
-<h2>3. 相关 API 介绍</h2>
-<p>创建ws对象， var ws = new WebSocket(url)</p>
-<p>监听链接通道（事件）ws.onopen=function() {}</p>
-<p>监听服务端消息</p>
-<p>发送消息</p>
-<p>监听通道关闭</p>
-<h2>4.案例</h2>
-<p>客户端使用开发socket</p>
-<p>后端使用php</p>
-<p>服务端启动方式</p>
-<p>监听接口</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"WebSocket"</span> <span class="token keyword">in</span> window<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// 1. 船舰是对象</span>
-  <span class="token keyword">var</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocetker</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-  <span class="token comment">// 2.监听链接通道</span>
-  ws<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\
-  	<span class="token literal-property property">log</span> <span class="token operator">:</span> jianlichenggong 
-    <span class="token comment">// 3.发送消息</span>
-    ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'mes=sss'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span> 
-                          ws<span class="token punctuation">.</span>onmessage <span class="token operator">=</span><span class="token function">functin</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                            
-                          <span class="token punctuation">}</span>
-  ws<span class="token punctuation">.</span><span class="token function-variable function">onclose</span><span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">log</span><span class="token operator">:</span>tongdao guanbil
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'shibai '</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-</code></pre></div>]]></content>
-    <category term="HTML"/>
-    <published>2022-07-25T00:00:00.000Z</published>
   </entry>
 </feed>

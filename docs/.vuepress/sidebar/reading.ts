@@ -25,5 +25,12 @@ export default [
         children: ['', '01-command-pattern', '02-factory-pattern']
       }
     ]
+  },
+  {
+    text: '程序员修炼之道',
+    icon: 'shejimoshi',
+    collapsible: true,
+    prefix: '/reading/pragmatic-programmer/',
+    children: ['01-a-pragmatic-philosophy', '02-a-pragmatic-approach']
   }
 ]

@@ -2,7 +2,6 @@ import { getDirname, path } from '@vuepress/utils'
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import orderedHeader from 'vuepress-plugin-ordered-header'
-import excerptPlugin from './plugin/index.js'
 import theme from './theme.ts'
 
 const __dirname = getDirname(import.meta.url)

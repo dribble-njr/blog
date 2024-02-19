@@ -28,7 +28,7 @@ export default [
   },
   {
     text: '程序员修炼之道',
-    icon: 'shejimoshi',
+    icon: 'meditation',
     collapsible: true,
     prefix: '/reading/pragmatic-programmer/',
     children: ['01-a-pragmatic-philosophy', '02-a-pragmatic-approach']

@@ -1,7 +1,7 @@
 ---
 title: 注重实效的哲学
 date: 2024-02-18
-icon: creative
+icon: philosophy
 category:
   - READING
 tag:

@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-02-19T04:24:16.326Z</updated>
+  <updated>2024-02-19T14:35:39.304Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -30,7 +30,7 @@
     <title type="text">注重实效的哲学</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html"/>
-    <updated>2024-02-19T04:22:51.000Z</updated>
+    <updated>2024-02-19T14:34:11.000Z</updated>
     <summary type="html"><![CDATA[<h2>人生是你的</h2>
 <blockquote>
 <p>我活着不是为了满足你的期望，正如你活着也不是为了满足我的期望。——李小龙</p>
@@ -121,12 +121,92 @@
     <published>2024-02-18T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">注重实效的途径</title>
+    <title type="text">务实的方法</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html"/>
-    <updated>2024-02-18T11:14:31.000Z</updated>
+    <updated>2024-02-19T14:34:11.000Z</updated>
+    <summary type="html"><![CDATA[<h2>优秀设计的精髓</h2>
+<p>ETC 原则（Easier To Change）：</p>
+<ul>
+<li>解耦：隔离关注焦点，可以更容易地进行修改。</li>
+<li>单一职责原则：一个需求的变化只会影响一个模块。</li>
+<li>命名：良好的命名可以使代码更容易阅读。</li>
+</ul>
+<h2>DRY——邪恶的重复</h2>
+<p>DRY（Don't Repeat Yourself）原则：</p>
+<ul>
+<li>代码中的重复。</li>
+<li>文档中的重复。</li>
+<li>数据中的重复。</li>
+</ul>
+<h2>正交性</h2>
+<p>对于两个或多个事物，如果它们的行为不会相互影响，那么它们就是正交的。</p>]]></summary>
+    <content type="html"><![CDATA[<h2>优秀设计的精髓</h2>
+<p>ETC 原则（Easier To Change）：</p>
+<ul>
+<li>解耦：隔离关注焦点，可以更容易地进行修改。</li>
+<li>单一职责原则：一个需求的变化只会影响一个模块。</li>
+<li>命名：良好的命名可以使代码更容易阅读。</li>
+</ul>
+<h2>DRY——邪恶的重复</h2>
+<p>DRY（Don't Repeat Yourself）原则：</p>
+<ul>
+<li>代码中的重复。</li>
+<li>文档中的重复。</li>
+<li>数据中的重复。</li>
+</ul>
+<h2>正交性</h2>
+<p>对于两个或多个事物，如果它们的行为不会相互影响，那么它们就是正交的。</p>
+<p>象征着独立性和解耦。</p>
+<ul>
+<li>保持代码解耦。</li>
+<li>避免全局数据。</li>
+<li>避免相似的函数，每个函数都有不同的中心算法，可以使用「策略模式」进行优化。</li>
+<li>编写单元测试。</li>
+</ul>
+<h2>可逆性</h2>
+<ul>
+<li>将第三方的 API 隐藏在自己的抽象层之后。</li>
+<li>将代码分解为多个组件。</li>
+</ul>
+<h2>曳光弹</h2>
+<p>先实现最小可行产品（MVP）。</p>
+<h2>原型与便签</h2>
+<p>你可以为下列事物做原型：</p>
+<ul>
+<li>架构</li>
+<li>已存在的系统中的新功能</li>
+<li>数据结构或外部数据的内容</li>
+<li>第三方工具或组件</li>
+<li>性能问题</li>
+<li>用户界面设计</li>
+</ul>
+<p>当制作一个原型时，下面几个方面可以忽略：</p>
+<ul>
+<li>正确性：你可以在适当的地方使用替代数据。</li>
+<li>完整性：原型只需要满足有限的功能，可能只有一个预先选好的输入数据片段及单个菜单选项。</li>
+<li>健壮性：错误检查可以不完整，甚至完全没有都行。如果你偏离了预定的航线，原型机很可能烧毁在绚丽的烟火中——那又如何！</li>
+<li>格式：原型代码可能并不需要太多注释和文档（尽管围绕从原型中获取的经验，可能会产生大量文档，但是相对而言，原型系统本身的文档要少得多）。</li>
+</ul>
+<p>制作架构原型：</p>
+<ul>
+<li>主要组件的职责是否恰当，有没有定义清晰？</li>
+<li>主要组件之间的协作是否定义清晰？</li>
+<li>耦合度最小化了吗？</li>
+<li>你能确定重复的潜在来源吗？</li>
+<li>接口的定义和约束能否接受？</li>
+<li>在执行过程中是否每个模块都有访问所需数据的途径？在需要数据的时候，能访问到吗？</li>
+</ul>
+<h2>领域语言</h2>
+<p>计算机的语言会影响你怎样思考问题，影响你怎样看待信息的传播。</p>
+<p>每一门语言都有一个特性列表——比如这些时髦的术语：静态类型还是动态类型，早期绑定还是晚期绑定，函数式还是面向对象，继承模型，mixin，宏机制——所有这些对问题的解决方案，既可能提供建议也可能扰乱视听。</p>
+<p>同样是设计解决方案，用 C++ 的方式和用 Haskell 的思想，得到的结果会大为不同，反之亦然。</p>
+<h2>估算</h2>
+<p>通过估算来避免意外。</p>
+<p>估算项目进度，根据代码不断迭代项目进度表。（TODO 看板？）</p>
+]]></content>
     <category term="READING"/>
-    <published>2024-02-18T00:00:00.000Z</published>
+    <published>2024-02-19T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="text">数组</title>

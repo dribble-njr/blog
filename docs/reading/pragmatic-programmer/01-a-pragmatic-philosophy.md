@@ -1,5 +1,5 @@
 ---
-title: 注重实效的哲学
+title: 务实的哲学
 date: 2024-02-18
 icon: philosophy
 category:

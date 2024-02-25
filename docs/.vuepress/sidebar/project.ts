@@ -15,5 +15,12 @@ export default [
     collapsible: true,
     prefix: '/project/github-auto-commit/',
     children: ['']
+  },
+  {
+    text: 'RSSHub',
+    icon: 'rss-hub',
+    collapsible: true,
+    prefix: '/project/RSSHub/',
+    children: ['']
   }
 ]

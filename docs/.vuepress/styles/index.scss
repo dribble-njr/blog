@@ -3,7 +3,7 @@
   width: 28px !important;
   height: 28px !important;
 }
-@media (prefers-color-scheme: dark) {
+html[data-theme=dark] {
   figure {
     img {
       filter: brightness(0.8) contrast(1.2);

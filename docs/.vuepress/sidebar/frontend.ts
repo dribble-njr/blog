@@ -63,7 +63,7 @@ export default [
         collapsible: true,
         prefix: 'react/',
         icon: 'react',
-        children: []
+        children: ['01-useState']
       },
       {
         text: 'Vue',

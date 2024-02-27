@@ -12,7 +12,7 @@ export default hopeTheme(
       email: 'wzw15292257101@163.com'
     },
 
-    darkmode: 'enable',
+    darkmode: 'toggle',
 
     headerDepth: 3,
 

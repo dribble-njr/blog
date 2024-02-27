@@ -5,8 +5,9 @@ icon: history
 category:
   - react
 tag:
-  - core
+  - react core
   - hooks
+  - state hooks
 ---
 
 `useState` 声明一个可以直接更新的状态变量。

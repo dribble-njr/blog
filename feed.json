@@ -7,6 +7,20 @@
   "favicon": "https://dribble-njr.github.io/blog/blog/favicon.ico",
   "items": [
     {
+      "title": "高级数据库模型",
+      "url": "https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html",
+      "id": "https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html",
+      "summary": "数据库建立的过程从设计阶段开始，需要提出并回答存储什么信息，信息元素之间如何关联，假定有什么样的约束，诸如键或者参考的完整性等等。 有几种用符号表达设计的方法。 实体-关系图（E-R 图） UML（统一建模语言） ODL（对象描述语言） E/R 模型 在「实体-联系（entity-relationship model）」 E/R 模型中，数据的结构使用...",
+      "content_html": "<p>数据库建立的过程从设计阶段开始，需要提出并回答存储什么信息，信息元素之间如何关联，假定有什么样的约束，诸如键或者参考的完整性等等。</p>\n<div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>思考 </code></pre></div>",
+      "image": "https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240225223249.png",
+      "date_published": "2024-01-24T00:00:00.000Z",
+      "date_modified": "2024-02-27T08:39:09.000Z",
+      "authors": [],
+      "tags": [
+        "database"
+      ]
+    },
+    {
       "title": "集中管理碎片化知识",
       "url": "https://dribble-njr.github.io/blog/blog/project/RSSHub/",
       "id": "https://dribble-njr.github.io/blog/blog/project/RSSHub/",
@@ -1313,19 +1327,6 @@
       "authors": [],
       "tags": [
         "Node"
-      ]
-    },
-    {
-      "title": "src 和 href 的区别",
-      "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/html/0002%E3%80%81src%E5%92%8Chref%E7%9A%84%E5%8C%BA%E5%88%AB.html",
-      "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/html/0002%E3%80%81src%E5%92%8Chref%E7%9A%84%E5%8C%BA%E5%88%AB.html",
-      "summary": "src 和 href 之间存在区别，不能互换使用。 src：表示对资源的引入，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置； href：表示对资源的引用，建立当前元素或当前文档和外部资源之间的链接关系。 src src(Source) 属性仅仅表示会在此文档当前元素的位置上嵌入资源，它会暂停其他资源的下载和处理。比如，当浏览器读到： 那么浏览器...",
-      "content_html": "<p>src 和 href 之间存在区别，不能互换使用。</p>\n<ul>\n<li>src：表示对资源的<strong>引入</strong>，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置；</li>\n<li>href：表示对资源的<strong>引用</strong>，建立当前元素或当前文档和外部资源之间的链接关系。</li>\n</ul>\n<h2>src</h2>\n<p>src(Source) 属性仅仅表示会在此文档当前元素的位置上嵌入资源，它会<strong>暂停其他资源的下载和处理</strong>。比如，当浏览器读到：</p>\n<div class=\"language-javascript\" data-ext=\"js\" data-title=\"js\"><pre class=\"language-javascript\"><code><span class=\"token operator\">&lt;</span>script src<span class=\"token operator\">=</span><span class=\"token string\">\"script.js\"</span><span class=\"token operator\">&gt;</span><span class=\"token operator\">&lt;</span><span class=\"token operator\">/</span>script<span class=\"token operator\">&gt;</span>\n</code></pre></div><p>那么浏览器会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。它类似于将 JS 文件的内容转存到 <code>&lt;script&gt;</code> 标签中。</p>\n<blockquote>\n<p>这就是为什么需要将 <code>&lt;script&gt;</code> 标签放到最后。</p>\n</blockquote>\n<p><code>&lt;img&gt;</code> 标签也类似，它是一个空标签，包含的内容由 <code>src</code> 属性定义，当遇到这个标签，浏览器也会停止加载页面，直到获取并加载这个图片。</p>\n<p>类似的，<code>&lt;iframe&gt;</code> 标签也一样。</p>\n<h2>href</h2>\n<p>href(Hypertext Reference) 属性即超文本引用，它会指定 Web 资源的位置，从而定义当前链接（<code>&lt;a&gt;</code> 标签）或当前文档（<code>link</code> 标签）与目标之间的联系，<strong>不会暂停对当前文档的解析</strong>。</p>\n<p>比如：</p>\n<div class=\"language-html\" data-ext=\"html\" data-title=\"html\"><pre class=\"language-html\"><code><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span>link</span> <span class=\"token attr-name\">href</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>style.css<span class=\"token punctuation\">\"</span></span> <span class=\"token attr-name\">rel</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>stylesheet<span class=\"token punctuation\">\"</span></span> <span class=\"token punctuation\">/&gt;</span></span>\n</code></pre></div><p>浏览器会知道这是个 CSS 文件，HTML 的解析<strong>不会</strong>暂停，但是渲染有可能暂停，因为浏览器需要知道样式规则。</p>\n",
-      "date_published": "2022-04-28T00:00:00.000Z",
-      "date_modified": "2023-03-25T10:47:40.000Z",
-      "authors": [],
-      "tags": [
-        "HTML"
       ]
     }
   ]

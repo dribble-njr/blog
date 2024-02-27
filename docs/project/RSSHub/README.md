@@ -71,6 +71,8 @@ tag:
 
 ## 如何获取 RSS
 
+### 提供 RSS 的网站
+
 最直接的方法就是看网站的底部或侧边栏是否有 RSS 图标。
 
 大多数情况下，支持 RSS 订阅的网站都会将 RSS 图标展示出来。不过总有例外，这时候你也可以尝试在网站域名后面加上 `/feed` 或 `/rss` 或许可以碰巧猜中，比如少数派的 RSS 订阅链接就是 https://sspai.com/feed。
@@ -81,21 +83,69 @@ tag:
 
 ![搜索引擎](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240225111905.png)
 
-### 制作订阅源 —— RSSHub
+### 未提供 RSS 的网站 —— RSSHub
+
+[RSSHub](https://docs.rsshub.app/) 目前提供了 4461 规则，适配了绝大部分网站。
 
 ![RSSHub](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240225110516.png)
 
+添加订阅时，只需要将举例中的 UID 换成你想要订阅博主的 UID 即可。（划线部分为 UID）
+
+![添加路由](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227103514.pngv)
+
 ### 检测订阅源 —— RSSHub Radar
+
+[RSSHub Radar](https://github.com/DIYgod/RSSHub-Radar) 是 RSSHub 官方提供了检测订阅源的工具，当一个网站有 RSS 规则时，会自动显示出来。
 
 ![RSSHub Radar](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240225111133.png)
 
+### 公众号 RSS 源
+
+由于微信公众号的严格限制，需要使用第三方工具比如 [今天看啥](http://www.jintiankansha.me/)，该站目前提供的服务较为稳定，收费如下。
+
+![今天看啥](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227103836.png)
+
 ### RSS 阅读工具
+
+一些较好的 RSS 阅读工具如下：
 
 - macOS：Reeder 4
 - iOS：lire
 - Windows：RSS 追踪
 - Android：FeedMe
 - 浏览器：Innoreader
+
+![inoreader](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227104627.png)
+
+## 自建 RSSHub 服务
+
+对于一些需要 cookie 的网站，需要自建 RSSHub 服务。
+
+![Medium](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227104754.png)
+
+### Vercel
+
+[Vercel](https://vercel.com) 可以免费托管。
+
+第一步，打开 [Vercel](https://vercel.com)，然后使用 Github 帐号登陆。
+
+![vercel](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227104926.png)
+
+### [Create](https://vercel.com/import/project?template=https://github.com/DIYgod/RSSHub)
+
+[Fork RSSHub](https://github.com/DIYgod/RSSHub/fork) 到 GitHub。
+
+更新一些必要的配置如 `cookie` 等。
+
+使用你的 RSSHub 项目创建并部署一个新的 Vercel 项目.
+
+![create](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227105036.png)
+
+### 获取服务地址
+
+获取部署好的服务地址，并在 RSSHub Radar 中配置即可。
+
+![获取服务地址](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240227105421.png)
 
 ## 贡献 RSSHub
 

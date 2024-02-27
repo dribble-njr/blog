@@ -12,6 +12,8 @@ export default hopeTheme(
       email: 'wzw15292257101@163.com'
     },
 
+    darkmode: 'enable',
+
     headerDepth: 3,
 
     favicon: '/favicon.ico',
@@ -89,7 +91,8 @@ export default hopeTheme(
         repo: 'dribble-njr/blog',
         repoId: 'R_kgDOGc6nbw',
         category: 'Announcements',
-        categoryId: 'DIC_kwDOGc6nb84CcXd-'
+        categoryId: 'DIC_kwDOGc6nb84CcXd-',
+        darkTheme: 'transparent_dark'
       },
 
       docsearch: {

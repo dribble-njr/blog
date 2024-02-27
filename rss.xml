@@ -6,16 +6,17 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 27 Feb 2024 08:40:34 GMT</pubDate>
-    <lastBuildDate>Tue, 27 Feb 2024 08:40:34 GMT</lastBuildDate>
+    <pubDate>Tue, 27 Feb 2024 09:56:31 GMT</pubDate>
+    <lastBuildDate>Tue, 27 Feb 2024 09:56:31 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>react</category>
     <category>database</category>
     <category>Project</category>
     <category>READING</category>
     <category>algorithm</category>
-    <category>计算机网络</category>
     <category>浏览器</category>
+    <category>计算机网络</category>
     <category>reading</category>
     <category>practice</category>
     <category>linux</category>
@@ -24,7 +25,104 @@
     <category>HTML</category>
     <category>operating-system</category>
     <category>LeetCode</category>
-    <category>Node</category>
+    <item>
+      <title>useState</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/react/01-useState.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/react/01-useState.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">useState</source>
+      <description>useState 声明一个可以直接更新的状态变量。 一般在组件 最顶层 调用 useState 给组件添加状态变量，一般使用数组解构来命名状态变量，如 [something, setSomething]。 useState(initialState) 参数： initialState：初始状态，可以是任何类型的值，初始渲染后，该参数将被忽略。 如果传递...</description>
+      <category>react</category>
+      <pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p><code>useState</code> 声明一个可以直接更新的状态变量。</p>
+<p>一般在组件 <strong>最顶层</strong> 调用 <code>useState</code> 给组件添加状态变量，一般使用数组解构来命名状态变量，如 <code>[something, setSomething]</code>。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+
+<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>age<span class="token punctuation">,</span> setAge<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> setName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">'Taylor'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>todos<span class="token punctuation">,</span> setTodos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">createTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2>useState(initialState)</h2>
+<p><strong>参数：</strong></p>
+<p><code>initialState</code>：初始状态，可以是任何类型的值，初始渲染后，该参数将被忽略。</p>
+<p>如果传递一个函数作为 <code>initialState</code>，它将被视为「初始化函数」。</p>
+<p>它应该：</p>
+<ul>
+<li>是 <strong>纯函数</strong></li>
+<li>不带参数</li>
+<li>返回任意类型的值</li>
+</ul>
+<p>React 将在初始化组件时调用初始化函数，并将其返回值存储为初始状态。</p>
+
+<p><strong>返回值：</strong></p>
+<p><code>useState</code> 返回一个数组，使用数组解构接收，其中包含两个值：</p>
+<ol>
+<li>当前状态。在第一次渲染时，它将与传递的初始状态 <code>initialState</code> 相匹配。</li>
+<li><code>set</code> 函数，用于 <strong>状态更新</strong> 并 <strong>触发重新渲染</strong>。</li>
+</ol>
+<p><strong>注意：</strong></p>
+<ul>
+<li><code>useState</code> 是一个钩子，所以 <strong>只能</strong> 在组件的顶层或者你自己的钩子中调用它，<strong>不能</strong> 在循环或条件中调用它。
+<blockquote>
+<p>若循环调用，则可能造成状态管理混乱、组件不一致、难以调试的问题。</p>
+</blockquote>
+</li>
+<li>在严格模式下，React 会 <strong>调用两次初始化函数</strong>，其中一次调用的结果将被忽略，以帮助你找到意外的杂质。这是开发专用行为，不会影响生产环境。如果初始化函数是纯函数，就不会影响应用实际行为（因此初始化函数必须是纯函数）。</li>
+</ul>
+<h2>setSomething(nextState)</h2>
+<p><code>set</code> 函数会 <strong>更新状态并触发重新渲染</strong>，可以直接传入 <code>next state</code>，或者传入一个纯函数。<code>set</code> 函数没有返回值。</p>
+<p><code>setSomething()</code> 是一个异步函数，如下所示，<code>handleClick1</code> 点击一次后，年龄将变为 <code>43</code> 岁，而不是 <code>45</code> 岁。</p>
+<p>这是因为调用 <code>set</code> 函数 <strong>不会同步</strong> 更新已运行代码中的年龄状态变量。</p>
+<p>因此，每次调用 <code>setAge(age + 1)</code> 都会变成 <code>setAge(43)</code>。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">handleClick1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">setAge</span><span class="token punctuation">(</span>age <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 + 1)</span>
+  <span class="token function">setAge</span><span class="token punctuation">(</span>age <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 + 1)</span>
+  <span class="token function">setAge</span><span class="token punctuation">(</span>age <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 + 1)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><a href="https://github.com/facebook/react/issues/11527" target="_blank" rel="noopener noreferrer">RFClarification: why is setState asynchronous?</a></p>
+</div>
+<p>如果传递一个函数作为 <code>nextState</code>，它将被视为一个更新函数。它必须是「纯函数」，应将待处理状态作为唯一参数，并返回下一个状态。</p>
+<p>React 会将更新函数 <strong>放入队列</strong>，然后重新渲染组件。</p>
+<p>在下一次渲染中，React 将通过将所有队列中的更新器 <strong>应用上一个状态来计算下一个状态(<code>previous state</code> to <code>next state</code>)</strong>。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">handleClick2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 =&gt; 43)</span>
+  <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(43 =&gt; 44)</span>
+  <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(44 =&gt; 45)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>上述代码的处理过程如下：</p>
+<ol>
+<li><code>a =&gt; a + 1</code> 将接收 <code>42</code> 作为待处理状态，并返回 <code>43</code> 作为下一状态。</li>
+<li><code>a =&gt; a + 1</code> 将接收 <code>43</code> 作为待处理状态，并返回 <code>44</code> 作为下一个状态。</li>
+<li><code>a =&gt; a + 1</code> 将接收 <code>44</code> 作为待处理状态，并返回 <code>45</code> 作为下一个状态。</li>
+</ol>
+<p>没有其他队列更新，所以 React 会将 <code>45</code> 作为当前状态保存。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>按照惯例，通常以状态变量名称的首字母来命名待处理状态参数，如年龄的 <code>a</code>，也可以使用更加清晰的名称 <code>prevAge</code>。</p>
+</div>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<ul>
+<li><code>set</code> 函数只更新 <strong>下一次渲染</strong> 的状态变量。如果在调用 <code>set</code> 函数后读取状态变量，您仍然会得到调用前屏幕上的旧值。</li>
+<li>如果提供的新值与当前状态相同（由 <code>Object.is</code> 比较确定），React 将 <strong>跳过重新渲染组件及其子代</strong>。</li>
+<li>React 会批量更新状态。它会 <strong>在所有事件处理程序运行并调用其设置函数后更新屏幕</strong>。这可以防止在单个事件中多次重新渲染。在极少数情况下，需要强制 React 提前更新屏幕，例如访问 DOM，可以使用 <code>flushSync</code>。</li>
+<li>与初始化函数类似，在严格模式下，React 会调用更新器函数 <strong>两次</strong>，以验证它们是否纯粹。</li>
+</ul>
+</div>
+<h2>Usage</h2>
+<ul>
+<li><a href="https://react.dev/reference/react/useState#adding-state-to-a-component" target="_blank" rel="noopener noreferrer">Adding state to a component</a></li>
+<li><a href="https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state" target="_blank" rel="noopener noreferrer">Updating state based on the previous state</a></li>
+<li><a href="https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state" target="_blank" rel="noopener noreferrer">Updating objects and arrays in state</a></li>
+<li><a href="https://react.dev/reference/react/useState#avoiding-recreating-the-initial-state" target="_blank" rel="noopener noreferrer">Avoiding recreating the initial state</a></li>
+<li><a href="https://react.dev/reference/react/useState#resetting-state-with-a-key" target="_blank" rel="noopener noreferrer">Resetting state with a key</a></li>
+<li><a href="https://react.dev/reference/react/useState#storing-information-from-previous-renders" target="_blank" rel="noopener noreferrer">Storing information from previous renders</a></li>
+</ul>
+]]></content:encoded>
+    </item>
     <item>
       <title>高级数据库模型</title>
       <link>https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html</link>
@@ -1134,6 +1232,108 @@ $ <span class="token function">git</span> merge experiment
       <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/image-20231012172546292.png" type="image/png"/>
     </item>
     <item>
+      <title>跨域</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">跨域</source>
+      <description>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。 CORS 简单请求和非简单请求 简单请求 请求方法： HEAD GET POST 请求头： Accept Accept-Language Content-Language Last-Event-ID Content-Type 对于简单请求，浏览器会在请求头信息增加一个 origi...</description>
+      <category>浏览器</category>
+      <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
+<h2>CORS</h2>
+<p>简单请求和非简单请求</p>
+<h3>简单请求</h3>
+<p>请求方法：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+<p>请求头：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type</li>
+</ul>
+<p>对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。</p>
+<p>服务器根据这个值来决定是否同意这次请求，如果 origin 指定的源在允许范围内，服务器就返回如下响应头：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: FooBar
+Content-Type: text/html; charset=utf-8
+</code></pre></div><p>服务器至少设置 Access-Control-Allow-Origin。</p>
+<h3>非简单请求</h3>
+<p>需要进行 options 预检请求。</p>
+<p>请求头</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Request-Method 必须
+Access-Control-Request-Headers 逗号分隔符，指定请求会额外发送的头信息字段
+</code></pre></div><p>响应头：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
+Access-Control-Allow-Methods: GET, POST, PUT
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: FooBar
+Access-Control-Max-Age: 1728000 本次预检的有效期，秒
+</code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>输入 URL 后发生了什么</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">输入 URL 后发生了什么</source>
+      <description>先看看大致流程： 生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息； 向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。 委托协...</description>
+      <category>计算机网络</category>
+      <pubDate>Sat, 11 Dec 2021 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>先看看大致流程：</p>
+<ol>
+<li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
+<li>向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。</li>
+<li>委托协议栈发送消息：查询到 IP 地址之后，浏览器就可以将消息委托给操作系统的协议栈（TCP/IP）发送给服务器。</li>
+<li>数字信息转换为电信号：通过协议栈将数据变成网络包后，网卡负责将数字信号转换为电信号。</li>
+</ol>
+<h2>生成 HTTP 请求消息</h2>
+<p>浏览器要做的第一步工作就是对 URL 进行解析，从而生成发送给 Web 服务器的请求消息。</p>
+<img src="/assets/image/computer-science/networking/010/parse-url.png" alt="Web浏览器解析URL" style="zoom:60%;">
+<h3>省略文件名的情况</h3>
+<ol>
+<li>
+<p><a href="http://www.lab.glasscom.com/dir/" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/dir/</a></p>
+<p>以 <code>/</code> 结尾代表访问默认文件，大多数情况下是 <code>index.html</code> 或者 <code>default.htm</code> 之类的文件。</p>
+</li>
+<li>
+<p><a href="http://www.lab.glasscom.com" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com</a></p>
+<p>省略结尾的 <code>/</code> 符，代表访问服务器根目录下的默认文件，也就是 <code>index.html</code> 或者 <code>default.htm</code>。</p>
+</li>
+<li>
+<p><a href="http://www.lab.glasscom.com/whatisthis" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/whatisthis</a></p>
+<p>如果 Web 服务器上存在名 whatisthis 的文件，则作为文件名来处理；如果存在名为 whatisthis 的目录，则作为目录名来处。</p>
+</li>
+</ol>
+<h3>生成请求消息</h3>
+<p>对 URL 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。</p>
+<img src="/assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;">
+<h2>向 DNS 服务器查询域名 IP 地址</h2>
+<p>浏览器解析完 URL 并生成请求消息后，需要委托操作系统向服务器发送请求消息。</p>
+<p>但是在这之前，还需要知道服务器域名对应的 IP 地址。因此需要使用 DNS 服务器查询 IP 地址。</p>
+<p>DNS 服务器保存了域名和 IP 的对应关系。</p>
+<p>域名中用 <code>.</code> 来分隔，比如 <code>www.lab.glasscom.com.</code>，越往右层级越高，最后的一个点代表根域名，一般可以省略。</p>
+<p>根域的服务器信息保存在互联网中的所有 DNS 服务器中，这样任意一台服务器都可以找到并访问根服务器，从而找到其它服务器。</p>
+<figure><img src="/assets/image/computer-science/networking/010/DNS.png" alt="DNS" tabindex="0" loading="lazy"><figcaption>DNS</figcaption></figure>
+<h2>协议栈</h2>
+<p>通过 DNS 获取到服务器的 IP 地址后，浏览器就可以通过 socket 库把 HTTP 报文的传输工作委托给操作系统中的<strong>协议栈</strong>。</p>
+<figure><img src="/assets/image/computer-science/networking/010/TCP-IP.png" alt="客户端" tabindex="0" loading="lazy"><figcaption>客户端</figcaption></figure>
+<p>其中应用程序当然为应用层，协议栈中的 TCP/UDP 为传输层，他们会接收应用程序的委托执行收发数据的操作。</p>
+<blockquote>
+<p>像浏览器、邮件等一般的应用程序都是使用 TCP 收发数据的，而像 DNS 查询等收发较短的控制数据的时候则使用 UDP。</p>
+</blockquote>
+<p>在传送数据时，数据会切分成一个个网络包，而 IP 协议为网络层，负责控制网络包的发给通信对象。</p>
+<p>IP 中还包括 ICMP 协议和 ARP 协议。ICMP 用于告知网络包传输过程中产生的错误及各种控制消息，ARP 用于根据 IP 地址查询相应的 MAC 地址。</p>
+<h2>网卡</h2>
+]]></content:encoded>
+      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/computer-science/networking/010/DNS.png" type="image/png"/>
+    </item>
+    <item>
       <title>GET 和 POST 的区别</title>
       <link>https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html</link>
       <guid>https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html</guid>
@@ -1236,108 +1436,6 @@ $ <span class="token function">git</span> merge experiment
 <p>|              | UDP                   | TCP                                          |<br>
 |</p>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>跨域</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">跨域</source>
-      <description>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。 CORS 简单请求和非简单请求 简单请求 请求方法： HEAD GET POST 请求头： Accept Accept-Language Content-Language Last-Event-ID Content-Type 对于简单请求，浏览器会在请求头信息增加一个 origi...</description>
-      <category>浏览器</category>
-      <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
-<h2>CORS</h2>
-<p>简单请求和非简单请求</p>
-<h3>简单请求</h3>
-<p>请求方法：</p>
-<ul>
-<li>HEAD</li>
-<li>GET</li>
-<li>POST</li>
-</ul>
-<p>请求头：</p>
-<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>Last-Event-ID</li>
-<li>Content-Type</li>
-</ul>
-<p>对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。</p>
-<p>服务器根据这个值来决定是否同意这次请求，如果 origin 指定的源在允许范围内，服务器就返回如下响应头：</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
-Access-Control-Allow-Credentials: true
-Access-Control-Expose-Headers: FooBar
-Content-Type: text/html; charset=utf-8
-</code></pre></div><p>服务器至少设置 Access-Control-Allow-Origin。</p>
-<h3>非简单请求</h3>
-<p>需要进行 options 预检请求。</p>
-<p>请求头</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Request-Method 必须
-Access-Control-Request-Headers 逗号分隔符，指定请求会额外发送的头信息字段
-</code></pre></div><p>响应头：</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
-Access-Control-Allow-Methods: GET, POST, PUT
-Access-Control-Allow-Credentials: true
-Access-Control-Allow-Headers: FooBar
-Access-Control-Max-Age: 1728000 本次预检的有效期，秒
-</code></pre></div>]]></content:encoded>
-    </item>
-    <item>
-      <title>输入 URL 后发生了什么</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">输入 URL 后发生了什么</source>
-      <description>先看看大致流程： 生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息； 向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。 委托协...</description>
-      <category>计算机网络</category>
-      <pubDate>Sat, 11 Dec 2021 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>先看看大致流程：</p>
-<ol>
-<li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
-<li>向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。</li>
-<li>委托协议栈发送消息：查询到 IP 地址之后，浏览器就可以将消息委托给操作系统的协议栈（TCP/IP）发送给服务器。</li>
-<li>数字信息转换为电信号：通过协议栈将数据变成网络包后，网卡负责将数字信号转换为电信号。</li>
-</ol>
-<h2>生成 HTTP 请求消息</h2>
-<p>浏览器要做的第一步工作就是对 URL 进行解析，从而生成发送给 Web 服务器的请求消息。</p>
-<img src="/assets/image/computer-science/networking/010/parse-url.png" alt="Web浏览器解析URL" style="zoom:60%;">
-<h3>省略文件名的情况</h3>
-<ol>
-<li>
-<p><a href="http://www.lab.glasscom.com/dir/" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/dir/</a></p>
-<p>以 <code>/</code> 结尾代表访问默认文件，大多数情况下是 <code>index.html</code> 或者 <code>default.htm</code> 之类的文件。</p>
-</li>
-<li>
-<p><a href="http://www.lab.glasscom.com" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com</a></p>
-<p>省略结尾的 <code>/</code> 符，代表访问服务器根目录下的默认文件，也就是 <code>index.html</code> 或者 <code>default.htm</code>。</p>
-</li>
-<li>
-<p><a href="http://www.lab.glasscom.com/whatisthis" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/whatisthis</a></p>
-<p>如果 Web 服务器上存在名 whatisthis 的文件，则作为文件名来处理；如果存在名为 whatisthis 的目录，则作为目录名来处。</p>
-</li>
-</ol>
-<h3>生成请求消息</h3>
-<p>对 URL 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。</p>
-<img src="/assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;">
-<h2>向 DNS 服务器查询域名 IP 地址</h2>
-<p>浏览器解析完 URL 并生成请求消息后，需要委托操作系统向服务器发送请求消息。</p>
-<p>但是在这之前，还需要知道服务器域名对应的 IP 地址。因此需要使用 DNS 服务器查询 IP 地址。</p>
-<p>DNS 服务器保存了域名和 IP 的对应关系。</p>
-<p>域名中用 <code>.</code> 来分隔，比如 <code>www.lab.glasscom.com.</code>，越往右层级越高，最后的一个点代表根域名，一般可以省略。</p>
-<p>根域的服务器信息保存在互联网中的所有 DNS 服务器中，这样任意一台服务器都可以找到并访问根服务器，从而找到其它服务器。</p>
-<figure><img src="/assets/image/computer-science/networking/010/DNS.png" alt="DNS" tabindex="0" loading="lazy"><figcaption>DNS</figcaption></figure>
-<h2>协议栈</h2>
-<p>通过 DNS 获取到服务器的 IP 地址后，浏览器就可以通过 socket 库把 HTTP 报文的传输工作委托给操作系统中的<strong>协议栈</strong>。</p>
-<figure><img src="/assets/image/computer-science/networking/010/TCP-IP.png" alt="客户端" tabindex="0" loading="lazy"><figcaption>客户端</figcaption></figure>
-<p>其中应用程序当然为应用层，协议栈中的 TCP/UDP 为传输层，他们会接收应用程序的委托执行收发数据的操作。</p>
-<blockquote>
-<p>像浏览器、邮件等一般的应用程序都是使用 TCP 收发数据的，而像 DNS 查询等收发较短的控制数据的时候则使用 UDP。</p>
-</blockquote>
-<p>在传送数据时，数据会切分成一个个网络包，而 IP 协议为网络层，负责控制网络包的发给通信对象。</p>
-<p>IP 中还包括 ICMP 协议和 ARP 协议。ICMP 用于告知网络包传输过程中产生的错误及各种控制消息，ARP 用于根据 IP 地址查询相应的 MAC 地址。</p>
-<h2>网卡</h2>
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/computer-science/networking/010/DNS.png" type="image/png"/>
     </item>
     <item>
       <title>命令模式</title>
@@ -8219,6 +8317,355 @@ $ <span class="token function">git</span> <span class="token function">add</span
 ]]></content:encoded>
     </item>
     <item>
+      <title>前端基础知识</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">前端基础知识</source>
+      <description>前端基础知识 这里是关于前端基础知识的文章。 </description>
+      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>这里是关于前端基础知识的文章。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>浏览器概述</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/001-browser-overview.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/001-browser-overview.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浏览器概述</source>
+      <description>浏览器内核 浏览器内核是浏览器的核心，也就是浏览器的排版引擎，分为两部分： 将 HTML 和 CSS 渲染到浏览器上的渲染引擎， 解析 JavaScript 的 JavaScript 引擎。 最开始渲染引擎和 JS 引擎并没有明确的区分，后来 JS 引擎开始独立起来，慢慢发展到现在，内核一般指的是渲染引擎。 不同的浏览器有不同的内核组成： Gecko：...</description>
+      <category>浏览器</category>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>浏览器内核</h2>
+<p>浏览器内核是浏览器的核心，也就是浏览器的<strong>排版引擎</strong>，分为两部分：</p>
+<ul>
+<li>将 HTML 和 CSS 渲染到浏览器上的<strong>渲染引擎</strong>，</li>
+<li>解析 JavaScript 的 <strong>JavaScript 引擎</strong>。</li>
+</ul>
+<p>最开始渲染引擎和 JS 引擎并没有明确的区分，后来 JS 引擎开始独立起来，慢慢发展到现在，内核一般指的是渲染引擎。</p>
+<p>不同的浏览器有不同的内核组成：</p>
+<ul>
+<li>Gecko：早期是 Netscape 和 Firefox 浏览器的内核；</li>
+<li>Trident：IE4 - IE11 的内核；</li>
+<li>Webkit：Safari 内核，Google Chrome 之前也使用过；</li>
+<li>Blink： Webkit 的一个分支，目前用于 Chrome、Edge、Opera 等。</li>
+</ul>
+<h2>JavaScript 引擎</h2>
+<p><strong>JavaScript 引擎</strong>是一个专门处理 JavaScript 脚本的虚拟机，一般会附带在网页浏览器之中，能为程序员提供部分操作浏览器的功能（网络、DOM、外部事件、HTML5 视频、canvas 和存储），并且用于将 JavaScript 代码翻译成 CPU 指令。比较常见的引擎有：</p>
+<ul>
+<li>SpiderMonkey：第一款 JavaScript 引擎，由 Brendan Eich 开发（也就是 JavaScript 作者）；</li>
+<li>Chakra（JScript 引擎）：微软开发，用于 IE 浏览器；</li>
+<li>Chakra（JavaScript 引擎）：微软开发，用于 Edge 浏览器；</li>
+<li>JavaScriptCore：WebKit 中的 JavaScript 引擎，Apple 公司开发，用于 Safari；</li>
+<li>V8：Google 开发的强大 JavaScript 引擎，C++ 编写。</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>浏览器渲染原理</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/002-how-browser-rendering-works.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/002-how-browser-rendering-works.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浏览器渲染原理</source>
+      <description>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。 主要流程 渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下： webkit-flowwebkit-flow 首先浏览器会解析 HTML 文档，将 HTML 解析成 DOM 树；CSS 样式表也会在同时进行加载，生成样式规则；而 JavaS...</description>
+      <category>浏览器</category>
+      <pubDate>Thu, 16 Dec 2021 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。</p>
+<h2>主要流程</h2>
+<p>渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下：</p>
+<figure><img src="/assets/image/frontend/browser/002/1-webkitflow.png" alt="webkit-flow" tabindex="0" loading="lazy"><figcaption>webkit-flow</figcaption></figure>
+<ol>
+<li>首先浏览器会解析 HTML 文档，将 HTML 解析成 DOM 树；CSS 样式表也会在同时进行加载，生成样式规则；而 JavaScript 会通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 Style Rules。</li>
+<li>解析完成后，渲染引擎会通过 DOM Tree 和 Style Rules 创造 Render Tree，此时会计算各个 DOM 在浏览器上的具体坐标。</li>
+<li>最后渲染引擎遍历整个 Render Tree，由 UI 后端层绘制。</li>
+</ol>
+<p>整个渲染过程一个渐进的过程。为了更好的用户体验，渲染引擎将尽快在屏幕上显示内容。在开始构件和渲染 Render Tree 之前，它不会等到所有 HTML 都被解析。在部分内容被渲染的同时，渲染引擎会继续向服务器请求剩下的内容。</p>
+<h2>HTML 解析器</h2>
+<p>HTML 解析器的作用是将 HTML 解析成 DOM 树：</p>
+<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+      Hello World
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example.png<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><figure><img src="/assets/image/frontend/browser/002/2-dom-tree.png" alt="dom tree" tabindex="0" loading="lazy"><figcaption>dom tree</figcaption></figure>
+<p>HTML 解析算法包括两个阶段：</p>
+<ol>
+<li>标记化：词法分析，将输入解析为标记。HTML 标记包括开始标记、结束标记、属性名称和属性值。标记器识别 token，将它传递给树构造器，然后接受下一个字符以识别下一个标记，直到输入的结束。</li>
+<li>树构建：构建成 DOM 树。</li>
+</ol>
+<figure><img src="/assets/image/frontend/browser/002/3-html-parse.png" alt="HTML 解析" tabindex="0" loading="lazy"><figcaption>HTML 解析</figcaption></figure>
+<h2>CSS 解析器</h2>
+<p>解析器都会将 CSS 文件解析成 StyleSheet 对象，且每个对象都包含 CSS 规则。CSS 规则对象则包含选择器和声明对象，以及其他与 CSS 语法对应的对象。</p>
+<figure><img src="/assets/image/frontend/browser/002/4-css-parse.png" alt="css 解析器" tabindex="0" loading="lazy"><figcaption>css 解析器</figcaption></figure>
+<h2>Render Tree</h2>
+<p>在 DOM 树构建的同时，浏览器还会构建另一个树结构：呈现树。这是由可视化元素按照其显示顺序而组成的树，也是文档的可视化表示。它的作用是让您按照正确的顺序绘制内容。</p>
+<p>Render Tree 和 DOM Tree 并不是一一对应的，非可视化的 DOM 元素不会插入呈现树中，例如 <code>head</code> 元素。如果元素的 <code>display</code> 属性值为 <code>none</code>，那么也不会显示在呈现树中（但是 <code>visibility</code> 属性值为 <code>hidden</code> 的元素仍会显示）。</p>
+<figure><img src="/assets/image/frontend/browser/002/5-render-tree.png" alt="render tree" tabindex="0" loading="lazy"><figcaption>render tree</figcaption></figure>
+<p>接下来浏览器需要做的就是计算样式，将每一个 Render 对象的可视化属性计算（根据一系列规则，如层叠性、选择器权重等）出来，但是在这个过程中，并不包含位置和大小信息。计算这些值的过程叫做布局或回流。</p>
+<blockquote>
+<p>关于回流和重绘在后面说。</p>
+</blockquote>
+<p>总之，到目前为止，渲染引擎已经经历了一系列的工作，可以将页面展示到浏览器上了。</p>
+<h2>参考链接</h2>
+<ol>
+<li><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#The_order_of_processing_scripts_and_style_sheets" target="_blank" rel="noopener noreferrer">How Browsers Work: Behind the scenes of modern web browsers - HTML5 Rocks</a></li>
+<li><a href="https://coolshell.cn/articles/9666.html" target="_blank" rel="noopener noreferrer">浏览器的渲染原理简介</a></li>
+<li><a href="https://zh.wiki.hancel.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">JavaScript引擎 - 维基百科</a></li>
+<li><a href="https://zh.m.wikipedia.org/wiki/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">浏览器引擎 - 维基百科</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1679313" target="_blank" rel="noopener noreferrer">浏览器内核及分类 - 腾讯云社区</a></li>
+</ol>
+]]></content:encoded>
+      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/browser/002/1-webkitflow.png" type="image/png"/>
+    </item>
+    <item>
+      <title>V8 引擎</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/003-V8.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/003-V8.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">V8 引擎</source>
+      <description>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。 V8 由很多子模块构成，有几个核心模块： Parser：解析器，负责将 JavaScript 代码解析成抽象语法树（Abstract Syntax Tree, AST）； Ignition：解释器（interpreter），负责将 AST ...</description>
+      <category>浏览器</category>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。</p>
+<p>V8 由很多子模块构成，有几个核心模块：</p>
+<ul>
+<li>Parser：解析器，负责将 JavaScript 代码解析成抽象语法树（Abstract Syntax Tree, AST）；</li>
+<li>Ignition：解释器（interpreter），负责将 AST 转换为字节码（Bytecode）并执行；同时收集 TurboFan 优化编译所需的信息，比如函数参数的类型；</li>
+<li>TurboFan：编译器（compiler），利用 Ignition 所收集的信息，将字节码转换为优化的机器码；</li>
+<li>Orinoco：垃圾回收（garbage collector），负责将程序不再需要的内存空间回收。</li>
+</ul>
+<p>下面这张图是 V8 现有的工作流程，非常重要，在后面阅读的时候可以翻上来看看。</p>
+<figure><img src="/assets/image/frontend/browser/003/v8-work-flow.webp" alt="v8 工作流程" tabindex="0" loading="lazy"><figcaption>v8 工作流程</figcaption></figure>
+<h2>Parser</h2>
+<p>为了让 V8 能够理解 JavaScript 代码，必须先将源码通过 <strong>Parser</strong> 解析成抽象语法树——代表程序结构的一系列对象。然后抽象语法树会被 <strong>Ignition</strong> 编译成字节码。这两个阶段是 V8 引擎性能的关键。</p>
+<p>下图是 Parser 的工作流程：</p>
+<figure><img src="/assets/image/frontend/browser/003/parser.svg" alt="parser" tabindex="0" loading="lazy"><figcaption>parser</figcaption></figure>
+<p>整个流程分为两个阶段：词法分析和语法分析。</p>
+<ul>
+<li><strong>词法分析</strong>：scanner 从我们编写的 JavaScript 代码中生成一系列的 tokens。而 tokens 是由一个或多个具有单一语义的字符组成的块：字符串、标识符、运算符 <code>++</code> 等。</li>
+<li><strong>语法分析</strong>：语法分析的输入就是词法分析的输出（即 tokens），输出是 AST 抽象语法树。当程序出现语法错误的时候，V8 会在语法分析阶段抛出异常。</li>
+</ul>
+<p>V8 为了提升 scanner 性能，又做了<strong>延迟解析</strong>（lazy parsing）的优化，一些不会用到函数并不会被马上编译，他们会被 PreParser 处理，当以后调用一个 <code>preparsed</code> 函数时，它会根据需要进行完全解析和编译。</p>
+<h2>Ignition</h2>
+<p>当 Parser 将代码解析成 AST 输入给 Ignition，Ignition 会将 AST 转换为字节码，分三种情况：</p>
+<ul>
+<li>
+<p>函数只声明而不调用，则 Ignition 不会做任何操作；</p>
+</li>
+<li>
+<p>如果函数只调用一次，则 Ignition 会解释字节码并执行。下面来看看例子；</p>
+</li>
+<li>
+<p>如果函数调用多次，则 Ignition 会收集 TurboFan 优化所需的信息（比如函数参数的类型信息等）。</p>
+</li>
+</ul>
+<p>下面来看看例子。</p>
+<ol>
+<li>
+<p>只是声明函数 <code>add</code>，但是没有调用，则 Ignition 不会做任何转换。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li>
+<li>
+<p>声明后第一次调用 <code>add</code> 函数，Ignition 会把它编译成字节码执行。到这个时候，JavaScript 代码就已经执行完成了。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li>
+<li>
+<p>但是如果发现有<strong>热点函数</strong>（即一个函数被多次调用），Ignition 就会收集 <code>add</code> 函数的各种参数类型，为 TurboFan 的优化提供支持。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 调用多次，标记成热点函数，收集各种信息</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li>
+</ol>
+<h2>TurboFan</h2>
+<p>TurboFan 是一个编译器，可以将字节码编译为 CPU 可以直接执行的机器码。如果一个函数被多次调用，就会被标记为<strong>热点函数</strong>，那么就会经过 TurboFan 转换成优化的机器码，提高代码的执行性能。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token operator">%</span><span class="token function">OptimizeFunctionOnNextCall</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>V8 的 <code>%OptimizeFunctionOnNextCall</code> 可以直接指定优化哪个函数，它根据上次调用的参数反馈优化 <code>add</code> 函数，很明显这次的反馈是整型数，所以 TurboFan 会根据参数是整型数进行优化直接生成机器码，下次函数调用直接调用优化好的机器码。</p>
+<p>但是，机器码实际上也会被还原为字节码，这是因为如果后续执行函数的过程中，类型发生了变化（比如 <code>add</code> 函数原来执行的是 <code>number</code> 类型，后来执行变成了 <code>string</code> 类型），之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码。这个就是最上面那个图还有个 <code>Deoptimization</code> 的原因。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><blockquote>
+<p>到此，V8 引擎的工作流程就已经完成了，但是还没有细究里面的执行细节，只是大概地了解了工作流程，等以后能完全看懂官方文章了再回来更新。</p>
+</blockquote>
+<h2>参考链接</h2>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">JavaScript 引擎 - 维基百科</a></li>
+<li><a href="https://blog.fundebug.com/2019/07/16/how-does-v8-work/" target="_blank" rel="noopener noreferrer">JavaScript深入浅出第4课：V8引擎是如何工作的？</a></li>
+<li><a href="https://v8.dev/blog/scanner" target="_blank" rel="noopener noreferrer">Blazingly fast parsing, part 1: optimizing the scanner</a></li>
+<li><a href="https://v8.dev/blog/preparser" target="_blank" rel="noopener noreferrer">Blazingly fast parsing, part 2: lazy parsing · V8</a></li>
+<li><a href="https://v8.dev/blog/ignition-interpreter" target="_blank" rel="noopener noreferrer">Firing up the Ignition interpreter · V8</a></li>
+<li><a href="https://mp.weixin.qq.com/s/t__Jqzg1rbTlsCHXKMwh6A" target="_blank" rel="noopener noreferrer">JavaScript 引擎 V8 执行流程概述</a></li>
+</ol>
+]]></content:encoded>
+      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/browser/003/v8-work-flow.webp" type="image/webp"/>
+    </item>
+    <item>
+      <title>JavaScript 内存管理</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/004-memory-management.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/004-memory-management.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">JavaScript 内存管理</source>
+      <description>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（malloc()），不需要用了之后在释放内存空间（free()）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为垃圾回收。 虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的： 分配你所需要...</description>
+      <category>浏览器</category>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（<code>malloc()</code>），不需要用了之后在释放内存空间（<code>free()</code>）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为<strong>垃圾回收</strong>。</p>
+<p>虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的：</p>
+<ol>
+<li>分配你所需要的内存</li>
+<li>使用分配到的内存（读、写）</li>
+<li>不需要时将其释放</li>
+</ol>
+<p>第二步的使用内存就很常见了，我们写的代码就是这一步，因此这里介绍第一步和第三步的基本内容。</p>
+<h2>分配内存空间</h2>
+<p>现在来看看 V8 引擎是如何给不同变量分配内存的。</p>
+<p>V8 主要有三种内存空间：</p>
+<ul>
+<li>代码空间：主要存储可执行代码；</li>
+<li>栈空间：JavaScript 对于<strong>基本数据类型</strong>内存的分配会在执行时直接在栈空间进行分配；</li>
+<li>堆空间：JavaScript 对于<strong>复杂数据类型</strong>内存的分配会在堆内存中开辟一块空间，并且将这块空间的指针（地址）返回给变量引用（存放在栈空间）。</li>
+</ul>
+<p>下面看看例子：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
+	<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"heap"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>当代码执行到第二行时，栈底是 <code>a</code>，栈顶是 <code>b</code>，此时 <code>b</code> 的值是一个复杂数据类型，那么会在堆空间中为这个数据分配一个空间，并把 <code>b</code> 的变量值赋值为这个空间的地址。</p>
+<figure><img src="/assets/image/frontend/browser/004/V8-stack-heap.png" alt="堆和栈" tabindex="0" loading="lazy"><figcaption>堆和栈</figcaption></figure>
+<p>那么，为什么要将复杂数据类型放在堆空间，而不是一起放在栈空间呢？</p>
+<p>因为 V8 引擎需要用栈来维护程序执行期间上下文的状态，如果栈空间分配的内存过大，那么会影响到上下文切换的效率，从而导致代码执行速度过慢。</p>
+<p>因此，栈空间不会设置太大，主要用来存放基本数据类型（占用空间小），而像复杂数据类型，因为他们的占用空间一般较大，因此会被存放在堆空间中。</p>
+<h2>常见的垃圾回收算法</h2>
+<p>了解了如何分配不同变量的内存后，第二步的读写其实已经包含在代码里了，最关键的一步就是如何将不再需要的<strong>内存回收</strong>。</p>
+<p>在整个垃圾回收的过程中，最困难的地方在于如何找到“哪些被分配的内存确实已经不再需要了”，而这个步骤没有任何算法可以准确的判断，只是一个近似的过程。</p>
+<p>下面先介绍几种常见的垃圾回收算法，再介绍 V8 的垃圾回收机制。</p>
+<h3>引用计数算法</h3>
+<p>这是最初级的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。当一个对象有一个引用指向它时，它的引用数就会 <code>+1</code>；当没有引用时，即引用数为 <code>0</code>，这个对象就可以被销毁了。</p>
+<p>但是一个很大的弊端是会产生循环引用。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  o<span class="token punctuation">.</span>a <span class="token operator">=</span> o2<span class="token punctuation">;</span> <span class="token comment">// o 引用 o2</span>
+  o2<span class="token punctuation">.</span>a <span class="token operator">=</span> o<span class="token punctuation">;</span> <span class="token comment">// o2 引用 o</span>
+
+  <span class="token keyword">return</span> <span class="token string">"azerty"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>在执行 <code>f()</code> 时，创建了两个对象并相互引用。函数执行结束后，会离开函数作用域，因此它们已经没有用了，按照常理来说应该被销毁。但是因为它们至少都有一次引用，所以不会被回收，造成内存泄露。</p>
+<h3>标记清除算法</h3>
+<p>这个算法把“对象是否不再需要”简化定义为“对象是否可以获得”，简称“可达性”。</p>
+<p>这个算法假定设置一个叫做根（root）的对象（在Javascript里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象。</p>
+<img src="/assets/image/frontend/browser/004/mark-clear.png" width="50%" height="50%">
+<p>在上图中，<code>g</code> 和 <code>h</code> 对象互相引用，如果采用<strong>引用计数算法</strong>，那么这两个对象将不会被垃圾回收。但是使用标记清除算法，因为根对象没有对它们引用，因此会被垃圾回收。这样，循环引用的问题就不存在了。</p>
+<h2>V8 垃圾回收机制</h2>
+<p>在过去几年，V8 垃圾回收发生了很多变化。以前的垃圾回收器是一个连续的过程，在进行垃圾回收的过程中会暂停其他活动（全停顿，stop-the-world），而现在 V8 的垃圾回收器转变成了具有<strong>增量回退</strong>的<strong>并行</strong>、<strong>并发</strong>垃圾回收器。</p>
+<p>任何垃圾回收器都会执行下面几个基本任务：</p>
+<ol>
+<li>
+<p><strong>标记</strong>活动对象和非活动对象</p>
+</li>
+<li>
+<p><strong>回收或者重排</strong>非活动对象占据的内存</p>
+</li>
+<li>
+<p><strong>合并或者整理</strong>内存（可选）</p>
+</li>
+</ol>
+<p>这些任务可以按顺序执行，也可以任意交错执行。一种直接的方法是暂停 JavaScript 执行，并在主线程上按顺序执行这些任务。这可能会导致主线程出现卡顿和延迟问题，并降低程序吞吐量。</p>
+<h3>V8 内存限制</h3>
+<p>在介绍 V8 垃圾回收机制之前，我们先来探讨一下为什么需要垃圾回收。</p>
+<ul>
+<li>当创建一个对象时，就会分配大量内存</li>
+<li>在 V8 中限制 64 位的机器大约 1.4GB，32 位机器大约为 0.7GB</li>
+<li>操作系统会自动进行栈内存的分配和释放，而堆内存，则由 V8 引擎进行释放</li>
+</ul>
+<h3>分代堆布局</h3>
+<p>V8 中的堆被分成不同的区域，称为代：分为新生代（进一步分为 <code>nursery</code> 和 <code>intermediate</code>），和一个老生代。对象首先被分配到 <code>nursery</code>。如果它们在下一个 GC 中幸存下来，这时候我们把它们移动到<code>intermediate</code> 子代，如果再经过下一次垃圾回收这个对象仍然存活，这时候我们就会把这个对象移动到老生代（这个策略称为<strong>对象晋升策略</strong>）。</p>
+<figure><img src="/assets/image/frontend/browser/004/generations.svg" alt="分代布局" tabindex="0" loading="lazy"><figcaption>分代布局</figcaption></figure>
+<blockquote>
+<p>在垃圾回收中有一个重要的术语：“代际假说”，指大多数对象在新生代就会被回收。从垃圾回收的角度来看，大部分对象一经分配之后就几乎马上变成不可达状态。</p>
+</blockquote>
+<p>根据 V8 堆中分为不同的区域，可以容易地想到 V8 有两个不同的垃圾回收器：清理新生区的副垃圾回收器和清理老生区的主垃圾回收器。</p>
+<p>下面就一一介绍 V8 中的两个垃圾回收器。</p>
+<h3>副垃圾回收器——清道夫（Scavenge）</h3>
+<p>副垃圾回收器（Scavenger）从新生代中回收垃圾。</p>
+<p>在清理时，初始的空闲区域称之为 <code>To-Space</code>，复制对象过来的区域称之为<code>From-Space</code>；在最坏的情况下，如果每一个对象在清理的时候存活了下来，那我们就要从 <code>From-Space</code> 复制每一个对象到 <code>To-Space</code> 中。</p>
+<p>清除步骤（Evacuation）会将所有的活动对象移动到连续的一块内存中，并且标记它们（图中的小圆圈，代表已经经历过一次 GC）；然后会将两块内存空间互换，即把 <code>To-Space</code> 变成 <code>From-Space</code>，<code>From-Space</code> 变成 <code>To-Space</code>。</p>
+<figure><img src="/assets/image/frontend/browser/004/Scavenge-1.svg" alt="副垃圾回收器-1" tabindex="0" loading="lazy"><figcaption>副垃圾回收器-1</figcaption></figure>
+<p>如果仅仅是凭借这一策略，我们就会很快的耗尽新生代的内存空间；为了新生代的内存空间不被耗尽，在下一次垃圾回收的时候，我们会把活动对象移动（evacuate）到老生代，而不是 <code>To-Space</code>。</p>
+<p>在下图中，两块内存空间已经互换，而且 <code>From-Space</code> 又有一个新的对象，假定这个对象在第一次 GC 时存活了下来，那么它将被复制到 <code>To-Space</code> 中。而 <code>From-Space</code> 中已经经历过一次 GC 的对象（通过这个小圆圈的标记得知），假如它们又存活下来，则会被复制到老生区（<strong>对象晋升策略</strong>）。</p>
+<p>Scavenge 的最后一步是把移动后的对象的指针地址更新，每一个被复制对象都会留下一个转发地址（forwarding-address），用于更新指针以指向新的地址。</p>
+<figure><img src="/assets/image/frontend/browser/004/Scavenge-2.svg" alt="副垃圾回收器-2" tabindex="0" loading="lazy"><figcaption>副垃圾回收器-2</figcaption></figure>
+<p>在副垃圾回收器回收过程中，实际上执行了三个步骤：标记、清除和指针更新。</p>
+<h3>主垃圾回收器 —— 全量标记和整理（Full Mark-Compact）</h3>
+<p>主垃圾回收器从整个堆（heap）中收集垃圾。</p>
+<figure><img src="/assets/image/frontend/browser/004/three-phases.svg" alt="three-phases" tabindex="0" loading="lazy"><figcaption>three-phases</figcaption></figure>
+<p>标记阶段是利用对象的可达性确定对象是否活跃。从初始的根对象开始，垃圾回收器会跟踪每一个指向其他对象的指针，将其标记为可访问的，同时跟踪对象中每一个属性的指针。整个过程递归进行，直到标记到运行时每一个可访问的对象。</p>
+<img src="/assets/image/frontend/browser/004/marking.png" width="40%">
+<p>清除阶段将非活动对象进行清除。</p>
+<img src="/assets/image/frontend/browser/004/sweeping.png" width="40%">
+<p>一般来说，频繁回收对象后，内存中就会存在大量不连续空间，我们把这些不连续的内存空间称为内存碎片。当内存中出现了大量的内存碎片之后，如果需要分配较大连续内存的时候，就有可能出现内存不足的情况。所以最后一步需要整理这些内存碎片，但这步其实是可选的，因为有的垃圾回收器不会产生内存碎片。</p>
+<img src="/assets/image/frontend/browser/004/compaction.png" width="40%">
+<h2>Orinoco</h2>
+<p>Orinoco 是 V8 垃圾回收器项目的代号，它利用最新的和最好的垃圾回收技术来降低主线程挂起的时间， 比如：并行（parallel）垃圾回收，增量（incremental）垃圾回收和并发（concurrent）垃圾回收。</p>
+<p>2011 年，V8 从 stop-the-world 标记切换到增量标记。</p>
+<p>2018 年，GC 技术又有了一个重大突破，这项技术名为并发标记。在 Chrome 64 和Node.js v10 中已启用，它将标记时间缩短了60%<sub>70%。还有并行技术，它将新生代的垃圾回收时间缩短了20%</sub>50%。</p>
+<h3>并行垃圾回收（Parallel）</h3>
+<p>并行是主线程和协助线程同时执行同样的工作，但是这仍然是一种 <code>stop-the-world</code> 的垃圾回收方式，但是垃圾回收全停顿时间等于总时间除以参与的线程数量（加上一些同步开销）。</p>
+<figure><img src="/assets/image/frontend/browser/004/parallel.svg" alt="parallel" tabindex="0" loading="lazy"><figcaption>parallel</figcaption></figure>
+<h3>增量垃圾回收（Incremental）</h3>
+<p>增量式垃圾回收是主线程间歇性的去做少量的垃圾回收的方式。同时让垃圾回收和 JavaScript 应用逻辑交替进行，这意味着堆的状态可能已经发生了变化，有可能会导致之前的增量回收工作完全无效。</p>
+<p>从图中可以看出并没有减少主线程暂停的总时间（事实上，通常会略微增加）。通过允许 JavaScript 间歇执行，同时也间歇性地去做垃圾回收工作，应用程序仍然可以在用户输入或者执行动画的时候得到及时的响应。</p>
+<figure><img src="/assets/image/frontend/browser/004/incremental.svg" alt="incremental" tabindex="0" loading="lazy"><figcaption>incremental</figcaption></figure>
+<h3>并发垃圾回收（Concurrent）</h3>
+<p>并发是主线程持续执行 JavaScript，而辅助线程完全在后台执行垃圾回收。这种方式是这三种技术中最难的一种：JavaScript 堆里面的内容随时都有可能发生变化，从而使之前做的工作完全无效，主线程和辅助线程极有可能在同一时间去更改同一个对象。这种方式的优势也非常明显，主线程不会被挂起，JavaScript 可以自由地执行。</p>
+<figure><img src="/assets/image/frontend/browser/004/concurrent.svg" alt="concurrent" tabindex="0" loading="lazy"><figcaption>concurrent</figcaption></figure>
+<h2>总结</h2>
+<p>首先介绍了内存管理的一般流程，分为三大步，可以自己回想一下。</p>
+<p>然后是 V8 如何分配内存：基本数据类型存放在栈空间，复杂数据类型存放在堆空间，以及为什么要这样做。</p>
+<p>接着又介绍了常见的垃圾回收算法，主要包括引用计数法和标记清除法。</p>
+<p>最后介绍了 V8 的垃圾回收机制以及做出的优化。</p>
+<h2>参考链接</h2>
+<p><a href="https://v8.dev/blog/trash-talk" target="_blank" rel="noopener noreferrer">Trash talk: the Orinoco garbage collector · V8</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferrer">内存管理 - JavaScript | MDN (mozilla.org)</a></p>
+<p><a href="https://time.geekbang.org/column/article/129596" target="_blank" rel="noopener noreferrer">12 | 栈空间和堆空间：数据是如何存储的？</a></p>
+<p><a href="https://juejin.cn/post/6844904016325902344" target="_blank" rel="noopener noreferrer">一文搞懂V8引擎的垃圾回收</a></p>
+<p><a href="https://www.nodejs.red/#/nodejs/memory?id=v8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6" target="_blank" rel="noopener noreferrer">Memory 内存管理和 V8 垃圾回收机制 (nodejs.red)</a></p>
+]]></content:encoded>
+      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/browser/004/V8-stack-heap.png" type="image/png"/>
+    </item>
+    <item>
+      <title>浏览器</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浏览器</source>
+      <description>浏览器 这里是关于浏览器的文章。 </description>
+      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>这里是关于浏览器的文章。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>前端框架</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">前端框架</source>
+      <description>前端框架 这里是关于前端框架的文章。 </description>
+      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>这里是关于前端框架的文章。</p>
+]]></content:encoded>
+    </item>
+    <item>
       <title>二叉树</title>
       <link>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/0001%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91.html</link>
       <guid>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/0001%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91.html</guid>
@@ -10144,378 +10591,6 @@ Content-Type: text/html
 <p><a href="https://www.bilibili.com/video/BV1c4411d7jb" target="_blank" rel="noopener noreferrer">计算机网络微课堂</a></p>
 ]]></content:encoded>
       <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/computer-science/networking/007/three.png" type="image/png"/>
-    </item>
-    <item>
-      <title>前端基础知识</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">前端基础知识</source>
-      <description>前端基础知识 这里是关于前端基础知识的文章。 </description>
-      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>这里是关于前端基础知识的文章。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>浏览器概述</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/001-browser-overview.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/001-browser-overview.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浏览器概述</source>
-      <description>浏览器内核 浏览器内核是浏览器的核心，也就是浏览器的排版引擎，分为两部分： 将 HTML 和 CSS 渲染到浏览器上的渲染引擎， 解析 JavaScript 的 JavaScript 引擎。 最开始渲染引擎和 JS 引擎并没有明确的区分，后来 JS 引擎开始独立起来，慢慢发展到现在，内核一般指的是渲染引擎。 不同的浏览器有不同的内核组成： Gecko：...</description>
-      <category>浏览器</category>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>浏览器内核</h2>
-<p>浏览器内核是浏览器的核心，也就是浏览器的<strong>排版引擎</strong>，分为两部分：</p>
-<ul>
-<li>将 HTML 和 CSS 渲染到浏览器上的<strong>渲染引擎</strong>，</li>
-<li>解析 JavaScript 的 <strong>JavaScript 引擎</strong>。</li>
-</ul>
-<p>最开始渲染引擎和 JS 引擎并没有明确的区分，后来 JS 引擎开始独立起来，慢慢发展到现在，内核一般指的是渲染引擎。</p>
-<p>不同的浏览器有不同的内核组成：</p>
-<ul>
-<li>Gecko：早期是 Netscape 和 Firefox 浏览器的内核；</li>
-<li>Trident：IE4 - IE11 的内核；</li>
-<li>Webkit：Safari 内核，Google Chrome 之前也使用过；</li>
-<li>Blink： Webkit 的一个分支，目前用于 Chrome、Edge、Opera 等。</li>
-</ul>
-<h2>JavaScript 引擎</h2>
-<p><strong>JavaScript 引擎</strong>是一个专门处理 JavaScript 脚本的虚拟机，一般会附带在网页浏览器之中，能为程序员提供部分操作浏览器的功能（网络、DOM、外部事件、HTML5 视频、canvas 和存储），并且用于将 JavaScript 代码翻译成 CPU 指令。比较常见的引擎有：</p>
-<ul>
-<li>SpiderMonkey：第一款 JavaScript 引擎，由 Brendan Eich 开发（也就是 JavaScript 作者）；</li>
-<li>Chakra（JScript 引擎）：微软开发，用于 IE 浏览器；</li>
-<li>Chakra（JavaScript 引擎）：微软开发，用于 Edge 浏览器；</li>
-<li>JavaScriptCore：WebKit 中的 JavaScript 引擎，Apple 公司开发，用于 Safari；</li>
-<li>V8：Google 开发的强大 JavaScript 引擎，C++ 编写。</li>
-</ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>浏览器渲染原理</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/002-how-browser-rendering-works.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/002-how-browser-rendering-works.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浏览器渲染原理</source>
-      <description>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。 主要流程 渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下： webkit-flowwebkit-flow 首先浏览器会解析 HTML 文档，将 HTML 解析成 DOM 树；CSS 样式表也会在同时进行加载，生成样式规则；而 JavaS...</description>
-      <category>浏览器</category>
-      <pubDate>Thu, 16 Dec 2021 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。</p>
-<h2>主要流程</h2>
-<p>渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下：</p>
-<figure><img src="/assets/image/frontend/browser/002/1-webkitflow.png" alt="webkit-flow" tabindex="0" loading="lazy"><figcaption>webkit-flow</figcaption></figure>
-<ol>
-<li>首先浏览器会解析 HTML 文档，将 HTML 解析成 DOM 树；CSS 样式表也会在同时进行加载，生成样式规则；而 JavaScript 会通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 Style Rules。</li>
-<li>解析完成后，渲染引擎会通过 DOM Tree 和 Style Rules 创造 Render Tree，此时会计算各个 DOM 在浏览器上的具体坐标。</li>
-<li>最后渲染引擎遍历整个 Render Tree，由 UI 后端层绘制。</li>
-</ol>
-<p>整个渲染过程一个渐进的过程。为了更好的用户体验，渲染引擎将尽快在屏幕上显示内容。在开始构件和渲染 Render Tree 之前，它不会等到所有 HTML 都被解析。在部分内容被渲染的同时，渲染引擎会继续向服务器请求剩下的内容。</p>
-<h2>HTML 解析器</h2>
-<p>HTML 解析器的作用是将 HTML 解析成 DOM 树：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
-      Hello World
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example.png<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><figure><img src="/assets/image/frontend/browser/002/2-dom-tree.png" alt="dom tree" tabindex="0" loading="lazy"><figcaption>dom tree</figcaption></figure>
-<p>HTML 解析算法包括两个阶段：</p>
-<ol>
-<li>标记化：词法分析，将输入解析为标记。HTML 标记包括开始标记、结束标记、属性名称和属性值。标记器识别 token，将它传递给树构造器，然后接受下一个字符以识别下一个标记，直到输入的结束。</li>
-<li>树构建：构建成 DOM 树。</li>
-</ol>
-<figure><img src="/assets/image/frontend/browser/002/3-html-parse.png" alt="HTML 解析" tabindex="0" loading="lazy"><figcaption>HTML 解析</figcaption></figure>
-<h2>CSS 解析器</h2>
-<p>解析器都会将 CSS 文件解析成 StyleSheet 对象，且每个对象都包含 CSS 规则。CSS 规则对象则包含选择器和声明对象，以及其他与 CSS 语法对应的对象。</p>
-<figure><img src="/assets/image/frontend/browser/002/4-css-parse.png" alt="css 解析器" tabindex="0" loading="lazy"><figcaption>css 解析器</figcaption></figure>
-<h2>Render Tree</h2>
-<p>在 DOM 树构建的同时，浏览器还会构建另一个树结构：呈现树。这是由可视化元素按照其显示顺序而组成的树，也是文档的可视化表示。它的作用是让您按照正确的顺序绘制内容。</p>
-<p>Render Tree 和 DOM Tree 并不是一一对应的，非可视化的 DOM 元素不会插入呈现树中，例如 <code>head</code> 元素。如果元素的 <code>display</code> 属性值为 <code>none</code>，那么也不会显示在呈现树中（但是 <code>visibility</code> 属性值为 <code>hidden</code> 的元素仍会显示）。</p>
-<figure><img src="/assets/image/frontend/browser/002/5-render-tree.png" alt="render tree" tabindex="0" loading="lazy"><figcaption>render tree</figcaption></figure>
-<p>接下来浏览器需要做的就是计算样式，将每一个 Render 对象的可视化属性计算（根据一系列规则，如层叠性、选择器权重等）出来，但是在这个过程中，并不包含位置和大小信息。计算这些值的过程叫做布局或回流。</p>
-<blockquote>
-<p>关于回流和重绘在后面说。</p>
-</blockquote>
-<p>总之，到目前为止，渲染引擎已经经历了一系列的工作，可以将页面展示到浏览器上了。</p>
-<h2>参考链接</h2>
-<ol>
-<li><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#The_order_of_processing_scripts_and_style_sheets" target="_blank" rel="noopener noreferrer">How Browsers Work: Behind the scenes of modern web browsers - HTML5 Rocks</a></li>
-<li><a href="https://coolshell.cn/articles/9666.html" target="_blank" rel="noopener noreferrer">浏览器的渲染原理简介</a></li>
-<li><a href="https://zh.wiki.hancel.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">JavaScript引擎 - 维基百科</a></li>
-<li><a href="https://zh.m.wikipedia.org/wiki/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">浏览器引擎 - 维基百科</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1679313" target="_blank" rel="noopener noreferrer">浏览器内核及分类 - 腾讯云社区</a></li>
-</ol>
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/browser/002/1-webkitflow.png" type="image/png"/>
-    </item>
-    <item>
-      <title>V8 引擎</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/003-V8.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/003-V8.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">V8 引擎</source>
-      <description>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。 V8 由很多子模块构成，有几个核心模块： Parser：解析器，负责将 JavaScript 代码解析成抽象语法树（Abstract Syntax Tree, AST）； Ignition：解释器（interpreter），负责将 AST ...</description>
-      <category>浏览器</category>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。</p>
-<p>V8 由很多子模块构成，有几个核心模块：</p>
-<ul>
-<li>Parser：解析器，负责将 JavaScript 代码解析成抽象语法树（Abstract Syntax Tree, AST）；</li>
-<li>Ignition：解释器（interpreter），负责将 AST 转换为字节码（Bytecode）并执行；同时收集 TurboFan 优化编译所需的信息，比如函数参数的类型；</li>
-<li>TurboFan：编译器（compiler），利用 Ignition 所收集的信息，将字节码转换为优化的机器码；</li>
-<li>Orinoco：垃圾回收（garbage collector），负责将程序不再需要的内存空间回收。</li>
-</ul>
-<p>下面这张图是 V8 现有的工作流程，非常重要，在后面阅读的时候可以翻上来看看。</p>
-<figure><img src="/assets/image/frontend/browser/003/v8-work-flow.webp" alt="v8 工作流程" tabindex="0" loading="lazy"><figcaption>v8 工作流程</figcaption></figure>
-<h2>Parser</h2>
-<p>为了让 V8 能够理解 JavaScript 代码，必须先将源码通过 <strong>Parser</strong> 解析成抽象语法树——代表程序结构的一系列对象。然后抽象语法树会被 <strong>Ignition</strong> 编译成字节码。这两个阶段是 V8 引擎性能的关键。</p>
-<p>下图是 Parser 的工作流程：</p>
-<figure><img src="/assets/image/frontend/browser/003/parser.svg" alt="parser" tabindex="0" loading="lazy"><figcaption>parser</figcaption></figure>
-<p>整个流程分为两个阶段：词法分析和语法分析。</p>
-<ul>
-<li><strong>词法分析</strong>：scanner 从我们编写的 JavaScript 代码中生成一系列的 tokens。而 tokens 是由一个或多个具有单一语义的字符组成的块：字符串、标识符、运算符 <code>++</code> 等。</li>
-<li><strong>语法分析</strong>：语法分析的输入就是词法分析的输出（即 tokens），输出是 AST 抽象语法树。当程序出现语法错误的时候，V8 会在语法分析阶段抛出异常。</li>
-</ul>
-<p>V8 为了提升 scanner 性能，又做了<strong>延迟解析</strong>（lazy parsing）的优化，一些不会用到函数并不会被马上编译，他们会被 PreParser 处理，当以后调用一个 <code>preparsed</code> 函数时，它会根据需要进行完全解析和编译。</p>
-<h2>Ignition</h2>
-<p>当 Parser 将代码解析成 AST 输入给 Ignition，Ignition 会将 AST 转换为字节码，分三种情况：</p>
-<ul>
-<li>
-<p>函数只声明而不调用，则 Ignition 不会做任何操作；</p>
-</li>
-<li>
-<p>如果函数只调用一次，则 Ignition 会解释字节码并执行。下面来看看例子；</p>
-</li>
-<li>
-<p>如果函数调用多次，则 Ignition 会收集 TurboFan 优化所需的信息（比如函数参数的类型信息等）。</p>
-</li>
-</ul>
-<p>下面来看看例子。</p>
-<ol>
-<li>
-<p>只是声明函数 <code>add</code>，但是没有调用，则 Ignition 不会做任何转换。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div></li>
-<li>
-<p>声明后第一次调用 <code>add</code> 函数，Ignition 会把它编译成字节码执行。到这个时候，JavaScript 代码就已经执行完成了。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div></li>
-<li>
-<p>但是如果发现有<strong>热点函数</strong>（即一个函数被多次调用），Ignition 就会收集 <code>add</code> 函数的各种参数类型，为 TurboFan 的优化提供支持。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 调用多次，标记成热点函数，收集各种信息</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div></li>
-</ol>
-<h2>TurboFan</h2>
-<p>TurboFan 是一个编译器，可以将字节码编译为 CPU 可以直接执行的机器码。如果一个函数被多次调用，就会被标记为<strong>热点函数</strong>，那么就会经过 TurboFan 转换成优化的机器码，提高代码的执行性能。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">%</span><span class="token function">OptimizeFunctionOnNextCall</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p>V8 的 <code>%OptimizeFunctionOnNextCall</code> 可以直接指定优化哪个函数，它根据上次调用的参数反馈优化 <code>add</code> 函数，很明显这次的反馈是整型数，所以 TurboFan 会根据参数是整型数进行优化直接生成机器码，下次函数调用直接调用优化好的机器码。</p>
-<p>但是，机器码实际上也会被还原为字节码，这是因为如果后续执行函数的过程中，类型发生了变化（比如 <code>add</code> 函数原来执行的是 <code>number</code> 类型，后来执行变成了 <code>string</code> 类型），之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码。这个就是最上面那个图还有个 <code>Deoptimization</code> 的原因。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><blockquote>
-<p>到此，V8 引擎的工作流程就已经完成了，但是还没有细究里面的执行细节，只是大概地了解了工作流程，等以后能完全看懂官方文章了再回来更新。</p>
-</blockquote>
-<h2>参考链接</h2>
-<ol>
-<li><a href="https://zh.wikipedia.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">JavaScript 引擎 - 维基百科</a></li>
-<li><a href="https://blog.fundebug.com/2019/07/16/how-does-v8-work/" target="_blank" rel="noopener noreferrer">JavaScript深入浅出第4课：V8引擎是如何工作的？</a></li>
-<li><a href="https://v8.dev/blog/scanner" target="_blank" rel="noopener noreferrer">Blazingly fast parsing, part 1: optimizing the scanner</a></li>
-<li><a href="https://v8.dev/blog/preparser" target="_blank" rel="noopener noreferrer">Blazingly fast parsing, part 2: lazy parsing · V8</a></li>
-<li><a href="https://v8.dev/blog/ignition-interpreter" target="_blank" rel="noopener noreferrer">Firing up the Ignition interpreter · V8</a></li>
-<li><a href="https://mp.weixin.qq.com/s/t__Jqzg1rbTlsCHXKMwh6A" target="_blank" rel="noopener noreferrer">JavaScript 引擎 V8 执行流程概述</a></li>
-</ol>
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/browser/003/v8-work-flow.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>JavaScript 内存管理</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/004-memory-management.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/004-memory-management.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">JavaScript 内存管理</source>
-      <description>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（malloc()），不需要用了之后在释放内存空间（free()）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为垃圾回收。 虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的： 分配你所需要...</description>
-      <category>浏览器</category>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（<code>malloc()</code>），不需要用了之后在释放内存空间（<code>free()</code>）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为<strong>垃圾回收</strong>。</p>
-<p>虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的：</p>
-<ol>
-<li>分配你所需要的内存</li>
-<li>使用分配到的内存（读、写）</li>
-<li>不需要时将其释放</li>
-</ol>
-<p>第二步的使用内存就很常见了，我们写的代码就是这一步，因此这里介绍第一步和第三步的基本内容。</p>
-<h2>分配内存空间</h2>
-<p>现在来看看 V8 引擎是如何给不同变量分配内存的。</p>
-<p>V8 主要有三种内存空间：</p>
-<ul>
-<li>代码空间：主要存储可执行代码；</li>
-<li>栈空间：JavaScript 对于<strong>基本数据类型</strong>内存的分配会在执行时直接在栈空间进行分配；</li>
-<li>堆空间：JavaScript 对于<strong>复杂数据类型</strong>内存的分配会在堆内存中开辟一块空间，并且将这块空间的指针（地址）返回给变量引用（存放在栈空间）。</li>
-</ul>
-<p>下面看看例子：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
-	<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"heap"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre></div><p>当代码执行到第二行时，栈底是 <code>a</code>，栈顶是 <code>b</code>，此时 <code>b</code> 的值是一个复杂数据类型，那么会在堆空间中为这个数据分配一个空间，并把 <code>b</code> 的变量值赋值为这个空间的地址。</p>
-<figure><img src="/assets/image/frontend/browser/004/V8-stack-heap.png" alt="堆和栈" tabindex="0" loading="lazy"><figcaption>堆和栈</figcaption></figure>
-<p>那么，为什么要将复杂数据类型放在堆空间，而不是一起放在栈空间呢？</p>
-<p>因为 V8 引擎需要用栈来维护程序执行期间上下文的状态，如果栈空间分配的内存过大，那么会影响到上下文切换的效率，从而导致代码执行速度过慢。</p>
-<p>因此，栈空间不会设置太大，主要用来存放基本数据类型（占用空间小），而像复杂数据类型，因为他们的占用空间一般较大，因此会被存放在堆空间中。</p>
-<h2>常见的垃圾回收算法</h2>
-<p>了解了如何分配不同变量的内存后，第二步的读写其实已经包含在代码里了，最关键的一步就是如何将不再需要的<strong>内存回收</strong>。</p>
-<p>在整个垃圾回收的过程中，最困难的地方在于如何找到“哪些被分配的内存确实已经不再需要了”，而这个步骤没有任何算法可以准确的判断，只是一个近似的过程。</p>
-<p>下面先介绍几种常见的垃圾回收算法，再介绍 V8 的垃圾回收机制。</p>
-<h3>引用计数算法</h3>
-<p>这是最初级的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。当一个对象有一个引用指向它时，它的引用数就会 <code>+1</code>；当没有引用时，即引用数为 <code>0</code>，这个对象就可以被销毁了。</p>
-<p>但是一个很大的弊端是会产生循环引用。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  o<span class="token punctuation">.</span>a <span class="token operator">=</span> o2<span class="token punctuation">;</span> <span class="token comment">// o 引用 o2</span>
-  o2<span class="token punctuation">.</span>a <span class="token operator">=</span> o<span class="token punctuation">;</span> <span class="token comment">// o2 引用 o</span>
-
-  <span class="token keyword">return</span> <span class="token string">"azerty"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p>在执行 <code>f()</code> 时，创建了两个对象并相互引用。函数执行结束后，会离开函数作用域，因此它们已经没有用了，按照常理来说应该被销毁。但是因为它们至少都有一次引用，所以不会被回收，造成内存泄露。</p>
-<h3>标记清除算法</h3>
-<p>这个算法把“对象是否不再需要”简化定义为“对象是否可以获得”，简称“可达性”。</p>
-<p>这个算法假定设置一个叫做根（root）的对象（在Javascript里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象。</p>
-<img src="/assets/image/frontend/browser/004/mark-clear.png" width="50%" height="50%">
-<p>在上图中，<code>g</code> 和 <code>h</code> 对象互相引用，如果采用<strong>引用计数算法</strong>，那么这两个对象将不会被垃圾回收。但是使用标记清除算法，因为根对象没有对它们引用，因此会被垃圾回收。这样，循环引用的问题就不存在了。</p>
-<h2>V8 垃圾回收机制</h2>
-<p>在过去几年，V8 垃圾回收发生了很多变化。以前的垃圾回收器是一个连续的过程，在进行垃圾回收的过程中会暂停其他活动（全停顿，stop-the-world），而现在 V8 的垃圾回收器转变成了具有<strong>增量回退</strong>的<strong>并行</strong>、<strong>并发</strong>垃圾回收器。</p>
-<p>任何垃圾回收器都会执行下面几个基本任务：</p>
-<ol>
-<li>
-<p><strong>标记</strong>活动对象和非活动对象</p>
-</li>
-<li>
-<p><strong>回收或者重排</strong>非活动对象占据的内存</p>
-</li>
-<li>
-<p><strong>合并或者整理</strong>内存（可选）</p>
-</li>
-</ol>
-<p>这些任务可以按顺序执行，也可以任意交错执行。一种直接的方法是暂停 JavaScript 执行，并在主线程上按顺序执行这些任务。这可能会导致主线程出现卡顿和延迟问题，并降低程序吞吐量。</p>
-<h3>V8 内存限制</h3>
-<p>在介绍 V8 垃圾回收机制之前，我们先来探讨一下为什么需要垃圾回收。</p>
-<ul>
-<li>当创建一个对象时，就会分配大量内存</li>
-<li>在 V8 中限制 64 位的机器大约 1.4GB，32 位机器大约为 0.7GB</li>
-<li>操作系统会自动进行栈内存的分配和释放，而堆内存，则由 V8 引擎进行释放</li>
-</ul>
-<h3>分代堆布局</h3>
-<p>V8 中的堆被分成不同的区域，称为代：分为新生代（进一步分为 <code>nursery</code> 和 <code>intermediate</code>），和一个老生代。对象首先被分配到 <code>nursery</code>。如果它们在下一个 GC 中幸存下来，这时候我们把它们移动到<code>intermediate</code> 子代，如果再经过下一次垃圾回收这个对象仍然存活，这时候我们就会把这个对象移动到老生代（这个策略称为<strong>对象晋升策略</strong>）。</p>
-<figure><img src="/assets/image/frontend/browser/004/generations.svg" alt="分代布局" tabindex="0" loading="lazy"><figcaption>分代布局</figcaption></figure>
-<blockquote>
-<p>在垃圾回收中有一个重要的术语：“代际假说”，指大多数对象在新生代就会被回收。从垃圾回收的角度来看，大部分对象一经分配之后就几乎马上变成不可达状态。</p>
-</blockquote>
-<p>根据 V8 堆中分为不同的区域，可以容易地想到 V8 有两个不同的垃圾回收器：清理新生区的副垃圾回收器和清理老生区的主垃圾回收器。</p>
-<p>下面就一一介绍 V8 中的两个垃圾回收器。</p>
-<h3>副垃圾回收器——清道夫（Scavenge）</h3>
-<p>副垃圾回收器（Scavenger）从新生代中回收垃圾。</p>
-<p>在清理时，初始的空闲区域称之为 <code>To-Space</code>，复制对象过来的区域称之为<code>From-Space</code>；在最坏的情况下，如果每一个对象在清理的时候存活了下来，那我们就要从 <code>From-Space</code> 复制每一个对象到 <code>To-Space</code> 中。</p>
-<p>清除步骤（Evacuation）会将所有的活动对象移动到连续的一块内存中，并且标记它们（图中的小圆圈，代表已经经历过一次 GC）；然后会将两块内存空间互换，即把 <code>To-Space</code> 变成 <code>From-Space</code>，<code>From-Space</code> 变成 <code>To-Space</code>。</p>
-<figure><img src="/assets/image/frontend/browser/004/Scavenge-1.svg" alt="副垃圾回收器-1" tabindex="0" loading="lazy"><figcaption>副垃圾回收器-1</figcaption></figure>
-<p>如果仅仅是凭借这一策略，我们就会很快的耗尽新生代的内存空间；为了新生代的内存空间不被耗尽，在下一次垃圾回收的时候，我们会把活动对象移动（evacuate）到老生代，而不是 <code>To-Space</code>。</p>
-<p>在下图中，两块内存空间已经互换，而且 <code>From-Space</code> 又有一个新的对象，假定这个对象在第一次 GC 时存活了下来，那么它将被复制到 <code>To-Space</code> 中。而 <code>From-Space</code> 中已经经历过一次 GC 的对象（通过这个小圆圈的标记得知），假如它们又存活下来，则会被复制到老生区（<strong>对象晋升策略</strong>）。</p>
-<p>Scavenge 的最后一步是把移动后的对象的指针地址更新，每一个被复制对象都会留下一个转发地址（forwarding-address），用于更新指针以指向新的地址。</p>
-<figure><img src="/assets/image/frontend/browser/004/Scavenge-2.svg" alt="副垃圾回收器-2" tabindex="0" loading="lazy"><figcaption>副垃圾回收器-2</figcaption></figure>
-<p>在副垃圾回收器回收过程中，实际上执行了三个步骤：标记、清除和指针更新。</p>
-<h3>主垃圾回收器 —— 全量标记和整理（Full Mark-Compact）</h3>
-<p>主垃圾回收器从整个堆（heap）中收集垃圾。</p>
-<figure><img src="/assets/image/frontend/browser/004/three-phases.svg" alt="three-phases" tabindex="0" loading="lazy"><figcaption>three-phases</figcaption></figure>
-<p>标记阶段是利用对象的可达性确定对象是否活跃。从初始的根对象开始，垃圾回收器会跟踪每一个指向其他对象的指针，将其标记为可访问的，同时跟踪对象中每一个属性的指针。整个过程递归进行，直到标记到运行时每一个可访问的对象。</p>
-<img src="/assets/image/frontend/browser/004/marking.png" width="40%">
-<p>清除阶段将非活动对象进行清除。</p>
-<img src="/assets/image/frontend/browser/004/sweeping.png" width="40%">
-<p>一般来说，频繁回收对象后，内存中就会存在大量不连续空间，我们把这些不连续的内存空间称为内存碎片。当内存中出现了大量的内存碎片之后，如果需要分配较大连续内存的时候，就有可能出现内存不足的情况。所以最后一步需要整理这些内存碎片，但这步其实是可选的，因为有的垃圾回收器不会产生内存碎片。</p>
-<img src="/assets/image/frontend/browser/004/compaction.png" width="40%">
-<h2>Orinoco</h2>
-<p>Orinoco 是 V8 垃圾回收器项目的代号，它利用最新的和最好的垃圾回收技术来降低主线程挂起的时间， 比如：并行（parallel）垃圾回收，增量（incremental）垃圾回收和并发（concurrent）垃圾回收。</p>
-<p>2011 年，V8 从 stop-the-world 标记切换到增量标记。</p>
-<p>2018 年，GC 技术又有了一个重大突破，这项技术名为并发标记。在 Chrome 64 和Node.js v10 中已启用，它将标记时间缩短了60%<sub>70%。还有并行技术，它将新生代的垃圾回收时间缩短了20%</sub>50%。</p>
-<h3>并行垃圾回收（Parallel）</h3>
-<p>并行是主线程和协助线程同时执行同样的工作，但是这仍然是一种 <code>stop-the-world</code> 的垃圾回收方式，但是垃圾回收全停顿时间等于总时间除以参与的线程数量（加上一些同步开销）。</p>
-<figure><img src="/assets/image/frontend/browser/004/parallel.svg" alt="parallel" tabindex="0" loading="lazy"><figcaption>parallel</figcaption></figure>
-<h3>增量垃圾回收（Incremental）</h3>
-<p>增量式垃圾回收是主线程间歇性的去做少量的垃圾回收的方式。同时让垃圾回收和 JavaScript 应用逻辑交替进行，这意味着堆的状态可能已经发生了变化，有可能会导致之前的增量回收工作完全无效。</p>
-<p>从图中可以看出并没有减少主线程暂停的总时间（事实上，通常会略微增加）。通过允许 JavaScript 间歇执行，同时也间歇性地去做垃圾回收工作，应用程序仍然可以在用户输入或者执行动画的时候得到及时的响应。</p>
-<figure><img src="/assets/image/frontend/browser/004/incremental.svg" alt="incremental" tabindex="0" loading="lazy"><figcaption>incremental</figcaption></figure>
-<h3>并发垃圾回收（Concurrent）</h3>
-<p>并发是主线程持续执行 JavaScript，而辅助线程完全在后台执行垃圾回收。这种方式是这三种技术中最难的一种：JavaScript 堆里面的内容随时都有可能发生变化，从而使之前做的工作完全无效，主线程和辅助线程极有可能在同一时间去更改同一个对象。这种方式的优势也非常明显，主线程不会被挂起，JavaScript 可以自由地执行。</p>
-<figure><img src="/assets/image/frontend/browser/004/concurrent.svg" alt="concurrent" tabindex="0" loading="lazy"><figcaption>concurrent</figcaption></figure>
-<h2>总结</h2>
-<p>首先介绍了内存管理的一般流程，分为三大步，可以自己回想一下。</p>
-<p>然后是 V8 如何分配内存：基本数据类型存放在栈空间，复杂数据类型存放在堆空间，以及为什么要这样做。</p>
-<p>接着又介绍了常见的垃圾回收算法，主要包括引用计数法和标记清除法。</p>
-<p>最后介绍了 V8 的垃圾回收机制以及做出的优化。</p>
-<h2>参考链接</h2>
-<p><a href="https://v8.dev/blog/trash-talk" target="_blank" rel="noopener noreferrer">Trash talk: the Orinoco garbage collector · V8</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferrer">内存管理 - JavaScript | MDN (mozilla.org)</a></p>
-<p><a href="https://time.geekbang.org/column/article/129596" target="_blank" rel="noopener noreferrer">12 | 栈空间和堆空间：数据是如何存储的？</a></p>
-<p><a href="https://juejin.cn/post/6844904016325902344" target="_blank" rel="noopener noreferrer">一文搞懂V8引擎的垃圾回收</a></p>
-<p><a href="https://www.nodejs.red/#/nodejs/memory?id=v8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6" target="_blank" rel="noopener noreferrer">Memory 内存管理和 V8 垃圾回收机制 (nodejs.red)</a></p>
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/browser/004/V8-stack-heap.png" type="image/png"/>
-    </item>
-    <item>
-      <title>浏览器</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/browser/</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/browser/</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浏览器</source>
-      <description>浏览器 这里是关于浏览器的文章。 </description>
-      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>这里是关于浏览器的文章。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>前端框架</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">前端框架</source>
-      <description>前端框架 这里是关于前端框架的文章。 </description>
-      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>这里是关于前端框架的文章。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>实现脚手架 ————（一）项目初始化</title>
-      <link>https://dribble-njr.github.io/blog/blog/project/mini-vue-cli/001-init-project.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/project/mini-vue-cli/001-init-project.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">实现脚手架 ————（一）项目初始化</source>
-      <description>实现一个 mini-vue-cli，首先需要用到命令行工具 commander.js npm init -y </description>
-      <category>Node</category>
-      <pubDate>Mon, 23 May 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>实现一个 mini-vue-cli，首先需要用到命令行工具 commander.js</p>
-<p>npm init -y</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> init <span class="token parameter variable">-y</span>
-</code></pre></div><div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> mini-vue-cli
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> |- index.html
-</span><span class="token prefix inserted">+</span><span class="token line"> |- /src
-</span><span class="token prefix inserted">+</span><span class="token line">   |- /js
-</span><span class="token prefix inserted">+</span><span class="token line">     |- format.js
-</span><span class="token prefix inserted">+</span><span class="token line">     |- math.js  
-</span><span class="token prefix inserted">+</span><span class="token line">   |- index.js
-</span></span></code></pre></div>]]></content:encoded>
     </item>
   </channel>
 </rss>

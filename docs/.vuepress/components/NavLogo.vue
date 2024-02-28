@@ -2,7 +2,7 @@
   <svg height="52" id="图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="-10 -15 700 620">
     <path v-for="(path, index) in paths" :id="'path' + (index + 1)" :d="path.d" :key="path.d" :style="{
       fill: 'none',
-      stroke: isDarkMode ? '#e2e8f0' : '#000',
+      stroke: isDarkMode ? '#94a3b8' : '#000',
       'stroke-miterlimit': 10,
       'stroke-width': '20px',
       'stroke-linecap': 'round',

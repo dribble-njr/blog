@@ -7,6 +7,9 @@
 - [DOCTYPE](./docs/frontend/basic/html/003-doctype.md)
 - [常用元素](./docs/frontend/basic/html/004-common-element.md)
 - [高级元素](./docs/frontend/basic/html/005-advanced-element.md)
+- [语义话标签](./docs/frontend/basic/html/006-semantically-meaningful-tags.md)
+- [视频和音频](./docs/frontend/basic/html/007-media-tag.md)
+- [Canvas 和 SVG 的区别](./docs/frontend/basic/html/008-canvas-svg.md)
 
 ### CSS
 
@@ -21,6 +24,9 @@
 - [弹性盒](./docs/frontend/basic/css/009-flex.md)
 - [样式单位](./docs/frontend/basic/css/010-unit.md)
 - [居中](./docs/frontend/basic/css/011-center.md)
+- [网格布局](./docs/frontend/basic/css/012-grid.md)
+- [BFC 块级格式化上下文](./docs/frontend/basic/css/013-BFC.md)
+- [响应式设计](./docs/frontend/basic/css/014-responsive-design.md)
 
 ### JavaScript
 

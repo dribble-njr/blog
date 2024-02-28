@@ -13,6 +13,19 @@ html[data-theme='dark'] {
   .pswp__img {
     filter: brightness(0.8) contrast(1.2);
   }
+
+  div[class*='language-'] {
+    background-color: #20293a;
+  }
+
+  .hint-container {
+    border-color: #227497;
+    background: #1e2533;
+
+    .hint-container-title {
+      color: #b3bcc7;
+    }
+  }
 }
 
 @keyframes bounce {

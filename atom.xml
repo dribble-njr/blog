@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-02-28T15:09:29.435Z</updated>
+  <updated>2024-02-29T04:58:33.649Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -30,7 +30,7 @@
     <title type="text">响应式设计</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design.html"/>
-    <updated>2024-02-28T14:21:31.000Z</updated>
+    <updated>2024-02-29T04:56:17.000Z</updated>
     <summary type="html"><![CDATA[<h2>概念</h2>
 <ul>
 <li>响应式网页设计可让网页在所有设备上都美观大方。</li>
@@ -450,6 +450,77 @@
 <p>实际上可以使用媒体查询改变 HTML 字体大小，并使用 <code>rem</code> 单位设置其他字体大小。</p>
 <p>相关阅读：。</p>
 </div>
+<h2>响应式图片</h2>
+<h3>使用 <code>width</code> 属性</h3>
+<p>如果将 <code>width</code> 属性设置为百分比，而 <code>height</code> 属性设置为 <code>auto</code>，图像就会响应并上下缩放</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>在上面的示例中，图片可以按比例放大到比原始尺寸更大。在许多情况下，更好的解决方案是使用 <code>max-width</code> 属性。</p>
+</div>
+<h3>使用 <code>max-width</code> 属性</h3>
+<p>如果 <code>max-width</code> 属性设置为 100%，图片会在必要时缩小，但绝不会放大到大于原始尺寸：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3>背景图片</h3>
+<p>背景图片还可以对大小和比例进行调整。</p>
+<ol>
+<li>如果 <code>background-size</code> 属性设置为 <code>contain</code>，背景图片就会缩放，并尽量适应内容区域。不过，图像将保持其宽高比（图像宽度和高度之间的比例关系）：</li>
+</ol>
+
+<ol start="2">
+<li>如果 <code>background-size</code> 属性设置为 <code>100% 100%</code>，背景图片就会拉伸以覆盖整个内容区域：</li>
+</ol>
+
+<ol start="3">
+<li>如果 <code>background-size</code> 属性设置为 <code>cover</code>，背景图片将按比例覆盖整个内容区域。请注意，<code>cover</code> 将保持纵横比，背景图片的某些部分可能会被剪切：</li>
+</ol>
+
+<h3>不同设备使用不同图像</h3>
+<p>大尺寸图片在电脑大屏幕上可能非常完美，但在小设备上却毫无用处。既然要缩小图片，为什么还要加载大图片呢？为了减少加载或出于其他原因，您可以使用媒体查询在不同设备上显示不同的图片。</p>
+<p>下面是将在不同设备上显示的一张大图和一张小图：</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240229125238.png" alt="不同设备使用不同图像" tabindex="0" loading="lazy"><figcaption>不同设备使用不同图像</figcaption></figure>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For width smaller than 400px: */</span>
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_smallflower.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* For width 400px and larger: */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_flowers.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>可以使用媒体查询 <code>min-device-width</code> 代替 <code>min-width</code>，后者检查的是设备宽度，而不是浏览器宽度。这样，当调整浏览器窗口大小时，图片就不会改变：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For devices smaller than 400px: */</span>
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_smallflower.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* For devices 400px and larger: */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-device-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_flowers.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3>HTML <code>&lt;picture&gt;</code> 元素</h3>
+<p>HTML <code>&lt;picture&gt;</code> 元素为网络开发人员指定图像资源提供了更大的灵活性。</p>
+<p><code>&lt;picture&gt;</code> 元素最常用于响应式设计中使用的图像。与根据视口宽度放大或缩小一张图片的做法不同，可以设计多张图片，以便更好地填充浏览器视口。</p>
+<p><code>&lt;picture&gt;</code> 元素的工作原理与 <code>&lt;video&gt;</code> 和 <code>&lt;audio&gt;</code> 元素类似。可以设置不同的来源，符合偏好的第一个来源就是正在使用的来源：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code>&lt;picture&gt;
+  &lt;source srcset=<span class="token string">"img_small_flower.jpg"</span> media=<span class="token string">"(max-width: 400px)"</span>&gt;
+  &lt;source srcset=<span class="token string">"img_flowers.jpg"</span>&gt;
+  &lt;img src=<span class="token string">"img_flowers.jpg"</span> alt=<span class="token string">"Flowers"</span>&gt;
+&lt;/picture&gt;
+</code></pre></div><p><code>srcset</code> 属性为必填项，用于定义图像的来源。</p>
+<p><code>media</code> 属性是可选属性，可接受 CSS <code>@media</code> 规则中的媒体查询。</p>
+<p>还应为不支持 <code>&lt;picture&gt;</code> 元素的浏览器定义 <code>&lt;img&gt;</code> 元素。</p>
 <h2>参考</h2>
 <ul>
 <li><a href="https://www.w3schools.com/css/css_rwd_intro.asp" target="_blank" rel="noopener noreferrer">Responsive Web Design</a></li>

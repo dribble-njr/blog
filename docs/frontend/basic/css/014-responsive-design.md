@@ -1472,6 +1472,217 @@ btn.onclick = () => {
 
 :::
 
+## 响应式图片
+
+### 使用 `width` 属性
+
+如果将 `width` 属性设置为百分比，而 `height` 属性设置为 `auto`，图像就会响应并上下缩放
+
+```css
+img {
+  width: 100%;
+  height: auto;
+}
+```
+
+::: normal-demo width
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240229124038.png"
+      width="460"
+      height="345"
+    />
+    <p>Resize the browser window to see how the image will scale.</p>
+  </body>
+</html>
+```
+
+:::
+
+::: warning
+
+在上面的示例中，图片可以按比例放大到比原始尺寸更大。在许多情况下，更好的解决方案是使用 `max-width` 属性。
+
+:::
+
+### 使用 `max-width` 属性
+
+如果 `max-width` 属性设置为 100%，图片会在必要时缩小，但绝不会放大到大于原始尺寸：
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+### 背景图片
+
+背景图片还可以对大小和比例进行调整。
+
+1. 如果 `background-size` 属性设置为 `contain`，背景图片就会缩放，并尽量适应内容区域。不过，图像将保持其宽高比（图像宽度和高度之间的比例关系）：
+
+::: normal-demo contain
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .div {
+        width: 100%;
+        height: 400px;
+        background-image: url('https://www.w3schools.com/css/img_flowers.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Resize the browser window to see the effect.</p>
+
+    <div class="div"></div>
+  </body>
+</html>
+```
+
+:::
+
+2. 如果 `background-size` 属性设置为 `100% 100%`，背景图片就会拉伸以覆盖整个内容区域：
+
+::: normal-demo 100% 100%
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .div {
+        width: 100%;
+        height: 400px;
+        background-image: url('https://www.w3schools.com/css/img_flowers.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Resize the browser window to see the effect.</p>
+
+    <div class="div"></div>
+  </body>
+</html>
+```
+
+:::
+
+3. 如果 `background-size` 属性设置为 `cover`，背景图片将按比例覆盖整个内容区域。请注意，`cover` 将保持纵横比，背景图片的某些部分可能会被剪切：
+
+::: normal-demo cover
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .div {
+        width: 100%;
+        height: 400px;
+        background-image: url('https://www.w3schools.com/css/img_flowers.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Resize the browser window to see the effect.</p>
+
+    <div class="div"></div>
+  </body>
+</html>
+```
+
+:::
+
+### 不同设备使用不同图像
+
+大尺寸图片在电脑大屏幕上可能非常完美，但在小设备上却毫无用处。既然要缩小图片，为什么还要加载大图片呢？为了减少加载或出于其他原因，您可以使用媒体查询在不同设备上显示不同的图片。
+
+下面是将在不同设备上显示的一张大图和一张小图：
+
+![不同设备使用不同图像](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240229125238.png)
+
+```css
+/* For width smaller than 400px: */
+body {
+  background-image: url('img_smallflower.jpg');
+}
+
+/* For width 400px and larger: */
+@media only screen and (min-width: 400px) {
+  body {
+    background-image: url('img_flowers.jpg');
+  }
+}
+```
+
+可以使用媒体查询 `min-device-width` 代替 `min-width`，后者检查的是设备宽度，而不是浏览器宽度。这样，当调整浏览器窗口大小时，图片就不会改变：
+
+```css
+/* For devices smaller than 400px: */
+body {
+  background-image: url('img_smallflower.jpg');
+}
+
+/* For devices 400px and larger: */
+@media only screen and (min-device-width: 400px) {
+  body {
+    background-image: url('img_flowers.jpg');
+  }
+}
+```
+
+### HTML `<picture>` 元素
+
+HTML `<picture>` 元素为网络开发人员指定图像资源提供了更大的灵活性。
+
+`<picture>` 元素最常用于响应式设计中使用的图像。与根据视口宽度放大或缩小一张图片的做法不同，可以设计多张图片，以便更好地填充浏览器视口。
+
+`<picture>` 元素的工作原理与 `<video>` 和 `<audio>` 元素类似。可以设置不同的来源，符合偏好的第一个来源就是正在使用的来源：
+
+```css
+<picture>
+  <source srcset="img_small_flower.jpg" media="(max-width: 400px)">
+  <source srcset="img_flowers.jpg">
+  <img src="img_flowers.jpg" alt="Flowers">
+</picture>
+```
+
+`srcset` 属性为必填项，用于定义图像的来源。
+
+`media` 属性是可选属性，可接受 CSS `@media` 规则中的媒体查询。
+
+还应为不支持 `<picture>` 元素的浏览器定义 `<img>` 元素。
+
 ## 参考
 
 - [Responsive Web Design](https://www.w3schools.com/css/css_rwd_intro.asp)

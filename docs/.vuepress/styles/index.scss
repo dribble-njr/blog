@@ -14,6 +14,10 @@ html[data-theme='dark'] {
     filter: brightness(0.8) contrast(1.2);
   }
 
+  .vp-blog-mask {
+    filter: brightness(0.8) contrast(1.2);
+  }
+
   div[class*='language-'] {
     background-color: #20293a;
   }

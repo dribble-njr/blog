@@ -28,7 +28,7 @@ export default hopeTheme(
       end: ['Language', 'Repo', 'Outlook', 'Search']
     },
 
-    iconAssets: '//at.alicdn.com/t/c/font_3926422_zdr5vzyuryk.css',
+    iconAssets: '//at.alicdn.com/t/c/font_3926422_skue9bfde2c.css',
     iconPrefix: 'iconfont icon-',
 
     repo: 'https://github.com/dribble-njr/blog',
@@ -153,7 +153,6 @@ export default hopeTheme(
         rss: true
       }
 
-      // uncomment these if you want a PWA
       // pwa: {
       //   favicon: "/favicon.ico",
       //   cacheHTML: true,

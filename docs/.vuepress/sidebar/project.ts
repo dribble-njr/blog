@@ -22,5 +22,12 @@ export default [
     collapsible: true,
     prefix: '/project/RSSHub/',
     children: ['']
+  },
+  {
+    text: 'Plugin',
+    icon: 'plugin',
+    collapsible: true,
+    prefix: '/project/plugin/',
+    children: ['01.vuepress-plugin-ordered-header']
   }
 ]

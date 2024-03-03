@@ -341,3 +341,52 @@ function removeElement(nums: number[], val: number): number {
   return slow
 }
 ```
+
+### 下一个排列
+
+::: tip 原题链接
+
+[31. 下一个排列](https://leetcode.cn/problems/next-permutation/description/)
+
+:::
+
+思路：关键找到「较小数」与「较大数」。
+
+1. 我们需要将一个左边的「较小数」与一个右边的「较大数」交换，以能够让当前排列变大，从而得到下一个排列。
+2. 同时我们要让这个「较小数」尽量靠右，而「较大数」尽可能小。当交换完成后，「较大数」右边的数需要按照升序重新排列。这样可以在保证新排列大于原来排列的情况下，使变大的幅度尽可能小。
+
+以排列 `[4,5,2,6,3,1]` 为例：
+
+- 我们能找到的符合条件的一对「较小数」与「较大数」的组合为 `2` 与 `3`，满足「较小数」尽量靠右，而「较大数」尽可能小。
+- 当我们完成交换后排列变为 `[4,5,3,6,2,1]`，此时我们可以重排「较小数」右边的序列，序列变为 `[4,5,3,1,2,6]`。
+
+```ts
+/**
+ Do not return anything, modify nums in-place instead.
+ */
+function nextPermutation(nums: number[]): void {
+  let i = nums.length - 2
+
+  // find smaller num
+  while (i >= 0 && nums[i] >= nums[i + 1]) {
+    i--
+  }
+
+  // now [i + 1, end) is decreasing
+
+  // find bigger num
+  if (i >= 0) {
+    let j = nums.length - 1
+    while (j > 0 && nums[i] >= nums[j]) {
+      j--
+    }
+    // swap
+    ;[nums[i], nums[j]] = [nums[j], nums[i]]
+  }
+
+  // reverse [i, end)
+  for (let l = i + 1, r = nums.length - 1; l < r; l++, r--) {
+    ;[nums[l], nums[r]] = [nums[r], nums[l]]
+  }
+}
+```

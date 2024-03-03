@@ -30,8 +30,8 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {},
     vuePluginOptions: {}
-  })
+  }),
 
   // Enable it with pwa
-  // shouldPrefetch: false,
+  shouldPrefetch: false
 })

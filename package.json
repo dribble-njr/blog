@@ -30,6 +30,7 @@
     "mermaid": "^10.8.0",
     "reveal.js": "^5.0.4",
     "vuepress-plugin-feed2": "2.0.0-rc.16",
-    "vuepress-plugin-ordered-header": "0.0.2"
+    "vuepress-plugin-ordered-header": "0.0.2",
+    "vuepress-plugin-pwa2": "2.0.0-rc.24"
   }
 }

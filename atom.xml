@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-03-03T13:12:14.519Z</updated>
+  <updated>2024-03-03T15:29:11.247Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -14,8 +14,8 @@
   <category term="react"/>
   <category term="database"/>
   <category term="algorithm"/>
-  <category term="浏览器"/>
   <category term="计算机网络"/>
+  <category term="浏览器"/>
   <category term="reading"/>
   <category term="practice"/>
   <category term="linux"/>
@@ -1387,7 +1387,7 @@
     <title type="text">数组</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html"/>
-    <updated>2024-02-17T12:40:02.000Z</updated>
+    <updated>2024-03-03T15:27:41.000Z</updated>
     <summary type="html"><![CDATA[<p><code>JavaScript</code> 中数组是一种特殊的对象，用于存储多个值。数组的每个元素都有一个数字索引，用于访问数组中的元素。</p>
 <p>常见初始化数组的方式：</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
@@ -1658,6 +1658,49 @@
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> slow
+<span class="token punctuation">}</span>
+</code></pre></div><h3>下一个排列</h3>
+<div class="hint-container tip">
+<p class="hint-container-title">原题链接</p>
+<p><a href="https://leetcode.cn/problems/next-permutation/description/" target="_blank" rel="noopener noreferrer">31. 下一个排列</a></p>
+</div>
+<p>思路：关键找到「较小数」与「较大数」。</p>
+<ol>
+<li>我们需要将一个左边的「较小数」与一个右边的「较大数」交换，以能够让当前排列变大，从而得到下一个排列。</li>
+<li>同时我们要让这个「较小数」尽量靠右，而「较大数」尽可能小。当交换完成后，「较大数」右边的数需要按照升序重新排列。这样可以在保证新排列大于原来排列的情况下，使变大的幅度尽可能小。</li>
+</ol>
+<p>以排列 <code>[4,5,2,6,3,1]</code> 为例：</p>
+<ul>
+<li>我们能找到的符合条件的一对「较小数」与「较大数」的组合为 <code>2</code> 与 <code>3</code>，满足「较小数」尽量靠右，而「较大数」尽可能小。</li>
+<li>当我们完成交换后排列变为 <code>[4,5,3,6,2,1]</code>，此时我们可以重排「较小数」右边的序列，序列变为 <code>[4,5,3,1,2,6]</code>。</li>
+</ul>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
+ Do not return anything, modify nums in-place instead.
+ */</span>
+<span class="token keyword">function</span> <span class="token function">nextPermutation</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span>
+
+  <span class="token comment">// find smaller num</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> nums<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    i<span class="token operator">--</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// now [i + 1, end) is decreasing</span>
+
+  <span class="token comment">// find bigger num</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> j <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      j<span class="token operator">--</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// swap</span>
+    <span class="token punctuation">;</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// reverse [i, end)</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> l <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> l <span class="token operator">&lt;</span> r<span class="token punctuation">;</span> l<span class="token operator">++</span><span class="token punctuation">,</span> r<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">;</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre></div>]]></content>
     <category term="algorithm"/>
@@ -2130,131 +2173,6 @@ $ <span class="token function">git</span> merge experiment
     <published>2024-02-07T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">跨域</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html"/>
-    <updated>2024-02-07T05:30:24.000Z</updated>
-    <summary type="html"><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
-<h2>CORS</h2>
-<p>简单请求和非简单请求</p>
-<h3>简单请求</h3>
-<p>请求方法：</p>
-<ul>
-<li>HEAD</li>
-<li>GET</li>
-<li>POST</li>
-</ul>
-<p>请求头：</p>
-<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>Last-Event-ID</li>
-<li>Content-Type</li>
-</ul>
-<p>对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。</p>]]></summary>
-    <content type="html"><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
-<h2>CORS</h2>
-<p>简单请求和非简单请求</p>
-<h3>简单请求</h3>
-<p>请求方法：</p>
-<ul>
-<li>HEAD</li>
-<li>GET</li>
-<li>POST</li>
-</ul>
-<p>请求头：</p>
-<ul>
-<li>Accept</li>
-<li>Accept-Language</li>
-<li>Content-Language</li>
-<li>Last-Event-ID</li>
-<li>Content-Type</li>
-</ul>
-<p>对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。</p>
-<p>服务器根据这个值来决定是否同意这次请求，如果 origin 指定的源在允许范围内，服务器就返回如下响应头：</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
-Access-Control-Allow-Credentials: true
-Access-Control-Expose-Headers: FooBar
-Content-Type: text/html; charset=utf-8
-</code></pre></div><p>服务器至少设置 Access-Control-Allow-Origin。</p>
-<h3>非简单请求</h3>
-<p>需要进行 options 预检请求。</p>
-<p>请求头</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Request-Method 必须
-Access-Control-Request-Headers 逗号分隔符，指定请求会额外发送的头信息字段
-</code></pre></div><p>响应头：</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
-Access-Control-Allow-Methods: GET, POST, PUT
-Access-Control-Allow-Credentials: true
-Access-Control-Allow-Headers: FooBar
-Access-Control-Max-Age: 1728000 本次预检的有效期，秒
-</code></pre></div>]]></content>
-    <category term="浏览器"/>
-    <published>2022-05-06T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">输入 URL 后发生了什么</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html"/>
-    <updated>2024-02-07T05:30:24.000Z</updated>
-    <summary type="html"><![CDATA[<p>先看看大致流程：</p>
-<ol>
-<li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
-<li>向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。</li>
-<li>委托协议栈发送消息：查询到 IP 地址之后，浏览器就可以将消息委托给操作系统的协议栈（TCP/IP）发送给服务器。</li>
-<li>数字信息转换为电信号：通过协议栈将数据变成网络包后，网卡负责将数字信号转换为电信号。</li>
-</ol>]]></summary>
-    <content type="html"><![CDATA[<p>先看看大致流程：</p>
-<ol>
-<li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
-<li>向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。</li>
-<li>委托协议栈发送消息：查询到 IP 地址之后，浏览器就可以将消息委托给操作系统的协议栈（TCP/IP）发送给服务器。</li>
-<li>数字信息转换为电信号：通过协议栈将数据变成网络包后，网卡负责将数字信号转换为电信号。</li>
-</ol>
-<h2>生成 HTTP 请求消息</h2>
-<p>浏览器要做的第一步工作就是对 URL 进行解析，从而生成发送给 Web 服务器的请求消息。</p>
-<img src="/assets/image/computer-science/networking/010/parse-url.png" alt="Web浏览器解析URL" style="zoom:60%;">
-<h3>省略文件名的情况</h3>
-<ol>
-<li>
-<p><a href="http://www.lab.glasscom.com/dir/" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/dir/</a></p>
-<p>以 <code>/</code> 结尾代表访问默认文件，大多数情况下是 <code>index.html</code> 或者 <code>default.htm</code> 之类的文件。</p>
-</li>
-<li>
-<p><a href="http://www.lab.glasscom.com" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com</a></p>
-<p>省略结尾的 <code>/</code> 符，代表访问服务器根目录下的默认文件，也就是 <code>index.html</code> 或者 <code>default.htm</code>。</p>
-</li>
-<li>
-<p><a href="http://www.lab.glasscom.com/whatisthis" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/whatisthis</a></p>
-<p>如果 Web 服务器上存在名 whatisthis 的文件，则作为文件名来处理；如果存在名为 whatisthis 的目录，则作为目录名来处。</p>
-</li>
-</ol>
-<h3>生成请求消息</h3>
-<p>对 URL 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。</p>
-<img src="/assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;">
-<h2>向 DNS 服务器查询域名 IP 地址</h2>
-<p>浏览器解析完 URL 并生成请求消息后，需要委托操作系统向服务器发送请求消息。</p>
-<p>但是在这之前，还需要知道服务器域名对应的 IP 地址。因此需要使用 DNS 服务器查询 IP 地址。</p>
-<p>DNS 服务器保存了域名和 IP 的对应关系。</p>
-<p>域名中用 <code>.</code> 来分隔，比如 <code>www.lab.glasscom.com.</code>，越往右层级越高，最后的一个点代表根域名，一般可以省略。</p>
-<p>根域的服务器信息保存在互联网中的所有 DNS 服务器中，这样任意一台服务器都可以找到并访问根服务器，从而找到其它服务器。</p>
-<figure><img src="/assets/image/computer-science/networking/010/DNS.png" alt="DNS" tabindex="0" loading="lazy"><figcaption>DNS</figcaption></figure>
-<h2>协议栈</h2>
-<p>通过 DNS 获取到服务器的 IP 地址后，浏览器就可以通过 socket 库把 HTTP 报文的传输工作委托给操作系统中的<strong>协议栈</strong>。</p>
-<figure><img src="/assets/image/computer-science/networking/010/TCP-IP.png" alt="客户端" tabindex="0" loading="lazy"><figcaption>客户端</figcaption></figure>
-<p>其中应用程序当然为应用层，协议栈中的 TCP/UDP 为传输层，他们会接收应用程序的委托执行收发数据的操作。</p>
-<blockquote>
-<p>像浏览器、邮件等一般的应用程序都是使用 TCP 收发数据的，而像 DNS 查询等收发较短的控制数据的时候则使用 UDP。</p>
-</blockquote>
-<p>在传送数据时，数据会切分成一个个网络包，而 IP 协议为网络层，负责控制网络包的发给通信对象。</p>
-<p>IP 中还包括 ICMP 协议和 ARP 协议。ICMP 用于告知网络包传输过程中产生的错误及各种控制消息，ARP 用于根据 IP 地址查询相应的 MAC 地址。</p>
-<h2>网卡</h2>
-]]></content>
-    <category term="计算机网络"/>
-    <published>2021-12-11T00:00:00.000Z</published>
-  </entry>
-  <entry>
     <title type="text">GET 和 POST 的区别</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html"/>
@@ -2383,6 +2301,131 @@ Access-Control-Max-Age: 1728000 本次预检的有效期，秒
 ]]></content>
     <category term="计算机网络"/>
     <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">跨域</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/005-cross-domain.html"/>
+    <updated>2024-02-07T05:30:24.000Z</updated>
+    <summary type="html"><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
+<h2>CORS</h2>
+<p>简单请求和非简单请求</p>
+<h3>简单请求</h3>
+<p>请求方法：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+<p>请求头：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type</li>
+</ul>
+<p>对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。</p>]]></summary>
+    <content type="html"><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
+<h2>CORS</h2>
+<p>简单请求和非简单请求</p>
+<h3>简单请求</h3>
+<p>请求方法：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+<p>请求头：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type</li>
+</ul>
+<p>对于简单请求，浏览器会在请求头信息增加一个 origin 字段，该字段用来说明本次请求来自哪个源：协议+端口+域名。</p>
+<p>服务器根据这个值来决定是否同意这次请求，如果 origin 指定的源在允许范围内，服务器就返回如下响应头：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: FooBar
+Content-Type: text/html; charset=utf-8
+</code></pre></div><p>服务器至少设置 Access-Control-Allow-Origin。</p>
+<h3>非简单请求</h3>
+<p>需要进行 options 预检请求。</p>
+<p>请求头</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Request-Method 必须
+Access-Control-Request-Headers 逗号分隔符，指定请求会额外发送的头信息字段
+</code></pre></div><p>响应头：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Access-Control-Allow-Origin: http://api.bob.com 和 origin 一致
+Access-Control-Allow-Methods: GET, POST, PUT
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: FooBar
+Access-Control-Max-Age: 1728000 本次预检的有效期，秒
+</code></pre></div>]]></content>
+    <category term="浏览器"/>
+    <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">输入 URL 后发生了什么</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/006-what-happens-after-entering-the-URL.html"/>
+    <updated>2024-02-07T05:30:24.000Z</updated>
+    <summary type="html"><![CDATA[<p>先看看大致流程：</p>
+<ol>
+<li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
+<li>向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。</li>
+<li>委托协议栈发送消息：查询到 IP 地址之后，浏览器就可以将消息委托给操作系统的协议栈（TCP/IP）发送给服务器。</li>
+<li>数字信息转换为电信号：通过协议栈将数据变成网络包后，网卡负责将数字信号转换为电信号。</li>
+</ol>]]></summary>
+    <content type="html"><![CDATA[<p>先看看大致流程：</p>
+<ol>
+<li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
+<li>向 DNS 服务器查询 Web 服务器的 IP 地址：请求消息生成后，浏览器向 DNS 服务器查询域名对应的 IP 地址，然后委托操作系统（浏览器本身并没有网络通讯的能力）向 Web 服务器发送请求。</li>
+<li>委托协议栈发送消息：查询到 IP 地址之后，浏览器就可以将消息委托给操作系统的协议栈（TCP/IP）发送给服务器。</li>
+<li>数字信息转换为电信号：通过协议栈将数据变成网络包后，网卡负责将数字信号转换为电信号。</li>
+</ol>
+<h2>生成 HTTP 请求消息</h2>
+<p>浏览器要做的第一步工作就是对 URL 进行解析，从而生成发送给 Web 服务器的请求消息。</p>
+<img src="/assets/image/computer-science/networking/010/parse-url.png" alt="Web浏览器解析URL" style="zoom:60%;">
+<h3>省略文件名的情况</h3>
+<ol>
+<li>
+<p><a href="http://www.lab.glasscom.com/dir/" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/dir/</a></p>
+<p>以 <code>/</code> 结尾代表访问默认文件，大多数情况下是 <code>index.html</code> 或者 <code>default.htm</code> 之类的文件。</p>
+</li>
+<li>
+<p><a href="http://www.lab.glasscom.com" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com</a></p>
+<p>省略结尾的 <code>/</code> 符，代表访问服务器根目录下的默认文件，也就是 <code>index.html</code> 或者 <code>default.htm</code>。</p>
+</li>
+<li>
+<p><a href="http://www.lab.glasscom.com/whatisthis" target="_blank" rel="noopener noreferrer">http://www.lab.glasscom.com/whatisthis</a></p>
+<p>如果 Web 服务器上存在名 whatisthis 的文件，则作为文件名来处理；如果存在名为 whatisthis 的目录，则作为目录名来处。</p>
+</li>
+</ol>
+<h3>生成请求消息</h3>
+<p>对 URL 进行解析之后，浏览器确定了 Web 服务器和文件名，接下来就是根据这些信息来生成 HTTP 请求消息了。</p>
+<img src="/assets/image/computer-science/networking/010/message.png" alt="消息格式" style="zoom:60%;">
+<h2>向 DNS 服务器查询域名 IP 地址</h2>
+<p>浏览器解析完 URL 并生成请求消息后，需要委托操作系统向服务器发送请求消息。</p>
+<p>但是在这之前，还需要知道服务器域名对应的 IP 地址。因此需要使用 DNS 服务器查询 IP 地址。</p>
+<p>DNS 服务器保存了域名和 IP 的对应关系。</p>
+<p>域名中用 <code>.</code> 来分隔，比如 <code>www.lab.glasscom.com.</code>，越往右层级越高，最后的一个点代表根域名，一般可以省略。</p>
+<p>根域的服务器信息保存在互联网中的所有 DNS 服务器中，这样任意一台服务器都可以找到并访问根服务器，从而找到其它服务器。</p>
+<figure><img src="/assets/image/computer-science/networking/010/DNS.png" alt="DNS" tabindex="0" loading="lazy"><figcaption>DNS</figcaption></figure>
+<h2>协议栈</h2>
+<p>通过 DNS 获取到服务器的 IP 地址后，浏览器就可以通过 socket 库把 HTTP 报文的传输工作委托给操作系统中的<strong>协议栈</strong>。</p>
+<figure><img src="/assets/image/computer-science/networking/010/TCP-IP.png" alt="客户端" tabindex="0" loading="lazy"><figcaption>客户端</figcaption></figure>
+<p>其中应用程序当然为应用层，协议栈中的 TCP/UDP 为传输层，他们会接收应用程序的委托执行收发数据的操作。</p>
+<blockquote>
+<p>像浏览器、邮件等一般的应用程序都是使用 TCP 收发数据的，而像 DNS 查询等收发较短的控制数据的时候则使用 UDP。</p>
+</blockquote>
+<p>在传送数据时，数据会切分成一个个网络包，而 IP 协议为网络层，负责控制网络包的发给通信对象。</p>
+<p>IP 中还包括 ICMP 协议和 ARP 协议。ICMP 用于告知网络包传输过程中产生的错误及各种控制消息，ARP 用于根据 IP 地址查询相应的 MAC 地址。</p>
+<h2>网卡</h2>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2021-12-11T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="text">命令模式</title>
@@ -9821,393 +9864,6 @@ $ <span class="token function">git</span> <span class="token function">add</span
     <published>2023-03-02T05:00:27.000Z</published>
   </entry>
   <entry>
-    <title type="text">前端基础知识</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/"/>
-    <updated>2023-03-02T05:00:27.000Z</updated>
-    <summary type="html"><![CDATA[
-<p>这里是关于前端基础知识的文章。</p>
-]]></summary>
-    <content type="html"><![CDATA[
-<p>这里是关于前端基础知识的文章。</p>
-]]></content>
-    <published>2023-03-02T05:00:27.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">浏览器概述</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/001-browser-overview.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/001-browser-overview.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<h2>浏览器内核</h2>
-<p>浏览器内核是浏览器的核心，也就是浏览器的<strong>排版引擎</strong>，分为两部分：</p>
-<ul>
-<li>将 HTML 和 CSS 渲染到浏览器上的<strong>渲染引擎</strong>，</li>
-<li>解析 JavaScript 的 <strong>JavaScript 引擎</strong>。</li>
-</ul>
-<p>最开始渲染引擎和 JS 引擎并没有明确的区分，后来 JS 引擎开始独立起来，慢慢发展到现在，内核一般指的是渲染引擎。</p>
-<p>不同的浏览器有不同的内核组成：</p>
-<ul>
-<li>Gecko：早期是 Netscape 和 Firefox 浏览器的内核；</li>
-<li>Trident：IE4 - IE11 的内核；</li>
-<li>Webkit：Safari 内核，Google Chrome 之前也使用过；</li>
-<li>Blink： Webkit 的一个分支，目前用于 Chrome、Edge、Opera 等。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<h2>浏览器内核</h2>
-<p>浏览器内核是浏览器的核心，也就是浏览器的<strong>排版引擎</strong>，分为两部分：</p>
-<ul>
-<li>将 HTML 和 CSS 渲染到浏览器上的<strong>渲染引擎</strong>，</li>
-<li>解析 JavaScript 的 <strong>JavaScript 引擎</strong>。</li>
-</ul>
-<p>最开始渲染引擎和 JS 引擎并没有明确的区分，后来 JS 引擎开始独立起来，慢慢发展到现在，内核一般指的是渲染引擎。</p>
-<p>不同的浏览器有不同的内核组成：</p>
-<ul>
-<li>Gecko：早期是 Netscape 和 Firefox 浏览器的内核；</li>
-<li>Trident：IE4 - IE11 的内核；</li>
-<li>Webkit：Safari 内核，Google Chrome 之前也使用过；</li>
-<li>Blink： Webkit 的一个分支，目前用于 Chrome、Edge、Opera 等。</li>
-</ul>
-<h2>JavaScript 引擎</h2>
-<p><strong>JavaScript 引擎</strong>是一个专门处理 JavaScript 脚本的虚拟机，一般会附带在网页浏览器之中，能为程序员提供部分操作浏览器的功能（网络、DOM、外部事件、HTML5 视频、canvas 和存储），并且用于将 JavaScript 代码翻译成 CPU 指令。比较常见的引擎有：</p>
-<ul>
-<li>SpiderMonkey：第一款 JavaScript 引擎，由 Brendan Eich 开发（也就是 JavaScript 作者）；</li>
-<li>Chakra（JScript 引擎）：微软开发，用于 IE 浏览器；</li>
-<li>Chakra（JavaScript 引擎）：微软开发，用于 Edge 浏览器；</li>
-<li>JavaScriptCore：WebKit 中的 JavaScript 引擎，Apple 公司开发，用于 Safari；</li>
-<li>V8：Google 开发的强大 JavaScript 引擎，C++ 编写。</li>
-</ul>
-]]></content>
-    <category term="浏览器"/>
-    <published>2022-01-13T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">浏览器渲染原理</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/002-how-browser-rendering-works.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/002-how-browser-rendering-works.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<p>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。</p>
-<h2>主要流程</h2>
-<p>渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下：</p>
-<figure><img src="/assets/image/frontend/browser/002/1-webkitflow.png" alt="webkit-flow" tabindex="0" loading="lazy"><figcaption>webkit-flow</figcaption></figure>
-<ol>
-<li>首先浏览器会解析 HTML 文档，将 HTML 解析成 DOM 树；CSS 样式表也会在同时进行加载，生成样式规则；而 JavaScript 会通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 Style Rules。</li>
-<li>解析完成后，渲染引擎会通过 DOM Tree 和 Style Rules 创造 Render Tree，此时会计算各个 DOM 在浏览器上的具体坐标。</li>
-<li>最后渲染引擎遍历整个 Render Tree，由 UI 后端层绘制。</li>
-</ol>]]></summary>
-    <content type="html"><![CDATA[<p>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。</p>
-<h2>主要流程</h2>
-<p>渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下：</p>
-<figure><img src="/assets/image/frontend/browser/002/1-webkitflow.png" alt="webkit-flow" tabindex="0" loading="lazy"><figcaption>webkit-flow</figcaption></figure>
-<ol>
-<li>首先浏览器会解析 HTML 文档，将 HTML 解析成 DOM 树；CSS 样式表也会在同时进行加载，生成样式规则；而 JavaScript 会通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 Style Rules。</li>
-<li>解析完成后，渲染引擎会通过 DOM Tree 和 Style Rules 创造 Render Tree，此时会计算各个 DOM 在浏览器上的具体坐标。</li>
-<li>最后渲染引擎遍历整个 Render Tree，由 UI 后端层绘制。</li>
-</ol>
-<p>整个渲染过程一个渐进的过程。为了更好的用户体验，渲染引擎将尽快在屏幕上显示内容。在开始构件和渲染 Render Tree 之前，它不会等到所有 HTML 都被解析。在部分内容被渲染的同时，渲染引擎会继续向服务器请求剩下的内容。</p>
-<h2>HTML 解析器</h2>
-<p>HTML 解析器的作用是将 HTML 解析成 DOM 树：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
-      Hello World
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example.png<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><figure><img src="/assets/image/frontend/browser/002/2-dom-tree.png" alt="dom tree" tabindex="0" loading="lazy"><figcaption>dom tree</figcaption></figure>
-<p>HTML 解析算法包括两个阶段：</p>
-<ol>
-<li>标记化：词法分析，将输入解析为标记。HTML 标记包括开始标记、结束标记、属性名称和属性值。标记器识别 token，将它传递给树构造器，然后接受下一个字符以识别下一个标记，直到输入的结束。</li>
-<li>树构建：构建成 DOM 树。</li>
-</ol>
-<figure><img src="/assets/image/frontend/browser/002/3-html-parse.png" alt="HTML 解析" tabindex="0" loading="lazy"><figcaption>HTML 解析</figcaption></figure>
-<h2>CSS 解析器</h2>
-<p>解析器都会将 CSS 文件解析成 StyleSheet 对象，且每个对象都包含 CSS 规则。CSS 规则对象则包含选择器和声明对象，以及其他与 CSS 语法对应的对象。</p>
-<figure><img src="/assets/image/frontend/browser/002/4-css-parse.png" alt="css 解析器" tabindex="0" loading="lazy"><figcaption>css 解析器</figcaption></figure>
-<h2>Render Tree</h2>
-<p>在 DOM 树构建的同时，浏览器还会构建另一个树结构：呈现树。这是由可视化元素按照其显示顺序而组成的树，也是文档的可视化表示。它的作用是让您按照正确的顺序绘制内容。</p>
-<p>Render Tree 和 DOM Tree 并不是一一对应的，非可视化的 DOM 元素不会插入呈现树中，例如 <code>head</code> 元素。如果元素的 <code>display</code> 属性值为 <code>none</code>，那么也不会显示在呈现树中（但是 <code>visibility</code> 属性值为 <code>hidden</code> 的元素仍会显示）。</p>
-<figure><img src="/assets/image/frontend/browser/002/5-render-tree.png" alt="render tree" tabindex="0" loading="lazy"><figcaption>render tree</figcaption></figure>
-<p>接下来浏览器需要做的就是计算样式，将每一个 Render 对象的可视化属性计算（根据一系列规则，如层叠性、选择器权重等）出来，但是在这个过程中，并不包含位置和大小信息。计算这些值的过程叫做布局或回流。</p>
-<blockquote>
-<p>关于回流和重绘在后面说。</p>
-</blockquote>
-<p>总之，到目前为止，渲染引擎已经经历了一系列的工作，可以将页面展示到浏览器上了。</p>
-<h2>参考链接</h2>
-<ol>
-<li><a href="https://www.html5rocks.com/en/tutorials/internals/howbrowserswork/#The_order_of_processing_scripts_and_style_sheets" target="_blank" rel="noopener noreferrer">How Browsers Work: Behind the scenes of modern web browsers - HTML5 Rocks</a></li>
-<li><a href="https://coolshell.cn/articles/9666.html" target="_blank" rel="noopener noreferrer">浏览器的渲染原理简介</a></li>
-<li><a href="https://zh.wiki.hancel.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">JavaScript引擎 - 维基百科</a></li>
-<li><a href="https://zh.m.wikipedia.org/wiki/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">浏览器引擎 - 维基百科</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1679313" target="_blank" rel="noopener noreferrer">浏览器内核及分类 - 腾讯云社区</a></li>
-</ol>
-]]></content>
-    <category term="浏览器"/>
-    <published>2021-12-16T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">V8 引擎</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/003-V8.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/003-V8.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<p>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。</p>
-<p>V8 由很多子模块构成，有几个核心模块：</p>
-<ul>
-<li>Parser：解析器，负责将 JavaScript 代码解析成抽象语法树（Abstract Syntax Tree, AST）；</li>
-<li>Ignition：解释器（interpreter），负责将 AST 转换为字节码（Bytecode）并执行；同时收集 TurboFan 优化编译所需的信息，比如函数参数的类型；</li>
-<li>TurboFan：编译器（compiler），利用 Ignition 所收集的信息，将字节码转换为优化的机器码；</li>
-<li>Orinoco：垃圾回收（garbage collector），负责将程序不再需要的内存空间回收。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。</p>
-<p>V8 由很多子模块构成，有几个核心模块：</p>
-<ul>
-<li>Parser：解析器，负责将 JavaScript 代码解析成抽象语法树（Abstract Syntax Tree, AST）；</li>
-<li>Ignition：解释器（interpreter），负责将 AST 转换为字节码（Bytecode）并执行；同时收集 TurboFan 优化编译所需的信息，比如函数参数的类型；</li>
-<li>TurboFan：编译器（compiler），利用 Ignition 所收集的信息，将字节码转换为优化的机器码；</li>
-<li>Orinoco：垃圾回收（garbage collector），负责将程序不再需要的内存空间回收。</li>
-</ul>
-<p>下面这张图是 V8 现有的工作流程，非常重要，在后面阅读的时候可以翻上来看看。</p>
-<figure><img src="/assets/image/frontend/browser/003/v8-work-flow.webp" alt="v8 工作流程" tabindex="0" loading="lazy"><figcaption>v8 工作流程</figcaption></figure>
-<h2>Parser</h2>
-<p>为了让 V8 能够理解 JavaScript 代码，必须先将源码通过 <strong>Parser</strong> 解析成抽象语法树——代表程序结构的一系列对象。然后抽象语法树会被 <strong>Ignition</strong> 编译成字节码。这两个阶段是 V8 引擎性能的关键。</p>
-<p>下图是 Parser 的工作流程：</p>
-<figure><img src="/assets/image/frontend/browser/003/parser.svg" alt="parser" tabindex="0" loading="lazy"><figcaption>parser</figcaption></figure>
-<p>整个流程分为两个阶段：词法分析和语法分析。</p>
-<ul>
-<li><strong>词法分析</strong>：scanner 从我们编写的 JavaScript 代码中生成一系列的 tokens。而 tokens 是由一个或多个具有单一语义的字符组成的块：字符串、标识符、运算符 <code>++</code> 等。</li>
-<li><strong>语法分析</strong>：语法分析的输入就是词法分析的输出（即 tokens），输出是 AST 抽象语法树。当程序出现语法错误的时候，V8 会在语法分析阶段抛出异常。</li>
-</ul>
-<p>V8 为了提升 scanner 性能，又做了<strong>延迟解析</strong>（lazy parsing）的优化，一些不会用到函数并不会被马上编译，他们会被 PreParser 处理，当以后调用一个 <code>preparsed</code> 函数时，它会根据需要进行完全解析和编译。</p>
-<h2>Ignition</h2>
-<p>当 Parser 将代码解析成 AST 输入给 Ignition，Ignition 会将 AST 转换为字节码，分三种情况：</p>
-<ul>
-<li>
-<p>函数只声明而不调用，则 Ignition 不会做任何操作；</p>
-</li>
-<li>
-<p>如果函数只调用一次，则 Ignition 会解释字节码并执行。下面来看看例子；</p>
-</li>
-<li>
-<p>如果函数调用多次，则 Ignition 会收集 TurboFan 优化所需的信息（比如函数参数的类型信息等）。</p>
-</li>
-</ul>
-<p>下面来看看例子。</p>
-<ol>
-<li>
-<p>只是声明函数 <code>add</code>，但是没有调用，则 Ignition 不会做任何转换。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div></li>
-<li>
-<p>声明后第一次调用 <code>add</code> 函数，Ignition 会把它编译成字节码执行。到这个时候，JavaScript 代码就已经执行完成了。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div></li>
-<li>
-<p>但是如果发现有<strong>热点函数</strong>（即一个函数被多次调用），Ignition 就会收集 <code>add</code> 函数的各种参数类型，为 TurboFan 的优化提供支持。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 调用多次，标记成热点函数，收集各种信息</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div></li>
-</ol>
-<h2>TurboFan</h2>
-<p>TurboFan 是一个编译器，可以将字节码编译为 CPU 可以直接执行的机器码。如果一个函数被多次调用，就会被标记为<strong>热点函数</strong>，那么就会经过 TurboFan 转换成优化的机器码，提高代码的执行性能。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">%</span><span class="token function">OptimizeFunctionOnNextCall</span><span class="token punctuation">(</span>add<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p>V8 的 <code>%OptimizeFunctionOnNextCall</code> 可以直接指定优化哪个函数，它根据上次调用的参数反馈优化 <code>add</code> 函数，很明显这次的反馈是整型数，所以 TurboFan 会根据参数是整型数进行优化直接生成机器码，下次函数调用直接调用优化好的机器码。</p>
-<p>但是，机器码实际上也会被还原为字节码，这是因为如果后续执行函数的过程中，类型发生了变化（比如 <code>add</code> 函数原来执行的是 <code>number</code> 类型，后来执行变成了 <code>string</code> 类型），之前优化的机器码并不能正确的处理运算，就会逆向的转换成字节码。这个就是最上面那个图还有个 <code>Deoptimization</code> 的原因。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><blockquote>
-<p>到此，V8 引擎的工作流程就已经完成了，但是还没有细究里面的执行细节，只是大概地了解了工作流程，等以后能完全看懂官方文章了再回来更新。</p>
-</blockquote>
-<h2>参考链接</h2>
-<ol>
-<li><a href="https://zh.wikipedia.org/wiki/JavaScript%E5%BC%95%E6%93%8E" target="_blank" rel="noopener noreferrer">JavaScript 引擎 - 维基百科</a></li>
-<li><a href="https://blog.fundebug.com/2019/07/16/how-does-v8-work/" target="_blank" rel="noopener noreferrer">JavaScript深入浅出第4课：V8引擎是如何工作的？</a></li>
-<li><a href="https://v8.dev/blog/scanner" target="_blank" rel="noopener noreferrer">Blazingly fast parsing, part 1: optimizing the scanner</a></li>
-<li><a href="https://v8.dev/blog/preparser" target="_blank" rel="noopener noreferrer">Blazingly fast parsing, part 2: lazy parsing · V8</a></li>
-<li><a href="https://v8.dev/blog/ignition-interpreter" target="_blank" rel="noopener noreferrer">Firing up the Ignition interpreter · V8</a></li>
-<li><a href="https://mp.weixin.qq.com/s/t__Jqzg1rbTlsCHXKMwh6A" target="_blank" rel="noopener noreferrer">JavaScript 引擎 V8 执行流程概述</a></li>
-</ol>
-]]></content>
-    <category term="浏览器"/>
-    <published>2022-01-13T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">JavaScript 内存管理</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/004-memory-management.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/004-memory-management.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<p>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（<code>malloc()</code>），不需要用了之后在释放内存空间（<code>free()</code>）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为<strong>垃圾回收</strong>。</p>
-<p>虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的：</p>
-<ol>
-<li>分配你所需要的内存</li>
-<li>使用分配到的内存（读、写）</li>
-<li>不需要时将其释放</li>
-</ol>
-<p>第二步的使用内存就很常见了，我们写的代码就是这一步，因此这里介绍第一步和第三步的基本内容。</p>]]></summary>
-    <content type="html"><![CDATA[<p>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（<code>malloc()</code>），不需要用了之后在释放内存空间（<code>free()</code>）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为<strong>垃圾回收</strong>。</p>
-<p>虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的：</p>
-<ol>
-<li>分配你所需要的内存</li>
-<li>使用分配到的内存（读、写）</li>
-<li>不需要时将其释放</li>
-</ol>
-<p>第二步的使用内存就很常见了，我们写的代码就是这一步，因此这里介绍第一步和第三步的基本内容。</p>
-<h2>分配内存空间</h2>
-<p>现在来看看 V8 引擎是如何给不同变量分配内存的。</p>
-<p>V8 主要有三种内存空间：</p>
-<ul>
-<li>代码空间：主要存储可执行代码；</li>
-<li>栈空间：JavaScript 对于<strong>基本数据类型</strong>内存的分配会在执行时直接在栈空间进行分配；</li>
-<li>堆空间：JavaScript 对于<strong>复杂数据类型</strong>内存的分配会在堆内存中开辟一块空间，并且将这块空间的指针（地址）返回给变量引用（存放在栈空间）。</li>
-</ul>
-<p>下面看看例子：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> 
-	<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"heap"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre></div><p>当代码执行到第二行时，栈底是 <code>a</code>，栈顶是 <code>b</code>，此时 <code>b</code> 的值是一个复杂数据类型，那么会在堆空间中为这个数据分配一个空间，并把 <code>b</code> 的变量值赋值为这个空间的地址。</p>
-<figure><img src="/assets/image/frontend/browser/004/V8-stack-heap.png" alt="堆和栈" tabindex="0" loading="lazy"><figcaption>堆和栈</figcaption></figure>
-<p>那么，为什么要将复杂数据类型放在堆空间，而不是一起放在栈空间呢？</p>
-<p>因为 V8 引擎需要用栈来维护程序执行期间上下文的状态，如果栈空间分配的内存过大，那么会影响到上下文切换的效率，从而导致代码执行速度过慢。</p>
-<p>因此，栈空间不会设置太大，主要用来存放基本数据类型（占用空间小），而像复杂数据类型，因为他们的占用空间一般较大，因此会被存放在堆空间中。</p>
-<h2>常见的垃圾回收算法</h2>
-<p>了解了如何分配不同变量的内存后，第二步的读写其实已经包含在代码里了，最关键的一步就是如何将不再需要的<strong>内存回收</strong>。</p>
-<p>在整个垃圾回收的过程中，最困难的地方在于如何找到“哪些被分配的内存确实已经不再需要了”，而这个步骤没有任何算法可以准确的判断，只是一个近似的过程。</p>
-<p>下面先介绍几种常见的垃圾回收算法，再介绍 V8 的垃圾回收机制。</p>
-<h3>引用计数算法</h3>
-<p>这是最初级的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。当一个对象有一个引用指向它时，它的引用数就会 <code>+1</code>；当没有引用时，即引用数为 <code>0</code>，这个对象就可以被销毁了。</p>
-<p>但是一个很大的弊端是会产生循环引用。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token keyword">var</span> o2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  o<span class="token punctuation">.</span>a <span class="token operator">=</span> o2<span class="token punctuation">;</span> <span class="token comment">// o 引用 o2</span>
-  o2<span class="token punctuation">.</span>a <span class="token operator">=</span> o<span class="token punctuation">;</span> <span class="token comment">// o2 引用 o</span>
-
-  <span class="token keyword">return</span> <span class="token string">"azerty"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p>在执行 <code>f()</code> 时，创建了两个对象并相互引用。函数执行结束后，会离开函数作用域，因此它们已经没有用了，按照常理来说应该被销毁。但是因为它们至少都有一次引用，所以不会被回收，造成内存泄露。</p>
-<h3>标记清除算法</h3>
-<p>这个算法把“对象是否不再需要”简化定义为“对象是否可以获得”，简称“可达性”。</p>
-<p>这个算法假定设置一个叫做根（root）的对象（在Javascript里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象。</p>
-<img src="/assets/image/frontend/browser/004/mark-clear.png" width="50%" height="50%">
-<p>在上图中，<code>g</code> 和 <code>h</code> 对象互相引用，如果采用<strong>引用计数算法</strong>，那么这两个对象将不会被垃圾回收。但是使用标记清除算法，因为根对象没有对它们引用，因此会被垃圾回收。这样，循环引用的问题就不存在了。</p>
-<h2>V8 垃圾回收机制</h2>
-<p>在过去几年，V8 垃圾回收发生了很多变化。以前的垃圾回收器是一个连续的过程，在进行垃圾回收的过程中会暂停其他活动（全停顿，stop-the-world），而现在 V8 的垃圾回收器转变成了具有<strong>增量回退</strong>的<strong>并行</strong>、<strong>并发</strong>垃圾回收器。</p>
-<p>任何垃圾回收器都会执行下面几个基本任务：</p>
-<ol>
-<li>
-<p><strong>标记</strong>活动对象和非活动对象</p>
-</li>
-<li>
-<p><strong>回收或者重排</strong>非活动对象占据的内存</p>
-</li>
-<li>
-<p><strong>合并或者整理</strong>内存（可选）</p>
-</li>
-</ol>
-<p>这些任务可以按顺序执行，也可以任意交错执行。一种直接的方法是暂停 JavaScript 执行，并在主线程上按顺序执行这些任务。这可能会导致主线程出现卡顿和延迟问题，并降低程序吞吐量。</p>
-<h3>V8 内存限制</h3>
-<p>在介绍 V8 垃圾回收机制之前，我们先来探讨一下为什么需要垃圾回收。</p>
-<ul>
-<li>当创建一个对象时，就会分配大量内存</li>
-<li>在 V8 中限制 64 位的机器大约 1.4GB，32 位机器大约为 0.7GB</li>
-<li>操作系统会自动进行栈内存的分配和释放，而堆内存，则由 V8 引擎进行释放</li>
-</ul>
-<h3>分代堆布局</h3>
-<p>V8 中的堆被分成不同的区域，称为代：分为新生代（进一步分为 <code>nursery</code> 和 <code>intermediate</code>），和一个老生代。对象首先被分配到 <code>nursery</code>。如果它们在下一个 GC 中幸存下来，这时候我们把它们移动到<code>intermediate</code> 子代，如果再经过下一次垃圾回收这个对象仍然存活，这时候我们就会把这个对象移动到老生代（这个策略称为<strong>对象晋升策略</strong>）。</p>
-<figure><img src="/assets/image/frontend/browser/004/generations.svg" alt="分代布局" tabindex="0" loading="lazy"><figcaption>分代布局</figcaption></figure>
-<blockquote>
-<p>在垃圾回收中有一个重要的术语：“代际假说”，指大多数对象在新生代就会被回收。从垃圾回收的角度来看，大部分对象一经分配之后就几乎马上变成不可达状态。</p>
-</blockquote>
-<p>根据 V8 堆中分为不同的区域，可以容易地想到 V8 有两个不同的垃圾回收器：清理新生区的副垃圾回收器和清理老生区的主垃圾回收器。</p>
-<p>下面就一一介绍 V8 中的两个垃圾回收器。</p>
-<h3>副垃圾回收器——清道夫（Scavenge）</h3>
-<p>副垃圾回收器（Scavenger）从新生代中回收垃圾。</p>
-<p>在清理时，初始的空闲区域称之为 <code>To-Space</code>，复制对象过来的区域称之为<code>From-Space</code>；在最坏的情况下，如果每一个对象在清理的时候存活了下来，那我们就要从 <code>From-Space</code> 复制每一个对象到 <code>To-Space</code> 中。</p>
-<p>清除步骤（Evacuation）会将所有的活动对象移动到连续的一块内存中，并且标记它们（图中的小圆圈，代表已经经历过一次 GC）；然后会将两块内存空间互换，即把 <code>To-Space</code> 变成 <code>From-Space</code>，<code>From-Space</code> 变成 <code>To-Space</code>。</p>
-<figure><img src="/assets/image/frontend/browser/004/Scavenge-1.svg" alt="副垃圾回收器-1" tabindex="0" loading="lazy"><figcaption>副垃圾回收器-1</figcaption></figure>
-<p>如果仅仅是凭借这一策略，我们就会很快的耗尽新生代的内存空间；为了新生代的内存空间不被耗尽，在下一次垃圾回收的时候，我们会把活动对象移动（evacuate）到老生代，而不是 <code>To-Space</code>。</p>
-<p>在下图中，两块内存空间已经互换，而且 <code>From-Space</code> 又有一个新的对象，假定这个对象在第一次 GC 时存活了下来，那么它将被复制到 <code>To-Space</code> 中。而 <code>From-Space</code> 中已经经历过一次 GC 的对象（通过这个小圆圈的标记得知），假如它们又存活下来，则会被复制到老生区（<strong>对象晋升策略</strong>）。</p>
-<p>Scavenge 的最后一步是把移动后的对象的指针地址更新，每一个被复制对象都会留下一个转发地址（forwarding-address），用于更新指针以指向新的地址。</p>
-<figure><img src="/assets/image/frontend/browser/004/Scavenge-2.svg" alt="副垃圾回收器-2" tabindex="0" loading="lazy"><figcaption>副垃圾回收器-2</figcaption></figure>
-<p>在副垃圾回收器回收过程中，实际上执行了三个步骤：标记、清除和指针更新。</p>
-<h3>主垃圾回收器 —— 全量标记和整理（Full Mark-Compact）</h3>
-<p>主垃圾回收器从整个堆（heap）中收集垃圾。</p>
-<figure><img src="/assets/image/frontend/browser/004/three-phases.svg" alt="three-phases" tabindex="0" loading="lazy"><figcaption>three-phases</figcaption></figure>
-<p>标记阶段是利用对象的可达性确定对象是否活跃。从初始的根对象开始，垃圾回收器会跟踪每一个指向其他对象的指针，将其标记为可访问的，同时跟踪对象中每一个属性的指针。整个过程递归进行，直到标记到运行时每一个可访问的对象。</p>
-<img src="/assets/image/frontend/browser/004/marking.png" width="40%">
-<p>清除阶段将非活动对象进行清除。</p>
-<img src="/assets/image/frontend/browser/004/sweeping.png" width="40%">
-<p>一般来说，频繁回收对象后，内存中就会存在大量不连续空间，我们把这些不连续的内存空间称为内存碎片。当内存中出现了大量的内存碎片之后，如果需要分配较大连续内存的时候，就有可能出现内存不足的情况。所以最后一步需要整理这些内存碎片，但这步其实是可选的，因为有的垃圾回收器不会产生内存碎片。</p>
-<img src="/assets/image/frontend/browser/004/compaction.png" width="40%">
-<h2>Orinoco</h2>
-<p>Orinoco 是 V8 垃圾回收器项目的代号，它利用最新的和最好的垃圾回收技术来降低主线程挂起的时间， 比如：并行（parallel）垃圾回收，增量（incremental）垃圾回收和并发（concurrent）垃圾回收。</p>
-<p>2011 年，V8 从 stop-the-world 标记切换到增量标记。</p>
-<p>2018 年，GC 技术又有了一个重大突破，这项技术名为并发标记。在 Chrome 64 和Node.js v10 中已启用，它将标记时间缩短了60%<sub>70%。还有并行技术，它将新生代的垃圾回收时间缩短了20%</sub>50%。</p>
-<h3>并行垃圾回收（Parallel）</h3>
-<p>并行是主线程和协助线程同时执行同样的工作，但是这仍然是一种 <code>stop-the-world</code> 的垃圾回收方式，但是垃圾回收全停顿时间等于总时间除以参与的线程数量（加上一些同步开销）。</p>
-<figure><img src="/assets/image/frontend/browser/004/parallel.svg" alt="parallel" tabindex="0" loading="lazy"><figcaption>parallel</figcaption></figure>
-<h3>增量垃圾回收（Incremental）</h3>
-<p>增量式垃圾回收是主线程间歇性的去做少量的垃圾回收的方式。同时让垃圾回收和 JavaScript 应用逻辑交替进行，这意味着堆的状态可能已经发生了变化，有可能会导致之前的增量回收工作完全无效。</p>
-<p>从图中可以看出并没有减少主线程暂停的总时间（事实上，通常会略微增加）。通过允许 JavaScript 间歇执行，同时也间歇性地去做垃圾回收工作，应用程序仍然可以在用户输入或者执行动画的时候得到及时的响应。</p>
-<figure><img src="/assets/image/frontend/browser/004/incremental.svg" alt="incremental" tabindex="0" loading="lazy"><figcaption>incremental</figcaption></figure>
-<h3>并发垃圾回收（Concurrent）</h3>
-<p>并发是主线程持续执行 JavaScript，而辅助线程完全在后台执行垃圾回收。这种方式是这三种技术中最难的一种：JavaScript 堆里面的内容随时都有可能发生变化，从而使之前做的工作完全无效，主线程和辅助线程极有可能在同一时间去更改同一个对象。这种方式的优势也非常明显，主线程不会被挂起，JavaScript 可以自由地执行。</p>
-<figure><img src="/assets/image/frontend/browser/004/concurrent.svg" alt="concurrent" tabindex="0" loading="lazy"><figcaption>concurrent</figcaption></figure>
-<h2>总结</h2>
-<p>首先介绍了内存管理的一般流程，分为三大步，可以自己回想一下。</p>
-<p>然后是 V8 如何分配内存：基本数据类型存放在栈空间，复杂数据类型存放在堆空间，以及为什么要这样做。</p>
-<p>接着又介绍了常见的垃圾回收算法，主要包括引用计数法和标记清除法。</p>
-<p>最后介绍了 V8 的垃圾回收机制以及做出的优化。</p>
-<h2>参考链接</h2>
-<p><a href="https://v8.dev/blog/trash-talk" target="_blank" rel="noopener noreferrer">Trash talk: the Orinoco garbage collector · V8</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferrer">内存管理 - JavaScript | MDN (mozilla.org)</a></p>
-<p><a href="https://time.geekbang.org/column/article/129596" target="_blank" rel="noopener noreferrer">12 | 栈空间和堆空间：数据是如何存储的？</a></p>
-<p><a href="https://juejin.cn/post/6844904016325902344" target="_blank" rel="noopener noreferrer">一文搞懂V8引擎的垃圾回收</a></p>
-<p><a href="https://www.nodejs.red/#/nodejs/memory?id=v8%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6" target="_blank" rel="noopener noreferrer">Memory 内存管理和 V8 垃圾回收机制 (nodejs.red)</a></p>
-]]></content>
-    <category term="浏览器"/>
-    <published>2022-01-13T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">浏览器</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/browser/</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/"/>
-    <updated>2023-03-02T05:00:27.000Z</updated>
-    <summary type="html"><![CDATA[
-<p>这里是关于浏览器的文章。</p>
-]]></summary>
-    <content type="html"><![CDATA[
-<p>这里是关于浏览器的文章。</p>
-]]></content>
-    <published>2023-03-02T05:00:27.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">前端框架</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/"/>
-    <updated>2023-03-02T05:00:27.000Z</updated>
-    <summary type="html"><![CDATA[
-<p>这里是关于前端框架的文章。</p>
-]]></summary>
-    <content type="html"><![CDATA[
-<p>这里是关于前端框架的文章。</p>
-]]></content>
-    <published>2023-03-02T05:00:27.000Z</published>
-  </entry>
-  <entry>
     <title type="text">二叉树</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/0001%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/algorithm/0001%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
@@ -11805,6 +11461,425 @@ $ <span class="token function">git</span> <span class="token function">add</span
 <ul>
 <li></li>
 </ul>
+]]></content>
+    <published>2023-03-02T05:00:27.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">网络模型</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/001-network-model.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/001-network-model.html"/>
+    <updated>2024-02-07T05:30:24.000Z</updated>
+    <summary type="html"><![CDATA[<h2>TCP/IP 网络体系</h2>
+<p>TCP/IP 体系结构分为四层，是事实上的国际标准，各层如下所示：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>--- 应用层 ---
+--- 运输层 ---
+--- 网络层 ---
+--- 网络接口层 ---
+</code></pre></div><ul>
+<li><strong>应用层</strong> 为用户提供应用功能，拥有不同的应用层协议，用来定义应用进程间的交互规则，以完成特定的网络应用，例如 HTTP（万维网）、SMTP（电子邮件）、DNS（域名查询）、FTP（文件传输） 等等；</li>
+<li><strong>运输层</strong> 负责为 <strong>两台主机中的进程</strong> 提供通信服务，其中的两个重要协议是 TCP 和 UDP：
+<ul>
+<li>TCP 提供 <strong>面向连接的、可靠的</strong> 数据传输服务；</li>
+<li>UDP 提供 <strong>无连接的、不可靠的</strong> 传输服务。</li>
+</ul>
+</li>
+<li><strong>网络层</strong> 中负责为两台主机提供通信服务，选择合适的路由将数据传递到目标主机，它的核心协议是 IP 协议；</li>
+<li><strong>网络接口层</strong> 并没有规定什么具体的内容，目的是可以互联全世界不同的网络接口。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2>TCP/IP 网络体系</h2>
+<p>TCP/IP 体系结构分为四层，是事实上的国际标准，各层如下所示：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code></code></pre></div>]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTP 概述</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/002-HTTP-overview.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/002-HTTP-overview.html"/>
+    <updated>2024-02-07T06:34:07.000Z</updated>
+    <summary type="html"><![CDATA[<p>超文本传输协议（HyperText Transfer Protocol, HTTP）一般是用于浏览器和服务器之间传输文字、图片、音频视频等超文本数据的应用层协议。</p>
+<h2>HTTP 协议特性</h2>
+<ul>
+<li>简单：HTTP 基本的报文格式就是 header + body，头部信息也是 key-value 的简单文本形式，易于理解，降低了学习和使用的门槛。</li>
+<li>灵活易扩展：HTTP/1.0 出现的 HTTP headers 让协议扩展变得非常容易，只要服务端和客户端对新 headers 达成语义一致，新功能就可以被添加进来。</li>
+<li>无连接：每次连接只处理一个请求。服务器处理完客户端的请求，并收到客户端的应答后，就会断开连接，HTTP 1.1 可以开启长连接。</li>
+<li>无状态：对于事物处理没有记忆能力。因此浏览器无法保存用户的登录信息，每次进行需要登录才能执行的操作时，都需要输入用户名和密码。而 cookie 可以创建有状态的会话。好处在于服务器不会记忆 HTTP 的状态，能减轻服务器的压力。</li>
+<li>明文传输：给调试带来便利性，但是用户毫无隐私可言，不安全。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>超文本传输协议（HyperText Transfer Protocol, HTTP）一般是用于浏览器和服务器之间传输文字、图片、音频视频等超文本数据的应用层协议。</p>
+<h2>HTTP 协议特性</h2>
+<ul>
+<li>简单：HTTP 基本的报文格式就是 header + body，头部信息也是 key-value 的简单文本形式，易于理解，降低了学习和使用的门槛。</li>
+<li>灵活易扩展：HTTP/1.0 出现的 HTTP headers 让协议扩展变得非常容易，只要服务端和客户端对新 headers 达成语义一致，新功能就可以被添加进来。</li>
+<li>无连接：每次连接只处理一个请求。服务器处理完客户端的请求，并收到客户端的应答后，就会断开连接，HTTP 1.1 可以开启长连接。</li>
+<li>无状态：对于事物处理没有记忆能力。因此浏览器无法保存用户的登录信息，每次进行需要登录才能执行的操作时，都需要输入用户名和密码。而 cookie 可以创建有状态的会话。好处在于服务器不会记忆 HTTP 的状态，能减轻服务器的压力。</li>
+<li>明文传输：给调试带来便利性，但是用户毫无隐私可言，不安全。</li>
+</ul>
+<h2>HTTP 报文格式</h2>
+<h3>请求报文格式</h3>
+<p>客户端发送 HTTP 请求到服务器的请求消息：<strong>请求行、请求头、空行和请求体四个部分组成。</strong></p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>POST / HTTP1.1
+Host:www.wrox.com
+User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)
+Content-Type:application/x-www-form-urlencoded
+Content-Length:40
+Connection: Keep-Alive
+
+name=Professional%20Ajax&amp;publisher=Wiley
+</code></pre></div><p>第一部分：请求行，请求方法 + URI + HTTP 版本。</p>
+<p>第二部分：请求头部。</p>
+<p>第三部分：空行。</p>
+<p>第四部分：请求数据。</p>
+<h3>响应报文格式</h3>
+<p>服务器响应也由四个部分组成，分别是：<strong>响应行、响应头、空行和响应体</strong>。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>HTTP/1.1 200 OK
+Date: Fri, 22 May 2009 06:07:21 GMT
+Content-Type: text/html; charset=UTF-8
+
+&lt;html&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;!--body goes here--&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><h2>HTTP 常见状态码</h2>
+<ul>
+<li>1xx：提示信息，表示目前是协议处理的中间状态，还需进一步操作；</li>
+<li>2xx：成功，表示请求已被成功收到并正确处理；</li>
+<li>3xx：重定向，资源位置发生变动，需要客户端重新发送请求；</li>
+<li>4xx：客户端错误，请求报文有误，服务器无法处理；</li>
+<li>5xx：服务器错误，服务器在处理请求时内部发生了错误。</li>
+</ul>
+<p>| 常见状态码                | 状态描述                                                         |<br>
+|</p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-04-20T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTP 性能演变</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/004-HTTP-development.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/004-HTTP-development.html"/>
+    <updated>2024-02-07T05:30:24.000Z</updated>
+    <summary type="html"><![CDATA[<p>整个 HTTP 的演变史就是一个在不断优化性能的过程。</p>
+<h2>HTTP/0.9 - 单行协议</h2>
+<p>最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。</p>
+<p>HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>GET /mypage.html
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>整个 HTTP 的演变史就是一个在不断优化性能的过程。</p>
+<h2>HTTP/0.9 - 单行协议</h2>
+<p>最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。</p>
+<p>HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>GET /mypage.html
+</code></pre></div><p>HTTP/0.9 的响应内容不包含 HTTP 头，这意味着只有 HTML 文件可以传送，无法传送其他类型的文件；也没有状态码或错误代码；一旦出现问题，一个特殊的包含问题描述信息的 HTML 文件将会被返回。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>&lt;HTML&gt;
+这是一个非常简单的HTML页面
+&lt;/HTML&gt;
+</code></pre></div><p><strong>总结：</strong></p>
+<ul>
+<li>请求只有一个请求行；</li>
+<li>响应只有一个响应体，且只能返回 HTML 文件；</li>
+</ul>
+<h2>HTTP/1.0 - 构建可扩展性</h2>
+<p>由于 HTTP/0.9 协议的应用十分有限，HTTP/1.0 在其基础上增加了很多新特性：</p>
+<ul>
+<li>协议版本信息现在会随着每个请求行发送。</li>
+<li>状态码在响应开始时发送，使浏览器能了解请求执行成功或失败，并调整相应行为（如更新或使用本地缓存）。</li>
+<li>引入了 HTTP 头的概念，使协议变得灵活易扩展。</li>
+<li>Content-Type 头使传输除 HTML 文件以为其他类型文件的可能。</li>
+</ul>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>// 请求
+GET /mypage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+// 响应
+200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+&lt;HTML&gt;
+一个包含图片的页面
+  &lt;IMG SRC="/myimage.gif"&gt;
+&lt;/HTML&gt;
+</code></pre></div><h2>HTTP/1.1</h2>
+<p>HTTP/1.0 采用短连接方式，即每次请求一个文件都需要和浏览器建立 TCP 连接，当收到响应后就会立即关闭连接，这样会造成不必要的时间开销。</p>
+<p>为了减少时延，浏览器通常会建立多个并行的 TCP 连接同时请求多个对象。但是这会占用大量服务器的资源。</p>
+<p>HTTP/1.1 相比于 HTTP/1.0 性能上的改进：</p>
+<ul>
+<li>使用 TCP 长连接的方式改善了 HTTP/1.0 短连接造成的性能开销；</li>
+<li>支持管道网络传输，只要第一个请求发出，不必等待响应，就可以直接发送第二个请求，减少整体的响应时间（流水线方式工作）。</li>
+</ul>
+<p>但是 HTTP/1.1 还是有性能瓶颈：</p>
+<ul>
+<li>只能压缩 body 部分，请求/响应头部未经压缩就发送，头部信息越多延迟越大；</li>
+<li>发送冗长的首部，每次互相发送相同的首部造成的浪费比较多；</li>
+<li>服务器是按请求顺序响应的，如果服务器响应过慢，会导致客户端一直请求不到后面的数据，也就是<strong>队头阻塞</strong>；</li>
+<li>没有请求优先级控制；</li>
+<li>请求只能从客户端开始，服务器只能被动响应。</li>
+</ul>
+<h2>HTTP/2.0</h2>
+<p>HTTP/2.0 是基于 HTTPS 的，所以安全性有所保证。HTTP/2.0 相比 HTTP/1.1 性能上的改进：</p>
+<ul>
+<li>头部压缩：如果同时发出多个请求，他们的头是一样或相似的，那么协议会消除重复的部分；</li>
+<li>采用二进制格式：头信息和数据体都是二进制，并统称为帧，头信息帧和数据帧，增加了数据传输的效率；</li>
+<li>多路复用：可以在一个连接中并发多个请求或响应，而不用按照顺序一一对应，解决了队头阻塞的问题；</li>
+<li>可以指定数据流的优先级；</li>
+<li>服务器可以主动向客户端发送消息。</li>
+</ul>
+<p>缺陷在于：多个 HTTP 请求复用一个 TCP 连接，一旦发生丢包现象，就会触发 TCP 的重传机制，这样在一个 TCP 连接中的所有 HTTP 请求都必须等待这个丢了的包被重传回来。</p>
+<h2>HTTP/3.0</h2>
+<p>HTTP/2.0 基于 TCP 传输层，导致丢包下阻塞所有 HTTP 请求的问题，因此 HTTP/3.0 把 HTTP 下层的 TCP 协议改成了 UDP。</p>
+<p>UDP 是不可靠传输，但是基于 UDP 的 QUIC 协议可以实现类似 TCP 的可靠传输。</p>
+<h2>参考链接</h2>
+<p><a href="https://xiaolincoding.com/network/2_http/http_interview.html#http-1-1%E3%80%81http-2%E3%80%81http-3-%E6%BC%94%E5%8F%98" target="_blank" rel="noopener noreferrer">3.1 HTTP 常见面试题 | 小林 coding (xiaolincoding.com)</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#%E5%90%8Ehttp2%E8%BF%9B%E5%8C%96" target="_blank" rel="noopener noreferrer">HTTP 的发展 - HTTP | MDN (mozilla.org)</a></p>
+<p><a href="https://www.bilibili.com/video/BV1c4411d7jb?p=73" target="_blank" rel="noopener noreferrer">计算机网络微课堂（有字幕无背景音乐版）_哔哩哔哩_bilibili</a></p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-04-26T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTP 缓存</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/005-HTTP-cache.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/005-HTTP-cache.html"/>
+    <updated>2024-02-07T05:30:24.000Z</updated>
+    <summary type="html"><![CDATA[<p>对于一些相同的请求，通过复用以前获取的资源，显著提高网页的性能。Web 缓存减少了等待时间和流量，因此减少了显示资源的渲染时间。</p>
+<p>HTTP 缓存的实现有两种方式，分别是<strong>强制缓存</strong>和<strong>协商缓存</strong>。</p>
+<h2>强缓存</h2>
+<p>强缓存是指：只要浏览器判断缓存没有过期，则直接使用本地缓存，不会向服务器发送请求。</p>
+<p>强缓存是利用下面这两个字段实现的，它们都用来表示资源在客户端缓存的有效期。</p>
+<ul>
+<li><code>Expires</code>：绝对时间；</li>
+<li><code>Cache-Control</code>：缓存指令。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>对于一些相同的请求，通过复用以前获取的资源，显著提高网页的性能。Web 缓存减少了等待时间和流量，因此减少了显示资源的渲染时间。</p>
+<p>HTTP 缓存的实现有两种方式，分别是<strong>强制缓存</strong>和<strong>协商缓存</strong>。</p>
+<h2>强缓存</h2>
+<p>强缓存是指：只要浏览器判断缓存没有过期，则直接使用本地缓存，不会向服务器发送请求。</p>
+<p>强缓存是利用下面这两个字段实现的，它们都用来表示资源在客户端缓存的有效期。</p>
+<ul>
+<li><code>Expires</code>：绝对时间；</li>
+<li><code>Cache-Control</code>：缓存指令。</li>
+</ul>
+<h3>Expires</h3>
+<p>响应头包含的日期时间，在这个时间前，浏览器都不会再发起请求，而是直接使用缓存资源。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token literal-property property">Expires</span><span class="token operator">:</span> Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">:</span><span class="token number">00</span> <span class="token constant">GMT</span>
+</code></pre></div><h3>Cache-Control</h3>
+<p>通用消息头字段，通过指定指令来实现缓存机制。缓存指令是单向的，这意味着在请求中设置的指令，不一定被包含在响应中。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>Cache<span class="token operator">-</span>Control<span class="token operator">:</span> max<span class="token operator">-</span>age<span class="token operator">=</span><span class="token number">20000</span>
+</code></pre></div><p><code>max-age=&lt;seconds&gt;</code> 可以设置过期时间（单位秒），相对于请求的时间计算。</p>
+<p>具体流程：</p>
+<ol>
+<li>当浏览器第一次向服务器发起请求时，服务器响应头会带上 <code>Cache-Control</code>，其中设置了过期时间 <code>max-age</code>；</li>
+<li>浏览器再次向服务器发起请求后，会计算<strong>当前请求时间和过期时间</strong>差值，来判断是否过期，如果过期则重新请求服务器，否则使用本地缓存；</li>
+<li>如果已经过期，服务器再次收到请求后，会更新响应头的 <code>Cache-Control</code>。</li>
+</ol>
+<p>除了 <code>max-age</code> 外，还有其他指令，详见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener noreferrer">Cache-Control</a>。</p>
+<h3>优先级</h3>
+<p>当同时有 <code>Expires</code> 和 <code>Cache-Control</code> 字段时，如果 <code>Cache-Control</code> 响应头设置了 <code>max-age</code> 或 <code>s-maxage</code> 指令，那么 <code>Expires</code> 会被忽略。</p>
+<h2>协商缓存</h2>
+<p>为了知道服务器有没有更新内容，必须和服务器沟通，然后根据服务器返回的信息判断是否使用本地缓存，这种方式称为<strong>协商缓存</strong>。</p>
+<p>协商缓存通过两种头部实现：</p>
+<ul>
+<li>请求头部的 <code>If-Modified-Since</code> 和响应头部的 <code>Last-Modified</code>；</li>
+<li>请求头部的 <code>If-None-Match</code> 和响应头部的 <code>ETag</code>。</li>
+</ul>
+<h3><code>If-Modified-Since</code> 和 <code>Last-Modified</code></h3>
+<p>这种方式是基于时间实现的。</p>
+<p>响应头 <code>Last-Modified</code> 存放的是资源最后修改时间：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>Last<span class="token operator">-</span>Modified<span class="token operator">:</span> Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">:</span><span class="token number">00</span> <span class="token constant">GMT</span>
+</code></pre></div><p>请求头中的 <code>If-Modified-Since</code> 含义为资源从 xxx 时间后是否有更新：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>If<span class="token operator">-</span>Modified<span class="token operator">-</span>Since<span class="token operator">:</span> Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">:</span><span class="token number">00</span> <span class="token constant">GMT</span>
+</code></pre></div><p>当服务器收到浏览器这个请求头后，会跟当前版本的时间进行比较：</p>
+<ol>
+<li>当前版本的修改时间比这个晚，也就是内容发生变化了，那么会返回 200 和新的内容；</li>
+<li>若当前版本的修改时间较早，也就是没有更新，那么会返回 304，浏览器会从缓存中读取内容。</li>
+</ol>
+<h3><code>ETag</code> 和 <code>If-None-Match</code></h3>
+<p>这种方式是通过唯一标识实现。</p>
+<p><code>ETag</code> 是资源的特定版本的标识符，响应头会根据返回内容返回一个标识符，具体返回值看服务器的计算策略，可能如下所示：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token literal-property property">ETag</span><span class="token operator">:</span> <span class="token string">'33a64df551425fcc55e4d42a148795d9f25f89d4'</span>
+</code></pre></div><p>当客户端收到这个响应后，会将这个 <code>ETag</code> 保存起来，等下个请求时，会将它放到请求体的 <code>If-None-Match</code> 字段中：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>If<span class="token operator">-</span>None<span class="token operator">-</span>Match<span class="token operator">:</span> <span class="token string">"33a64df551425fcc55e4d42a148795d9f25f89d4"</span>
+</code></pre></div><p>当服务器收到浏览器这个请求头后，会跟当前版本的 <code>ETag</code> 进行比较：</p>
+<ol>
+<li>如果标识符不一致，也就是内容发生变化了，那么会返回 200 和新的内容；</li>
+<li>如果标识符一致，也就是没有更新，那么会返回 304，浏览器会从缓存中读取内容。</li>
+</ol>
+<h3>优先级</h3>
+<p>协商缓存先检查上一次响应头中是否有 <code>ETag</code>，如果有，则发起请求中请求头带上 <code>If-None-Match</code> 字段；如果没有，则检查上一次响应头中是否有 <code>Last-Modified</code> 字段，发起请求中请求头带上 <code>If-Modified-Since</code> 字段。</p>
+<h2>总结</h2>
+<p>HTTP 缓存机制分为两种：强缓存和协商缓存。</p>
+<p>浏览器会首先判断强缓存，如果强缓存生效，那么直接从缓存中获取资源；若没有生效，则会使用协商缓存，发送请求与服务器协商。</p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-04T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTPS 略解</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/006-HTTPS-overview.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/006-HTTPS-overview.html"/>
+    <updated>2024-02-07T06:34:07.000Z</updated>
+    <summary type="html"><![CDATA[<h2>HTTP 和 HTTPS</h2>
+<h3>区别</h3>
+<ul>
+<li>HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；</li>
+<li>HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；</li>
+<li>HTTP 端口号为 80，HTTPS 端口号为 443；</li>
+<li>HTTPS 需要向 CA 申请数字证书。</li>
+</ul>
+<figure><img src="/assets/image/computer-science/networking/006/HTTP.png" alt="http" tabindex="0" loading="lazy"><figcaption>http</figcaption></figure>]]></summary>
+    <content type="html"><![CDATA[<h2>HTTP 和 HTTPS</h2>
+<h3>区别</h3>
+<ul>
+<li>HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；</li>
+<li>HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；</li>
+<li>HTTP 端口号为 80，HTTPS 端口号为 443；</li>
+<li>HTTPS 需要向 CA 申请数字证书。</li>
+</ul>
+<figure><img src="/assets/image/computer-science/networking/006/HTTP.png" alt="http" tabindex="0" loading="lazy"><figcaption>http</figcaption></figure>
+<figure><img src="/assets/image/computer-science/networking/006/HTTPS.png" alt="https" tabindex="0" loading="lazy"><figcaption>https</figcaption></figure>
+<h3>HTTPS 缺点</h3>
+<ul>
+<li>在相同网络环境中，HTTPS 相比 HTTP 无论是响应时间还是耗电量都有大幅度上升；</li>
+<li>HTTPS 的安全是有范围的，在黑客攻击、服务器劫持等情况下几乎起不到作用；</li>
+<li>在现有的证书机制下，中间人攻击依然有可能发生；</li>
+<li>HTTPS 需要更多的服务器资源，也会导致成本的升高。</li>
+</ul>
+<h2>加密算法</h2>
+<p>HTTPS 使用混合加密算法解决数据安全传输问题，即<strong>对称加密</strong>和<strong>非对称加密</strong>混合使用。</p>
+<h3>对称加密</h3>
+<p>加密和解密都是同一个密钥，优缺点如下：</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>由于密钥相同，因此加密解密速度快，适合加密比较大的数据。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>交易双方在传输过程中需要使用相同的密钥，因此需要在<strong>首次</strong>传输过程中必然需要由一方将密钥传给另一方，这样就无法保证保证密钥的安全性，有可能会被截获；</li>
+<li>不同用户访问的密钥需要不同，这会造成服务器管理密钥困难，成本高。</li>
+</ol>
+<h3>非对称加密</h3>
+<p>加密和解密使用不同的密钥：公钥（public key）加密和私钥（private key）解密。流程如下：</p>
+<ol>
+<li>发送方向接收方请求一个公钥；</li>
+<li>发送方使用公钥加密，公钥和加密的数据泄露并没有关系，因为只有私钥才能解密；</li>
+<li>接收方用私钥解密消息。</li>
+</ol>
+<p><strong>优点：</strong></p>
+<ol>
+<li>加密和解密使用不同的密钥，私钥不需要通过网络传输，安全性高。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>计算量比较大，加密解密速度比对称加密慢；</li>
+<li>中间人攻击：中间人进行拦截，无法保证公钥是接收方提供的。</li>
+</ol>
+<figure><img src="/assets/image/computer-science/networking/006/mid-attack.png" alt="中间人攻击" tabindex="0" loading="lazy"><figcaption>中间人攻击</figcaption></figure>
+<h2>数字证书和数字签名</h2>
+<p>中间人攻击使我们无法验证公钥的真假。因此引入<strong>数字证书</strong>，用它来证明身份是真实的，并且防止被中间人攻击。</p>
+<p>由数字证书认证机构（Certificate Authority，简称 CA）负责给用户签发数字证书，证书中包括：签发者、使用者公钥、使用的 HASH 算法、证书到期时间等。</p>
+<p>但是问题来了，如果中间人篡改了证书，如何保证身份证明是有效的？这时需要引进<strong>数字签名</strong>。</p>
+<p>首先使用 CA 自带的 HASH 算法对证书的内容进行 HASH 得到一个信息摘要，再用 CA 的私钥进行加密，最终组成数字签名。当服务器将原始信息和数字签名发送过来时，客户端先使用 CA 的公钥对数字签名进行解密，得到 CA 创建的信息摘要，再使用同样的 HASH 算法生成原始信息的信息摘要，两者进行对比，就知道证书是否被篡改了。</p>
+<p>通过数字签名的证书验证，能最大程度的保证数据传输安全。</p>
+<h2>HTTPS 工作流程</h2>
+<p>前面提到，HTTPS 使用了混合加密解决安全传输问题，整个工作过程分为三大步：证书验证、非对称加密和对称加密。</p>
+<figure><img src="/assets/image/computer-science/networking/006/https-flow.png" alt="https工作流程" tabindex="0" loading="lazy"><figcaption>https工作流程</figcaption></figure>
+<p><strong>证书验证：</strong></p>
+<ol>
+<li>Client 发起一个 HTTPS 的请求；</li>
+<li>Server 把事先配置好的公钥证书返回给客户端；</li>
+<li>Client 验证公钥证书：如果验证通过则继续，不通过则显示警告信息；</li>
+</ol>
+<p><strong>非对称加密：</strong></p>
+<ol start="4">
+<li>Client 生成加密所使用的会话密钥，然后用证书的公钥加密这个会话密钥，发给 Server。</li>
+<li>Server 使用自己的私钥解密这个消息，得到会话密钥。至此，Client 和 Server 双方都持有了相同的会话密钥。</li>
+</ol>
+<p><strong>对称加密：</strong></p>
+<ol start="6">
+<li>Server 使用会话密钥加密“明文内容 A”，发送给 Client。</li>
+<li>Client 使用会话密钥解密响应的密文，得到“明文内容 A”。</li>
+<li>Client 再次发起 HTTPS 的请求，使用会话密钥加密请求的“明文内容 B”，然后 Server 使用会话密钥解密密文，得到“明文内容 B”。</li>
+</ol>
+<h2>参考链接</h2>
+<p><a href="https://www.cnblogs.com/linianhui/p/security-based-toolbox.html" target="_blank" rel="noopener noreferrer">[信息安全] 1.密码工具箱 </a></p>
+<p><a href="https://www.cnblogs.com/linianhui/p/security-complex-toolbox.html" target="_blank" rel="noopener noreferrer">[信息安全] 2.密码工具箱（续）</a></p>
+<p><a href="https://www.cnblogs.com/linianhui/p/security-https-workflow.html" target="_blank" rel="noopener noreferrer">[信息安全] 3.HTTPS 工作流程</a></p>
+<p><a href="https://segmentfault.com/a/1190000021494676" target="_blank" rel="noopener noreferrer">HTTPS 详解一：附带最精美详尽的 HTTPS 原理图</a></p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-05T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">TCP 三次握手与四次挥手</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/007-TCP-three-handshakes-and-four-waves.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/007-TCP-three-handshakes-and-four-waves.html"/>
+    <updated>2024-02-07T05:30:24.000Z</updated>
+    <summary type="html"><![CDATA[<p>传输层控制协议（Transmission Control Protocol, TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<h2>三次握手</h2>
+<p>三报文握手具体过程（客户端和服务端交换三个报文段）：</p>
+<figure><img src="/assets/image/computer-science/networking/007/three.png" alt="三次握手" tabindex="0" loading="lazy"><figcaption>三次握手</figcaption></figure>
+<p><strong>第一次握手：</strong></p>]]></summary>
+    <content type="html"><![CDATA[<p>传输层控制协议（Transmission Control Protocol, TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<h2>三次握手</h2>
+<p>三报文握手具体过程（客户端和服务端交换三个报文段）：</p>
+<figure><img src="/assets/image/computer-science/networking/007/three.png" alt="三次握手" tabindex="0" loading="lazy"><figcaption>三次握手</figcaption></figure>
+<p><strong>第一次握手：</strong></p>
+<p>起初两端都处于 <code>CLOSED</code> 关闭状态。一开始，服务器就进入监听状态，被动等待客户端的连接请求。</p>
+<p>在打算建立 TCP 连接时，客户端将同步请求标志 <code>SYN=1</code> 和随机初始序号 <code>seq=x</code> 发送给服务器，客户端进入 <code>SYN-SENT</code> （同步已发送）状态，等待服务器确认。</p>
+<p><strong>第二次握手：</strong></p>
+<p>服务器收到数据包后由同步位 <code>SYN=1</code> 得知客户端请求建立连接。</p>
+<p>服务器发送同步请求标志 <code>SYN=1</code>、确认标志 <code>ACK=1</code>、随机初始序号 <code>seq=y</code> 以及确认号字段 <code>ack=x+1</code>，发送给客户端，并进入 <code>SYN-RCVD</code> （同步已接收）状态。</p>
+<p><strong>第三次握手：</strong></p>
+<p>客户端收到确认后，检查 <code>ack</code> 是否为 <code>x+1</code>，<code>ACK</code> 是否为 <code>1</code>，如果正确则发送确认标志 <code>ACK=1</code>、序号 <code>seq=x+1</code> 以及确认号 <code>ack=y+1</code>，并进入连接已建立状态 <code>ESTABLISHED</code>。</p>
+<p>服务器收到消息后，检查 <code>ack</code> 是否为 <code>y+1</code>，<code>ACK</code> 是否为 <code>1</code>，如果成功则建立连接。 进入连接已建立状态 <code>ESTABLISHED</code>。</p>
+<p><strong>能否采用两报文握手？</strong></p>
+<p>如果客户端发出连接请求，但因网络延迟而未收到确认，于是客户端再次发送一个连接请求，服务端收到确认，由于是两次握手，此时就会建立连接，等数据传输完毕后，释放连接。</p>
+<p>此时第一个请求报文经过一段时间到达服务端，于是服务端收到确认，由于采用两次握手，此时就已同意建立连接，客户端不需要对服务端的确认报文发出响应，也不继续发送数据，导致连接一直建立，浪费资源。</p>
+<h2>四次挥手</h2>
+<p>四报文挥手来释放连接（现二者均处于连接已建立状态，假设客户端主动关闭 TCP 连接）：</p>
+<figure><img src="/assets/image/computer-science/networking/007/four.png" alt="四次挥手" tabindex="0" loading="lazy"><figcaption>四次挥手</figcaption></figure>
+<p><strong>第一次挥手：</strong></p>
+<p>客户端发送 TCP 连接释放报文段，并进入<strong>终止等待 1 状态</strong>。</p>
+<p>该报文段首部种的终止位 FIN 和确认位 ACK 都设置为 1 ，表明这是一个 TCP 连接释放报文段，同时也对之前收到的报文段进行确认。</p>
+<p>序号 seq = u，它等于之前客户端已经传送过的数据的最后一个字节的序号加 1 。确认号 ack 的值设置为 v ，它等于 TCP 客户进程之前已收到的数据的最后一个字节的序号加 1 。</p>
+<p><strong>第二次挥手：</strong></p>
+<p>服务端收到连接释放报文段后，会发送一个普通的 TCP 确认报文段并进入<strong>关闭等待状态</strong>。</p>
+<p>该报文段首部中的确认位 ACK 被设置为 1；seq 设置为 v，它等于服务端之前已传送过的数据的最后一个字节的序号加 1 。确认号 ack 字段的值被设置为 u + 1，这是对连接释放报文的确认。</p>
+<p>这个时候，客户端不能给服务端发送信息报文，只能接收。但是服务端要是还有信息要传给客户端，仍能传送。</p>
+<p><strong>第三次挥手：</strong></p>
+<p>客户端收到确认报文段后就进入<strong>终止等待 2 状态</strong>，当服务器数据发送完毕后，给客户端发送 TCP 连接释放报文段并进入<strong>最后确认状态</strong>。</p>
+<p>该报文段首部中的终止位 FIN 和确认位 ACK 的值都设置为 1 ，seq = w ，ack = u + 1 。</p>
+<p><strong>第四次挥手：</strong></p>
+<p>客户端收到连接释放报文段后，需要向服务端发送 TCP 确认报文段，并进入<strong>时间等待状态</strong>。</p>
+<p>首部中的确认位 ACK = 1 ，seq = u + 1 ，ack = w + 1 ，这是对 TCP 连接释放报文段的确认。</p>
+<p>服务端 收到该报文后就进入<strong>关闭状态</strong>，而 客户端 还要经过 2MSL 后才能进入<strong>关闭状态</strong>。</p>
+<blockquote>
+<p>MSL，最长报文段寿命，一般为 2 分钟。</p>
+</blockquote>
+<p><strong>为什么最后还要等待两个时间周期呢？</strong></p>
+<ul>
+<li>客户端的最后一个 ACK 报文在传输的时候丢失，服务器并没有接收到这个报文。这个候时候服务器就会超时重传这个 FIN 消息，然后客户端就会重新返回最后一个 ACK 报文，等待两个时间周期，完成关闭。</li>
+<li>如果不等待这两个时间周期，服务器重传的那条消息就不会收到。服务器就因为接收不到客户端的信息而无法正常关闭。</li>
+</ul>
+<h2>参考链接</h2>
+<p><a href="https://www.bilibili.com/video/BV1c4411d7jb" target="_blank" rel="noopener noreferrer">计算机网络微课堂</a></p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">前端基础知识</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/"/>
+    <updated>2023-03-02T05:00:27.000Z</updated>
+    <summary type="html"><![CDATA[
+<p>这里是关于前端基础知识的文章。</p>
+]]></summary>
+    <content type="html"><![CDATA[
+<p>这里是关于前端基础知识的文章。</p>
 ]]></content>
     <published>2023-03-02T05:00:27.000Z</published>
   </entry>

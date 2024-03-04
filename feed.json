@@ -7,6 +7,19 @@
   "favicon": "https://dribble-njr.github.io/blog/blog/favicon.ico",
   "items": [
     {
+      "title": "defer 和 async 的区别",
+      "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/html/011-defer-vs-async.html",
+      "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/html/011-defer-vs-async.html",
+      "summary": "HTML 中在页面插入 JavaScript 的主要方式就是使用 <script> 元素，可以直接在页面中嵌入 JavaScript 代码，但是一般来说，通常会通过 src 属性来引入外部脚本。 在 中提到了 src 会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。这样就会阻塞后续文档的加载。 而使用 defer 和 async 都可以 ...",
+      "content_html": "<p>HTML 中在页面插入 JavaScript 的主要方式就是使用 <code>&lt;script&gt;</code> 元素，可以直接在页面中嵌入 JavaScript 代码，但是一般来说，通常会通过 <code>src</code> 属性来引入外部脚本。</p>\n<p>在  中提到了 <code>src</code> 会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。这样就会阻塞后续文档的加载。</p>\n<p>而使用 <code>defer</code> 和 <code>async</code> 都可以 <strong>异步加载</strong> 外部的 JavaScript 脚本，主要区别如下：</p>\n<ul>\n<li><strong>执行顺序</strong>：多个带 <code>async</code> 属性的标签，不能保证加载的顺序；多个带 <code>defer</code> 属性的标签，按照加载顺序执行；</li>\n<li><strong>脚本何时执行</strong>：<code>async</code> 属性表示脚本加载完成后立即执行，不会等到文档解析完成。<code>defer</code> 属性表示脚本加载完成后还需等到所有元素解析完成，即 <code>DOMContentLoaded</code> 事件触发前完成。</li>\n</ul>\n",
+      "date_published": "2022-07-25T00:00:00.000Z",
+      "date_modified": "2024-03-04T11:59:34.000Z",
+      "authors": [],
+      "tags": [
+        "HTML"
+      ]
+    },
+    {
       "title": "HTML5 新特性",
       "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/html/010-html5.html",
       "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/html/010-html5.html",
@@ -1313,19 +1326,6 @@
       "content_html": "<p>超文本传输协议（HyperText Transfer Protocol, HTTP）一般是用于浏览器和服务器之间传输文字、图片、音频视频等超文本数据的应用层协议。</p>\n<h2>HTTP 协议特性</h2>\n<ul>\n<li>简单：HTTP 基本的报文格式就是 header + body，头部信息也是 key-value 的简单文本形式，易于理解，降低了学习和使用的门槛。</li>\n<li>灵活易扩展：HTTP/1.0 出现的 HTTP headers 让协议扩展变得非常容易，只要服务端和客户端对新 headers 达成语义一致，新功能就可以被添加进来。</li>\n<li>无连接：每次连接只处理一个请求。服务器处理完客户端的请求，并收到客户端的应答后，就会断开连接，HTTP 1.1 可以开启长连接。</li>\n<li>无状态：对于事物处理没有记忆能力。因此浏览器无法保存用户的登录信息，每次进行需要登录才能执行的操作时，都需要输入用户名和密码。而 cookie 可以创建有状态的会话。好处在于服务器不会记忆 HTTP 的状态，能减轻服务器的压力。</li>\n<li>明文传输：给调试带来便利性，但是用户毫无隐私可言，不安全。</li>\n</ul>\n<h2>HTTP 报文格式</h2>\n<h3>请求报文格式</h3>\n<p>客户端发送 HTTP 请求到服务器的请求消息：<strong>请求行、请求头、空行和请求体四个部分组成。</strong></p>\n<div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>POST / HTTP1.1\nHost:www.wrox.com\nUser-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)\nContent-Type:application/x-www-form-urlencoded\nContent-Length:40\nConnection: Keep-Alive\n\nname=Professional%20Ajax&amp;publisher=Wiley\n</code></pre></div><p>第一部分：请求行，请求方法 + URI + HTTP 版本。</p>\n<p>第二部分：请求头部。</p>\n<p>第三部分：空行。</p>\n<p>第四部分：请求数据。</p>\n<h3>响应报文格式</h3>\n<p>服务器响应也由四个部分组成，分别是：<strong>响应行、响应头、空行和响应体</strong>。</p>\n<div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>HTTP/1.1 200 OK\nDate: Fri, 22 May 2009 06:07:21 GMT\nContent-Type: text/html; charset=UTF-8\n\n&lt;html&gt;\n  &lt;head&gt;&lt;/head&gt;\n  &lt;body&gt;\n    &lt;!--body goes here--&gt;\n  &lt;/body&gt;\n&lt;/html&gt;\n</code></pre></div><h2>HTTP 常见状态码</h2>\n<ul>\n<li>1xx：提示信息，表示目前是协议处理的中间状态，还需进一步操作；</li>\n<li>2xx：成功，表示请求已被成功收到并正确处理；</li>\n<li>3xx：重定向，资源位置发生变动，需要客户端重新发送请求；</li>\n<li>4xx：客户端错误，请求报文有误，服务器无法处理；</li>\n<li>5xx：服务器错误，服务器在处理请求时内部发生了错误。</li>\n</ul>\n<p>| 常见状态码                | 状态描述                                                         |<br>\n|</p>\n",
       "date_published": "2022-04-20T00:00:00.000Z",
       "date_modified": "2024-02-07T06:34:07.000Z",
-      "authors": [],
-      "tags": [
-        "计算机网络"
-      ]
-    },
-    {
-      "title": "HTTP 性能演变",
-      "url": "https://dribble-njr.github.io/blog/blog/computer-science/networking/004-HTTP-development.html",
-      "id": "https://dribble-njr.github.io/blog/blog/computer-science/networking/004-HTTP-development.html",
-      "summary": "整个 HTTP 的演变史就是一个在不断优化性能的过程。 HTTP/0.9 - 单行协议 最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。 HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。 HTTP/0....",
-      "content_html": "<p>整个 HTTP 的演变史就是一个在不断优化性能的过程。</p>\n<h2>HTTP/0.9 - 单行协议</h2>\n<p>最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。</p>\n<p>HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。</p>\n<div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>GET /mypage.html\n</code></pre></div><p>HTTP/0.9 的响应内容不包含 HTTP 头，这意味着只有 HTML 文件可以传送，无法传送其他类型的文件；也没有状态码或错误代码；一旦出现问题，一个特殊的包含问题描述信息的 HTML 文件将会被返回。</p>\n<div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>&lt;HTML&gt;\n这是一个非常简单的HTML页面\n&lt;/HTML&gt;\n</code></pre></div><p><strong>总结：</strong></p>\n<ul>\n<li>请求只有一个请求行；</li>\n<li>响应只有一个响应体，且只能返回 HTML 文件；</li>\n</ul>\n<h2>HTTP/1.0 - 构建可扩展性</h2>\n<p>由于 HTTP/0.9 协议的应用十分有限，HTTP/1.0 在其基础上增加了很多新特性：</p>\n<ul>\n<li>协议版本信息现在会随着每个请求行发送。</li>\n<li>状态码在响应开始时发送，使浏览器能了解请求执行成功或失败，并调整相应行为（如更新或使用本地缓存）。</li>\n<li>引入了 HTTP 头的概念，使协议变得灵活易扩展。</li>\n<li>Content-Type 头使传输除 HTML 文件以为其他类型文件的可能。</li>\n</ul>\n<div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>// 请求\nGET /mypage.html HTTP/1.0\nUser-Agent: NCSA_Mosaic/2.0 (Windows 3.1)\n\n// 响应\n200 OK\nDate: Tue, 15 Nov 1994 08:12:31 GMT\nServer: CERN/3.0 libwww/2.17\nContent-Type: text/html\n&lt;HTML&gt;\n一个包含图片的页面\n  &lt;IMG SRC=\"/myimage.gif\"&gt;\n&lt;/HTML&gt;\n</code></pre></div><h2>HTTP/1.1</h2>\n<p>HTTP/1.0 采用短连接方式，即每次请求一个文件都需要和浏览器建立 TCP 连接，当收到响应后就会立即关闭连接，这样会造成不必要的时间开销。</p>\n<p>为了减少时延，浏览器通常会建立多个并行的 TCP 连接同时请求多个对象。但是这会占用大量服务器的资源。</p>\n<p>HTTP/1.1 相比于 HTTP/1.0 性能上的改进：</p>\n<ul>\n<li>使用 TCP 长连接的方式改善了 HTTP/1.0 短连接造成的性能开销；</li>\n<li>支持管道网络传输，只要第一个请求发出，不必等待响应，就可以直接发送第二个请求，减少整体的响应时间（流水线方式工作）。</li>\n</ul>\n<p>但是 HTTP/1.1 还是有性能瓶颈：</p>\n<ul>\n<li>只能压缩 body 部分，请求/响应头部未经压缩就发送，头部信息越多延迟越大；</li>\n<li>发送冗长的首部，每次互相发送相同的首部造成的浪费比较多；</li>\n<li>服务器是按请求顺序响应的，如果服务器响应过慢，会导致客户端一直请求不到后面的数据，也就是<strong>队头阻塞</strong>；</li>\n<li>没有请求优先级控制；</li>\n<li>请求只能从客户端开始，服务器只能被动响应。</li>\n</ul>\n<h2>HTTP/2.0</h2>\n<p>HTTP/2.0 是基于 HTTPS 的，所以安全性有所保证。HTTP/2.0 相比 HTTP/1.1 性能上的改进：</p>\n<ul>\n<li>头部压缩：如果同时发出多个请求，他们的头是一样或相似的，那么协议会消除重复的部分；</li>\n<li>采用二进制格式：头信息和数据体都是二进制，并统称为帧，头信息帧和数据帧，增加了数据传输的效率；</li>\n<li>多路复用：可以在一个连接中并发多个请求或响应，而不用按照顺序一一对应，解决了队头阻塞的问题；</li>\n<li>可以指定数据流的优先级；</li>\n<li>服务器可以主动向客户端发送消息。</li>\n</ul>\n<p>缺陷在于：多个 HTTP 请求复用一个 TCP 连接，一旦发生丢包现象，就会触发 TCP 的重传机制，这样在一个 TCP 连接中的所有 HTTP 请求都必须等待这个丢了的包被重传回来。</p>\n<h2>HTTP/3.0</h2>\n<p>HTTP/2.0 基于 TCP 传输层，导致丢包下阻塞所有 HTTP 请求的问题，因此 HTTP/3.0 把 HTTP 下层的 TCP 协议改成了 UDP。</p>\n<p>UDP 是不可靠传输，但是基于 UDP 的 QUIC 协议可以实现类似 TCP 的可靠传输。</p>\n<h2>参考链接</h2>\n<p><a href=\"https://xiaolincoding.com/network/2_http/http_interview.html#http-1-1%E3%80%81http-2%E3%80%81http-3-%E6%BC%94%E5%8F%98\" target=\"_blank\" rel=\"noopener noreferrer\">3.1 HTTP 常见面试题 | 小林 coding (xiaolincoding.com)</a></p>\n<p><a href=\"https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#%E5%90%8Ehttp2%E8%BF%9B%E5%8C%96\" target=\"_blank\" rel=\"noopener noreferrer\">HTTP 的发展 - HTTP | MDN (mozilla.org)</a></p>\n<p><a href=\"https://www.bilibili.com/video/BV1c4411d7jb?p=73\" target=\"_blank\" rel=\"noopener noreferrer\">计算机网络微课堂（有字幕无背景音乐版）_哔哩哔哩_bilibili</a></p>\n",
-      "date_published": "2022-04-26T00:00:00.000Z",
-      "date_modified": "2024-02-07T05:30:24.000Z",
       "authors": [],
       "tags": [
         "计算机网络"

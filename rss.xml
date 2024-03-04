@@ -6,10 +6,11 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 04 Mar 2024 11:43:13 GMT</pubDate>
-    <lastBuildDate>Mon, 04 Mar 2024 11:43:13 GMT</lastBuildDate>
+    <pubDate>Mon, 04 Mar 2024 11:51:29 GMT</pubDate>
+    <lastBuildDate>Mon, 04 Mar 2024 11:51:29 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>HTML</category>
     <category>CSS</category>
     <category>Project</category>
     <category>READING</category>
@@ -22,9 +23,38 @@
     <category>practice</category>
     <category>linux</category>
     <category>工程化</category>
-    <category>HTML</category>
     <category>operating-system</category>
     <category>LeetCode</category>
+    <item>
+      <title>src 和 href 的区别</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/html/009-src-vs-href.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/html/009-src-vs-href.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">src 和 href 的区别</source>
+      <description>src 和 href 之间存在区别，不能互换使用。 src：表示对资源的 引入，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置； href：表示对资源的 引用，建立当前元素或当前文档和外部资源之间的链接关系。 src src(Source) 属性仅仅表示会在此文档当前元素的位置上嵌入资源，它会 暂停其他资源的下载和处理。比如，当浏览器读到： 那么...</description>
+      <category>HTML</category>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p><code>src</code> 和 <code>href</code> 之间存在区别，不能互换使用。</p>
+<ul>
+<li><code>src</code>：表示对资源的 <strong>引入</strong>，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置；</li>
+<li><code>href</code>：表示对资源的 <strong>引用</strong>，建立当前元素或当前文档和外部资源之间的链接关系。</li>
+</ul>
+<h2>src</h2>
+<p><code>src</code>(Source) 属性仅仅表示会在此文档当前元素的位置上嵌入资源，它会 <strong>暂停其他资源的下载和处理</strong>。比如，当浏览器读到：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"script.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><p>那么浏览器会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。它类似于将 JS 文件的内容转存到 <code>&lt;script&gt;</code> 标签中。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>这就是为什么需要将 <code>&lt;script&gt;</code> 标签放到最后。</p>
+</div>
+<p><code>&lt;img&gt;</code> 标签也类似，它是一个空标签，包含的内容由 <code>src</code> 属性定义，当遇到这个标签，浏览器也会停止加载页面，直到获取并加载这个图片。</p>
+<p>类似的，<code>&lt;iframe&gt;</code> 标签也一样。</p>
+<h2>href</h2>
+<p><code>href</code>(Hypertext Reference) 属性即超文本引用，它会指定 Web 资源的位置，从而定义当前链接（<code>&lt;a&gt;</code> 标签）或当前文档（<code>link</code> 标签）与目标之间的联系，<strong>不会暂停对当前文档的解析</strong>。</p>
+<p>比如：</p>
+<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>style.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre></div><p>浏览器会知道这是个 CSS 文件，HTML 的解析 <strong>不会</strong> 暂停，但是渲染有可能暂停，因为浏览器需要知道样式规则。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>怎样实现响应式网页布局</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html</link>
@@ -11113,95 +11143,6 @@ Content-Type: text/html
 <p>HTTP 缓存机制分为两种：强缓存和协商缓存。</p>
 <p>浏览器会首先判断强缓存，如果强缓存生效，那么直接从缓存中获取资源；若没有生效，则会使用协商缓存，发送请求与服务器协商。</p>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>HTTPS 略解</title>
-      <link>https://dribble-njr.github.io/blog/blog/computer-science/networking/006-HTTPS-overview.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/computer-science/networking/006-HTTPS-overview.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">HTTPS 略解</source>
-      <description>HTTP 和 HTTPS 区别 HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输； HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手； HTTP 端口号为 80，HTTPS 端口号为 443； HTTPS 需要向 CA 申请数字证书。 httpht...</description>
-      <category>计算机网络</category>
-      <pubDate>Thu, 05 May 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>HTTP 和 HTTPS</h2>
-<h3>区别</h3>
-<ul>
-<li>HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；</li>
-<li>HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；</li>
-<li>HTTP 端口号为 80，HTTPS 端口号为 443；</li>
-<li>HTTPS 需要向 CA 申请数字证书。</li>
-</ul>
-<figure><img src="/assets/image/computer-science/networking/006/HTTP.png" alt="http" tabindex="0" loading="lazy"><figcaption>http</figcaption></figure>
-<figure><img src="/assets/image/computer-science/networking/006/HTTPS.png" alt="https" tabindex="0" loading="lazy"><figcaption>https</figcaption></figure>
-<h3>HTTPS 缺点</h3>
-<ul>
-<li>在相同网络环境中，HTTPS 相比 HTTP 无论是响应时间还是耗电量都有大幅度上升；</li>
-<li>HTTPS 的安全是有范围的，在黑客攻击、服务器劫持等情况下几乎起不到作用；</li>
-<li>在现有的证书机制下，中间人攻击依然有可能发生；</li>
-<li>HTTPS 需要更多的服务器资源，也会导致成本的升高。</li>
-</ul>
-<h2>加密算法</h2>
-<p>HTTPS 使用混合加密算法解决数据安全传输问题，即<strong>对称加密</strong>和<strong>非对称加密</strong>混合使用。</p>
-<h3>对称加密</h3>
-<p>加密和解密都是同一个密钥，优缺点如下：</p>
-<p><strong>优点：</strong></p>
-<ol>
-<li>由于密钥相同，因此加密解密速度快，适合加密比较大的数据。</li>
-</ol>
-<p><strong>缺点：</strong></p>
-<ol>
-<li>交易双方在传输过程中需要使用相同的密钥，因此需要在<strong>首次</strong>传输过程中必然需要由一方将密钥传给另一方，这样就无法保证保证密钥的安全性，有可能会被截获；</li>
-<li>不同用户访问的密钥需要不同，这会造成服务器管理密钥困难，成本高。</li>
-</ol>
-<h3>非对称加密</h3>
-<p>加密和解密使用不同的密钥：公钥（public key）加密和私钥（private key）解密。流程如下：</p>
-<ol>
-<li>发送方向接收方请求一个公钥；</li>
-<li>发送方使用公钥加密，公钥和加密的数据泄露并没有关系，因为只有私钥才能解密；</li>
-<li>接收方用私钥解密消息。</li>
-</ol>
-<p><strong>优点：</strong></p>
-<ol>
-<li>加密和解密使用不同的密钥，私钥不需要通过网络传输，安全性高。</li>
-</ol>
-<p><strong>缺点：</strong></p>
-<ol>
-<li>计算量比较大，加密解密速度比对称加密慢；</li>
-<li>中间人攻击：中间人进行拦截，无法保证公钥是接收方提供的。</li>
-</ol>
-<figure><img src="/assets/image/computer-science/networking/006/mid-attack.png" alt="中间人攻击" tabindex="0" loading="lazy"><figcaption>中间人攻击</figcaption></figure>
-<h2>数字证书和数字签名</h2>
-<p>中间人攻击使我们无法验证公钥的真假。因此引入<strong>数字证书</strong>，用它来证明身份是真实的，并且防止被中间人攻击。</p>
-<p>由数字证书认证机构（Certificate Authority，简称 CA）负责给用户签发数字证书，证书中包括：签发者、使用者公钥、使用的 HASH 算法、证书到期时间等。</p>
-<p>但是问题来了，如果中间人篡改了证书，如何保证身份证明是有效的？这时需要引进<strong>数字签名</strong>。</p>
-<p>首先使用 CA 自带的 HASH 算法对证书的内容进行 HASH 得到一个信息摘要，再用 CA 的私钥进行加密，最终组成数字签名。当服务器将原始信息和数字签名发送过来时，客户端先使用 CA 的公钥对数字签名进行解密，得到 CA 创建的信息摘要，再使用同样的 HASH 算法生成原始信息的信息摘要，两者进行对比，就知道证书是否被篡改了。</p>
-<p>通过数字签名的证书验证，能最大程度的保证数据传输安全。</p>
-<h2>HTTPS 工作流程</h2>
-<p>前面提到，HTTPS 使用了混合加密解决安全传输问题，整个工作过程分为三大步：证书验证、非对称加密和对称加密。</p>
-<figure><img src="/assets/image/computer-science/networking/006/https-flow.png" alt="https工作流程" tabindex="0" loading="lazy"><figcaption>https工作流程</figcaption></figure>
-<p><strong>证书验证：</strong></p>
-<ol>
-<li>Client 发起一个 HTTPS 的请求；</li>
-<li>Server 把事先配置好的公钥证书返回给客户端；</li>
-<li>Client 验证公钥证书：如果验证通过则继续，不通过则显示警告信息；</li>
-</ol>
-<p><strong>非对称加密：</strong></p>
-<ol start="4">
-<li>Client 生成加密所使用的会话密钥，然后用证书的公钥加密这个会话密钥，发给 Server。</li>
-<li>Server 使用自己的私钥解密这个消息，得到会话密钥。至此，Client 和 Server 双方都持有了相同的会话密钥。</li>
-</ol>
-<p><strong>对称加密：</strong></p>
-<ol start="6">
-<li>Server 使用会话密钥加密“明文内容 A”，发送给 Client。</li>
-<li>Client 使用会话密钥解密响应的密文，得到“明文内容 A”。</li>
-<li>Client 再次发起 HTTPS 的请求，使用会话密钥加密请求的“明文内容 B”，然后 Server 使用会话密钥解密密文，得到“明文内容 B”。</li>
-</ol>
-<h2>参考链接</h2>
-<p><a href="https://www.cnblogs.com/linianhui/p/security-based-toolbox.html" target="_blank" rel="noopener noreferrer">[信息安全] 1.密码工具箱 </a></p>
-<p><a href="https://www.cnblogs.com/linianhui/p/security-complex-toolbox.html" target="_blank" rel="noopener noreferrer">[信息安全] 2.密码工具箱（续）</a></p>
-<p><a href="https://www.cnblogs.com/linianhui/p/security-https-workflow.html" target="_blank" rel="noopener noreferrer">[信息安全] 3.HTTPS 工作流程</a></p>
-<p><a href="https://segmentfault.com/a/1190000021494676" target="_blank" rel="noopener noreferrer">HTTPS 详解一：附带最精美详尽的 HTTPS 原理图</a></p>
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/computer-science/networking/006/HTTP.png" type="image/png"/>
     </item>
   </channel>
 </rss>

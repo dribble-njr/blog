@@ -43,7 +43,8 @@ export default [
           '012-grid',
           '013-BFC',
           '014-responsive-design-intro',
-          '015-responsive-design'
+          '015-responsive-design',
+          '016-how-to-responsive'
         ]
       },
       {

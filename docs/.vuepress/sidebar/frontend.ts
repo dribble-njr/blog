@@ -20,7 +20,8 @@ export default [
           '006-semantically-meaningful-tags',
           '007-media-tag',
           '008-canvas-svg',
-          '009-src-vs-href'
+          '009-src-vs-href',
+          '010-html5'
         ]
       },
       {

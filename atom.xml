@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-03-04T09:16:23.810Z</updated>
+  <updated>2024-03-04T10:52:49.538Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -27,16 +27,166 @@
     <name>patterns</name>
   </contributor>
   <entry>
+    <title type="text">怎样实现响应式网页布局</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html"/>
+    <updated>2024-03-04T10:51:20.000Z</updated>
+    <summary type="html"><![CDATA[<h2>设置响应式断点</h2>
+<p><a href="https://tailwindcss.com/docs/responsive-design" target="_blank" rel="noopener noreferrer"><code>tailwind</code></a> 典型的断点如下：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 640px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1280px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1536px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<h2>设置响应式断点</h2>
+<p><a href="https://tailwindcss.com/docs/responsive-design" target="_blank" rel="noopener noreferrer"><code>tailwind</code></a> 典型的断点如下：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 640px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1280px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1536px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><a href="">Bootstrap</a> 断点如下：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 576px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2>用百分比确定布局元素的大小或创建 CSS 网格布局</h2>
+<p>布局容器的数量取决于设计，但大多数网站都将重点放在以下元素上：</p>
+<ul>
+<li>Wrapper or Container</li>
+<li>Header</li>
+<li>Content</li>
+<li>Sidebar</li>
+<li>Footer</li>
+</ul>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240304183547.png" alt="Common layout" tabindex="0" loading="lazy"><figcaption>Common layout</figcaption></figure>
+<p>根据 ，你可以像这样设计主要布局元素的样式（针对手机的基本样式不使用媒体查询）：</p>
+<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 95%<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#header</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#content</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">#footer</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Small devices (landscape phones, 576px and up) */</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 576px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Medium devices (tablets, 768px and up) */</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">#content</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 70%<span class="token punctuation">;</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 30%<span class="token punctuation">;</span>
+    <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Large devices (desktops, 992px and up) */</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Extra large devices (large desktops, 1200px and up) */</span>
+
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在基于百分比的方法中， 属性控制元素显示在屏幕的左侧或右侧。</p>
+<p>如果要完成响应式设计，还需要熟悉 CSS 的  布局及其它属性，如 。</p>
+<h2>响应式图片</h2>
+<p>见 。</p>
+<h2>响应式文字</h2>
+<p>响应式网页设计的重点在于布局块、元素和媒体的响应性。文字往往是事后才考虑的问题。</p>
+<p>但要实现真正的响应式设计，还应该根据屏幕尺寸适当调整字体大小。</p>
+<p>最简单的方法是为字体大小设置一个静态值，如 <code>22px</code>，并在每个媒体查询中进行调整。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240304184534.png" alt="Font size vs view size scatter points" tabindex="0" loading="lazy"><figcaption>Font size vs view size scatter points</figcaption></figure>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>一般设置 <code>html</code> 字体大小，并使用 <code>rem</code> 单位，或使用插件转换为「视口」单位。</p>
+<p>相关阅读：</p>
+<ul>
+<li></li>
+<li></li>
+</ul>
+</div>
+]]></content>
+    <category term="CSS"/>
+    <published>2024-03-04T00:00:00.000Z</published>
+  </entry>
+  <entry>
     <title type="text">响应式设计介绍</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design-intro.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design-intro.html"/>
-    <updated>2024-03-04T09:14:57.000Z</updated>
-    <summary type="html"><![CDATA[<p>响应式设计并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
+    <updated>2024-03-04T10:51:20.000Z</updated>
+    <summary type="html"><![CDATA[<p>响应式设计是一种使网页内容适应各种设备的不同屏幕和窗口尺寸的网页设计方法。</p>
+<p>它并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
 <h2>固定宽度设计</h2>
 <p>20 世纪 90 年代初，当网络开始流行时，大多数显示器的屏幕尺寸为宽 <code>640</code> 像素、高 <code>480</code> 像素。这些显示器是凸面阴极射线管，与现在的平面液晶显示器不同。</p>
-<p>在早期网页设计的雏形时期，设计宽度为 <code>640</code> 像素的网页是比较安全的。但是，在手机和相机等其他技术不断微型化的同时，屏幕却越来越大（最终变得越来越扁平）。</p>
-<p>不久之后，大多数屏幕的尺寸都达到了 <code>800 x 600</code> 像素。网页设计也随之改变。设计师和开发人员开始认为 <code>800</code> 像素是一个安全的默认值。</p>]]></summary>
-    <content type="html"><![CDATA[<p>响应式设计并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
+<p>在早期网页设计的雏形时期，设计宽度为 <code>640</code> 像素的网页是比较安全的。但是，在手机和相机等其他技术不断微型化的同时，屏幕却越来越大（最终变得越来越扁平）。</p>]]></summary>
+    <content type="html"><![CDATA[<p>响应式设计是一种使网页内容适应各种设备的不同屏幕和窗口尺寸的网页设计方法。</p>
+<p>它并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
 <h2>固定宽度设计</h2>
 <p>20 世纪 90 年代初，当网络开始流行时，大多数显示器的屏幕尺寸为宽 <code>640</code> 像素、高 <code>480</code> 像素。这些显示器是凸面阴极射线管，与现在的平面液晶显示器不同。</p>
 <p>在早期网页设计的雏形时期，设计宽度为 <code>640</code> 像素的网页是比较安全的。但是，在手机和相机等其他技术不断微型化的同时，屏幕却越来越大（最终变得越来越扁平）。</p>
@@ -62,7 +212,7 @@
 
 ]]></content>
     <category term="CSS"/>
-    <published>2024-02-28T00:00:00.000Z</published>
+    <published>2024-03-04T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="text">响应式设计</title>
@@ -8103,7 +8253,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <title type="text">样式单位</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/010-unit.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/010-unit.html"/>
-    <updated>2023-12-24T06:39:15.000Z</updated>
+    <updated>2024-03-04T10:51:20.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
 <p>更详细的内容可见 MDN。</p>
@@ -8114,7 +8264,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <li>em：相对于自身字体大小的单位；</li>
 <li>rem：相对于 html 标签字体大小的单位；</li>
 <li>vh：相对于视口高度大小的单位，20vh == (视口高度/100)*20；</li>
-<li>vw：相对于视口宽度大小的单位, 20vw == (视口宽度/100)*20。</li>
+<li>vw：相对于视口宽度大小的单位, 20vw == (视口宽度/100)*20；</li>
+<li>%：父元素的百分比。</li>
 </ul>]]></summary>
     <content type="html"><![CDATA[<div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
@@ -8126,7 +8277,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <li>em：相对于自身字体大小的单位；</li>
 <li>rem：相对于 html 标签字体大小的单位；</li>
 <li>vh：相对于视口高度大小的单位，20vh == (视口高度/100)*20；</li>
-<li>vw：相对于视口宽度大小的单位, 20vw == (视口宽度/100)*20。</li>
+<li>vw：相对于视口宽度大小的单位, 20vw == (视口宽度/100)*20；</li>
+<li>%：父元素的百分比。</li>
 </ul>
 ]]></content>
     <category term="CSS"/>
@@ -11868,63 +12020,5 @@ Content-Type: text/html
 ]]></content>
     <category term="计算机网络"/>
     <published>2022-05-05T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">TCP 三次握手与四次挥手</title>
-    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/007-TCP-three-handshakes-and-four-waves.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/007-TCP-three-handshakes-and-four-waves.html"/>
-    <updated>2024-02-07T05:30:24.000Z</updated>
-    <summary type="html"><![CDATA[<p>传输层控制协议（Transmission Control Protocol, TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
-<h2>三次握手</h2>
-<p>三报文握手具体过程（客户端和服务端交换三个报文段）：</p>
-<figure><img src="/assets/image/computer-science/networking/007/three.png" alt="三次握手" tabindex="0" loading="lazy"><figcaption>三次握手</figcaption></figure>
-<p><strong>第一次握手：</strong></p>]]></summary>
-    <content type="html"><![CDATA[<p>传输层控制协议（Transmission Control Protocol, TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
-<h2>三次握手</h2>
-<p>三报文握手具体过程（客户端和服务端交换三个报文段）：</p>
-<figure><img src="/assets/image/computer-science/networking/007/three.png" alt="三次握手" tabindex="0" loading="lazy"><figcaption>三次握手</figcaption></figure>
-<p><strong>第一次握手：</strong></p>
-<p>起初两端都处于 <code>CLOSED</code> 关闭状态。一开始，服务器就进入监听状态，被动等待客户端的连接请求。</p>
-<p>在打算建立 TCP 连接时，客户端将同步请求标志 <code>SYN=1</code> 和随机初始序号 <code>seq=x</code> 发送给服务器，客户端进入 <code>SYN-SENT</code> （同步已发送）状态，等待服务器确认。</p>
-<p><strong>第二次握手：</strong></p>
-<p>服务器收到数据包后由同步位 <code>SYN=1</code> 得知客户端请求建立连接。</p>
-<p>服务器发送同步请求标志 <code>SYN=1</code>、确认标志 <code>ACK=1</code>、随机初始序号 <code>seq=y</code> 以及确认号字段 <code>ack=x+1</code>，发送给客户端，并进入 <code>SYN-RCVD</code> （同步已接收）状态。</p>
-<p><strong>第三次握手：</strong></p>
-<p>客户端收到确认后，检查 <code>ack</code> 是否为 <code>x+1</code>，<code>ACK</code> 是否为 <code>1</code>，如果正确则发送确认标志 <code>ACK=1</code>、序号 <code>seq=x+1</code> 以及确认号 <code>ack=y+1</code>，并进入连接已建立状态 <code>ESTABLISHED</code>。</p>
-<p>服务器收到消息后，检查 <code>ack</code> 是否为 <code>y+1</code>，<code>ACK</code> 是否为 <code>1</code>，如果成功则建立连接。 进入连接已建立状态 <code>ESTABLISHED</code>。</p>
-<p><strong>能否采用两报文握手？</strong></p>
-<p>如果客户端发出连接请求，但因网络延迟而未收到确认，于是客户端再次发送一个连接请求，服务端收到确认，由于是两次握手，此时就会建立连接，等数据传输完毕后，释放连接。</p>
-<p>此时第一个请求报文经过一段时间到达服务端，于是服务端收到确认，由于采用两次握手，此时就已同意建立连接，客户端不需要对服务端的确认报文发出响应，也不继续发送数据，导致连接一直建立，浪费资源。</p>
-<h2>四次挥手</h2>
-<p>四报文挥手来释放连接（现二者均处于连接已建立状态，假设客户端主动关闭 TCP 连接）：</p>
-<figure><img src="/assets/image/computer-science/networking/007/four.png" alt="四次挥手" tabindex="0" loading="lazy"><figcaption>四次挥手</figcaption></figure>
-<p><strong>第一次挥手：</strong></p>
-<p>客户端发送 TCP 连接释放报文段，并进入<strong>终止等待 1 状态</strong>。</p>
-<p>该报文段首部种的终止位 FIN 和确认位 ACK 都设置为 1 ，表明这是一个 TCP 连接释放报文段，同时也对之前收到的报文段进行确认。</p>
-<p>序号 seq = u，它等于之前客户端已经传送过的数据的最后一个字节的序号加 1 。确认号 ack 的值设置为 v ，它等于 TCP 客户进程之前已收到的数据的最后一个字节的序号加 1 。</p>
-<p><strong>第二次挥手：</strong></p>
-<p>服务端收到连接释放报文段后，会发送一个普通的 TCP 确认报文段并进入<strong>关闭等待状态</strong>。</p>
-<p>该报文段首部中的确认位 ACK 被设置为 1；seq 设置为 v，它等于服务端之前已传送过的数据的最后一个字节的序号加 1 。确认号 ack 字段的值被设置为 u + 1，这是对连接释放报文的确认。</p>
-<p>这个时候，客户端不能给服务端发送信息报文，只能接收。但是服务端要是还有信息要传给客户端，仍能传送。</p>
-<p><strong>第三次挥手：</strong></p>
-<p>客户端收到确认报文段后就进入<strong>终止等待 2 状态</strong>，当服务器数据发送完毕后，给客户端发送 TCP 连接释放报文段并进入<strong>最后确认状态</strong>。</p>
-<p>该报文段首部中的终止位 FIN 和确认位 ACK 的值都设置为 1 ，seq = w ，ack = u + 1 。</p>
-<p><strong>第四次挥手：</strong></p>
-<p>客户端收到连接释放报文段后，需要向服务端发送 TCP 确认报文段，并进入<strong>时间等待状态</strong>。</p>
-<p>首部中的确认位 ACK = 1 ，seq = u + 1 ，ack = w + 1 ，这是对 TCP 连接释放报文段的确认。</p>
-<p>服务端 收到该报文后就进入<strong>关闭状态</strong>，而 客户端 还要经过 2MSL 后才能进入<strong>关闭状态</strong>。</p>
-<blockquote>
-<p>MSL，最长报文段寿命，一般为 2 分钟。</p>
-</blockquote>
-<p><strong>为什么最后还要等待两个时间周期呢？</strong></p>
-<ul>
-<li>客户端的最后一个 ACK 报文在传输的时候丢失，服务器并没有接收到这个报文。这个候时候服务器就会超时重传这个 FIN 消息，然后客户端就会重新返回最后一个 ACK 报文，等待两个时间周期，完成关闭。</li>
-<li>如果不等待这两个时间周期，服务器重传的那条消息就不会收到。服务器就因为接收不到客户端的信息而无法正常关闭。</li>
-</ul>
-<h2>参考链接</h2>
-<p><a href="https://www.bilibili.com/video/BV1c4411d7jb" target="_blank" rel="noopener noreferrer">计算机网络微课堂</a></p>
-]]></content>
-    <category term="计算机网络"/>
-    <published>2022-05-06T00:00:00.000Z</published>
   </entry>
 </feed>

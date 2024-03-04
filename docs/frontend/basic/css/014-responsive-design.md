@@ -1476,7 +1476,7 @@ btn.onclick = () => {
 
 ### 使用 `width` 属性
 
-如果将 `width` 属性设置为百分比，而 `height` 属性设置为 `auto`，图像就会响应并上下缩放
+如果将 `width` 属性设置为百分比，而 `height` 属性设置为 `auto`，图像就会响应并上下缩放。
 
 ```css
 img {
@@ -1682,6 +1682,42 @@ HTML `<picture>` 元素为网络开发人员指定图像资源提供了更大的
 `media` 属性是可选属性，可接受 CSS `@media` 规则中的媒体查询。
 
 还应为不支持 `<picture>` 元素的浏览器定义 `<img>` 元素。
+
+## 响应式视频
+
+### 使用 `width` 属性
+
+如果将 `width` 属性设置为 `100%`，视频播放器就会响应并上下缩放：
+
+```css
+video {
+  width: 100%;
+  height: auto;
+}
+```
+
+### 使用 `max-width` 属性
+
+和 [响应式图片](#响应式图片) 一样，最好使用 `max-width` 属性，视频会在必要时缩小，但绝不会放大到大于原始尺寸：
+
+```css
+video {
+  max-width: 100%;
+  height: auto;
+}
+```
+
+### HTML `<video>` 元素
+
+`<video>` 元素的工作原理与 [`<picture>`](#html-picture-元素) 元素类似。可以设置不同的来源，符合偏好的第一个来源就是正在使用的来源：
+
+```html
+<video width="400" controls>
+  <source src="mov_bbb.mp4" type="video/mp4" />
+  <source src="mov_bbb.ogg" type="video/ogg" />
+  Your browser does not support HTML5 video.
+</video>
+```
 
 ## 参考
 

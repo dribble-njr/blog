@@ -90,7 +90,8 @@ HTML 表格是一种用于结构化数据的方式，使用 HTML 的标签 `<tab
   table {
     border-collapse: collapse;
   }
-  td, th {
+  td,
+  th {
     padding: 5px 10px;
     text-align: center;
     border: 1px solid black;
@@ -139,7 +140,8 @@ HTML 表格是一种用于结构化数据的方式，使用 HTML 的标签 `<tab
   table {
     border-collapse: collapse;
   }
-  td, th {
+  td,
+  th {
     padding: 5px 10px;
     text-align: center;
     border: 1px solid black;

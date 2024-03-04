@@ -2,7 +2,7 @@
 title: 常见元素
 date: 2023-03-24
 icon: header
-category: 
+category:
   - HTML
 tag:
   - frontend
@@ -58,7 +58,7 @@ h 是 heading 的缩写，p 是 paragraph 的缩写。
 ::: normal-demo 图片
 
 ```html
-<img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg">
+<img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg" />
 ```
 
 :::
@@ -132,14 +132,16 @@ h 是 heading 的缩写，p 是 paragraph 的缩写。
 ```html
 <dl>
   <dt>内心独白</dt>
-    <dd>戏剧中，某个角色对自己的内心活动或感受进行念白表演。</dd>
-    <dd>这些台词只面向观众，而其他角色不会听到。</dd>
+  <dd>戏剧中，某个角色对自己的内心活动或感受进行念白表演。</dd>
+  <dd>这些台词只面向观众，而其他角色不会听到。</dd>
   <dt>语言独白</dt>
-    <dd>戏剧中，某个角色把自己的想法直接进行念白表演。</dd>
-    <dd>观众和其他角色都可以听到。</dd>
+  <dd>戏剧中，某个角色把自己的想法直接进行念白表演。</dd>
+  <dd>观众和其他角色都可以听到。</dd>
   <dt>旁白</dt>
-    <dd>戏剧中，为渲染幽默或戏剧性效果而进行的场景之外的补充注释念白，只面向观众。</dd>
-    <dd>内容一般都是角色的感受、想法、以及一些背景信息等。</dd>
+  <dd>
+    戏剧中，为渲染幽默或戏剧性效果而进行的场景之外的补充注释念白，只面向观众。
+  </dd>
+  <dd>内容一般都是角色的感受、想法、以及一些背景信息等。</dd>
 </dl>
 ```
 
@@ -193,7 +195,10 @@ a 是 anchor（锚）的缩写。
 
 ```html
 <a href="/">
-  <img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg">
+  <img
+    width="50px"
+    src="/blog/assets/image/frontend/basic/html/002/avatar.jpg"
+  />
 </a>
 ```
 
@@ -273,8 +278,10 @@ a 是 anchor（锚）的缩写。
 ::: normal-demo 好的示例
 
 ```html
-<a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=zh-CN"
-   download="firefox-latest-64bit-installer.exe">
+<a
+  href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=zh-CN"
+  download="firefox-latest-64bit-installer.exe"
+>
   下载最新的 Firefox 中文版 - Windows（64 位）
 </a>
 ```
@@ -288,11 +295,13 @@ a 是 anchor（锚）的缩写。
 ::: normal-demo iframe
 
 ```html
-<iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width="300"
-    height="200"
-    src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+<iframe
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"
+>
 </iframe>
 ```
 

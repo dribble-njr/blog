@@ -2,7 +2,7 @@
 title: 快速开始
 date: 2023-03-22
 icon: STARTUP
-category: 
+category:
   - HTML
 tag:
   - frontend
@@ -103,7 +103,7 @@ HTML5 重新定义了元素的类别：见 [元素内容分类](https://html.spe
 ::: normal-demo 空元素
 
 ```html
-<img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg">
+<img width="50px" src="/blog/assets/image/frontend/basic/html/002/avatar.jpg" />
 ```
 
 :::
@@ -121,7 +121,7 @@ HTML 中，无需在一个空元素的标签末尾添加 `/`，例如 `<img src=
 在上述例子中，元素中包含了**属性**，用来控制元素的工作方式。
 
 ```html
-<img width="50px" src="/assets/image/frontend/basic/html/002/avatar.jpg">
+<img width="50px" src="/assets/image/frontend/basic/html/002/avatar.jpg" />
 ```
 
 属性被放置在开始标签，并由一组被 `=` 分开的 `name` 和 `value` 组成，通常情况下用 `""` 包裹 `value`。
@@ -156,7 +156,7 @@ HTML 中，无需在一个空元素的标签末尾添加 `/`，例如 `<img src=
 ::: normal-demo 布尔属性
 
 ```html
-<input disabled>
+<input disabled />
 ```
 
 :::
@@ -170,17 +170,17 @@ HTML 中，无需在一个空元素的标签末尾添加 `/`，例如 `<img src=
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Sample page</h1>
-  <p>This is a <a href="">simple</a> sample.</p>
-  <!-- this is a comment -->
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Sample page</h1>
+    <p>This is a <a href="">simple</a> sample.</p>
+    <!-- this is a comment -->
+  </body>
 </html>
 ```
 
@@ -269,8 +269,7 @@ HTML 中对空格的处理有点特殊，无论在 HTML 元素的内容中使用
 ```html
 <p>狗 狗 很 呆 萌。</p>
 
-<p>狗 狗        很
-         呆 萌。</p>
+<p>狗 狗 很 呆 萌。</p>
 ```
 
 :::
@@ -286,7 +285,8 @@ HTML 中对空格的处理有点特殊，无论在 HTML 元素的内容中使用
 ::: normal-demo HTML 注释
 
 ```html
-<p>HTML 中用 <p> 来定义段落元素。</p>
+<p>HTML 中用</p>
+<p>来定义段落元素。</p>
 
 <p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
 ```

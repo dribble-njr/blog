@@ -2,7 +2,7 @@
 title: 视频和音频
 date: 2022-07-25
 icon: duomeit
-category: 
+category:
   - HTML
 tag:
   - HTML5
@@ -36,8 +36,8 @@ HTML5 中加入了视频和音频标签，增强网页的表达能力。
 
 ```html
 <video controls width="250">
-  <source src="/media/flower.webm" type="video/webm">
-  <source src="/media/flower.mp4" type="video/mp4">
+  <source src="/media/flower.webm" type="video/webm" />
+  <source src="/media/flower.mp4" type="video/mp4" />
   Sorry, your browser doesn't support embedded videos.
 </video>
 ```

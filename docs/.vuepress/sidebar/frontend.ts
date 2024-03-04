@@ -42,7 +42,8 @@ export default [
           '011-center',
           '012-grid',
           '013-BFC',
-          '014-responsive-design'
+          '014-responsive-design-intro',
+          '015-responsive-design'
         ]
       },
       {

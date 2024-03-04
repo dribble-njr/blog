@@ -13,20 +13,29 @@ star: true
 
 ## 目录
 
+### 基础
+
 - [快速开始](001-quick-start.md)
 - [选择器](002-selector.md)
 - [盒模型](003-box-model.md)
 - [文本与字体](004-text-font.md)
 - [层叠与继承](005-cascade-inheritance.md)
 - [背景与边框](006-background-border.md)
+- [样式单位](010-unit.md)
+- [BFC 块级格式化上下文](./013-BFC.md)
+
+### 基础布局
+
 - [定位](007-position.md)
 - [浮动](008-float.md)
 - [弹性盒](009-flex.md)
-- [样式单位](010-unit.md)
 - [居中](011-center.md)
 - [网格布局](012-grid.md)
-- [BFC 块级格式化上下文](./013-BFC.md)
-- [响应式设计](./014-responsive-design.md)
+
+### 响应式布局
+
+- [响应式介绍](./014-responsive-design-intro.md)
+- [响应式设计](./015-responsive-design.md)
 
 ## 学习资料
 

@@ -21,6 +21,7 @@ star: true
 - [语义化标签](006-semantically-meaningful-tags.md)
 - [视频和音频](007-media-tag.md)
 - [Canvas 和 SVG 的区别](008-canvas-svg.md)
+- [src 与 href 的区别](./009-src-vs-href.md)
 
 ## 学习资料
 

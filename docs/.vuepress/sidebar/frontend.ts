@@ -19,7 +19,8 @@ export default [
           '005-advanced-element',
           '006-semantically-meaningful-tags',
           '007-media-tag',
-          '008-canvas-svg'
+          '008-canvas-svg',
+          '009-src-vs-href'
         ]
       },
       {

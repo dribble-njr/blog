@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-03-04T10:55:32.813Z</updated>
+  <updated>2024-03-04T11:43:13.144Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -8185,7 +8185,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <title type="text">视频和音频</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/007-media-tag.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/007-media-tag.html"/>
-    <updated>2023-11-21T08:46:50.000Z</updated>
+    <updated>2024-03-04T11:41:47.000Z</updated>
     <summary type="html"><![CDATA[<p>HTML5 中加入了视频和音频标签，增强网页的表达能力。</p>
 <h2><code>&lt;audio&gt;</code> 音频</h2>
 <p>以下就是使用 <code>&lt;audio&gt;</code> 的最简单例子，其中 <code>controls</code> 属性为音频控件，<code>autopaly</code> 为是否自动播放，<code>loop</code> 为循环播放。</p>
@@ -8202,8 +8202,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </code></pre></div><h2><code>&lt;source&gt;</code> 标签</h2>
 <p>因为浏览器对视频格式的支持程度不一样，为了能兼容不同的浏览器，可以通过 <code>&lt;source&gt;</code> 标签指定视频源或音频源。</p>
 <div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">controls</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>250<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/media/flower.webm<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/webm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/media/flower.mp4<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/mp4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/media/flower.webm<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/webm<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/media/flower.mp4<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/mp4<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
   Sorry, your browser doesn't support embedded videos.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div>]]></content>
@@ -8971,7 +8971,7 @@ $ <span class="token function">git</span> <span class="token function">add</span
     <title type="text">高级元素</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/005-advanced-element.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/005-advanced-element.html"/>
-    <updated>2023-08-18T06:34:21.000Z</updated>
+    <updated>2024-03-04T11:41:47.000Z</updated>
     <summary type="html"><![CDATA[<p>除了标题、超链接等元素，还有一些比较复杂的元素：表格和表单。</p>
 <h2>表格</h2>
 <p>HTML 表格是一种用于结构化数据的方式，使用 HTML 的标签 <code>&lt;table&gt;</code> 来创建。一个基本的 HTML 表格包含以下组成部分：</p>
@@ -9724,7 +9724,7 @@ $ <span class="token function">git</span> <span class="token function">add</span
     <title type="text">常见元素</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/004-common-element.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/004-common-element.html"/>
-    <updated>2023-11-21T06:53:23.000Z</updated>
+    <updated>2024-03-04T11:41:47.000Z</updated>
     <summary type="html"><![CDATA[<p>HTML 中包含大量元素，本文将介绍一些常用元素。</p>
 <h2>标题和段落</h2>
 <p>网页通常由标题和段落组成，在 HTML 中，通过 <code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code> 表示 6 个不同级别的标题，通过 <code>&lt;p&gt;</code> 元素表示基本段落。</p>
@@ -9850,7 +9850,7 @@ $ <span class="token function">git</span> <span class="token function">add</span
     <title type="text">快速开始</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/002-quick-start.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/002-quick-start.html"/>
-    <updated>2023-11-07T08:21:21.000Z</updated>
+    <updated>2024-03-04T11:41:47.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container tip">
 <p class="hint-container-title">HTML</p>
 <p>超文本标记语言（<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage, HTML）是一种用于创建网页的标记语言。</p>
@@ -9910,7 +9910,7 @@ $ <span class="token function">git</span> <span class="token function">add</span
 </div>
 <h2>属性</h2>
 <p>在上述例子中，元素中包含了<strong>属性</strong>，用来控制元素的工作方式。</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50px<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/assets/image/frontend/basic/html/002/avatar.jpg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50px<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/assets/image/frontend/basic/html/002/avatar.jpg<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
 </code></pre></div><p>属性被放置在开始标签，并由一组被 <code>=</code> 分开的 <code>name</code> 和 <code>value</code> 组成，通常情况下用 <code>""</code> 包裹 <code>value</code>。</p>
 <p>属性与元素名称之间包含一个空格，如果有多个属性，属性之间由空格隔开。</p>
 <div class="hint-container tip">
@@ -9929,7 +9929,7 @@ $ <span class="token function">git</span> <span class="token function">add</span
     <title type="text">DOCTYPE</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/003-doctype.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/003-doctype.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
+    <updated>2024-03-04T11:41:47.000Z</updated>
     <summary type="html"><![CDATA[<p>在 HTML 中，每个 HTML 文档必须以 DOCTYPE 开头，它的目的在于告诉浏览器应该以什么样的文档类型定义（Document Type Definition, DTD）来解析文档。</p>
 <div class="hint-container info">
 <p class="hint-container-title">DTD</p>
@@ -9954,11 +9954,11 @@ $ <span class="token function">git</span> <span class="token function">add</span
 <h2>HTML4 DOCTYPE</h2>
 <p>HTML4 的 DOCTYPE 类型一共有三种：</p>
 <p><strong>HTML4 Strict</strong></p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">HTML</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD HTML 4.01//EN"</span> <span class="token string">"http://www.w3.org/TR/html4/strict.dtd"</span><span class="token punctuation">&gt;</span></span>
+<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD HTML 4.01//EN"</span> <span class="token string">"http://www.w3.org/TR/html4/strict.dtd"</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p><strong>HTML4 Transitional</strong></p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">HTML</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="token string">"http://www.w3.org/TR/html4/loose.dtd"</span><span class="token punctuation">&gt;</span></span>
+<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="token string">"http://www.w3.org/TR/html4/loose.dtd"</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><p><strong>HTML4 Frameset</strong></p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">HTML</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD HTML 4.01 Frameset//EN"</span> <span class="token string">"http://www.w3.org/TR/html4/frameset.dtd"</span><span class="token punctuation">&gt;</span></span>
+<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span> <span class="token name">PUBLIC</span> <span class="token string">"-//W3C//DTD HTML 4.01 Frameset//EN"</span> <span class="token string">"http://www.w3.org/TR/html4/frameset.dtd"</span><span class="token punctuation">&gt;</span></span>
 </code></pre></div><h2>HTML5 DOCTYPE</h2>
 <p>因为 HTML5 不基于 SGML，没有为之定义的 DTD，所以理论上 HTML5 不需要再声明 DOCTYPE。</p>
 <p>但是前面提到了：<strong>如果文档没有声明或者使用了错误的 DOCTYPE，那么会导致浏览器以怪异模式来渲染页面</strong>。因此，HTML5 使用了以下 DOCTYPE：</p>

@@ -22,6 +22,8 @@ star: true
 - [视频和音频](007-media-tag.md)
 - [Canvas 和 SVG 的区别](008-canvas-svg.md)
 - [src 与 href 的区别](./009-src-vs-href.md)
+- [HTML5 新特性](./010-html5.md)
+- [defer 与 async 的区别](./011-defer-vs-async.md)
 
 ## 学习资料
 

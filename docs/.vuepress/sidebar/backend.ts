@@ -53,5 +53,12 @@ export default [
         children: ['001-install-mysql']
       }
     ]
+  },
+  {
+    text: 'Node',
+    collapsible: true,
+    icon: 'nodejs',
+    prefix: 'node/',
+    children: []
   }
 ]

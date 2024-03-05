@@ -79,6 +79,21 @@ export default [
         children: []
       },
       {
+        text: 'Next',
+        collapsible: true,
+        prefix: 'next/',
+        icon: 'next-js',
+        children: [
+          {
+            text: 'Pages Router',
+            collapsible: true,
+            prefix: 'pages-router/',
+            icon: 'page-dir',
+            children: ['01-pages-layouts']
+          }
+        ]
+      },
+      {
         text: 'Node',
         collapsible: true,
         prefix: 'node/',

@@ -28,7 +28,7 @@ export default hopeTheme(
       end: ['Language', 'Repo', 'Outlook', 'Search']
     },
 
-    iconAssets: '//at.alicdn.com/t/c/font_3926422_rn3mk1xqcg.css',
+    iconAssets: '//at.alicdn.com/t/c/font_3926422_46qfq868wq9.css',
     iconPrefix: 'iconfont icon-',
 
     repo: 'https://github.com/dribble-njr/blog',

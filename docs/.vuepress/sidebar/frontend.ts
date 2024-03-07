@@ -98,7 +98,7 @@ export default [
         collapsible: true,
         prefix: 'chakra/',
         icon: 'chakra',
-        children: ['01-getting-started']
+        children: ['01-getting-started', '02-style-props']
       },
       {
         text: 'Node',

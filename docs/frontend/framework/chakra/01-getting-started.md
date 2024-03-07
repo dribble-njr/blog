@@ -1,6 +1,6 @@
 ---
 title: 快速开始
-date: 2023-03-25
+date: 2024-03-07
 icon: STARTUP
 category:
   - chakra

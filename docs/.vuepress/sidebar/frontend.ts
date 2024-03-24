@@ -22,7 +22,8 @@ export default [
           '008-canvas-svg',
           '009-src-vs-href',
           '010-html5',
-          '011-defer-vs-async'
+          '011-defer-vs-async',
+          '012-form-validation'
         ]
       },
       {

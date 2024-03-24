@@ -23,7 +23,8 @@ export default [
           '009-src-vs-href',
           '010-html5',
           '011-defer-vs-async',
-          '012-form-validation'
+          '012-form-validation',
+          '013-seo'
         ]
       },
       {

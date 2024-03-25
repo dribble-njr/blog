@@ -1,7 +1,7 @@
 ---
 title: useState
 date: 2024-02-27
-icon: history
+icon: state
 category:
   - react
 tag:
@@ -47,6 +47,8 @@ React 将在初始化组件时调用初始化函数，并将其返回值存储�
 
 :::react-demo 直接传入值
 
+这个例子 **没有** 传递初始化函数，因此 `createInitialTodos` 函数会在每次渲染时运行，比如当你在输入框中输入时，此时打开控制台，可以看到每次输入都会调用该函数。
+
 ```js
 const { useState, useRef, useEffect } = React
 
@@ -58,6 +60,8 @@ function createInitialTodos() {
       text: 'Item ' + (i + 1)
     })
   }
+  console.log('render')
+
   return initialTodos
 }
 
@@ -96,6 +100,8 @@ export default function TodoList() {
 
 :::react-demo 传入初始化函数
 
+这个例子传递了初始化函数，因此 `createInitialTodos` 函数仅在初始化期间运行。当组件重新渲染，例如你在输入框中键入内容时，它不会再次运行。
+
 ```js
 const { useState, useRef, useEffect } = React
 
@@ -107,6 +113,8 @@ function createInitialTodos() {
       text: 'Item ' + (i + 1)
     })
   }
+  console.log('render')
+
   return initialTodos
 }
 
@@ -143,6 +151,14 @@ export default function TodoList() {
 
 :::
 
+::: warning
+
+尽管 `createInitialTodos()` 的结果仅用于初始渲染，但你仍然在每次渲染时调用此函数。如果它创建大数组或执行昂贵的计算，这可能会浪费资源。
+
+所以对于大型数组的创建，一般传入初始化函数。
+
+:::
+
 **返回值：**
 
 `useState` 返回一个数组，使用数组解构接收，其中包含两个值：
@@ -153,8 +169,13 @@ export default function TodoList() {
 **注意：**
 
 - `useState` 是一个钩子，所以 **只能** 在组件的顶层或者你自己的钩子中调用它，**不能** 在循环或条件中调用它。
-  > 若循环调用，则可能造成状态管理混乱、组件不一致、难以调试的问题。
 - 在严格模式下，React 会 **调用两次初始化函数**，其中一次调用的结果将被忽略，以帮助你找到意外的杂质。这是开发专用行为，不会影响生产环境。如果初始化函数是纯函数，就不会影响应用实际行为（因此初始化函数必须是纯函数）。
+
+::: warning
+
+若循环调用，则可能造成状态管理混乱、组件不一致、难以调试的问题。
+
+:::
 
 ## setSomething(nextState)
 

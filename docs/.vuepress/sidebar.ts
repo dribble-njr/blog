@@ -3,7 +3,8 @@ import {
   computerScience,
   frontend,
   project,
-  reading
+  reading,
+  survival
 } from './sidebar/index'
 
 import { sidebar } from 'vuepress-theme-hope'
@@ -14,5 +15,6 @@ export const Sidebar = sidebar({
   '/frontend/': frontend,
   '/project/': project,
   '/reading/': reading,
+  '/survival': survival,
   '/': ['']
 })

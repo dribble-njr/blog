@@ -7,5 +7,6 @@ export const Navbar = navbar([
   { text: '后端指北', link: '/backend/', icon: 'server' },
   { text: '项目', link: '/project/', icon: 'project1' },
   { text: '读书笔记', link: '/reading/', icon: 'biji' },
+  { text: '求生之路', link: '/survival/', icon: 'road' },
   { text: 'TimeLine', link: '/timeline/', icon: 'timeline' }
 ])

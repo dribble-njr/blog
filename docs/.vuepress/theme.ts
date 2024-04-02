@@ -28,7 +28,7 @@ export default hopeTheme(
       end: ['Language', 'Repo', 'Outlook', 'Search']
     },
 
-    iconAssets: '//at.alicdn.com/t/c/font_3926422_yw81zu0sl7s.css',
+    iconAssets: '//at.alicdn.com/t/c/font_3926422_vcv6pgsuzgq.css',
     iconPrefix: 'iconfont icon-',
 
     repo: 'https://github.com/dribble-njr/blog',
@@ -115,6 +115,7 @@ export default hopeTheme(
         figure: true,
         flowchart: true,
         gfm: true,
+        tasklist: true,
         imgLazyload: true,
         imgSize: true,
         include: true,

@@ -1,7 +1,7 @@
 ---
 title: useEffect
 date: 2024-02-27
-icon: history
+icon: effect
 category:
   - react
 tag:
@@ -12,17 +12,23 @@ tag:
 
 `useEffect` 可以将组件与外部系统同步。
 
+::: info
+
+外部系统，包括网络、浏览器 API (`setTimeout`...）、第三方库或浏览器 DOM。
+
+:::
+
 ## useEffect(setup, dependencies?)
 
 ### `setup`
 
-包含 Effect 逻辑的函数。该 **设置函数** 可以返回一个 **清理函数**。
+包含 Effect 逻辑的函数。该 **设置函数** 可以返回一个 **清理函数**。大致运行逻辑如下：
 
-当组件添加到 DOM 时，React 将运行「设置函数」。
-
-在每次重新渲染依赖关系发生变化后，React 将首先使用 **旧值** 运行「清理函数」，然后使用 **新值** 运行「设置函数」。
-
-从 DOM 中移除组件后，React 将运行「清理函数」。
+1. 当组件添加到 DOM 时，React 将运行「设置函数」。
+2. 在每次重新渲染依赖关系发生变化后：
+   - React 将首先使用 **旧值** 运行「清理函数」；
+   - 然后使用 **新值** 运行「设置函数」。
+3. 从 DOM 中移除组件后，React 将最后一次运行「清理函数」。
 
 ### `dependencies`
 
@@ -38,7 +44,7 @@ tag:
 
 依赖项列表必须具有恒定的项数，并以 `[dep1、dep2、dep3]` 这样的内联方式书写。
 
-React 会使用 `Object.is` 比较法将每个依赖项与其前一个值进行比较。
+React 会使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较法将每个依赖项与其前一个值进行比较。
 
 如果省略此参数，每次重新渲染组件后，Effect 都会重新运行。
 

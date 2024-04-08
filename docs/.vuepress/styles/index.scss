@@ -4,6 +4,10 @@
   height: 28px !important;
 }
 html[data-theme='dark'] {
+  --mark-color: rgb(250 189 98);
+  --mark-bg-color: rgb(219 125 39 / 0.2);
+  --mark-b-color: rgb(219 125 39 / 0.6);
+
   figure {
     img {
       filter: brightness(0.8) contrast(1.2);
@@ -32,6 +36,12 @@ html[data-theme='dark'] {
   }
 }
 
+html[data-theme='light'] {
+  --mark-color: rgb(182 87 0);
+  --mark-bg-color: rgb(219 125 39 / 0.1);
+  --mark-b-color: rgb(219 125 39 / 0.6);
+}
+
 @keyframes bounce {
   0% {
     transform: scale(1) translateY(0);
@@ -56,6 +66,17 @@ html[data-theme='dark'] {
   }
 }
 
+mark {
+  background-color: var(--mark-bg-color);
+  color: var(--mark-color);
+  padding-top: 1.5px;
+  padding-bottom: 1.5px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-bottom: 2px var(--mark-b-color) solid;
+  border-radius: 0.25rem;
+}
+
 .nav-link:hover .icon,
 .vp-project-card:hover .icon,
 .vp-page-title h1:hover .icon,
@@ -66,4 +87,8 @@ html[data-theme='dark'] {
   animation-timing-function: cubic-bezier(0.28, 0.84, 0.42, 1);
   animation-delay: 0s;
   animation-direction: normal;
+}
+
+li {
+  margin-bottom: .25rem;
 }

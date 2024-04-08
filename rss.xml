@@ -6,10 +6,11 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 08 Apr 2024 09:09:33 GMT</pubDate>
-    <lastBuildDate>Mon, 08 Apr 2024 09:09:33 GMT</lastBuildDate>
+    <pubDate>Mon, 08 Apr 2024 10:30:58 GMT</pubDate>
+    <lastBuildDate>Mon, 08 Apr 2024 10:30:58 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>practice</category>
     <category>READING</category>
     <category>HTML</category>
     <category>chakra</category>
@@ -22,10 +23,51 @@
     <category>计算机网络</category>
     <category>浏览器</category>
     <category>reading</category>
-    <category>practice</category>
     <category>linux</category>
     <category>工程化</category>
     <category>operating-system</category>
+    <item>
+      <title>placeholder 支持换行展示</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">placeholder 支持换行展示</source>
+      <description>placeholder 内容有时需要支持换行，查了网上一些例子，结果都无法实现。 错误 demo 直接使用 \n 会被当成字符渲染。 直接使用 直接使用 \n 使用 ASCII 码 若使用 ASCII 码会被处理成空格。 &amp;#10;——换行符 \n &amp;#13;——回车 \r 使用 ASCII 码使用 ASCII 码 正确做法 —— 使用 JSX 此时应...</description>
+      <category>practice</category>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p><code>placeholder</code> 内容有时需要支持换行，查了网上一些例子，结果都无法实现。</p>
+<h2>错误 demo</h2>
+<h3>直接使用 <code>\n</code></h3>
+<p>会被当成字符渲染。</p>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
+  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
+  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>多个关键词请使用逗号分隔\nShift+Enter换行，Enter搜索<span class="token punctuation">"</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408181616.png" alt="直接使用 " tabindex="0" loading="lazy"><figcaption>直接使用 <code>\n</code></figcaption></figure>
+<h3>使用 ASCII 码</h3>
+<p>若使用 <code>ASCII</code> 码会被处理成空格。</p>
+<ul>
+<li><code>&amp;#10;</code>——换行符 <code>\n</code></li>
+<li><code>&amp;#13;</code>——回车 <code>\r</code></li>
+</ul>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
+  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
+  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>多个关键词请使用逗号分隔<span class="token entity" title="">&amp;#13;</span>Shift+Enter换行，Enter搜索<span class="token punctuation">"</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408182209.png" alt="使用 ASCII 码" tabindex="0" loading="lazy"><figcaption>使用 ASCII 码</figcaption></figure>
+<h2>正确做法 —— 使用 JSX</h2>
+<p>此时应该使用 <code>\n</code> 实现换行。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>在 JSX 中，要在字符串中插入 ASCII 字符，你需要直接使用对应的字符或者使用其 Unicode 表示方式，因为 HTML entities 在 JSX 中不会被解析。</p>
+</div>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
+  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
+  <span class="token attr-name">placeholder</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">多个关键词请使用逗号分隔\nShift+Enter换行，Enter搜索</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408182716.png" alt="JSX" tabindex="0" loading="lazy"><figcaption>JSX</figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408181616.png" type="image/png"/>
+    </item>
     <item>
       <title>务实的偏执</title>
       <link>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html</link>
@@ -10182,24 +10224,6 @@ $ <span class="token function">git</span> <span class="token function">add</span
       <content:encoded><![CDATA[<!-- markdownlint-disable MD024 MD033 MD051 -->
 ]]></content:encoded>
       <enclosure url="https://dribble-njr.github.io/blog/blog/logo.svg" type="image/svg+xml"/>
-    </item>
-    <item>
-      <title>Project</title>
-      <link>https://dribble-njr.github.io/blog/blog/project/</link>
-      <guid>https://dribble-njr.github.io/blog/blog/project/</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Project</source>
-      <description>个人开发 开源项目 </description>
-      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>个人开发</h2>
-<ul>
-<li></li>
-<li></li>
-</ul>
-<h2>开源项目</h2>
-<ul>
-<li></li>
-</ul>
-]]></content:encoded>
     </item>
   </channel>
 </rss>

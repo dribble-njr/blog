@@ -7,6 +7,20 @@
   "favicon": "https://dribble-njr.github.io/blog/blog/favicon.ico",
   "items": [
     {
+      "title": "placeholder 支持换行展示",
+      "url": "https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html",
+      "id": "https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html",
+      "summary": "placeholder 内容有时需要支持换行，查了网上一些例子，结果都无法实现。 错误 demo 直接使用 \\n 会被当成字符渲染。 直接使用 直接使用 \\n 使用 ASCII 码 若使用 ASCII 码会被处理成空格。 &#10;——换行符 \\n &#13;——回车 \\r 使用 ASCII 码使用 ASCII 码 正确做法 —— 使用 JSX 此时应...",
+      "content_html": "<p><code>placeholder</code> 内容有时需要支持换行，查了网上一些例子，结果都无法实现。</p>\n<h2>错误 demo</h2>\n<h3>直接使用 <code>\\n</code></h3>\n<p>会被当成字符渲染。</p>\n<div class=\"language-jsx\" data-ext=\"jsx\" data-title=\"jsx\"><pre class=\"language-jsx\"><code><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span><span class=\"token class-name\">Input.TextArea</span></span>\n  <span class=\"token attr-name\">rows</span><span class=\"token script language-javascript\"><span class=\"token script-punctuation punctuation\">=</span><span class=\"token punctuation\">{</span><span class=\"token number\">5</span><span class=\"token punctuation\">}</span></span>\n  <span class=\"token attr-name\">placeholder</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>多个关键词请使用逗号分隔\\nShift+Enter换行，Enter搜索<span class=\"token punctuation\">\"</span></span>\n<span class=\"token punctuation\">/&gt;</span></span>\n</code></pre></div><figure><img src=\"https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408181616.png\" alt=\"直接使用 \" tabindex=\"0\" loading=\"lazy\"><figcaption>直接使用 <code>\\n</code></figcaption></figure>\n<h3>使用 ASCII 码</h3>\n<p>若使用 <code>ASCII</code> 码会被处理成空格。</p>\n<ul>\n<li><code>&amp;#10;</code>——换行符 <code>\\n</code></li>\n<li><code>&amp;#13;</code>——回车 <code>\\r</code></li>\n</ul>\n<div class=\"language-jsx\" data-ext=\"jsx\" data-title=\"jsx\"><pre class=\"language-jsx\"><code><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span><span class=\"token class-name\">Input.TextArea</span></span>\n  <span class=\"token attr-name\">rows</span><span class=\"token script language-javascript\"><span class=\"token script-punctuation punctuation\">=</span><span class=\"token punctuation\">{</span><span class=\"token number\">5</span><span class=\"token punctuation\">}</span></span>\n  <span class=\"token attr-name\">placeholder</span><span class=\"token attr-value\"><span class=\"token punctuation attr-equals\">=</span><span class=\"token punctuation\">\"</span>多个关键词请使用逗号分隔<span class=\"token entity\" title=\"\r\">&amp;#13;</span>Shift+Enter换行，Enter搜索<span class=\"token punctuation\">\"</span></span>\n<span class=\"token punctuation\">/&gt;</span></span>\n</code></pre></div><figure><img src=\"https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408182209.png\" alt=\"使用 ASCII 码\" tabindex=\"0\" loading=\"lazy\"><figcaption>使用 ASCII 码</figcaption></figure>\n<h2>正确做法 —— 使用 JSX</h2>\n<p>此时应该使用 <code>\\n</code> 实现换行。</p>\n<div class=\"hint-container tip\">\n<p class=\"hint-container-title\">提示</p>\n<p>在 JSX 中，要在字符串中插入 ASCII 字符，你需要直接使用对应的字符或者使用其 Unicode 表示方式，因为 HTML entities 在 JSX 中不会被解析。</p>\n</div>\n<div class=\"language-jsx\" data-ext=\"jsx\" data-title=\"jsx\"><pre class=\"language-jsx\"><code><span class=\"token tag\"><span class=\"token tag\"><span class=\"token punctuation\">&lt;</span><span class=\"token class-name\">Input.TextArea</span></span>\n  <span class=\"token attr-name\">rows</span><span class=\"token script language-javascript\"><span class=\"token script-punctuation punctuation\">=</span><span class=\"token punctuation\">{</span><span class=\"token number\">5</span><span class=\"token punctuation\">}</span></span>\n  <span class=\"token attr-name\">placeholder</span><span class=\"token script language-javascript\"><span class=\"token script-punctuation punctuation\">=</span><span class=\"token punctuation\">{</span><span class=\"token template-string\"><span class=\"token template-punctuation string\">`</span><span class=\"token string\">多个关键词请使用逗号分隔\\nShift+Enter换行，Enter搜索</span><span class=\"token template-punctuation string\">`</span></span><span class=\"token punctuation\">}</span></span>\n<span class=\"token punctuation\">/&gt;</span></span>\n</code></pre></div><figure><img src=\"https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408182716.png\" alt=\"JSX\" tabindex=\"0\" loading=\"lazy\"><figcaption>JSX</figcaption></figure>\n",
+      "image": "https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408181616.png",
+      "date_published": "2024-04-08T00:00:00.000Z",
+      "date_modified": "2024-04-08T10:29:30.000Z",
+      "authors": [],
+      "tags": [
+        "practice"
+      ]
+    },
+    {
       "title": "务实的偏执",
       "url": "https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html",
       "id": "https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html",
@@ -1318,17 +1332,6 @@
       "image": "https://dribble-njr.github.io/blog/blog/logo.svg",
       "date_published": "2023-03-02T05:00:27.000Z",
       "date_modified": "2023-03-02T05:00:27.000Z",
-      "authors": [],
-      "tags": []
-    },
-    {
-      "title": "Project",
-      "url": "https://dribble-njr.github.io/blog/blog/project/",
-      "id": "https://dribble-njr.github.io/blog/blog/project/",
-      "summary": "个人开发 开源项目 ",
-      "content_html": "<h2>个人开发</h2>\n<ul>\n<li></li>\n<li></li>\n</ul>\n<h2>开源项目</h2>\n<ul>\n<li></li>\n</ul>\n",
-      "date_published": "2023-03-02T05:00:27.000Z",
-      "date_modified": "2024-02-29T11:17:41.000Z",
       "authors": [],
       "tags": []
     }

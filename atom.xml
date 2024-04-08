@@ -4,16 +4,16 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-04-08T06:43:50.722Z</updated>
+  <updated>2024-04-08T09:09:33.705Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="READING"/>
   <category term="HTML"/>
   <category term="chakra"/>
   <category term="next"/>
   <category term="CSS"/>
   <category term="Project"/>
-  <category term="READING"/>
   <category term="react"/>
   <category term="database"/>
   <category term="algorithm"/>
@@ -24,10 +24,46 @@
   <category term="linux"/>
   <category term="工程化"/>
   <category term="operating-system"/>
-  <category term="LeetCode"/>
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">务实的偏执</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html"/>
+    <updated>2024-04-08T09:07:59.000Z</updated>
+    <summary type="html"><![CDATA[<h2>契约式设计</h2>
+<p>文档化及对主张进行检验是契约式设计（缩写为 DBC）的核心。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>前置条件</p>
+<p>为调用这个例程，必须为真的是什么？例程的需求。一个例程永远不应该在前置条件被违反的时候被调用。传递良好的数据是调用者的责任。</p>
+<p>后置条件</p>
+<p>例程保证要做的是什么？例程完成时世界的状态。例程有后置条件这个事实，意味着能得出这样的结论——不允许无限循环。</p>
+<p>类的不变式</p>
+<p>从调用者的角度来看，类会确保该条件始终为真。在例程的内部处理期间，可以不遵守不变式，但是当例程退出并将控制权返回给调用者时，不变式必须为真。（注意，一个类不能给参与不变式的任何数据成员不受限制的写访问权限。）</p>
+</div>]]></summary>
+    <content type="html"><![CDATA[<h2>契约式设计</h2>
+<p>文档化及对主张进行检验是契约式设计（缩写为 DBC）的核心。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>前置条件</p>
+<p>为调用这个例程，必须为真的是什么？例程的需求。一个例程永远不应该在前置条件被违反的时候被调用。传递良好的数据是调用者的责任。</p>
+<p>后置条件</p>
+<p>例程保证要做的是什么？例程完成时世界的状态。例程有后置条件这个事实，意味着能得出这样的结论——不允许无限循环。</p>
+<p>类的不变式</p>
+<p>从调用者的角度来看，类会确保该条件始终为真。在例程的内部处理期间，可以不遵守不变式，但是当例程退出并将控制权返回给调用者时，不变式必须为真。（注意，一个类不能给参与不变式的任何数据成员不受限制的写访问权限。）</p>
+</div>
+<h2>通过契约进行设计</h2>
+<p>如果你订的契约是可以接受任何东西，并且承诺要回报整个世界，那么你就有很多代码要写！</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>是不是这就是需要解耦？</p>
+</div>
+]]></content>
+    <category term="READING"/>
+    <published>2024-04-08T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">SEO</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/013-seo.html</id>
@@ -11002,606 +11038,5 @@ $ <span class="token function">git</span> <span class="token function">add</span
 </ul>
 ]]></content>
     <published>2023-03-02T05:00:27.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">二叉树</title>
-    <id>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/0001%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/computer-science/algorithm/0001%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91.html"/>
-    <updated>2023-03-25T10:47:40.000Z</updated>
-    <summary type="html"><![CDATA[<p>通常二叉树有两种做法，分别对应着回溯算法和动态规划：</p>
-<ol>
-<li>一次遍历二叉树：用 <code>traverse</code> 函数配合外部变量，实质上是一个<strong>回溯框架</strong>；</li>
-<li>分解问题：通过分解为左右子树问题解决，实质上是<strong>动态规划</strong>。</li>
-</ol>
-<h2>一次遍历（回溯）</h2>
-<h3><a class="header-anchor" href="#二叉树的最大深度"><span></span></a><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener noreferrer">二叉树的最大深度</a></h3>]]></summary>
-    <content type="html"><![CDATA[<p>通常二叉树有两种做法，分别对应着回溯算法和动态规划：</p>
-<ol>
-<li>一次遍历二叉树：用 <code>traverse</code> 函数配合外部变量，实质上是一个<strong>回溯框架</strong>；</li>
-<li>分解问题：通过分解为左右子树问题解决，实质上是<strong>动态规划</strong>。</li>
-</ol>
-<h2>一次遍历（回溯）</h2>
-<h3><a class="header-anchor" href="#二叉树的最大深度"><span></span></a><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener noreferrer">二叉树的最大深度</a></h3>
-<p>在前序位置（进入当前节点）中将当前深度 <code>+1</code>，并计算最大深度，再后序位置（离开当前节点）中将深度 <code>-1</code>。本质上就是一个回溯算法。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">maxDepth</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> depth<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0</span>
-  <span class="token keyword">let</span> res<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
-
-    depth<span class="token operator">++</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      res <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> depth<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    depth<span class="token operator">--</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#路径总和"><span></span></a><a href="https://leetcode.cn/problems/path-sum/" target="_blank" rel="noopener noreferrer">路径总和</a></h3>
-<p>回溯过程中判断到达根节点时和是否和目标和相等。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">hasPathSum</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">,</span> targetSum<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
-  
-  <span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> res <span class="token operator">=</span> <span class="token boolean">false</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span>
-    <span class="token punctuation">}</span>
-
-    sum <span class="token operator">+=</span> root<span class="token punctuation">.</span>val
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">==</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res <span class="token operator">=</span> <span class="token boolean">true</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-          
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    sum <span class="token operator">-=</span> root<span class="token punctuation">.</span>val
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#路径总和ii"><span></span></a><a href="https://leetcode.cn/problems/path-sum-ii/submissions/" target="_blank" rel="noopener noreferrer">路径总和Ⅱ</a></h3>
-<p>和上一题一样，只不过多维护一个路径数组。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">pathSum</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">,</span> targetSum<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token comment">// 路径、最终结果及当前和</span>
-  <span class="token keyword">const</span> path<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> res<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token keyword">let</span> curSum <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
-
-    curSum <span class="token operator">+=</span> root<span class="token punctuation">.</span>val
-    path<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-    <span class="token comment">// 到达叶子节点时判断是否满足条件</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>curSum <span class="token operator">==</span> targetSum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span>path<span class="token punctuation">]</span><span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-
-    <span class="token comment">// 回溯</span>
-    curSum <span class="token operator">-=</span> root<span class="token punctuation">.</span>val
-    path<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#求根节点到叶节点数字之和"><span></span></a><a href="https://leetcode.cn/problems/sum-root-to-leaf-numbers/" target="_blank" rel="noopener noreferrer">求根节点到叶节点数字之和</a></h3>
-<p>记录所有路径即可求和。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">sumNumbers</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-  <span class="token keyword">let</span> path<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> res <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
-    
-    path<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val <span class="token operator">+</span> <span class="token string">''</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      res <span class="token operator">+=</span> <span class="token function">Number</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    path<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树的所有路径"><span></span></a><a href="https://leetcode.cn/problems/binary-tree-paths/" target="_blank" rel="noopener noreferrer">二叉树的所有路径</a></h3>
-<p>将上面的题改一些代码即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">binaryTreePaths</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">let</span> path<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> res<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
-    
-    path<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'-&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    path<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#左叶子之和"><span></span></a><a href="https://leetcode.cn/problems/sum-of-left-leaves/" target="_blank" rel="noopener noreferrer">左叶子之和</a></h3>
-<p>一次遍历找到左叶子即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">sumOfLeftLeaves</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>left<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res <span class="token operator">+=</span> root<span class="token punctuation">.</span>left<span class="token punctuation">.</span>val
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h2>分解问题（动态规划）</h2>
-<h3><a class="header-anchor" href="#二叉树的最大深度-1"><span></span></a><a href="https://leetcode.cn/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener noreferrer">二叉树的最大深度</a></h3>
-<p>这个题可以一次遍历解决问题，同样也能计算左右子树的最大深度，从而计算出整棵树的最大深度。这就是动态规划，而动态规划必须明确函数的意义，这个题的函数就是输入一个根节点，计算最大深度。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">maxDepth</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">maxDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">maxDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-
-  <span class="token comment">// 左右子树的最大深度 + 根节点</span>
-  <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树的最小深度"><span></span></a><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener noreferrer">二叉树的最小深度</a></h3>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">minDepth</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-  <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">minDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">minDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">+</span> right
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> root<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">+</span> left
-
-  <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#平衡二叉树"><span></span></a><a href="https://leetcode.cn/problems/balanced-binary-tree/" target="_blank" rel="noopener noreferrer">平衡二叉树</a></h3>
-<p>在计算二叉树深度的同时判断是否为平衡二叉树。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">isBalanced</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span>
-
-  <span class="token keyword">let</span> isBalanced <span class="token operator">=</span> <span class="token boolean">true</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">getDepth</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isBalanced<span class="token punctuation">)</span> <span class="token keyword">return</span>
-
-    <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">getDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">getDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>left <span class="token operator">-</span> right<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      isBalanced <span class="token operator">=</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">+</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">getDepth</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> isBalanced
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#相同的树"><span></span></a><a href="https://leetcode.cn/problems/same-tree/" target="_blank" rel="noopener noreferrer">相同的树</a></h3>
-<p>将问题分解为左右子树是否相同。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">isSameTree</span><span class="token punctuation">(</span>p<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">,</span> q<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> q <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> q <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> q <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>val <span class="token operator">!=</span> q<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">isSameTree</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>left<span class="token punctuation">,</span> q<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">isSameTree</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>right<span class="token punctuation">,</span> q<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> left <span class="token operator">&amp;&amp;</span> right<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#对称二叉树"><span></span></a><a href="https://leetcode.cn/problems/symmetric-tree/" target="_blank" rel="noopener noreferrer">对称二叉树</a></h3>
-<p>判断左右子树是否对称即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span>
-
-  <span class="token keyword">const</span> traverse <span class="token operator">=</span> <span class="token punctuation">(</span>n1<span class="token operator">:</span> TreeNode<span class="token punctuation">,</span> n2<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>n1 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> n2 <span class="token operator">==</span> <span class="token keyword">null</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>n2 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>n1<span class="token punctuation">.</span>val <span class="token operator">!=</span> n2<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
-
-    <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">traverse</span><span class="token punctuation">(</span>n1<span class="token punctuation">.</span>left<span class="token punctuation">,</span> n2<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">traverse</span><span class="token punctuation">(</span>n1<span class="token punctuation">.</span>right<span class="token punctuation">,</span> n2<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> left <span class="token operator">&amp;&amp;</span> right
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树展开为链表"><span></span></a><a href="https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/" target="_blank" rel="noopener noreferrer">二叉树展开为链表</a></h3>
-<p>分解为左右子树问题即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">flatten</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
-
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-
-    <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-  
-    <span class="token comment">// 把左子树连接到右子树</span>
-    root<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">null</span>
-    root<span class="token punctuation">.</span>right <span class="token operator">=</span> left
-
-    <span class="token comment">// 把右子树连到最末端</span>
-    <span class="token keyword">let</span> p<span class="token operator">:</span> TreeNode <span class="token operator">=</span> root
-    <span class="token keyword">while</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      p <span class="token operator">=</span> p<span class="token punctuation">.</span>right
-    <span class="token punctuation">}</span>
-
-    p<span class="token punctuation">.</span>right <span class="token operator">=</span> right
-    
-    <span class="token keyword">return</span> root
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#翻转二叉树"><span></span></a><a href="https://leetcode.cn/problems/invert-binary-tree/" target="_blank" rel="noopener noreferrer">翻转二叉树</a></h3>
-<p>明确函数定义，左右子树反转即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">invertTree</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-
-  <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">invertTree</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">invertTree</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val<span class="token punctuation">,</span> right<span class="token punctuation">,</span> left<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树的最近公共祖先"><span></span></a><a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/submissions/" target="_blank" rel="noopener noreferrer">二叉树的最近公共祖先</a></h3>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">lowestCommonAncestor</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">,</span> p<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">,</span> q<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-	<span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> p <span class="token operator">||</span> root <span class="token operator">==</span> q<span class="token punctuation">)</span> <span class="token keyword">return</span> root
-
-  <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">lowestCommonAncestor</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">,</span> p<span class="token punctuation">,</span> q<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">lowestCommonAncestor</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">,</span> p<span class="token punctuation">,</span> q<span class="token punctuation">)</span>
-  
-  <span class="token comment">// 左右都不为 null</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> root
-  <span class="token punctuation">}</span>
-  <span class="token comment">// 左右都为 null</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> right <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">null</span>
-  <span class="token punctuation">}</span>
-  <span class="token comment">// 有一个不为 null</span>
-  <span class="token keyword">return</span> left <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> right <span class="token operator">:</span> left
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#出现次数最多的子树元素和"><span></span></a><a href="https://leetcode.cn/problems/most-frequent-subtree-sum/" target="_blank" rel="noopener noreferrer">出现次数最多的子树元素和</a></h3>
-<p>通过后序遍历记录子树和出现的次数，再计算最多次数即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">findFrequentTreeSum</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-  <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-    <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">sum</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">sum</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> res <span class="token operator">=</span> root<span class="token punctuation">.</span>val <span class="token operator">+</span> left <span class="token operator">+</span> right
-
-    <span class="token keyword">const</span> count <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">??</span> <span class="token number">0</span>
-    map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> res
-  <span class="token punctuation">}</span>
-
-  <span class="token function">sum</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">let</span> maxCount <span class="token operator">=</span> <span class="token number">0</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> val <span class="token keyword">of</span> map<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    maxCount <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxCount<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">let</span> res<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">of</span> map<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> maxCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h2>层序遍历</h2>
-<h3><a class="header-anchor" href="#二叉树的层序遍历"><span></span></a><a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener noreferrer">二叉树的层序遍历</a></h3>
-<p>队列是核心数据结构。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">levelOrder</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">const</span> queue<span class="token operator">:</span> <span class="token punctuation">(</span>TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> res<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">while</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> queue<span class="token punctuation">.</span>length
-    <span class="token keyword">const</span> temp<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> node <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      temp<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树的锯齿层序遍历"><span></span></a><a href="https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener noreferrer">二叉树的锯齿层序遍历</a></h3>
-<p>用一个遍历记录层级，奇数则用 <code>unshift</code>，偶数则 <code>push</code>。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">zigzagLevelOrder</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">const</span> queue<span class="token operator">:</span> TreeNode<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-  <span class="token keyword">let</span> level<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">=</span> <span class="token number">0</span>
-  <span class="token keyword">const</span> res<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> queue<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-    <span class="token keyword">const</span> temp<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> node <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>level <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        temp<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        temp<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
-
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    level<span class="token operator">++</span>
-    res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#填充每个节点的下一个右侧节点指针"><span></span></a><a href="https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener noreferrer">填充每个节点的下一个右侧节点指针</a></h3>
-<p>层序遍历，记录前一个节点即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">connect</span><span class="token punctuation">(</span>root<span class="token operator">:</span> Node <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> Node <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-
-  <span class="token keyword">const</span> queue <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">while</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> queue<span class="token punctuation">.</span>length
-    
-    <span class="token keyword">let</span> pre <span class="token operator">=</span> <span class="token keyword">null</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment">// 记录第一个节点</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        pre <span class="token operator">=</span> queue<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-      <span class="token punctuation">}</span>
-
-      <span class="token keyword">const</span> node <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-
-      <span class="token comment">// 将前一节点的 next 设为当前节点</span>
-      <span class="token comment">// 更新前一节点为当前节点</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        pre<span class="token punctuation">.</span>next <span class="token operator">=</span> node
-        pre <span class="token operator">=</span> node
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> root
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树的右视图"><span></span></a><a href="https://leetcode.cn/problems/binary-tree-right-side-view/" target="_blank" rel="noopener noreferrer">二叉树的右视图</a></h3>
-<p>层序遍历，当 <code>i</code> 为最后一个则将值加入 <code>res</code>。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">rightSideView</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token keyword">const</span> queue<span class="token operator">:</span> TreeNode<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> res<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> queue<span class="token punctuation">.</span>length
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> node <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> len <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>val<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#完全二叉树的节点个数"><span></span></a><a href="https://leetcode.cn/problems/count-complete-tree-nodes/" target="_blank" rel="noopener noreferrer">完全二叉树的节点个数</a></h3>
-<p>层序遍历中记录节点个数。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">countNodes</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-  <span class="token keyword">const</span> queue<span class="token operator">:</span> TreeNode<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token number">0</span>
-  queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> queue<span class="token punctuation">.</span>length
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> node <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      res<span class="token operator">++</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#找树左下角的值"><span></span></a><a href="https://leetcode.cn/problems/find-bottom-left-tree-value/" target="_blank" rel="noopener noreferrer">找树左下角的值</a></h3>
-<p>层序遍历记录第一个节点即可。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">findBottomLeftValue</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> queue<span class="token operator">:</span> TreeNode<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">while</span><span class="token punctuation">(</span>queue<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> len <span class="token operator">=</span> queue<span class="token punctuation">.</span>length
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> node <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> res <span class="token operator">=</span> node<span class="token punctuation">.</span>val
-
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span> queue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h2>构造</h2>
-<p>构造二叉树基本步骤：</p>
-<ol>
-<li>找到根节点</li>
-<li>递归遍历所有左右子树</li>
-<li>返回根节点</li>
-</ol>
-<h3><a class="header-anchor" href="#从前序与中序遍历构造二叉树"><span></span></a><a href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener noreferrer">从前序与中序遍历构造二叉树</a></h3>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">buildTree</span><span class="token punctuation">(</span>preorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> inorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token function-variable function">build</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>preorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> preStart<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> preEnd<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
-                         inorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> inStart<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> inEnd<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>preStart <span class="token operator">&gt;</span> preEnd<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-    
-    <span class="token comment">// 根节点的 val</span>
-    <span class="token keyword">const</span> val <span class="token operator">=</span> preorder<span class="token punctuation">[</span>preStart<span class="token punctuation">]</span>
-    <span class="token comment">// 根据中序遍历找到左右子树边界</span>
-    <span class="token keyword">let</span> index<span class="token operator">:</span> <span class="token builtin">number</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> inStart<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> inEnd<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>inorder<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        index <span class="token operator">=</span> i
-        <span class="token keyword">break</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// 左子树长度</span>
-    <span class="token keyword">let</span> leftSize <span class="token operator">=</span> index <span class="token operator">-</span> inStart
-
-    <span class="token comment">// 构造左右子树，注意起始下标</span>
-    <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">build</span><span class="token punctuation">(</span>preorder<span class="token punctuation">,</span> preStart <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> preStart <span class="token operator">+</span> leftSize<span class="token punctuation">,</span> inorder<span class="token punctuation">,</span> inStart<span class="token punctuation">,</span> index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">build</span><span class="token punctuation">(</span>preorder<span class="token punctuation">,</span> preStart <span class="token operator">+</span> leftSize <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> preEnd<span class="token punctuation">,</span> inorder<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> inEnd<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> <span class="token function">build</span><span class="token punctuation">(</span>preorder<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> preorder<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> inorder<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> inorder<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#从中序和后序遍历构造二叉树"><span></span></a><a href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener noreferrer">从中序和后序遍历构造二叉树</a></h3>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">buildTree</span><span class="token punctuation">(</span>inorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> postorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token function-variable function">build</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>inorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> inStart<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> inEnd<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
-    postorder<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> postStart<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> postEnd<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>inStart <span class="token operator">&gt;</span> inEnd<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-
-      <span class="token comment">// 根节点的 val</span>
-      <span class="token keyword">const</span> val <span class="token operator">=</span> postorder<span class="token punctuation">[</span>postEnd<span class="token punctuation">]</span>
-      <span class="token comment">// 利用中序遍历找到左右子树边界</span>
-      <span class="token keyword">let</span> index<span class="token operator">:</span> <span class="token builtin">number</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> inStart<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> inEnd<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>inorder<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          index <span class="token operator">=</span> i
-          <span class="token keyword">break</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-      <span class="token comment">// 左子树长度</span>
-      <span class="token keyword">let</span> leftSize <span class="token operator">=</span> index <span class="token operator">-</span> inStart
-
-      <span class="token comment">// 构造左右子树</span>
-      <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">build</span><span class="token punctuation">(</span>inorder<span class="token punctuation">,</span> inStart<span class="token punctuation">,</span> index <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> 
-                         postorder<span class="token punctuation">,</span> postStart<span class="token punctuation">,</span> postStart <span class="token operator">+</span> leftSize <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-      <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">build</span><span class="token punctuation">(</span>inorder<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> inEnd<span class="token punctuation">,</span>
-                          postorder<span class="token punctuation">,</span> postStart <span class="token operator">+</span> leftSize<span class="token punctuation">,</span> postEnd <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> <span class="token function">build</span><span class="token punctuation">(</span>inorder<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> inorder<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> postorder<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> postorder<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><h3><a class="header-anchor" href="#二叉树的序列化与反序列化"><span></span></a><a href="https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener noreferrer">二叉树的序列化与反序列化</a></h3>
-<p>通常构造二叉树需要两个遍历结果，但是这里按照前序遍历序列化后，再按前序遍历反序列化也能构造出二叉树。在序列化时可以选择使用<strong>一次遍历</strong>，也可以使用<strong>分解问题</strong>。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">serialize</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> res<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  
-  <span class="token keyword">const</span> <span class="token function-variable function">traverse</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>root<span class="token operator">:</span> TreeNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'#'</span><span class="token punctuation">)</span>
-      <span class="token keyword">return</span>
-    <span class="token punctuation">}</span>
-
-    res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>val <span class="token operator">+</span> <span class="token string">''</span><span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-    <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">traverse</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> 
-  <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">function</span> <span class="token function">deserialize</span><span class="token punctuation">(</span>data<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> TreeNode <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token punctuation">{</span>
-  <span class="token comment">// 反转之后可以使用 pop，减少复杂度</span>
-  <span class="token keyword">const</span> nodes <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  
-  <span class="token keyword">const</span> <span class="token function-variable function">build</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>nodes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>nodes<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-
-    <span class="token keyword">const</span> val <span class="token operator">=</span> nodes<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>val <span class="token operator">==</span> <span class="token string">'#'</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">null</span>
-    <span class="token keyword">const</span> left <span class="token operator">=</span> <span class="token function">build</span><span class="token punctuation">(</span>nodes<span class="token punctuation">)</span>
-    <span class="token keyword">const</span> right <span class="token operator">=</span> <span class="token function">build</span><span class="token punctuation">(</span>nodes<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>val<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> <span class="token function">build</span><span class="token punctuation">(</span>nodes<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div>]]></content>
-    <category term="LeetCode"/>
-    <published>2022-06-23T00:00:00.000Z</published>
   </entry>
 </feed>

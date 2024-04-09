@@ -38,5 +38,10 @@ projects:
     desc: No tomato sauce, please.
     link: https://yzjnnff.github.io/blog/
 
+  - icon: http://zxxlovewtt.top/themes/theme-earth/assets/images/default-avatar.svg
+    name: ZXX
+    desc: 后台技术分享
+    link: http://zxxlovewtt.top/
+
 footer: No means Next Opportunity.
 ---

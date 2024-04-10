@@ -55,8 +55,9 @@ export default [
       {
         text: 'JavaScript',
         icon: 'js',
+        prefix: 'javascript/',
         collapsible: true,
-        children: []
+        children: ['', '001-var-let-const']
       }
     ]
   },

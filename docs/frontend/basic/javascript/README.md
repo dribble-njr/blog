@@ -10,3 +10,4 @@ star: true
 ## 目录
 
 - [var-let-const](./001-var-let-const.md)
+- [数据类型](./002-types.md)

@@ -5,7 +5,7 @@ icon: vs
 category:
   - JavaScript
 tag:
-  - 变量声明
+  - language basic
 ---
 
 首先，三者都是 JavaScript 声明变量的方式。区别在于：

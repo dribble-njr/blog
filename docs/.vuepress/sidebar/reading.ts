@@ -35,7 +35,8 @@ export default [
       '01-a-pragmatic-philosophy',
       '02-a-pragmatic-approach',
       '03-basic-tool',
-      '04-pragmatic-paranoid'
+      '04-pragmatic-paranoid',
+      '05-work-around'
     ]
   }
 ]

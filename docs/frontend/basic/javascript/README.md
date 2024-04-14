@@ -11,3 +11,4 @@ star: true
 
 - [var-let-const](./001-var-let-const.md)
 - [数据类型](./002-types.md)
+- [判断数据类型](./003-judge-type.md)

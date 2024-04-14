@@ -8,9 +8,20 @@ tag:
   - language basic
 ---
 
-ECMAScript 有 7 种简单数据类型（也称为原始类型）：`Undefined`、`Null`、`Boolean`、`Number`、`String`、`Symbol` 和 `BigInt`。`Symbol`（符号）是 ECMAScript 6 新增的，`BigInt` 是 ES10 新增。
+ECMAScript 有 7 种简单数据类型（也称为原始类型）：`Undefined`、`Null`、`Boolean`、`Number`、`String`、`Symbol` 和 `BigInt`。
+
+`Symbol`（符号）是 ES6 新增的，`BigInt` 是 ES10 新增。
 
 还有一种复杂数据类型叫 `Object`（对象）。`Object` 是一种 **无序** 键值对的集合。
+
+不同的数据存放在不同的空间中：
+
+- 栈空间：JavaScript 对于 **基本数据类型** 内存的分配会在执行时直接在栈空间进行分配；
+- 堆空间：JavaScript 对于 **复杂数据类型** 内存的分配会在堆内存中开辟一块空间，并且将这块空间的指针（地址）返回给变量引用（存放在栈空间）。
+
+这么做的原因是 [JS 引擎](../../browser/003-V8.md) 需要用栈来维护程序执行期间上下文的状态，如果栈空间分配的内存过大，那么会影响到上下文切换的效率，从而导致代码执行速度过慢。
+
+因此，栈空间不会设置太大，主要用来存放基本数据类型（占用空间小），而像复杂数据类型，因为他们的占用空间一般较大，因此会被存放在堆空间中。
 
 ## `Undefined`
 

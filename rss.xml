@@ -6,10 +6,11 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 09 Apr 2024 02:53:17 GMT</pubDate>
-    <lastBuildDate>Tue, 09 Apr 2024 02:53:17 GMT</lastBuildDate>
+    <pubDate>Sun, 14 Apr 2024 11:39:13 GMT</pubDate>
+    <lastBuildDate>Sun, 14 Apr 2024 11:39:13 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>JavaScript</category>
     <category>practice</category>
     <category>READING</category>
     <category>HTML</category>
@@ -26,6 +27,50 @@
     <category>linux</category>
     <category>工程化</category>
     <category>operating-system</category>
+    <item>
+      <title>数据类型</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/002-types.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/002-types.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">数据类型</source>
+      <description>ECMAScript 有 7 种简单数据类型（也称为原始类型）：Undefined、Null、Boolean、Number、String、Symbol 和 BigInt。Symbol（符号）是 ECMAScript 6 新增的，BigInt 是 ES10 新增。 还有一种复杂数据类型叫 Object（对象）。Object 是一种 无序 键值对的集合。 ...</description>
+      <category>JavaScript</category>
+      <pubDate>Sun, 14 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>ECMAScript 有 7 种简单数据类型（也称为原始类型）：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code> 和 <code>BigInt</code>。<code>Symbol</code>（符号）是 ECMAScript 6 新增的，<code>BigInt</code> 是 ES10 新增。</p>
+<p>还有一种复杂数据类型叫 <code>Object</code>（对象）。<code>Object</code> 是一种 <strong>无序</strong> 键值对的集合。</p>
+<h2><code>Undefined</code></h2>
+<p>该类型只有一个值，即 <code>undefined</code>，当时用 <code>var</code>、<code>let</code> 没有初始化时，就相当于给变量赋值为了 <code>undefined</code>。</p>
+<h2><code>Null</code></h2>
+<p>该类型同样只有一个值 <code>null</code>，表示一个空对象指针，因此使用 <code>typeof</code> 操作符判断会返回 <code>object</code>。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> car <span class="token operator">=</span> <span class="token keyword">null</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span> <span class="token comment">// 'object'</span>
+</code></pre></div><p>在定义将来要保存对象值的变量时，建议使用 <code>null</code> 来初始化，不要使用其他值（如 <code>undefined</code>）。</p>
+<p>这样，只要检查这个变量的值是不是 <code>null</code> 就可以知道这个变量是否在后来被重新赋予了一个对象的引用，比如：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>car <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// car 是一个对象的引用</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2><code>Boolean</code></h2>
+<p>布尔类型有两个字面值：<code>true</code> 和 <code>false</code>。</p>
+<p>虽然布尔值只有两个，但所有其他 ECMAScript 类型的值都有相应布尔值的等价形式。要将一个其他类型的值转换为布尔值，可以调用特定的 <code>Boolean()</code> 转型函数：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">'Hello world!'</span>
+<span class="token keyword">let</span> messageAsBoolean <span class="token operator">=</span> <span class="token function">Boolean</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+</code></pre></div><p>转换规则如下：</p>
+<p>| 数据类型  | 转换为 <code>true</code> 的值     | 转换为 <code>false</code> 的值 |<br>
+|</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>var、let、const 区别</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">var、let、const 区别</source>
+      <description>首先，三者都是 JavaScript 声明变量的方式。区别在于： 关于变量提升，var、let、const 三者 都存在变量提升，但是区别在于 let、const 存在暂时性死区。 暂时性死区 let、const 在声明变量之前，不能以任何方式使用该变量。在 let、const 声明之前的执行瞬间被称为「暂时性死区」。 在此阶段引用任何后面才声明的变量...</description>
+      <category>JavaScript</category>
+      <pubDate>Mon, 02 May 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>
+<p>|              | var                        | let                        | const                      |<br>
+|</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>placeholder 支持换行展示</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html</link>
@@ -10202,28 +10247,6 @@ $ <span class="token function">git</span> <span class="token function">add</span
 <li><a href="https://en.wikipedia.org/wiki/HTML" target="_blank" rel="noopener noreferrer">维基百科</a></li>
 </ul>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>Intro Page</title>
-      <link>https://dribble-njr.github.io/blog/blog/intro.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/intro.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Intro Page</source>
-      <description>Intro Page Place your introduction and profile here. </description>
-      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>Place your introduction and profile here.</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Slide page</title>
-      <link>https://dribble-njr.github.io/blog/blog/slides.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/slides.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Slide page</source>
-      <description> </description>
-      <pubDate>Thu, 02 Mar 2023 05:00:27 GMT</pubDate>
-      <content:encoded><![CDATA[<!-- markdownlint-disable MD024 MD033 MD051 -->
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/logo.svg" type="image/svg+xml"/>
     </item>
   </channel>
 </rss>

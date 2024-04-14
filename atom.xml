@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-04-09T02:53:17.170Z</updated>
+  <updated>2024-04-14T11:39:13.440Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="JavaScript"/>
   <category term="practice"/>
   <category term="READING"/>
   <category term="HTML"/>
@@ -27,6 +28,93 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">数据类型</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/002-types.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/002-types.html"/>
+    <updated>2024-04-14T11:37:32.000Z</updated>
+    <summary type="html"><![CDATA[<p>ECMAScript 有 7 种简单数据类型（也称为原始类型）：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code> 和 <code>BigInt</code>。<code>Symbol</code>（符号）是 ECMAScript 6 新增的，<code>BigInt</code> 是 ES10 新增。</p>
+<p>还有一种复杂数据类型叫 <code>Object</code>（对象）。<code>Object</code> 是一种 <strong>无序</strong> 键值对的集合。</p>]]></summary>
+    <content type="html"><![CDATA[<p>ECMAScript 有 7 种简单数据类型（也称为原始类型）：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code> 和 <code>BigInt</code>。<code>Symbol</code>（符号）是 ECMAScript 6 新增的，<code>BigInt</code> 是 ES10 新增。</p>
+<p>还有一种复杂数据类型叫 <code>Object</code>（对象）。<code>Object</code> 是一种 <strong>无序</strong> 键值对的集合。</p>
+<h2><code>Undefined</code></h2>
+<p>该类型只有一个值，即 <code>undefined</code>，当时用 <code>var</code>、<code>let</code> 没有初始化时，就相当于给变量赋值为了 <code>undefined</code>。</p>
+<h2><code>Null</code></h2>
+<p>该类型同样只有一个值 <code>null</code>，表示一个空对象指针，因此使用 <code>typeof</code> 操作符判断会返回 <code>object</code>。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> car <span class="token operator">=</span> <span class="token keyword">null</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>car<span class="token punctuation">)</span> <span class="token comment">// 'object'</span>
+</code></pre></div><p>在定义将来要保存对象值的变量时，建议使用 <code>null</code> 来初始化，不要使用其他值（如 <code>undefined</code>）。</p>
+<p>这样，只要检查这个变量的值是不是 <code>null</code> 就可以知道这个变量是否在后来被重新赋予了一个对象的引用，比如：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>car <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// car 是一个对象的引用</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2><code>Boolean</code></h2>
+<p>布尔类型有两个字面值：<code>true</code> 和 <code>false</code>。</p>
+<p>虽然布尔值只有两个，但所有其他 ECMAScript 类型的值都有相应布尔值的等价形式。要将一个其他类型的值转换为布尔值，可以调用特定的 <code>Boolean()</code> 转型函数：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">'Hello world!'</span>
+<span class="token keyword">let</span> messageAsBoolean <span class="token operator">=</span> <span class="token function">Boolean</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
+</code></pre></div><p>转换规则如下：</p>
+<p>| 数据类型  | 转换为 <code>true</code> 的值     | 转换为 <code>false</code> 的值 |<br>
+|</p>
+]]></content>
+    <category term="JavaScript"/>
+    <published>2024-04-14T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">var、let、const 区别</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html"/>
+    <updated>2024-04-14T11:37:32.000Z</updated>
+    <summary type="html"><![CDATA[<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>var</th>
+<th>let</th>
+<th>const</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>作用域</strong></td>
+<td>全局作用域和函数作用域</td>
+<td>块级作用域</td>
+<td>块级作用域</td>
+</tr>
+<tr>
+<td><strong>变量提升</strong></td>
+<td>自动提升到作用域顶部</td>
+<td>提升，暂时性死区</td>
+<td>提升，暂时性死区</td>
+</tr>
+<tr>
+<td><strong>冗余声明</strong></td>
+<td>允许冗余声明</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td><strong>赋值</strong></td>
+<td>可以重新赋值，且不需初始化</td>
+<td>可以重新赋值，且不需初始化</td>
+<td>不可以重新赋值，必须初始化</td>
+</tr>
+<tr>
+<td><strong>全局声明</strong></td>
+<td>成为 <code>window</code> 对象的属性</td>
+<td>不会</td>
+<td>不会</td>
+</tr>
+</tbody>
+</table>]]></summary>
+    <content type="html"><![CDATA[<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>
+<p>|              | var                        | let                        | const                      |<br>
+|</p>
+]]></content>
+    <category term="JavaScript"/>
+    <published>2022-05-02T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">placeholder 支持换行展示</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html</id>
@@ -11036,29 +11124,5 @@ $ <span class="token function">git</span> <span class="token function">add</span
 ]]></content>
     <category term="HTML"/>
     <published>2023-03-22T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">Intro Page</title>
-    <id>https://dribble-njr.github.io/blog/blog/intro.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/intro.html"/>
-    <updated>2023-03-02T05:00:27.000Z</updated>
-    <summary type="html"><![CDATA[
-<p>Place your introduction and profile here.</p>
-]]></summary>
-    <content type="html"><![CDATA[
-<p>Place your introduction and profile here.</p>
-]]></content>
-    <published>2023-03-02T05:00:27.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">Slide page</title>
-    <id>https://dribble-njr.github.io/blog/blog/slides.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/slides.html"/>
-    <updated>2023-03-02T05:00:27.000Z</updated>
-    <summary type="html"><![CDATA[<!-- markdownlint-disable MD024 MD033 MD051 -->
-]]></summary>
-    <content type="html"><![CDATA[<!-- markdownlint-disable MD024 MD033 MD051 -->
-]]></content>
-    <published>2023-03-02T05:00:27.000Z</published>
   </entry>
 </feed>

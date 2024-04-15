@@ -1,10 +1,11 @@
 ---
 title: 输入 URL 后发生了什么
 date: 2021-12-11
+icon: url
 category:
-  - 计算机网络
+  - browser
 tag:
-  - vue
+  - network
 ---
 
 先看看大致流程：

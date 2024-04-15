@@ -204,6 +204,13 @@ export default [
     collapsible: true,
     icon: 'gugeliulanqi',
     prefix: '/frontend/browser/',
-    children: ['/frontend/browser/']
+    children: [
+      '',
+      '01-how-browser-rendering-works',
+      '02-V8',
+      '03-memory-management',
+      '04-cross-domain',
+      '05-what-happens-after-entering-the-URL'
+    ]
   }
 ]

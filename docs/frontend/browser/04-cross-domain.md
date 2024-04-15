@@ -1,10 +1,11 @@
 ---
 title: 跨域
 date: 2022-05-06
+icon: domain
 category:
-  - 浏览器
+  - browser
 tag:
-  - 跨域
+  - network
 ---
 
 跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。

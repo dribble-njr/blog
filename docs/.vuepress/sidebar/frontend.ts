@@ -62,7 +62,8 @@ export default [
           '001-var-let-const',
           '002-types',
           '003-judge-type',
-          '004-primitive-value-reference-value'
+          '004-primitive-value-reference-value',
+          '005-execution-context'
         ]
       }
     ]

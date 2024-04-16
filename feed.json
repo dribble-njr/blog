@@ -7,6 +7,20 @@
   "favicon": "https://dribble-njr.github.io/blog/blog/favicon.ico",
   "items": [
     {
+      "title": "原始值和引用值",
+      "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/004-primitive-value-reference-value.html",
+      "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/004-primitive-value-reference-value.html",
+      "summary": "按值访问和按引用访问 ECMAScript 变量可以包含两种不同类型的数据：原始值和引用值。原始值（primitive value）就是最简单的数据，引用值（reference value）则是由多个值构成的对象。 在把一个值赋给变量时，JavaScript 引擎必须确定这个值是原始值还是引用值。 保存原始值的变量是 按值（by value）访问的，因...",
+      "content_html": "<h2>按值访问和按引用访问</h2>\n<p>ECMAScript 变量可以包含两种不同类型的数据：原始值和引用值。原始值（primitive value）就是最简单的数据，引用值（reference value）则是由多个值构成的对象。</p>\n<p>在把一个值赋给变量时，JavaScript 引擎必须确定这个值是原始值还是引用值。</p>\n<p>保存原始值的变量是 <strong>按值</strong>（by value）访问的，因为我们操作的就是存储在变量中的实际值。引用值是保存在内存中的对象。</p>\n<p>与其他语言不同，JavaScript 不允许直接访问内存位置，因此也就不能直接操作对象所在的内存空间。在操作对象时，实际上操作的是对该对象的 <strong>引用</strong>（reference）而非实际的对象本身。为此，保存引用值的变量是 <strong>按引用</strong>（by reference）访问的。</p>\n<figure><img src=\"https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/V8-stack-heap.png\" alt=\"按值访问和按引用访问\" tabindex=\"0\" loading=\"lazy\"><figcaption>按值访问和按引用访问</figcaption></figure>\n<h2>传递参数</h2>\n<p>ECMAScript 中所有函数的参数都是按值传递的。这意味着函数外的值会被复制到函数内部的参数中，就像从一个变量复制到另一个变量一样。</p>\n<p>如果是原始值，那么就跟原始值变量的复制一样，如果是引用值，那么就跟引用值变量的复制一样。</p>\n<div class=\"hint-container warning\">\n<p class=\"hint-container-title\">注意</p>\n<p>变量有按值和按引用访问，而传参则只有按值传递。</p>\n</div>\n<p>在按值传递参数时，值会被复制到一个局部变量（即一个命名参数，<code>arguments</code> 对象中的一个槽位）。来看几个例子。</p>\n<p><strong>参数为基本类型</strong></p>\n<div class=\"language-javascript\" data-ext=\"js\" data-title=\"js\"><pre class=\"language-javascript\"><code><span class=\"token keyword\">let</span> a <span class=\"token operator\">=</span> <span class=\"token number\">1</span>\n<span class=\"token keyword\">function</span> <span class=\"token function\">foo</span><span class=\"token punctuation\">(</span><span class=\"token parameter\">value</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n  value <span class=\"token operator\">=</span> <span class=\"token number\">2</span>\n  console<span class=\"token punctuation\">.</span><span class=\"token function\">log</span><span class=\"token punctuation\">(</span>value<span class=\"token punctuation\">)</span> <span class=\"token comment\">// 输出: 2</span>\n<span class=\"token punctuation\">}</span>\n\n<span class=\"token function\">foo</span><span class=\"token punctuation\">(</span>a<span class=\"token punctuation\">)</span>\nconsole<span class=\"token punctuation\">.</span><span class=\"token function\">log</span><span class=\"token punctuation\">(</span>a<span class=\"token punctuation\">)</span> <span class=\"token comment\">//输出: 1</span>\n</code></pre></div><div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>a: 1\nfoo:\n  - value: 1\n</code></pre></div><p>在这个例子中，声明了一个变量 <code>a</code>，把它传入 <code>foo</code> 函数，函数中我们改变了 <code>value</code> 的值，但在函数外 <code>a</code> 的值没有改变。</p>\n<p>因为基本类型是按值传递，改变的只是 <code>value</code> 这个拷贝副本的值，对原值没有影响。</p>\n<p><strong>参数为引用类型</strong></p>\n<div class=\"language-javascript\" data-ext=\"js\" data-title=\"js\"><pre class=\"language-javascript\"><code><span class=\"token keyword\">let</span> obj <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span> <span class=\"token literal-property property\">a</span><span class=\"token operator\">:</span> <span class=\"token number\">1</span> <span class=\"token punctuation\">}</span>\n<span class=\"token keyword\">function</span> <span class=\"token function\">foo</span><span class=\"token punctuation\">(</span><span class=\"token parameter\">o</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n  o<span class=\"token punctuation\">.</span>a <span class=\"token operator\">=</span> <span class=\"token number\">2</span>\n  console<span class=\"token punctuation\">.</span><span class=\"token function\">log</span><span class=\"token punctuation\">(</span>o<span class=\"token punctuation\">.</span>a<span class=\"token punctuation\">)</span> <span class=\"token comment\">// 输出: 2</span>\n<span class=\"token punctuation\">}</span>\n\n<span class=\"token function\">foo</span><span class=\"token punctuation\">(</span>obj<span class=\"token punctuation\">)</span>\nconsole<span class=\"token punctuation\">.</span><span class=\"token function\">log</span><span class=\"token punctuation\">(</span>obj<span class=\"token punctuation\">.</span>a<span class=\"token punctuation\">)</span> <span class=\"token comment\">// 输出: 2</span>\n</code></pre></div><div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>obj: 0x01 -&gt; { a: 1 }\nfoo:          |\n  - 0: 0x01 -&gt;\n</code></pre></div><p>在这里，声明了一个对象 <code>obj</code>，把它传入 <code>foo</code> 函数赋值为 <code>o</code>，此时 <code>o</code> 与外部定义的 <code>obj</code> 的值为同一个内存地址，指向同一个对象。</p>\n<p>函数中改变了 <code>o</code> 的 <code>a</code> 属性的值（按引用访问），然后可以看到在函数外 <code>obj.a</code> 的值也被改变了。</p>\n<p>再来看一个例子：</p>\n<div class=\"language-javascript\" data-ext=\"js\" data-title=\"js\"><pre class=\"language-javascript\"><code><span class=\"token keyword\">let</span> obj <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span> <span class=\"token literal-property property\">value</span><span class=\"token operator\">:</span> <span class=\"token number\">1</span> <span class=\"token punctuation\">}</span>\n<span class=\"token keyword\">function</span> <span class=\"token function\">foo</span><span class=\"token punctuation\">(</span><span class=\"token parameter\">o</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n  o <span class=\"token operator\">=</span> <span class=\"token number\">2</span>\n  console<span class=\"token punctuation\">.</span><span class=\"token function\">log</span><span class=\"token punctuation\">(</span>o<span class=\"token punctuation\">)</span> <span class=\"token comment\">// 输出：2</span>\n<span class=\"token punctuation\">}</span>\n<span class=\"token function\">foo</span><span class=\"token punctuation\">(</span>obj<span class=\"token punctuation\">)</span> \nconsole<span class=\"token punctuation\">.</span><span class=\"token function\">log</span><span class=\"token punctuation\">(</span>obj<span class=\"token punctuation\">.</span>value<span class=\"token punctuation\">)</span> <span class=\"token comment\">// 输出：1</span>\n</code></pre></div><div class=\"language-text\" data-ext=\"text\" data-title=\"text\"><pre class=\"language-text\"><code>obj: 0x01 -&gt; { value: 1 }\nfoo:          |\n  - o: 0x01 -&gt;\n</code></pre></div><p>这里也声明了一个对象，不同的是，<code>foo</code> 函数直接修改了 <code>o</code> 的值，将内存地址变为一个普通原始值 <code>2</code>，但是这里并没有对外部的 <code>obj</code> 地址进行修改，因此 <code>console.log(obj.value)</code> 仍然打印 <code>1</code>。</p>\n",
+      "image": "https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/V8-stack-heap.png",
+      "date_published": "2024-04-16T00:00:00.000Z",
+      "date_modified": "2024-04-16T04:38:18.000Z",
+      "authors": [],
+      "tags": [
+        "JavaScript"
+      ]
+    },
+    {
       "title": "浏览器渲染原理",
       "url": "https://dribble-njr.github.io/blog/blog/frontend/browser/01-how-browser-rendering-works.html",
       "id": "https://dribble-njr.github.io/blog/blog/frontend/browser/01-how-browser-rendering-works.html",
@@ -105,10 +119,10 @@
       "title": "var、let、const 区别",
       "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html",
       "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html",
-      "summary": "首先，三者都是 JavaScript 声明变量的方式。区别在于： 关于变量提升，var、let、const 三者 都存在变量提升，但是区别在于 let、const 存在暂时性死区。 暂时性死区 let、const 在声明变量之前，不能以任何方式使用该变量。在 let、const 声明之前的执行瞬间被称为「暂时性死区」。 在此阶段引用任何后面才声明的变量...",
+      "summary": "首先，三者都是 JavaScript 声明变量的方式。区别在于： 关于变量提升，var、let、const 三者 都存在变量提升，但是区别在于 let、const 存在暂时性死区。 来看一个例子： 此时第一个会打印 undefined，第二个会报错。这是由于 var 有变量提升，而 let 存在暂时性死区。 暂时性死区 let、const 在声明变量之...",
       "content_html": "<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>\n<p>|              | var                        | let                        | const                      |<br>\n|</p>\n",
       "date_published": "2022-05-02T00:00:00.000Z",
-      "date_modified": "2024-04-14T11:37:32.000Z",
+      "date_modified": "2024-04-16T04:38:18.000Z",
       "authors": [],
       "tags": [
         "JavaScript"
@@ -1326,19 +1340,6 @@
       "authors": [],
       "tags": [
         "CSS"
-      ]
-    },
-    {
-      "title": "字符编码",
-      "url": "https://dribble-njr.github.io/blog/blog/computer-science/operating-system/001-character-encoding.html",
-      "id": "https://dribble-njr.github.io/blog/blog/computer-science/operating-system/001-character-encoding.html",
-      "summary": "在计算机中，所有数据都是以二进制数的形式存储的，字符也不例外。为了表示字符，我们需要建立一套「字符集」，规定每个字符和二进制数之间的一一对应关系。有了字符集之后，计算机就可以通过查表完成二进制数到字符的转换。 ",
-      "content_html": "<p>在计算机中，所有数据都是以二进制数的形式存储的，字符也不例外。为了表示字符，我们需要建立一套「字符集」，规定每个字符和二进制数之间的一一对应关系。有了字符集之后，计算机就可以通过查表完成二进制数到字符的转换。</p>\n",
-      "date_published": "2024-01-24T00:00:00.000Z",
-      "date_modified": "2024-02-07T05:30:24.000Z",
-      "authors": [],
-      "tags": [
-        "operating-system"
       ]
     }
   ]

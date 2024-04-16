@@ -57,7 +57,13 @@ export default [
         icon: 'js',
         prefix: 'javascript/',
         collapsible: true,
-        children: ['', '001-var-let-const', '002-types', '003-judge-type']
+        children: [
+          '',
+          '001-var-let-const',
+          '002-types',
+          '003-judge-type',
+          '004-primitive-value-reference-value'
+        ]
       }
     ]
   },

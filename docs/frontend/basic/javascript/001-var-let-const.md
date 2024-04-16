@@ -20,6 +20,18 @@ tag:
 
 关于变量提升，`var`、`let`、`const` 三者 **都存在变量提升**，但是区别在于 `let`、`const` 存在暂时性死区。
 
+来看一个例子：
+
+```js
+var x = { x: x }
+console.log(x.x)
+
+let y = { y: y }
+console.log(y.y)
+```
+
+此时第一个会打印 `undefined`，第二个会报错。这是由于 `var` 有变量提升，而 `let` 存在暂时性死区。
+
 ::: tip 暂时性死区
 
 `let`、`const` 在声明变量之前，不能以任何方式使用该变量。在 `let`、`const` 声明之前的执行瞬间被称为「暂时性死区」。

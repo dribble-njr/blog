@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 18 Apr 2024 15:32:16 GMT</pubDate>
-    <lastBuildDate>Thu, 18 Apr 2024 15:32:16 GMT</lastBuildDate>
+    <pubDate>Thu, 18 Apr 2024 16:42:16 GMT</pubDate>
+    <lastBuildDate>Thu, 18 Apr 2024 16:42:16 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>JavaScript</category>
@@ -246,6 +246,10 @@ s1<span class="token punctuation">.</span>color <span class="token operator">=</
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s1<span class="token punctuation">.</span>color<span class="token punctuation">)</span> <span class="token comment">// undefined</span>
 </code></pre></div><p>这里的第二行代码尝试给字符串 <code>s1</code> 添加了一个 <code>color</code> 属性。可是，第三行代码访问 <code>color</code> 属性时，它却不见了。</p>
 <p>原因就是第二行代码运行时会临时创建一个 <code>String</code> 对象，而当第三行代码执行时，这个对象已经被销毁了。实际上，第三行代码在这里创建了自己的 <code>String</code> 对象，但这个对象没有 <code>color</code> 属性。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>上述代码在严格模式下会报错：<code>TypeError: Cannot create property 'color' on string 'some text'</code>。</p>
+</div>
 <p>另外，<code>Object</code> 构造函数作为一个工厂方法，能够根据传入值的类型返回相应原始值包装类型的实例。比如：</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token string">'some text'</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token comment">// true</span>

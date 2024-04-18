@@ -271,6 +271,12 @@ console.log(s1.color) // undefined
 
 原因就是第二行代码运行时会临时创建一个 `String` 对象，而当第三行代码执行时，这个对象已经被销毁了。实际上，第三行代码在这里创建了自己的 `String` 对象，但这个对象没有 `color` 属性。
 
+::: warning
+
+上述代码在严格模式下会报错：`TypeError: Cannot create property 'color' on string 'some text'`。
+
+:::
+
 另外，`Object` 构造函数作为一个工厂方法，能够根据传入值的类型返回相应原始值包装类型的实例。比如：
 
 ```js

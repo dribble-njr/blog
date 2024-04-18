@@ -63,7 +63,9 @@ export default [
           '002-types',
           '003-judge-type',
           '004-primitive-value-reference-value',
-          '005-execution-context'
+          '005-execution-context',
+          '006-toString-toLocalString-valueOf',
+          '007-basic-reference-type'
         ]
       }
     ]

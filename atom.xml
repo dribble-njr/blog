@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-04-16T05:24:37.459Z</updated>
+  <updated>2024-04-18T13:08:51.583Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -27,6 +27,131 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">toString, toLocalString, valueOf</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html"/>
+    <updated>2024-04-18T13:07:12.000Z</updated>
+    <summary type="html"><![CDATA[<p>Object 原型上有三个方法 <code>toString()</code>、<code>toLocalString</code>、<code>valueOf()</code> 可以将对象转换为原始值，然而对于不同的对象类型调用这几种方法会有不同的行为。</p>
+<h2><code>toString()</code></h2>
+<p><code>toString()</code> 方法用于将一个对象转换为字符串表示形式。对于基本数据类型（如数字、布尔值、字符串等），<code>toString()</code> 方法会返回对应的字符串表示。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> num <span class="token operator">=</span> <span class="token number">123</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 "123"</span>
+
+<span class="token keyword">const</span> bool <span class="token operator">=</span> <span class="token boolean">true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bool<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 "true"</span>
+
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'Hello'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 "Hello"</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>Object 原型上有三个方法 <code>toString()</code>、<code>toLocalString</code>、<code>valueOf()</code> 可以将对象转换为原始值，然而对于不同的对象类型调用这几种方法会有不同的行为。</p>
+<h2><code>toString()</code></h2>
+<p><code>toString()</code> 方法用于将一个对象转换为字符串表示形式。对于基本数据类型（如数字、布尔值、字符串等），<code>toString()</code> 方法会返回对应的字符串表示。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> num <span class="token operator">=</span> <span class="token number">123</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 "123"</span>
+
+<span class="token keyword">const</span> bool <span class="token operator">=</span> <span class="token boolean">true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>bool<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 "true"</span>
+
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'Hello'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 "Hello"</span>
+</code></pre></div><h2><code>toLocaleString()</code></h2>
+<p><code>toLocaleString()</code> 方法与 <code>toString()</code> 类似，但它返回的是一个本地化（即与用户本地文化相关的）的字符串表示。</p>
+<p>这意味着返回的字符串可能根据用户的地区设置而有所不同，比如使用不同的日期格式、数字格式等。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出本地化的日期时间字符串</span>
+</code></pre></div><h2><code>valueOf()</code></h2>
+<p><code>valueOf()</code> 方法返回指定对象的原始值。对于大多数对象来说，<code>valueOf()</code> 方法返回的值与对象本身是相同的，但可以通过重写这个方法来改变返回的值。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">123</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 输出 123</span>
+</code></pre></div><h2>自动调用顺序</h2>
+<p>在 JavaScript 内部，当需要将对象转换为原始值时（比如在算术运算、逻辑运算、字符串拼接等情况下），会自动调用对象的 <code>valueOf()</code> 和 <code>toString()</code> 方法来获取原始值。它们的调用顺序如下：</p>
+<ol>
+<li>如果对象具有 <code>valueOf()</code> 方法且返回的是原始值（非对象），则直接使用该值。</li>
+<li>如果对象没有 <code>valueOf()</code> 方法，或者 <code>valueOf()</code> 返回的是对象，那么会调用对象的 <code>toString()</code> 方法。</li>
+<li>如果对象没有 <code>toString()</code> 方法，或者 <code>toString()</code> 返回的是对象，那么会抛出 TypeError 错误。</li>
+</ol>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p><code>valueOf()</code> 和 <code>toString()</code> 方法在不同的上下文中可能会有不同的表现，具体取决于 JavaScript 引擎的实现和调用方式。</p>
+</div>
+<h2>总结</h2>
+<p>这三种方法用于获得对象的字符串或原始值，在一些情况下会被 JavaScript 引擎自动调用，区别如下：</p>
+<ul>
+<li><code>toString()</code> 用于将对象转换为字符串表示形式。</li>
+<li><code>toLocaleString()</code> 返回一个本地化的字符串表示。</li>
+<li><code>valueOf()</code> 返回对象的原始值。</li>
+</ul>
+]]></content>
+    <category term="JavaScript"/>
+    <published>2024-04-18T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">基本引用类型</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/007-basic-reference-type.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/007-basic-reference-type.html"/>
+    <updated>2024-04-18T13:07:12.000Z</updated>
+    <summary type="html"><![CDATA[<p>引用值（或者对象）是某个特定 <strong>引用类型</strong> 的实例。</p>
+<p>新对象通过使用 <code>new</code> 操作符后跟一个构造函数（constructor）来创建。构造函数就是用来创建新对象的函数，比如下面这行代码：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>引用值（或者对象）是某个特定 <strong>引用类型</strong> 的实例。</p>
+<p>新对象通过使用 <code>new</code> 操作符后跟一个构造函数（constructor）来创建。构造函数就是用来创建新对象的函数，比如下面这行代码：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>这行代码创建了引用类型 <code>Date</code> 的一个新实例，并将它保存在变量 <code>now</code> 中。<code>Date()</code> 在这里就是构造函数，它负责创建一个只有默认属性和方法的简单对象。</p>
+<p>ECMAScript 提供了很多像 <code>Date</code> 这样的原生引用类型，帮助开发者实现常见的任务。</p>
+<h2><code>Date</code></h2>
+<p><code>Date</code> 类型将日期保存为自协调世界时（UTC，Universal Time Coordinated）时间 1970 年 1 月 1 日午夜（零时）至今所经过的毫秒数。</p>
+<p>要创建日期对象，就使用 <code>new</code> 操作符来调用 <code>Date</code> 构造函数：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>在不给 <code>Date</code> 构造函数传参数的情况下，创建的对象将保存当前日期和时间。要基于其他日期和时间创建日期对象，必须传入其毫秒表示（UNIX 纪元 1970 年 1 月 1 日午夜之后的毫秒数）。</p>
+<p>为了得到这个时间，可以使用两个辅助函数：</p>
+<ul>
+<li><code>Date.parse()</code></li>
+<li><code>Date.UTC()</code></li>
+</ul>
+<h3><code>Date.parse()</code> 和 <code>Date.UTC()</code></h3>
+<h4><code>Date.parse()</code></h4>
+<p><code>Date.parse()</code> 方法接收一个表示日期的字符串参数，尝试将这个字符串转换为表示该日期的毫秒数（本地时间）。</p>
+<p>支持下列日期格式：</p>
+<ul>
+<li>「月/日/年」，如 <code>"5/23/2019"</code>；</li>
+<li>「月名 日, 年」，如 <code>"May 23, 2019"</code>；</li>
+<li>「周几 月名 日 年 时:分:秒 时区」，如 <code>"Tue May 23 2019 00:00:00 GMT-0700"</code>；</li>
+<li>ISO 8601 扩展格式「YYYY-MM-DDTHH:mm:ss.sssZ」，如 <code>"2019-05-23T00:00:00"</code>（只适用于兼容 ES5 的实现）。</li>
+</ul>
+<p>如果传给 <code>Date.parse()</code> 的字符串并不表示日期，则该方法会返回 <code>NaN</code>。</p>
+<p>如果直接把表示日期的字符串传给 <code>Date</code> 构造函数，那么 <code>Date</code> 会在后台调用 <code>Date.parse()</code>。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> someDate1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'May 23, 2019'</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> someDate2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'May 23, 2019'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>这两行代码得到的日期对象相同。</p>
+<h4><code>Date.UTC()</code></h4>
+<p><code>Date.UTC()</code> 方法也返回日期的毫秒表示（UTC 时间），参数是「年、零起点月数（1 月是 0，2 月是 1，以此类推）、日（1 ~ 31）、时（0 ~ 23）、分、秒和毫秒」。</p>
+<p>这些参数中，只有前两个（年和月）是必需的。如果不提供日，那么默认为 1 日。其他参数的默认值都是 0。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// GMT 时间 2000 年 1 月 1 日零点</span>
+<span class="token keyword">let</span> y2k <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token constant">UTC</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 2000-01-01T00:00:00.000Z</span>
+<span class="token comment">// GMT 时间 2005 年 5 月 5 日下午 5 点 55 分 55 秒</span>
+<span class="token keyword">let</span> allFives <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token constant">UTC</span><span class="token punctuation">(</span><span class="token number">2005</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">55</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 2005-05-05T17:55:55.000Z</span>
+</code></pre></div><p>与 <code>Date.parse()</code> 一样，<code>Date.UTC()</code> 也会被 <code>Date</code> 构造函数隐式调用，但有一个区别：这种情况下创建的是本地日期，不是 <code>GMT</code> 日期。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 本地时间（北京）为：UTC + 8，因此会相差 8 * 60 * 60 * 1000 = 28800000</span>
+<span class="token keyword">let</span> time <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token constant">UTC</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">// 28800000</span>
+</code></pre></div><div class="hint-container tip">
+<p class="hint-container-title">JS 中的时间</p>
+<p>不同时间概念，详见 <a href="https://juejin.cn/post/7063118893115670536" target="_blank" rel="noopener noreferrer">GMT、UTC、时区、JavaScript Date 总结</a>。</p>
+</div>
+<h4>对比</h4>
+<p><code>Date.UTC()</code> 日期指的是在没有时区偏差的情况下(将日期转换为 GMT 时间)的日期值。</p>
+<p><code>Date.parse()</code> 方法是基于本地时区建立的，而 <code>Date.UTC()</code> 方法是基于无时区偏差建立的。</p>
+<p>所以如果我们对两个方法传入相同的时间，我们会发现 <code>Date.UTC()</code> 方法得到的毫秒数相对于 <code>Date.parse()</code> 方法得到的毫秒数会多八个小时的毫秒数(这里的本地时区指的是北京时间)。</p>
+]]></content>
+    <category term="JavaScript"/>
+    <published>2024-04-17T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">执行上下文</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/005-execution-context.html</id>
@@ -11172,250 +11297,5 @@ $ <span class="token function">git</span> <span class="token function">add</span
 ]]></content>
     <category term="CSS"/>
     <published>2023-03-28T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">快速开始</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/001-quick-start.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/001-quick-start.html"/>
-    <updated>2023-03-28T03:50:27.000Z</updated>
-    <summary type="html"><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">CSS</p>
-<p>层叠样式表（<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heet, CSS）是一种用于给网页添加样式的计算机语言，它并不是真正的编程语言，甚至不是标记语言，只是一种样式表语言。</p>
-</div>
-<h2>历史</h2>
-<p>早期的网页是通过 HTML 编写的，随着 Web 的逐渐发展，人们希望 HTML 页面可以更加丰富，因此为浏览器增加了很多具备特殊样式的元素，比如 <code>i</code>、<code>strong</code>、<code>del</code> 等。</p>]]></summary>
-    <content type="html"><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">CSS</p>
-<p>层叠样式表（<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heet, CSS）是一种用于给网页添加样式的计算机语言，它并不是真正的编程语言，甚至不是标记语言，只是一种样式表语言。</p>
-</div>
-<h2>历史</h2>
-<p>早期的网页是通过 HTML 编写的，随着 Web 的逐渐发展，人们希望 HTML 页面可以更加丰富，因此为浏览器增加了很多具备特殊样式的元素，比如 <code>i</code>、<code>strong</code>、<code>del</code> 等。</p>
-<p>后来不同的浏览器厂商实现各自的样式语言，但是没有统一的规划。CSS 的发展历史如下：</p>
-<ul>
-<li>1994 年，哈肯·维姆·莱和伯特·波斯一起合作设计 CSS，于 1996 年发布 CSS1；</li>
-<li>1997 年，W3C 成立 CSS 工作组，于 1998 年发布了 CSS2；</li>
-<li>2006 ~ 2009 年，<code>div</code> + <code>css</code> 布局方式逐渐成为网页内容布局的主流方案（2007 年出现 CSS2.1）；</li>
-<li>CSS3 将所有的 CSS 分成了不同的模块，每一个模块都有于 CSS2 中额外增加的功能，并且支持向后兼容。</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>CSS3标准已部分公布，但仍未全部制订完毕，还会有其它新内容继续加入。 <a href="https://www.w3.org/TR/css3-roadmap/" target="_blank" rel="noopener noreferrer">CSS3发展过程报告. W3C.</a></p>
-</div>
-<h2>基本语法</h2>
-<p>CSS 可以设置元素的样式，比如使用 <code>color: red</code> 将字体改为红色。</p>
-
-<p>CSS 的基本语法规则为：选择器 + 属性声明：</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>selector {
-  property: property value;
-}
-</code></pre></div><ul>
-<li>：通过选择器选择了一个或多个需要添加样式的元素（在这个例子中就是 <code>p</code> 元素）。</li>
-<li>声明（Declaration）：一个单独的规则，如 <code>color: red</code>; 用来指定添加样式元素的属性。</li>
-<li>属性（Properties）：改变 HTML 元素样式的途径，本例中 <code>color</code> 就是 <code>&lt;p&gt;</code> 元素的属性。</li>
-<li>属性的值（Property value）：在属性的右边，<code>:</code> 后面即属性的值，它用来指定属性的值。</li>
-</ul>
-<div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<p>注意其他重要的语法：</p>
-<ul>
-<li>每个规则集（除了选择器的部分）都应该包含在成对的大括号里（<code>{}</code>）。</li>
-<li>在每个声明里要用冒号（<code>:</code>）将属性与属性值分隔开。</li>
-<li>在每个规则集里要用分号（<code>;</code>）将各个声明分隔开。</li>
-</ul>
-</div>
-<h2>引入 CSS</h2>
-<p>引入 CSS 可以分为三种方式：</p>
-<ul>
-<li>内联样式</li>
-<li>内部样式表</li>
-<li>外部样式表</li>
-</ul>
-<h3>内联样式</h3>
-<p>内联样式的使用方式是使用 HTML 元素的 <code>style</code> 属性：</p>
-
-<h3>内部样式表</h3>
-<p>将 CSS 放在 HTML 文件 <code>&lt;head&gt;</code> 元素里的 <code>&lt;style&gt;</code>元素之中。</p>
-
-<h3>外部样式表</h3>
-<p>将 CSS 编写一个独立的文件中，并且 通过 <code>&lt;link&gt;</code> 元素引入进来：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>example.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>我是一个段落<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p><strong>example.css</strong></p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>@规则</h2>
-<p><code>@rules</code> 是一种特殊的规则，为 CSS 提供一些关于如何表现的指导。有些 <code>@rules</code> 规则很简单，有规则名和值。</p>
-<p>要将额外的样式表导入主 CSS 样式表，可以使用 <code>@import</code>：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code>@import <span class="token string">'example.css'</span>
-</code></pre></div><p>最常见的 <code>@rules</code> 之一是 <code>@media</code>，它允许使用媒体查询来应用 CSS，仅当某些条件成立 (例如，当屏幕分辨率高于某一数量，或屏幕宽度大于某一宽度时)。</p>
-<p>在下面的 CSS 中，我们将给 <code>&lt;body&gt;</code> 元素一个粉红色的背景色。但是，我们随后使用 <code>@media</code> 创建样式表的一个部分，该部分仅适用于视口小于 <code>540px</code> 的浏览器。如果浏览器的宽度小于 <code>540px</code>，则背景色将为蓝色。</p>
-
-<h2>注释</h2>
-<p>CSS 注释以 <code>/*</code> 开始，以 <code>*/</code> 结束。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* 这是个注释 */</span>
-<span class="token selector">p</span> <span class="token punctuation">{</span>
-  <span class="token comment">/* 这是另一个注释 */</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-</code></pre></div>]]></content>
-    <category term="CSS"/>
-    <published>2023-03-25T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">选择器</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/002-selector.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/002-selector.html"/>
-    <updated>2023-03-27T10:15:15.000Z</updated>
-    <summary type="html"><![CDATA[<p>CSS 中可以通过选择器来选中 HTML 文档中的元素。</p>
-<h2>种类</h2>
-<p>CSS 的选择器一共分为四种，分别是：</p>
-<ol>
-<li>基本选择器</li>
-<li>选择符</li>
-<li>伪类</li>
-<li>伪元素</li>
-</ol>
-<h3>基本选择器</h3>
-<p>基本选择器共五个，是指平时使用的通配符选择器、标签选择器、ID 选择器、类选择器、属性选择器。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* 通配符选择器，效率较低 */</span>
-<span class="token selector">*</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> 
-
-<span class="token comment">/* 标签选择器 */</span>
-<span class="token selector">body</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* ID 选择器 */</span>
-<span class="token selector">#id</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 类选择器 */</span>
-<span class="token selector">.class</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 属性选择器 */</span>
-<span class="token selector">[attr=val]</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">/* 属性等于某个值 */</span>
-<span class="token selector">[attr]</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>     <span class="token comment">/* 拥有某一个属性 */</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<p>CSS 中可以通过选择器来选中 HTML 文档中的元素。</p>
-<h2>种类</h2>
-<p>CSS 的选择器一共分为四种，分别是：</p>
-<ol>
-<li>基本选择器</li>
-<li>选择符</li>
-<li>伪类</li>
-<li>伪元素</li>
-</ol>
-<h3>基本选择器</h3>
-<p>基本选择器共五个，是指平时使用的通配符选择器、标签选择器、ID 选择器、类选择器、属性选择器。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* 通配符选择器，效率较低 */</span>
-<span class="token selector">*</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> 
-
-<span class="token comment">/* 标签选择器 */</span>
-<span class="token selector">body</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* ID 选择器 */</span>
-<span class="token selector">#id</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 类选择器 */</span>
-<span class="token selector">.class</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 属性选择器 */</span>
-<span class="token selector">[attr=val]</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">/* 属性等于某个值 */</span>
-<span class="token selector">[attr]</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>     <span class="token comment">/* 拥有某一个属性 */</span>
-</code></pre></div><div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>一个元素的 id 唯一，不能重复。</p>
-</div>
-<h3>选择符</h3>
-<p>选择符一共有五个，分别如下：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* 后代关系 */</span>
-<span class="token selector">.container img</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 父子关系 */</span>
-<span class="token selector">ol &gt; li</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 相邻兄弟关系 */</span>
-<span class="token selector">button + button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 普通兄弟关系 */</span>
-<span class="token selector">button ~ button</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-
-<span class="token comment">/* 列（不常见） */</span>
-<span class="token selector">.col || td</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-</code></pre></div>
-
-
-
-<h3>伪类</h3>
-<p>伪类的特征是前面会有一个冒号 <code>:</code>，通常与浏览器行为和用户行为相关联，代表元素的某种状态，不会产生新的元素。</p>
-<p>以动态伪类为例：</p>
-<ul>
-<li><code>a:link</code> 未访问的链接；</li>
-<li><code>a:visited</code> 已访问的链接</li>
-<li><code>a:hover</code> 鼠标移动到链接上</li>
-<li><code>a:active</code> 激活的链接（鼠标在链接上长按未松开）</li>
-</ul>
-
-<div class="hint-container tip">
-<p class="hint-container-title">使用注意</p>
-<ul>
-<li><code>:hover</code> 必须放在 <code>:link</code> 和 <code>:visited</code> 后面才能生效；</li>
-<li><code>:active</code> 必须放在 <code>:hover</code> 后面才能生效；</li>
-</ul>
-<p>因此建议的编写顺序为：<code>:link</code>、<code>:visited</code>、<code>:hover</code>、<code>:active</code>。</p>
-<p>除了 <code>&lt;a&gt;</code> 元素外，<code>:hover</code>、<code>:active</code> 也能用在其他元素上。</p>
-<p>直接给 <code>&lt;a&gt;</code> 元素设置样式，相当于给 <code>&lt;a&gt;</code> 元素所有状态伪类都设置了相同的样式。</p>
-</div>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes" target="_blank" rel="noopener noreferrer">MDN 伪类</a></p>
-</div>
-<h3>伪元素</h3>
-<p>伪元素的特征是前面会有两个冒号 <code>::</code>，允许你对被选择元素的特定部分修改样式，但是这些元素实际上不会在文档中生产，只会在外部显示可见。</p>
-<p>一些常见的伪元素：</p>
-<ul>
-<li><code>::before</code> 用来创建一个伪元素，作为已选中元素的第一个子元素，通常会配合 <code>content</code> 属性来为该元素添加装饰内容，默认是行内元素；</li>
-<li><code>::after</code> 用来创建一个伪元素，作为已选中元素的最后一个子元素，通常会配合 <code>content</code> 属性来为该元素添加装饰内容，默认是行内元素；</li>
-<li><code>::first-letter</code> 会选中某块级元素第一行的第一个字母，并且文字所处的行之前没有其他内容（如图片和内联的表格）；</li>
-<li><code>::first-line</code> 会选中某块级元素的第一行。</li>
-</ul>
-
-
-
-
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements" target="_blank" rel="noopener noreferrer">MDN 伪元素</a></p>
-</div>
-<h2>选择器列表</h2>
-<p>如果有多个使用相同样式的 CSS 选择器，那么这些单独的选择器可以被混编为一个「选择器列表」，这样，规则就可以应用到所有的单个选择器上了。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">h1, .special</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">/* 等价于 */</span>
-<span class="token selector">h1</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">.special</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<p>当使用选择器列表时，如果任何一个选择器无效 (存在语法错误)，那么整条规则都会被忽略。</p>
-</div>
-<h2>优先级</h2>
-<p>CSS 优先级可以分为 0~5 级共 6 个等级，前 4 个等级由选择器决定，后 2 个等级由书写形式和特定语法决定。</p>
-<p>优先级大小可以由数值计算出，出现一个 0 级选择器，优先值数值加 0，1 级选择器加 1，2 级选择器加 10，3 级选择器加 100，以此类推。</p>
-<p>0 级优先级包括：通配符选择器、选择符（5 种）和逻辑组合伪类（<code>:not()</code> <code>:is()</code> <code>:where</code>）。</p>
-<p>1 级优先级就是标签选择器。</p>
-<p>2 级优先级包括：类选择器、属性选择器和其他伪类。</p>
-<p>3 级优先级为 ID 选择器。</p>
-<p>4 级优先级为内联样式。</p>
-<p>5 级优先级为 <code>!important</code>。</p>
-]]></content>
-    <category term="CSS"/>
-    <published>2022-08-03T00:00:00.000Z</published>
   </entry>
 </feed>

@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 18 Apr 2024 16:42:16 GMT</pubDate>
-    <lastBuildDate>Thu, 18 Apr 2024 16:42:16 GMT</lastBuildDate>
+    <pubDate>Fri, 19 Apr 2024 05:05:15 GMT</pubDate>
+    <lastBuildDate>Fri, 19 Apr 2024 05:05:15 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>JavaScript</category>
@@ -304,9 +304,66 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>3 个继承的方法 <code>valueOf()</code>、<code>toLocaleString()</code> 和 <code>toString()</code> 都返回对象的原始字符串值。</p>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
-<p><code>String</code> 类型方法较多，可以查看 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" rel="noopener noreferrer">MDN String</a>。</p>
+<p><code>String</code> 类型方法较多，可以查看 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" rel="noopener noreferrer">MDN String</a>，下面介绍一些常用的。</p>
 </div>
-]]></content:encoded>
+<h4><code>concat()</code></h4>
+<p>用于将一个或多个字符串拼接成一个新字符串。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> stringValue <span class="token operator">=</span> <span class="token string">'hello '</span>
+<span class="token keyword">let</span> result <span class="token operator">=</span> stringValue<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">'world'</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token comment">// "hello world"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>stringValue<span class="token punctuation">)</span> <span class="token comment">// "hello"</span>
+</code></pre></div><p>虽然 <code>concat()</code> 方法可以拼接字符串，但更常用的方式是使用加号操作符 <code>+</code>。而且多数情况下，对于拼接多个字符串来说，使用「模版字符串」更方便。</p>
+<h4><code>slice()</code>, <code>substring()</code></h4>
+<p>这两个方法可以从字符串中提取子字符串。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>还有一个方法 <code>substr()</code>，但是已不再推荐使用该特性。</p>
+</div>
+<ul>
+<li><code>slice(start[, end])</code>：返回 <code>[start, end)</code> 之间的元素，若 <code>end</code> 未指定，则默认到末尾所有元素；</li>
+<li><code>substring(start[, end])</code>：返回 <code>[start, end)</code> 之间的元素，若 <code>end</code> 未指定，则默认到末尾所有元素；</li>
+</ul>
+<p>二者在参数都为正数时，效果一致，但是它们对负数的处理不一样，下面看看例子。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 参数为正数</span>
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'Hello world'</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "ello world"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "ello"</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "ello world"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "ello"</span>
+</code></pre></div><p>对负值的处理如下：</p>
+<ul>
+<li><code>slice(start[, end])</code>：所有负值与字符串长度相加；</li>
+<li><code>substring(start[, end])</code>：所有负值置 0，若 <code>start</code> 大于 <code>end</code>，则会将二者调换。</li>
+</ul>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 参数为负数</span>
+<span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token string">'Hello world'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// str.slice(8) "rld"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// str.slice(3, 7) "lo w"</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// str.substring(0) "hello world"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// str.substring(3, 0) -&gt; str.substring(0, 3) "hel"</span>
+</code></pre></div><div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>为了减少心智负担，给所有参数置为正数即可。</p>
+</div>
+<h4><code>indexOf()</code>, <code>lastIndexOf()</code></h4>
+<p>这两个方法从字符串中搜索传入的字符串，并返回位置（如果没找到，则返回 <code>-1</code>）。</p>
+<p>两者的区别在于，<code>indexOf()</code> 方法从字符串开头开始查找子字符串，而 <code>lastIndexOf()</code> 方法从字符串末尾开始查找子字符串。来看下面的例子：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> stringValue <span class="token operator">=</span> <span class="token string">'hello world'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>stringValue<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'o'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>stringValue<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'o'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 7</span>
+</code></pre></div><h4><code>startsWith()</code>, <code>endsWith()</code>, <code>includes()</code></h4>
+<p>这些方法都会从字符串中搜索传入的字符串，并返回一个表示是否包含的布尔值。它们的区别在于，<code>startsWith()</code> 检查开始于索引 <code>0</code> 的匹配项，<code>endsWith()</code> 检查开始于索引 <code>(string.length - substring.length)</code> 的匹配项，而 <code>includes()</code> 检查整个字符串：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">'foo bar baz'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'baz'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'qux'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// false</span>
+</code></pre></div>]]></content:encoded>
     </item>
     <item>
       <title>执行上下文</title>

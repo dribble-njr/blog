@@ -374,6 +374,92 @@ console.log(Number.isInteger(1.01)) // false
 
 ::: tip
 
-`String` 类型方法较多，可以查看 [MDN String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)。
+`String` 类型方法较多，可以查看 [MDN String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)，下面介绍一些常用的。
 
 :::
+
+#### `concat()`
+
+用于将一个或多个字符串拼接成一个新字符串。
+
+```js
+let stringValue = 'hello '
+let result = stringValue.concat('world')
+console.log(result) // "hello world"
+console.log(stringValue) // "hello"
+```
+
+虽然 `concat()` 方法可以拼接字符串，但更常用的方式是使用加号操作符 `+`。而且多数情况下，对于拼接多个字符串来说，使用「模版字符串」更方便。
+
+#### `slice()`, `substring()`
+
+这两个方法可以从字符串中提取子字符串。
+
+::: warning
+
+还有一个方法 `substr()`，但是已不再推荐使用该特性。
+
+:::
+
+- `slice(start[, end])`：返回 `[start, end)` 之间的元素，若 `end` 未指定，则默认到末尾所有元素；
+- `substring(start[, end])`：返回 `[start, end)` 之间的元素，若 `end` 未指定，则默认到末尾所有元素；
+
+二者在参数都为正数时，效果一致，但是它们对负数的处理不一样，下面看看例子。
+
+```js
+// 参数为正数
+const str = 'Hello world'
+
+console.log(str.slice(1)) // "ello world"
+console.log(str.slice(1, 5)) // "ello"
+
+console.log(str.substring(1)) // "ello world"
+console.log(str.substring(1, 5)) // "ello"
+```
+
+对负值的处理如下：
+
+- `slice(start[, end])`：所有负值与字符串长度相加；
+- `substring(start[, end])`：所有负值置 0，若 `start` 大于 `end`，则会将二者调换。
+
+```js
+// 参数为负数
+const str = 'Hello world'
+console.log(str.slice(-3)) // str.slice(8) "rld"
+console.log(str.slice(3, -4)) // str.slice(3, 7) "lo w"
+
+console.log(str.substring(-3)) // str.substring(0) "hello world"
+console.log(str.substring(3, -4)) // str.substring(3, 0) -> str.substring(0, 3) "hel"
+```
+
+::: warning
+
+为了减少心智负担，给所有参数置为正数即可。
+
+:::
+
+#### `indexOf()`, `lastIndexOf()`
+
+这两个方法从字符串中搜索传入的字符串，并返回位置（如果没找到，则返回 `-1`）。
+
+两者的区别在于，`indexOf()` 方法从字符串开头开始查找子字符串，而 `lastIndexOf()` 方法从字符串末尾开始查找子字符串。来看下面的例子：
+
+```js
+let stringValue = 'hello world'
+console.log(stringValue.indexOf('o')) // 4
+console.log(stringValue.lastIndexOf('o')) // 7
+```
+
+#### `startsWith()`, `endsWith()`, `includes()`
+
+这些方法都会从字符串中搜索传入的字符串，并返回一个表示是否包含的布尔值。它们的区别在于，`startsWith()` 检查开始于索引 `0` 的匹配项，`endsWith()` 检查开始于索引 `(string.length - substring.length)` 的匹配项，而 `includes()` 检查整个字符串：
+
+```js
+let message = 'foo bar baz'
+console.log(message.startsWith('foo')) // true
+console.log(message.startsWith('bar')) // false
+console.log(message.endsWith('baz')) // true
+console.log(message.endsWith('bar')) // false
+console.log(message.includes('bar')) // true
+console.log(message.includes('qux')) // false
+```

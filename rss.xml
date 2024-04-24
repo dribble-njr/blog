@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 19 Apr 2024 05:05:15 GMT</pubDate>
-    <lastBuildDate>Fri, 19 Apr 2024 05:05:15 GMT</lastBuildDate>
+    <pubDate>Wed, 24 Apr 2024 04:53:45 GMT</pubDate>
+    <lastBuildDate>Wed, 24 Apr 2024 04:53:45 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>JavaScript</category>
@@ -26,6 +26,105 @@
     <category>reading</category>
     <category>linux</category>
     <category>工程化</category>
+    <item>
+      <title>集合引用类型</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/008-collection-reference-type.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/008-collection-reference-type.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">集合引用类型</source>
+      <description>Object 创建方式： 构造函数； 对象字面量。 在对象字面量表示法中，属性名可以是字符串或数值，比如： 注意 数值属性会自动转换为字符串。 Array ECMAScript 数组的两个特点： 每个槽位可以存储任意类型的数据。 数组长度是动态大小的，会随着数据添加而自动增长。 创建方式： 构造函数； 字面量； Array.from()； Array....</description>
+      <category>JavaScript</category>
+      <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2><code>Object</code></h2>
+<p>创建方式：</p>
+<ul>
+<li>构造函数；</li>
+<li>对象字面量。</li>
+</ul>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> person1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+person<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'Nicholas'</span>
+person<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">29</span>
+
+<span class="token keyword">let</span> person2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Nicholas'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">29</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在对象字面量表示法中，属性名可以是字符串或数值，比如：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Nicholas'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token number">29</span><span class="token punctuation">,</span>
+  <span class="token number">5</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>数值属性会自动转换为字符串。</p>
+</div>
+<h2><code>Array</code></h2>
+<p>ECMAScript 数组的两个特点：</p>
+<ul>
+<li>每个槽位可以存储任意类型的数据。</li>
+<li>数组长度是动态大小的，会随着数据添加而自动增长。</li>
+</ul>
+<p>创建方式：</p>
+<ul>
+<li>构造函数；</li>
+<li>字面量；</li>
+<li><code>Array.from()</code>；</li>
+<li><code>Array.of()</code>。</li>
+</ul>
+<p><code>from()</code> 用于将  转换为数组实例，而 <code>of()</code> 用于将一组参数转换为数组实例。</p>
+
+]]></content:encoded>
+    </item>
+    <item>
+      <title>类数组对象</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/009-array-like-object.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/009-array-like-object.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">类数组对象</source>
+      <description>概念 在 Javascript 里，有一个特殊的对象，它拥有 length 属性和若干索引属性，被称为类数组对象。常见的类数组对象有 arguments 和 DOM 方法返回的结果。 类数组对象和数组类似之处在于：访问、赋值、获取长度的操作与数组一致，因此叫做类数组对象。 使用数组方法 类数组对象不能 直接调用 数组的方法，如果想使用数组方法，需要使用...</description>
+      <category>JavaScript</category>
+      <pubDate>Wed, 24 Aug 2022 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>概念</h2>
+<p>在 Javascript 里，有一个特殊的对象，它拥有 <code>length</code> 属性和若干索引属性，被称为类数组对象。常见的类数组对象有 <code>arguments</code> 和 DOM 方法返回的结果。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> arrLike <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token number">0</span><span class="token operator">:</span> <span class="token string">'name'</span><span class="token punctuation">,</span>
+  <span class="token number">1</span><span class="token operator">:</span> <span class="token string">'age'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">length</span><span class="token operator">:</span> <span class="token number">2</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// arguments 对象</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> arguments
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token comment">// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span>
+
+<span class="token comment">// DOM 方法返回的结果</span>
+document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span> <span class="token comment">// HTMLCollection(3) [img, img, img]</span>
+</code></pre></div><p>类数组对象和数组类似之处在于：访问、赋值、获取长度的操作与数组一致，因此叫做类数组对象。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arrLike<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// name</span>
+arrLike<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'wang'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arrLike<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+</code></pre></div><h2>使用数组方法</h2>
+<p>类数组对象不能 <strong>直接调用</strong> 数组的方法，如果想使用数组方法，需要使用 <code>call()</code> 或 <code>apply</code> 间接调用。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>arrLike<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'hobby'</span><span class="token punctuation">)</span> <span class="token comment">// Uncaught TypeError: arrLike.push is not a function</span>
+
+<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrLike<span class="token punctuation">,</span> <span class="token string">'hobby'</span><span class="token punctuation">)</span> <span class="token comment">// { '0': 'name', '1': 'age', '2':  'hobby', length: 3 }</span>
+</code></pre></div><p>实际开发中，为了使操作方便，通常先将类数组对象转换为数组对象，通常使用 <code>Array.from()</code> 进行转换。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// call 调用 slice</span>
+<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrLike<span class="token punctuation">)</span>
+
+<span class="token comment">// call 调用 splice</span>
+<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arrLike<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token comment">// apply 调用 concat</span>
+<span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> arrLike<span class="token punctuation">)</span>
+
+<span class="token comment">// Array.from</span>
+Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>arrLike<span class="token punctuation">)</span>
+
+<span class="token comment">// 展开运算符</span>
+<span class="token punctuation">[</span><span class="token operator">...</span>arrLike<span class="token punctuation">]</span>
+</code></pre></div>]]></content:encoded>
+    </item>
     <item>
       <title>toString, toLocalString, valueOf</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html</link>
@@ -10463,202 +10562,6 @@ $ <span class="token function">git</span> <span class="token function">add</span
 <p>当你设置一个元素的一个或几个边框，这个元素会产生视觉效果，就像它有一只或几只“箭头”指向特定方向。这是因为边框实际上是从中心点斜向外延伸的。比如，如果你设置了元素的顶边框，这个元素就会看起来有一只“箭头”指向上方。</p>
 <p>所以，你可以通过使用透明边框和可见边框的组合，让元素看起来像一个三角形。</p>
 
-
-]]></content:encoded>
-    </item>
-    <item>
-      <title>层叠和继承</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/css/005-cascade-inheritance.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/css/005-cascade-inheritance.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">层叠和继承</source>
-      <description> W3C 规范 REC-css-cascade-3。 CSS 的基本设计原则之一是 层叠，它允许多个样式表影响文档的表示。 当不同的声明尝试为同一元素设置值时，必须以某种方式解决冲突。 而在默认情况下，若没有声明为元素设置值时，则会通过 继承 或使用属性的默认值来计算最终的结果。 相关信息 与层叠密切相关的概念是 。 值的计算过程 一旦浏览器将 HTM...</description>
-      <category>CSS</category>
-      <pubDate>Tue, 28 Mar 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">W3C 规范</p>
-<p><a href="https://www.w3.org/TR/2021/REC-css-cascade-3-20210211" target="_blank" rel="noopener noreferrer">REC-css-cascade-3</a>。</p>
-</div>
-<p>CSS 的基本设计原则之一是 <a href="#%E5%B1%82%E5%8F%A0">层叠</a>，它允许多个样式表影响文档的表示。</p>
-<p>当不同的声明尝试为同一元素设置值时，必须以某种方式解决冲突。</p>
-<p>而在默认情况下，若没有声明为元素设置值时，则会通过 <a href="#%E7%BB%A7%E6%89%BF">继承</a> 或使用属性的默认值来计算最终的结果。</p>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>与层叠密切相关的概念是 。</p>
-</div>
-<h2>值的计算过程</h2>
-<p>一旦浏览器将 HTML 文档解析并生成了 DOM Tree，那么必须给每一个元素都设置对应的样式。</p>
-<p>最终的 CSS 属性值会经过多个步骤的计算：</p>
-<ul>
-<li>首先，收集每个元素上每一个属性应用的所有 <a href="#%E5%A3%B0%E6%98%8E%E5%80%BC-declared-values">声明值</a>；</li>
-<li>层叠产生 <a href="#%E5%B1%82%E5%8F%A0%E5%80%BC-cascaded-values">层叠值</a>，每个元素的每个属性最多有一个层叠值；</li>
-<li>默认值将产生 <a href="#%E6%8C%87%E5%AE%9A%E5%80%BC-specified-values">指定值</a>，每个元素的每个属性正好有一个指定值；</li>
-<li>解析值的依赖关系将产生 <a href="#%E8%AE%A1%E7%AE%97%E5%80%BC-computed-values">计算值</a>，每个元素的每个属性正好有一个计算值；</li>
-<li>格式化文档会生成 <a href="#%E4%BD%BF%E7%94%A8%E5%80%BC-used-values">使用值</a>，一个元素只有在一个给定的属性适用于该元素时才具有该属性的使用值；
-<blockquote>
-<p>我的理解是：若一个元素没有该属性，则没有使用值。</p>
-</blockquote>
-</li>
-<li>最后，根据显示环境的不同，将使用值转换为 <a href="#%E5%AE%9E%E9%99%85%E5%80%BC-actual-values">实际值</a>。与使用值一样，元素上的给定属性可能有也可能没有实际值。</li>
-</ul>
-<h3>声明值 Declared Values</h3>
-<p>每个应用于元素的属性声明都会给该属性提供一个声明值，这些值会被层叠处理以选择一个单一的「获胜值」。</p>
-<h3>层叠值 Cascaded Values</h3>
-<p>层叠值代表层叠的结果：它是赢得层叠的声明值（在层叠的输出中被排序在前面）。如果层叠的输出是一个空列表，那就没有层叠值。</p>
-<h3>指定值 Specified Values</h3>
-<p>指定值是一个给定的属性值，是样式表作者为该元素设置的。它是把层叠值通过默认过程处理的结果，保证每个元素上的每个属性都有一个指定的值。</p>
-<p>在许多情况下，指定值是层叠的值。然而，如果根本没有层叠值，那么就会取默认的值。</p>
-<h3>计算值 Computed Values</h3>
-<p>计算值是对指定值进行解析的结果，通常是将其绝对化以准备继承。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">注意</p>
-<p>计算值是在继承过程中父代传递给子代的值。由于历史原因，它不一定是 <code>getComputedStyle()</code> 函数返回的值，该函数有可能会返回 <a href="#%E4%BD%BF%E7%94%A8%E5%80%BC-used-values">使用值</a>。<code>CSSOM</code> 除外，计算值是一个抽象的数据表示：它们的定义反映了该数据表示，而不是该数据如何被序列化。例如，序列化规则通常允许省略某些在解析过程中隐含的值，但这些值仍然是计算值的一部分。</p>
-</div>
-<div class="hint-container info">
-<p class="hint-container-title">EXAMPLE</p>
-<p>一个指定的值可以是绝对的（如 <code>red</code> 或 <code>2px</code>），也可以是相对的（如 <code>auto</code>、<code>2em</code>）。计算一个相对值通常会将其绝对化：</p>
-<ul>
-<li>相对单位的值（<code>em</code>、<code>ex</code>、<code>vh</code>、<code>vw</code>）必须通过与合适的参考尺寸相乘而成为绝对值</li>
-<li>某些关键字（如 <code>smaller</code>、<code>bloder</code>）必须根据其定义进行替换</li>
-<li>某些属性的百分比必须乘以一个参考值（由属性定义）</li>
-<li>有效的相对 URL 必须被解析为绝对值</li>
-</ul>
-</div>
-<div class="hint-container tip">
-<p class="hint-container-title">注意</p>
-<p>一般来说，计算值会尽可能地解析指定值，而不需要执行其他难以并行的操作，例如解析网络请求或从元素和它的父级元素以外的地方检索值。</p>
-</div>
-<p>即使该属性不适用，计算值也会存在。然而一些属性可能会根据该属性是否适用于该元素而改变它们确定计算值的方式。</p>
-<h3>使用值 Used Values</h3>
-<p>使用值是将计算值和完成任何剩余计算的结果，使其成为文档格式化中使用的绝对理论值。</p>
-<div class="hint-container info">
-<p class="hint-container-title">EXAMPLE</p>
-<p>比如，在不知道该元素的祖先布局的情况下，<code>width: auto</code> 声明不能被解析为一个长度，所以计算值是 <code>auto</code>，而使用值是一个绝对长度，如 <code>100px</code>。</p>
-</div>
-<p>如果一个属性不适用于这个元素或盒子类型，那么它对该类型的盒子或元素没有直接的格式化效果，因此对该属性没有使用值。</p>
-<div class="hint-container info">
-<p class="hint-container-title">EXAMPLE</p>
-<p>例如，<code>flex</code> 属性在不是 <code>flex</code> 项目的元素上没有使用值。</p>
-</div>
-<div class="hint-container tip">
-<p class="hint-container-title">注意</p>
-<p>定义为适用于「所有元素」的属性适用于所有元素和显示类型，但不一定适用于所有伪元素类型，因为伪元素通常有自己的特定渲染模型或其他限制。然而，<code>::before</code> 和 <code>::after</code> 伪元素被定义为几乎完全像普通元素一样，因此被定义为接受所有适用于「所有元素」的属性。</p>
-</div>
-<h3>实际值 Actual Values</h3>
-<p>原则上，一个使用值是可以被使用的，但是用户代理可能无法在特定的环境中使用这个值。</p>
-<p>例如，用户代理可能只能呈现整数像素宽度的边框，因此必须近似宽度的使用值。</p>
-<p>另外，一个元素的字体大小可能需要根据字体的可用性和字体大小调整属性的值来调整。</p>
-<p>实际值就是进行此类调整后的使用值。</p>
-<h3>例子</h3>
-<blockquote>
-<p>完整例子见 <a href="https://www.w3.org/TR/2021/REC-css-cascade-3-20210211/#stages-examples" target="_blank" rel="noopener noreferrer">Examples</a></p>
-</blockquote>
-<p>|      属性      |         获胜值          |  层叠值   |       指定值       |  计算值  |  使用值   | 实际值  |<br>
-| :</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>文本和字体</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/css/004-text-font.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/css/004-text-font.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">文本和字体</source>
-      <description> 提示 仅介绍一些常用属性，详见 CSS 参考。 文本布局 文本布局可以作用于文本的间距以及其他布局功能的属性，比如，允许操纵行与字之间的空间，以及在内容框中，文本如何对齐。 text-align text-align 用来定义行内内容（例如文字）如何相对它的块父元素对齐，比如左对齐、居中、右对齐等等。 left：左对齐 right：右对齐； cent...</description>
-      <category>CSS</category>
-      <pubDate>Tue, 28 Mar 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>仅介绍一些常用属性，详见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference" target="_blank" rel="noopener noreferrer">CSS 参考</a>。</p>
-</div>
-<h2>文本布局</h2>
-<p>文本布局可以作用于文本的间距以及其他布局功能的属性，比如，允许操纵行与字之间的空间，以及在内容框中，文本如何对齐。</p>
-<h3><code>text-align</code></h3>
-<p><code>text-align</code> 用来定义行内内容（例如文字）如何相对它的块父元素对齐，比如左对齐、居中、右对齐等等。</p>
-<ul>
-<li><code>left</code>：左对齐</li>
-<li><code>right</code>：右对齐；</li>
-<li><code>center</code>：居中对齐</li>
-<li><code>justify</code>：两端对齐。</li>
-</ul>
-<div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<p><code>text-align</code> 并不控制块元素自己的对齐，只控制它的行内内容的对齐。</p>
-<p>常用于做行内元素的居中效果。</p>
-</div>
-
-
-
-
-<h3><code>line-height</code></h3>
-<p><code>line-height</code> 设置文本每行之间的高。</p>
-<p>通常无单位是比较好的做法。行高由此值乘以 <code>font-size</code> 生成。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">selector</span> <span class="token punctuation">{</span>
-  <span class="token property">line-height</span><span class="token punctuation">:</span> 1.5<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>由于文字总是会在行框的中间，因此如果设置 <code>line-height</code> 与 <code>height</code> 值相等可以做到内联元素垂直居中，若在加上 <code>text-align</code>，则可以做到<strong>内联元素</strong>水平垂直居中。</p>
-
-<h2>字体样式</h2>
-<p>字体样式作用于字体的属性，会直接应用到文本中，比如使用哪种字体，字体的大小是怎样的，字体是粗体还是斜体，等等。</p>
-<h3><code>color</code></h3>
-<p><code>color</code> 属性用来设置选中元素的前景色，通常指文本颜色。</p>
-
-<h3>font-size</h3>
-<p><code>font-size</code> 决定文字的大小。</p>
-
-<h3><code>font-family</code></h3>
-<p><code>font-family</code> 用于设置文字的字体名称，可以设置一个或多个字体，浏览器会选择列表中第一个该计算机有安装的字体。</p>
-<p>标准的 Web fonts 包括一些基本字体，如 Arial，Georgia，Times New Roman 等。但是很多时候，为了提供更独特和富有吸引力的用户界面，会使用特别的字体，需要载入外部的 Web fonts。</p>
-<p>使用 Web fonts 的步骤：</p>
-<ol>
-<li><code>@font-face</code> 加载一个自定义的字体;</li>
-<li><code>font-family</code> 使用字体。</li>
-</ol>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
-  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'MyFont'</span><span class="token punctuation">;</span>
-  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'myfont.woff2'</span><span class="token punctuation">)</span></span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'woff2'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'myfont.woff'</span><span class="token punctuation">)</span></span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'woff'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">body</span> <span class="token punctuation">{</span>
-  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'MyFont'</span><span class="token punctuation">,</span> Fallback<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><code>src</code> 用于指定字体资源：</p>
-<ul>
-<li><code>url</code> 指定资源的路径</li>
-<li><code>format</code> 用于帮助浏览器快速识别字体的格式;</li>
-</ul>
-</div>
-<p>字体可以设计成各式各样的形状，那么能不能把字体直接设计成图标的样子呢？</p>
-<p>当然可以，这个就叫做字体图标。</p>
-<p>字体图标的好处：</p>
-<ul>
-<li>放大不会失真</li>
-<li>可以任意切换颜色</li>
-<li>用到很多个图标时，文件相对图片较小</li>
-</ul>
-<p>字体图标的使用：</p>
-<ul>
-<li>登录 <a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer">阿里 icons</a></li>
-<li>下载代码，并且拷贝到项目中</li>
-</ul>
-
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>其他更多使用方式：<a href="https://www.iconfont.cn/help/detail?spm=a313x.help_detail.i1.d8d11a391.7bb83a81XO2rxN&amp;helptype=code" target="_blank" rel="noopener noreferrer">iconfonts 代码应用</a>。</p>
-</div>
-<h3><code>font-weight</code></h3>
-<p><code>font-weight</code> 用于设置文字的粗细，常见的取值有 <code>100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900</code>，也可以用关键字，<code>normal</code> 等于 <code>400</code>，<code>bold</code> 等于 <code>700</code>。</p>
-
-<h3><code>font</code></h3>
-<p><code>font</code> 是一个缩写属性，用来作为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style" target="_blank" rel="noopener noreferrer"><code>font-sytle</code></a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant" target="_blank" rel="noopener noreferrer"><code>font-variant</code></a>、<code>font-weight</code>、<code>font-size</code>、<code>line-height</code> 和 <code>font-family</code> 的简写。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>书写规则：<code>font-style font-variant font-weight font-size/line-height font-family</code></p>
-<ul>
-<li><code>font-sytle</code>、<code>font-variant</code> 和 <code>font-weight</code> 可以随意调换顺序，也可以省略；</li>
-<li><code>/line-height</code> 可以省略，如果不省略，必须跟在 <code>font-size</code> 后面；</li>
-<li><code>font-size</code> 和 <code>font-family</code> 不可以调换顺序，也不可省略。</li>
-</ul>
-</div>
 
 ]]></content:encoded>
     </item>

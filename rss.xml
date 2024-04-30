@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 24 Apr 2024 04:53:45 GMT</pubDate>
-    <lastBuildDate>Wed, 24 Apr 2024 04:53:45 GMT</lastBuildDate>
+    <pubDate>Tue, 30 Apr 2024 07:46:30 GMT</pubDate>
+    <lastBuildDate>Tue, 30 Apr 2024 07:46:30 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>JavaScript</category>
@@ -31,7 +31,7 @@
       <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/008-collection-reference-type.html</link>
       <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/008-collection-reference-type.html</guid>
       <source url="https://dribble-njr.github.io/blog/blog/rss.xml">集合引用类型</source>
-      <description>Object 创建方式： 构造函数； 对象字面量。 在对象字面量表示法中，属性名可以是字符串或数值，比如： 注意 数值属性会自动转换为字符串。 Array ECMAScript 数组的两个特点： 每个槽位可以存储任意类型的数据。 数组长度是动态大小的，会随着数据添加而自动增长。 创建方式： 构造函数； 字面量； Array.from()； Array....</description>
+      <description>Object 创建方式： 构造函数； 对象字面量。 在对象字面量表示法中，属性名可以是字符串或数值，比如： 注意 数值属性会自动转换为字符串。 Array ECMAScript 数组的两个特点： 每个槽位可以存储任意类型的数据。 数组长度是动态大小的，会随着数据添加而自动增长。 创建方式 创建方式共有四种： 构造函数； 字面量； Array.from(...</description>
       <category>JavaScript</category>
       <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h2><code>Object</code></h2>
@@ -64,7 +64,8 @@ person<span class="token punctuation">.</span>age <span class="token operator">=
 <li>每个槽位可以存储任意类型的数据。</li>
 <li>数组长度是动态大小的，会随着数据添加而自动增长。</li>
 </ul>
-<p>创建方式：</p>
+<h3>创建方式</h3>
+<p>创建方式共有四种：</p>
 <ul>
 <li>构造函数；</li>
 <li>字面量；</li>
@@ -73,7 +74,24 @@ person<span class="token punctuation">.</span>age <span class="token operator">=
 </ul>
 <p><code>from()</code> 用于将  转换为数组实例，而 <code>of()</code> 用于将一组参数转换为数组实例。</p>
 
-]]></content:encoded>
+<h3>数组空位</h3>
+<p>使用数组字面量初始化数组时，可以使用一串逗号来创建空位。</p>
+<p>ES6 新增的方法和迭代器与早期 ECMAScript 版本中存在的方法行为不同。ES6 新增方法普遍将这些空位当成存在的元素，只不过值为 <code>undefined</code>：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> option <span class="token keyword">of</span> options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>option <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// false</span>
+<span class="token comment">// true</span>
+<span class="token comment">// true</span>
+<span class="token comment">// true</span>
+<span class="token comment">// false</span>
+</code></pre></div><p>ES6 之前的方法则会忽略这个空位，但具体的行为也会因方法而异：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token comment">// map() 会跳过空位置</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [6, undefined, undefined, undefined, 6]</span>
+<span class="token comment">// join() 视空位置为空字符串</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'-'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// "1</span></code></pre></div>]]></content:encoded>
     </item>
     <item>
       <title>类数组对象</title>
@@ -126,10 +144,10 @@ Array<span class="token punctuation">.</span><span class="token function">from</
 </code></pre></div>]]></content:encoded>
     </item>
     <item>
-      <title>toString, toLocalString, valueOf</title>
+      <title>对象转换方法</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html</link>
       <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">toString, toLocalString, valueOf</source>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">对象转换方法</source>
       <description>Object 原型上有三个方法 toString()、toLocalString、valueOf() 可以将对象转换为原始值，然而对于不同的对象类型调用这几种方法会有不同的行为。 toString() toString() 方法用于将一个对象转换为字符串表示形式。对于基本数据类型（如数字、布尔值、字符串等），toString() 方法会返回对应的字符串...</description>
       <category>JavaScript</category>
       <pubDate>Thu, 18 Apr 2024 00:00:00 GMT</pubDate>

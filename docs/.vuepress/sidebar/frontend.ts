@@ -67,7 +67,8 @@ export default [
           '006-toString-toLocalString-valueOf',
           '007-basic-reference-type',
           '008-collection-reference-type',
-          '009-array-like-object'
+          '009-array-like-object',
+          '010-object-property'
         ]
       }
     ]

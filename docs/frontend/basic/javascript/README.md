@@ -18,3 +18,4 @@ star: true
 - [基本引用类型](./007-basic-reference-type.md)
 - [集合引用类型](./008-collection-reference-type.md)
 - [类数组对象](./009-array-like-object.md)
+- [对象属性](./010-object-property.md)

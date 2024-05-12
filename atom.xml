@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-04-30T08:43:41.729Z</updated>
+  <updated>2024-05-12T06:38:41.694Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="Project"/>
   <category term="JavaScript"/>
   <category term="browser"/>
   <category term="practice"/>
@@ -16,7 +17,6 @@
   <category term="chakra"/>
   <category term="next"/>
   <category term="CSS"/>
-  <category term="Project"/>
   <category term="react"/>
   <category term="database"/>
   <category term="algorithm"/>
@@ -27,6 +27,112 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">初始化项目</title>
+    <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html"/>
+    <updated>2024-05-12T06:37:11.000Z</updated>
+    <summary type="html"><![CDATA[<h2>技术方案选型</h2>
+<h3>Flutter vs React Native</h3>
+<p>目前，<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> 和 <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 是最流行的跨端解决方案。</p>
+<p>考虑到 Flutter 使用 <code>dart</code> 语言，而 React Native 使用 <code>js</code>，学习成本相对而言较少，因此决定使用 React Native。</p>]]></summary>
+    <content type="html"><![CDATA[<h2>技术方案选型</h2>
+<h3>Flutter vs React Native</h3>
+<p>目前，<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> 和 <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 是最流行的跨端解决方案。</p>
+<p>考虑到 Flutter 使用 <code>dart</code> 语言，而 React Native 使用 <code>js</code>，学习成本相对而言较少，因此决定使用 React Native。</p>
+<ul>
+<li><a href="https://www.thedroidsonroids.com/blog/flutter-vs-react-native-comparison" target="_blank" rel="noopener noreferrer">Flutter vs. React Native – Which is Better for Your Project in 2024?</a></li>
+<li><a href="https://www.thedroidsonroids.com/blog/top-cross-platform-app-development-frameworks" target="_blank" rel="noopener noreferrer">4 Most Popular Cross-Platform App Development Frameworks for 2024</a></li>
+</ul>
+<h3>Expo Go vs React Native CLI</h3>
+<p>如果您是移动开发的新手，最简单的入门方法就是使用 Expo Go。Expo 是一套围绕 React Native 构建的工具和服务，虽然它有很多功能，但目前与我们最相关的功能是它能让你在几分钟内编写出一个 React Native 应用程序。您只需要一个最新版本的 Node.js 和一部手机或模拟器。</p>
+<p>如果你已经熟悉移动开发，你可能想使用 React Native CLI。它需要 Xcode 或 Android Studio 才能开始使用。如果你已经安装了这些工具之一，应该可以在几分钟内开始运行。如果没有安装这些工具，则需要花费大约一个小时进行安装和配置。</p>
+<p>考虑到快速实现一个 MVP，最终选择了 Expo。</p>
+<h3>Next or Node</h3>
+<p>最初，考虑使用 Expo 与 Next.js 结合的方案来实现前后端不分离的全栈项目。然而，<a href="https://docs.expo.dev/guides/using-nextjs/" target="_blank" rel="noopener noreferrer">Expo 官方</a> 提到 Next.js 只能用于 Expo for Web，无法实现跨端需求。</p>
+<p>因此确定使用 Expo + Node.js + Monorepo 的方案，这样可以使得项目结构更加清晰，便于管理和维护。</p>
+<h2>Monorepo 搭建</h2>
+<p>最初使用 <code>pnpm</code> workspaces 搭建 Monorepo 项目，然而安装依赖后启动报错：</p>
+<ul>
+<li><a href="https://github.com/expo/expo/issues/22413" target="_blank" rel="noopener noreferrer">Pnpm not working with Expo</a></li>
+<li><a href="https://github.com/pnpm/pnpm/issues/4286" target="_blank" rel="noopener noreferrer">[bug] - Pnpm not working with expo</a></li>
+</ul>
+<p>查询到上述两个 issue 后，在目录中添加 <code>.npmrc</code> 文件后重新安装依赖项目启动成功。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>node-linker=hoisted
+</code></pre></div><p>考虑到可能还会遇到其他兼容问题，最终选择官方推荐的 <code>yarn 1.x</code> workspaces。</p>
+<p>以下按照 <a href="https://docs.expo.dev/guides/monorepos/" target="_blank" rel="noopener noreferrer">Work with monorepos</a> 搭建项目。</p>
+<h3>init</h3>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>- packages
+  - mobile
+  - server
+  - types
+- package.json
+</code></pre></div><p>在 imperial-kitchen 文件夹中 使用</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx create-expo-app mobile
+</code></pre></div><div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>使用 expo router，必须添加环境变量：<code>EXPO_USE_METRO_WORKSPACE_ROOT=1</code></p>
+</div>
+]]></content>
+    <category term="Project"/>
+    <published>2024-05-09T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">Imperial Kitchen 御膳房</title>
+    <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/</id>
+    <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/"/>
+    <updated>2024-05-12T06:37:11.000Z</updated>
+    <summary type="html"><![CDATA[<p>欢迎来到 Imperial Kitchen 御膳房项目！项目地址：<a href="https://github.com/dribble-njr/imperial-kitchen.git%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/dribble-njr/imperial-kitchen.git。</a></p>
+<h2>项目简介</h2>
+<p>Imperial Kitchen 御膳房是一个家庭厨房的点菜应用，旨在帮助方便快捷地选择菜品并下单。</p>
+<h2>功能特性</h2>
+<ul>
+<li>浏览菜单：查看各种菜品的详细信息，包括图片、描述和价格。</li>
+<li>点菜下单：选择喜欢的菜品加入购物车，并下单购买。</li>
+<li>查看订单：查看已下单的菜品订单状态和历史订单。</li>
+<li>个人中心：管理个人信息，查看收货地址等。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>欢迎来到 Imperial Kitchen 御膳房项目！项目地址：<a href="https://github.com/dribble-njr/imperial-kitchen.git%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/dribble-njr/imperial-kitchen.git。</a></p>
+<h2>项目简介</h2>
+<p>Imperial Kitchen 御膳房是一个家庭厨房的点菜应用，旨在帮助方便快捷地选择菜品并下单。</p>
+<h2>功能特性</h2>
+<ul>
+<li>浏览菜单：查看各种菜品的详细信息，包括图片、描述和价格。</li>
+<li>点菜下单：选择喜欢的菜品加入购物车，并下单购买。</li>
+<li>查看订单：查看已下单的菜品订单状态和历史订单。</li>
+<li>个人中心：管理个人信息，查看收货地址等。</li>
+</ul>
+<h2>技术栈</h2>
+<ul>
+<li>前端：使用 <code>Expo</code> 和 <code>React Native</code> 开发移动端应用。</li>
+<li>后端：使用 <code>Node.js</code> 和 <code>Express</code> 开发服务器端接口。</li>
+<li>数据库：使用 <code>MongoDB</code> 存储菜品和订单信息。</li>
+<li>其他工具：使用 <code>TypeScript</code> 编写代码，使用 <code>yarn workspace</code> 管理多包项目。</li>
+</ul>
+<h2>使用说明</h2>
+<ol>
+<li>克隆项目到本地：</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> clone https://github.com/your-username/imperial-kitchen.git
+</code></pre></div><ol start="2">
+<li>安装依赖：</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> imperial-kitchen
+<span class="token function">yarn</span> <span class="token function">install</span>
+</code></pre></div><ol start="3">
+<li>启动前端应用：</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">yarn</span> workspace mobile start
+</code></pre></div><ol start="4">
+<li>启动后端服务器：</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">yarn</span> workspace server start
+</code></pre></div><h2>贡献</h2>
+<p>欢迎贡献代码！如果您有任何建议或发现了问题，请在 GitHub 上提出问题或提交拉取请求。</p>
+]]></content>
+    <category term="Project"/>
+    <published>2024-05-09T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">对象属性</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/010-object-property.html</id>
@@ -4340,10 +4446,10 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <published>2024-02-15T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">使用 Actions 自动点亮 GitHub 热点图</title>
+    <title type="text">自动点亮 GitHub 热点图</title>
     <id>https://dribble-njr.github.io/blog/blog/project/github-auto-commit/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/github-auto-commit/"/>
-    <updated>2024-02-10T09:01:00.000Z</updated>
+    <updated>2024-05-12T06:37:11.000Z</updated>
     <summary type="html"><![CDATA[<p>灵感来源：某天在 GitHub 上看到一个用户的热点图，发现他每天都有提交记录，非常帅！</p>
 <p>于是先搜搜有没有自动提交的工具，但是找到的结果有些需要在本地运行；有些则没有检查当天是否有提交记录，如果有提交当然不希望有一个虚拟的提交。</p>
 <p>于是就有了这个项目，使用 GitHub Actions 自动提交代码，保持 GitHub 热点图常绿。</p>
@@ -11318,129 +11424,5 @@ $ <span class="token function">git</span> <span class="token function">add</span
 ]]></content>
     <category term="CSS"/>
     <published>2022-05-02T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">从零开发组件库（一）：搭建项目</title>
-    <id>https://dribble-njr.github.io/blog/blog/project/tyro-ui/001-init-project.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/project/tyro-ui/001-init-project.html"/>
-    <updated>2023-07-04T14:00:38.000Z</updated>
-    <summary type="html"><![CDATA[<h2>初始化项目</h2>
-<p>新建 <code>tyro-ui</code> 项目并初始化。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> tyro-ui <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> tyro-ui
-<span class="token function">npm</span> init <span class="token parameter variable">-y</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<h2>初始化项目</h2>
-<p>新建 <code>tyro-ui</code> 项目并初始化。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> tyro-ui <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> tyro-ui
-<span class="token function">npm</span> init <span class="token parameter variable">-y</span>
-</code></pre></div><p>初始化 <code>git</code> 仓库，添加 <code>.gitignore</code> 文件。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> init
-</code></pre></div><p><strong><code>.gitignore</code></strong></p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>node_modules
-</code></pre></div><p>使用 <code>dumi</code> 建立文档站：</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>由于会出现 <code>Issues with peer dependencies found</code> 错误，因此需要开启 <code>pnpm peer dependencies auto-install</code>。</p>
-<p>在项目根目录下新建 <code>.npmrc</code> 文件，添加 <code>auto-install-peers = true</code> 内容。</p>
-</div>
-<p>再安装 <code>dumi</code>：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">pnpm</span> <span class="token function">add</span> dumi <span class="token parameter variable">-D</span>
-</code></pre></div><p>新建配置文件 <strong>.dumirc.ts</strong></p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'dumi'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  title<span class="token operator">:</span> <span class="token string">'tyro-ui'</span><span class="token punctuation">,</span>
-  <span class="token comment">// 更多配置项...</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre></div><p>根目录下新建 <code>docs</code> 文件夹，并添加 <code>index.md</code>，输入以下内容：</p>
-<div class="language-markdown" data-ext="md" data-title="md"><pre class="language-markdown"><code></code></pre></div>]]></content>
-    <category term="Project"/>
-    <published>2023-01-14T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">高级元素</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/005-advanced-element.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/005-advanced-element.html"/>
-    <updated>2024-03-04T11:41:47.000Z</updated>
-    <summary type="html"><![CDATA[<p>除了标题、超链接等元素，还有一些比较复杂的元素：表格和表单。</p>
-<h2>表格</h2>
-<p>HTML 表格是一种用于结构化数据的方式，使用 HTML 的标签 <code>&lt;table&gt;</code> 来创建。一个基本的 HTML 表格包含以下组成部分：</p>
-<ul>
-<li><code>&lt;table&gt;</code>：表格开始的标签。</li>
-<li><code>&lt;tr&gt;</code>：表示行（table row）。</li>
-<li><code>&lt;td&gt;</code>：表示列/单元格（table data）。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>除了标题、超链接等元素，还有一些比较复杂的元素：表格和表单。</p>
-<h2>表格</h2>
-<p>HTML 表格是一种用于结构化数据的方式，使用 HTML 的标签 <code>&lt;table&gt;</code> 来创建。一个基本的 HTML 表格包含以下组成部分：</p>
-<ul>
-<li><code>&lt;table&gt;</code>：表格开始的标签。</li>
-<li><code>&lt;tr&gt;</code>：表示行（table row）。</li>
-<li><code>&lt;td&gt;</code>：表示列/单元格（table data）。</li>
-</ul>
-<p>此外，还有几个其他的标签可以用来更精确地定义表格：</p>
-<ul>
-<li><code>&lt;thead&gt;</code>：用于表示表格的头部区域。</li>
-<li><code>&lt;tbody&gt;</code>：表示主体内容区域。</li>
-<li><code>&lt;tfoot&gt;</code>：表示底部总结区域。</li>
-<li><code>&lt;th&gt;</code>：表示表头。</li>
-</ul>
-<p>这些标签使得你可以更清晰地定义表格的结构，并且可能会使你的表格获得更好的可访问性。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>即使你不给表格添加你自己的样式，表格标题也会带有一些默认样式：加粗和居中，让标题可以突出显示。</p>
-</div>
-<p>以下是一个基本的 HTML 表格结构的例子：</p>
-
-<h3>通过 CSS 控制表格样式</h3>
-<p>需要用到一个非常重要的属性：<code>border-collapse</code>。这个属性用于控制表格边框的合并方式，它有两个值：</p>
-<ul>
-<li><code>collapse</code>：合并边框。</li>
-<li><code>separate</code>：分离边框。</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><code>border-collapse</code> 属性只能用于 <code>&lt;table&gt;</code> 元素，不能用于 <code>&lt;div&gt;</code> 等其他元素。</p>
-</div>
-<p>以下是一个例子：</p>
-
-<h3>跨列和跨行</h3>
-<p>有时候，我们需要让某个单元格跨越多列或多行，这时候就需要用到 <code>colspan</code> 和 <code>rowspan</code> 属性。</p>
-<ul>
-<li><code>colspan</code>：跨列。</li>
-<li><code>rowspan</code>：跨行。</li>
-</ul>
-
-<h2>表单</h2>
-<p>HTML 表单是用于收集用户输入的一种交互式元素。它可以包含各种类型的输入元素，例如文本字段，复选框，单选按钮，下拉列表等。</p>
-<p>HTML 表单的基本结构如下：</p>
-
-<h3><code>&lt;form&gt;</code> 元素</h3>
-<p><code>&lt;form&gt;</code> 元素用于创建 HTML 表单，它有两个重要的属性：</p>
-<ul>
-<li><code>action</code>：用于指定表单提交的地址。</li>
-<li><code>method</code>：用于指定表单提交的方式，有两个值：<code>get</code> 和 <code>post</code>。</li>
-</ul>
-<h3><code>&lt;label&gt;</code>、<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code> 和 <code>&lt;button&gt;</code> 元素</h3>
-<p><code>&lt;label&gt;</code> 元素用于定义表单元素的标签，它有一个重要的属性：</p>
-<ul>
-<li><code>for</code>：用于指定它所对应的表单元素的 <code>id</code> 属性。</li>
-</ul>
-<p><code>&lt;input&gt;</code> 元素用于创建表单元素，它有一个重要的属性：</p>
-<ul>
-<li><code>type</code>：用于指定表单元素的类型。</li>
-</ul>
-<p><code>&lt;textarea&gt;</code> 元素用于创建多行文本输入框。</p>
-<p><code>&lt;button&gt;</code> 元素用于创建按钮，它有一个重要的属性：</p>
-<ul>
-<li><code>type</code>：用于指定按钮的类型。</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>各元素包含的属性详见 MDN 文档：<a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/zh-CN/</a></p>
-</div>
-]]></content>
-    <category term="HTML"/>
-    <published>2023-04-28T00:00:00.000Z</published>
   </entry>
 </feed>

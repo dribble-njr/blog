@@ -29,5 +29,12 @@ export default [
     collapsible: true,
     prefix: '/project/plugin/',
     children: ['01.vuepress-plugin-ordered-header']
+  },
+  {
+    text: '御膳房',
+    icon: 'kitchen',
+    collapsible: true,
+    prefix: '/project/imperial-kitchen/',
+    children: ['', '01-init']
   }
 ]

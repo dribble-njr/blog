@@ -1,5 +1,5 @@
 ---
-title: 使用 Actions 自动点亮 GitHub 热点图
+title: 自动点亮 GitHub 热点图
 date: 2024-02-10
 icon: play
 category:

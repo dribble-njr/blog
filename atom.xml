@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-05-12T06:38:41.694Z</updated>
+  <updated>2024-05-15T15:07:22.226Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -31,7 +31,7 @@
     <title type="text">初始化项目</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html"/>
-    <updated>2024-05-12T06:37:11.000Z</updated>
+    <updated>2024-05-15T15:05:48.000Z</updated>
     <summary type="html"><![CDATA[<h2>技术方案选型</h2>
 <h3>Flutter vs React Native</h3>
 <p>目前，<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> 和 <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 是最流行的跨端解决方案。</p>
@@ -60,19 +60,25 @@
 <p>查询到上述两个 issue 后，在目录中添加 <code>.npmrc</code> 文件后重新安装依赖项目启动成功。</p>
 <div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>node-linker=hoisted
 </code></pre></div><p>考虑到可能还会遇到其他兼容问题，最终选择官方推荐的 <code>yarn 1.x</code> workspaces。</p>
-<p>以下按照 <a href="https://docs.expo.dev/guides/monorepos/" target="_blank" rel="noopener noreferrer">Work with monorepos</a> 搭建项目。</p>
-<h3>init</h3>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>- packages
+<p>目录结构设计如下：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>- apps
   - mobile
   - server
+- packages
   - types
 - package.json
-</code></pre></div><p>在 imperial-kitchen 文件夹中 使用</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx create-expo-app mobile
+</code></pre></div><h3>init mobile</h3>
+<p>以下按照 <a href="https://docs.expo.dev/guides/monorepos/" target="_blank" rel="noopener noreferrer">Work with monorepos</a> 搭建项目。</p>
+<p>在 imperial-kitchen 文件夹中 使用以下命令初始化 <code>expo</code> 项目</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx create-expo-app apps/mobile
 </code></pre></div><div class="hint-container warning">
 <p class="hint-container-title">注意</p>
 <p>使用 expo router，必须添加环境变量：<code>EXPO_USE_METRO_WORKSPACE_ROOT=1</code></p>
 </div>
+<h3>init server</h3>
+<p>后端服务选择使用原生 <code>node</code> 开发，详见 。</p>
+<h3>配置 lint</h3>
+<p>配置 <code>eslint</code>、<code>prettier</code>、<code>commitlint</code> 和 <code>husky</code>。</p>
 ]]></content>
     <category term="Project"/>
     <published>2024-05-09T00:00:00.000Z</published>

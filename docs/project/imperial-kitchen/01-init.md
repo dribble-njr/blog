@@ -49,22 +49,25 @@ node-linker=hoisted
 
 考虑到可能还会遇到其他兼容问题，最终选择官方推荐的 `yarn 1.x` workspaces。
 
-以下按照 [Work with monorepos](https://docs.expo.dev/guides/monorepos/) 搭建项目。
-
-### init
+目录结构设计如下：
 
 ```sh
-- packages
+- apps
   - mobile
   - server
+- packages
   - types
 - package.json
 ```
 
-在 imperial-kitchen 文件夹中 使用
+### init mobile
+
+以下按照 [Work with monorepos](https://docs.expo.dev/guides/monorepos/) 搭建项目。
+
+在 imperial-kitchen 文件夹中 使用以下命令初始化 `expo` 项目
 
 ```sh
-npx create-expo-app mobile
+npx create-expo-app apps/mobile
 ```
 
 ::: warning
@@ -72,3 +75,11 @@ npx create-expo-app mobile
 使用 expo router，必须添加环境变量：`EXPO_USE_METRO_WORKSPACE_ROOT=1`
 
 :::
+
+### init server
+
+后端服务选择使用原生 `node` 开发，详见 [服务器架构设计](./02-server.md)。
+
+### 配置 lint
+
+配置 `eslint`、`prettier`、`commitlint` 和 `husky`。

@@ -4,7 +4,7 @@ export default [
     icon: 'okr',
     collapsible: true,
     prefix: '/survival/okr',
-    children: ['2024']
+    children: ['2023', '2024']
   },
   {
     text: 'Week',

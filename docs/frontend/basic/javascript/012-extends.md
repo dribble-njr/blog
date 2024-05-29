@@ -1,11 +1,16 @@
 ---
-title: JavaScript 类（二）———— 继承
+title: 继承
 date: 2022-08-25
+icon: extends
 category:
   - JavaScript
 tag:
   - 面向对象
 ---
+
+继承是面向对象编程中讨论最多的话题。很多面向对象语言都支持两种继承：接口继承和实现继承。
+
+前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，因为函数没有签名。实现继承是 ECMAScript 唯一支持的继承方式，而这主要是通过原型链实现的。
 
 ## 原型链
 
@@ -14,12 +19,12 @@ tag:
 ```js
 // 父类: 公共属性和方法
 function Person() {
-  this.name = "wang"
+  this.name = 'wang'
   this.friends = []
 }
 
 Person.prototype.eating = function () {
-  console.log(this.name + " eating~")
+  console.log(this.name + ' eating~')
 }
 
 // 子类: 特有属性和方法
@@ -30,7 +35,7 @@ function Student() {
 Student.prototype = new Person()
 
 Student.prototype.studying = function () {
-  console.log(this.name + " studying~")
+  console.log(this.name + ' studying~')
 }
 
 const stu = new Student()
@@ -44,28 +49,34 @@ stu.studying() // wang studying~
 
 ```js
 // 原型链实现继承的弊端:
-// 1.第一个弊端: 打印stu对象, 继承的属性是看不到的，并且对象标识也有问题
+// 1.第一个弊端: 打印 stu 对象, 继承的属性是看不到的，并且对象标识也有问题
 console.log(stu) // Person { sno: 111 }
 
 // 2.第二个弊端: 修改引用值时会互相影响
 const stu1 = new Student()
 const stu2 = new Student()
 
-stu1.friends.push("kobe")
+stu1.friends.push('kobe')
 
 console.log(stu1.friends) // ['kobe']
 console.log(stu2.friends) // ['kobe']
 
 // 3.第三个弊端: 在前面实现类的过程中都没有传递参数
-const stu3 = new Student("lilei", 112)
+const stu3 = new Student('lilei', 112)
 console.log(stu3) // Person { sno: 111 }
 ```
 
+::: note
+
+默认情况下，所有引用类型都继承自 `Object`，任何函数的默认原型都是一个 `Object` 的实例。
+
+:::
+
 ## 盗用构造函数
 
-为了解决原型链继承问题，可以使用“盗用构造函数”。基本思路很简单：在子类构造函数中调用父类构造函数。可以使用 `apply()` 和 `call()` 方法以新创建的对象为上下文执行构造函数。
+为了解决原型链继承问题，可以使用「盗用构造函数」。基本思路很简单：在子类构造函数中调用父类构造函数。可以使用 `apply()` 和 `call()` 方法以新创建的对象为上下文执行构造函数。
 
-```js
+```js{10,11}
 // 父类: 公共属性和方法
 function Person(name, age, friends) {
   this.name = name
@@ -80,48 +91,51 @@ function Student(name, age, friends, sno) {
   this.sno = 111
 }
 
-const stu = new Student("wang", 18, ["kobe"], 111)
+const stu = new Student('wang', 18, ['kobe'], 111)
 
 // 解决原型链实现继承的弊端
 // 1. 第一个弊端: 打印stu对象, 继承的属性是看不到的，并且对象标识也有问题
 console.log(stu) // Student { name: 'wang', age: 18, friends: [ 'kobe' ], sno: 111 }
 
 // 2.第二个弊端: 修改引用值时会互相影响
-const stu1 = new Student("wang", 18, ["lilei"], 111)
-const stu2 = new Student("kobe", 30, ["james"], 112)
+const stu1 = new Student('wang', 18, ['li lei'], 111)
+const stu2 = new Student('kobe', 30, ['james'], 112)
 
-stu1.friends.push("lucy")
+stu1.friends.push('lucy')
 
-console.log(stu1.friends) // ['lilei', 'lucy']
+console.log(stu1.friends) // ['li lei', 'lucy']
 console.log(stu2.friends) // ['james']
 
 // // 3.第三个弊端: 在前面实现类的过程中都没有传递参数
-const stu3 = new Student("lilei", 22, [], 113)
+const stu3 = new Student('li lei', 22, [], 113)
 ```
 
-然而，借用构造函数也是有弊端：必须在构造函数中定义方法，函数不能重用；而且，子类也不能访问父类原型上的方法，因为他没有像原型链继承一样建立了实例与父类原型对象的连接，因此所有类型都只能使用构造函数模式。
+然而，借用构造函数也是有弊端：
+
+- 必须在构造函数中定义方法，函数不能重用；
+- 而且，子类也不能访问父类原型上的方法，因为他没有像原型链继承一样建立了实例与父类原型对象的连接，因此所有类型都只能使用构造函数模式。
 
 ## 组合继承
 
 既然原型链继承可以实现继承方法，而盗用构造函数可以解决引用值、对象标识和传递参数的问题，因此可以组合原型链继承和盗用构造函数继承。基本的思路是使用原型链继承父类原型上的属性和方法，而通过盗用构造函数继承实例属性。
 
-```js
+```js{14,15,19,20}
 // 父类: 公共属性和方法
 function Person(name, age, friends) {
-  this.name = name;
-  this.age = age;
-  this.friends = friends;
+  this.name = name
+  this.age = age
+  this.friends = friends
 }
 
-Person.prototype.eating = function() {
-  console.log(this.name + " eating~");
+Person.prototype.eating = function () {
+  console.log(this.name + ' eating~')
 }
 
 // 子类: 特有属性和方法
 function Student(name, age, friends, sno) {
   // 盗用构造函数继承属性
-  Person.call(this, name, age, friends);
-  this.sno = 111;
+  Person.call(this, name, age, friends)
+  this.sno = 111
 }
 
 // 原型链继承方法
@@ -134,34 +148,34 @@ Student.prototype = new Person()
 
 组合继承弥补了原型链和盗用构造函数的不足，它使用盗用构造函数继承属性，使用原型链继承方法。但是它存在效率问题，即父类构造函数会调用两次：一次是在创建子类原型时调用，一次是在子类构造函数中调用。
 
-```js
+```js{15,20}
 // 父类: 公共属性和方法
 function Person(name, age, friends) {
-  this.name = name;
-  this.age = age;
-  this.friends = friends;
+  this.name = name
+  this.age = age
+  this.friends = friends
 }
 
-Person.prototype.eating = function() {
-  console.log(this.name + " eating~");
+Person.prototype.eating = function () {
+  console.log(this.name + ' eating~')
 }
 
 // 子类: 特有属性和方法
 function Student(name, age, friends, sno) {
   // 盗用构造函数继承属性
-  Person.call(this, name, age, friends); // 第二次调用 Person()
-  this.sno = 111;
+  Person.call(this, name, age, friends) // 第二次调用 Person()
+  this.sno = 111
 }
 
 // 原型链继承方法
 Student.prototype = new Person() // 第一次调用 Person()
-Student.prototype.construtor = Student
+Student.prototype.constructor = Student
 ```
 
 在第一次调用 Person() 后，Student.prototype 上会有 `name`, `age`, `friends` 这三个属性，它们本来是 Person 父类的实例属性，然而现在却挂载到了 Student 子类的原型属性。
 
 ```js
-console.log(Student.prototype) 
+console.log(Student.prototype)
 // Person {
 //   name: undefined,
 //   age: undefined,
@@ -176,7 +190,7 @@ console.log(Student.prototype)
 const stu = new Student('wang', 18, [], 1) // Student { name: 'wang', age: 18, friends: [], sno: 111 }
 ```
 
-也就是说，现在有两组 `name`, `age`, `friends` 属性，一组在实例上，而另一组在 Student 的原型上。
+也就是说，现在有两组 `name`, `age`, `friends` 属性，一组在实例上，而另一组在 `Student` 的原型上。
 
 这个问题出在调用了父类构造函数给子类原型赋值，那么有没有一种方法可以不直接调用父类构造函数呢？
 
@@ -198,39 +212,39 @@ function object(o) {
 
 ```js
 let person = {
-  name: "Nicholas",
-  friends: ["Shelby", "Court", "Van"]
-};
+  name: 'Nicholas',
+  friends: ['Shelby', 'Court', 'Van']
+}
 let anotherPerson = Object.create(person, {
   name: {
-    value: "Greg"
+    value: 'Greg'
   }
-});
+})
 
-console.log(anotherPerson.name); // "Greg"
+console.log(anotherPerson.name) // "Greg"
 ```
 
 属性中包含的引用值始终会在相关对象中共享。
 
 ```js
 let person = {
-  name: "Nicholas",
-  friends: ["Shelby", "Court", "Van"]
-};
+  name: 'Nicholas',
+  friends: ['Shelby', 'Court', 'Van']
+}
 let anotherPerson = Object.create(person, {
   name: {
-    value: "Greg"
+    value: 'Greg'
   }
-});
-anotherPerson.friends.push("kobe")
+})
+anotherPerson.friends.push('kobe')
 
 let yetAnotherPerson = Object.create(person, {
   name: {
-    value: "wang"
+    value: 'wang'
   }
-});
+})
 
-console.log(yetAnotherPerson.friends); // ["Shelby", "Court", "Van", "kobe"]
+console.log(yetAnotherPerson.friends) // ["Shelby", "Court", "Van", "kobe"]
 ```
 
 ### 寄生式继承
@@ -240,8 +254,9 @@ console.log(yetAnotherPerson.friends); // ["Shelby", "Court", "Van", "kobe"]
 ```js
 function createAnother(original) {
   let clone = Object.create(original) // 创建一个新对象，他的原型为 original
-  clone.sayHi = function() { // 以某种方式增强对象
-    console.log("hi")
+  clone.sayHi = function () {
+    // 以某种方式增强对象
+    console.log('hi')
   }
   return clone // 返回这个对象
 }
@@ -257,9 +272,9 @@ function createAnother(original) {
 
 ```js
 function inheritPrototype(subType, superType) {
-  let prototype = Object.create(superType.prototype); // 创建对象
-  prototype.constructor = subType; // 增强对象
-  subType.prototype = prototype; // 赋值对象
+  let prototype = Object.create(superType.prototype) // 创建对象
+  prototype.constructor = subType // 增强对象
+  subType.prototype = prototype // 赋值对象
 }
 ```
 
@@ -267,30 +282,30 @@ function inheritPrototype(subType, superType) {
 
 接下来调用这个核心继承函数，即可解决组合继承的问题。
 
-```js
+```js{14,15,19,20}
 // 父类
 function Person(name, age, friends) {
-  this.name = name;
-  this.age = age;
-  this.friends = friends;
+  this.name = name
+  this.age = age
+  this.friends = friends
 }
 
-Person.prototype.eating = function() {
-  console.log(this.name + " eating~");
+Person.prototype.eating = function () {
+  console.log(this.name + ' eating~')
 }
 
 // 子类
 function Student(name, age, friends, sno) {
   // 盗用构造函数
-  Person.call(this, name, age, friends);
-  this.sno = 111;
+  Person.call(this, name, age, friends)
+  this.sno = 111
 }
 
 // 寄生式继承
 inheritPrototype(Student, Person)
 
-Student.prototype.studying = function() {
-  console.log(this.name, " studying~");
+Student.prototype.studying = function () {
+  console.log(this.name, ' studying~')
 }
 ```
 

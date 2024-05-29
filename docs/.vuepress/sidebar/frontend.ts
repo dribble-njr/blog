@@ -69,7 +69,8 @@ export default [
           '008-collection-reference-type',
           '009-array-like-object',
           '010-object-property',
-          '011-create-object'
+          '011-create-object',
+          '012-extends'
         ]
       }
     ]

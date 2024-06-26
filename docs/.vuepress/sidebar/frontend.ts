@@ -70,7 +70,8 @@ export default [
           '009-array-like-object',
           '010-object-property',
           '011-create-object',
-          '012-extends'
+          '012-extends',
+          '013-class'
         ]
       }
     ]

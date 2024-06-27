@@ -71,7 +71,8 @@ export default [
           '010-object-property',
           '011-create-object',
           '012-extends',
-          '013-class'
+          '013-class',
+          '014-implement-new'
         ]
       }
     ]

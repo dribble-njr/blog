@@ -8,7 +8,8 @@ export default [
       '01-getting-started',
       '02-git-basics',
       '03-git-branch',
-      '04-git-server'
+      '04-git-server',
+      '06-change-commit'
     ]
   },
   {

@@ -1,7 +1,7 @@
 ---
 title: 图片批注
 date: 2023-12-28
-icon: pizhu
+icon: edit
 category:
   - practice
 tag:

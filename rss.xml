@@ -6,12 +6,12 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 27 Jun 2024 07:28:15 GMT</pubDate>
-    <lastBuildDate>Thu, 27 Jun 2024 07:28:15 GMT</lastBuildDate>
+    <pubDate>Wed, 10 Jul 2024 03:02:14 GMT</pubDate>
+    <lastBuildDate>Wed, 10 Jul 2024 03:02:14 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-    <category>JavaScript</category>
     <category>READING</category>
+    <category>JavaScript</category>
     <category>Project</category>
     <category>browser</category>
     <category>practice</category>
@@ -26,6 +26,24 @@
     <category>reading</category>
     <category>linux</category>
     <category>工程化</category>
+    <item>
+      <title>修改提交</title>
+      <link>https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">修改提交</source>
+      <description>修改提交信息 在 Git 中，修改提交是通过 git commit --amend 命令来完成的。 此时就能出现一个交互式的修改提交窗口，可以修改提交信息，添加文件，或者删除文件。 修改作者信息 由于某次提交时不小心将 git user 改成了其他账户，在后续 commit 时提交了错误的用户信息，需要手动修改：git rebase -i &amp;lt;commi...</description>
+      <category>READING</category>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>修改提交信息</h2>
+<p>在 Git 中，修改提交是通过 <code>git commit --amend</code> 命令来完成的。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> commit <span class="token parameter variable">--amend</span>
+</code></pre></div><p>此时就能出现一个交互式的修改提交窗口，可以修改提交信息，添加文件，或者删除文件。</p>
+<h2>修改作者信息</h2>
+<p>由于某次提交时不小心将 <code>git user</code> 改成了其他账户，在后续 <code>commit</code> 时提交了错误的用户信息，需要手动修改：<code>git rebase -i &lt;commit-hash&gt;</code>。</p>
+<p>意为从当前 <code>commit</code> 后的所有提交。将 <code>pick</code> 改为 <code>edit</code>，并使用 <code>git commit --amend --author="Author Name &lt;email&gt;"</code> 修改用户。</p>
+<p>满意后使用 <code>git rebase --continue</code> 关闭本次修改。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>手写 new 操作符</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/014-implement-new.html</link>
@@ -10872,71 +10890,6 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p><code>align-self: auto | flex-start | flex-end | center | baseline | stretch;</code></p>
 <p>唯一区别就是<code>align-self</code>多了个<code>auto</code>（默认值），表示继承自 flex 容器的<code>align-items</code>属性值。其他属性值含义一模一样。</p>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>浮动</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/css/008-float.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/css/008-float.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">浮动</source>
-      <description>浮动可以让元素脱离标准文档流，指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。 开启浮动 浮动的基本语法 float: &amp;lt;keyword&amp;gt;。取值如下： left：表明元素必须浮动在其所在的块容器左侧。 right：表明元素必须浮动在其所在的块容器右侧。 none：表明元素不进行浮动。 inline-start：表明元素必须浮动在其所在...</description>
-      <category>CSS</category>
-      <pubDate>Mon, 18 Jul 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>浮动可以让元素脱离标准文档流，指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。</p>
-<h2>开启浮动</h2>
-<p>浮动的基本语法 <code>float: &lt;keyword&gt;</code>。取值如下：</p>
-<ul>
-<li><code>left</code>：表明元素必须浮动在其所在的块容器左侧。</li>
-<li><code>right</code>：表明元素必须浮动在其所在的块容器右侧。</li>
-<li><code>none</code>：表明元素不进行浮动。</li>
-<li><code>inline-start</code>：表明元素必须浮动在其所在块容器的开始一侧，在 ltr 脚本中是左侧，在 rtl 脚本中是右侧。</li>
-<li><code>inline-end</code>：表明元素必须浮动在其所在块容器的结束一侧，在 ltr 脚本中是右侧，在 rtl 脚本中是左侧。</li>
-</ul>
-<p>当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。</p>
-<p>在下面的图片中，有三个红色的正方形。其中有两个向左浮动，一个向右浮动。要注意到第二个向左浮动的正方形被放在第一个向左浮动的正方形的右边。如果还有更多的正方形这样浮动，它们会继续向右堆放，直到填满容器一整行，之后换行至下一行。</p>
-<p>浮动元素至少要与其最高的嵌套浮动子元素一样高。给父元素设置了 <code>width: 600px</code>，并将其设为浮动元素，以确保其高度足够包含其中的浮动子元素，并确保其宽度足以容纳这些元素。</p>
-
-<h2>清除浮动</h2>
-<p>由于浮动会将元素移除标准文档流，因此浮动元素会影响上下文中的其他元素，所以必须要给浮动元素清除浮动。</p>
-
-<p>以下三种方法均可清除浮动。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* 1、父级标签定义伪类 */</span>
-<span class="token selector">.clearfix::after</span> <span class="token punctuation">{</span>
-  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>
-  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">/* 兼容IE低版本 */</span>
-<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
-  *<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* 2、父级标签 overflow */</span>
-<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
-  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* 3、添加空 div 标签 */</span>
-<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
-  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>第三种方式的 demo 如下，其余两种可以自行尝试。</p>
-
-<h2>圣杯布局和双飞翼布局</h2>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>利用浮动可以实现两个经典布局。</p>
-</div>
-<h3>作用</h3>
-<ul>
-<li>实现 pc 端三栏布局，中间一栏最先渲染</li>
-<li>实现两边宽度固定，中间自适应</li>
-</ul>
-<p>效果如下：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/three-cols.png" alt="three-cols" tabindex="0" loading="lazy"><figcaption>three-cols</figcaption></figure>
-<h3>圣杯布局</h3>
-
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/three-cols.png" type="image/png"/>
     </item>
   </channel>
 </rss>

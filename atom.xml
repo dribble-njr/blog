@@ -4,12 +4,12 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-06-27T07:28:15.403Z</updated>
+  <updated>2024-07-10T03:02:14.833Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
-  <category term="JavaScript"/>
   <category term="READING"/>
+  <category term="JavaScript"/>
   <category term="Project"/>
   <category term="browser"/>
   <category term="practice"/>
@@ -27,6 +27,27 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">修改提交</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html"/>
+    <updated>2024-07-10T03:00:38.000Z</updated>
+    <summary type="html"><![CDATA[<h2>修改提交信息</h2>
+<p>在 Git 中，修改提交是通过 <code>git commit --amend</code> 命令来完成的。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> commit <span class="token parameter variable">--amend</span>
+</code></pre></div><p>此时就能出现一个交互式的修改提交窗口，可以修改提交信息，添加文件，或者删除文件。</p>]]></summary>
+    <content type="html"><![CDATA[<h2>修改提交信息</h2>
+<p>在 Git 中，修改提交是通过 <code>git commit --amend</code> 命令来完成的。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> commit <span class="token parameter variable">--amend</span>
+</code></pre></div><p>此时就能出现一个交互式的修改提交窗口，可以修改提交信息，添加文件，或者删除文件。</p>
+<h2>修改作者信息</h2>
+<p>由于某次提交时不小心将 <code>git user</code> 改成了其他账户，在后续 <code>commit</code> 时提交了错误的用户信息，需要手动修改：<code>git rebase -i &lt;commit-hash&gt;</code>。</p>
+<p>意为从当前 <code>commit</code> 后的所有提交。将 <code>pick</code> 改为 <code>edit</code>，并使用 <code>git commit --amend --author="Author Name &lt;email&gt;"</code> 修改用户。</p>
+<p>满意后使用 <code>git rebase --continue</code> 关闭本次修改。</p>
+]]></content>
+    <category term="READING"/>
+    <published>2024-07-10T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">手写 new 操作符</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/014-implement-new.html</id>
@@ -7058,7 +7079,7 @@ chattr <span class="token parameter variable">-i</span> .user.ini
     <title type="text">图片批注</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/002-annotation.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/002-annotation.html"/>
-    <updated>2024-01-07T10:18:51.000Z</updated>
+    <updated>2024-07-10T03:00:38.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
 <p>demo: <a href="https://codesandbox.io/p/sandbox/image-annotation-pht676?file=%2Fsrc%2FApp.js%3A210%2C56" target="_blank" rel="noopener noreferrer">https://codesandbox.io/p/sandbox/image-annotation-pht676?file=%2Fsrc%2FApp.js%3A210%2C56</a></p>
@@ -11816,78 +11837,5 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 ]]></content>
     <category term="CSS"/>
     <published>2021-11-18T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">浮动</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/008-float.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/008-float.html"/>
-    <updated>2024-01-07T13:07:06.000Z</updated>
-    <summary type="html"><![CDATA[<p>浮动可以让元素脱离标准文档流，指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。</p>
-<h2>开启浮动</h2>
-<p>浮动的基本语法 <code>float: &lt;keyword&gt;</code>。取值如下：</p>
-<ul>
-<li><code>left</code>：表明元素必须浮动在其所在的块容器左侧。</li>
-<li><code>right</code>：表明元素必须浮动在其所在的块容器右侧。</li>
-<li><code>none</code>：表明元素不进行浮动。</li>
-<li><code>inline-start</code>：表明元素必须浮动在其所在块容器的开始一侧，在 ltr 脚本中是左侧，在 rtl 脚本中是右侧。</li>
-<li><code>inline-end</code>：表明元素必须浮动在其所在块容器的结束一侧，在 ltr 脚本中是右侧，在 rtl 脚本中是左侧。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>浮动可以让元素脱离标准文档流，指定一个元素应沿其容器的左侧或右侧放置，允许文本和内联元素环绕它。</p>
-<h2>开启浮动</h2>
-<p>浮动的基本语法 <code>float: &lt;keyword&gt;</code>。取值如下：</p>
-<ul>
-<li><code>left</code>：表明元素必须浮动在其所在的块容器左侧。</li>
-<li><code>right</code>：表明元素必须浮动在其所在的块容器右侧。</li>
-<li><code>none</code>：表明元素不进行浮动。</li>
-<li><code>inline-start</code>：表明元素必须浮动在其所在块容器的开始一侧，在 ltr 脚本中是左侧，在 rtl 脚本中是右侧。</li>
-<li><code>inline-end</code>：表明元素必须浮动在其所在块容器的结束一侧，在 ltr 脚本中是右侧，在 rtl 脚本中是左侧。</li>
-</ul>
-<p>当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。</p>
-<p>在下面的图片中，有三个红色的正方形。其中有两个向左浮动，一个向右浮动。要注意到第二个向左浮动的正方形被放在第一个向左浮动的正方形的右边。如果还有更多的正方形这样浮动，它们会继续向右堆放，直到填满容器一整行，之后换行至下一行。</p>
-<p>浮动元素至少要与其最高的嵌套浮动子元素一样高。给父元素设置了 <code>width: 600px</code>，并将其设为浮动元素，以确保其高度足够包含其中的浮动子元素，并确保其宽度足以容纳这些元素。</p>
-
-<h2>清除浮动</h2>
-<p>由于浮动会将元素移除标准文档流，因此浮动元素会影响上下文中的其他元素，所以必须要给浮动元素清除浮动。</p>
-
-<p>以下三种方法均可清除浮动。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* 1、父级标签定义伪类 */</span>
-<span class="token selector">.clearfix::after</span> <span class="token punctuation">{</span>
-  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>
-  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token comment">/* 兼容IE低版本 */</span>
-<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
-  *<span class="token property">zoom</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* 2、父级标签 overflow */</span>
-<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
-  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* 3、添加空 div 标签 */</span>
-<span class="token selector">.clearfix</span> <span class="token punctuation">{</span>
-  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>第三种方式的 demo 如下，其余两种可以自行尝试。</p>
-
-<h2>圣杯布局和双飞翼布局</h2>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>利用浮动可以实现两个经典布局。</p>
-</div>
-<h3>作用</h3>
-<ul>
-<li>实现 pc 端三栏布局，中间一栏最先渲染</li>
-<li>实现两边宽度固定，中间自适应</li>
-</ul>
-<p>效果如下：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/three-cols.png" alt="three-cols" tabindex="0" loading="lazy"><figcaption>three-cols</figcaption></figure>
-<h3>圣杯布局</h3>
-
-]]></content>
-    <category term="CSS"/>
-    <published>2022-07-18T00:00:00.000Z</published>
   </entry>
 </feed>

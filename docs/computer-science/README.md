@@ -1,11 +1,11 @@
 ---
-title: 计算机网络
+title: 计算机基础
 article: false
 icon: creative
 star: true
 ---
 
-## 目录
+## 计算机网络
 
 - [网络模型](./001-network-model.md)
 - [HTTP 概述](./002-http-overview.md)

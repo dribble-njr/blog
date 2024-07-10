@@ -19,7 +19,8 @@ export default [
       '005-http-cache',
       '006-https-overview',
       '007-tcp-three-handshakes-and-four-waves',
-      '008-tcp-udp'
+      '008-tcp-udp',
+      '009-http-code-when-authorized-refused'
     ]
   },
   {

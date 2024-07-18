@@ -205,7 +205,7 @@ export default [
     icon: 'practice',
     prefix: '/frontend/practice/',
     children: [
-      '001-sortable',
+      '001-dnd-kit',
       '002-annotation',
       '003-file-upload',
       '004-global-upload',

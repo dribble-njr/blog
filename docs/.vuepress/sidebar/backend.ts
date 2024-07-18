@@ -51,6 +51,13 @@ export default [
         icon: 'mysql',
         prefix: 'mysql/',
         children: ['001-install-mysql']
+      },
+      {
+        text: 'SQL',
+        collapsible: true,
+        icon: 'sql',
+        prefix: 'sql/',
+        children: ['01-quick-start']
       }
     ]
   },

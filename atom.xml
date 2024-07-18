@@ -4,17 +4,17 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-07-18T03:16:51.421Z</updated>
+  <updated>2024-07-18T12:27:37.499Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="practice"/>
   <category term="database"/>
   <category term="计算机网络"/>
   <category term="READING"/>
   <category term="JavaScript"/>
   <category term="Project"/>
   <category term="browser"/>
-  <category term="practice"/>
   <category term="HTML"/>
   <category term="chakra"/>
   <category term="next"/>
@@ -27,6 +27,168 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">dnd-kit 踩坑</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/practice/001-dnd-kit.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/001-dnd-kit.html"/>
+    <updated>2024-07-18T09:07:14.000Z</updated>
+    <summary type="html"><![CDATA[<p>@dnd-kit - 用于 React 的轻量级、模块化、高性能、可访问和可扩展的拖放工具包。</p>
+<h2>Context Provider</h2>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">const</span> <span class="token function-variable function">SortableItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token operator">:</span> <span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token function-variable function">itemRender</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> ReactElement
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> attributes<span class="token punctuation">,</span> listeners<span class="token punctuation">,</span> setNodeRef<span class="token punctuation">,</span> transform<span class="token punctuation">,</span> transition <span class="token punctuation">}</span> <span class="token operator">=</span>
+    <span class="token function">useSortable</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token operator">:</span> props<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> style <span class="token operator">=</span> <span class="token punctuation">{</span>
+    transform<span class="token operator">:</span> <span class="token constant">CSS</span><span class="token punctuation">.</span>Transform<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>transform<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    transition<span class="token operator">:</span> transition<span class="token operator">!</span><span class="token punctuation">,</span>
+    cursor<span class="token operator">:</span> <span class="token string">'move'</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
+      <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mr-2<span class="token punctuation">"</span></span>
+      <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>setNodeRef<span class="token punctuation">}</span></span>
+      <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token operator">...</span>style <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>attributes<span class="token punctuation">}</span></span>
+      <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>listeners<span class="token punctuation">}</span></span>
+    <span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>props<span class="token punctuation">.</span><span class="token function">itemRender</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>@dnd-kit - 用于 React 的轻量级、模块化、高性能、可访问和可扩展的拖放工具包。</p>
+<h2>Context Provider</h2>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">const</span> <span class="token function-variable function">SortableItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token operator">:</span> <span class="token punctuation">{</span>
+  id<span class="token operator">:</span> <span class="token builtin">string</span>
+  <span class="token function-variable function">itemRender</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> ReactElement
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> attributes<span class="token punctuation">,</span> listeners<span class="token punctuation">,</span> setNodeRef<span class="token punctuation">,</span> transform<span class="token punctuation">,</span> transition <span class="token punctuation">}</span> <span class="token operator">=</span>
+    <span class="token function">useSortable</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token operator">:</span> props<span class="token punctuation">.</span>id <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> style <span class="token operator">=</span> <span class="token punctuation">{</span>
+    transform<span class="token operator">:</span> <span class="token constant">CSS</span><span class="token punctuation">.</span>Transform<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>transform<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    transition<span class="token operator">:</span> transition<span class="token operator">!</span><span class="token punctuation">,</span>
+    cursor<span class="token operator">:</span> <span class="token string">'move'</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
+      <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mr-2<span class="token punctuation">"</span></span>
+      <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>setNodeRef<span class="token punctuation">}</span></span>
+      <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token operator">...</span>style <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+      <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>attributes<span class="token punctuation">}</span></span>
+      <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>listeners<span class="token punctuation">}</span></span>
+    <span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>props<span class="token punctuation">.</span><span class="token function">itemRender</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2>踩坑</h2>
+<h3>dnd kit 会将鼠标点击事件识别为拖拽事件</h3>
+<p><a href="https://github.com/clauderic/dnd-kit/issues/1204" target="_blank" rel="noopener noreferrer">https://github.com/clauderic/dnd-kit/issues/1204</a></p>
+<p><a href="https://github.com/clauderic/dnd-kit/issues/893" target="_blank" rel="noopener noreferrer">https://github.com/clauderic/dnd-kit/issues/893</a></p>
+<p>需要注册一些传感器：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> sensor <span class="token operator">=</span> <span class="token function">useSensor</span><span class="token punctuation">(</span>PointerSensor<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">activationConstraint</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">distance</span><span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3>条件拖拽</h3>
+<p>让元素在某些条件下允许排序：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> attributes<span class="token punctuation">,</span> listeners<span class="token punctuation">,</span> setNodeRef<span class="token punctuation">,</span> transform<span class="token punctuation">,</span> transition <span class="token punctuation">}</span> <span class="token operator">=</span>
+  <span class="token function">useSortable</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> props<span class="token punctuation">.</span>id<span class="token punctuation">,</span> <span class="token literal-property property">disabled</span><span class="token operator">:</span> props<span class="token punctuation">.</span>disabled <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3>video 元素无法被拖拽</h3>
+<p>外层包裹一个 <code>div</code>。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
+  <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>style<span class="token punctuation">.</span>videoItem<span class="token punctuation">}</span></span>
+  <span class="token attr-name">onMouseEnter</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    videoRef<span class="token punctuation">.</span>current<span class="token operator">?.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+  <span class="token attr-name">onMouseLeave</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    videoRef<span class="token punctuation">.</span>current<span class="token operator">?.</span><span class="token function">pause</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">&gt;</span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span>
+    <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>videoRef<span class="token punctuation">}</span></span>
+    <span class="token attr-name">src</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>props<span class="token punctuation">.</span>resource<span class="token punctuation">.</span>resourceUrl<span class="token punctuation">}</span></span>
+    <span class="token attr-name">controls</span>
+    <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>style<span class="token punctuation">.</span>video<span class="token punctuation">}</span></span>
+    <span class="token attr-name">muted</span>
+    <span class="token attr-name">loop</span>
+  <span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>track</span> <span class="token attr-name">kind</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>captions<span class="token punctuation">"</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3>拖拽动画异常</h3>
+<p>排序策略</p>
+<p>需要选择默认</p>
+<h3>无限拖拽出现滚动条</h3>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>modifiers<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span>restrictToFirstScrollableAncestor<span class="token punctuation">]</span><span class="token punctuation">}</span>
+</code></pre></div><h3>鼠标跟手</h3>
+<p><a href="https://github.com/clauderic/dnd-kit/issues/122" target="_blank" rel="noopener noreferrer">https://github.com/clauderic/dnd-kit/issues/122</a><br>
+<a href="https://github.com/clauderic/dnd-kit/pull/334" target="_blank" rel="noopener noreferrer">https://github.com/clauderic/dnd-kit/pull/334</a></p>
+<p><a href="https://github.com/clauderic/dnd-kit/blob/master/stories/components/Draggable/DraggableOverlay.tsx" target="_blank" rel="noopener noreferrer">https://github.com/clauderic/dnd-kit/blob/master/stories/components/Draggable/DraggableOverlay.tsx</a></p>
+]]></content>
+    <category term="practice"/>
+    <published>2023-11-23T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">自动切换 node 版本</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/practice/015-auto-change-node.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/015-auto-change-node.html"/>
+    <updated>2024-07-18T07:25:19.000Z</updated>
+    <summary type="html"><![CDATA[<h2>环境准备</h2>
+<ol>
+<li>安装 <code>nvm</code><div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</code></pre></div></li>
+<li>安装 <code>oh-my-zsh</code>：<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="token variable">)</span></span>"</span>
+</code></pre></div></li>
+</ol>]]></summary>
+    <content type="html"><![CDATA[<h2>环境准备</h2>
+<ol>
+<li>安装 <code>nvm</code><div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+</code></pre></div></li>
+<li>安装 <code>oh-my-zsh</code>：<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="token variable">)</span></span>"</span>
+</code></pre></div></li>
+</ol>
+<h2>配置 <code>.zshrc</code></h2>
+<p>在 <code>.zshrc</code> 下新增以下内容：<code>vi ~/.zshrc</code></p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token comment"># Load nvm and set up automatic version switching</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">NVM_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">${XDG_CONFIG_HOME-}</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">printf</span> %s <span class="token string">"<span class="token variable">${<span class="token environment constant">HOME</span>}</span>/.nvm"</span> <span class="token operator">||</span> <span class="token builtin class-name">printf</span> %s <span class="token string">"<span class="token variable">${XDG_CONFIG_HOME}</span>/nvm"</span><span class="token variable">)</span></span>"</span>
+<span class="token punctuation">[</span> <span class="token parameter variable">-s</span> <span class="token string">"<span class="token variable">$NVM_DIR</span>/nvm.sh"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">\</span>. <span class="token string">"<span class="token variable">$NVM_DIR</span>/nvm.sh"</span> <span class="token comment"># This loads nvm</span>
+
+<span class="token comment"># Enable oh-my-zsh plugins</span>
+<span class="token assign-left variable">plugins</span><span class="token operator">=</span><span class="token punctuation">(</span>git z nvm zsh-syntax-highlighting zsh-autosuggestions<span class="token punctuation">)</span>
+
+<span class="token comment"># Load oh-my-zsh</span>
+<span class="token builtin class-name">source</span> <span class="token variable">$ZSH</span>/oh-my-zsh.sh
+
+<span class="token comment"># oh-my-zsh nvm plugin settings</span>
+zstyle <span class="token string">':omz:plugins:nvm'</span> lazy <span class="token function">yes</span>
+zstyle <span class="token string">':omz:plugins:nvm'</span> autoload <span class="token function">yes</span>
+zstyle <span class="token string">':omz:plugins:nvm'</span> silent-autoload <span class="token function">yes</span>
+
+<span class="token comment"># Load nvm automatically when changing directories</span>
+autoload <span class="token parameter variable">-U</span> add-zsh-hook
+<span class="token function-name function">load-nvmrc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-f</span> .nvmrc <span class="token operator">&amp;&amp;</span> <span class="token parameter variable">-r</span> .nvmrc <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    nvm use
+  <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span>nvm version<span class="token variable">)</span></span> <span class="token operator">!=</span> <span class="token variable"><span class="token variable">$(</span>nvm version default<span class="token variable">)</span></span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+    nvm use default
+  <span class="token keyword">fi</span>
+<span class="token punctuation">}</span>
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+</code></pre></div><p>保存 <code>.zshrc</code> 文件后，重启终端或重新加载配置：<code>source ~/.zshrc</code>。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><code>oh-my-zsh</code> 中的 <code>nvm</code> 提供了一些快捷命令和自动补全功能，使得使用 nvm (Node Version Manager) 更加便捷。</p>
+</div>
+<h2>添加 <code>.nvmrc</code></h2>
+<p>项目根目录下创建 <code>.nvmrc</code> 文件，内容为 <code>v20.10.0</code>。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240718145716.png" alt="auto-change-node" tabindex="0" loading="lazy"><figcaption>auto-change-node</figcaption></figure>
+]]></content>
+    <category term="practice"/>
+    <published>2024-07-18T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">快速开始</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/database/sql/01-quick-start.html</id>
@@ -11682,79 +11844,5 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 </code></pre></div>]]></content>
     <category term="HTML"/>
     <published>2022-07-25T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">语义化标签</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/006-semantically-meaningful-tags.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/006-semantically-meaningful-tags.html"/>
-    <updated>2024-01-07T13:07:06.000Z</updated>
-    <summary type="html"><![CDATA[<p>HTML5 中加入了一些语义化标签，来更清晰的表达文档结构。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/tag.png" alt="语义化标签" tabindex="0" loading="lazy"><figcaption>语义化标签</figcaption></figure>
-<ul>
-<li><code>&lt;header&gt;</code>：页眉。</li>
-<li><code>&lt;nav&gt;</code>：导航栏。</li>
-<li><code>&lt;main&gt;</code>：主内容。主内容中还可以有各种子内容区段，可用 <code>&lt;article&gt;</code>、<code>&lt;section&gt;</code> 和 <code>&lt;div&gt;</code> 等元素表示。</li>
-<li><code>&lt;aside&gt;</code>：侧边栏，经常嵌套在 <code>&lt;main&gt;</code> 中。</li>
-<li><code>&lt;footer&gt;</code>：页脚。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>HTML5 中加入了一些语义化标签，来更清晰的表达文档结构。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/tag.png" alt="语义化标签" tabindex="0" loading="lazy"><figcaption>语义化标签</figcaption></figure>
-<ul>
-<li><code>&lt;header&gt;</code>：页眉。</li>
-<li><code>&lt;nav&gt;</code>：导航栏。</li>
-<li><code>&lt;main&gt;</code>：主内容。主内容中还可以有各种子内容区段，可用 <code>&lt;article&gt;</code>、<code>&lt;section&gt;</code> 和 <code>&lt;div&gt;</code> 等元素表示。</li>
-<li><code>&lt;aside&gt;</code>：侧边栏，经常嵌套在 <code>&lt;main&gt;</code> 中。</li>
-<li><code>&lt;footer&gt;</code>：页脚。</li>
-</ul>
-<p>语义化优点：</p>
-<ul>
-<li>易于用户阅读，在丢失 CSS 样式的时候仍能呈现清晰的结构；</li>
-<li>方便屏幕阅读器解析，如盲人阅读器根据标签渲染网页；</li>
-<li>提升用户体验，例如 title、alt 可以用于解释名称或图片信息；</li>
-<li>便于 SEO 搜索引擎优化，搜索引擎根据标签来确定上下文和关键字的权重；</li>
-<li>有利于开发人员维护。</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>存在兼容性问题，HTML5 语义化标签在 IE8 下，默认当成行内元素展示。</li>
-</ul>
-]]></content>
-    <category term="HTML"/>
-    <published>2022-04-30T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">样式单位</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/010-unit.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/010-unit.html"/>
-    <updated>2024-03-04T10:51:20.000Z</updated>
-    <summary type="html"><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>更详细的内容可见 MDN。</p>
-</div>
-<p>CSS 布局里有一些不同的样式单位，常见如下：</p>
-<ul>
-<li>px：绝对单位，像素；</li>
-<li>em：相对于自身字体大小的单位；</li>
-<li>rem：相对于 html 标签字体大小的单位；</li>
-<li>vh：相对于视口高度大小的单位，20vh == (视口高度/100)*20；</li>
-<li>vw：相对于视口宽度大小的单位, 20vw == (视口宽度/100)*20；</li>
-<li>%：父元素的百分比。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>更详细的内容可见 MDN。</p>
-</div>
-<p>CSS 布局里有一些不同的样式单位，常见如下：</p>
-<ul>
-<li>px：绝对单位，像素；</li>
-<li>em：相对于自身字体大小的单位；</li>
-<li>rem：相对于 html 标签字体大小的单位；</li>
-<li>vh：相对于视口高度大小的单位，20vh == (视口高度/100)*20；</li>
-<li>vw：相对于视口宽度大小的单位, 20vw == (视口宽度/100)*20；</li>
-<li>%：父元素的百分比。</li>
-</ul>
-]]></content>
-    <category term="CSS"/>
-    <published>2022-07-18T00:00:00.000Z</published>
   </entry>
 </feed>

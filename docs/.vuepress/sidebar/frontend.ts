@@ -213,7 +213,8 @@ export default [
       '006-animation-svg',
       '007-offline-export-in-highcharts',
       '010-antd-textarea-placeholder-pre-line',
-      '015-auto-change-node'
+      '015-auto-change-node',
+      '016-rest-client-error'
     ]
   },
   {

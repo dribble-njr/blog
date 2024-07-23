@@ -125,6 +125,13 @@ export default [
         prefix: 'node/',
         icon: 'nodejs',
         children: []
+      },
+      {
+        text: 'Pixi',
+        collapsible: true,
+        prefix: 'pixi/',
+        icon: 'pixi',
+        children: ['01-quick-start']
       }
     ]
   },

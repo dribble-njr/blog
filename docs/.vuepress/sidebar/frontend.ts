@@ -221,7 +221,8 @@ export default [
       '007-offline-export-in-highcharts',
       '010-antd-textarea-placeholder-pre-line',
       '015-auto-change-node',
-      '016-rest-client-error'
+      '016-rest-client-error',
+      '017-whistle-debug-real-phone'
     ]
   },
   {

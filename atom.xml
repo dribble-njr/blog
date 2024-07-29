@@ -4,12 +4,12 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-07-29T08:48:20.064Z</updated>
+  <updated>2024-07-29T10:57:14.530Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
-  <category term="practice"/>
   <category term="Pixi"/>
+  <category term="practice"/>
   <category term="Project"/>
   <category term="database"/>
   <category term="计算机网络"/>
@@ -28,6 +28,57 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">架构概述</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/02-architecture-overview.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/02-architecture-overview.html"/>
+    <updated>2024-07-29T10:55:38.000Z</updated>
+    <summary type="html"><![CDATA[<p><a href="https://github.com/pixijs/pixijs" target="_blank" rel="noopener noreferrer">PixiJS</a> 源代码中主要模块的关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Renderer</td>
+<td>渲染器，PixiJS 系统核心，用于显示场景树，并将其绘制到屏幕上。</td>
+</tr>
+<tr>
+<td>Container</td>
+<td>容器，主要场景对象，用于创建场景树，如精灵、图形和文本。</td>
+</tr>
+<tr>
+<td>Assets</td>
+<td>为异步加载资源提供工具。</td>
+</tr>
+<tr>
+<td>Ticker</td>
+<td>基于时钟的周期性回调。游戏更新逻辑将通常在每帧的响应中运行。</td>
+</tr>
+<tr>
+<td>Application</td>
+<td>一个简单的帮助对象，包装了一个加载器，一个时钟和一个渲染器。</td>
+</tr>
+<tr>
+<td>Events</td>
+<td>PixiJS 支持基于指针的交互，使对象可以被点击，触发悬停事件等。</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>通过我们的显示系统我们拥有了一个丰富的键盘和屏幕阅读器的工具。</td>
+</tr>
+</tbody>
+</table>]]></summary>
+    <content type="html"><![CDATA[<p><a href="https://github.com/pixijs/pixijs" target="_blank" rel="noopener noreferrer">PixiJS</a> 源代码中主要模块的关系如下：</p>
+<p>| 模块          | 说明                                                           |<br>
+|</p>
+]]></content>
+    <category term="Pixi"/>
+    <published>2024-07-29T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">whistle 调试真机</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/017-whistle-debug-real-phone.html</id>
@@ -11891,59 +11942,6 @@ HMR111
 <h2>总结</h2>
 <p>这个案例中搭建了本地开发服务器，有两种方式：<code>watch</code> 和 <code>webpack-dev-server</code>。<code>webpack-dev-server</code> 中自带 HMR，可以指定某个模块开启 HMR，以及 dev-server 中的一些其他配置。</p>
 ]]></content>
-    <category term="工程化"/>
-    <published>2022-05-17T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">webpack-resolve</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/008-webpack-resolve.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/008-webpack-resolve.html"/>
-    <updated>2024-01-07T08:28:24.000Z</updated>
-    <summary type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>在开发中会有各种各样的模块，这些文件可能自己编写，也可能来自第三方库。<code>resolve</code> 选项能设置模块如何被解析。webpack 会提供合理的默认值，但是还是可能会修改一些解析的细节。</p>
-<h2>webpack 解析规则</h2>]]></summary>
-    <content type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>在开发中会有各种各样的模块，这些文件可能自己编写，也可能来自第三方库。<code>resolve</code> 选项能设置模块如何被解析。webpack 会提供合理的默认值，但是还是可能会修改一些解析的细节。</p>
-<h2>webpack 解析规则</h2>
-<h3>绝对路径</h3>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token string">'/home/me/file'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> <span class="token string">'C:\\Users\\me\\file'</span><span class="token punctuation">;</span>
-</code></pre></div><p>由于以及获得文件的绝对路径，因此不需要再做进一步解析。</p>
-<h3>相对路径</h3>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token string">'../src/file1'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'./file2'</span><span class="token punctuation">;</span>
-</code></pre></div><p>在这种情况下，使用 <code>import</code> 或 <code>require</code> 的资源文件所处的目录，被认为是上下文目录。在 <code>import/require</code> 中给定的相对路径，会拼接此上下文路径，来生成模块的绝对路径。</p>
-<h3>模块路径</h3>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token string">'module'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'module/lib/file'</span><span class="token punctuation">;</span>
-</code></pre></div><p>模块会在 resolve.modules 中指定检索模块，默认值为 ['node_modules]，所以默认是从 <code>node_modules</code> 下查找文件。</p>
-<h3>确定文件还是文件夹</h3>
-<p>一旦根据上述规则解析路径后，resolver 将会检查路径是指向文件还是文件夹。如果路径指向文件：</p>
-<ul>
-<li>如果文件具有扩展名，则直接将文件打包。</li>
-<li>否则，将使用 <code>resolve.extensions</code> 选项作为文件扩展名来解析，此选项会告诉解析器在解析中能够接受那些扩展名（例如 .js，.jsx）。</li>
-</ul>
-<p>如果路径指向一个文件夹，则进行如下步骤寻找具有正确扩展名的文件：</p>
-<ul>
-<li>根据 <code>resolve.mainFields</code> 配置中的字段顺序查找，默认值是 <code>['index']</code>；</li>
-<li>然后使用 <code>resolve.extensions</code> 选项，以类似的方式解析文件扩展名。</li>
-</ul>
-<h2><code>extensions</code> 和 <code>alias</code> 配置</h2>
-<p><code>extensions</code> 选项可以在解析到文件时自动添加扩展名。默认值为 <code>['.wasm', '.mjs', '.js', '.json']</code>。</p>
-<p><code>alias</code> 可以为路径配置别名，当项目结构比较深时，一个文件的路径可能加上 <code>../../../</code> 这种路径片段。就可以给常见的路径配置别名了。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.wasm'</span><span class="token punctuation">,</span> <span class="token string">'.mjs'</span><span class="token punctuation">,</span> <span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.json'</span><span class="token punctuation">,</span> <span class="token string">'.jsx'</span><span class="token punctuation">,</span> <span class="token string">'.vue'</span><span class="token punctuation">,</span> <span class="token string">'.ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">alias</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string-property property">'@'</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token string-property property">'js'</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/js'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></content>
     <category term="工程化"/>
     <published>2022-05-17T00:00:00.000Z</published>
   </entry>

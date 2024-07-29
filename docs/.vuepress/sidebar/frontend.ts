@@ -131,7 +131,7 @@ export default [
         collapsible: true,
         prefix: 'pixi/',
         icon: 'pixi',
-        children: ['01-quick-start']
+        children: ['01-quick-start', '02-architecture-overview']
       }
     ]
   },
@@ -146,13 +146,7 @@ export default [
         collapsible: true,
         icon: 'basic',
         prefix: 'basic/',
-        children: [
-          '001-modularization',
-          '002-package-manager',
-          '003-tool',
-          '004-project-standards',
-          '005-yeoman'
-        ]
+        children: ['001-modularization', '002-package-manager', '003-tool', '004-project-standards', '005-yeoman']
       },
       {
         text: '打包工具',
@@ -198,11 +192,7 @@ export default [
         collapsible: true,
         icon: '7',
         prefix: 'ssr/',
-        children: [
-          '005-qwik',
-          '006-react-server-component',
-          '007-hydration-is-pure-overhead'
-        ]
+        children: ['005-qwik', '006-react-server-component', '007-hydration-is-pure-overhead']
       }
     ]
   },

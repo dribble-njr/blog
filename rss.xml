@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 29 Jul 2024 10:57:14 GMT</pubDate>
-    <lastBuildDate>Mon, 29 Jul 2024 10:57:14 GMT</lastBuildDate>
+    <pubDate>Mon, 05 Aug 2024 07:06:40 GMT</pubDate>
+    <lastBuildDate>Mon, 05 Aug 2024 07:06:40 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Pixi</category>
@@ -84,6 +84,11 @@
 <h3>resMerge</h3>
 <p>由于大部分 webapp 是嵌入到 webview 中，因此需要更改响应结果中的 <code>webAppUrl</code> 路径。</p>
 <div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>https://xxxx resMerge://(webAppUrl=https://localhost:3000/index.html?isWebApp=true)
+</code></pre></div><h3>tpl</h3>
+<p>tpl 基本功能跟 file 一样可以做本地替换，但 tpl 内置了一个简单的模板引擎，可以把文件内容里面 <code>{name}</code> 替换请求参数对应的字段(如果不存在对应的自动则不会进行替换)，一般可用于 mock jsonp 的请求。</p>
+<p>在 <code>values</code> 面板中创建一个文件，名字为 <code>mockConfig.json</code>，内容如下：</p>
+<p>可以直接修改返回结果：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>https://xxxx tpl://{mockConfig.json}
 </code></pre></div><h3>注入 eruda</h3>
 <p>安装 <code>whistle.inspect</code> 插件，该插件即成了 <a href="https://github.com/liriliri/eruda" target="_blank" rel="noopener noreferrer">eruda</a> 等调试工具，用来在移动端页面上模拟 Chrome 开发者工具功能的模块。</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>w2 i whistle.inspect

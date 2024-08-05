@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-07-29T10:57:14.530Z</updated>
+  <updated>2024-08-05T07:06:40.824Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -83,7 +83,7 @@
     <title type="text">whistle 调试真机</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/017-whistle-debug-real-phone.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/017-whistle-debug-real-phone.html"/>
-    <updated>2024-07-29T08:46:40.000Z</updated>
+    <updated>2024-08-05T07:05:01.000Z</updated>
     <summary type="html"><![CDATA[<p>在前端开发中移动端开发技能必不可少。当我们遇到类似于这样的问题：</p>
 <ul>
 <li>移动端 <code>Canvas</code> 渲染失败</li>
@@ -130,6 +130,11 @@
 <h3>resMerge</h3>
 <p>由于大部分 webapp 是嵌入到 webview 中，因此需要更改响应结果中的 <code>webAppUrl</code> 路径。</p>
 <div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>https://xxxx resMerge://(webAppUrl=https://localhost:3000/index.html?isWebApp=true)
+</code></pre></div><h3>tpl</h3>
+<p>tpl 基本功能跟 file 一样可以做本地替换，但 tpl 内置了一个简单的模板引擎，可以把文件内容里面 <code>{name}</code> 替换请求参数对应的字段(如果不存在对应的自动则不会进行替换)，一般可用于 mock jsonp 的请求。</p>
+<p>在 <code>values</code> 面板中创建一个文件，名字为 <code>mockConfig.json</code>，内容如下：</p>
+<p>可以直接修改返回结果：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>https://xxxx tpl://{mockConfig.json}
 </code></pre></div><h3>注入 eruda</h3>
 <p>安装 <code>whistle.inspect</code> 插件，该插件即成了 <a href="https://github.com/liriliri/eruda" target="_blank" rel="noopener noreferrer">eruda</a> 等调试工具，用来在移动端页面上模拟 Chrome 开发者工具功能的模块。</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>w2 i whistle.inspect

@@ -77,6 +77,18 @@ PC 端有时也需要通过 `whistle` 控制台设置代理修改请求信息或
 https://xxxx resMerge://(webAppUrl=https://localhost:3000/index.html?isWebApp=true)
 ```
 
+### tpl
+
+tpl 基本功能跟 file 一样可以做本地替换，但 tpl 内置了一个简单的模板引擎，可以把文件内容里面 `{name}` 替换请求参数对应的字段(如果不存在对应的自动则不会进行替换)，一般可用于 mock jsonp 的请求。
+
+在 `values` 面板中创建一个文件，名字为 `mockConfig.json`，内容如下：
+
+可以直接修改返回结果：
+
+```
+https://xxxx tpl://{mockConfig.json}
+```
+
 ### 注入 eruda
 
 安装 `whistle.inspect` 插件，该插件即成了 [eruda](https://github.com/liriliri/eruda) 等调试工具，用来在移动端页面上模拟 Chrome 开发者工具功能的模块。

@@ -14,3 +14,5 @@ star: true
 - [宁弯不折](./05-work-around.md)
 - [并发](./06-concurrent.md)
 - [当你编码时](./07-when-coding.md)
+- [项目启动前](./08-before-start-project.md)
+- [务实的项目](./09-pragmatic-project.md)

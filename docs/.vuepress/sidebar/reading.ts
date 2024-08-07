@@ -33,7 +33,9 @@ export default [
       '04-pragmatic-paranoid',
       '05-work-around',
       '06-concurrent',
-      '07-when-coding'
+      '07-when-coding',
+      '08-before-start-project',
+      '09-pragmatic-project'
     ]
   }
 ]

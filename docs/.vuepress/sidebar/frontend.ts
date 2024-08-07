@@ -74,7 +74,8 @@ export default [
           '013-class',
           '014-implement-new',
           '015-function',
-          '016-this'
+          '016-this',
+          '017-implement-call-apply-bind'
         ]
       }
     ]

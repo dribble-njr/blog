@@ -4,17 +4,17 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-08-07T08:31:49.884Z</updated>
+  <updated>2024-08-07T10:36:46.536Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="READING"/>
   <category term="JavaScript"/>
   <category term="Pixi"/>
   <category term="practice"/>
   <category term="Project"/>
   <category term="database"/>
   <category term="计算机网络"/>
-  <category term="READING"/>
   <category term="browser"/>
   <category term="HTML"/>
   <category term="chakra"/>
@@ -28,6 +28,174 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">务实的项目</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/09-pragmatic-project.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/09-pragmatic-project.html"/>
+    <updated>2024-08-07T10:33:41.000Z</updated>
+    <summary type="html"><![CDATA[<p>一旦项目不只你一个人，就需要建立一些基本规则，并依次将项目的各部分分配出去。</p>
+<h2>务实的团队</h2>
+<ul>
+<li>维持小而稳定的团队</li>
+<li>禁止破窗</li>
+<li>团队的工作不应仅致力于开发新功能，还可能包括：
+<ul>
+<li>旧系统的维护</li>
+<li>流程的反思与精炼</li>
+<li>实验新技术</li>
+<li>学习和提升技能</li>
+</ul>
+</li>
+<li>做能起作用的事，别赶时髦</li>
+</ul>
+<h2>务实的入门套件</h2>
+<ul>
+<li>版本控制</li>
+<li>回归测试</li>
+<li>完全自动化</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>一旦项目不只你一个人，就需要建立一些基本规则，并依次将项目的各部分分配出去。</p>
+<h2>务实的团队</h2>
+<ul>
+<li>维持小而稳定的团队</li>
+<li>禁止破窗</li>
+<li>团队的工作不应仅致力于开发新功能，还可能包括：
+<ul>
+<li>旧系统的维护</li>
+<li>流程的反思与精炼</li>
+<li>实验新技术</li>
+<li>学习和提升技能</li>
+</ul>
+</li>
+<li>做能起作用的事，别赶时髦</li>
+</ul>
+<h2>务实的入门套件</h2>
+<ul>
+<li>版本控制</li>
+<li>回归测试</li>
+<li>完全自动化</li>
+</ul>
+<h2>傲慢与偏见</h2>
+<p>在作品上签名。</p>
+<p>保持匿名会滋生粗心、错误、懒惰和糟糕的代码，特别是在大型项目中——很容易把自己看成只是大齿轮上的一个小齿，在无休止的工作汇报中制造蹩脚的借口，而不是写出好的代码。</p>
+]]></content>
+    <category term="READING"/>
+    <published>2024-08-07T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">项目启动前</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/08-before-start-project.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/08-before-start-project.html"/>
+    <updated>2024-08-07T10:23:44.000Z</updated>
+    <summary type="html"><![CDATA[<p>在项目的最早期，你和团队需要了解需求。仅仅是被人告知要做什么或是倾听用户是不够的：读一下需求之坑，学习如何避免常见的陷阱。</p>
+<h2>需求之坑</h2>
+<p>需求很少停留在表面。通常情况下，它们被埋在层层的假设、误解和政治之下。更糟糕的是，需求通常根本不存在。</p>
+<ul>
+<li>无人确切知道自己想要什么</li>
+<li>程序员帮助人们理解他们想要什么</li>
+<li>需求是从反馈循环中学到的</li>
+<li>和用户一起工作以便从用户角度思考</li>
+<li>使用项目术语表</li>
+</ul>
+<h2>处理无法解决的难题</h2>
+<p>偶尔也会出现一个真的非常困难的问题，你会发现自己顿时被卷入项目之中：一些工程问题你把握不了，或者某些代码比你想象的更难写，也许看起来根本做不到。但这些真的像看起来那么难吗？</p>]]></summary>
+    <content type="html"><![CDATA[<p>在项目的最早期，你和团队需要了解需求。仅仅是被人告知要做什么或是倾听用户是不够的：读一下需求之坑，学习如何避免常见的陷阱。</p>
+<h2>需求之坑</h2>
+<p>需求很少停留在表面。通常情况下，它们被埋在层层的假设、误解和政治之下。更糟糕的是，需求通常根本不存在。</p>
+<ul>
+<li>无人确切知道自己想要什么</li>
+<li>程序员帮助人们理解他们想要什么</li>
+<li>需求是从反馈循环中学到的</li>
+<li>和用户一起工作以便从用户角度思考</li>
+<li>使用项目术语表</li>
+</ul>
+<h2>处理无法解决的难题</h2>
+<p>偶尔也会出现一个真的非常困难的问题，你会发现自己顿时被卷入项目之中：一些工程问题你把握不了，或者某些代码比你想象的更难写，也许看起来根本做不到。但这些真的像看起来那么难吗？</p>
+<p>解决谜题的关键是，认识到你所受到的约束和你所拥有的自由度，因为认识到这些就会找到答案。</p>
+<ul>
+<li>不要跳出框框思考——找到框框</li>
+<li>跳出自身的局限</li>
+<li>幸运眷顾有准备的人</li>
+</ul>
+<h2>携手共建</h2>
+<p>「一起工作」的真正含义：不仅仅是提问、讨论、做笔记，还要在真正编码的同一时刻提问和讨论。</p>
+<ul>
+<li>结对编程</li>
+<li>集体编程</li>
+<li>不要一个人埋头钻进代码中</li>
+</ul>
+]]></content>
+    <category term="READING"/>
+    <published>2024-08-07T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">当你编码时</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/07-when-coding.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/07-when-coding.html"/>
+    <updated>2024-08-07T10:07:24.000Z</updated>
+    <summary type="html"><![CDATA[<p>对所有代码进行批判性思考，包括自己的代码。不断看到程序和设计的改进空间。</p>
+<h2>听从蜥蜴脑</h2>
+<p>一种有效的脑力突破的方法：</p>
+<ol>
+<li>在便签上写下「我正在做 xx」，然后贴在屏幕的一侧。</li>
+<li>提醒自己，「xx」注定要出问题。提醒自己，「xx」即使没有出问题也会被扔掉。这样做没有坏处。</li>
+<li>在空编辑器窗口中，写一条注释，用一句话描述你想学点什么或做点什么。</li>
+<li>开始编码。</li>
+</ol>
+<p>如果在实验结束后仍旧不舒服，那就重新从散步、谈话和休息开始。</p>
+<p>阅读别人的代码。</p>
+<h2>重构</h2>]]></summary>
+    <content type="html"><![CDATA[<p>对所有代码进行批判性思考，包括自己的代码。不断看到程序和设计的改进空间。</p>
+<h2>听从蜥蜴脑</h2>
+<p>一种有效的脑力突破的方法：</p>
+<ol>
+<li>在便签上写下「我正在做 xx」，然后贴在屏幕的一侧。</li>
+<li>提醒自己，「xx」注定要出问题。提醒自己，「xx」即使没有出问题也会被扔掉。这样做没有坏处。</li>
+<li>在空编辑器窗口中，写一条注释，用一句话描述你想学点什么或做点什么。</li>
+<li>开始编码。</li>
+</ol>
+<p>如果在实验结束后仍旧不舒服，那就重新从散步、谈话和休息开始。</p>
+<p>阅读别人的代码。</p>
+<h2>重构</h2>
+<p>重组现有代码实体、改变其内部结构而不改变其外部行为的规范式技术。</p>
+<p>重构是一项日复一日的工作，需要采取低风险的小步骤进行，它更像是耙松和除草这类活动。这是一种有针对性的、精确的方法，有助于保持代码易于更改，而不是对代码库进行自由的、大规模的重写。</p>
+<p>为了保证外部行为没有改变，你需要良好的自动化单元测试来验证代码的行为。</p>
+<ul>
+<li>尽早重构，尽快重构</li>
+</ul>
+<h2>注意安全</h2>
+<ul>
+<li>保持代码简洁，让攻击面更小</li>
+<li>尽早打上安全补丁</li>
+</ul>
+]]></content>
+    <category term="READING"/>
+    <published>2024-08-07T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">并发</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/06-concurrent.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/06-concurrent.html"/>
+    <updated>2024-08-07T09:50:07.000Z</updated>
+    <summary type="html"><![CDATA[<h2>打破时域耦合</h2>
+<p>时域耦合——在时间范畴上产生耦合：A 方法必须在 B 方法之前调用；一次只能运行一个报告；在按钮按下前必须等屏幕先重绘；“嘀嘀”一定在“嗒嗒”之前发生。</p>
+<p>我们需要考虑并发性，并且考虑对时间依赖或顺序依赖解耦。</p>
+<ul>
+<li>通过分析工作流来提高并发性</li>
+<li>做事也需要思考如何解耦</li>
+</ul>
+]]></summary>
+    <content type="html"><![CDATA[<h2>打破时域耦合</h2>
+<p>时域耦合——在时间范畴上产生耦合：A 方法必须在 B 方法之前调用；一次只能运行一个报告；在按钮按下前必须等屏幕先重绘；“嘀嘀”一定在“嗒嗒”之前发生。</p>
+<p>我们需要考虑并发性，并且考虑对时间依赖或顺序依赖解耦。</p>
+<ul>
+<li>通过分析工作流来提高并发性</li>
+<li>做事也需要思考如何解耦</li>
+</ul>
+]]></content>
+    <category term="READING"/>
+    <published>2024-08-07T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">手写 call、apply、bind</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/017-implement-call-apply-bind.html</id>
@@ -1080,13 +1248,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * <span class="token keyword">@export</span>
- * <span class="token keyword">@class</span> MiddlewareManager
+ * @export
+ * @class MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -1313,12 +1481,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
  * Execute route's middleware and controller.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
+ * @param {CustomIncomingMessage} req
+ * @param {ServerResponse} res
+ * @param {Route} route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -1341,12 +1509,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
- * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
+ * @param {string} method - The HTTP method to match.
+ * @param {string} pathname - The URL pathname to match.
+ * @return {Object} An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -11181,1012 +11349,5 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 ]]></content>
     <category term="工程化"/>
     <published>2022-05-18T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">webpack 基础打包</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/001-webpack-basic.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/001-webpack-basic.html"/>
-    <updated>2024-01-07T08:28:24.000Z</updated>
-    <summary type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<h2>基本安装</h2>
-<p>webpack 需要安装两个工具：webpack 和 webpack-cli（命令行接口）。</p>
-<p>webpack 在执行时依赖 webpack-CLI，webpack-cli 提供了许多命令来使 webpack 的工作变得更简单。如果没有安装，运行 webpack 命令时会报错。</p>]]></summary>
-    <content type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<h2>基本安装</h2>
-<p>webpack 需要安装两个工具：webpack 和 webpack-cli（命令行接口）。</p>
-<p>webpack 在执行时依赖 webpack-CLI，webpack-cli 提供了许多命令来使 webpack 的工作变得更简单。如果没有安装，运行 webpack 命令时会报错。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token comment"># 全局安装</span>
-<span class="token function">npm</span> <span class="token function">install</span> webpack webpack-cli <span class="token parameter variable">-g</span>
-
-<span class="token comment"># 局部安装</span>
-<span class="token function">npm</span> <span class="token function">install</span> webpack webpack-cli <span class="token parameter variable">-D</span>
-</code></pre></div><p>首先全局安装，在具体的项目中再使用局部安装。</p>
-<h2>为什么需要 webpack</h2>
-<p>首先创建一个目录，然后局部安装 webpack 和 webpack-cli。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> webpack-demo
-<span class="token builtin class-name">cd</span> webpack-demo
-<span class="token function">npm</span> init <span class="token parameter variable">-y</span>
-<span class="token function">npm</span> <span class="token function">install</span> webpack webpack-cli <span class="token parameter variable">-D</span>
-</code></pre></div><blockquote>
-<p>一个 JS 相关的项目往往都是从 package.json 文件开始的。<br>
-npm 官方提供了 <code>npm init</code> 命令帮助我们快速初始化 package.json 文件。<br>
-执行之后会有一个交互式的命令行让你输入需要的字段值，当然如果你想直接使用默认值，也可以使用 npm init -y 来初始化。</p>
-</blockquote>
-<p>然后创建如下目录结构、文件和内容：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> |- index.html
-</span><span class="token prefix inserted">+</span><span class="token line"> |- /src
-</span><span class="token prefix inserted">+</span><span class="token line">   |- /js
-</span><span class="token prefix inserted">+</span><span class="token line">     |- format.js
-</span><span class="token prefix inserted">+</span><span class="token line">     |- math.js  
-</span><span class="token prefix inserted">+</span><span class="token line">   |- index.js
-</span></span></code></pre></div><p><strong>index.html</strong></p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>webpack-demo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./src/index.js<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p><strong>src/js/format.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token function-variable function">priceFormat</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token string">"￥100.8"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token comment">// CommonJS</span>
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  priceFormat<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><p><strong>src/js/math.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// ES Module</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>src/index.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> sum <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./js/math.js"</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token punctuation">{</span> priceFormat <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./js/format"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">priceFormat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p>现在用浏览器打开 index.html 文件，再打开控制台，毫无疑问地报错了：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>Uncaught ReferenceError<span class="token operator">:</span> require is not defined
-</code></pre></div><p>因为浏览器不知道 node.js 的语法，因此报错。</p>
-<p>那么如何让项目中使用 CommonJS 规范呢，这时候就需要利用 webpack 打包工具。另外项目中还需要加载图片和 CSS 资源，如何让 CSS 也支持导入？这也需要用到 webpack。</p>
-<h2>开始</h2>
-<p>继续刚才的项目，我们在命令行中输入：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx webpack
-</code></pre></div><blockquote>
-<p>npx webpack 会使用局部安装的 webpack，而非全局安装的 webpack。</p>
-</blockquote>
-<p>此时项目会生成一个 dist 文件夹，下面会有一个 main.js 文件：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> |- dist
-</span><span class="token prefix inserted">+</span><span class="token line">   |- main.js
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div><p>修改 index.html:</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">!DOCTYPE html&gt;
-</span><span class="token prefix deleted">&lt;</span><span class="token line">html lang="en"&gt;
-</span><span class="token prefix deleted">&lt;</span><span class="token line">head&gt;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> &lt;meta charset="UTF-8"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line"> &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line"> &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line"> &lt;title&gt;webpack-demo&lt;/title&gt;
-</span></span><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">/head&gt;
-</span><span class="token prefix deleted">&lt;</span><span class="token line">body&gt;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">  &lt;script src="./src/index.js" type="module"&gt;&lt;/script&gt;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  &lt;script src="./dist/main.js" type="module"&gt;&lt;/script&gt;
-</span></span><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">/body&gt;
-</span><span class="token prefix deleted">&lt;</span><span class="token line">/html&gt;
-</span></span></code></pre></div><p>重新加载 index.html 文件，可以看到控制台正确的输出了结果：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token number">30</span>
-￥<span class="token number">100.8</span>
-</code></pre></div><h2>使用配置文件</h2>
-<p>通常在项目中需要一个配置文件，以满足复杂的项目需求。</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- dist
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- main.js
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> |- webpack.config.js
-</span></span></code></pre></div><p><strong>webpack.config.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token string">"./src/index.js"</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">"main.js"</span><span class="token punctuation">,</span>
-    <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"dist"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment">// 需要使用绝对路径</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><p>接下来使用 npm scripts 来执行 webpack 命令。为此需要在 package.json 中添加：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">{
-</span><span class="token prefix unchanged"> </span><span class="token line">  "name": "12_webpack-demo",
-</span><span class="token prefix unchanged"> </span><span class="token line">  "version": "1.0.0",
-</span><span class="token prefix unchanged"> </span><span class="token line">  "description": "",
-</span><span class="token prefix unchanged"> </span><span class="token line">  "main": "index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">  "scripts": {
-</span><span class="token prefix unchanged"> </span><span class="token line">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    "build": "webpack" 
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">  "keywords": [],
-</span><span class="token prefix unchanged"> </span><span class="token line">  "author": "",
-</span><span class="token prefix unchanged"> </span><span class="token line">  "license": "ISC",
-</span><span class="token prefix unchanged"> </span><span class="token line">  "devDependencies": {
-</span><span class="token prefix unchanged"> </span><span class="token line">    "webpack": "^5.72.0",
-</span><span class="token prefix unchanged"> </span><span class="token line">    "webpack-cli": "^4.9.2"
-</span><span class="token prefix unchanged"> </span><span class="token line">  }
-</span><span class="token prefix unchanged"> </span><span class="token line">}
-</span></span></code></pre></div><p>之后可以使用 <code>npm run build</code> 来代替之前的 <code>npx webpack</code> 命令。注意：npm scripts 会优先使用局部安装的包。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> run build
-</code></pre></div><p>浏览器打开 index.html 后，仍能正常显示正确结果。</p>
-<h2>总结</h2>
-<p>从这个案例中，我们首先安装了 webpack，并使用它对 JS 两种模块风格的代码进行了打包。</p>
-<p>而打包又可以使用 <code>webpack</code> 命令使用全局安装的 webpack 进行打包，也可以使用 <code>npx webpack</code> 使用局部安装的 webpack 进行打包。</p>
-<p>最后又引入了配置文件，并使用 npm scripts 来执行 webpack 命令。</p>
-]]></content>
-    <category term="工程化"/>
-    <published>2022-04-29T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">webpack 打包 CSS</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/002-webpack-css.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/002-webpack-css.html"/>
-    <updated>2024-01-07T08:28:24.000Z</updated>
-    <summary type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>继续使用，不过在以下文件做点修改：</p>
-<p><strong>index.html</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;!DOCTYPE html&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;html lang="en"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;head&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta charset="UTF-8"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">  &lt;title&gt;webpack-demo&lt;/title&gt;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  &lt;title&gt;webpack-css&lt;/title&gt;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;/head&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;body&gt;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">  &lt;script src="./dist/main.js" type="module"&gt;&lt;/script&gt;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  &lt;script src="./dist/bundle.js" type="module"&gt;&lt;/script&gt;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;/body&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;/html&gt;
-</span></span></code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>继续使用，不过在以下文件做点修改：</p>
-<p><strong>index.html</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;!DOCTYPE html&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;html lang="en"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;head&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta charset="UTF-8"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">  &lt;title&gt;webpack-demo&lt;/title&gt;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  &lt;title&gt;webpack-css&lt;/title&gt;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;/head&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;body&gt;
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">  &lt;script src="./dist/main.js" type="module"&gt;&lt;/script&gt;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  &lt;script src="./dist/bundle.js" type="module"&gt;&lt;/script&gt;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;/body&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;/html&gt;
-</span></span></code></pre></div><p><strong>webpack.config.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">  output: {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">    filename: "main.js",
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    filename: "bundle.js",
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">    path: path.resolve(__dirname, "dist"),  // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><blockquote>
-<p>bundle.js 表示为打包的文件，见名知意。</p>
-</blockquote>
-<p>修改完配置文件后，下面在项目中添加一个 <code>style.css</code> 文件，并将其 <code>import</code> 到 <code>index.js</code> 中：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   |- /css
-</span><span class="token prefix inserted">+</span><span class="token line">     |- style.css
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div><p><strong>style.css</strong></p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">.title</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
-  <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
-  <span class="token property">font-size</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
-
-  <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line">const { priceFormat } = require("./js/format");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">import "../css/style.css";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line">console.log(priceFormat());
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">const div = document.createElement("div");
-</span><span class="token prefix inserted">+</span><span class="token line">div.className = "title";
-</span><span class="token prefix inserted">+</span><span class="token line">div.innerHTML = "webpack-css";
-</span><span class="token prefix inserted">+</span><span class="token line">document.body.appendChild(div);
-</span></span></code></pre></div><h2><code>css-loader</code></h2>
-<p>现在执行 <code>npm run build</code>，会看到报错：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>ERROR <span class="token keyword">in</span> ./src/css/style.css <span class="token number">1</span>:0
-Module parse failed: Unexpected token <span class="token punctuation">(</span><span class="token number">1</span>:0<span class="token punctuation">)</span>
-You may need an appropriate loader to handle this <span class="token function">file</span> type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts<span class="token comment">#loaders</span>
-<span class="token operator">&gt;</span> .title <span class="token punctuation">{</span>
-<span class="token operator">|</span>   color: <span class="token comment">#000;</span>
-<span class="token operator">|</span>   font-weight: <span class="token number">700</span><span class="token punctuation">;</span>
- @ ./src/index.js <span class="token number">3</span>:0-25
-</code></pre></div><p>从报错信息中可以知道，需要用一个 loader 处理 css 文件。那么什么是 loader 呢？</p>
-<ul>
-<li>loader 用于对模块的源代码进行转换；</li>
-<li>loader 可以使你在 import 或 "load(加载)" 模块时预处理文件；</li>
-<li>loader 甚至允许你直接在 JavaScript 模块中 import CSS 文件！</li>
-</ul>
-<p>而为了能在项目中正常使用 css，需要用到 <code>css-loader</code>。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> css-loader <span class="token parameter variable">-D</span>
-</code></pre></div><p>接下来需要在 <code>webpack.config.js</code> 中配置 <code>css-loader</code> 的使用：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">const path = require('path');
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  entry: './src/index.js',
-</span><span class="token prefix unchanged"> </span><span class="token line">  output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    filename: 'bundle.js',
-</span><span class="token prefix unchanged"> </span><span class="token line">    path: path.resolve(__dirname, 'dist'),
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> module: {
-</span><span class="token prefix inserted">+</span><span class="token line">   rules: [
-</span><span class="token prefix inserted">+</span><span class="token line">     {
-</span><span class="token prefix inserted">+</span><span class="token line">       test: /\.css$/i,
-</span><span class="token prefix inserted">+</span><span class="token line">       use: ['css-loader'],
-</span><span class="token prefix inserted">+</span><span class="token line">     },
-</span><span class="token prefix inserted">+</span><span class="token line">   ],
-</span><span class="token prefix inserted">+</span><span class="token line"> },
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><p>此时再次执行 <code>npm run build</code>，虽然不报错了，但是样式并没有应用成功，这是为什么呢？难道是 css-loader 不起作用吗？</p>
-<p>这是因为 <code>css-loader</code> 只能将 .css 文件导入到 JavaScript 文件中，也就是它只负责<strong>解析</strong>，不负责<strong>将解析后的 css 插入到页面中</strong>。</p>
-<p>如果希望完成这个插入操作，需要用到 <code>style-loader</code>。</p>
-<h2><code>style-loader</code></h2>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> style-loader <span class="token parameter variable">-D</span>
-</code></pre></div><p>同时在 <code>webpack.config.js</code> 中配置 <code>style-loader</code> 的使用：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">  output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">    path: path.resolve(__dirname, "dist"),  // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">  module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    rules: [
-</span><span class="token prefix unchanged"> </span><span class="token line">      {
-</span><span class="token prefix unchanged"> </span><span class="token line">        test: /\.css$/i,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">        use: ['css-loader'],
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">        use: ['style-loader', 'css-loader'],
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">      },
-</span><span class="token prefix unchanged"> </span><span class="token line">    ],
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><p><code>style-loader</code> 需要写在 <code>css-loader</code> 之前，因为 loader 的执行顺序是从后往前的。</p>
-<p>现在重新执行 <code>npm run build</code>，可以发现样式已经生效了。</p>
-<h2>less-loader</h2>
-<p>在实际开发中，我们可能会使用 less、sass 等预处理器来编写 css 样式，那么如何让项目中支持这些预处理器呢？比如说支持 less。</p>
-<p>现在在项目中新增 <code>title.less</code> 文件：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- style.css
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">     |- title.less
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div><p><strong>title.less</strong></p>
-<div class="language-less" data-ext="less" data-title="less"><pre class="language-less"><code><span class="token variable">@bgColor<span class="token punctuation">:</span></span> blue<span class="token punctuation">;</span>
-<span class="token variable">@textDecoration<span class="token punctuation">:</span></span> underline<span class="token punctuation">;</span>
-
-<span class="token selector">.title</span> <span class="token punctuation">{</span>
-  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">@bgColor</span><span class="token punctuation">;</span>
-  <span class="token property">text-decoration</span><span class="token punctuation">:</span> <span class="token variable">@textDecoration</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line">const { priceFormat } = require("./js/format");
-</span><span class="token prefix unchanged"> </span><span class="token line">import "./css/style.css";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">import "./css/title.less";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line">console.log(priceFormat());
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">const div = document.createElement("div");
-</span><span class="token prefix unchanged"> </span><span class="token line">div.className = "title";
-</span><span class="token prefix unchanged"> </span><span class="token line">div.innerHTML = "webpack-css";
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">document.body.appendChild(div);
-</span></span></code></pre></div><p>现在我们需要安装 <code>less-loader</code> 来处理 .less 文件：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> less-loader <span class="token parameter variable">-D</span>
-</code></pre></div><blockquote>
-<p><code>less-loader</code> 会自动使用 less 工具将 .less 文件转换为 .css 文件。</p>
-</blockquote>
-<p>同时在 <code>webpack.config.js</code> 中配置 <code>less-loader</code> 的使用：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">  output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">    path: path.resolve(__dirname, "dist"),  // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">  module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    rules: [
-</span><span class="token prefix unchanged"> </span><span class="token line">      {
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">        test: /\.css$/i,
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">        test: /\.(less|css)$/,
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">        use: ['style-loader', 'css-loader'],
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">        use: ['style-loader', 'css-loader', 'less-loader'],
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">      },
-</span><span class="token prefix unchanged"> </span><span class="token line">    ],
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><p>现在重新执行 <code>npm run build</code>，可以发现 less 样式已经生效了。</p>
-<h2><code>post-css-loader</code></h2>
-<p>开发中除了使用预处理器外，还可能需要使用 CSS 后处理器 <code>postcss</code>。他能帮我们进行 CSS 的转换和适配，比如自动添加浏览器前缀、CSS 样式的重置。</p>
-<p>首先安装 <code>postcss</code> 和 <code>postcss-loader</code>：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> postcss postcss-loader <span class="token parameter variable">-D</span>
-</code></pre></div><p>还需要安装自动添加前缀的插件 <code>autoprefixer</code>：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> autoprefixer <span class="token parameter variable">-D</span>
-</code></pre></div><p>此时配置 <code>webpack.config.js</code>：</p>
-<p><strong>webpack.config.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">     path: path.resolve(__dirname, "dist"),  // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     rules: [
-</span><span class="token prefix unchanged"> </span><span class="token line">       {
-</span><span class="token prefix unchanged"> </span><span class="token line">         test: /\.(less|css)$/,
-</span><span class="token prefix unchanged"> </span><span class="token line">         use: [
-</span><span class="token prefix unchanged"> </span><span class="token line">           'style-loader', 
-</span><span class="token prefix unchanged"> </span><span class="token line">           'css-loader', 
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">           {
-</span><span class="token prefix inserted">+</span><span class="token line">             loader: 'postcss-loader',
-</span><span class="token prefix inserted">+</span><span class="token line">             options: {
-</span><span class="token prefix inserted">+</span><span class="token line">               postcssOptions: {
-</span><span class="token prefix inserted">+</span><span class="token line">                 plugins: [
-</span><span class="token prefix inserted">+</span><span class="token line">                   require("autoprefixer")
-</span><span class="token prefix inserted">+</span><span class="token line">                 ]
-</span><span class="token prefix inserted">+</span><span class="token line">               }
-</span><span class="token prefix inserted">+</span><span class="token line">             }
-</span><span class="token prefix inserted">+</span><span class="token line">           },
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">          'less-loader'],
-</span><span class="token prefix unchanged"> </span><span class="token line">       },
-</span><span class="token prefix unchanged"> </span><span class="token line">     ],
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><p>执行 <code>npm run build</code> 打包，在浏览器中查看样式，即可看到 <code>postcss</code> 为我们自动添加了前缀：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">.title</span> <span class="token punctuation">{</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> #000<span class="token punctuation">;</span>
-  <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
-  <span class="token property">font-size</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
-  <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-     <span class="token property">-moz-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-      <span class="token property">-ms-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-          <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3><code>postcss.config.js</code></h3>
-<p>以上的这些配置信息太长了，我们可以将它们单独在一个文件中进行配置，在项目根目录下新建 <code>postcss.config.js</code>。</p>
-<p><strong>postcss.config.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"autoprefixer"</span><span class="token punctuation">)</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre></div><p><strong>webpack.config.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code>const path = require("path");
-
-module.exports = {
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line"> output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">   filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line"> },
-</span><span class="token prefix unchanged"> </span><span class="token line"> module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">   rules: [
-</span><span class="token prefix unchanged"> </span><span class="token line">     {
-</span><span class="token prefix unchanged"> </span><span class="token line">       test: /\.(less|css)$/,
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">       use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">     },
-</span><span class="token prefix unchanged"> </span><span class="token line">   ],
-</span><span class="token prefix unchanged"> </span><span class="token line"> },
-</span></span>};
-</code></pre></div><p>重新打包后打开浏览器样式依然生效。</p>
-<h3><code>postcss-preset-env</code></h3>
-<p>事实上，在配置 <code>postcss-loader</code> 的时候，配置插件并不需要使用 <code>autoprefixer</code>。可以使用另一个插件 <code>postscc-preset-env</code>，它可以帮助我们将一些现代的 CSS 特性，转成大多数浏览器认识的 CSS，并且会根据目标浏览器或者运行时环境添加所需的 ployfill。</p>
-<blockquote>
-<p>ployfill 用来为旧浏览器提供它没有原生支持的较新的功能。比如说 polyfill 可以让 IE7 使用 Silverlight 插件来模拟 HTML Canvas 元素的功能，或模拟 CSS 实现 rem 单位的支持，或 text-shadow，或其他任何你想要的功能。</p>
-</blockquote>
-<p>这个插件也会自动帮我们添加 autoprefixer。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> postcss-preset-env <span class="token parameter variable">-D</span>
-</code></pre></div><p>然后修改下 <code>postcss.config.js</code> 文件。</p>
-<p><strong>postcss.config.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  plugins: [
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">    require("autoprefixer")
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    // 在使用某些插件时，也可以直接传入字符串
-</span><span class="token prefix inserted">+</span><span class="token line">    "postcss-preset-env"
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">  ]
-</span><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><p>重新打包后打开浏览器样式依然生效。</p>
-<h3><code>postcss-px-to-viewport</code></h3>
-<p>这个插件可以帮助我们将 px 单位转换为视口单位，这在进行移动端适配时尤为重要。详细使用见 。</p>
-<h2>总结</h2>
-<p>在这个案例里，我们分别使用了 <code>style-loader</code> 加载 css 样式， <code>css-loader</code> 处理 .css 文件， <code>less-loader</code> 处理 .less 文件，以及使用 <code>postcss</code> 给样式自动添加前缀。</p>
-<p>loader 的执行顺序是从后往前的，因此需要配置规则中写成 <code>use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]</code>。</p>
-]]></content>
-    <category term="工程化"/>
-    <published>2022-05-06T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">webpack 打包其他资源</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/003-webpack-assets.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/003-webpack-assets.html"/>
-    <updated>2024-01-07T08:28:24.000Z</updated>
-    <summary type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>继续使用。</p>
-<h2>打包图片资源</h2>
-<p>在项目中引入图片文件夹，并添加两张图片：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- style.css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- title.less
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   |- /img
-</span><span class="token prefix inserted">+</span><span class="token line">     |- avatar.png
-</span><span class="token prefix inserted">+</span><span class="token line">     |- wallpaper.png
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>继续使用。</p>
-<h2>打包图片资源</h2>
-<p>在项目中引入图片文件夹，并添加两张图片：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- style.css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- title.less
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   |- /img
-</span><span class="token prefix inserted">+</span><span class="token line">     |- avatar.png
-</span><span class="token prefix inserted">+</span><span class="token line">     |- wallpaper.png
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div><p>下面通过两种方式引入图片资源：</p>
-<ul>
-<li><code>img</code> 元素，设置 <code>src</code> 属性；</li>
-<li>其他元素，css 设置 <code>background-image</code> 属性。</li>
-</ul>
-<p><strong>index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line"> const { priceFormat } = require("./js/format");
-</span><span class="token prefix unchanged"> </span><span class="token line"> import "./css/style.css";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import "./css/title.less";
-</span></span>
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> // 导入图片
-</span><span class="token prefix inserted">+</span><span class="token line"> import avatar from "./img/avatar.png";
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(priceFormat());
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const div = document.createElement("div");
-</span><span class="token prefix unchanged"> </span><span class="token line"> div.className = "title";
-</span><span class="token prefix unchanged"> </span><span class="token line"> div.innerHTML = "webpack-css";
-</span></span>
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> // 方式一：设置 img 元素的 src
-</span><span class="token prefix inserted">+</span><span class="token line"> const imgEl = document.createElement("img");
-</span><span class="token prefix inserted">+</span><span class="token line"> imgEl.src = avatar;
-</span><span class="token prefix inserted">+</span><span class="token line"> 
-</span><span class="token prefix inserted">+</span><span class="token line"> // 方式二：设置背景图片
-</span><span class="token prefix inserted">+</span><span class="token line"> const bgEl = document.createElement("div");
-</span><span class="token prefix inserted">+</span><span class="token line"> bgEl.className = "image-bg";
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> document.body.appendChild(div);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> document.body.appendChild(imgEl);
-</span><span class="token prefix inserted">+</span><span class="token line"> document.body.appendChild(bgEl);
-</span></span></code></pre></div><p>为方式二修改 <code>style.css</code> 文件：</p>
-<p><strong>style.css</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code>.title {
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> color: #000;
-</span><span class="token prefix unchanged"> </span><span class="token line"> font-weight: 700;
-</span><span class="token prefix unchanged"> </span><span class="token line"> font-size: 30px;
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> user-select: none;
-</span></span>}
-
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> .image-bg {
-</span><span class="token prefix inserted">+</span><span class="token line">   background-image: url("../img/wallpaper.jpg");
-</span><span class="token prefix inserted">+</span><span class="token line">   background-repeat: no-repeat;
-</span><span class="token prefix inserted">+</span><span class="token line">   background-size: contain;
-</span><span class="token prefix inserted">+</span><span class="token line">   width: 500px;
-</span><span class="token prefix inserted">+</span><span class="token line">   height: 300px;
-</span><span class="token prefix inserted">+</span><span class="token line"> }
-</span></span></code></pre></div><p>下面需要配置 <code>webpack.config.js</code>，在 webpack5 以前，图片等资源一般使用 <code>file-loader</code> 或 <code>url-loader</code> 进行打包，但是 webpack5 后，这两个 loader 在官方文档中已经被删掉了，因此使用它们会出现一系列的问题。现在更推荐使用**资源模块类型(asset module type)**进行打包。</p>
-<p>但是虽然官方已经不推荐使用了，了解下他们的各自用途还是必要的:</p>
-<ul>
-<li><code>file-loader</code>：将文件发送到输出目录；</li>
-<li><code>url-loader</code>：将文件作为 data URI 内联到 bundle 中，可以将较小的文件转成 base64 的 URI；</li>
-<li><code>raw-loader</code>：将文件导入为字符串。</li>
-</ul>
-<p>而在 webpack5 中，通过添加四种新的模块类型，替换上面这些 loader：</p>
-<ul>
-<li><code>asset/resource</code> 发送一个单独的文件并导出 URL。之前使用 <code>file-loader</code> 实现；</li>
-<li><code>asset/inline</code> 导出一个资源的 data URI。之前通过使用 <code>url-loader</code> 实现；</li>
-<li><code>asset/source</code> 导出资源的源代码。之前通过使用 <code>raw-loader</code> 实现；</li>
-<li><code>asset</code> 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 <code>url-loader</code>，并且配置资源体积限制实现。</li>
-</ul>
-<p>那么现在可以对 <code>webpack.config.js</code> 配置 <code>asset</code> 对图片进行打包：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">  output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">    path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    publicPath: "./dist/",  // 保证 css url 导入时路径正确
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">  module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    rules: [
-</span><span class="token prefix unchanged"> </span><span class="token line">      {
-</span><span class="token prefix unchanged"> </span><span class="token line">        test: /\.(less|css)$/,
-</span><span class="token prefix unchanged"> </span><span class="token line">        use: ["style-loader", "css-loader", "less-loader"]
-</span><span class="token prefix unchanged"> </span><span class="token line">      },
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">      {
-</span><span class="token prefix inserted">+</span><span class="token line">        test: /\.(jpe?g|png|gif|svg)$/,
-</span><span class="token prefix inserted">+</span><span class="token line">        type: "asset",
-</span><span class="token prefix inserted">+</span><span class="token line">        generator: {
-</span><span class="token prefix inserted">+</span><span class="token line">          filename: "img/[name]_[hash:8][ext]"
-</span><span class="token prefix inserted">+</span><span class="token line">        },
-</span><span class="token prefix inserted">+</span><span class="token line">        parser: {
-</span><span class="token prefix inserted">+</span><span class="token line">          dataUrlCondition: {
-</span><span class="token prefix inserted">+</span><span class="token line">            maxSize: 100 * 1024 // 100 kb
-</span><span class="token prefix inserted">+</span><span class="token line">          }
-</span><span class="token prefix inserted">+</span><span class="token line">        }
-</span><span class="token prefix inserted">+</span><span class="token line">      }
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">    ],
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><p><code>generator</code> 可以配置生成器的选项，<code>parser</code> 可以配置解析器的选项。</p>
-<blockquote>
-<p>具体配置项可查阅<a href="https://webpack.docschina.org/configuration/module/" target="_blank" rel="noopener noreferrer">官方文档</a>。</p>
-</blockquote>
-<p>其中 <code>dataUrlCondition</code> 的含义为：如果一个模块源码大小小于 maxSize，那么模块会被作为一个 Base64 编码的字符串注入到包中， 否则模块文件会被生成到输出的目标目录中。</p>
-<h2>打包字体资源</h2>
-<p>在项目中引入字体文件夹，并添加字体文件：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- index.html
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- style.css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- title.less
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   |- /font
-</span><span class="token prefix inserted">+</span><span class="token line">     |- iconfont.css
-</span><span class="token prefix inserted">+</span><span class="token line">     |- iconfont.eot
-</span><span class="token prefix inserted">+</span><span class="token line">     |- iconfont.ttf
-</span><span class="token prefix inserted">+</span><span class="token line">     |- iconfont.woff
-</span><span class="token prefix inserted">+</span><span class="token line">     |- iconfont.woff2
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   |- /img
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- avatar.png
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- wallpaper.png
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div><p><strong>index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line">const { priceFormat } = require("./js/format");
-</span><span class="token prefix unchanged"> </span><span class="token line">import "./css/style.css";
-</span><span class="token prefix unchanged"> </span><span class="token line">import "./css/title.less";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">import "./font/iconfont.css";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">// 导入图片
-</span><span class="token prefix unchanged"> </span><span class="token line">import avatar from "./img/avatar.png";
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line">console.log(priceFormat());
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">const div = document.createElement("div");
-</span><span class="token prefix unchanged"> </span><span class="token line">div.className = "title";
-</span><span class="token prefix unchanged"> </span><span class="token line">div.innerHTML = "webpack-css";
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">// 方式一：设置 img 元素的 src
-</span><span class="token prefix unchanged"> </span><span class="token line">const imgEl = document.createElement("img");
-</span><span class="token prefix unchanged"> </span><span class="token line">imgEl.src = avatar;
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">// 方式二：设置背景图片
-</span><span class="token prefix unchanged"> </span><span class="token line">const bgEl = document.createElement("div");
-</span><span class="token prefix unchanged"> </span><span class="token line">bgEl.className = "image-bg";
-</span></span>
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">// i元素
-</span><span class="token prefix inserted">+</span><span class="token line">const iEl = document.createElement('i');
-</span><span class="token prefix inserted">+</span><span class="token line">iEl.className = "iconfont icon-ashbin";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">document.body.appendChild(div);
-</span><span class="token prefix unchanged"> </span><span class="token line">document.body.appendChild(imgEl);
-</span><span class="token prefix unchanged"> </span><span class="token line">document.body.appendChild(bgEl);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">document.body.appendChild(iEl);
-</span></span></code></pre></div><p>修改 <code>webpack.config.js</code> 配置 <code>asset/resource</code> 对字体进行打包：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">  entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">  output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">    path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">    publicPath: './dist/',
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">  module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">    rules: [
-</span><span class="token prefix unchanged"> </span><span class="token line">      {
-</span><span class="token prefix unchanged"> </span><span class="token line">        test: /\.(less|css)$/,
-</span><span class="token prefix unchanged"> </span><span class="token line">        use: ["style-loader", "css-loader", "less-loader"]
-</span><span class="token prefix unchanged"> </span><span class="token line">      },
-</span><span class="token prefix unchanged"> </span><span class="token line">      {
-</span><span class="token prefix unchanged"> </span><span class="token line">        test: /\.(jpe?g|png|gif|svg)$/,
-</span><span class="token prefix unchanged"> </span><span class="token line">        type: "asset",
-</span><span class="token prefix unchanged"> </span><span class="token line">        generator: {
-</span><span class="token prefix unchanged"> </span><span class="token line">          filename: "img/[name]_[hash:8][ext]"
-</span><span class="token prefix unchanged"> </span><span class="token line">        },
-</span><span class="token prefix unchanged"> </span><span class="token line">        parser: {
-</span><span class="token prefix unchanged"> </span><span class="token line">          dataUrlCondition: {
-</span><span class="token prefix unchanged"> </span><span class="token line">            maxSize: 100 * 1024
-</span><span class="token prefix unchanged"> </span><span class="token line">          }
-</span><span class="token prefix unchanged"> </span><span class="token line">        }
-</span><span class="token prefix unchanged"> </span><span class="token line">      },
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">      {
-</span><span class="token prefix inserted">+</span><span class="token line">        test: /\.(eot|ttf|woff2?)$/,
-</span><span class="token prefix inserted">+</span><span class="token line">        type: "asset/resource",
-</span><span class="token prefix inserted">+</span><span class="token line">        generator: {
-</span><span class="token prefix inserted">+</span><span class="token line">          filename: "font/[name]_[hash:6][ext]"
-</span><span class="token prefix inserted">+</span><span class="token line">        }
-</span><span class="token prefix inserted">+</span><span class="token line">      }
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">    ],
-</span><span class="token prefix unchanged"> </span><span class="token line">  },
-</span><span class="token prefix unchanged"> </span><span class="token line">};
-</span></span></code></pre></div><p>执行 <code>npm run build</code> 打包，接下来打开浏览器可以看到 <code>i</code> 元素正常加载，控制台也未报错。</p>
-<h2>总结</h2>
-<p>webpack5 提供四种资源模块类型代替之前的 loader，可以对图片、字体等资源进行打包。</p>
-]]></content>
-    <category term="工程化"/>
-    <published>2022-05-13T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">webpack 插件</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/004-webpack-plugin.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/webpack/004-webpack-plugin.html"/>
-    <updated>2024-01-07T08:28:24.000Z</updated>
-    <summary type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>前面介绍了 webpack loader 打包 JavaScript、CSS、图片和字体等模块资源，这次介绍 webpack 中的另外一个核心：<strong>插件</strong>。</p>
-<blockquote>
-<p>webpack 官方文档描述了二者区别：loader 用于转换某些类型的模块，而插件可以执行范围更广的任务，包括：打包优化、资源管理、注入环境变量等。</p>
-</blockquote>]]></summary>
-    <content type="html"><![CDATA[<blockquote>
-<p>项目地址：<a href="https://github.com/Stephen-wzw/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/Stephen-wzw/webpack-demo</a></p>
-</blockquote>
-<p>前面介绍了 webpack loader 打包 JavaScript、CSS、图片和字体等模块资源，这次介绍 webpack 中的另外一个核心：<strong>插件</strong>。</p>
-<blockquote>
-<p>webpack 官方文档描述了二者区别：loader 用于转换某些类型的模块，而插件可以执行范围更广的任务，包括：打包优化、资源管理、注入环境变量等。</p>
-</blockquote>
-<h2>清理 dist 文件</h2>
-<p>在前面的项目中，每次重新打包其实都略去了一步：手动删除 dist 文件夹。在 webpack5 以前，可以借助 <code>CleanWebpackPlugin</code> 来帮我们完成这个操作。而 webpack5 中，在 <code>output</code> 中设置 <code>clean: true</code> 即可。</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">     path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">     publicPath: './dist/',
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">     clean: true
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     ...
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><h2><code>HtmlWebpackPlugin</code></h2>
-<p>在之前的项目中，<code>index.html</code> 文件编写在根目录下，而最终打包的 dist 文件中没有 <code>index.html</code> 文件。在进行项目部署的时候，必然也是需要有对应的入口文件 <code>index.html</code>。</p>
-<p>对 <code>index.html</code> 进行打包处理可以使用 <code>HtmlWebpackPlugin</code>。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> html-webpack-plugin <span class="token parameter variable">-D</span>
-</code></pre></div><div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const path = require("path");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const HtmlWebpackPlugin = require("html-webpack-plugin");
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">     path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">     publicPath: './dist/',
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">     publicPath: '',
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">     clean: true
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     ...
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   plugins: [
-</span><span class="token prefix inserted">+</span><span class="token line">     new HtmlWebpackPlugin({
-</span><span class="token prefix inserted">+</span><span class="token line">       title: "webpack-plugin"
-</span><span class="token prefix inserted">+</span><span class="token line">     })
-</span><span class="token prefix inserted">+</span><span class="token line">   ]
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><p>当执行 <code>npm run build</code> 时，会自动生成一个 <code>index.html</code> 文件，它在默认情况下是根据 ejs 的一个模板生成的。</p>
-<blockquote>
-<p>在 <code>HtmlWebpackPlugin</code> 源码中，有一个 <code>default_index.ejs</code> 模块。</p>
-</blockquote>
-<p>当我们想自定义一个模板时，比如开发 Vue 项目时，需要一个挂载后续组件的根标签。</p>
-<p>这时我们修改下项目目录结构：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> webpack-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- node_modules
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> |- index.html
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> |- /public
-</span><span class="token prefix inserted">+</span><span class="token line">   |- favicon.ico
-</span><span class="token prefix inserted">+</span><span class="token line">   |- index.html
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> |- /src
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- style.css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- title.less
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /font
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- iconfont.css
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- iconfont.eot
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- iconfont.ttf
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- iconfont.woff
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- iconfont.woff2
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /img
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- avatar.png
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- wallpaper.png
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- /js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- format.js
-</span><span class="token prefix unchanged"> </span><span class="token line">     |- math.js  
-</span><span class="token prefix unchanged"> </span><span class="token line">   |- index.js
-</span></span></code></pre></div><p><strong>public/index.html</strong></p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width,initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>icon<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>&lt;%= BASE_URL %&gt;favicon.ico<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>&lt;%= htmlWebpackPlugin.options.title %&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>noscript</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>We're sorry but &lt;%= htmlWebpackPlugin.options.title %&gt; doesn't work properly without JavaScript enabled. Please enable it to continue.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>noscript</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token comment">&lt;!-- built files will be auto injected --&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p>这时可以修改 <code>webpack.config.js</code>：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const path = require("path");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const HtmlWebpackPlugin = require("html-webpack-plugin");
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">     path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">     publicPath: '',
-</span><span class="token prefix unchanged"> </span><span class="token line">     clean: true
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     ...
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   plugins: [
-</span><span class="token prefix unchanged"> </span><span class="token line">     new HtmlWebpackPlugin({
-</span><span class="token prefix unchanged"> </span><span class="token line">       title: "webpack-plugin",
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">       template: "./public/index.html"
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">     })
-</span><span class="token prefix unchanged"> </span><span class="token line">   ]
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><p>但是现在打包仍然会报错：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>ERROR <span class="token keyword">in</span>   ReferenceError: BASE_URL is not defined
-</code></pre></div><p>因为在编译的时候，有一个 <code>BASE_URL</code>：<code>&lt;link rel="icon" href="&lt;%= BASE_URL %&gt;favicon.ico"&gt;</code>，但是我们并没有设置过这个值，因此会报错，这时我们可以使用 <code>DefinePlugin</code> 插件。</p>
-<h2><code>DefinePlugin</code></h2>
-<p><code>DefinePlugin</code> 允许在编译时创建配置的全局变量，是 webpack 内置的插件，不需要单独安装。</p>
-<p><strong>webpack.config.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line"> const HtmlWebpackPlugin = require("html-webpack-plugin");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const { DefinePlugin } = require("webpack");
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">     path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">     publicPath: '',
-</span><span class="token prefix unchanged"> </span><span class="token line">     clean: true
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     ...
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   plugins: [
-</span><span class="token prefix unchanged"> </span><span class="token line">     new HtmlWebpackPlugin({
-</span><span class="token prefix unchanged"> </span><span class="token line">       title: "webpack-plugin",
-</span><span class="token prefix unchanged"> </span><span class="token line">       template: "./public/index.html"
-</span><span class="token prefix unchanged"> </span><span class="token line">     }),
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">     new DefinePlugin({
-</span><span class="token prefix inserted">+</span><span class="token line">       BASE_URL: "'./'"
-</span><span class="token prefix inserted">+</span><span class="token line">     })
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   ]
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><p>现在重新输入 <code>npm run build</code> 进行打包，则不会出现刚才的错误。</p>
-<h2><code>CopyWebpackPlugin</code></h2>
-<p>经过上述步骤的处理后，虽然打包成功，但是网站图标没有被打包进 <code>dist</code> 文件夹。在 Vue 项目的打包过程中，如果我们将一些文件夹放到 <code>public</code> 文件夹中，那么这个目录会被复制到 <code>dist</code> 文件夹中。</p>
-<p>这个功能可以通过 <code>CopyWebpackPlugin</code> 完成。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> copy-webpack-plugin <span class="token parameter variable">-D</span>
-</code></pre></div><div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const path = require("path");
-</span><span class="token prefix unchanged"> </span><span class="token line"> const HtmlWebpackPlugin = require("html-webpack-plugin");
-</span><span class="token prefix unchanged"> </span><span class="token line"> const { DefinePlugin } = require("webpack");
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const CopyPlugin = require("copy-webpack-plugin");
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   entry: "./src/index.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">   output: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     filename: "bundle.js",
-</span><span class="token prefix unchanged"> </span><span class="token line">     path: path.resolve(__dirname, "dist"), // 需要使用绝对路径
-</span><span class="token prefix unchanged"> </span><span class="token line">     publicPath: '',
-</span><span class="token prefix unchanged"> </span><span class="token line">     clean: true
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   module: {
-</span><span class="token prefix unchanged"> </span><span class="token line">     ...
-</span><span class="token prefix unchanged"> </span><span class="token line">   },
-</span><span class="token prefix unchanged"> </span><span class="token line">   plugins: [
-</span><span class="token prefix unchanged"> </span><span class="token line">     new HtmlWebpackPlugin({
-</span><span class="token prefix unchanged"> </span><span class="token line">       title: "webpack-plugin",
-</span><span class="token prefix unchanged"> </span><span class="token line">       template: "./public/index.html"
-</span><span class="token prefix unchanged"> </span><span class="token line">     }),
-</span><span class="token prefix unchanged"> </span><span class="token line">     new DefinePlugin({
-</span><span class="token prefix unchanged"> </span><span class="token line">       BASE_URL: "'./'"
-</span><span class="token prefix unchanged"> </span><span class="token line">     }),
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">     new CopyPlugin({
-</span><span class="token prefix inserted">+</span><span class="token line">       patterns: [
-</span><span class="token prefix inserted">+</span><span class="token line">         {
-</span><span class="token prefix inserted">+</span><span class="token line">           from: "public",
-</span><span class="token prefix inserted">+</span><span class="token line">           globOptions: {
-</span><span class="token prefix inserted">+</span><span class="token line">             ignore: ['**/index.html']
-</span><span class="token prefix inserted">+</span><span class="token line">           }
-</span><span class="token prefix inserted">+</span><span class="token line">         }
-</span><span class="token prefix inserted">+</span><span class="token line">       ]
-</span><span class="token prefix inserted">+</span><span class="token line">     })      
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   ]
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><p>复制的规则可以在 <code>patterns</code> 中设置：</p>
-<ul>
-<li><code>from</code>：设置从哪个源开始复制；</li>
-<li><code>to</code>：复制到的位置，省略则复制到打包的目录下；</li>
-<li><code>globOptions</code>：设置一些额外的选项。<code>ignore</code> 设置忽略的文件，这里设置为忽略 <code>index.html</code>，因为它已经通过 <code>HtmlWebpackPlugin</code> 完成了打包。</li>
-</ul>
-<p>重新执行 <code>npm run build</code> 进行打包，可以看到 <code>favicon.ico</code> 被复制到了 <code>dist</code> 文件夹中，并且浏览器也能正确显示网站图标了。</p>
-<blockquote>
-<p>若没显示网站图标，可以清下缓存试试。</p>
-</blockquote>
-<h2>Mode 配置</h2>
-<p>前面打包的过程中，其实一直报了一个警告：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>WARNING <span class="token keyword">in</span> configuration
-The <span class="token string">'mode'</span> option has not been set, webpack will fallback to <span class="token string">'production'</span> <span class="token keyword">for</span> this value.
-Set <span class="token string">'mode'</span> option to <span class="token string">'development'</span> or <span class="token string">'production'</span> to <span class="token builtin class-name">enable</span> defaults <span class="token keyword">for</span> each environment.
-You can also <span class="token builtin class-name">set</span> it to <span class="token string">'none'</span> to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/
-</code></pre></div><p>webpack 提供 <code>mode</code> 配置选项，告知 webpack 使用相应模式的内置优化。</p>
-<ul>
-<li><code>development</code>：会将 <code>DefinePlugin</code> 中 <code>process.env.NODE_ENV</code> 的值设置为 <code>development</code>，为模块和 chunk 启用有效的名；</li>
-<li><code>production</code>：会将 <code>DefinePlugin</code> 中 <code>process.env.NODE_ENV</code> 的值设置为 <code>production</code>。为模块和 chunk 启用确定性的混淆名称，<code>FlagDependencyUsagePlugin</code>，<code>FlagIncludedChunksPlugin</code>，<code>ModuleConcatenationPlugin</code>，<code>NoEmitOnErrorsPlugin</code> 和 <code>TerserPlugin</code>。</li>
-<li><code>none</code>：不使用任何默认优化。</li>
-</ul>
-<figure><img src="/assets/image/frontend/tool/webpack/004/mode.png" alt="mode配置" tabindex="0" loading="lazy"><figcaption>mode配置</figcaption></figure>
-<p>在开发阶段，通常会设置 <code>mode: development</code>。</p>
-<p>为了演示它的作用，可以在 <code>format.js</code> 中写个错误代码：</p>
-<p><strong>format.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> const priceFormat = function () {
-</span><span class="token prefix unchanged"> </span><span class="token line">   return "￥100.8";
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const content = "hello webpack";
-</span><span class="token prefix inserted">+</span><span class="token line"> console.log(content1.length);
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> // CommonJS
-</span><span class="token prefix unchanged"> </span><span class="token line"> module.exports = {
-</span><span class="token prefix unchanged"> </span><span class="token line">   priceFormat,
-</span><span class="token prefix unchanged"> </span><span class="token line"> };
-</span></span></code></pre></div><p>控制台上会报错，但是不会显示具体在原文件的哪个位置。</p>
-<figure><img src="/assets/image/frontend/tool/webpack/004/source-map-1.png" alt="without-source-map" tabindex="0" loading="lazy"><figcaption>without-source-map</figcaption></figure>
-<p>如果需要显示错误的具体位置，那么需要在 <code>webpack.config.js</code> 中配置开发模式：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">// 省略其他 
-</span><span class="token prefix unchanged"> </span><span class="token line">module.exports = {
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  mode: "development",
-</span><span class="token prefix inserted">+</span><span class="token line">  devtool: "source-map"
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">}
-</span></span></code></pre></div><p>其中 <code>source-map</code> 可以帮我们快速定位错误位置，在开发模式中，会默认设置 <code>devtool: "source-map"</code>。</p>
-<p>此时重新打包后，在控制台就会出现错误的具体位置，能够快速帮我们解决 bug。</p>
-<figure><img src="/assets/image/frontend/tool/webpack/004/source-map-2.png" alt="with-source-map" tabindex="0" loading="lazy"><figcaption>with-source-map</figcaption></figure>
-<h2>总结</h2>
-<p>webpack5 除了 loader 外，还有插件这一核心概念，他能执行范围更广的任务。</p>
-<p>在这个案例中，我们首先介绍了如何清理 <code>dist</code> 文件夹；然后介绍如何打包 <code>index.html</code> 文件；接着是两个插件 <code>DefinePlugin</code> 和 <code>CopyWebpackPlugin</code> 的使用，它们可以帮助我们实现 Vue 打包中的一些功能；最后介绍了 webpack 的 <code>mode</code> 配置。</p>
-]]></content>
-    <category term="工程化"/>
-    <published>2022-05-14T00:00:00.000Z</published>
   </entry>
 </feed>

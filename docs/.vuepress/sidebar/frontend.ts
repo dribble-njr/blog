@@ -72,7 +72,9 @@ export default [
           '011-create-object',
           '012-extends',
           '013-class',
-          '014-implement-new'
+          '014-implement-new',
+          '015-function',
+          '016-this'
         ]
       }
     ]

@@ -4,13 +4,7 @@ export default [
     icon: 'git',
     collapsible: true,
     prefix: '/reading/pro-git',
-    children: [
-      '01-getting-started',
-      '02-git-basics',
-      '03-git-branch',
-      '04-git-server',
-      '06-change-commit'
-    ]
+    children: ['01-getting-started', '02-git-basics', '03-git-branch', '04-git-server', '06-change-commit']
   },
   {
     text: 'Patterns',
@@ -38,7 +32,8 @@ export default [
       '03-basic-tool',
       '04-pragmatic-paranoid',
       '05-work-around',
-      '06-concurrent'
+      '06-concurrent',
+      '07-when-coding'
     ]
   }
 ]

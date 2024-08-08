@@ -134,7 +134,7 @@ export default [
         collapsible: true,
         prefix: 'pixi/',
         icon: 'pixi',
-        children: ['01-quick-start', '02-architecture-overview', '03-render-loop']
+        children: ['01-quick-start', '02-architecture-overview', '03-render-loop', '04-scene-graph']
       }
     ]
   },

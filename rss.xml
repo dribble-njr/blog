@@ -6,14 +6,14 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 07 Aug 2024 10:36:46 GMT</pubDate>
-    <lastBuildDate>Wed, 07 Aug 2024 10:36:46 GMT</lastBuildDate>
+    <pubDate>Fri, 09 Aug 2024 11:01:09 GMT</pubDate>
+    <lastBuildDate>Fri, 09 Aug 2024 11:01:09 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>practice</category>
+    <category>Pixi</category>
     <category>READING</category>
     <category>JavaScript</category>
-    <category>Pixi</category>
-    <category>practice</category>
     <category>Project</category>
     <category>database</category>
     <category>计算机网络</category>
@@ -27,6 +27,285 @@
     <category>reading</category>
     <category>linux</category>
     <category>工程化</category>
+    <item>
+      <title>monaco-editor/react</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">monaco-editor/react</source>
+      <description>Monaco Editor 是由微软开发的开源代码编辑器，使用于 VS Code。然而他本身是用 JavaScript/TypeScript 编写的一个独立库，提供了丰富的 API 来实现代码编辑器的功能。因此无法直接在 React 中使用。 @monaco-editor/react 这个库是对 monaco-editor 的 React 封装，使得你...</description>
+      <category>practice</category>
+      <pubDate>Fri, 09 Aug 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p><a href="https://github.com/microsoft/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco Editor</a> 是由微软开发的开源代码编辑器，使用于 VS Code。然而他本身是用 JavaScript/TypeScript 编写的一个独立库，提供了丰富的 API 来实现代码编辑器的功能。因此无法直接在 React 中使用。</p>
+<p><a href="https://github.com/suren-atoyan/monaco-react" target="_blank" rel="noopener noreferrer">@monaco-editor/react</a> 这个库是对 monaco-editor 的 React 封装，使得你在 React 项目中更方便地使用 Monaco Editor。</p>
+<h2>工作原理</h2>
+<p>Monaco Editor (<code>monaco-editor</code>)：提供了编辑器的核心功能，包括代码高亮、自动补全、语法检查等。它是独立于框架的，可以在任何 JavaScript 环境中使用。它提供了一个全局的 monaco 对象，通过这个对象，你可以调用各种 API 来配置和操作编辑器。</p>
+<p>React 封装 (<code>@monaco-editor/react</code>)： 为了更好地在 React 环境中使用 Monaco Editor，<code>@monaco-editor/react</code> 通过封装组件的方式，将 <code>monaco-editor</code> 的 API 暴露给 React 用户。这个库管理了编辑器的生命周期和状态，使得 Monaco Editor 能够很好地与 React 的组件生命周期和状态管理系统配合使用。</p>
+<p>具体来说，<code>@monaco-editor/react</code> 主要做了以下几件事情：</p>
+<ul>
+<li>组件化封装：提供了一个 <code>Editor</code> 组件，供 React 开发者使用。你可以通过 JSX 的方式直接在 React 组件中嵌入 Monaco Editor。</li>
+<li>API 接口简化：提供了一些简单的 props 来配置编辑器，而不需要直接调用 <code>monaco</code> 对象。</li>
+<li>生命周期管理：处理了编辑器的创建、更新和销毁，使得它与 React 的生命周期方法（如 <code>componentDidMount</code>、<code>componentWillUnmount</code>）配合良好。</li>
+</ul>
+<h2>示例</h2>
+<p>在 React 中使用 <code>@monaco-editor/react</code> 时，你不需要手动管理 monaco 对象的创建和销毁，只需要通过 <code>Editor</code> 组件来设置语言、主题、默认代码等配置项。比如：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> Editor <span class="token keyword">from</span> <span class="token string">'@monaco-editor/react'</span>
+
+<span class="token keyword">function</span> <span class="token function">MyEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Editor</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>90vh<span class="token punctuation">"</span></span> <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript<span class="token punctuation">"</span></span> <span class="token attr-name">theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>vs-dark<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>// Start coding here<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> MyEditor
+</code></pre></div><p>如果你需要进行更复杂的定制化操作，比如加载自定义语言或主题，<code>@monaco-editor/react</code> 也提供了 <code>beforeMount</code> 和 <code>onMount</code> 回调函数，让你可以直接访问 <code>monaco</code> 对象来进行高级配置：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Editor</span></span>
+  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>90vh<span class="token punctuation">"</span></span>
+  <span class="token attr-name">language</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>javascript<span class="token punctuation">"</span></span>
+  <span class="token attr-name">theme</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>vs-dark<span class="token punctuation">"</span></span>
+  <span class="token attr-name">beforeMount</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span>monaco<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 这里可以对 monaco 进行配置，例如定义自定义的语言或主题</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+  <span class="token attr-name">onMount</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span>editor<span class="token punctuation">,</span> monaco<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 这里可以操作 editor 和 monaco 对象，例如注册快捷键等</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/&gt;</span></span>
+</code></pre></div><h2>loader-config</h2>
+<p><code>@monaco-editor/react</code> 的 loader 会默认从 cdn 中加载，这会影响中国用户的访问速度，因此需要修改 loader 的默认配置。</p>
+<h3>使用 monaco-editor 包</h3>
+<p>如果项目使用 <code>webpack</code> 进行打包，可以通过 <a href="https://www.npmjs.com/package/monaco-editor-webpack-plugin" target="_blank" rel="noopener noreferrer">monaco-editor-webpack-plugin</a> 来进行配置。该插件自动处理编辑器了相关的文件。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> monaco <span class="token keyword">from</span> <span class="token string">'monaco-editor'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> loader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@monaco-editor/react'</span>
+
+loader<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span> monaco <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>对于其他打包工具，官方提供了 Vite 示例：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> loader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@monaco-editor/react'</span>
+
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> monaco <span class="token keyword">from</span> <span class="token string">'monaco-editor'</span>
+<span class="token keyword">import</span> editorWorker <span class="token keyword">from</span> <span class="token string">'monaco-editor/esm/vs/editor/editor.worker?worker'</span>
+<span class="token keyword">import</span> jsonWorker <span class="token keyword">from</span> <span class="token string">'monaco-editor/esm/vs/language/json/json.worker?worker'</span>
+<span class="token keyword">import</span> cssWorker <span class="token keyword">from</span> <span class="token string">'monaco-editor/esm/vs/language/css/css.worker?worker'</span>
+<span class="token keyword">import</span> htmlWorker <span class="token keyword">from</span> <span class="token string">'monaco-editor/esm/vs/language/html/html.worker?worker'</span>
+<span class="token keyword">import</span> tsWorker <span class="token keyword">from</span> <span class="token string">'monaco-editor/esm/vs/language/typescript/ts.worker?worker'</span>
+
+self<span class="token punctuation">.</span>MonacoEnvironment <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">getWorker</span><span class="token punctuation">(</span><span class="token parameter">_<span class="token punctuation">,</span> label</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>label <span class="token operator">===</span> <span class="token string">'json'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">jsonWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>label <span class="token operator">===</span> <span class="token string">'css'</span> <span class="token operator">||</span> label <span class="token operator">===</span> <span class="token string">'scss'</span> <span class="token operator">||</span> label <span class="token operator">===</span> <span class="token string">'less'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">cssWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>label <span class="token operator">===</span> <span class="token string">'html'</span> <span class="token operator">||</span> label <span class="token operator">===</span> <span class="token string">'handlebars'</span> <span class="token operator">||</span> label <span class="token operator">===</span> <span class="token string">'razor'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">htmlWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>label <span class="token operator">===</span> <span class="token string">'typescript'</span> <span class="token operator">||</span> label <span class="token operator">===</span> <span class="token string">'javascript'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">tsWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">editorWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+loader<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span> monaco <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+loader<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span>
+</code></pre></div><p>我使用了 Rspack 来打包，官方说明对 <code>monaco-editor-webpack-plugin</code> 插件进行了兼容，但是不知道是由于我 Rspack 版本问题，导致报错，因此实验了一种更加稳定的方式如下。</p>
+<h3>本地路径</h3>
+<p><code>monaco-editor</code> 中提供了一些打包后的文件，路径是 <code>monaco-editor/min/vs</code>，因此可以通过下载 npm 包并将文件移动至 <code>public</code> 文件夹，并自定义路径。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mv</span> node_modules/monaco-editor/min/vs public
+</code></pre></div><div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> loader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@monaco-editor/react'</span>
+
+<span class="token comment">// you can change the source of the monaco files</span>
+loader<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">paths</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">vs</span><span class="token operator">:</span> <span class="token string">'./vs'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// you can configure the locales</span>
+loader<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string-property property">'vs/nls'</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">availableLanguages</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">'*'</span><span class="token operator">:</span> <span class="token string">'de'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// or</span>
+loader<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">paths</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">vs</span><span class="token operator">:</span> <span class="token string">'./vs'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'vs/nls'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">availableLanguages</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">'*'</span><span class="token operator">:</span> <span class="token string">'de'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>场景图像</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/04-scene-graph.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/04-scene-graph.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">场景图像</source>
+      <description>每一帧，PixiJS 都会更新并渲染场景图。让我们来谈谈场景图中有哪些内容，以及它如何影响项目开发。 场景图是一棵树 场景图的根节点是由应用程序维护的容器，用 app.stage 引用。将 sprite 或其他可渲染对象作为子对象添加到 stage 时，它就会被添加到场景图中，并进行渲染和交互。 PixiJS 容器也可以有子对象，因此当你构建更复杂的场...</description>
+      <category>Pixi</category>
+      <pubDate>Thu, 08 Aug 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>每一帧，PixiJS 都会更新并渲染场景图。让我们来谈谈场景图中有哪些内容，以及它如何影响项目开发。</p>
+<h2>场景图是一棵树</h2>
+<p>场景图的根节点是由应用程序维护的容器，用 <code>app.stage</code> 引用。将 sprite 或其他可渲染对象作为子对象添加到 stage 时，它就会被添加到场景图中，并进行渲染和交互。</p>
+<p>PixiJS 容器也可以有子对象，因此当你构建更复杂的场景时，最终会形成一棵父子关系树，stage 是整个场景树的根节点。Chrome 浏览器的 <a href="https://chromewebstore.google.com/detail/pixijs-devtools/aamddddknhcagpehecnhphigffljadon" target="_blank" rel="noopener noreferrer">Pixi.js devtools</a> 插件是一个探索项目的有用工具，它允许你在项目运行时实时查看和操作场景图！）。</p>
+<h2>Parents and Children</h2>
+<p>父节点移动时，其子节点也会移动。旋转父节点时，其子节点也会旋转。隐藏父对象，子对象也会被隐藏。如果一个游戏对象由多个精灵组成，可以将它们收集到一个容器中，将它们视为世界中的一个对象，作为一个整体移动和旋转。</p>
+<p>在每一帧中，PixiJS 都会运行场景图，从根开始向下穿过所有子对象，直到叶子，以计算每个对象的最终位置、旋转、可见性、透明度等。</p>
+<p>如果父对象的 alpha 设置为 0.5（使其透明 50% ），那么它的所有子对象也将从 50% 开始透明。如果将一个子对象的 alpha 设置为 0.5，它就不会是 50% 透明，而是 0.5 x 0.5 = 0.25 alpha，即 75% 透明。同样，对象的位置是相对于父对象而言的，因此如果父对象的 x 位置设置为 50 像素，而子对象的 x 位置设置为 100 像素，那么它将在屏幕偏移 150 像素处绘制，即 50 + 100。</p>
+<p>下面是一个示例。我们将创建三个精灵，每个都是上一个精灵的子精灵，并对它们的位置、旋转、缩放和 alpha 进行动画处理。尽管每个精灵的属性都设置为相同的值，但父子链会放大每个变化：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// Create the application helper and add its render target to the page</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Application</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> app<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">640</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">360</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>canvas<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add a container to center our sprite stack on the page</span>
+<span class="token keyword">const</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Container</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">x</span><span class="token operator">:</span>app<span class="token punctuation">.</span>screen<span class="token punctuation">.</span>width <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">y</span><span class="token operator">:</span>app<span class="token punctuation">.</span>screen<span class="token punctuation">.</span>height <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span>stage<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// load the texture</span>
+<span class="token keyword">await</span> Assets<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">'assets/images/sample.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create the 3 sprites, each a child of the last</span>
+<span class="token keyword">const</span> sprites <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> parent <span class="token operator">=</span> container<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> wrapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Container</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> sprite <span class="token operator">=</span> Sprite<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'assets/images/sample.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  sprite<span class="token punctuation">.</span>anchor<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  wrapper<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>sprite<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  parent<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  sprites<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  parent <span class="token operator">=</span> wrapper<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Set all sprite's properties to the same value, animated over time</span>
+<span class="token keyword">let</span> elapsed <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span>ticker<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">delta</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  elapsed <span class="token operator">+=</span> delta<span class="token punctuation">.</span>deltaTime <span class="token operator">/</span> <span class="token number">60</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> amount <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">sin</span><span class="token punctuation">(</span>elapsed<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> scale <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token operator">+</span> <span class="token number">0.25</span> <span class="token operator">*</span> amount<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> alpha <span class="token operator">=</span> <span class="token number">0.75</span> <span class="token operator">+</span> <span class="token number">0.25</span> <span class="token operator">*</span> amount<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> angle <span class="token operator">=</span> <span class="token number">40</span> <span class="token operator">*</span> amount<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> x <span class="token operator">=</span> <span class="token number">75</span> <span class="token operator">*</span> amount<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> sprites<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> sprite <span class="token operator">=</span> sprites<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    sprite<span class="token punctuation">.</span>scale<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>scale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    sprite<span class="token punctuation">.</span>alpha <span class="token operator">=</span> alpha<span class="token punctuation">;</span>
+    sprite<span class="token punctuation">.</span>angle <span class="token operator">=</span> angle<span class="token punctuation">;</span>
+    sprite<span class="token punctuation">.</span>x <span class="token operator">=</span> x<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>场景图中任何给定节点的累计平移、旋转、缩放和倾斜值都存储在对象的 <code>worldTransform</code> 属性中。 同样，累积的 alpha 值也存储在 <code>worldAlpha</code> 属性中。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/Aug-08-2024 11-58-35.gif" alt="sample" tabindex="0" loading="lazy"><figcaption>sample</figcaption></figure>
+<h2>渲染顺序</h2>
+<p>因此，我们有一个树需要渲染，那么渲染顺序是什么？</p>
+<p>PixiJS 会从树根开始向下渲染。在每一级，先渲染当前对象，然后按插入顺序渲染每个子对象。请看下面的示例：两个父对象 A 和 D，以及 A 下的两个子对象 B 和 C：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// Create the application helper and add its render target to the page</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Application</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">await</span> app<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">width</span><span class="token operator">:</span> <span class="token number">640</span><span class="token punctuation">,</span> <span class="token literal-property property">height</span><span class="token operator">:</span> <span class="token number">360</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>app<span class="token punctuation">.</span>canvas<span class="token punctuation">)</span>
+
+<span class="token comment">// Label showing scene graph hierarchy</span>
+<span class="token keyword">const</span> label <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token string">'Scene Graph:\n\napp.stage\n  ┗ A\n     ┗ B\n     ┗ C\n  ┗ D'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">fill</span><span class="token operator">:</span> <span class="token string">'#ffffff'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">position</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span>stage<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>label<span class="token punctuation">)</span>
+
+<span class="token comment">// Helper function to create a block of color with a letter</span>
+<span class="token keyword">const</span> letters <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">function</span> <span class="token function">addLetter</span><span class="token punctuation">(</span><span class="token parameter">letter<span class="token punctuation">,</span> parent<span class="token punctuation">,</span> color<span class="token punctuation">,</span> pos</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> bg <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sprite</span><span class="token punctuation">(</span>Texture<span class="token punctuation">.</span><span class="token constant">WHITE</span><span class="token punctuation">)</span>
+  bg<span class="token punctuation">.</span>width <span class="token operator">=</span> <span class="token number">100</span>
+  bg<span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token number">100</span>
+  bg<span class="token punctuation">.</span>tint <span class="token operator">=</span> color
+
+  <span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Text</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">text</span><span class="token operator">:</span> letter<span class="token punctuation">,</span>
+    <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">fill</span><span class="token operator">:</span> <span class="token string">'#ffffff'</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  text<span class="token punctuation">.</span>anchor<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+  text<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">50</span> <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> container <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Container</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  container<span class="token punctuation">.</span>position <span class="token operator">=</span> pos
+  container<span class="token punctuation">.</span>visible <span class="token operator">=</span> <span class="token boolean">false</span>
+  container<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>bg<span class="token punctuation">,</span> text<span class="token punctuation">)</span>
+  parent<span class="token punctuation">.</span><span class="token function">addChild</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span>
+
+  letters<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>container<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> container
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Define 4 letters</span>
+<span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token function">addLetter</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span>stage<span class="token punctuation">,</span> <span class="token number">0xff0000</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token function">addLetter</span><span class="token punctuation">(</span><span class="token string">'B'</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token number">0x00ff00</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">20</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token function">addLetter</span><span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token number">0x0000ff</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">40</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> d <span class="token operator">=</span> <span class="token function">addLetter</span><span class="token punctuation">(</span><span class="token string">'D'</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span>stage<span class="token punctuation">,</span> <span class="token number">0xff8800</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">140</span><span class="token punctuation">,</span> <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">100</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// Display them over time, in order</span>
+<span class="token keyword">let</span> elapsed <span class="token operator">=</span> <span class="token number">0.0</span>
+app<span class="token punctuation">.</span>ticker<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">ticker</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  elapsed <span class="token operator">+=</span> ticker<span class="token punctuation">.</span>deltaTime <span class="token operator">/</span> <span class="token number">60.0</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>elapsed <span class="token operator">&gt;=</span> letters<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    elapsed <span class="token operator">=</span> <span class="token number">0.0</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> letters<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    letters<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>visible <span class="token operator">=</span> elapsed <span class="token operator">&gt;=</span> i
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/Aug-08-2024 16-23-14.gif" alt="render order" tabindex="0" loading="lazy"><figcaption>render order</figcaption></figure>
+<p>如果想对子对象重新排序，可以使用 <code>setChildIndex()</code>。 要在父对象列表的给定位置添加子对象，可以使用 <code>addChildAt()</code>。 最后，您可以使用 <code>sortableChildren</code> 选项，结合设置每个子对象的 <code>zIndex</code> 属性，对对象的子对象进行自动排序。</p>
+<h2>渲染组</h2>
+<p>当你深入研究 PixiJS 时，你会遇到一个强大的功能，即渲染组。 将渲染组视为场景图中的专门容器，其本身就像迷你场景图。 以下是在项目中有效使用渲染组的必要知识。 更多信息，请查看 <a href="https://pixijs.com/8.x/guides/advanced/render-groups" target="_blank" rel="noopener noreferrer">渲染组概述</a>。</p>
+<h2>剔除</h2>
+<p>如果您正在构建的项目中，大部分场景对象都不在屏幕上（例如，一个横版游戏），那么您就需要对这些对象进行剔除。</p>
+<p>剔除是一个评估对象（或其子代！）是否在屏幕上的过程，如果不在屏幕上，则关闭对其的渲染。</p>
+<p>如果不对屏幕外的对象进行剔除，即使它们的像素最终都不在屏幕上，渲染器仍会绘制它们。</p>
+<p>PixiJS 并不提供视口剔除的内置支持，但你可以找到第三方插件来满足你的需求。另外，如果你想建立自己的剔除系统，只需在每个 tick 期间运行对象，并将任何不需要绘制的对象的 <code>renderable</code> 设置为 false 即可。</p>
+<h2>局部坐标 vs 全局坐标</h2>
+<p>如果在舞台上添加一个精灵，默认情况下它会显示在屏幕的左上角。这是 PixiJS 使用的全局坐标空间的原点。</p>
+<p>如果你的所有对象都是舞台的子对象，那么你只需要担心这个坐标。但是一旦引入容器和子对象，事情就变得复杂了。</p>
+<p>位于 [50, 100] 处的子对象距离父对象向右 50 像素，向下 100 像素。我们称这两个坐标系为「全局坐标」和「局部坐标」。当你在一个对象上使用 <code>position.set(x, y)</code> 时，你总是在局部坐标系下工作，相对于对象的父对象。</p>
+<p>问题是，很多时候你都想知道某个对象的全局位置。例如，如果您想剔除屏幕外的对象以节省渲染时间，您需要知道给定的子对象是否在视图矩形之外。</p>
+<p>要将本地坐标转换为全局坐标，您需要使用 <code>toGlobal()</code> 函数。下面是一个使用示例：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// Get the global position of an object, relative to the top-left of the screen</span>
+<span class="token keyword">let</span> globalPos <span class="token operator">=</span> obj<span class="token punctuation">.</span><span class="token function">toGlobal</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>这段代码会将 <code>globalPos</code> 设置为子对象的全局坐标，相对于全局坐标系中的 [0, 0]。</p>
+<h2>全局坐标 vs 屏幕坐标</h2>
+<p>当您的项目与主机操作系统或浏览器协同工作时，还有第三个坐标系——「屏幕坐标」（又称「视口坐标」）会发挥作用。屏幕坐标表示相对于 PixiJS 正在呈现的画布元素左上角的位置。DOM 和本地鼠标点击事件等都在屏幕空间中工作。</p>
+<p>现在，在很多情况下，屏幕空间等同于世界空间。如果画布的大小与创建应用程序时指定的呈现视图大小相同，就属于这种情况。 默认情况下就是这样——例如，您将创建一个 800x600 的应用程序窗口并将其添加到 HTML 页面，它就会保持这个大小。世界坐标中的 100 像素等于屏幕空间中的 100 像素。</p>
+<p>但是！常见的情况是拉伸呈现视图，使其充满整个屏幕，或者以较低分辨率呈现，然后放大以提高速度。在这种情况下，画布元素的屏幕尺寸会发生变化（例如通过 CSS），但底层呈现视图不会，从而导致世界坐标和屏幕坐标不匹配。</p>
+]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/Aug-08-2024%2011-58-35.gif" type="image/gif"/>
+    </item>
+    <item>
+      <title>渲染循环</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/03-render-loop.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/03-render-loop.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">渲染循环</source>
+      <description>现在您已经了解了系统的主要部分，让我们来看看这些部分是如何协同工作，将您的项目呈现在屏幕上的。 与网页不同的是，PixiJS 会不断更新和重新绘制，一遍又一遍。 你更新对象，然后 PixiJS 将它们渲染到屏幕上，然后重复这个过程。 我们称这个循环为渲染循环。 任何 PixiJS 项目最主要的部分包含更新 + 渲染循环，编写更新，PixiJS 会处理整...</description>
+      <category>Pixi</category>
+      <pubDate>Thu, 08 Aug 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>现在您已经了解了系统的主要部分，让我们来看看这些部分是如何协同工作，将您的项目呈现在屏幕上的。 与网页不同的是，PixiJS 会不断更新和重新绘制，一遍又一遍。 你更新对象，然后 PixiJS 将它们渲染到屏幕上，然后重复这个过程。 我们称这个循环为渲染循环。</p>
+<p>任何 PixiJS 项目最主要的部分包含更新 + 渲染循环，编写更新，PixiJS 会处理整个渲染。</p>
+<p>发生在渲染循环中的每一帧主要包含三个部分。</p>
+<h2>运行 Ticker 回调</h2>
+<p>第一步是计算从上一帧开始已经过去了多长时间，然后根据时间差调用应用程序对象的 ticker 回调。 这样，项目代码就可以制作动画并更新舞台上的精灵等，为渲染做好准备。</p>
+<h2>更新场景图像</h2>
+<p>场景图包含您正在绘制的事物（精灵、文本等），并且这些对象处于树状层次结构中。这些对象处于树状层次结构中。 通过移动、旋转等方式更新游戏对象后，PixiJS 需要计算场景中每个对象的新位置和状态，然后才能开始绘制。</p>
+<h2>渲染场景图像</h2>
+<p>现在我们的游戏状态已经更新，是时候将其绘制到屏幕上了。渲染系统会从场景图的根节点（app.stage）开始，渲染每个对象及其子节点，直到绘制完所有对象。 在此过程中不会进行剔除或其他巧妙的处理。如果在舞台的可见部分之外有大量对象，则需要将其禁用作为一种优化方法（视椎体剔除）。</p>
+<h2>帧频</h2>
+<p>渲染循环不可能无限快地运行--在屏幕上绘制图像需要时间。此外，每次屏幕更新（通常为 60fps，但较新的显示器可支持 144fps 或更高）时，帧的更新次数一般不会超过一次。最后，PixiJS 是在 Chrome 或 Firefox 等网络浏览器的环境中运行的。浏览器本身必须平衡各种内部操作的需要和为任何打开的标签页提供服务的需要。综上所述，确定何时绘制帧是一个复杂的问题。</p>
+<p>如果您想调整该行为，可以在 Ticker 上设置 <code>minFPS</code> 和 <code>maxFPS</code> 属性。请注意，由于环境复杂，项目无法保证给定的 FPS。 在 ticker 回调中使用传递的 <code>ticker.deltaTime</code> 值来缩放任何动画，以确保流畅播放。</p>
+<h2>自定义渲染循环</h2>
+<p>以上介绍的是应用程序辅助类开箱即用的默认呈现循环。对于希望解决特定问题的高级用户来说，创建呈现循环还有许多其他方法。在制作原型和学习 PixiJS 的过程中，建议使用应用程序提供的系统。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>务实的项目</title>
       <link>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/09-pragmatic-project.html</link>
@@ -1084,13 +1363,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * @export
- * @class MiddlewareManager
+ * <span class="token keyword">@export</span>
+ * <span class="token keyword">@class</span> MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -1317,12 +1596,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
  * Execute route's middleware and controller.
  *
- * @param {CustomIncomingMessage} req
- * @param {ServerResponse} res
- * @param {Route} route
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -1345,12 +1624,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * @param {string} method - The HTTP method to match.
- * @param {string} pathname - The URL pathname to match.
- * @return {Object} An object containing the matched route and parameters.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
+ * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -9787,578 +10066,6 @@ node_modules
 
 <span class="token comment">/*</span></code></pre></div>]]></content:encoded>
       <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/thinking-in-server-components.avif" type="image/"/>
-    </item>
-    <item>
-      <title>Hydration is Pure Overhead</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/ssr/007-hydration-is-pure-overhead.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/engineering/ssr/007-hydration-is-pure-overhead.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Hydration is Pure Overhead</source>
-      <description> 相关信息 原文链接：Hydration is Pure Overhead Hydration 是一种为服务器渲染的 HTML 添加交互性的解决方案。 在网页开发中，水合或再水合是一种技术，客户端 JavaScript 通过在 HTML 元素上附加事件处理程序，将通过静态托管或服务器端渲染提供的静态 HTML 网页转换为动态网页。 上述定义是从将事件处...</description>
-      <category>工程化</category>
-      <pubDate>Wed, 03 Jan 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>原文链接：<a href="https://www.builder.io/blog/hydration-is-pure-overhead" target="_blank" rel="noopener noreferrer">Hydration is Pure Overhead</a></p>
-</div>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_a6d8c3bacc3c4cf88446e41a71cda21c.webp" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
-<p><strong>Hydration</strong> 是一种为服务器渲染的 HTML 添加交互性的解决方案。</p>
-<blockquote>
-<p>在网页开发中，水合或再水合是一种技术，客户端 JavaScript 通过在 HTML 元素上附加事件处理程序，将通过静态托管或服务器端渲染提供的静态 HTML 网页转换为动态网页。</p>
-</blockquote>
-<p>上述定义是从将事件处理程序附加到静态 HTML 的角度来讨论水合的。然而，将事件处理程序附加到 DOM 并不是水合过程中具有挑战性或成本高昂的部分，因此这就忽略了为什么有人会将水合称为开销。在本文中，「开销」是指可以避免的工作，而且最终结果仍然相同。如果它可以被移除，而结果是一样的，那它就是开销。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_4f48568655904e4586ba34b413beb790.webp" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
-<h2>深入了解水合</h2>
-<p>水合最困难的部分是需要 <code>WHAT</code> 事件处理器以及将它附加到 <code>WHERE</code>。</p>
-<ul>
-<li><code>WHAT</code>：事件处理程序是一个包含事件处理程序行为的闭包，它是用户触发该事件时应该发生的事情。</li>
-<li><code>WHERE</code>：事件处理程序需要附加到的 DOM 元素的位置（包括事件类型）。</li>
-</ul>
-<p><code>WHAT</code> 是一个闭包，包含了 <code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>：</p>
-<ul>
-<li><code>APP_STATE</code>：应用程序的状态。<code>APP_STATE</code> 是大多数人认为的状态。如果没有 <code>APP_STATE</code>，应用程序就没有任何动态信息可以向用户展示。</li>
-<li><code>FRAMEWORK_STATE</code>：框架的内部状态。没有 <code>FRAMEWORK_STATE</code>，框架就不知道要更新哪些 DOM 节点，也不知道框架应在何时更新这些节点。例如组件树和对渲染函数的引用。</li>
-</ul>
-<p>那么我们如何恢复 <code>WHAT</code>（<code>APP_STATE</code> + <code>FRAMEWORK_STATE</code>）和 <code>WHERE</code> 呢？通过下载并执行当前 HTML 中的组件。然而下载和执行 HTML 中的渲染组件是最昂贵的部分。</p>
-<p>换句话说，「水合」是一种通过在浏览器中急切执行应用程序代码来恢复 <code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code> 的方法：</p>
-<ol>
-<li>下载组件代码</li>
-<li>执行组件代码</li>
-<li>恢复 <code>WHAT</code>（<code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>）和 <code>WHERE</code> 以获取事件处理程序闭包</li>
-<li>将 <code>WHAT</code>（事件处理程序闭包）附加到 <code>WHERE</code>（一个 DOM 元素）</li>
-</ol>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_0e1bbc52c75747328b846dcfa76c28f2.webp" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
-<p>前三个步骤称为「恢复」阶段，该阶段尝试重建应用程序，需要下载并执行应用程序代码，因此重建成本很高。</p>
-<p><code>Recovery</code> 与水合页面的复杂程度成正比，在移动设备上很可能需要 10 秒钟。由于 <code>RECOVERY</code> 是昂贵的部分，因此大多数应用程序的启动性能都不理想，尤其是在移动设备上。</p>
-<p><code>RECOVERY</code> 也是纯粹的开销。开销是指不直接提供价值的工作。就水合而言，<code>RECOVERY</code> 是一种开销，因为它会重建服务器在 SSR/SSG 中已经收集到的信息。这些信息没有发送到客户端，而是被丢弃了。因此，客户端必须执行昂贵的 <code>RECOVERY</code> 来重建服务器已经拥有的信息。如果服务器将信息序列化，并连同 HTML 一起发送给客户端，就可以避免 <code>RECOVERY</code>。序列化信息将使客户端不必急于下载和执行 HTML 中的所有组件。</p>
-<p>作为 SSR/SSG 的一部分，服务器已经在客户端重新执行了代码，这使得水合成为纯粹的开销：也就是说，客户端重复了服务器已经完成的工作。框架本可以通过将信息从服务器传输到客户端来避免这一开销，但它却将信息丢弃了。</p>
-<p>总之，水合是通过下载并重新执行 SSR/SSG 渲染的 HTML 中的所有组件来恢复事件处理程序。网站会两次发送到客户端，一次是 HTML，另一次是 JavaScript。此外，框架还必须急切地执行 JavaScript 以恢复 <code>WHAT</code>、<code>WHERE</code>、<code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>。所有这些工作都只是为了检索服务器已经拥有但丢弃的内容！</p>
-<p>为了理解为什么水合会迫使客户端重复工作，让我们来看一个包含几个简单组件的示例。</p>
-<p>我们将使用一种很多人都能理解的常用语法，但请记住，这是一个普遍问题，并不是某个框架所特有的。</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">Main</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Greeter</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Counter</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span></span><span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
-
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">Greeter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      Greet
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">Counter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> number <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">useStore</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> props<span class="token punctuation">.</span>number <span class="token operator">||</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> store<span class="token punctuation">.</span>count<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>在经过 SSR/SSG 后会生成一下 HTML：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>Greet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p>HTML 中没有说明事件处理程序或组件边界的位置。生成的 HTML 不包含 <code>WHAT</code>（<code>APP_STATE</code>、 <code>FRAMEWORK_STATE</code>）或 <code>WHERE</code>。这些信息在服务器生成 HTML 时就已存在，但服务器并未将其序列化。要使应用程序具有交互性，客户端唯一能做的就是通过下载并执行代码来恢复这些信息。我们这样做是为了恢复关闭状态的事件处理程序闭包。</p>
-<p>这里的重点是，在附加任何事件处理程序并处理事件之前，必须下载并执行代码。代码执行会实例化组件并重新创建状态（<code>WHAT</code>(<code>APP_STATE</code>, <code>FRAMEWORK_STATE</code>) 和 <code>WHERE</code>）。</p>
-<p>水合完成后，应用程序即可运行。点击按钮将按预期更新用户界面。</p>
-<h2>Resumability：无须耗费的水合作用</h2>
-<p>那么，如何设计一个没有水合作用的系统，从而避免开销呢？</p>
-<p>要消除开销，框架不仅要避免「恢复」（RECOVERY），还要避免上述第四步。第四步是将 <code>WHAT</code> 附加到 <code>WHERE</code>，这是可以避免的成本。</p>
-<p>要避免这种成本，你需要三样东西：</p>
-<ol>
-<li>将所有需要的信息序列化，作为 HTML 的一部分。序列化信息需要包括 <code>WHAT</code>、<code>WHERE</code>、<code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>。</li>
-<li>依靠事件冒泡拦截所有事件的全局事件处理程序。该事件处理程序必须是全局性的，这样我们就不必急于在特定 DOM 元素上单独注册所有事件。</li>
-<li>一个工厂函数，可以轻松恢复事件处理程序（<code>WHAT</code>）。</li>
-</ol>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_04681212764f4025b2b5f5c6a258ad6e.webp" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
-<p>关键在于工厂函数，水合急切地创建 <code>WHAT</code>，是因为它需要 <code>WHAT</code> 将其附加到 <code>WHERE</code>。相反，我们可以延迟创建 <code>WHAT</code> 来响应用户事件，从而避免做不必要的工作。</p>
-<p>上述设置是可恢复的，因为它可以在服务器中断的地方继续执行，而不会重做服务器已经完成的任何工作。更重要的是，该设置没有任何开销，因为所有工作都是必要的，没有任何工作是在重做服务器已经做过的工作。</p>
-<p>了解推式系统和拉式系统的区别有一个很好的方法。</p>
-<ul>
-<li>推式（Hydration）：急切地下载和执行代码，急切地注册事件处理程序，以防用户交互。</li>
-<li>拉（Resumability）：什么都不做，等待用户触发事件，然后惰性创建处理程序来处理事件。</li>
-</ul>
-<p>在 Hydration 中，事件处理程序的创建是在事件触发之前进行的，因此比较急迫。水合还要求创建和注册所有可能的事件处理程序，以防用户触发事件（可能是不必要的工作）。因此，事件处理程序的创建是投机性的。这是可能不需要的额外工作。(事件处理程序也是通过重做服务器已经完成的工作来创建的，因此也是开销）。</p>
-<p>在 Resumability 系统中，事件处理程序的创建是懒惰的。因此，事件处理程序是在事件触发后创建的，而且严格按需创建。框架通过反序列化来创建事件处理程序，因此客户端不会重做服务器已经完成的任何工作。</p>
-<p>Qwik 的工作方式就是惰性地创建事件处理程序，这样就能加快应用程序的启动时间。</p>
-<p>可恢复性要求我们序列化 <code>WHAT</code>(<code>APP_STATE</code>, <code>FRAMEWORK_STATE</code>) 和 <code>WHERE</code>。可重续系统可生成以下 HTML 作为存储 <code>WHAT</code>(<code>APP_STATE</code>, <code>FRAMEWORK_STATE</code>) 和 <code>WHERE</code> 的可能解决方案。具体细节并不重要，重要的是所有信息都已存在。</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">q:</span>host</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">q:</span>host</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./chunk-a.js#greet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Greet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name"><span class="token namespace">q:</span>host</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">q:</span>obj</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">on:</span>click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./chunk-b.js#count[0]<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><span class="token comment">/* code that sets up global listeners */</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/qwik<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><span class="token comment">/* JSON representing APP_STATE, FRAMEWORK_STATE */</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p>当浏览器加载上述 HTML 代码时，它会立即执行内联脚本，以设置全局监听器。应用程序已准备好接受事件，但浏览器尚未执行任何应用程序代码。这是最接近零 JS 的做法。</p>
-<p>HTML 包含作为元素属性编码的 <code>WHERE</code>。当用户触发一个事件时，框架可以使用 DOM 中的信息惰性地创建事件处理程序。创建过程包括对 <code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code> 进行懒惰反序列化，以完成 <code>WHAT</code>。一旦该框架惰性地创建了事件处理程序，事件处理程序就可以处理事件了。请注意，客户端不会重做服务器已经完成的任何工作。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_3c529b5adb7448d48e05cb04594f1e0c.webp" alt="img" tabindex="0" loading="lazy"><figcaption>img</figcaption></figure>
-<h2>内存使用说明</h2>
-<p>DOM 元素在其生命周期内会保留事件处理程序。Hydration 会急切地创建所有监听器。因此，水合需要在启动时分配内存。</p>
-<p>可恢复框架在事件触发后才会创建事件处理程序。因此，可恢复框架消耗的内存将少于水合框架。此外，可恢复方法不会在执行后保留事件处理程序。事件处理程序在执行后会被释放，并返回内存。</p>
-<p>在某种程度上，释放内存与水合正好相反。这就好比框架惰性地为特定 <code>WHAT</code> 补充水分，执行后再将其脱水。处理程序的第一次执行和第 n 次执行并无太大区别。事件处理程序的惰性创建和释放不符合水合心理模型。</p>
-<h2>结论</h2>
-<p>水合是一种开销，因为它会重复工作。服务器会建立 <code>WHERE</code> 和 <code>WHAT</code>（<code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>），但这些信息会被丢弃，而不是序列化给客户端。这样，客户端就会收到没有足够信息来重建应用程序的 HTML。信息的缺乏迫使客户端急于下载应用程序并执行它，以恢复 <code>WHERE</code> 和 <code>WHAT</code>（<code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>）。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_6ac78462e04d4761b1beefa4479c4715.webp" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
-<p>另一种方法是可恢复性。可重复性侧重于将所有信息从服务器传输到客户端。这些信息包括 <code>WHERE</code> 和 <code>WHAT</code>（<code>APP_STATE</code> 和 <code>FRAMEWORK_STATE</code>）。附加信息允许客户端在不急于下载应用程序代码的情况下对应用程序进行推理。只有用户交互会迫使客户端下载代码来处理特定的交互。客户端不会重复服务器的任何工作，因此不会产生开销。</p>
-<p>为了将这一想法付诸实践，我们创建了 Qwik，这是一个围绕可恢复性设计的框架，具有出色的启动性能。我们也很高兴听到您的意见！让我们继续交流，共同为用户打造更快的网络应用程序。</p>
-<h2>Q&amp;A</h2>
-<ol>
-<li>
-<p>为什么要创造一个新名词？</p>
-<p>可重复性并没有一个明确的界限来表明组件是否水合。如果你坚持说 Qwik 水合，那么你有两个选择：</p>
-<p>当全局事件处理程序被注册时，Qwik 应用程序就水合了。这感觉不对，因为没有下载应用程序代码，也没有执行任何工作。<br>
-当第一次交互解析序列化状态时，Qwik 应用程序就完成了水合。水合是为交互附加事件监听器。反序列化状态是为了恢复应用程序的状态，与注册事件处理程序无关。在某些情况下，不需要进行反序列化，如果需要，也是在事件触发后进行。另一个问题是，对状态的反序列化甚至会恢复那些尚未下载或永远不会下载的组件的状态。因此，虽然我们很想假设这就是水合的意义所在，但我们认为这只是应用程序状态的懒惰反序列化，因为它与事件处理没有直接关系。<br>
-这两种方案都不能令人满意，因此我们创造了一个新名词。您可以将水合定义为使应用程序具有交互性，但这样的定义过于宽泛，以至于适用于所有人，从而降低了它的价值。因此，虽然听起来像是在分化，但我们还是喜欢谈论水合性与可恢复性，因为我们相信它能更好地捕捉到使应用程序具有交互性所需的大量工作之间的巨大差异。</p>
-</li>
-<li>
-<p>恢复能力仅仅是事后补充水分吗？</p>
-<p>这当然是一个有效的方法。不过，这两者之间有一个很大的区别。可重复性并不要求框架下载并执行组件来了解组件层次结构。可重复性要求将框架的所有信息序列化到 HTML 中，包括</p>
-<ul>
-<li>事件侦听器和事件类型的位置。</li>
-<li>下载事件的位置</li>
-<li>组件边界</li>
-<li>组件道具</li>
-<li>投影/子组件</li>
-<li>必要时下载组件重新渲染功能的位置</li>
-</ul>
-<p>由于框架会反序列化所有这些信息，并在服务器中断的地方继续执行，因此「可恢复」（resumable）是一个更好的词。</p>
-</li>
-<li>
-<p>实际效果如何？我在哪里可以看到使用可恢复战略的网站？</p>
-<p><a href="http://Builder.io" target="_blank" rel="noopener noreferrer">Builder.io</a> 使用 resumable 策略（和 Qwik）重做了我们的网站。我们在启动过程中删除了 99% 的 JavaScript，由此产生的应用程序即使在移动设备上也感觉非常灵敏。通过使用 Qwik 和 Partytown，我们减少了网站中 99% 的 JavaScript，并获得了 100/100 的 PageSpeed 分数。(您仍然可以访问使用 hydration [PageSpeed 50/100]的旧页面，并与使用 resumability [PageSpeed 100/100]的新页面进行比较，亲自体验性能差异）。</p>
-<p>Qwik 的文档是在 Qwik 上运行的。你可以通过在浏览器中打开开发工具（隐身）来查看引擎盖下的情况，并注意到启动时没有使用 Javascript。(该页面还使用 Partytown 将第三方分析移至 Web Worker）。</p>
-<p>最后，看看在 Cloudflare edge 上运行的待办事项应用程序演示。该页面可在 50 毫秒内完成交互！</p>
-</li>
-<li>
-<p>我的框架知道如何进行渐进式和/或懒惰式补水。这是一码事吗？</p>
-<p>不一样，因为渐进式/懒惰式水合仍无法继续执行服务器中断的操作。所有组件代码都需要下载并执行，以恢复和安装事件处理程序。</p>
-<p>有了可恢复性，许多组件将永远不会下载，因为它们永远不会改变。但这些组件可以向子组件传递道具，或创建子组件投射的内容。因此，即使不交互，也需要通过重新执行来恢复组件的状态。这就是为什么支持渐进/快速水合的岛屿不能任意缩小的原因。</p>
-<p>简而言之，与水合相比，可恢复性在处理用户交互时需要下载和执行的代码要少得多。</p>
-</li>
-<li>
-<p>我的框架知道如何创建岛屿。这是一码事吗？</p>
-<p>岛屿架构将应用程序分割成多个岛屿。然后，每个岛都可以独立水合。现在，总工作量不再是一次大的水合，而是分散到许多较小的水合事件中。通常情况下，触发器会使岛在启动时懒散地水合，而不是急切地水合。</p>
-<p>这意味着基于孤岛的水合是一种改进，因为它可以将工作分解成更小的块并延迟执行，但这仍然是水合，与可恢复性不同。</p>
-</li>
-<li>
-<p>我的框架知道如何序列化状态。它会产生开销吗？</p>
-<p>这里的问题是，state 一词被超载了。是的，有些元框架可以序列化状态。但这里的「状态 」指的是 APP_STATE，而不是 FRAMEWORK_STATE。我不知道有哪个流行的框架（或元框架）可以序列化 FRAMEWORK_STATE。此外，即使 FRAMEWORK_STATE 序列化了，WHAT 和 WHERE 也没有序列化。</p>
-<p>是的，状态（APP_STATE）的序列化很有用，可以避免客户端的大量工作。但它仍然会导致水合。</p>
-</li>
-<li>
-<p>组件在首次交互时是否水合？</p>
-<p>如果你查看一下可恢复框架的内部状态，就会发现组件的首次交互与后续交互并无不同。唯一的区别是框架已经解析了序列化状态。一旦状态被解析，它就适用于所有组件，而不仅仅是用户与之交互的组件。在任何时候，框架都可以将状态序列化回 HTML。这是否意味着应用程序不再水合？从这个角度来看，状态的反序列化会使所有组件水合，即使它们的代码尚未被下载。</p>
-</li>
-<li>
-<p>今天我如何利用可恢复性的优势？</p>
-<p>框架控制着应用程序交互所使用的恢复策略类型。因此，要利用可恢复性，您的应用程序必须使用支持它的框架之一。目前，我们只知道 Qwik 明确支持可恢复性。可重续性的优势不容忽视，因此我相信未来其他框架也会开始使用这一策略，无论是新框架还是选择迁移到可重续性的现有框架。</p>
-</li>
-<li>
-<p>第一次互动会有延迟吗？</p>
-<p>使用预取就不会。Qwik 对预取没有任何主见--我们使用过多种预取策略（急切、可见、分析驱动），效果都很好。在大多数情况下，我们发现在 Web Worker（如 Partytown）中进行预取可实现 0 成本和高速度的最佳平衡。我们将在框架中加入最佳实践，并逐步提供具有推荐模式的示例。</p>
-</li>
-<li>
-<p>我可以在 Qwik 中使用我的 React/Angular/Vue/Svelte 组件吗？</p>
-<p>重写应用程序是一项巨大的工程。为了降低入门门槛，我们正在研究与当今一些更流行的框架建立互操作性。Qwik 将成为您的协调器，提供即时的应用程序启动，但它仍将与大部分现有的代码投资一起使用。可以将 Qwik 视为您当前应用程序的协调器。这样，您就不必重写整个应用程序，但仍能获得一些好处。这项工作还在进行中，敬请期待。</p>
-</li>
-</ol>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/assets_YJIGb4i01jvw0SRdL5Bt_a6d8c3bacc3c4cf88446e41a71cda21c.webp" type="image/webp"/>
-    </item>
-    <item>
-      <title>Rspack</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/rspack/001-hello-rspack.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/rspack/001-hello-rspack.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Rspack</source>
-      <description>Why Rspack? 面对大型项目，开发和生产环境的构建需要耗费很长时间。 组内实际项目在生产环境中构建需要接近 30 分钟。 按照官方说法，Rspack 拥有： 快速的 Dev 启动性能 高效的 Build 性能 灵活的配置 生产环境的优化能力 Rspack 创建项目 使用 Rspack CLI： 目前支持三种模版： react react-ts ...</description>
-      <category>工程化</category>
-      <pubDate>Tue, 03 Jan 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>Why Rspack?</h2>
-<p>面对大型项目，开发和生产环境的构建需要耗费很长时间。</p>
-<p>组内实际项目在生产环境中构建需要接近 30 分钟。</p>
-<p>按照官方说法，Rspack 拥有：</p>
-<ul>
-<li>快速的 Dev 启动性能</li>
-<li>高效的 Build 性能</li>
-<li>灵活的配置</li>
-<li>生产环境的优化能力</li>
-</ul>
-<h2>Rspack 创建项目</h2>
-<p>使用 Rspack CLI：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">pnpm</span> create rspack@latest
-</code></pre></div><p>目前支持三种模版：</p>
-<ul>
-<li>react</li>
-<li>react-ts</li>
-<li>vue</li>
-</ul>
-<p>用该命令创建的项目 Rspack 不是最新，因此选择从零开始。 (11 月 29 日 已适配为最新版本。)</p>
-<h2>从零开始</h2>
-<p>安装相关依赖。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">pnpm</span> init
-<span class="token function">pnpm</span> <span class="token function">install</span> react react-dom
-<span class="token function">pnpm</span> <span class="token function">install</span> <span class="token parameter variable">-D</span> typescript @types/react @types/react-dom
-<span class="token function">pnpm</span> <span class="token function">install</span> <span class="token parameter variable">-D</span> @rspack/cli @rspack/core
-</code></pre></div><p>为了快速启动项目，直接将所有文件内容复制，然后启动项目，报错：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240103130024.png" alt="报错" tabindex="0" loading="lazy"><figcaption>报错</figcaption></figure>
-<p>从官网中查看 <a href="https://github.com/rspack-contrib/rspack-examples/pull/2" target="_blank" rel="noopener noreferrer">迁移示例</a>，并未得到有用信息。复制错误信息 <code>JavaScript parsing error</code> 搜索 issue。</p>
-<p>在 <a href="https://github.com/web-infra-dev/rspack/issues/4745" target="_blank" rel="noopener noreferrer">issue 官网示例报错</a> 中找到解决方法：</p>
-<p>这里按照官方解答无效，查看 <code>rspack-template</code> 最新配置如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token punctuation">{</span>
-	test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(jsx?|tsx?)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-	use<span class="token operator">:</span> <span class="token punctuation">[</span>
-		<span class="token punctuation">{</span>
-			loader<span class="token operator">:</span> <span class="token string">"builtin:swc-loader"</span><span class="token punctuation">,</span>
-			options<span class="token operator">:</span> <span class="token punctuation">{</span>
-				sourceMap<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-				jsc<span class="token operator">:</span> <span class="token punctuation">{</span>
-					parser<span class="token operator">:</span> <span class="token punctuation">{</span>
-						syntax<span class="token operator">:</span> <span class="token string">"typescript"</span><span class="token punctuation">,</span>
-						tsx<span class="token operator">:</span> <span class="token boolean">true</span>
-					<span class="token punctuation">}</span><span class="token punctuation">,</span>
-					transform<span class="token operator">:</span> <span class="token punctuation">{</span>
-						react<span class="token operator">:</span> <span class="token punctuation">{</span>
-							runtime<span class="token operator">:</span> <span class="token string">"automatic"</span><span class="token punctuation">,</span>
-							development<span class="token operator">:</span> isDev<span class="token punctuation">,</span>
-							refresh<span class="token operator">:</span> isDev
-						<span class="token punctuation">}</span>
-					<span class="token punctuation">}</span>
-				<span class="token punctuation">}</span><span class="token punctuation">,</span>
-				env<span class="token operator">:</span> <span class="token punctuation">{</span>
-					targets<span class="token operator">:</span> <span class="token punctuation">[</span>
-						<span class="token string">"chrome &gt;= 87"</span><span class="token punctuation">,</span>
-						<span class="token string">"edge &gt;= 88"</span><span class="token punctuation">,</span>
-						<span class="token string">"firefox &gt;= 78"</span><span class="token punctuation">,</span>
-						<span class="token string">"safari &gt;= 14"</span>
-					<span class="token punctuation">]</span>
-				<span class="token punctuation">}</span>
-			<span class="token punctuation">}</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>Rspack VS Webpack</h2>
-<p>常见语言与资源模块支持对比如下：</p>
-<p>| 语言/资源 | 支持(Rspack/Webpack)                                                           |<br>
-|</p>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240103130024.png" type="image/png"/>
-    </item>
-    <item>
-      <title>Vite 初体验</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/vite/001-hello-vite.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/engineering/build-tool/vite/001-hello-vite.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Vite 初体验</source>
-      <description> 项目地址 通过前面对 webpack 的学习，我们已经看到了它的强大，为什么还需要学习 Vite 呢？ Vite 官方文档中提到，当我们开始构建越来越大型的应用时，需要处理的 JavaScript 代码量也呈指数级增长。包含数千个模块的大型项目相当普遍。我们开始遇到性能瓶颈 —— 使用 JavaScript 开发的工具通常需要很长时间（甚至是几分钟！...</description>
-      <category>工程化</category>
-      <pubDate>Wed, 18 May 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<blockquote>
-<p><a href="https://github.com/Stephen-wzw/vite-demo" target="_blank" rel="noopener noreferrer">项目地址</a></p>
-</blockquote>
-<p>通过前面对 webpack 的学习，我们已经看到了它的强大，为什么还需要学习 Vite 呢？</p>
-<p>Vite 官方文档中提到，当我们开始构建越来越大型的应用时，需要处理的 JavaScript 代码量也呈指数级增长。包含数千个模块的大型项目相当普遍。我们开始遇到性能瓶颈 —— 使用 JavaScript 开发的工具通常需要很长时间（甚至是几分钟！）才能启动开发服务器，即使使用 HMR，文件修改后的效果也需要几秒钟才能在浏览器中反映出来。如此循环往复，迟钝的反馈会极大地影响开发者的开发效率和幸福感。</p>
-<p>事实也确实如此，webpack 虽好，但是每次重新打包或者热更新都需要比较长的时间，同时还需要繁琐的配置，每次使用 loader 或者 plugin 都需要写上配置文件。</p>
-<p>Vite 给我们提供了开箱即用的配置，同时它也具有高度的可扩展性，并有完整的类型支持。它主要由两部分组成：</p>
-<ul>
-<li>一个开发服务器，它基于<strong>原生 ES 模块</strong>提供了丰富的内建功能，如速度快到惊人的模块热更新（HMR）。</li>
-<li>一套构建指令，它使用 Rollup 打包你的代码，并且它是预配置的，可输出用于生产环境的高度优化过的静态资源。</li>
-</ul>
-<h2>开始</h2>
-<p>新建项目，初始化 npm，然后本地安装 <code>vite</code>。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> vite-demo
-<span class="token builtin class-name">cd</span> vite-demo
-<span class="token function">npm</span> init <span class="token parameter variable">-y</span>
-<span class="token function">npm</span> <span class="token function">install</span> vite <span class="token parameter variable">-D</span>
-</code></pre></div><p>创建以下目录及文件：</p>
-<p><strong>project</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> vite-demo
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package.json
-</span><span class="token prefix unchanged"> </span><span class="token line"> |- package-lock.json
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> |- index.html
-</span><span class="token prefix inserted">+</span><span class="token line"> |- /src
-</span><span class="token prefix inserted">+</span><span class="token line">   |- /js
-</span><span class="token prefix inserted">+</span><span class="token line">     |- math.js
-</span><span class="token prefix inserted">+</span><span class="token line">   |- index.js
-</span></span></code></pre></div><p><strong>src/js/math.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>src/index.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> sum <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./js/math.js"</span><span class="token punctuation">;</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello Vite!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre></div><p><strong>index.html</strong></p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>vite-demo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>./src/index.js<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p>现在用 <code>live server</code> 打开 <code>index.html</code> 文件，即可看到浏览器显示正确的内容：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>Hello Vite<span class="token operator">!</span>
-<span class="token number">30</span>
-</code></pre></div><p>但其实我们现在并没有使用 Vite 帮我们打包项目，它起作用的原因在于浏览器本身就支持<strong>原生 ES 模块</strong>。既然这样，我们直接写 ES Module 的代码就行，为什么还需要使用到 Vite 呢？接下来看看直接使用 ES Module 的问题所在。</p>
-<h2>原生 ES 模块的问题</h2>
-<p>为了体现原生 ES 模块的问题，安装 <code>lodash-es</code> 库，它是使用 ES Module 导出的。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> lodash-es
-</code></pre></div><p>接下来在 <code>src/index.js</code> 中使用：</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import _ from "lodash-es";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log("Hello Vite!");
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(sum(10, 20));
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> console.log(_.join(["hello", "vite"], "-"));
-</span></span></code></pre></div><p>这时打开 <code>index.html</code> 会报错：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>Uncaught TypeError: Failed to resolve module specifier <span class="token string">"lodash-es"</span><span class="token builtin class-name">.</span> Relative references must start with either <span class="token string">"/"</span>, <span class="token string">"./"</span>, or <span class="token string">"../"</span><span class="token builtin class-name">.</span>
-</code></pre></div><p>之前在 webpack 中可以直接这样导入模块的原因是它内部帮我们做了。其实 Vite 也帮我们做了这样的事，但是为了体现<strong>原生 ES Module</strong>存在的问题，使用相对路径对其进行导入。</p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> import _ from "lodash-es";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import _ from "../node_modules/lodash-es/lodash.default.js";
-</span></span></code></pre></div><p>重新打开浏览器正常工作：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>Hello Vite<span class="token operator">!</span>
-<span class="token number">30</span>
-hello-vite
-</code></pre></div><p>但是，我们查看网络，可以看到浏览器将整个库都请求下来了，如果每个库都这样，那请求的资源将不可想象。</p>
-<figure><img src="/assets/image/frontend/tool/vite/001/esm-problem.png" alt="原生问题" tabindex="0" loading="lazy"><figcaption>原生问题</figcaption></figure>
-<p>现在我们更改下模块路径，并使用 <code>vite</code> 启动服务：</p>
-<p><strong>src/index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line"> import _ from "../node_modules/lodash-es/lodash.default.js";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import _ from "lodash-es";
-</span></span></code></pre></div><div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx vite
-
-vite v2.9.9 dev server running at:
-
-<span class="token operator">&gt;</span> Local: http://localhost:3000/
-<span class="token operator">&gt;</span> Network: use <span class="token variable"><span class="token variable">`</span><span class="token parameter variable">--host</span><span class="token variable">`</span></span> to expose
-
-ready <span class="token keyword">in</span> 547ms.
-</code></pre></div><p>用浏览器打开并查看网络，请求数极大减少，这是由于 Vite 帮我们在内部做了处理。</p>
-<figure><img src="/assets/image/frontend/tool/vite/001/esm-vite.png" alt="vite" tabindex="0" loading="lazy"><figcaption>vite</figcaption></figure>
-<h2>css</h2>
-<h3>普通 css</h3>
-<p>导入 .css 文件将会把内容插入到 <code>&lt;style&gt;</code> 标签中，同时也带有 HMR 支持。</p>
-<p>在 src 下新建 css 文件夹，并新增 <code>style.css</code> 文件：</p>
-<p><strong>src/css/style.css</strong></p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
-  <span class="token property">background-color</span><span class="token punctuation">:</span> #eee<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>src/index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import _ from "lodash-es";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import "./css/style.css";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log("Hello Vite!");
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(_.join(["hello", "vite"], "-"));
-</span></span></code></pre></div><p>打开浏览器可以看到 <code>.css</code> 样式生效。</p>
-<h3>预处理器</h3>
-<p>Vite 也同时提供了对 .scss, .sass, .less, .styl 和 .stylus 文件的内置支持。没有必要为它们安装特定的 Vite 插件，但必须安装相应的预处理器依赖：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token comment"># .scss and .sass</span>
-<span class="token function">npm</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> sass
-
-<span class="token comment"># .less</span>
-<span class="token function">npm</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> <span class="token function">less</span>
-
-<span class="token comment"># .styl and .stylus</span>
-<span class="token function">npm</span> <span class="token function">add</span> <span class="token parameter variable">-D</span> stylus
-</code></pre></div><p>以 less 为例，在 src/css 文件夹下新建 <code>title.less</code> 文件：</p>
-<p><strong>title.less</strong></p>
-<div class="language-less" data-ext="less" data-title="less"><pre class="language-less"><code><span class="token variable">@fontSize<span class="token punctuation">:</span></span> 50px<span class="token punctuation">;</span>
-<span class="token variable">@fontColor<span class="token punctuation">:</span></span> #999<span class="token punctuation">;</span>
-
-<span class="token selector">.title</span> <span class="token punctuation">{</span>
-  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">@fontSize</span><span class="token punctuation">;</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">@fontColor</span><span class="token punctuation">;</span>
-  
-  <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>src/index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import _ from "lodash-es";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line"> import "./css/style.css";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import "./css/title.less";
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> console.log("Hello Vite!");
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(_.join(["hello", "vite"], "-"));
-</span></span>
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const titleEl = document.createElement('div');
-</span><span class="token prefix inserted">+</span><span class="token line"> titleEl.className = "title";
-</span><span class="token prefix inserted">+</span><span class="token line"> titleEl.innerHTML = "Hello Vite";
-</span></span>
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> document.body.appendChild(titleEl);
-</span></span></code></pre></div><p>打开浏览器可以看到 <code>.less</code> 样式生效。</p>
-<h3>postcss</h3>
-<p>如果项目包含有效的 PostCSS 配置 (任何受 postcss-load-config 支持的格式，例如 <code>postcss.config.js</code>)，它将会自动应用于所有已导入的 CSS。</p>
-<p>首先安装 postcss 和 postcss-preset-env：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> postcss postcss-preset-env <span class="token parameter variable">-D</span>
-</code></pre></div><p>在项目根目录下新建 <code>postcss.config.js</code>：</p>
-<p><strong>postcss.config.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"postcss-preset-env"</span><span class="token punctuation">)</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>这时候打开浏览器查看元素，可以发现已经帮助我们加上了前缀：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">.title</span> <span class="token punctuation">{</span>
-  <span class="token property">font-size</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>
-  <span class="token property">color</span><span class="token punctuation">:</span> #999<span class="token punctuation">;</span>
-  <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-     <span class="token property">-moz-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-      <span class="token property">-ms-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-          <span class="token property">user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>图片</h2>
-<p>在 src 下新建 img 文件夹，并修改 <code>index.js</code> 文件：</p>
-<p><strong>index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import _ from "lodash-es";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import { sum } from "./js/math.js";
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> import "./css/style.css";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import "./css/title.less";
-</span></span>
-<span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import avatarUrl from "./img/avatar.png";
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log("Hello Vite!");
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(_.join(["hello", "vite"], "-"));
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> const titleEl = document.createElement('div');
-</span><span class="token prefix unchanged"> </span><span class="token line"> titleEl.className = "title";
-</span><span class="token prefix unchanged"> </span><span class="token line"> titleEl.innerHTML = "Hello Vite";
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> const imgEl = document.createElement('img');
-</span><span class="token prefix inserted">+</span><span class="token line"> imgEl.src = avatarUrl;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> document.body.appendChild(titleEl);
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> document.body.appendChild(imgEl);
-</span></span></code></pre></div><p>不用其他配置，浏览器就已经显示出了图片。</p>
-<h2>TypeScript</h2>
-<p>Vite 使用 <a href="https://github.com/evanw/esbuild" target="_blank" rel="noopener noreferrer">esbuild</a> 将 TypeScript 转译到 JavaScript，约是 tsc 速度的 20~30 倍，同时 HMR 更新反映到浏览器的时间小于 50ms。</p>
-<p>src 下新建 ts 文件夹，并新增 <code>mul.ts</code> 文件，在 <code>index.js</code> 下使用：</p>
-<p><strong>src/ts/mul.ts</strong></p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span>num1<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> num2<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> num1 <span class="token operator">*</span> num2<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong>src/index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import _ from "lodash-es";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import { sum } from "./js/math.js";
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import mul from "./ts/mul.ts";
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import "./css/style.css";
-</span><span class="token prefix unchanged"> </span><span class="token line"> import "./css/title.less";
-</span></span>
-<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> import avatarUrl from "./img/avatar.png";
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log("Hello Vite!");
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(sum(10, 20));
-</span><span class="token prefix unchanged"> </span><span class="token line"> console.log(_.join(["hello", "vite"], "-"));
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> console.log(mul(10, 20));
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> const titleEl = document.createElement('div');
-</span><span class="token prefix unchanged"> </span><span class="token line"> titleEl.className = "title";
-</span><span class="token prefix unchanged"> </span><span class="token line"> titleEl.innerHTML = "Hello Vite";
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> const imgEl = document.createElement('img');
-</span><span class="token prefix unchanged"> </span><span class="token line"> imgEl.src = avatarUrl;
-</span><span class="token prefix unchanged"> </span><span class="token line"> 
-</span><span class="token prefix unchanged"> </span><span class="token line"> document.body.appendChild(titleEl);
-</span><span class="token prefix unchanged"> </span><span class="token line"> document.body.appendChild(imgEl);
-</span></span></code></pre></div><p>浏览器正确的打印了 <code>200</code>。</p>
-<h2>Vue</h2>
-<p>Vite 为 Vue 提供第一优先级支持：</p>
-<ul>
-<li>Vue 3 单文件组件支持：@vitejs/plugin-vue</li>
-<li>Vue 3 JSX 支持：@vitejs/plugin-vue-jsx</li>
-<li>Vue 2 支持：underfin/vite-plugin-vue2</li>
-</ul>
-<p>首先安装 vue@next 和 @vitejs/plugin-vue：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> vue@next @vitejs/plugin-vue <span class="token parameter variable">-D</span>
-</code></pre></div><p>接下来对项目文件进行修改：</p>
-<p><strong>index.html</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">&lt;!DOCTYPE html&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;html lang="en"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;head&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta charset="UTF-8"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">  &lt;title&gt;vite-demo&lt;/title&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;/head&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;body&gt;
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">  &lt;div id="app"&gt;&lt;/div&gt;
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">  &lt;script src="./src/index.js" type="module"&gt;&lt;/script&gt;
-</span><span class="token prefix unchanged"> </span><span class="token line">&lt;/body&gt;
-</span></span><span class="token deleted-arrow deleted"><span class="token prefix deleted">&lt;</span><span class="token line">/html&gt;
-</span></span></code></pre></div><p><strong>src/vue/App.vue</strong></p>
-<div class="language-vue" data-ext="vue" data-title="vue"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>{{message}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
-  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"Hello Vue"</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">scoped</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p><strong>src/index.js</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> import { createApp } from "vue";
-</span><span class="token prefix inserted">+</span><span class="token line"> import App from './vue/App.vue';
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">
-</span><span class="token prefix unchanged"> </span><span class="token line"> ...
-</span><span class="token prefix unchanged"> </span><span class="token line">
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> createApp(App).mount('#app');
-</span></span></code></pre></div><p>新建 <code>vite.config.js</code> 使用 @vitejs/plugin-vue 来处理 .vue 文件：</p>
-<p><strong>vite.config.js</strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> vue <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'@vitejs/plugin-vue'</span><span class="token punctuation">)</span>
-
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token function">vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>npm script</h2>
-<p><strong>package.json</strong></p>
-<div class="language-diff" data-ext="diff" data-title="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> "scripts": {
-</span><span class="token prefix unchanged"> </span><span class="token line">   "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   "serve": "vite",
-</span><span class="token prefix inserted">+</span><span class="token line">   "build": "vite build",
-</span><span class="token prefix inserted">+</span><span class="token line">   "preview": "vite preview"
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> },
-</span></span></code></pre></div><ul>
-<li><code>vite</code>：启动服务。</li>
-<li><code>vite build</code>：给项目进行打包。</li>
-<li><code>vite preview</code>：打包后进行预览。</li>
-</ul>
-<blockquote>
-<p>在进行 <code>npm run build</code> 打包后使用 <code>live server</code> 打开后页面显示空白，浏览器报错。需要在 <code>vite.config.js</code> 下配置 <code>base: './'</code>。</p>
-</blockquote>
-<h2>总结</h2>
-<p>通过上面的体验，可以发现 Vite 是真的很快，而且不需要像 webpack 那样大量的配置。</p>
-<p>以前的打包模式，项目启动时，需要先将所有文件打包成一个文件 bundle.js ，然后在 html 引入，这个 多文件 -&gt; bundle.js 的过程是非常耗时间的。</p>
-<figure><img src="/assets/image/frontend/tool/vite/001/bundle.png" alt="bundle" tabindex="0" loading="lazy"><figcaption>bundle</figcaption></figure>
-<p>而 Vite 以原生 ESM 方式提供源码，Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。</p>
-<figure><img src="/assets/image/frontend/tool/vite/001/vite.png" alt="vite" tabindex="0" loading="lazy"><figcaption>vite</figcaption></figure>
-]]></content:encoded>
-      <enclosure url="https://dribble-njr.github.io/blog/blog/assets/image/frontend/tool/vite/001/esm-problem.png" type="image/png"/>
     </item>
   </channel>
 </rss>

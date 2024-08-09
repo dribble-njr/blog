@@ -215,7 +215,8 @@ export default [
       '010-antd-textarea-placeholder-pre-line',
       '015-auto-change-node',
       '016-rest-client-error',
-      '017-whistle-debug-real-phone'
+      '017-whistle-debug-real-phone',
+      '018-monaco-editor-react',
     ]
   },
   {

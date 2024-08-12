@@ -107,7 +107,15 @@ loader.init().then(/* ... */)
 
 我使用了 Rspack 来打包，官方说明对 `monaco-editor-webpack-plugin` 插件进行了兼容，但是不知道是由于我 Rspack 版本问题，导致报错，因此实验了一种更加稳定的方式如下。
 
-### 本地路径
+Rspack 不使用 `monaco-editor-webpack-plugin` 插件配置与 Vite 一致，详细见 [Rspack demo monaco-editor-react](https://github.com/rspack-contrib/rspack-examples/blob/main/rspack/monaco-editor-ts-react/src/components/Editor.tsx)。
+
+### ~~本地路径~~
+
+::: tip
+
+该方式会在 public 中引入大量文件，不太优雅。
+
+:::
 
 `monaco-editor` 中提供了一些打包后的文件，路径是 `monaco-editor/min/vs`，因此可以通过下载 npm 包并将文件移动至 `public` 文件夹，并自定义路径。
 

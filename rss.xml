@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 09 Aug 2024 11:01:09 GMT</pubDate>
-    <lastBuildDate>Fri, 09 Aug 2024 11:01:09 GMT</lastBuildDate>
+    <pubDate>Mon, 12 Aug 2024 06:51:02 GMT</pubDate>
+    <lastBuildDate>Mon, 12 Aug 2024 06:51:02 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>practice</category>
@@ -108,7 +108,12 @@ loader<span class="token punctuation">.</span><span class="token function">confi
 
 loader<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span>
 </code></pre></div><p>我使用了 Rspack 来打包，官方说明对 <code>monaco-editor-webpack-plugin</code> 插件进行了兼容，但是不知道是由于我 Rspack 版本问题，导致报错，因此实验了一种更加稳定的方式如下。</p>
-<h3>本地路径</h3>
+<p>Rspack 不使用 <code>monaco-editor-webpack-plugin</code> 插件配置与 Vite 一致，详细见 <a href="https://github.com/rspack-contrib/rspack-examples/blob/main/rspack/monaco-editor-ts-react/src/components/Editor.tsx" target="_blank" rel="noopener noreferrer">Rspack demo monaco-editor-react</a>。</p>
+<h3><s>本地路径</s></h3>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>该方式会在 public 中引入大量文件，不太优雅。</p>
+</div>
 <p><code>monaco-editor</code> 中提供了一些打包后的文件，路径是 <code>monaco-editor/min/vs</code>，因此可以通过下载 npm 包并将文件移动至 <code>public</code> 文件夹，并自定义路径。</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mv</span> node_modules/monaco-editor/min/vs public
 </code></pre></div><div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> loader <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@monaco-editor/react'</span>

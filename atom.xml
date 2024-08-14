@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-08-12T06:51:02.306Z</updated>
+  <updated>2024-08-14T03:06:49.764Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -32,7 +32,7 @@
     <title type="text">monaco-editor/react</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html"/>
-    <updated>2024-08-12T06:49:24.000Z</updated>
+    <updated>2024-08-14T03:05:10.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/microsoft/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco Editor</a> 是由微软开发的开源代码编辑器，使用于 VS Code。然而他本身是用 JavaScript/TypeScript 编写的一个独立库，提供了丰富的 API 来实现代码编辑器的功能。因此无法直接在 React 中使用。</p>
 <p><a href="https://github.com/suren-atoyan/monaco-react" target="_blank" rel="noopener noreferrer">@monaco-editor/react</a> 这个库是对 monaco-editor 的 React 封装，使得你在 React 项目中更方便地使用 Monaco Editor。</p>]]></summary>
     <content type="html"><![CDATA[<p><a href="https://github.com/microsoft/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco Editor</a> 是由微软开发的开源代码编辑器，使用于 VS Code。然而他本身是用 JavaScript/TypeScript 编写的一个独立库，提供了丰富的 API 来实现代码编辑器的功能。因此无法直接在 React 中使用。</p>
@@ -108,7 +108,11 @@ loader<span class="token punctuation">.</span><span class="token function">confi
 
 loader<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token comment">/* ... */</span><span class="token punctuation">)</span>
 </code></pre></div><p>我使用了 Rspack 来打包，官方说明对 <code>monaco-editor-webpack-plugin</code> 插件进行了兼容，但是不知道是由于我 Rspack 版本问题，导致报错，因此实验了一种更加稳定的方式如下。</p>
-<p>Rspack 不使用 <code>monaco-editor-webpack-plugin</code> 插件配置与 Vite 一致，详细见 <a href="https://github.com/rspack-contrib/rspack-examples/blob/main/rspack/monaco-editor-ts-react/src/components/Editor.tsx" target="_blank" rel="noopener noreferrer">Rspack demo monaco-editor-react</a>。</p>
+<p>Rspack 配置与 Vite 一致，详细见 <a href="https://github.com/rspack-contrib/rspack-examples/blob/main/rspack/monaco-editor-ts-react/src/components/Editor.tsx" target="_blank" rel="noopener noreferrer">Rspack demo monaco-editor-react</a>。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>需要注意的是 <code>publicPath</code> 需要设置为 <code>'auto'</code>，否则 web worker 内引用的文件会添加重复路径。</p>
+</div>
 <h3><s>本地路径</s></h3>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>

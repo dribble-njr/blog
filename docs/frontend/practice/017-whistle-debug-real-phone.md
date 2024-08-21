@@ -104,3 +104,35 @@ https://localhost:3000/index.html whistle.inspect://eruda disable://cache
 ```
 
 这个配置的作用是当访问到 `localhost:3000` 时，页面会自动注入 `eruda` 调试工具。
+
+## Chrome inspect
+
+有些时候，使用 `whistle` 注入调试工具的效果并不是很好，因此我们可以使用 Chrome inspect 来替代。
+
+### 准备工作
+
+需要的工具：
+
+- PC 安装 Chrome 浏览器
+- 安卓手机
+- 数据线
+
+### 操作步骤
+
+打开手机开发者选项，允许 USB 调试。
+
+::: tip
+
+不同安卓设备打开方式不同，根据品牌谷歌搜索打开方式。
+
+:::
+
+谷歌浏览器输入 `chrome://inspect/` 打开调试工具，点击 `inspect` 按钮即可调试网页。
+
+![inspect](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240821141307.png)
+
+::: warning
+
+应该只能调试 chrome 内核的浏览器。
+
+:::

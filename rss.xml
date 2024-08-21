@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 14 Aug 2024 03:06:49 GMT</pubDate>
-    <lastBuildDate>Wed, 14 Aug 2024 03:06:49 GMT</lastBuildDate>
+    <pubDate>Wed, 21 Aug 2024 06:18:05 GMT</pubDate>
+    <lastBuildDate>Wed, 21 Aug 2024 06:18:05 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>practice</category>
@@ -1182,6 +1182,27 @@ obj<span class="token punctuation">.</span><span class="token function">getData<
 </code></pre></div><p>配置如下：</p>
 <div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>https://localhost:3000/index.html whistle.inspect://eruda disable://cache
 </code></pre></div><p>这个配置的作用是当访问到 <code>localhost:3000</code> 时，页面会自动注入 <code>eruda</code> 调试工具。</p>
+<h2>Chrome inspect</h2>
+<p>有些时候，使用 <code>whistle</code> 注入调试工具的效果并不是很好，因此我们可以使用 Chrome inspect 来替代。</p>
+<h3>准备工作</h3>
+<p>需要的工具：</p>
+<ul>
+<li>PC 安装 Chrome 浏览器</li>
+<li>安卓手机</li>
+<li>数据线</li>
+</ul>
+<h3>操作步骤</h3>
+<p>打开手机开发者选项，允许 USB 调试。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>不同安卓设备打开方式不同，根据品牌谷歌搜索打开方式。</p>
+</div>
+<p>谷歌浏览器输入 <code>chrome://inspect/</code> 打开调试工具，点击 <code>inspect</code> 按钮即可调试网页。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240821141307.png" alt="inspect" tabindex="0" loading="lazy"><figcaption>inspect</figcaption></figure>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>应该只能调试 chrome 内核的浏览器。</p>
+</div>
 ]]></content:encoded>
       <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240729163103.png" type="image/png"/>
     </item>

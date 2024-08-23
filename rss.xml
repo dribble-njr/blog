@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 23 Aug 2024 10:08:02 GMT</pubDate>
-    <lastBuildDate>Fri, 23 Aug 2024 10:08:02 GMT</lastBuildDate>
+    <pubDate>Fri, 23 Aug 2024 10:17:28 GMT</pubDate>
+    <lastBuildDate>Fri, 23 Aug 2024 10:17:28 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>node</category>
@@ -51,14 +51,63 @@
 <ul>
 <li>应用程序级中间件：与 <code>Express</code> 应用程序实例绑定。</li>
 <li>路由器级中间件：与 <code>express.Router()</code> 实例绑定。</li>
-<li>内置中间件：如 <code>express.json()</code> 和 <code>express.static()</code>。</li>
 <li>错误处理中间件：能捕捉错误并进行处理的特殊中间件。</li>
 </ul>
 <p>中间件按照应用程序中定义的顺序执行。 如果中间件函数没有结束请求-响应循环（调用 <code>res.end()</code>），则必须调用 <code>next()</code> 将控制权传递给下一个中间件函数。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>Most middleware (like ' + name + ') is no longer bundled with Express and must be installed separately. Please see <a href="https://github.com/senchalabs/connect#middleware" target="_blank" rel="noopener noreferrer">https://github.com/senchalabs/connect#middleware</a>.</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">var</span> removedMiddlewares <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token string">'bodyParser'</span><span class="token punctuation">,</span>
+  <span class="token string">'compress'</span><span class="token punctuation">,</span>
+  <span class="token string">'cookieSession'</span><span class="token punctuation">,</span>
+  <span class="token string">'session'</span><span class="token punctuation">,</span>
+  <span class="token string">'logger'</span><span class="token punctuation">,</span>
+  <span class="token string">'cookieParser'</span><span class="token punctuation">,</span>
+  <span class="token string">'favicon'</span><span class="token punctuation">,</span>
+  <span class="token string">'responseTime'</span><span class="token punctuation">,</span>
+  <span class="token string">'errorHandler'</span><span class="token punctuation">,</span>
+  <span class="token string">'timeout'</span><span class="token punctuation">,</span>
+  <span class="token string">'methodOverride'</span><span class="token punctuation">,</span>
+  <span class="token string">'vhost'</span><span class="token punctuation">,</span>
+  <span class="token string">'csrf'</span><span class="token punctuation">,</span>
+  <span class="token string">'directory'</span><span class="token punctuation">,</span>
+  <span class="token string">'limit'</span><span class="token punctuation">,</span>
+  <span class="token string">'multipart'</span><span class="token punctuation">,</span>
+  <span class="token string">'staticCache'</span>
+<span class="token punctuation">]</span>
+</code></pre></div></div>
 <h2>Routing</h2>
 <p>路由定义了应用程序响应客户端请求的端点（URI）。每个路由可以有多个处理程序，并支持所有 HTTP 方法（GET、POST、PUT、DELETE 等）。</p>
 <p>支持自动解析 <code>query parameters</code> 和 <code>URL</code> 中的 <code>:param</code> 值。</p>
 <p>简单理解为分发请求并进行相应处理。</p>
+<h2>lib 源码结构</h2>
+<p>Express@4.19.2 中，<code>lib</code> 目录结构如下：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>lib/
+├── application.js
+├── express.js
+├── middleware/
+│   ├── init.js
+│   ├── query.js
+├── request.js
+├── response.js
+├── router/
+│   ├── index.js
+│   ├── layer.js
+│   ├── route.js
+├── utils.js
+└── view.js
+</code></pre></div><ul>
+<li><code>application.js</code>: 定义了 Express 应用的核心功能，如 <code>app.use()</code>、<code>app.get()</code> 等方法。</li>
+<li><code>express.js</code>: 主入口文件，导出了核心的 <code>express()</code> 函数。</li>
+<li><code>middleware/</code>: 包含 Express 内置的 <code>middleware</code>，例如 <code>init.js</code> 用于初始化中间件，<code>query.js</code> 用于解析查询字符串。</li>
+<li><code>request.js</code>: 定义了 <code>req</code> 对象的扩展和辅助方法。</li>
+<li><code>response.js</code>: 定义了 <code>res</code> 对象的扩展和辅助方法。</li>
+<li><code>router/</code>: 包含与路由相关的代码，其中 <code>index.js</code> 是路由器的主模块，<code>layer.js</code> 和 <code>route.js</code> 用于处理路由层次和路径匹配。</li>
+<li><code>utils.js</code>: 一些工具函数，用于简化内部实现。</li>
+<li><code>view.js</code>: 处理视图渲染相关的逻辑。</li>
+</ul>
+<p>接下来会对每个文件进行详细分析。</p>
 ]]></content:encoded>
     </item>
     <item>

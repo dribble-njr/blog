@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-08-21T06:18:05.976Z</updated>
+  <updated>2024-08-23T10:08:02.813Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="node"/>
   <category term="practice"/>
   <category term="Pixi"/>
   <category term="READING"/>
@@ -28,6 +29,41 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">总体架构</title>
+    <id>https://dribble-njr.github.io/blog/blog/backend/node/express/01-overview-architecture.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/backend/node/express/01-overview-architecture.html"/>
+    <updated>2024-08-23T10:06:24.000Z</updated>
+    <summary type="html"><![CDATA[<p><a href="https://github.com/expressjs/express" target="_blank" rel="noopener noreferrer">Express</a> 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。</p>
+<h2>核心组件</h2>
+<p>包括 <code>Application</code>、<code>Request</code>、<code>Response</code> 和 <code>Router</code>：</p>]]></summary>
+    <content type="html"><![CDATA[<p><a href="https://github.com/expressjs/express" target="_blank" rel="noopener noreferrer">Express</a> 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。</p>
+<h2>核心组件</h2>
+<p>包括 <code>Application</code>、<code>Request</code>、<code>Response</code> 和 <code>Router</code>：</p>
+<ul>
+<li><code>Application</code>：应用程序对象，由 <code>express()</code> 创建，它代表一个 Express 应用程序，用于通过设置中间件、路由和错误处理程序来配置应用程序。</li>
+<li><code>Request</code>： HTTP 请求实例，该对象封装了传入请求的所有信息，如 <code>header</code>、<code>query parameters</code>、<code>URL</code>、<code>body</code> 等。</li>
+<li><code>Response</code>：HTTP 响应实例，该对象用于向客户端发回数据、设置响应 <code>header</code>、<code>cookie</code>、状态代码等。</li>
+<li><code>Router</code>: 路由器对象，由 <code>express.Router()</code> 创建，一个小型 <code>Application</code>，可拥有自己的路由和中间件。它有助于将应用组织成更小的、模块化的部分。</li>
+</ul>
+<h2>Middleware</h2>
+<p>可以访问请求（<code>req</code>）、响应（<code>res</code>）以及应用程序请求-响应循环中下一个中间件函数的函数。中间件可以执行任何代码、修改请求和响应对象、结束请求-响应循环或调用下一个中间件函数。</p>
+<p>在 Express 中，有不同类型的中间件：</p>
+<ul>
+<li>应用程序级中间件：与 <code>Express</code> 应用程序实例绑定。</li>
+<li>路由器级中间件：与 <code>express.Router()</code> 实例绑定。</li>
+<li>内置中间件：如 <code>express.json()</code> 和 <code>express.static()</code>。</li>
+<li>错误处理中间件：能捕捉错误并进行处理的特殊中间件。</li>
+</ul>
+<p>中间件按照应用程序中定义的顺序执行。 如果中间件函数没有结束请求-响应循环（调用 <code>res.end()</code>），则必须调用 <code>next()</code> 将控制权传递给下一个中间件函数。</p>
+<h2>Routing</h2>
+<p>路由定义了应用程序响应客户端请求的端点（URI）。每个路由可以有多个处理程序，并支持所有 HTTP 方法（GET、POST、PUT、DELETE 等）。</p>
+<p>支持自动解析 <code>query parameters</code> 和 <code>URL</code> 中的 <code>:param</code> 值。</p>
+<p>简单理解为分发请求并进行相应处理。</p>
+]]></content>
+    <category term="node"/>
+    <published>2024-08-20T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">monaco-editor/react</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html</id>
@@ -11018,61 +11054,6 @@ node_modules
 <li><a href="https://segmentfault.com/a/1190000042250628" target="_blank" rel="noopener noreferrer">Qwik.js框架是如何追求极致性能的?!</a></li>
 </ol>
 ]]></content>
-    <category term="工程化"/>
-    <published>2024-01-03T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">React Server Component</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/ssr/006-react-server-component.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/ssr/006-react-server-component.html"/>
-    <updated>2024-01-07T08:28:24.000Z</updated>
-    <summary type="html"><![CDATA[<p>React Server Component 是一种新的组件类型，它允许 React 应用在后端服务器上运行部分组件逻辑。传统的客户端渲染将渲染和处理放在前端。服务器组件的引入，旨在优化应用性能，减小传输给客户端的数据量，提高加载速度，提升用户体验。</p>
-<p>服务器和客户端组件允许开发人员构建跨越服务器和客户端的应用程序，将客户端应用程序的丰富交互性与传统服务器渲染的更高性能结合起来。</p>
-<h2>Why Server Components</h2>
-<p>注意看下面的例子：</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Wrapper</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentA</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentB</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Wrapper</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<p>React Server Component 是一种新的组件类型，它允许 React 应用在后端服务器上运行部分组件逻辑。传统的客户端渲染将渲染和处理放在前端。服务器组件的引入，旨在优化应用性能，减小传输给客户端的数据量，提高加载速度，提升用户体验。</p>
-<p>服务器和客户端组件允许开发人员构建跨越服务器和客户端的应用程序，将客户端应用程序的丰富交互性与传统服务器渲染的更高性能结合起来。</p>
-<h2>Why Server Components</h2>
-<p>注意看下面的例子：</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Wrapper</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentA</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ComponentB</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Wrapper</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>组件 A 和组件 B 以 <code>children</code> prop 传入 <code>wrapper</code>。每个组件都负责获取自己的数据，任何组件都不会处理自身操作不需要的数据。</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">const</span> <span class="token function-variable function">Wrapper</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>wrapperData<span class="token punctuation">,</span> setWrapperData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    <span class="token comment">// API call to get data for Wrapper component to function</span>
-    <span class="token function">getWrapperData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token function">setWrapperData</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-  <span class="token comment">// Only after API response is received, we start rendering</span>
-  <span class="token comment">// ComponentA and ComponentB (children props)</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>wrapperData<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>wrapperData<span class="token punctuation">.</span>name <span class="token operator">&amp;&amp;</span> children<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/*</span></code></pre></div>]]></content>
     <category term="工程化"/>
     <published>2024-01-03T00:00:00.000Z</published>
   </entry>

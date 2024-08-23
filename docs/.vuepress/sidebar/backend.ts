@@ -38,12 +38,7 @@ export default [
         collapsible: true,
         icon: 'basic',
         prefix: 'basic/',
-        children: [
-          '001-hello-database',
-          '002-relation-model',
-          '003-db-design',
-          '004-advanced-db-model'
-        ]
+        children: ['001-hello-database', '002-relation-model', '003-db-design', '004-advanced-db-model']
       },
       {
         text: 'MySQL',
@@ -66,6 +61,14 @@ export default [
     collapsible: true,
     icon: 'nodejs',
     prefix: 'node/',
-    children: []
+    children: [
+      {
+        text: 'Express',
+        collapsible: true,
+        icon: 'basic',
+        prefix: 'express/',
+        children: ['01-overview-architecture']
+      }
+    ]
   }
 ]

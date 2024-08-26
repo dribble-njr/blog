@@ -67,7 +67,7 @@ export default [
         collapsible: true,
         icon: 'basic',
         prefix: 'express/',
-        children: ['01-overview-architecture']
+        children: ['01-overview-architecture', '02-express.js']
       }
     ]
   }

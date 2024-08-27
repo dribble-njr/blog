@@ -1,7 +1,7 @@
 ---
 title: express.js
 date: 2024-08-23
-icon: architecture
+icon: code
 category:
   - node
 tag:

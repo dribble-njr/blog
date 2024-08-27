@@ -65,9 +65,16 @@ export default [
       {
         text: 'Express',
         collapsible: true,
-        icon: 'basic',
+        icon: 'express',
         prefix: 'express/',
         children: ['01-overview-architecture', '02-express.js']
+      },
+      {
+        text: 'Module',
+        collapsible: true,
+        icon: 'npm',
+        prefix: 'module/',
+        children: ['001-finalhandler']
       }
     ]
   }

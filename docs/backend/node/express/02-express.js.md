@@ -17,7 +17,7 @@ tag:
 - `bodyParser`: 用于解析请求体（body）。
 - `EventEmitter`: Node.js 的事件模块，使 `app` 具有事件处理能力。
 - [`merge-descriptors`](https://www.npmjs.com/package/merge-descriptors): 一个合并对象属性的模块，用于将多个对象的属性混入到一个对象中。
-- `proto`: 从 **application.js** 引入的核心应用逻辑。
+- `proto`: 从 **[application.js](./03-application.js.md)** 引入的核心应用逻辑。
 - `Route` 和 `Router`: 处理路由的模块。
 - `req` 和 `res`: 扩展了 `request` 和 `response` 对象。
 
@@ -71,6 +71,13 @@ function createApplication() {
 - `mixin(app, proto, false)`: 将 `application.js` 中定义的核心功能混入 `app`。
 - `app.request` 和 `app.response`: 创建 `req` 和 `res` 的原型对象，并绑定 `app`。
 - `app.init()`: 初始化应用。
+
+使用如下，实际上就相当于调用了 `createApplication()` 函数，返回一个新的 `app` 对象。
+
+```js
+const express = require('express')
+const app = express()
+```
 
 ## 暴露的接口
 

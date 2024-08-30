@@ -67,7 +67,7 @@ export default [
         collapsible: true,
         icon: 'express',
         prefix: 'express/',
-        children: ['01-overview-architecture', '02-express.js']
+        children: ['01-overview-architecture', '02-express.js', '03-application.js']
       },
       {
         text: 'Module',
@@ -75,6 +75,21 @@ export default [
         icon: 'npm',
         prefix: 'module/',
         children: ['001-finalhandler']
+      }
+    ]
+  },
+  {
+    text: 'Java',
+    collapsible: true,
+    icon: 'java',
+    prefix: 'java/',
+    children: [
+      {
+        text: 'tool',
+        collapsible: true,
+        icon: 'tool-fill',
+        prefix: 'tool/',
+        children: ['01-maven']
       }
     ]
   }

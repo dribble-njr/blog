@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 27 Aug 2024 09:24:45 GMT</pubDate>
-    <lastBuildDate>Tue, 27 Aug 2024 09:24:45 GMT</lastBuildDate>
+    <pubDate>Fri, 30 Aug 2024 11:37:55 GMT</pubDate>
+    <lastBuildDate>Fri, 30 Aug 2024 11:37:55 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>node</category>
@@ -28,6 +28,85 @@
     <category>reading</category>
     <category>linux</category>
     <category>工程化</category>
+    <item>
+      <title>Maven</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/java/tool/01-maven.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/java/tool/01-maven.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Maven</source>
+      <description>什么是 Maven Maven 是一个项目管理和构建工具，主要用于 Java 项目。它通过 POM（Project Object Model）文件来管理项目的依赖、编译、测试和打包等任务。Maven 的核心功能包括： 依赖管理：通过定义 POM 文件中的依赖项，Maven 能够自动下载和配置项目所需的库。 构建自动化：Maven 可以自动化执行从编译、...</description>
+      <category>node</category>
+      <pubDate>Fri, 30 Aug 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2>什么是 Maven</h2>
+<p>Maven 是一个项目管理和构建工具，主要用于 Java 项目。它通过 POM（Project Object Model）文件来管理项目的依赖、编译、测试和打包等任务。Maven 的核心功能包括：</p>
+<ul>
+<li>依赖管理：通过定义 POM 文件中的依赖项，Maven 能够自动下载和配置项目所需的库。</li>
+<li>构建自动化：Maven 可以自动化执行从编译、测试到打包的整个构建过程。</li>
+<li>项目结构标准化：Maven 提供了约定优于配置的项目结构，减少了开发者的配置工作。</li>
+</ul>
+<p>类似 npm，不同的是，npm 使用 <code>package.json</code>，而 Maven 使用 <code>pom.xml</code>。</p>
+<p><code>package.json</code> 通常包含以下内容：</p>
+<ul>
+<li>依赖管理：<code>dependencies</code> 和 <code>devDependencies</code> 字段用于列出项目在运行时和开发时所需的包。</li>
+<li>脚本管理：<code>scripts</code> 字段允许开发者定义各种命令，如 <code>npm start</code>、<code>npm test</code> 等，来自动化常见任务。</li>
+<li>项目元数据：如项目名称、版本、描述、作者等。</li>
+</ul>
+<p><code>pom.xml</code> 中包含下述内容：</p>
+<ul>
+<li>依赖管理：<code>dependencies</code> 节点列出项目所依赖的库及其版本。</li>
+<li>构建管理：<code>build</code> 节点定义了构建过程中的各种配置，包括插件的使用。</li>
+<li>项目元数据：如项目的 <code>groupId</code>、<code>artifactId</code>、<code>version</code> 等。</li>
+<li>生命周期管理：Maven 提供了一整套的生命周期管理机制，涵盖了项目的编译、测试、打包和部署等阶段。</li>
+</ul>
+<p>示例：</p>
+<div class="language-xml" data-ext="xml" data-title="xml"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+         <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">&gt;</span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>my-project<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.8.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span>17<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>source</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span><span class="token punctuation">&gt;</span></span>17<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2>依赖原则</h2>
+<ol>
+<li>依赖路径最短优先原则：</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>A -<span class="token operator">&gt;</span> B -<span class="token operator">&gt;</span> C -<span class="token operator">&gt;</span> X<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+A -<span class="token operator">&gt;</span> D -<span class="token operator">&gt;</span> X<span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span>
+</code></pre></div><p>由于 X(2.0) 路径最短，所以使用 X(2.0)。</p>
+<ol start="2">
+<li>声明顺序优先原则：</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>A -<span class="token operator">&gt;</span> B -<span class="token operator">&gt;</span> X<span class="token punctuation">(</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+A -<span class="token operator">&gt;</span> C -<span class="token operator">&gt;</span> X<span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span>
+</code></pre></div><p>在 POM 中最先声明的优先，上面的两个依赖如果先声明 B，那么最后使用 X(1.0)。</p>
+<ol start="3">
+<li>覆写优先原则：</li>
+</ol>
+<p>子 POM 内声明的依赖优先于父 POM 中声明的依赖。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>finalhandler</title>
       <link>https://dribble-njr.github.io/blog/blog/backend/node/module/001-finalhandler.html</link>
@@ -64,7 +143,7 @@
 <li><code>bodyParser</code>: 用于解析请求体（body）。</li>
 <li><code>EventEmitter</code>: Node.js 的事件模块，使 <code>app</code> 具有事件处理能力。</li>
 <li><a href="https://www.npmjs.com/package/merge-descriptors" target="_blank" rel="noopener noreferrer"><code>merge-descriptors</code></a>: 一个合并对象属性的模块，用于将多个对象的属性混入到一个对象中。</li>
-<li><code>proto</code>: 从 <strong>application.js</strong> 引入的核心应用逻辑。</li>
+<li><code>proto</code>: 从 <strong></strong> 引入的核心应用逻辑。</li>
 <li><code>Route</code> 和 <code>Router</code>: 处理路由的模块。</li>
 <li><code>req</code> 和 <code>res</code>: 扩展了 <code>request</code> 和 <code>response</code> 对象。</li>
 </ul>
@@ -110,7 +189,10 @@
 <li><code>app.request</code> 和 <code>app.response</code>: 创建 <code>req</code> 和 <code>res</code> 的原型对象，并绑定 <code>app</code>。</li>
 <li><code>app.init()</code>: 初始化应用。</li>
 </ul>
-<h2>暴露的接口</h2>
+<p>使用如下，实际上就相当于调用了 <code>createApplication()</code> 函数，返回一个新的 <code>app</code> 对象。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h2>暴露的接口</h2>
 <p>暴露的接口如下：</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>exports<span class="token punctuation">.</span>application <span class="token operator">=</span> proto
 exports<span class="token punctuation">.</span>request <span class="token operator">=</span> req
@@ -1616,13 +1698,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * @export
- * @class MiddlewareManager
+ * <span class="token keyword">@export</span>
+ * <span class="token keyword">@class</span> MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -1849,12 +1931,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
  * Execute route's middleware and controller.
  *
- * @param {CustomIncomingMessage} req
- * @param {ServerResponse} res
- * @param {Route} route
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -1877,12 +1959,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * @param {string} method - The HTTP method to match.
- * @param {string} pathname - The URL pathname to match.
- * @return {Object} An object containing the matched route and parameters.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
+ * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -9859,57 +9941,6 @@ module<span class="token punctuation">.</span><span class="token function">forma
       <content:encoded><![CDATA[<h2>npm</h2>
 <p><a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally" target="_blank" rel="noopener noreferrer">https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally</a></p>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>工具链</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/003-tool.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/003-tool.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">工具链</source>
-      <description>JavaScript 问题： API 兼容，polyfill: core.js 语法增强（compiler），syntax transformer(regenerator)，jsx，tsc... babel 代码编译工具 @babel/core @babel/preset-env source code -- ast swc(rust) 对标 babe...</description>
-      <category>工程化</category>
-      <pubDate>Sat, 23 Dec 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>JavaScript</h2>
-<p>问题：</p>
-<ul>
-<li>API 兼容，polyfill: core.js</li>
-<li>语法增强（compiler），syntax transformer(regenerator)，jsx，tsc...</li>
-</ul>
-<p>babel 代码编译工具</p>
-<ul>
-<li>@babel/core</li>
-<li>@babel/preset-env</li>
-</ul>
-<p>source code -- ast</p>
-<p>swc(rust) 对标 babel</p>
-<p><a href="https://github.com/estree/estree" target="_blank" rel="noopener noreferrer">https://github.com/estree/estree</a></p>
-<p><a href="https://github.com/bramblex/jsjs" target="_blank" rel="noopener noreferrer">https://github.com/bramblex/jsjs</a></p>
-<h2>CSS</h2>
-<p>问题：</p>
-<ul>
-<li>语法缺失（循环、判断、拼接）</li>
-<li>功能缺失（颜色函数、数学函数、自定义函数）</li>
-</ul>
-<p>sass/less/stylus --&gt; 预处理器 --&gt; css --&gt; postcss（后处理器） --&gt; polyfill、代码压缩、剪枝</p>
-<p><a href="https://postcss.org/" target="_blank" rel="noopener noreferrer">https://postcss.org/</a></p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20231223162446.png" alt="20231223162446" tabindex="0" loading="lazy"><figcaption>20231223162446</figcaption></figure>
-<h2>构建工具</h2>
-<p>以 webpack 为例。</p>
-<ol>
-<li>入口：通过入口分析依赖关系；</li>
-<li>开发服务器：webpack serve --&gt; webpack dev server --&gt; express --&gt; 源码变更 --&gt; 浏览器刷新（强制刷新、HMR）websocket</li>
-<li>文件指纹（hash），涉及到缓存，类似 </li>
-<li>sourcemap</li>
-<li>...</li>
-</ol>
-<h2>脚手架</h2>
-<p>提供界面与交互、提供工程模版</p>
-<ul>
-<li>cra：深度定制，配置需要 eject 或使用 react-rewired 和 customize-cra</li>
-<li>vue-cli：支持配置覆盖，折中方案</li>
-<li>...</li>
-</ul>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20231223162446.png" type="image/png"/>
     </item>
   </channel>
 </rss>

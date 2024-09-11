@@ -8,9 +8,9 @@ tag:
   - 兼容
 ---
 
-webview 开发时，iOS 中 safari 浏览器对图片元素的 `touch` 事件有默认行为，会调出图片预览等功能，因此我们可以通过 `preventDefault` 方法来阻止默认行为。
+webview 开发时，iOS 中 safari 浏览器通过 `preventDefault` 方法来阻止默认行为。
 
-```ts
+```ts{16}
 import { useEffect } from 'react'
 
 const usePreventTouchEvent = <T extends HTMLElement = HTMLDivElement>(containerRef: React.RefObject<T>) => {

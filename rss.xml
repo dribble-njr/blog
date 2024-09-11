@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 11 Sep 2024 03:51:57 GMT</pubDate>
-    <lastBuildDate>Wed, 11 Sep 2024 03:51:57 GMT</lastBuildDate>
+    <pubDate>Wed, 11 Sep 2024 06:07:49 GMT</pubDate>
+    <lastBuildDate>Wed, 11 Sep 2024 06:07:49 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>practice</category>
@@ -45,7 +45,7 @@
       event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchstart'</span><span class="token punctuation">,</span> <span class="token string">'touchend'</span><span class="token punctuation">,</span> <span class="token string">'touchmove'</span><span class="token punctuation">]</span>
+    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchmove'</span><span class="token punctuation">]</span>
 
     <span class="token keyword">const</span> dragContainer <span class="token operator">=</span> containerRef<span class="token punctuation">.</span>current
 

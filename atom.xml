@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-09-11T03:51:57.360Z</updated>
+  <updated>2024-09-11T06:07:49.724Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -33,7 +33,7 @@
     <title type="text">iOS 阻止 touch 事件默认行为</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/019-ios-prevent-touch.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/019-ios-prevent-touch.html"/>
-    <updated>2024-09-11T03:50:22.000Z</updated>
+    <updated>2024-09-11T06:06:12.000Z</updated>
     <summary type="html"><![CDATA[<p>webview 开发时，iOS 中 safari 浏览器对图片元素的 <code>touch</code> 事件有默认行为，会调出图片预览等功能，因此我们可以通过 <code>preventDefault</code> 方法来阻止默认行为。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
 
@@ -43,7 +43,7 @@
       event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchstart'</span><span class="token punctuation">,</span> <span class="token string">'touchend'</span><span class="token punctuation">,</span> <span class="token string">'touchmove'</span><span class="token punctuation">]</span>
+    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchmove'</span><span class="token punctuation">]</span>
 
     <span class="token keyword">const</span> dragContainer <span class="token operator">=</span> containerRef<span class="token punctuation">.</span>current
 
@@ -74,7 +74,7 @@
       event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchstart'</span><span class="token punctuation">,</span> <span class="token string">'touchend'</span><span class="token punctuation">,</span> <span class="token string">'touchmove'</span><span class="token punctuation">]</span>
+    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchmove'</span><span class="token punctuation">]</span>
 
     <span class="token keyword">const</span> dragContainer <span class="token operator">=</span> containerRef<span class="token punctuation">.</span>current
 

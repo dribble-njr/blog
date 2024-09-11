@@ -217,6 +217,7 @@ export default [
       '016-rest-client-error',
       '017-whistle-debug-real-phone',
       '018-monaco-editor-react',
+      '019-ios-prevent-touch'
     ]
   },
   {

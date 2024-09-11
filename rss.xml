@@ -6,12 +6,12 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 30 Aug 2024 11:37:55 GMT</pubDate>
-    <lastBuildDate>Fri, 30 Aug 2024 11:37:55 GMT</lastBuildDate>
+    <pubDate>Wed, 11 Sep 2024 03:51:57 GMT</pubDate>
+    <lastBuildDate>Wed, 11 Sep 2024 03:51:57 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-    <category>node</category>
     <category>practice</category>
+    <category>node</category>
     <category>Pixi</category>
     <category>READING</category>
     <category>JavaScript</category>
@@ -28,6 +28,51 @@
     <category>reading</category>
     <category>linux</category>
     <category>工程化</category>
+    <item>
+      <title>iOS 阻止 touch 事件默认行为</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/practice/019-ios-prevent-touch.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/practice/019-ios-prevent-touch.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">iOS 阻止 touch 事件默认行为</source>
+      <description>webview 开发时，iOS 中 safari 浏览器对图片元素的 touch 事件有默认行为，会调出图片预览等功能，因此我们可以通过 preventDefault 方法来阻止默认行为。 注意 在 iOS 上，需要增加 { passive: false } 参数，否则会导致 touch 事件的 preventDefault() 行为失效。 详细见：a...</description>
+      <category>practice</category>
+      <pubDate>Wed, 11 Sep 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>webview 开发时，iOS 中 safari 浏览器对图片元素的 <code>touch</code> 事件有默认行为，会调出图片预览等功能，因此我们可以通过 <code>preventDefault</code> 方法来阻止默认行为。</p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+
+<span class="token keyword">const</span> usePreventTouchEvent <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token operator">=</span> HTMLDivElement<span class="token operator">&gt;</span><span class="token punctuation">(</span>containerRef<span class="token operator">:</span> React<span class="token punctuation">.</span>RefObject<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> preventDefaultBehavior <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> Event<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> touchEvents<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'touchstart'</span><span class="token punctuation">,</span> <span class="token string">'touchend'</span><span class="token punctuation">,</span> <span class="token string">'touchmove'</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">const</span> dragContainer <span class="token operator">=</span> containerRef<span class="token punctuation">.</span>current
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dragContainer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      touchEvents<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>eventType<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        dragContainer<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>eventType<span class="token punctuation">,</span> preventDefaultBehavior<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          passive<span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        touchEvents<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>eventType<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          dragContainer<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span>eventType<span class="token punctuation">,</span> preventDefaultBehavior<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>containerRef<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> usePreventTouchEvent
+</code></pre></div><div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>在 iOS 上，需要增加 <code>{ passive: false }</code> 参数，否则会导致 <code>touch</code> 事件的 <code>preventDefault()</code> 行为失效。</p>
+<p>详细见：<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#passive" target="_blank" rel="noopener noreferrer">addEventListener#passive</a>。</p>
+</div>
+]]></content:encoded>
+    </item>
     <item>
       <title>Maven</title>
       <link>https://dribble-njr.github.io/blog/blog/backend/java/tool/01-maven.html</link>
@@ -9928,18 +9973,6 @@ module<span class="token punctuation">.</span><span class="token function">forma
 </blockquote>
 <h2>总结</h2>
 <p>本文主要介绍了模块化发展的历程，介绍各种规范如 CommonJS、AMD、CMD、ESM 的使用和对比。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>包管理工具</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/002-package-manager.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/002-package-manager.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">包管理工具</source>
-      <description>npm https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally </description>
-      <category>工程化</category>
-      <pubDate>Sat, 23 Dec 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>npm</h2>
-<p><a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally" target="_blank" rel="noopener noreferrer">https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally</a></p>
 ]]></content:encoded>
     </item>
   </channel>

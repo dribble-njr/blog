@@ -19,7 +19,7 @@ const usePreventTouchEvent = <T extends HTMLElement = HTMLDivElement>(containerR
       event.preventDefault()
     }
 
-    const touchEvents: string[] = ['touchstart', 'touchend', 'touchmove']
+    const touchEvents: string[] = ['touchmove']
 
     const dragContainer = containerRef.current
 

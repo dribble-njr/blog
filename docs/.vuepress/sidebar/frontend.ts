@@ -50,7 +50,8 @@ export default [
           '014-responsive-design-intro',
           '015-responsive-design',
           '016-how-to-responsive',
-          '017-loading-spinner'
+          '017-loading-spinner',
+          '018-autofill'
         ]
       },
       {

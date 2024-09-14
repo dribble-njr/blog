@@ -7,6 +7,33 @@
   "favicon": "https://dribble-njr.github.io/blog/blog/favicon.ico",
   "items": [
     {
+      "title": "覆盖输入框 autofill 样式",
+      "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/css/018-autofill.html",
+      "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/css/018-autofill.html",
+      "summary": "浏览器自动填充密码会有一些默认样式： autofill 默认样式autofill 默认样式 方法一 使用 -webkit-box-shadow 实现覆盖： 但是，该方式无法设置背景透明。 方法二 使用动画： 但是如果停留时间过久，也会有问题，但是目前好像没有更好的解决方法。 ",
+      "content_html": "<p>浏览器自动填充密码会有一些默认样式：</p>\n<figure><img src=\"https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240914171559.png\" alt=\"autofill 默认样式\" tabindex=\"0\" loading=\"lazy\"><figcaption>autofill 默认样式</figcaption></figure>\n<h2>方法一</h2>\n<p>使用 <code>-webkit-box-shadow</code> 实现覆盖：</p>\n<div class=\"language-css\" data-ext=\"css\" data-title=\"css\"><pre class=\"language-css\"><code><span class=\"token selector\">input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill</span> <span class=\"token punctuation\">{</span>\n  <span class=\"token property\">-webkit-box-shadow</span><span class=\"token punctuation\">:</span> 0 0 0 999px #fff inset<span class=\"token punctuation\">;</span>\n<span class=\"token punctuation\">}</span>\n</code></pre></div><p>但是，该方式无法设置背景透明。</p>\n<h2>方法二</h2>\n<p>使用动画：</p>\n<div class=\"language-css\" data-ext=\"css\" data-title=\"css\"><pre class=\"language-css\"><code><span class=\"token selector\">input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill</span> <span class=\"token punctuation\">{</span>\n  <span class=\"token property\">-webkit-text-fill-color</span><span class=\"token punctuation\">:</span> <span class=\"token function\">var</span><span class=\"token punctuation\">(</span>--white-color-1<span class=\"token punctuation\">)</span><span class=\"token punctuation\">;</span>\n  <span class=\"token property\">transition</span><span class=\"token punctuation\">:</span> background-color 5000s ease-in-out 0s<span class=\"token punctuation\">;</span>\n<span class=\"token punctuation\">}</span>\n</code></pre></div><p>但是如果停留时间过久，也会有问题，但是目前好像没有更好的解决方法。</p>\n",
+      "image": "https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240914171559.png",
+      "date_published": "2024-09-14T00:00:00.000Z",
+      "date_modified": "2024-09-14T09:21:57.000Z",
+      "authors": [],
+      "tags": [
+        "CSS"
+      ]
+    },
+    {
+      "title": "实现 loading spinner",
+      "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/css/017-loading-spinner.html",
+      "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/css/017-loading-spinner.html",
+      "summary": "实现一个 loading spinner 可以使用 CSS 动画和边框。 ",
+      "content_html": "<p>实现一个 loading spinner 可以使用 CSS 动画和边框。</p>\n\n",
+      "date_published": "2024-03-04T00:00:00.000Z",
+      "date_modified": "2024-09-14T07:09:21.000Z",
+      "authors": [],
+      "tags": [
+        "CSS"
+      ]
+    },
+    {
       "title": "iOS 图片兼容",
       "url": "https://dribble-njr.github.io/blog/blog/frontend/practice/020-ios-img.html",
       "id": "https://dribble-njr.github.io/blog/blog/frontend/practice/020-ios-img.html",
@@ -1306,30 +1333,6 @@
       "authors": [],
       "tags": [
         "practice"
-      ]
-    },
-    {
-      "title": "实践",
-      "url": "https://dribble-njr.github.io/blog/blog/frontend/practice/",
-      "id": "https://dribble-njr.github.io/blog/blog/frontend/practice/",
-      "summary": "实践 这里是关于前端实践的文章。 ",
-      "content_html": "\n<p>这里是关于前端实践的文章。</p>\n",
-      "date_published": "2024-01-07T10:18:51.000Z",
-      "date_modified": "2024-01-13T16:33:26.000Z",
-      "authors": [],
-      "tags": []
-    },
-    {
-      "title": "BFC 块级格式化上下文",
-      "url": "https://dribble-njr.github.io/blog/blog/frontend/basic/css/013-BFC.html",
-      "id": "https://dribble-njr.github.io/blog/blog/frontend/basic/css/013-BFC.html",
-      "summary": "什么是 BFC 块级格式化上下文（Block Formatting Context，BFC），其实是块级盒子的布局过程发生的区域，在这个区域内会有特定的布局规则。实际上他相当于一个 结界：如果一个元素具有 BFC，那么内部子元素无法影响外部的元素。 触发 BFC 触发 BFC 的 CSS 属性： <html> 根元素 浮动元素：float: left ...",
-      "content_html": "<h2>什么是 BFC</h2>\n<p>块级格式化上下文（Block Formatting Context，BFC），其实是块级盒子的布局过程发生的区域，在这个区域内会有特定的布局规则。实际上他相当于一个 <strong>结界</strong>：如果一个元素具有 BFC，那么内部子元素无法影响外部的元素。</p>\n<h2>触发 BFC</h2>\n<p>触发 BFC 的 CSS 属性：</p>\n<ul>\n<li><code>&lt;html&gt;</code> 根元素</li>\n<li>浮动元素：<code>float: left | right</code></li>\n<li><code>overflow</code> 值不为 <code>visible</code>、<code>clip</code> 的块元素：<code>overflow: hidden | scroll | auto</code></li>\n<li>绝对定位元素：<code>position: absolute | fixed</code></li>\n<li><code>display: inline-block | table-cell | flex | table-caption | inline-flex</code></li>\n</ul>\n<h2>BFC 的布局规则</h2>\n<p><strong>BFC 相当于一个独立块级容器，容器内的元素不会影响外部元素</strong>，具体规则如下：</p>\n<ul>\n<li>BFC 内的子元素以正常流排列；</li>\n<li>BFC 内的 <strong>子元素</strong> 垂直方向的外边距会发生重叠，但是可以利用 BFC 包裹元素消除外边距重叠（如果不能消除外边距重叠问题，则会影响外部元素布局）；</li>\n<li>BFC 元素计算高度时，浮动元素也参与计算。因此可以用来清除浮动（如果不能清除，子元素浮动则父元素高度塌陷，会影响后面元素的布局）。</li>\n</ul>\n<p>后面两条规则都是由于 BFC 的 <strong>结界</strong> 特性，常用来解决外边距重叠、浮动高度塌陷的问题。</p>\n<p>所以 BFC 的核心规则就是：<strong>容器内的元素不会影响外部元素</strong>。</p>\n<p>下面一一举例验证这些规则。</p>\n<h3>BFC 内的子元素以正常流排列</h3>\n<p><code>&lt;html&gt;</code> 根元素是最大的 BFC，它内部元素的布局是以正常流排列的，因此非常容易验证。</p>\n<h3>margin 重叠</h3>\n<h4>子元素的外边距会发生重叠</h4>\n<p>很简单，<code>&lt;html&gt;</code> 根元素就是最大的 BFC，在里面布局当然会发生外边距重叠。块的上外边距（margin-top）和下外边距 （margin-bottom）会合并为单个边距，其大小为两个外边距中的最大值。</p>\n\n<p>在这个例子中，为了看清两个子元素的外边距折叠问题，给父元素设置为宽 <code>120px</code>，边框 <code>1px</code> 黑色，第一个盒子设置了 <code>10px</code> 的 <code>margin-bottom</code>，第二个盒子设置为 <code>20px</code> 的 <code>margin-top</code>，两个盒子垂直外边距的值会取其中的最大值 <code>20px</code>。</p>\n<h4>BFC 消除外边距折叠</h4>\n<p>如果要消除这个影响，那么将第二个盒子包裹一个 wrapper，并将这个容器触发为 BFC，那么这个 wrapper 内的子元素则不会影响外部元素，当然也就消除了外边距折叠。</p>\n\n<p>可以看到，在触发 BFC 后，两个盒子垂直方向外边距为 <code>30px</code>。</p>\n<h3>浮动</h3>\n<h4>浮动高度塌陷</h4>\n<p>当我们使用 <code>float</code> 布局时，会使元素脱离文档流，造成高度塌陷。</p>\n\n<p>可以看到，由于给子元素设置了浮动，会造成父盒子高度塌陷。</p>\n<h4>BFC 清除浮动</h4>\n<p>如果要解决这个问题，可以给容器触发 BFC，则可以消除浮动的影响，就无需使用 <code>clear: both</code> 属性去清除浮动了。</p>\n\n<h2>两栏布局</h2>\n<p>如果想使用浮动实现两栏布局，可以看到，由于浮动的影响，会形成文字环绕的效果。</p>\n\n<p>如果给右边盒子触发 BFC，那么就可以得到想要的效果了。</p>\n\n<h2>常见触发方式的优缺点</h2>\n<ul>\n<li><code>float: left | right</code>：浮动元素能够形成 BFC，但是浮动元素本身具有破坏性，无法用来实现自动填满容器的自适应布局。</li>\n<li><code>position: absolute | fixed</code>：脱离文档流，一般用来和相对定位配合做布局，不太适合触发 BFC。</li>\n<li><code>overflow: hidden</code>：本身还是一个普通的元素，并没有脱离文档流，兼容性也不错，<strong>推荐使用</strong>。</li>\n</ul>\n",
-      "date_published": "2022-07-18T00:00:00.000Z",
-      "date_modified": "2024-01-07T13:07:06.000Z",
-      "authors": [],
-      "tags": [
-        "CSS"
       ]
     }
   ]

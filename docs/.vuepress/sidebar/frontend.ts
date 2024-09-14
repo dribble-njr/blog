@@ -49,7 +49,8 @@ export default [
           '013-BFC',
           '014-responsive-design-intro',
           '015-responsive-design',
-          '016-how-to-responsive'
+          '016-how-to-responsive',
+          '017-loading-spinner'
         ]
       },
       {

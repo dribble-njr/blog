@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-09-14T09:23:40.706Z</updated>
+  <updated>2024-09-18T08:47:48.477Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="reading"/>
   <category term="CSS"/>
   <category term="practice"/>
   <category term="node"/>
@@ -23,12 +24,122 @@
   <category term="next"/>
   <category term="react"/>
   <category term="algorithm"/>
-  <category term="reading"/>
   <category term="linux"/>
   <category term="工程化"/>
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">享元模式</title>
+    <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/03-flyweight-pattern.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/03-flyweight-pattern.html"/>
+    <updated>2024-09-18T08:45:50.000Z</updated>
+    <summary type="html"><![CDATA[<h2>享元模式</h2>
+<p>当我们创建大量对象时，我们可以使用享元模式来减少内存使用。</p>
+<p>在我们的应用程序中，我们希望用户能够添加书籍。所有书籍都有 <code>title</code>、<code>author</code> 和 <code>isbn</code>！然而，一个图书馆通常不会只有一本书：它通常有同一本书的多本副本。</p>
+<p>如果有多本完全相同的书，每次创建一个新的图书实例并不是很有用。相反，我们希望创建多个 <code>Book</code> 构造函数实例，代表一本书。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>title <span class="token operator">=</span> title
+    <span class="token keyword">this</span><span class="token punctuation">.</span>author <span class="token operator">=</span> author
+    <span class="token keyword">this</span><span class="token punctuation">.</span>isbn <span class="token operator">=</span> isbn
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<h2>享元模式</h2>
+<p>当我们创建大量对象时，我们可以使用享元模式来减少内存使用。</p>
+<p>在我们的应用程序中，我们希望用户能够添加书籍。所有书籍都有 <code>title</code>、<code>author</code> 和 <code>isbn</code>！然而，一个图书馆通常不会只有一本书：它通常有同一本书的多本副本。</p>
+<p>如果有多本完全相同的书，每次创建一个新的图书实例并不是很有用。相反，我们希望创建多个 <code>Book</code> 构造函数实例，代表一本书。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>title <span class="token operator">=</span> title
+    <span class="token keyword">this</span><span class="token punctuation">.</span>author <span class="token operator">=</span> author
+    <span class="token keyword">this</span><span class="token punctuation">.</span>isbn <span class="token operator">=</span> isbn
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果一本书有相同的 ISBN 编号，因此是完全相同的图书类型，我们就不想创建一个全新的图书实例。相反，我们应该首先检查这本书是否已经存在。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> books <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">createBook</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> existingBook <span class="token operator">=</span> books<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>isbn<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>existingBook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> books<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>isbn<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果它尚未包含图书的 ISBN 编号，我们将创建一本新书，并将其 ISBN 编号添加到 <code>isbnNumbers</code> 集合中。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token function-variable function">createBook</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> existingBook <span class="token operator">=</span> books<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>isbn<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>existingBook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> books<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>isbn<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> book <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Book</span><span class="token punctuation">(</span>title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn<span class="token punctuation">)</span>
+  books<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>isbn<span class="token punctuation">,</span> book<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> book
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>createBook</code> 函数可以帮助我们创建一种图书的新实例。然而，图书馆通常包含同一本书的多个副本！让我们创建一个 <code>addBook</code> 函数，它允许我们添加同一本书的多个副本。它应该调用 <code>createBook</code> 函数，该函数要么返回一个新创建的图书实例，要么返回已经存在的实例。</p>
+<p>为了记录副本总数，我们创建一个 <code>bookList</code> 数组，其中包含图书馆中的图书总数。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> bookList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">addBook</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn<span class="token punctuation">,</span> availability<span class="token punctuation">,</span> sales</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> book <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span><span class="token function">createBook</span><span class="token punctuation">(</span>title<span class="token punctuation">,</span> author<span class="token punctuation">,</span> isbn<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    sales<span class="token punctuation">,</span>
+    availability<span class="token punctuation">,</span>
+    isbn
+  <span class="token punctuation">}</span>
+
+  bookList<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>book<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> book
+<span class="token punctuation">}</span>
+</code></pre></div><p>完美！我们不必每次添加副本时都创建一个新的图书实例，而是可以有效地为特定副本使用已有的图书实例。让我们创建 3 本书的 5 个副本：《哈利-波特》、《杀死一只知更鸟》和《了不起的盖茨比》。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token function">addBook</span><span class="token punctuation">(</span><span class="token string">'Harry Potter'</span><span class="token punctuation">,</span> <span class="token string">'JK Rowling'</span><span class="token punctuation">,</span> <span class="token string">'AB123'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token function">addBook</span><span class="token punctuation">(</span><span class="token string">'Harry Potter'</span><span class="token punctuation">,</span> <span class="token string">'JK Rowling'</span><span class="token punctuation">,</span> <span class="token string">'AB123'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span>
+<span class="token function">addBook</span><span class="token punctuation">(</span><span class="token string">'To Kill a Mockingbird'</span><span class="token punctuation">,</span> <span class="token string">'Harper Lee'</span><span class="token punctuation">,</span> <span class="token string">'CD345'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token function">addBook</span><span class="token punctuation">(</span><span class="token string">'To Kill a Mockingbird'</span><span class="token punctuation">,</span> <span class="token string">'Harper Lee'</span><span class="token punctuation">,</span> <span class="token string">'CD345'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token function">addBook</span><span class="token punctuation">(</span><span class="token string">'The Great Gatsby'</span><span class="token punctuation">,</span> <span class="token string">'F. Scott Fitzgerald'</span><span class="token punctuation">,</span> <span class="token string">'EF567'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+</code></pre></div><h2>特点</h2>
+<p>享元模式是一种结构型设计模式，其核心思想是通过共享已经存在的对象来减少内存占用，从而提高性能。有两个特点：</p>
+<ul>
+<li>对象共享：避免重复创建相同状态的对象，节省内存。</li>
+<li>不可变部分与可变部分分离：将对象分为共享的、不可变的部分（如 <code>title</code>、<code>author</code> 和 <code>isbn</code>）和非共享的、可变的部分（如 <code>availability</code> 和 <code>sales</code>）。</li>
+</ul>
+<p>上述代码体现了这两个特点：</p>
+<p><code>Book</code> 类实例化了书籍的基本信息（<code>title</code>、<code>author</code>、<code>isbn</code>），并通过 <code>Map</code> 存储，确保同样的 <code>isbn</code> 只会创建一次。这部分相当于享元对象的内部状态（不可变且可以被多个实例共享）。</p>
+<p><code>addBook</code> 函数添加了一些书籍的可变信息（<code>sales</code> 和 <code>availability</code>），这些信息属于享元对象的外部状态（每次使用时可以独立指定）。</p>
+<h2>优点</h2>
+<ul>
+<li>减少内存占用：避免了为每个新书籍对象重复创建相同的 <code>Book</code> 实例。如果书籍的 <code>isbn</code> 相同，那么不再创建新的实例，而是共享现有的对象。</li>
+<li>提高性能：通过共享已有对象，减少对象的创建和销毁，特别是在大量数据处理的场景中能显著提高性能。</li>
+<li>更好的管理：将不可变的数据与可变数据分开，代码逻辑更加清晰，易于维护。</li>
+</ul>
+<h2>适用场景</h2>
+<p>在本例中，由于 <code>title</code>、<code>author</code> 和 <code>isbn</code> 都是基本数据类型（字符串），享元模式带来的优化可能会非常有限，甚至没有明显的优势，原因如下：</p>
+<ul>
+<li>内存优化有限：由于字符串本身是不可变且通常由引擎优化处理，JavaScript 已经会对相同的字符串进行共享存储（类似于享元模式），这意味着手动实现的享元模式在这方面并没有太大的额外好处。</li>
+<li>重复实例减少不明显：与对象不同，基本类型的重复实例在内存中通常不会像对象那样占用大量空间。因此，避免创建多个基本类型的实例不会有明显的内存节省。</li>
+</ul>
+<p>因此，享元模式适用于有大量公共内在属性的场景，如：粒子系统，在这种情况下，每个粒子都有一些共同的属性，如颜色、精灵图等。通过享元模式，我们可以共享这些属性，从而节省内存。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>实际上享元模式是共享一些内在的公共状态，而不是共享所有的状态。</p>
+<p>在 JavaScript 中，我们可以通过原型继承轻松解决这个问题。</p>
+<p>在享元模式中，虽然最后创建的对象数量和之前一样多，但会大量节省内存。在本例中可能没有体现出这个好处，但是如果共享的内在状态是对象，那么享元模式就可以发挥作用。</p>
+</div>
+]]></content>
+    <author>
+      <name>patterns</name>
+    </author>
+    <category term="reading"/>
+    <contributor>
+      <name>patterns</name>
+    </contributor>
+    <published>2024-09-18T00:00:00.000Z</published>
+    <rights>Copyright by patterns</rights>
+  </entry>
   <entry>
     <title type="text">覆盖输入框 autofill 样式</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/018-autofill.html</id>
@@ -65,7 +176,7 @@
     <title type="text">实现 loading spinner</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/017-loading-spinner.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/017-loading-spinner.html"/>
-    <updated>2024-09-14T07:09:21.000Z</updated>
+    <updated>2024-09-18T07:24:09.000Z</updated>
     <summary type="html"><![CDATA[<p>实现一个 loading spinner 可以使用 CSS 动画和边框。</p>
 
 ]]></summary>
@@ -73,7 +184,7 @@
 
 ]]></content>
     <category term="CSS"/>
-    <published>2024-03-04T00:00:00.000Z</published>
+    <published>2024-09-14T00:00:00.000Z</published>
   </entry>
   <entry>
     <title type="text">iOS 图片兼容</title>
@@ -2042,13 +2153,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * <span class="token keyword">@export</span>
- * <span class="token keyword">@class</span> MiddlewareManager
+ * @export
+ * @class MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -2275,12 +2386,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
  * Execute route's middleware and controller.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
+ * @param {CustomIncomingMessage} req
+ * @param {ServerResponse} res
+ * @param {Route} route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -2303,12 +2414,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
- * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
+ * @param {string} method - The HTTP method to match.
+ * @param {string} pathname - The URL pathname to match.
+ * @return {Object} An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -8634,7 +8745,7 @@ $ <span class="token function">git</span> merge experiment
     <title type="text">命令模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/01-command-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/01-command-pattern.html"/>
-    <updated>2024-02-07T04:26:52.000Z</updated>
+    <updated>2024-09-18T08:46:06.000Z</updated>
     <summary type="html"><![CDATA[<h2>命令模式</h2>
 <p>通过命令模式，我们可以将执行特定任务的对象与调用方法的对象 <em>解耦</em>。</p>
 <p>假设我们有一个在线食品配送平台。用户可以下单、跟踪和取消订单。</p>
@@ -8756,7 +8867,7 @@ manager<span class="token punctuation">.</span><span class="token function">canc
     <title type="text">工厂模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/02-factory-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/02-factory-pattern.html"/>
-    <updated>2024-02-07T04:26:52.000Z</updated>
+    <updated>2024-09-18T08:46:06.000Z</updated>
     <summary type="html"><![CDATA[<p>通过工厂模式，我们可以使用工厂函数来创建新对象。当一个函数在不使用 <code>new</code> 关键字的情况下返回一个新对象时，它就是一个工厂函数！</p>
 <p>假设我们的应用程序需要许多用户。我们可以创建带有名、姓和电子邮件属性的新用户。工厂函数还会为新创建的对象添加一个 <code>fullName</code> 属性，并返回 <code>name</code> 和 <code>lastName</code>。</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token function-variable function">createUser</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> firstName<span class="token punctuation">,</span> lastName<span class="token punctuation">,</span> email <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -10473,51 +10584,5 @@ GlobalDragUploader<span class="token punctuation">.</span>defaultProps <span cla
 </code></pre></div>]]></content>
     <category term="practice"/>
     <published>2023-11-22T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">移动端适配方案 postcss-px-to-viewport</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/practice/005-postcss-px-to-viewport.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/005-postcss-px-to-viewport.html"/>
-    <updated>2024-01-07T10:18:51.000Z</updated>
-    <summary type="html"><![CDATA[<p>由于 <code>px</code> 是固定单位，所以在不同设备上显示的大小是固定的，而不同设备又有不同大小，为了适配不同设备的单位大小，需要将 <code>px</code> 转换为视口单位。</p>
-<p>确定方案之后，那么思考如何将 <code>px</code> 转为视口单位呢，一个一个算？不太可能，因为你事先并不知道用户手中的设备是什么大小，这样换算得到的结果并不能满足所有用户的需求，因此需要一个更为适用的方法。</p>
-<p>这就需要用到一个插件：<code>postcss-px-to-viewport</code>。</p>
-<h2>安装</h2>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>npm install postcss-px-to-viewport --save-dev
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<p>由于 <code>px</code> 是固定单位，所以在不同设备上显示的大小是固定的，而不同设备又有不同大小，为了适配不同设备的单位大小，需要将 <code>px</code> 转换为视口单位。</p>
-<p>确定方案之后，那么思考如何将 <code>px</code> 转为视口单位呢，一个一个算？不太可能，因为你事先并不知道用户手中的设备是什么大小，这样换算得到的结果并不能满足所有用户的需求，因此需要一个更为适用的方法。</p>
-<p>这就需要用到一个插件：<code>postcss-px-to-viewport</code>。</p>
-<h2>安装</h2>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>npm install postcss-px-to-viewport --save-dev
-</code></pre></div><h2>参数配置</h2>
-<p>新建 <code>postcss.config.js</code>，默认配置如下：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string-property property">'postcss-px-to-viewport'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token literal-property property">unitToConvert</span><span class="token operator">:</span> <span class="token string">'px'</span><span class="token punctuation">,</span> <span class="token comment">// 需要转换的单位</span>
-      <span class="token literal-property property">viewportWidth</span><span class="token operator">:</span> <span class="token number">320</span><span class="token punctuation">,</span> <span class="token comment">// 设计稿的视口宽度</span>
-      <span class="token literal-property property">unitPrecision</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token comment">// 单位转换后保留的精度</span>
-      <span class="token literal-property property">propList</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'*'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 能转换的vw属性列表</span>
-      <span class="token literal-property property">viewportUnit</span><span class="token operator">:</span> <span class="token string">'vw'</span><span class="token punctuation">,</span> <span class="token comment">// 希望使用的视口单位</span>
-      <span class="token literal-property property">fontViewportUnit</span><span class="token operator">:</span> <span class="token string">'vw'</span><span class="token punctuation">,</span> <span class="token comment">// 字体使用的视口单位</span>
-      <span class="token literal-property property">selectorBlackList</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 需要忽略的css选择器</span>
-      <span class="token literal-property property">minPixelValue</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 设置最小的转换数值，如果为1，只有大于1的值才会被转换</span>
-      <span class="token literal-property property">mediaQuery</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 媒体查询中是否需要转换单位</span>
-      <span class="token literal-property property">replace</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 是否直接更换属性值</span>
-      <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token comment">// 忽略一些文件比如 node_modules</span>
-      <span class="token literal-property property">include</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span> <span class="token comment">// 如果设置了 include，则仅转换匹配的文件</span>
-      <span class="token literal-property property">landscape</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否添加根据 landscapeWidth 生成的媒体查询条件 @media (orientation: landscape)</span>
-      <span class="token literal-property property">landscapeUnit</span><span class="token operator">:</span> <span class="token string">'vw'</span><span class="token punctuation">,</span> <span class="token comment">// 横屏时使用的单位</span>
-      <span class="token literal-property property">landscapeWidth</span><span class="token operator">:</span> <span class="token number">568</span> <span class="token comment">// 横屏时使用的视口宽度</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>详细配置见 <a href="https://github.com/evrone/postcss-px-to-viewport" target="_blank" rel="noopener noreferrer">postcss-px-to-viewport</a>。</p>
-<p>当全部设置完成后，重新运行项目，查看 css 属性，即可发现所有 <code>px</code> 单位全部变成了 <code>vw</code> 单位。</p>
-<p>切换不同的设备时，大小会随之发生变化。</p>
-]]></content>
-    <category term="practice"/>
-    <published>2022-03-23T00:00:00.000Z</published>
   </entry>
 </feed>

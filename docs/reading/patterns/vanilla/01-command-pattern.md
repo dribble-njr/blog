@@ -1,7 +1,7 @@
 ---
 title: 命令模式
 date: 2024-02-04
-icon: STARTUP
+icon: command
 author: patterns
 category:
   - reading

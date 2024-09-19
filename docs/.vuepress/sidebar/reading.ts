@@ -17,7 +17,15 @@ export default [
         collapsible: true,
         prefix: 'vanilla/',
         icon: 'js',
-        children: ['', '01-command-pattern', '02-factory-pattern', '03-flyweight-pattern', '04-mediator-pattern', '05-middleware-pattern']
+        children: [
+          '',
+          '01-command-pattern',
+          '02-factory-pattern',
+          '03-flyweight-pattern',
+          '04-mediator-pattern',
+          '05-middleware-pattern',
+          '06-mixin-pattern'
+        ]
       }
     ]
   },

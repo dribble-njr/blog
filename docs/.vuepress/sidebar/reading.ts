@@ -24,7 +24,8 @@ export default [
           '03-flyweight-pattern',
           '04-mediator-pattern',
           '05-middleware-pattern',
-          '06-mixin-pattern'
+          '06-mixin-pattern',
+          '07-module-pattern'
         ]
       }
     ]

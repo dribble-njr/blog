@@ -1,6 +1,7 @@
 ---
 title: 模块化
 date: 2022-08-10
+icon: box
 category:
   - 工程化
 tag:

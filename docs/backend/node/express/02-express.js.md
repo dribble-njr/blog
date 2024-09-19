@@ -10,6 +10,28 @@ tag:
 
 `express.js` 文件定义了 Express 应用的主入口。它的核心功能是创建一个新的 Express 应用实例，并暴露相关的原型和构造函数，使应用能够处理 HTTP 请求并管理中间件（`middleware`）。
 
+## Hello World
+
+先看看官网的 Hello World：
+
+```js
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+```
+
+思考一下，`express()` `app.get()` 和 `app.listen()` 分别做了什么？
+
+接下来一步步看源码，就能看出它们的作用。
+
 ## 模块依赖
 
 引入了一些依赖模块：
@@ -72,25 +94,51 @@ function createApplication() {
 - `app.request` 和 `app.response`: 创建 `req` 和 `res` 的原型对象，并绑定 `app`。
 - `app.init()`: 初始化应用。
 
-使用如下，实际上就相当于调用了 `createApplication()` 函数，返回一个新的 `app` 对象。
+调用下述代码时，实际上就相当于调用了 `createApplication()` 函数，返回一个新的 `app` 函数，它使用了 [混入模式](../../../reading/patterns/vanilla/06-mixin-pattern.md) 增强了一些功能（`proto` 为 `application.js` 暴露的对象），该原型提供了初始化 `init` 方法。
 
 ```js
 const express = require('express')
 const app = express()
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 ```
+
+`listen` 函数实际做了如下功能：
+
+```js
+app.listen = function listen() {
+  var server = http.createServer(this)
+  return server.listen.apply(server, arguments)
+}
+```
+
+注意到他这里直接将 `app` 传入了 `http.createServer` 函数，该函数的签名为：`http.createServer([options][, requestListener])`，`requestListener` 函数的签名为 `(request, response) => void`。而在 `express.js` 中，`createApplication()` 中就已经声明 `app` 是 `requestListener` 类型的。
+
+```js
+var app = function (req, res, next) {
+  app.handle(req, res, next)
+}
+```
+
+到这里为止，我们其实已经弄清楚了 Hello World 内部的实现。
 
 ## 暴露的接口
 
 暴露的接口如下：
 
 ```js
+// 原型
 exports.application = proto
 exports.request = req
 exports.response = res
 
+// 路由构造函数
 exports.Route = Route
 exports.Router = Router
 
+// 中间件
 exports.json = bodyParser.json
 exports.query = require('./middleware/query')
 exports.raw = bodyParser.raw

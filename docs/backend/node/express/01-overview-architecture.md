@@ -11,6 +11,12 @@ tag:
 
 [Express](https://github.com/expressjs/express) 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。
 
+::: warning
+
+在代码解读中，贴上的源码有可能改为 TS 类型，在阅读源码时请注意。
+
+:::
+
 ## 核心组件
 
 包括 `Application`、`Request`、`Response` 和 `Router`：
@@ -70,7 +76,7 @@ var removedMiddlewares = [
 
 ## lib 源码结构
 
-Express@4.19.2 中，`lib` 目录结构如下：
+Express@4.21.0 中，`lib` 目录结构如下：
 
 ```shell
 lib/
@@ -89,8 +95,8 @@ lib/
 └── view.js
 ```
 
-- `application.js`: 定义了 Express 应用的核心功能，如 `app.use()`、`app.get()` 等方法。
 - `express.js`: 主入口文件，导出了核心的 `express()` 函数。
+- `application.js`: 定义了 Express 应用的核心功能，如 `app.use()`、`app.get()` 等方法。
 - `middleware/`: 包含 Express 内置的 `middleware`，例如 `init.js` 用于初始化中间件，`query.js` 用于解析查询字符串。
 - `request.js`: 定义了 `req` 对象的扩展和辅助方法。
 - `response.js`: 定义了 `res` 对象的扩展和辅助方法。

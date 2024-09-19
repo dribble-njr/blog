@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 19 Sep 2024 09:45:56 GMT</pubDate>
-    <lastBuildDate>Thu, 19 Sep 2024 09:45:56 GMT</lastBuildDate>
+    <pubDate>Thu, 19 Sep 2024 11:00:27 GMT</pubDate>
+    <lastBuildDate>Thu, 19 Sep 2024 11:00:27 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>reading</category>
@@ -535,10 +535,25 @@ A -<span class="token operator">&gt;</span> C -<span class="token operator">&gt;
       <link>https://dribble-njr.github.io/blog/blog/backend/node/express/02-express.js.html</link>
       <guid>https://dribble-njr.github.io/blog/blog/backend/node/express/02-express.js.html</guid>
       <source url="https://dribble-njr.github.io/blog/blog/rss.xml">express.js</source>
-      <description>express.js 文件定义了 Express 应用的主入口。它的核心功能是创建一个新的 Express 应用实例，并暴露相关的原型和构造函数，使应用能够处理 HTTP 请求并管理中间件（middleware）。 模块依赖 引入了一些依赖模块： bodyParser: 用于解析请求体（body）。 EventEmitter: Node.js 的事件模...</description>
+      <description>express.js 文件定义了 Express 应用的主入口。它的核心功能是创建一个新的 Express 应用实例，并暴露相关的原型和构造函数，使应用能够处理 HTTP 请求并管理中间件（middleware）。 Hello World 先看看官网的 Hello World： 思考一下，express() app.get() 和 app.listen...</description>
       <category>node</category>
       <pubDate>Fri, 23 Aug 2024 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<p><code>express.js</code> 文件定义了 Express 应用的主入口。它的核心功能是创建一个新的 Express 应用实例，并暴露相关的原型和构造函数，使应用能够处理 HTTP 请求并管理中间件（<code>middleware</code>）。</p>
+<h2>Hello World</h2>
+<p>先看看官网的 Hello World：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Example app listening on port </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>思考一下，<code>express()</code> <code>app.get()</code> 和 <code>app.listen()</code> 分别做了什么？</p>
+<p>接下来一步步看源码，就能看出它们的作用。</p>
 <h2>模块依赖</h2>
 <p>引入了一些依赖模块：</p>
 <ul>
@@ -591,18 +606,35 @@ A -<span class="token operator">&gt;</span> C -<span class="token operator">&gt;
 <li><code>app.request</code> 和 <code>app.response</code>: 创建 <code>req</code> 和 <code>res</code> 的原型对象，并绑定 <code>app</code>。</li>
 <li><code>app.init()</code>: 初始化应用。</li>
 </ul>
-<p>使用如下，实际上就相当于调用了 <code>createApplication()</code> 函数，返回一个新的 <code>app</code> 对象。</p>
+<p>调用下述代码时，实际上就相当于调用了 <code>createApplication()</code> 函数，返回一个新的 <code>app</code> 函数，它使用了  增强了一些功能（<code>proto</code> 为 <code>application.js</code> 暴露的对象），该原型提供了初始化 <code>init</code> 方法。</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre></div><h2>暴露的接口</h2>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Example app listening on port </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><code>listen</code> 函数实际做了如下功能：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>app<span class="token punctuation">.</span><span class="token function-variable function">listen</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">listen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>server<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>注意到他这里直接将 <code>app</code> 传入了 <code>http.createServer</code> 函数，该函数的签名为：<code>http.createServer([options][, requestListener])</code>，<code>requestListener</code> 函数的签名为 <code>(request, response) =&gt; void</code>。而在 <code>express.js</code> 中，<code>createApplication()</code> 中就已经声明 <code>app</code> 是 <code>requestListener</code> 类型的。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">var</span> <span class="token function-variable function">app</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token function">handle</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>到这里为止，我们其实已经弄清楚了 Hello World 内部的实现。</p>
+<h2>暴露的接口</h2>
 <p>暴露的接口如下：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>exports<span class="token punctuation">.</span>application <span class="token operator">=</span> proto
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 原型</span>
+exports<span class="token punctuation">.</span>application <span class="token operator">=</span> proto
 exports<span class="token punctuation">.</span>request <span class="token operator">=</span> req
 exports<span class="token punctuation">.</span>response <span class="token operator">=</span> res
 
+<span class="token comment">// 路由构造函数</span>
 exports<span class="token punctuation">.</span>Route <span class="token operator">=</span> Route
 exports<span class="token punctuation">.</span>Router <span class="token operator">=</span> Router
 
+<span class="token comment">// 中间件</span>
 exports<span class="token punctuation">.</span>json <span class="token operator">=</span> bodyParser<span class="token punctuation">.</span>json
 exports<span class="token punctuation">.</span>query <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./middleware/query'</span><span class="token punctuation">)</span>
 exports<span class="token punctuation">.</span>raw <span class="token operator">=</span> bodyParser<span class="token punctuation">.</span>raw
@@ -657,10 +689,14 @@ removedMiddlewares<span class="token punctuation">.</span><span class="token fun
       <link>https://dribble-njr.github.io/blog/blog/backend/node/express/01-overview-architecture.html</link>
       <guid>https://dribble-njr.github.io/blog/blog/backend/node/express/01-overview-architecture.html</guid>
       <source url="https://dribble-njr.github.io/blog/blog/rss.xml">总体架构</source>
-      <description>Express 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。 核心组件 包括 Application、Request、Response 和 Router： Application：应用程序对象，由 expr...</description>
+      <description>Express 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。 注意 在代码解读中，贴上的源码有可能改为 TS 类型，在阅读源码时请注意。 核心组件 包括 Application、Request、Respon...</description>
       <category>node</category>
       <pubDate>Tue, 20 Aug 2024 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<p><a href="https://github.com/expressjs/express" target="_blank" rel="noopener noreferrer">Express</a> 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>在代码解读中，贴上的源码有可能改为 TS 类型，在阅读源码时请注意。</p>
+</div>
 <h2>核心组件</h2>
 <p>包括 <code>Application</code>、<code>Request</code>、<code>Response</code> 和 <code>Router</code>：</p>
 <ul>
@@ -706,7 +742,7 @@ removedMiddlewares<span class="token punctuation">.</span><span class="token fun
 <p>支持自动解析 <code>query parameters</code> 和 <code>URL</code> 中的 <code>:param</code> 值。</p>
 <p>简单理解为分发请求并进行相应处理。</p>
 <h2>lib 源码结构</h2>
-<p>Express@4.19.2 中，<code>lib</code> 目录结构如下：</p>
+<p>Express@4.21.0 中，<code>lib</code> 目录结构如下：</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>lib/
 ├── application.js
 ├── express.js
@@ -722,8 +758,8 @@ removedMiddlewares<span class="token punctuation">.</span><span class="token fun
 ├── utils.js
 └── view.js
 </code></pre></div><ul>
-<li><code>application.js</code>: 定义了 Express 应用的核心功能，如 <code>app.use()</code>、<code>app.get()</code> 等方法。</li>
 <li><code>express.js</code>: 主入口文件，导出了核心的 <code>express()</code> 函数。</li>
+<li><code>application.js</code>: 定义了 Express 应用的核心功能，如 <code>app.use()</code>、<code>app.get()</code> 等方法。</li>
 <li><code>middleware/</code>: 包含 Express 内置的 <code>middleware</code>，例如 <code>init.js</code> 用于初始化中间件，<code>query.js</code> 用于解析查询字符串。</li>
 <li><code>request.js</code>: 定义了 <code>req</code> 对象的扩展和辅助方法。</li>
 <li><code>response.js</code>: 定义了 <code>res</code> 对象的扩展和辅助方法。</li>
@@ -2100,13 +2136,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * @export
- * @class MiddlewareManager
+ * <span class="token keyword">@export</span>
+ * <span class="token keyword">@class</span> MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -2333,12 +2369,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
  * Execute route's middleware and controller.
  *
- * @param {CustomIncomingMessage} req
- * @param {ServerResponse} res
- * @param {Route} route
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -2361,12 +2397,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * @param {string} method - The HTTP method to match.
- * @param {string} pathname - The URL pathname to match.
- * @return {Object} An object containing the matched route and parameters.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
+ * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>

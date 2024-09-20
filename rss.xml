@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 20 Sep 2024 05:06:49 GMT</pubDate>
-    <lastBuildDate>Fri, 20 Sep 2024 05:06:49 GMT</lastBuildDate>
+    <pubDate>Fri, 20 Sep 2024 05:19:33 GMT</pubDate>
+    <lastBuildDate>Fri, 20 Sep 2024 05:19:33 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>reading</category>
@@ -405,6 +405,10 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240918170920.png" alt="20240918170920" tabindex="0" loading="lazy"><figcaption>20240918170920</figcaption></figure>
 <p>聊天室就是中间件模式的一个很好的用例！聊天室中的用户不会直接对话。聊天室只是用户之间的中介。</p>
 
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>组件的封装也使用了中介者模式，子组件抛出事件在父组件中集中处理。</p>
+</div>
 ]]></content:encoded>
       <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240918170836.png" type="image/png"/>
     </item>

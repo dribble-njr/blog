@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-09-20T05:06:49.058Z</updated>
+  <updated>2024-09-20T05:19:33.830Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -437,7 +437,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">中介者模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/04-mediator-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/04-mediator-pattern.html"/>
-    <updated>2024-09-18T09:49:01.000Z</updated>
+    <updated>2024-09-20T05:17:54.000Z</updated>
     <summary type="html"><![CDATA[<p>中介者模式使组件之间通过一个中心点（调解器）进行交互成为可能。它允许组件接收请求并将其发送出去，而不是彼此直接对话！在 JavaScript 中，中介者通常只是一个对象字面或函数。</p>
 <p>你可以把这种模式比作空中交通管制员和飞行员之间的关系。飞行员与空中交通管制员之间的对话可能会导致混乱，而不是让飞行员直接对话。空中交通管制员确保所有飞机都能收到所需的信息，以便安全飞行，不撞击其他飞机。</p>
 <p>虽然我们不希望在 JavaScript 中控制飞机，但我们经常需要处理对象之间的多向数据。如果组件数量较多，组件之间的通信可能会变得相当混乱。</p>
@@ -450,6 +450,10 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240918170920.png" alt="20240918170920" tabindex="0" loading="lazy"><figcaption>20240918170920</figcaption></figure>
 <p>聊天室就是中间件模式的一个很好的用例！聊天室中的用户不会直接对话。聊天室只是用户之间的中介。</p>
 
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>组件的封装也使用了中介者模式，子组件抛出事件在父组件中集中处理。</p>
+</div>
 ]]></content>
     <author>
       <name>patterns</name>

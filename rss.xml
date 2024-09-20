@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 19 Sep 2024 11:00:27 GMT</pubDate>
-    <lastBuildDate>Thu, 19 Sep 2024 11:00:27 GMT</lastBuildDate>
+    <pubDate>Fri, 20 Sep 2024 05:06:49 GMT</pubDate>
+    <lastBuildDate>Fri, 20 Sep 2024 05:06:49 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>reading</category>
@@ -28,6 +28,185 @@
     <category>algorithm</category>
     <category>linux</category>
     <category>工程化</category>
+    <item>
+      <title>观察者模式</title>
+      <link>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/08-observer-pattern.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/08-observer-pattern.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">观察者模式</source>
+      <description>观察者模式（Observer Pattern）是一种行为设计模式，用于创建一种对象之间的「一对多」关系，使得当一个对象的状态发生变化时，所有依赖于它的对象都能得到通知并自动更新。这个模式非常适合用来实现事件系统或数据绑定功能。 观察者模式观察者模式 函数版本 函数式观察者模式的主要组成部分： observers：在发生特定事件时会收到通知的观察者数组 ...</description>
+      <category>reading</category>
+      <pubDate>Fri, 20 Sep 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>观察者模式（Observer Pattern）是一种行为设计模式，用于创建一种对象之间的「一对多」关系，使得当一个对象的状态发生变化时，所有依赖于它的对象都能得到通知并自动更新。这个模式非常适合用来实现事件系统或数据绑定功能。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240920125941.png" alt="观察者模式" tabindex="0" loading="lazy"><figcaption>观察者模式</figcaption></figure>
+<h2>函数版本</h2>
+<p>函数式观察者模式的主要组成部分：</p>
+<ul>
+<li><code>observers</code>：在发生特定事件时会收到通知的观察者数组</li>
+<li><code>subscribe()</code>：向观察者列表添加观察者的方法</li>
+<li><code>unsubscribe()</code>：从观察者列表移除观察者的方法</li>
+<li><code>notify()</code>：在发生特定事件时通知所有观察者的方法</li>
+</ul>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Observable</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token parameter">func</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">unsubscribe</span><span class="token punctuation">(</span><span class="token parameter">func</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> observer <span class="token operator">!==</span> func<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">notify</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">observer</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">observer</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>让我们用这个可观察对象构建一些东西。 我们有一个非常基本的应用程序，它只由两个组件组成：一个按钮和一个开关。</p>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ToastContainer<span class="token punctuation">,</span> toast <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-toastify'</span>
+
+<span class="token keyword">function</span> <span class="token function">logger</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">toastify</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">toast</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>App<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Click me!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">FormControlLabel</span></span> <span class="token attr-name">control</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Switch</span></span> <span class="token punctuation">/&gt;</span></span><span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ToastContainer</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>我们希望跟踪用户与应用程序的交互。每当用户点击按钮或拨动开关时，我们都要记录这一事件并加上时间戳。除了记录，我们还想创建一个 toast 通知，在事件发生时显示！</p>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ToastContainer<span class="token punctuation">,</span> toast <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-toastify'</span>
+
+<span class="token keyword">function</span> <span class="token function">logger</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">toastify</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">toast</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>logger<span class="token punctuation">)</span>
+observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>toastify<span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    observable<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token string">'User clicked button!'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">handleToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    observable<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span><span class="token string">'User toggled switch!'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>App<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Click me!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">FormControlLabel</span></span> <span class="token attr-name">control</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Switch</span></span> <span class="token punctuation">/&gt;</span></span><span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ToastContainer</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>整个流程：<code>handleClick</code> 和 <code>handleToggle</code> 用数据调用了观察者的 <code>notify</code> 方法，然后观察者通知了订阅者：本例中是 <code>logger</code> 和 <code>toastify</code> 函数。</p>
+<p>虽然我们可以在很多方面使用观察者模式，但它在处理异步、基于事件的数据时非常有用。也许你想让某些组件在某些数据下载完成时收到通知，或者当用户向留言板发送新消息时，所有其他成员都应收到通知。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>使用观察者模式是执行关注点分离和单一响应原则的好方法。观察者对象与可观察对象并不紧密耦合，而且可以随时（解除）耦合。可观察对象负责监控事件，而观察者只需处理接收到的数据。</p>
+</div>
+<h2>传统版本</h2>
+<p>上述版本中，使用了一个函数式的观察者设计。在这个实现中，观察者被设计为函数 <code>func</code>，通过调用 <code>subscribe</code> 方法，观察者可以订阅主题；<code>notify</code> 方法会遍历所有订阅的函数并调用它们来通知观察者。</p>
+<p>在传统的观察者模式中，观察者通常是一个对象，且必须实现一个统一的接口或方法（如 <code>update()</code>）。而在上述例子中，观察者就是普通的函数，这样简化了设计，不需要创建专门的观察者类。</p>
+<ul>
+<li>主题（Subject）：也称为被观察者。主题对象持有对观察者对象的引用，并在自身状态变化时通知所有注册的观察者。</li>
+<li>观察者（Observer）：观察者对象在被通知时更新自己或执行相关动作。</li>
+<li>具体主题（Concrete Subject）：实现主题接口，维护观察者列表，并在状态变化时通知所有观察者。</li>
+<li>具体观察者（Concrete Observer）：实现观察者接口，定义响应主题状态变化的具体操作。</li>
+</ul>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">// 主题（可观察者）类</span>
+<span class="token keyword">class</span> <span class="token class-name">Subject</span> <span class="token punctuation">{</span>
+  <span class="token keyword">private</span> observers<span class="token operator">:</span> Observer<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+  <span class="token comment">// 添加观察者</span>
+  <span class="token function">addObserver</span><span class="token punctuation">(</span>observer<span class="token operator">:</span> Observer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>observer<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 移除观察者</span>
+  <span class="token function">removeObserver</span><span class="token punctuation">(</span>observer<span class="token operator">:</span> Observer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span>obs<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> obs <span class="token operator">!==</span> observer<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 通知所有观察者</span>
+  <span class="token function">notifyObservers</span><span class="token punctuation">(</span>data<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>observers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observer<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> observer<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 观察者抽象类</span>
+<span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 定义一个抽象方法，子类必须实现</span>
+  <span class="token keyword">abstract</span> <span class="token function">update</span><span class="token punctuation">(</span>data<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConcreteObserver</span> <span class="token keyword">extends</span> <span class="token class-name">Observer</span> <span class="token punctuation">{</span>
+  <span class="token function">update</span><span class="token punctuation">(</span>data<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Observer received data:'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 使用观察者模式</span>
+<span class="token keyword">const</span> subject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Subject</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> observer1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcreteObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> observer2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcreteObserver</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+subject<span class="token punctuation">.</span><span class="token function">addObserver</span><span class="token punctuation">(</span>observer1<span class="token punctuation">)</span>
+subject<span class="token punctuation">.</span><span class="token function">addObserver</span><span class="token punctuation">(</span>observer2<span class="token punctuation">)</span>
+
+subject<span class="token punctuation">.</span><span class="token function">notifyObservers</span><span class="token punctuation">(</span><span class="token string">'Hello Observers!'</span><span class="token punctuation">)</span>
+<span class="token comment">// 输出:</span>
+<span class="token comment">// Received data: Hello Observers!</span>
+<span class="token comment">// Received data: Hello Observers!</span>
+</code></pre></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>在 React 等组件化框架中，使用函数式的简易观察者模式通常更方便、更直观。特别是结合 React 的钩子（如 <code>useState</code> 和 <code>useEffect</code>），可以非常轻松地实现类似观察者模式的效果，而不必依赖复杂的类继承结构。</p>
+</div>
+<h2>扩展</h2>
+<p>在观察者模式的经典定义中：</p>
+<ul>
+<li>参与者：观察者（Observer）和被观察者（Subject）。</li>
+<li>结构：在观察者模式中，观察者直接订阅主题（被观察者），主题有状态变化时，主动通知所有的观察者。观察者通过注册到主题中，接收事件通知。</li>
+<li>特点：
+<ul>
+<li>观察者和主题是紧耦合的：主题知道谁订阅了自己，通知时直接调用观察者的方法。</li>
+<li>观察者知道主题的存在，彼此之间有依赖。</li>
+<li>通常用于单一事件源，比如 UI 事件监听。</li>
+</ul>
+</li>
+</ul>
+<p>但在之前的例子中，都是主动调用了 <code>notifyObservers</code>，这看起来更像是直接的事件触发，而不是主题状态的变化引起的自动通知。</p>
+<p>观察者模式结构如下：</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240920124553.png" alt="模式结构" tabindex="0" loading="lazy"><figcaption>模式结构</figcaption></figure>
+<p>下面来看一个具体的例子：</p>
+<ul>
+<li>观察者（<code>LoggingListener</code> 和 <code>EmailAlertsListener</code>）直接订阅主题（<code>Editor</code>）。</li>
+<li>当 <code>Editor</code> 状态发生变化时，它主动通知所有订阅了该事件的观察者。</li>
+<li>观察者通过 <code>EventManager</code> 进行管理，但它们仍然直接与 <code>Editor</code> 交互。</li>
+<li><code>EventManager</code> 仅仅是辅助类，用于简化管理订阅和通知的逻辑。</li>
+<li>观察者可以只关心主题的某个事件类型（<code>open</code> 和 <code>save</code>）的状态变化。</li>
+</ul>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240920124501.png" alt="将对象中发生的事件通知给其他对象" tabindex="0" loading="lazy"><figcaption>将对象中发生的事件通知给其他对象</figcaption></figure>
+
+]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240920125941.png" type="image/png"/>
+    </item>
     <item>
       <title>模块模式</title>
       <link>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/07-module-pattern.html</link>
@@ -9016,36 +9195,6 @@ Host key verification failed.
 <li><a href="https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed" target="_blank" rel="noopener noreferrer">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</a></li>
 </ul>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>配置宝塔面板</title>
-      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/003-configure-bt.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/003-configure-bt.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">配置宝塔面板</source>
-      <description> 提示 服务器系统：centos 7.9。 其他系统可以参照 官网 进行搭建。 为了方便一键配置部署环境，因此选择宝塔面板。 安装宝塔面板 大概过两分钟即可安装成功，复制外网面板地址到浏览器打开，输入下面的 username 和 password。进去之后会弹出 推荐安装套件，因为只要部署 vuepress， 因此这里安装 nginx 就好。选择编译安...</description>
-      <category>linux</category>
-      <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>服务器系统：centos 7.9。</p>
-<p>其他系统可以参照 <a href="https://www.bt.cn/bbs/thread-19376-1-1.html" target="_blank" rel="noopener noreferrer">官网</a> 进行搭建。</p>
-<p>为了方便一键配置部署环境，因此选择宝塔面板。</p>
-</div>
-<h2>安装宝塔面板</h2>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">wget</span> <span class="token operator">&amp;&amp;</span> <span class="token function">wget</span> <span class="token parameter variable">-O</span> install.sh http://download.bt.cn/install/install_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sh</span> install.sh
-</code></pre></div><p>大概过两分钟即可安装成功，复制外网面板地址到浏览器打开，输入下面的 <code>username</code> 和 <code>password</code>。进去之后会弹出 <code>推荐安装套件</code>，因为只要部署 <code>vuepress</code>， 因此这里安装 <code>nginx</code> 就好。选择编译安装，更加稳定。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-install-bt.png" alt="step1-install-bt" tabindex="0" loading="lazy"><figcaption>step1-install-bt</figcaption></figure>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-install-nginx.png" alt="step2-install-nginx" tabindex="0" loading="lazy"><figcaption>step2-install-nginx</figcaption></figure>
-<p>如果之后忘记用户名和密码，可以通过以下命令查找：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@xxxx ~<span class="token punctuation">]</span><span class="token comment"># bt</span>
-<span class="token punctuation">[</span>root@xxxx ~<span class="token punctuation">]</span><span class="token comment"># 14</span>
-</code></pre></div><h2>参考链接</h2>
-<ul>
-<li><a href="https://www.bt.cn/bbs/thread-19376-1-1.html" target="_blank" rel="noopener noreferrer">宝塔 Linux 面板安装教程</a></li>
-<li><a href="https://www.bilibili.com/video/BV12T4y1N7T9?from=search&amp;seid=2220018938681661072&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer">阿里云服务器 ECS 新手搭建网站视频教程（详细版）</a></li>
-</ul>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-install-bt.png" type="image/png"/>
     </item>
   </channel>
 </rss>

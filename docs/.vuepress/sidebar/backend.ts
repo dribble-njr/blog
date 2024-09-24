@@ -92,5 +92,12 @@ export default [
         children: ['01-maven']
       }
     ]
+  },
+  {
+    text: '实践',
+    collapsible: true,
+    icon: 'practice',
+    prefix: '/backend/practice/',
+    children: ['001-integrate-turso-prisma']
   }
 ]

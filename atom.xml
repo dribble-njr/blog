@@ -4,13 +4,13 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-09-20T05:19:33.830Z</updated>
+  <updated>2024-09-24T04:11:01.689Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="practice"/>
   <category term="reading"/>
   <category term="CSS"/>
-  <category term="practice"/>
   <category term="node"/>
   <category term="Pixi"/>
   <category term="READING"/>
@@ -29,6 +29,129 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">Turso 集成 Prisma</title>
+    <id>https://dribble-njr.github.io/blog/blog/backend/practice/001-integrate-turso-prisma.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/backend/practice/001-integrate-turso-prisma.html"/>
+    <updated>2024-09-24T04:09:22.000Z</updated>
+    <summary type="html"><![CDATA[<p>在现代应用开发中，数据库和 ORM（对象关系映射）工具的选择对项目的开发效率和数据管理至关重要。<a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a> 是一款优秀的 ORM，它不仅能为你生成类型安全的数据库查询，还可以通过自动迁移管理数据库模式。而 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">Turso</a> 是一种基于 libSQL 的托管云数据库，提供了生产环境级别的 SQLite 数据库。本文将介绍如何将 Turso 和 Prisma 结合使用，帮助你快速集成并管理数据库。</p>]]></summary>
+    <content type="html"><![CDATA[<p>在现代应用开发中，数据库和 ORM（对象关系映射）工具的选择对项目的开发效率和数据管理至关重要。<a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a> 是一款优秀的 ORM，它不仅能为你生成类型安全的数据库查询，还可以通过自动迁移管理数据库模式。而 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">Turso</a> 是一种基于 libSQL 的托管云数据库，提供了生产环境级别的 SQLite 数据库。本文将介绍如何将 Turso 和 Prisma 结合使用，帮助你快速集成并管理数据库。</p>
+<h2>什么是 Turso？</h2>
+<p>Turso 是由 libSQL 提供的云端托管数据库服务，其核心基于 SQLite，专为生产环境设计。它保持了 SQLite 简单、轻量和快速的特点，同时通过云端托管的方式，让开发者能够在分布式的环境中使用 SQLite，且具有云数据库的优势，例如多点访问、强大性能和易于集成。</p>
+<p>Turso 的特点：</p>
+<ul>
+<li>基于 libSQL：提供了生产级的 SQLite 数据库。</li>
+<li>分布式存储：适用于多区域、多地的应用程序。</li>
+<li>轻量易用：你可以像使用本地 SQLite 数据库一样去使用它。</li>
+</ul>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>重点是能够免费使用。</p>
+</div>
+<h2>什么是 Prisma？</h2>
+<p>Prisma 是一个现代的 ORM 工具，旨在简化数据库交互。它通过提供类型安全的数据库查询接口，使得开发者能够在使用数据库时避免常见的错误。Prisma 的一些核心功能包括数据库迁移管理、自动生成的查询 API 和直观的数据库模式定义文件（<code>schema.prisma</code>）。</p>
+<p>Prisma 的特点：</p>
+<ul>
+<li>类型安全：Prisma 生成的客户端代码是类型安全的，能在开发阶段捕获错误。</li>
+<li>直观的 Schema 定义：使用 <code>.prisma</code> 文件定义数据库模型。</li>
+<li>数据库迁移：提供了数据库迁移工具，能够自动化管理数据库版本。</li>
+</ul>
+<h2>集成 Turso 和 Prisma</h2>
+<p>接下来将逐步介绍如何将 Turso 和 Prisma 集成在一起。主要的步骤包括安装工具、设置数据库连接、生成模型、进行数据库迁移并应用更改。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>从 Prisma ORM 5.4.2 及更高版本开始，Turso 可获得早期访问支持。</p>
+</div>
+<h3>安装 Turso CLI 和 Prisma CLI</h3>
+<p>首先，我们需要安装 Turso CLI 以便管理和访问 Turso 数据库，并且需要安装 Prisma CLI 以便生成客户端和管理数据库迁移。</p>
+<p>安装 Prisma CLI：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> prisma --save-dev
+</code></pre></div><p><a href="https://docs.turso.tech/cli/introduction" target="_blank" rel="noopener noreferrer">安装 Turso CLI</a>，以 macOS 为例：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>brew <span class="token function">install</span> tursodatabase/tap/turso
+</code></pre></div><p>安装完成后，通过 <code>turso auth login</code> 登录你的 Turso 帐户。</p>
+<h3>创建 Turso 数据库</h3>
+<p>使用以下命令创建一个新的 Turso 数据库：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>turso db create my-database
+</code></pre></div><p>获取数据库 URL：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>turso db show <span class="token parameter variable">--url</span> my-database
+</code></pre></div><p>获取数据库访问 token：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>turso db tokens create my-database
+</code></pre></div><h3>配置 Prisma 数据源</h3>
+<p>初始化 Prisma 数据源：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx prisma init
+</code></pre></div><p>这会生成 <code>prisma/schema.prisma</code> 文件及 <code>.env</code> 文件，其中包含 Prisma 数据源定义。</p>
+<p><code>.env</code> 文件：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token assign-left variable">TURSO_URL</span><span class="token operator">=</span><span class="token operator">&lt;</span>your-turso-database-url<span class="token operator">&gt;</span>
+<span class="token assign-left variable">TURSO_AUTH_TOKEN</span><span class="token operator">=</span><span class="token operator">&lt;</span>your-turso-auth-token<span class="token operator">&gt;</span>
+</code></pre></div><p>需要启用 <code>driverAdapters</code> 特性：</p>
+<div class="language-prisma" data-ext="prisma" data-title="prisma"><pre class="language-prisma"><code>generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+</code></pre></div><p>生成 Prisma 客户端，它可以让你通过代码与数据库交互。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx prisma generate
+</code></pre></div><h3>同步数据库</h3>
+<p>在本地开发环境下，我们首先需要同步数据库。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>若无需同步数据库，可以跳过这一步。</p>
+</div>
+<p>首先登陆到 Turso 数据库：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>turso db shell my-database
+</code></pre></div><p>导出当前数据库 SQL 数据：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>.schema
+</code></pre></div><p>然后将 SQL 应用到本地数据库：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>sqlite3 dev.db <span class="token operator">&lt;</span> schema.sql
+</code></pre></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><code>sqlite3</code> 是 SQLite 数据库的命令行工具，用于创建、管理和查询 SQLite 数据库。它非常轻量，适合嵌入式系统或小型应用的本地数据库操作。你可以通过 <code>sqlite3</code> 工具来执行 SQL 命令、创建数据库、插入数据、查询数据、导入和导出数据库结构等。</p>
+<p>macOS 通常自带 SQLite。</p>
+</div>
+<p>然后将数据库结构拉入 prisma，这将从本地的 <code>dev.db</code> 文件中提取数据库模型，并自动生成 Prisma schema。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx prisma db pull
+</code></pre></div><p>生成 Prisma 客户端：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx prisma generate
+</code></pre></div><h3>迁移数据库</h3>
+<p>由于 Turso 目前不支持直接使用 Prisma 进行模式迁移，所以在本地开发环境下，我们首先使用 SQLite 进行数据库迁移。</p>
+<p>生成迁移文件：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>npx prisma migrate dev <span class="token parameter variable">--name</span> init
+</code></pre></div><p>这条命令做了三件事：</p>
+<ol>
+<li>在 <code>prisma/migrations</code> 目录中为这次迁移创建了一个新的 SQL 迁移文件。</li>
+<li>针对数据库执行 SQL 迁移文件。</li>
+<li>运行 <code>prisma generate</code>（安装 <code>@prisma/client</code> 软件包，并根据你的模型生成定制的 Prisma 客户端 API）。</li>
+</ol>
+<p>推送迁移到远端 turso 数据库：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>turso db shell my-database <span class="token operator">&lt;</span> ./prisma/migrations/20240923125341_init/migration.sql
+</code></pre></div><h3>数据库操作</h3>
+<p>为 libSQL 安装 libSQL 数据库客户端和 Prisma ORM 驱动程序适配器：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> @libsql/client @prisma/adapter-libsql
+</code></pre></div><p>更新数据库访问实例：</p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> PrismaClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@prisma/client'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> PrismaLibSQL <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@prisma/adapter-libsql'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@libsql/client'</span>
+
+<span class="token keyword">const</span> libsql <span class="token operator">=</span> <span class="token function">createClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">TURSO_URL</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+  authToken<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">TURSO_AUTH_TOKEN</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> adapter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrismaLibSQL</span><span class="token punctuation">(</span>libsql<span class="token punctuation">)</span>
+<span class="token keyword">const</span> prisma <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PrismaClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span> adapter <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> prisma
+</code></pre></div><h2>结论</h2>
+<p>集成 Turso 和 Prisma 可以让你在分布式云环境中享受 SQLite 的性能优势，同时利用 Prisma 的 ORM 功能管理数据库模型和查询。</p>
+<p>但由于 Turso 目前对 Prisma 的支持有限，你需要手动将迁移文件应用到远程数据库。通过这种方式，你可以将本地开发环境与生产环境有效分离，保持高效的开发流程。</p>
+]]></content>
+    <category term="practice"/>
+    <published>2024-09-24T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">观察者模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/08-observer-pattern.html</id>
@@ -4259,26 +4382,66 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">Imperial Kitchen 御膳房</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/"/>
-    <updated>2024-05-12T06:37:11.000Z</updated>
+    <updated>2024-09-20T07:16:48.000Z</updated>
     <summary type="html"><![CDATA[<p>欢迎来到 Imperial Kitchen 御膳房项目！项目地址：<a href="https://github.com/dribble-njr/imperial-kitchen.git%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/dribble-njr/imperial-kitchen.git。</a></p>
 <h2>项目简介</h2>
 <p>Imperial Kitchen 御膳房是一个家庭厨房的点菜应用，旨在帮助方便快捷地选择菜品并下单。</p>
-<h2>功能特性</h2>
-<ul>
-<li>浏览菜单：查看各种菜品的详细信息，包括图片、描述和价格。</li>
-<li>点菜下单：选择喜欢的菜品加入购物车，并下单购买。</li>
-<li>查看订单：查看已下单的菜品订单状态和历史订单。</li>
-<li>个人中心：管理个人信息，查看收货地址等。</li>
-</ul>]]></summary>
+<h2>产品功能设计</h2>
+<h3>角色设计</h3>]]></summary>
     <content type="html"><![CDATA[<p>欢迎来到 Imperial Kitchen 御膳房项目！项目地址：<a href="https://github.com/dribble-njr/imperial-kitchen.git%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/dribble-njr/imperial-kitchen.git。</a></p>
 <h2>项目简介</h2>
 <p>Imperial Kitchen 御膳房是一个家庭厨房的点菜应用，旨在帮助方便快捷地选择菜品并下单。</p>
-<h2>功能特性</h2>
+<h2>产品功能设计</h2>
+<h3>角色设计</h3>
+<p>家庭成员：</p>
 <ul>
-<li>浏览菜单：查看各种菜品的详细信息，包括图片、描述和价格。</li>
-<li>点菜下单：选择喜欢的菜品加入购物车，并下单购买。</li>
-<li>查看订单：查看已下单的菜品订单状态和历史订单。</li>
-<li>个人中心：管理个人信息，查看收货地址等。</li>
+<li>点菜：查看菜品菜单，选择菜品下单。</li>
+<li>查看订单状态：可以查看自己点的菜是否被接受，正在做，还是已经做好。</li>
+<li>评价：可以对已经完成的菜品进行评价和反馈。</li>
+</ul>
+<p>管理员（厨师）：</p>
+<ul>
+<li>菜单管理：添加、编辑、删除菜品信息（名称、价格、描述、图片等）。</li>
+<li>接收订单：家庭成员点菜后，管理员可以接受或拒绝订单。</li>
+<li>制作进度：管理员可以更新每个订单的进度（如「已接受」、「正在做」、「已完成」等）。</li>
+<li>菜品评价管理：查看和管理用户的评价。</li>
+</ul>
+<h3>功能模块</h3>
+<h4>用户管理</h4>
+<ul>
+<li>登录/注册：家庭成员和管理员需要登录。可以通过简单的用户名和密码，或者基于家庭邀请码来注册。</li>
+<li>权限管理：家庭成员的权限是点菜、查看和评价；管理员则可以管理菜品和订单。</li>
+</ul>
+<h4>菜单管理</h4>
+<ul>
+<li>查看菜单：家庭成员可以看到当前的可选菜品，带有详细信息和图片。</li>
+<li>添加菜品（管理员）：管理员可以在后台添加新菜品，填写菜品的名称、图片、描述、价格等。</li>
+<li>编辑/删除菜品（管理员）：管理员可以修改或删除已有菜品，保持菜单的实时更新。</li>
+</ul>
+<h4>订单系统</h4>
+<ul>
+<li>下单（家庭成员）：家庭成员可以从菜单中选择菜品并提交订单。</li>
+<li>订单状态更新（管理员）：管理员在接收到订单后，可以更新状态（接受、制作中、完成等）。</li>
+<li>订单历史：家庭成员可以查看自己的历史订单和状态，管理员可以查看所有的订单记录。</li>
+</ul>
+<h4>菜品评价</h4>
+<ul>
+<li>用户评价：家庭成员可以对已经完成的菜品进行评价，写下反馈并打分。</li>
+<li>评价管理（管理员）：管理员可以查看评价，改进菜品。</li>
+</ul>
+<h3>核心流程</h3>
+<ol>
+<li>家庭成员登录并查看菜单。</li>
+<li>家庭成员选择菜品并提交订单。</li>
+<li>管理员在后台查看订单，并更新订单状态。</li>
+<li>家庭成员可以查看订单状态变化。</li>
+<li>订单完成后，家庭成员可以对菜品进行评价。</li>
+</ol>
+<h3>后续可以扩展的功能</h3>
+<ul>
+<li>通知功能：当订单状态更新时，向家庭成员发送推送通知。</li>
+<li>个性化推荐：根据用户历史点菜记录，推荐他们可能喜欢的菜品。</li>
+<li>多家庭支持：如果有多个家庭用户，也可以扩展为多人共享的家庭账户。</li>
 </ul>
 <h2>技术栈</h2>
 <ul>
@@ -10079,132 +10242,6 @@ PubkeyAuthentication <span class="token function">yes</span>
 </ol>
 <p>接下来在阿里云控制台使用 Workbench 远程连接，可以发现密码登录已经被禁用了，只能使用密钥登录。</p>
 <figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step4-pw-fail.png" alt="step4-pw-fail" tabindex="0" loading="lazy"><figcaption>step4-pw-fail</figcaption></figure>
-]]></content>
-    <category term="linux"/>
-    <published>2021-05-12T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">搭建 git 私服</title>
-    <id>https://dribble-njr.github.io/blog/blog/backend/linux/practice/002-build-git-server.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/backend/linux/practice/002-build-git-server.html"/>
-    <updated>2024-01-09T04:30:54.000Z</updated>
-    <summary type="html"><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><strong>git 私服作用：</strong></p>
-<ul>
-<li>自己电脑和公司（或者实验室）电脑随时同步资料</li>
-<li>GitHub、Gitee 私有仓库都是限流的，文件一旦多了，或者有图片文件，<code>git pull</code> 的时候半天拉不下来</li>
-<li>保存一些隐私文件</li>
-</ul>
-</div>
-<h2>开始搭建</h2>
-<ul>
-<li>服务器：centos7.9</li>
-<li>本地电脑: Windows10</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><strong>git 私服作用：</strong></p>
-<ul>
-<li>自己电脑和公司（或者实验室）电脑随时同步资料</li>
-<li>GitHub、Gitee 私有仓库都是限流的，文件一旦多了，或者有图片文件，<code>git pull</code> 的时候半天拉不下来</li>
-<li>保存一些隐私文件</li>
-</ul>
-</div>
-<h2>开始搭建</h2>
-<ul>
-<li>服务器：centos7.9</li>
-<li>本地电脑: Windows10</li>
-</ul>
-<p>如果服务器没装 git 可以使用以下命令安装：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token function">git</span>
-</code></pre></div><h2>创建 git 用户</h2>
-<p>创建一个 Git 的 Linux 账户，这个账户只做 Git 私服的操作，之后就要设置 Linux Git 账户的密码，但由于我之前已经 ，因此不用设置密码。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>adduser <span class="token function">git</span>
-</code></pre></div><p><strong>后面所有的操作都在 git 用户下进行：</strong></p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@instance-5fcyjde7 ~<span class="token punctuation">]</span>su - <span class="token function">git</span>
-</code></pre></div><p>看一下自己所在的目录，是不是在 git 目录下面：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>git@instance-5fcyjde7 ~<span class="token punctuation">]</span>$ <span class="token builtin class-name">pwd</span>
-/home/git
-</code></pre></div><h2>服务器端密钥管理</h2>
-<p>创建 <code>.ssh</code> 目录，如果 <code>.ssh</code> 已经存在了，可以忽略这一项。方便每次操作 Git 仓库的时候不用再去输入密码。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/
-<span class="token function">mkdir</span> .ssh
-</code></pre></div><p>进入 <code>.ssh</code> 文件下，创建一个 <code>authorized_keys</code> 文件，并给 <code>authorized_keys</code> 文件设置权限。这个文件用来存放客户端的公钥。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/.ssh
-<span class="token function">touch</span> authorized_keys
-<span class="token function">chmod</span> <span class="token number">700</span> /home/git/.ssh
-<span class="token function">chmod</span> <span class="token number">600</span> /home/git/.ssh/authorized_keys
-</code></pre></div><p>接下来要把客户端的公钥放在 Git 服务器上，我们再回到客户端，创建一个公钥。</p>
-<p>在我们自己的电脑上，有公钥和私钥。两个文件分别是：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。</p>
-<p>如果是 Windows 系统公钥私钥的目录在 <code>C:\Users\用户名.ssh</code> 下。</p>
-<p>如果是 Mac 或者 Linux， 公钥和私钥的目录这里 <code>cd ~/.ssh/</code>， 如果发现自己的电脑上没有公钥私钥，那就自己创建一个。</p>
-<p>创建密钥的命令：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>ssh-keygen <span class="token parameter variable">-t</span> rsa
-</code></pre></div><p>创建密钥的过程中，一路点击回车就可以了，不需要填任何东西。把刚刚生成的 <code>id_rsa.pub</code>，拷贝到 Git 服务器的 <code>/home/git/.ssh/</code> 目录。</p>
-<p>在 Git 服务器上，将公钥添加到 <code>authorized_keys</code> 文件中：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home/git/.ssh/
-<span class="token function">cat</span> id_rsa.pub <span class="token operator">&gt;&gt;</span> authorized_keys
-</code></pre></div><p>在客户直接登录 Git 服务器，验证是否配置成功：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">ssh</span> git@git 服务器 <span class="token function">ip</span>
-<span class="token comment"># 例如：</span>
-<span class="token function">ssh</span> git@127.0.0.1
-</code></pre></div><p>如果可以免密登录，那就说明服务器端密钥配置成功了。</p>
-<p>在这里我还出现了一个错误：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
-Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
-It is also possible that a <span class="token function">host</span> key has just been changed.
-The fingerprint <span class="token keyword">for</span> the RSA key sent by the remote <span class="token function">host</span> is
-<span class="token number">51</span>:82:00:1c:7e:6f:ac:ac:de:f1:53:08:1c:7d:55:68.
-Please contact your system administrator.
-Add correct <span class="token function">host</span> key <span class="token keyword">in</span> /Users/isaacalves/.ssh/known_hosts to get rid of this message.
-Offending RSA key <span class="token keyword">in</span> /Users/isaacalves/.ssh/known_hosts:12
-RSA <span class="token function">host</span> key <span class="token keyword">for</span> <span class="token number">104.131</span>.16.158 has changed and you have requested strict checking.
-Host key verification failed.
-</code></pre></div><p>出现这个错误的原因是因为我更新了 <code>ssh key</code>，使用以下命令删除无效的 key 即可：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>ssh-keygen <span class="token parameter variable">-R</span> <span class="token string">"服务器 ip"</span>
-</code></pre></div><h2>服务器端部署 Git 仓库</h2>
-<p>接下来在服务器上部署 git 仓库。</p>
-<p>登录到 Git 服务器端，切换为 Git 账户。如果是 root 账户切换成 Git 账户：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">su</span> - <span class="token function">git</span>
-</code></pre></div><p>如果是其他账户切换为 Git 账户：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">su</span> - <span class="token function">git</span>
-</code></pre></div><p>进入 git 目录下：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/git
-</code></pre></div><p>创建一个文件夹名为 <code>world.git</code>，<code>.git</code> 后缀表明这是一个 git 仓库而不是别的什么文件。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>git@localhost git<span class="token punctuation">]</span><span class="token comment"># mkdir world.git</span>
-<span class="token punctuation">[</span>git@localhost git<span class="token punctuation">]</span><span class="token comment"># cd word.git</span>
-</code></pre></div><p>初始化 word 仓库：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> init <span class="token parameter variable">--bare</span>
-</code></pre></div><p>如果想创建多个仓库，就在 <strong>git</strong> 用户下的 <code>~/git</code> 目录创建多个文件夹并<strong>初始化</strong>就可以了。</p>
-<p>现在服务端的 Git 仓库就部署完了，接下来就能像平时使用 github 一样使用这个 Git 私服了。</p>
-<h2>客户端连接远程仓库</h2>
-<p>在自己的电脑上创建一个文件夹也叫做 <code>world</code>。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>其实这里命名是随意的，但是我们为了和 Git 服务端的仓库名称保持同步。这样更直观我们操作的是哪一个仓库。</p>
-</div>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> world
-<span class="token builtin class-name">cd</span> world
-</code></pre></div><p>进入 <code>world</code> 文件，并初始化操作：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> world
-<span class="token function">git</span> init
-</code></pre></div><p>在 <code>world</code> 目录上创建一个测试文件，并且将其添加到 Git 私服中：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">touch</span> <span class="token builtin class-name">test</span>
-<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">test</span>
-<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"test git server"</span>
-</code></pre></div><p>将本地仓库和远端仓库同步：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> remote <span class="token function">add</span> origin git@服务器 ip:world.git
-<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin master
-</code></pre></div><p>此时这个 <code>test</code> 测试文件就已经提交到我们的 Git 远端私服上了。</p>
-<h2>参考链接</h2>
-<ul>
-<li><a href="https://mp.weixin.qq.com/s/8m5zK29sX0D9NM_YB8KDNQ" target="_blank" rel="noopener noreferrer">手把手来搭建 Git 私服！</a></li>
-<li><a href="https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed" target="_blank" rel="noopener noreferrer">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</a></li>
-</ul>
 ]]></content>
     <category term="linux"/>
     <published>2021-05-12T00:00:00.000Z</published>

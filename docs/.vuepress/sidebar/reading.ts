@@ -29,6 +29,13 @@ export default [
           '08-observer-pattern',
           '09-prototype-pattern'
         ]
+      },
+      {
+        text: 'React',
+        collapsible: true,
+        prefix: 'react/',
+        icon: 'react',
+        children: ['01-provider-pattern']
       }
     ]
   },

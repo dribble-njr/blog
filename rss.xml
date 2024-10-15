@@ -6,12 +6,12 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 24 Sep 2024 04:11:01 GMT</pubDate>
-    <lastBuildDate>Tue, 24 Sep 2024 04:11:01 GMT</lastBuildDate>
+    <pubDate>Tue, 15 Oct 2024 11:24:29 GMT</pubDate>
+    <lastBuildDate>Tue, 15 Oct 2024 11:24:29 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-    <category>practice</category>
     <category>reading</category>
+    <category>practice</category>
     <category>CSS</category>
     <category>node</category>
     <category>Pixi</category>
@@ -27,7 +27,95 @@
     <category>react</category>
     <category>algorithm</category>
     <category>linux</category>
-    <category>工程化</category>
+    <item>
+      <title>Provider 模式</title>
+      <link>https://dribble-njr.github.io/blog/blog/reading/patterns/react/01-provider-pattern.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/reading/patterns/react/01-provider-pattern.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Provider 模式</source>
+      <description>Provider 解决了多层嵌套组件中 props 传递的问题。 基础使用 react 提供了 createContext 方法来创建上下文，可以方便的在多层嵌套组件中共享数据。 Provider 需要传递一个 value 参数，代表需要共享的数据。 在嵌套组件中，可以使用 useContext 获取 value 参数。 hooks 一般来说，并不直接...</description>
+      <category>reading</category>
+      <pubDate>Tue, 15 Oct 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>Provider 解决了多层嵌套组件中 <code>props</code> 传递的问题。</p>
+<h2>基础使用</h2>
+<p>react 提供了 <code>createContext</code> 方法来创建上下文，可以方便的在多层嵌套组件中共享数据。</p>
+<p><code>Provider</code> 需要传递一个 <code>value</code> 参数，代表需要共享的数据。</p>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">const</span> DataContext <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">DataContext.Provider</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SideBar</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Content</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">DataContext.Provider</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在嵌套组件中，可以使用 <code>useContext</code> 获取 <code>value</code> 参数。</p>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">const</span> DataContext <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">SideBar</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Content</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">SideBar</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">List</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token keyword">const</span> <span class="token function-variable function">List</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ListItem</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token keyword">const</span> <span class="token function-variable function">Content</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Header</span></span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Block</span></span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+
+<span class="token keyword">function</span> <span class="token function">ListItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useContext</span><span class="token punctuation">(</span>DataContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>listItem<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useContext</span><span class="token punctuation">(</span>DataContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Header</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useContext</span><span class="token punctuation">(</span>DataContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2>hooks</h2>
+<p>一般来说，并不直接在嵌套组件使用 <code>useContext</code>，而是将其封装成一个 hooks。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">useDataContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>DataContext<span class="token punctuation">)</span>
+
+  <span class="token comment">// 安全起见，可以在这里做一些检查</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'useDataContext must be used within a DataContextProvider'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> data
+<span class="token punctuation">}</span>
+</code></pre></div><p>接下来在组件中，可以使用 <code>useDataContext</code> 获取 <code>value</code> 参数。</p>
+<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token function">useDataContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>原型模式</title>
+      <link>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/09-prototype-pattern.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/09-prototype-pattern.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">原型模式</source>
+      <description>详见 。 </description>
+      <category>reading</category>
+      <pubDate>Tue, 15 Oct 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>详见 。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>Turso 集成 Prisma</title>
       <link>https://dribble-njr.github.io/blog/blog/backend/practice/001-integrate-turso-prisma.html</link>
@@ -9142,118 +9230,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>可以不去执行，只要安装过程不报错就表明成功。</p>
 </div>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>yeoman 基础使用</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/005-yeoman.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/005-yeoman.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">yeoman 基础使用</source>
-      <description>::: waring yo@5.0.0 引入了一个破坏性的更新，会导致 instantiatedGenerator.run is not a function，需要降级到 @4.x。 降级后仍有报错，可能是 generator-node 的问题，垃圾项目没人维护。 ::: Yeoman 是一个通用的脚手架系统，允许创建任何类型的应用程序。它可以快速启动...</description>
-      <category>工程化</category>
-      <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>::: waring</p>
-<p><code>yo@5.0.0</code> 引入了一个破坏性的更新，会导致 <a href="https://github.com/yeoman/generator-generator/issues/258" target="_blank" rel="noopener noreferrer">instantiatedGenerator.run is not a function</a>，需要降级到 <code>@4.x</code>。</p>
-<p>降级后仍有报错，可能是 <code>generator-node</code> 的问题，垃圾项目没人维护。</p>
-<p>:::</p>
-<p>Yeoman 是一个通用的脚手架系统，允许创建任何类型的应用程序。它可以快速启动新项目，并简化现有项目的维护工作。</p>
-<p>Yeoman 与语言无关。它可以生成任何语言（Web、Java、Python、C# 等）的项目。</p>
-<p>Yeoman 本身不做任何决定。所有决定都由生成器做出，而生成器基本上就是 Yeoman 环境中的插件。有很多公开可用的生成器，创建一个新的生成器来匹配任何工作流程也很容易。Yeoman 始终是满足脚手架需求的正确选择。</p>
-<p>以下是一些常见的使用案例：</p>
-<ul>
-<li>快速创建新项目</li>
-<li>创建项目的新部分，如带有单元测试的新控制器</li>
-<li>创建模块或软件包</li>
-<li>引导新服务</li>
-<li>执行标准、最佳实践和风格指南</li>
-<li>通过让用户使用示例应用程序来推广新项目</li>
-<li>...</li>
-</ul>
-<h2>开始</h2>
-<p><code>yo</code> 是一款 Yeoman 命令行实用程序，允许使用脚手架模板（简称为生成器）创建项目。使用 npm 安装 <code>yo</code> 和生成器：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> yo
-</code></pre></div><p>然后可以安装一些生成器：</p>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>可以在 <a href="https://yeoman.io/generators/" target="_blank" rel="noopener noreferrer">生成器</a> 中搜索想要的生成器。</p>
-</div>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> generator-node
-</code></pre></div><h2>基本脚手架</h2>
-<p>搭建基本脚手架，只需要去除生成器前缀 <code>generator-</code>：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yo <span class="token function">node</span>
-</code></pre></div><p>大多数生成器会提出一系列问题来定制新项目。要查看哪些选项可用，请使用 <code>help</code> 命令：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yo <span class="token function">node</span> <span class="token parameter variable">--help</span>
-</code></pre></div><p>很多生成器都依赖于构建系统（如 Grunt 或 Gulp）和软件包管理器（如 npm 和 Bower）。请务必访问生成器的网站，了解运行和维护新应用程序的相关信息。运行以下命令即可轻松访问生成器的主页：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> home generator-node
-</code></pre></div><p>为复杂框架搭建脚手架的生成器可能会提供额外的生成器，为项目的较小部分搭建脚手架。这些生成器通常被称为子生成器，访问方式为 <code>generator:sub-generator</code>。</p>
-<p>以 <code>generator-node</code> 为例。一旦生成了完整的 node 应用程序，就可以添加其他功能。要在项目中添加新控制器，请运行控制器子生成器：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yo node:cli
-</code></pre></div><h2>其他 yo 命令</h2>
-<p>除了上一节介绍的基础知识，<code>yo</code> 还是一个完全交互式的工具。只需在终端键入 <code>yo</code>，就能看到一系列选项，用于管理与生成器有关的一切：运行、更新、安装、帮助和其他实用程序。</p>
-<p><code>yo</code> 还提供以下命令。</p>
-<ul>
-<li><code>yo --help</code> 访问完整的帮助界面</li>
-<li><code>yo --generators</code> 列出所有已安装的生成器</li>
-<li><code>yo --version</code> 获取版本</li>
-</ul>
-<h2>故障排除</h2>
-<p>大多数问题都可以通过运行：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yo doctor
-</code></pre></div><p><code>doctor</code> 命令将诊断并提供解决最常见问题的步骤。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>服务器设置 ssh 密钥登录</title>
-      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/001-set-the-ssh.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/001-set-the-ssh.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">服务器设置 ssh 密钥登录</source>
-      <description> 提示 使用密码登录服务器并不安全，因此我们需要设置密钥登录。 创建密钥对 登录阿里云控制台 -&amp;gt; 云服务 ECS -&amp;gt; 网络与安全 -&amp;gt; 密钥对 -&amp;gt; 创建密钥对。 step1-create-sshstep1-create-ssh 创建成功之后，浏览器会自动下载一个 .pem 私钥文件，记住这个文件的位置，之后要用。 绑定密钥对 选中刚才创建的密钥对...</description>
-      <category>linux</category>
-      <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>使用密码登录服务器并不安全，因此我们需要设置密钥登录。</p>
-</div>
-<h2>创建密钥对</h2>
-<p>登录阿里云控制台 -&gt; 云服务 ECS -&gt; 网络与安全 -&gt; 密钥对 -&gt; 创建密钥对。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-create-ssh.png" alt="step1-create-ssh" tabindex="0" loading="lazy"><figcaption>step1-create-ssh</figcaption></figure>
-<p>创建成功之后，浏览器会自动下载一个 <code>.pem</code> 私钥文件，记住这个文件的位置，之后要用。</p>
-<h2>绑定密钥对</h2>
-<p>选中刚才创建的密钥对，点击右侧<strong>绑定密钥对</strong>，将密钥对绑定到实例。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-bind-ssh.png" alt="step2-bind-ssh" tabindex="0" loading="lazy"><figcaption>step2-bind-ssh</figcaption></figure>
-<h2>添加安全组规则</h2>
-<p>云服务 ECS -&gt; 网络与安全 -&gt; 安全组 -&gt; 入方向 -&gt; 手动添加。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step3-add-port.png" alt="step3-add-port" tabindex="0" loading="lazy"><figcaption>step3-add-port</figcaption></figure>
-<p>执行完后重启实例。</p>
-<h2>密钥验证并禁用密码登录</h2>
-<ol>
-<li>
-<p>安装 MobaXterm</p>
-</li>
-<li>
-<p>在 MobaXterm 下输入命令（<a href="https://help.aliyun.com/document_detail/51798.html#title-7je-5ba-sm2" target="_blank" rel="noopener noreferrer">参考阿里云官网文档</a>）</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">chmod</span> <span class="token number">400</span> <span class="token punctuation">[</span>.pem私钥文件在本地机上的存储路径<span class="token punctuation">]</span>
-</code></pre></div><div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">ssh</span> <span class="token parameter variable">-i</span> <span class="token punctuation">[</span>.pem私钥文件在本地机上的存储路径<span class="token punctuation">]</span> root@<span class="token punctuation">[</span>公网IP地址<span class="token punctuation">]</span>
-</code></pre></div></li>
-<li>
-<p>输入以下命令修改 config 文件</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">vi</span> /etc/ssh/sshd_config
-</code></pre></div></li>
-<li>
-<p>按 <code>i</code> 进入编辑模式</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token comment">#禁用密码验证</span>
-PasswordAuthentication no
-<span class="token comment">#启用密钥验证</span>
-PubkeyAuthentication <span class="token function">yes</span>
-</code></pre></div></li>
-<li>
-<p>重启 ssh 服务</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">service</span> sshd restart
-</code></pre></div></li>
-</ol>
-<p>接下来在阿里云控制台使用 Workbench 远程连接，可以发现密码登录已经被禁用了，只能使用密钥登录。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step4-pw-fail.png" alt="step4-pw-fail" tabindex="0" loading="lazy"><figcaption>step4-pw-fail</figcaption></figure>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-create-ssh.png" type="image/png"/>
     </item>
   </channel>
 </rss>

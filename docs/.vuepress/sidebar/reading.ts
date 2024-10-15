@@ -26,7 +26,8 @@ export default [
           '05-middleware-pattern',
           '06-mixin-pattern',
           '07-module-pattern',
-          '08-observer-pattern'
+          '08-observer-pattern',
+          '09-prototype-pattern'
         ]
       }
     ]

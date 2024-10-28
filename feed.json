@@ -7,6 +7,23 @@
   "favicon": "https://dribble-njr.github.io/blog/blog/favicon.ico",
   "items": [
     {
+      "title": "单例模式",
+      "url": "https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/11-singleton-pattern.html",
+      "id": "https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/11-singleton-pattern.html",
+      "summary": "单例是指只需实例化一次就可以全局访问的类。单例可以在整个应用程序中共享，这使得单例非常适合管理应用程序中的全局状态。 比如一个邮件应用，可以使用单例模式来共享一个 EmailClient 对象。 这里构造函数为 private，因此无法在外部创建 EmailClient 对象，但可以通过 getInstance 方法获取单例对象。 如果使用 js 创建...",
+      "content_html": "<p>单例是指只需实例化一次就可以全局访问的类。单例可以在整个应用程序中共享，这使得单例非常适合管理应用程序中的全局状态。</p>\n<p>比如一个邮件应用，可以使用单例模式来共享一个 <code>EmailClient</code> 对象。</p>\n<div class=\"language-typescript\" data-ext=\"ts\" data-title=\"ts\"><pre class=\"language-typescript\"><code><span class=\"token keyword\">class</span> <span class=\"token class-name\">EmailClient</span> <span class=\"token punctuation\">{</span>\n  <span class=\"token keyword\">private</span> transporter<span class=\"token operator\">:</span> Transporter\n  <span class=\"token keyword\">private</span> <span class=\"token keyword\">static</span> instance<span class=\"token operator\">:</span> Mailer\n\n  <span class=\"token comment\">// 使用 nodemailer 配置，发送邮件</span>\n  <span class=\"token keyword\">private</span> <span class=\"token function\">constructor</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token keyword\">const</span> smtpConfig<span class=\"token operator\">:</span> SMTPTransport<span class=\"token punctuation\">.</span>Options <span class=\"token operator\">=</span> <span class=\"token punctuation\">{</span>\n      host<span class=\"token operator\">:</span> config<span class=\"token punctuation\">.</span><span class=\"token constant\">NODEMAILER_HOST</span><span class=\"token punctuation\">,</span>\n      port<span class=\"token operator\">:</span> <span class=\"token number\">465</span><span class=\"token punctuation\">,</span>\n      secure<span class=\"token operator\">:</span> <span class=\"token boolean\">true</span><span class=\"token punctuation\">,</span>\n      auth<span class=\"token operator\">:</span> <span class=\"token punctuation\">{</span>\n        user<span class=\"token operator\">:</span> config<span class=\"token punctuation\">.</span><span class=\"token constant\">NODEMAILER_AUTH_USER</span><span class=\"token punctuation\">,</span>\n        pass<span class=\"token operator\">:</span> config<span class=\"token punctuation\">.</span><span class=\"token constant\">NODEMAILER_AUTH_PASS</span>\n      <span class=\"token punctuation\">}</span><span class=\"token punctuation\">,</span>\n      socketTimeout<span class=\"token operator\">:</span> <span class=\"token number\">30000</span><span class=\"token punctuation\">,</span>\n      connectionTimeout<span class=\"token operator\">:</span> <span class=\"token number\">30000</span><span class=\"token punctuation\">,</span>\n      logger<span class=\"token operator\">:</span> <span class=\"token boolean\">true</span><span class=\"token punctuation\">,</span>\n      debug<span class=\"token operator\">:</span> <span class=\"token boolean\">true</span>\n    <span class=\"token punctuation\">}</span>\n\n    <span class=\"token keyword\">this</span><span class=\"token punctuation\">.</span>transporter <span class=\"token operator\">=</span> <span class=\"token function\">createTransport</span><span class=\"token punctuation\">(</span>smtpConfig<span class=\"token punctuation\">)</span>\n  <span class=\"token punctuation\">}</span>\n\n  <span class=\"token keyword\">static</span> <span class=\"token function\">getInstance</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token operator\">!</span><span class=\"token keyword\">this</span><span class=\"token punctuation\">.</span>instance<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n      <span class=\"token keyword\">this</span><span class=\"token punctuation\">.</span>instance <span class=\"token operator\">=</span> <span class=\"token keyword\">new</span> <span class=\"token class-name\">Mailer</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span>\n    <span class=\"token punctuation\">}</span>\n    <span class=\"token keyword\">return</span> <span class=\"token keyword\">this</span><span class=\"token punctuation\">.</span>instance\n  <span class=\"token punctuation\">}</span>\n<span class=\"token punctuation\">}</span>\n</code></pre></div><p>这里构造函数为 <code>private</code>，因此无法在外部创建 <code>EmailClient</code> 对象，但可以通过 <code>getInstance</code> 方法获取单例对象。</p>\n<p>如果使用 js 创建对象，由于 js 无 <code>private</code> 修饰符，可以在 <code>constructor</code> 中使用  判断是否为 <code>EmailClient</code> 类，如果是则抛出错误。</p>\n<div class=\"language-javascript\" data-ext=\"js\" data-title=\"js\"><pre class=\"language-javascript\"><code><span class=\"token keyword\">class</span> <span class=\"token class-name\">EmailClient</span> <span class=\"token punctuation\">{</span>\n  <span class=\"token function\">constructor</span><span class=\"token punctuation\">(</span><span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n    <span class=\"token keyword\">if</span> <span class=\"token punctuation\">(</span><span class=\"token keyword\">new</span><span class=\"token punctuation\">.</span>target <span class=\"token operator\">===</span> EmailClient<span class=\"token punctuation\">)</span> <span class=\"token punctuation\">{</span>\n      <span class=\"token keyword\">throw</span> <span class=\"token keyword\">new</span> <span class=\"token class-name\">Error</span><span class=\"token punctuation\">(</span><span class=\"token string\">'Cannot instantiate EmailClient directly'</span><span class=\"token punctuation\">)</span>\n    <span class=\"token punctuation\">}</span>\n  <span class=\"token punctuation\">}</span>\n<span class=\"token punctuation\">}</span>\n</code></pre></div><p>这样，一个 <code>EmailClient</code> 对象只能通过 <code>getInstance</code> 方法获取，而且只会在初始化时创建一次，不会大量地创建多个 <code>EmailClient</code> 对象，防止大量连接邮件服务造成性能问题。</p>\n",
+      "date_published": "2024-10-28T00:00:00.000Z",
+      "date_modified": "2024-10-28T03:37:52.000Z",
+      "authors": [
+        {
+          "name": "patterns"
+        }
+      ],
+      "tags": [
+        "reading"
+      ]
+    },
+    {
       "title": "Provider 模式",
       "url": "https://dribble-njr.github.io/blog/blog/reading/patterns/react/01-provider-pattern.html",
       "id": "https://dribble-njr.github.io/blog/blog/reading/patterns/react/01-provider-pattern.html",
@@ -1031,6 +1048,19 @@
       ]
     },
     {
+      "title": "静态站点生成器",
+      "url": "https://dribble-njr.github.io/blog/blog/project/ssg/",
+      "id": "https://dribble-njr.github.io/blog/blog/project/ssg/",
+      "summary": "静态站点生成器（static site generation, ssg）。 VuePress Docusaurus Docusaurus 是一款静态网站生成器。 它利用 React 的全部功能来构建具有快速客户端导航功能的单页应用程序，从而使您的网站具有交互性。 它提供开箱即用的文档功能，但也可用于创建任何类型的网站（个人网站、产品、博客、营销登陆页面...",
+      "content_html": "<p>静态站点生成器（static site generation, ssg）。</p>\n<h2>VuePress</h2>\n<h2>Docusaurus</h2>\n<p><a href=\"https://docusaurus.io/\" target=\"_blank\" rel=\"noopener noreferrer\">Docusaurus</a> 是一款静态网站生成器。</p>\n<p>它利用 React 的全部功能来构建具有快速客户端导航功能的单页应用程序，从而使您的网站具有交互性。</p>\n<p>它提供开箱即用的文档功能，但也可用于创建任何类型的网站（个人网站、产品、博客、营销登陆页面等）。</p>\n<h3>对比</h3>\n<h4>Gatsby​</h4>\n<p><a href=\"https://www.gatsbyjs.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gatsby</a> 功能丰富，拥有丰富的插件生态系统，可以实现 Docusaurus 的所有功能。</p>\n<p>当然，这带来了较陡的学习曲线。 Gatsby 在许多方面做得都很出色，适合构建许多类型的网站。另一方面，Docusaurus 力图将一件事做到尽善尽美——成为最好的内容撰写与发布工具。</p>\n<p>GraphQL 是 Gatsby 的核心，但搭建 Gatsby 网站不一定要用到它。 而在大多数静态网站中，你更不需要 GraphQL 所提供的灵活性。</p>\n<p>Docusaurus v2+ 的许多方面都被 Gatsby 的出色之处所启发，这是一个优秀的替代品。</p>\n<p>Docz is a Gatsby theme to build documentation websites. 它的功能与 Docusaurus 相比要匮乏。</p>\n<h4>VuePress</h4>\n<p>VuePress 与 Docusaurus 有许多相似之处--两者都非常重视以内容为中心的网站，并提供开箱即用的定制文档功能。</p>\n<p>但是，VuePress 是 Vue 驱动的，而 Docusaurus 则是 React 驱动的。</p>\n<p>如果你想要一个基于 Vue 的解决方案，VuePress 是个不错的选择。</p>\n",
+      "date_published": "2024-02-29T00:00:00.000Z",
+      "date_modified": "2024-02-29T11:17:41.000Z",
+      "authors": [],
+      "tags": [
+        "Project"
+      ]
+    },
+    {
       "title": "Vuepress Plugin Ordered Header",
       "url": "https://dribble-njr.github.io/blog/blog/project/plugin/01.vuepress-plugin-ordered-header.html",
       "id": "https://dribble-njr.github.io/blog/blog/project/plugin/01.vuepress-plugin-ordered-header.html",
@@ -1054,19 +1084,6 @@
       "date_modified": "2024-02-29T11:17:41.000Z",
       "authors": [],
       "tags": []
-    },
-    {
-      "title": "静态站点生成器",
-      "url": "https://dribble-njr.github.io/blog/blog/project/ssg/",
-      "id": "https://dribble-njr.github.io/blog/blog/project/ssg/",
-      "summary": "静态站点生成器（static site generation, ssg）。 VuePress Docusaurus Docusaurus 是一款静态网站生成器。 它利用 React 的全部功能来构建具有快速客户端导航功能的单页应用程序，从而使您的网站具有交互性。 它提供开箱即用的文档功能，但也可用于创建任何类型的网站（个人网站、产品、博客、营销登陆页面...",
-      "content_html": "<p>静态站点生成器（static site generation, ssg）。</p>\n<h2>VuePress</h2>\n<h2>Docusaurus</h2>\n<p><a href=\"https://docusaurus.io/\" target=\"_blank\" rel=\"noopener noreferrer\">Docusaurus</a> 是一款静态网站生成器。</p>\n<p>它利用 React 的全部功能来构建具有快速客户端导航功能的单页应用程序，从而使您的网站具有交互性。</p>\n<p>它提供开箱即用的文档功能，但也可用于创建任何类型的网站（个人网站、产品、博客、营销登陆页面等）。</p>\n<h3>对比</h3>\n<h4>Gatsby​</h4>\n<p><a href=\"https://www.gatsbyjs.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Gatsby</a> 功能丰富，拥有丰富的插件生态系统，可以实现 Docusaurus 的所有功能。</p>\n<p>当然，这带来了较陡的学习曲线。 Gatsby 在许多方面做得都很出色，适合构建许多类型的网站。另一方面，Docusaurus 力图将一件事做到尽善尽美——成为最好的内容撰写与发布工具。</p>\n<p>GraphQL 是 Gatsby 的核心，但搭建 Gatsby 网站不一定要用到它。 而在大多数静态网站中，你更不需要 GraphQL 所提供的灵活性。</p>\n<p>Docusaurus v2+ 的许多方面都被 Gatsby 的出色之处所启发，这是一个优秀的替代品。</p>\n<p>Docz is a Gatsby theme to build documentation websites. 它的功能与 Docusaurus 相比要匮乏。</p>\n<h4>VuePress</h4>\n<p>VuePress 与 Docusaurus 有许多相似之处--两者都非常重视以内容为中心的网站，并提供开箱即用的定制文档功能。</p>\n<p>但是，VuePress 是 Vue 驱动的，而 Docusaurus 则是 React 驱动的。</p>\n<p>如果你想要一个基于 Vue 的解决方案，VuePress 是个不错的选择。</p>\n",
-      "date_published": "2024-02-29T00:00:00.000Z",
-      "date_modified": "2024-02-29T11:17:41.000Z",
-      "authors": [],
-      "tags": [
-        "Project"
-      ]
     },
     {
       "title": "基础工具",
@@ -1352,19 +1369,6 @@
       "authors": [],
       "tags": [
         "practice"
-      ]
-    },
-    {
-      "title": "centos 安装 docker",
-      "url": "https://dribble-njr.github.io/blog/blog/backend/linux/practice/005-install-docker.html",
-      "id": "https://dribble-njr.github.io/blog/blog/backend/linux/practice/005-install-docker.html",
-      "summary": " 提示 需要保证 centos 版本： centos 7 centos 8 centos 9 卸载旧版本 注意 必须先完成这一步，否则会出现不可预见的错误。 运行下列命令： 出现成功提示后即可。 使用 rpm repository 安装 设置镜像 安装 yum-utils 软件包（提供 yum-config-manager 实用工具）并设置软件源。 安...",
-      "content_html": "<div class=\"hint-container tip\">\n<p class=\"hint-container-title\">提示</p>\n<p>需要保证 centos 版本：</p>\n<ul>\n<li>centos 7</li>\n<li>centos 8</li>\n<li>centos 9</li>\n</ul>\n</div>\n<h2>卸载旧版本</h2>\n<div class=\"hint-container warning\">\n<p class=\"hint-container-title\">注意</p>\n<p>必须先完成这一步，否则会出现不可预见的错误。</p>\n</div>\n<p>运行下列命令：</p>\n<div class=\"language-bash\" data-ext=\"sh\" data-title=\"sh\"><pre class=\"language-bash\"><code><span class=\"token function\">sudo</span> yum remove <span class=\"token function\">docker</span> <span class=\"token punctuation\">\\</span>\n                  docker-client <span class=\"token punctuation\">\\</span>\n                  docker-client-latest <span class=\"token punctuation\">\\</span>\n                  docker-common <span class=\"token punctuation\">\\</span>\n                  docker-latest <span class=\"token punctuation\">\\</span>\n                  docker-latest-logrotate <span class=\"token punctuation\">\\</span>\n                  docker-logrotate <span class=\"token punctuation\">\\</span>\n                  docker-engine\n</code></pre></div><p>出现成功提示后即可。</p>\n<h2>使用 rpm repository 安装</h2>\n<h3>设置镜像</h3>\n<p>安装 <code>yum-utils</code> 软件包（提供 <code>yum-config-manager</code> 实用工具）并设置软件源。</p>\n<div class=\"language-bash\" data-ext=\"sh\" data-title=\"sh\"><pre class=\"language-bash\"><code><span class=\"token function\">sudo</span> yum <span class=\"token function\">install</span> <span class=\"token parameter variable\">-y</span> yum-utils\n<span class=\"token function\">sudo</span> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo\n</code></pre></div><h3>安装 docker engin</h3>\n<ol>\n<li>安装最新版：</li>\n</ol>\n\n<ol start=\"2\">\n<li>启动 docker</li>\n</ol>\n<div class=\"language-bash\" data-ext=\"sh\" data-title=\"sh\"><pre class=\"language-bash\"><code><span class=\"token function\">sudo</span> systemctl start <span class=\"token function\">docker</span>\n</code></pre></div><ol start=\"3\">\n<li>运行 <code>hello-world</code> 映像，验证 Docker Engine 安装是否成功。</li>\n</ol>\n<div class=\"language-bash\" data-ext=\"sh\" data-title=\"sh\"><pre class=\"language-bash\"><code><span class=\"token function\">sudo</span> <span class=\"token function\">docker</span> run hello-world\n</code></pre></div><p>这条命令会下载一个测试镜像，并在一个容器中运行。当容器运行时，它会打印一条确认信息并退出。</p>\n<div class=\"hint-container tip\">\n<p class=\"hint-container-title\">提示</p>\n<p>可以不去执行，只要安装过程不报错就表明成功。</p>\n</div>\n",
-      "date_published": "2024-01-12T00:00:00.000Z",
-      "date_modified": "2024-01-13T18:13:25.000Z",
-      "authors": [],
-      "tags": [
-        "linux"
       ]
     }
   ]

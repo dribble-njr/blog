@@ -27,7 +27,8 @@ export default [
           '06-mixin-pattern',
           '07-module-pattern',
           '08-observer-pattern',
-          '09-prototype-pattern'
+          '09-prototype-pattern',
+          '11-singleton-pattern'
         ]
       },
       {

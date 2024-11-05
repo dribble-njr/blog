@@ -1,19 +1,21 @@
 ---
 title: yeoman 基础使用
 date: 2024-01-09
+icon: yeoman
 category:
   - 工程化
 tag:
   - frontend
   - cli
   - yeoman
+  - deprecated
 ---
 
-::: waring
+::: warning
 
 `yo@5.0.0` 引入了一个破坏性的更新，会导致 [instantiatedGenerator.run is not a function](https://github.com/yeoman/generator-generator/issues/258)，需要降级到 `@4.x`。
 
-降级后仍有报错，可能是 `generator-node` 的问题，垃圾项目没人维护。
+降级后仍有报错，可能是 `generator-node` 的问题，不再推荐使用。
 
 :::
 

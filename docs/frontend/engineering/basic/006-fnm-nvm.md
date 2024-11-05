@@ -9,6 +9,7 @@ tag:
   - node
   - fnm
   - nvm
+  - node package manager
 ---
 
 在管理多个 Node.js 项目（每个项目都可能需要不同的 Node 版本）时，可靠的版本管理器可以简化您的工作流程。 两种流行的选择是 [fnm（Fast Node Manager）](https://github.com/Schniz/fnm) 和 [nvm（Node Version Manager）](https://github.com/nvm-sh/nvm)。本文从性能、功能、安装简便性、使用和兼容性等方面对 `fnm` 和 `nvm` 进行了比较，帮助你选择最适合自己开发需求的版本管理器。
@@ -210,8 +211,6 @@ eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
 内存使用：`fnm` 针对低内存使用率进行了优化，因此在高端和资源受限的系统上都很高效。
 
 版本切换：在 `fnm` 中，版本切换是即时进行的。 相比之下，`nvm` 可能会出现轻微延迟，尤其是在切换大量使用的版本时。
-
-全局共享模块：`fnm` 在全局范围内共享 Node 模块，而 `nvm` 会根据不同 Node 版本创建独立的模块目录，若频繁切换版本，则需要重新安装模块。
 
 ### 跨平台兼容性
 

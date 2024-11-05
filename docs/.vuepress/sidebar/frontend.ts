@@ -152,13 +152,13 @@ export default [
         icon: 'basic',
         prefix: 'basic/',
         children: [
-          '001-modularization',
-          '002-package-manager',
-          '003-tool',
-          '004-project-standards',
-          '005-yeoman',
-          '006-fnm-nvm',
-          '007-fnm-global-module-shared'
+          '01-modularization',
+          '02-package-manager',
+          '03-tool',
+          '04-project-standards',
+          '05-yeoman',
+          '06-fnm-nvm',
+          '07-fnm-global-module-shared'
         ]
       },
       {

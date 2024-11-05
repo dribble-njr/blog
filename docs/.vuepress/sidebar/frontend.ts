@@ -151,7 +151,7 @@ export default [
         collapsible: true,
         icon: 'basic',
         prefix: 'basic/',
-        children: ['001-modularization', '002-package-manager', '003-tool', '004-project-standards', '005-yeoman']
+        children: ['001-modularization', '002-package-manager', '003-tool', '004-project-standards', '005-yeoman', '006-fnm-nvm']
       },
       {
         text: '打包工具',

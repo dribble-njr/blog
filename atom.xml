@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-11-05T11:17:10.107Z</updated>
+  <updated>2024-11-06T15:46:20.053Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -32,7 +32,7 @@
     <title type="text">模块化</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/01-modularization.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/01-modularization.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>早期 JavaScript 仅仅作为一个脚本语言，所需的代码通常不会很大。然而随着前端和 JavaScript 的发展，逐渐暴露出两个问题：</p>
 <ul>
 <li>全局污染：不同文件中的函数会相互污染；</li>
@@ -460,7 +460,7 @@ module<span class="token punctuation">.</span><span class="token function">forma
     <title type="text">包管理工具</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/02-package-manager.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/02-package-manager.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>npm</h2>
 <p><a href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally" target="_blank" rel="noopener noreferrer">https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally</a></p>
 ]]></summary>
@@ -474,7 +474,7 @@ module<span class="token punctuation">.</span><span class="token function">forma
     <title type="text">工具链</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/03-tool.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/03-tool.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>JavaScript</h2>
 <p>问题：</p>
 <ul>
@@ -537,7 +537,7 @@ module<span class="token punctuation">.</span><span class="token function">forma
     <title type="text">项目规范</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/04-project-standards.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/04-project-standards.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>代码规范</h2>
 <h3>editorconfig</h3>
 <p>EditorConfig 有助于跨不同编辑器和 IDE 为处理同一项目的多个开发人员维护一致的编码风格。</p>
@@ -852,7 +852,7 @@ node_modules
     <title type="text">yeoman 基础使用</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/05-yeoman.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/05-yeoman.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container warning">
 <p class="hint-container-title">注意</p>
 <p><code>yo@5.0.0</code> 引入了一个破坏性的更新，会导致 <a href="https://github.com/yeoman/generator-generator/issues/258" target="_blank" rel="noopener noreferrer">instantiatedGenerator.run is not a function</a>，需要降级到 <code>@4.x</code>。</p>
@@ -915,7 +915,7 @@ node_modules
     <title type="text">fnm 和 nvm 对比</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/06-fnm-nvm.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/06-fnm-nvm.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在管理多个 Node.js 项目（每个项目都可能需要不同的 Node 版本）时，可靠的版本管理器可以简化您的工作流程。 两种流行的选择是 <a href="https://github.com/Schniz/fnm" target="_blank" rel="noopener noreferrer">fnm（Fast Node Manager）</a> 和 <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener noreferrer">nvm（Node Version Manager）</a>。本文从性能、功能、安装简便性、使用和兼容性等方面对 <code>fnm</code> 和 <code>nvm</code> 进行了比较，帮助你选择最适合自己开发需求的版本管理器。</p>]]></summary>
     <content type="html"><![CDATA[<p>在管理多个 Node.js 项目（每个项目都可能需要不同的 Node 版本）时，可靠的版本管理器可以简化您的工作流程。 两种流行的选择是 <a href="https://github.com/Schniz/fnm" target="_blank" rel="noopener noreferrer">fnm（Fast Node Manager）</a> 和 <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener noreferrer">nvm（Node Version Manager）</a>。本文从性能、功能、安装简便性、使用和兼容性等方面对 <code>fnm</code> 和 <code>nvm</code> 进行了比较，帮助你选择最适合自己开发需求的版本管理器。</p>
 <h2>fnm 和 nvm 简介</h2>
@@ -1028,10 +1028,11 @@ brew <span class="token function">install</span> fnm
     <title type="text">fnm 全局共享模块</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/07-fnm-global-module-shared.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/07-fnm-global-module-shared.html"/>
-    <updated>2024-11-05T11:10:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>fnm</code> 会根据当前 Node 版本创建独立的模块目录，若频繁切换版本，则需要重新安装模块。</p>
 <p>为了提高开发体验，我们可能需要全局共享模块，虽然这会在一定程度上造成版本冲突的可能性，但可以减少切换版本时重新安装模块的麻烦。</p>
-<p><code>fnm</code> 设置全局共享模块步骤：</p>
+<p><code>fnm</code> 设置全局共享模块步骤如下。</p>
+<h2>macOS</h2>
 <ol>
 <li>创建全局共享模块目录<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> ~/.npm_global
 </code></pre></div></li>
@@ -1043,7 +1044,8 @@ brew <span class="token function">install</span> fnm
 </ol>]]></summary>
     <content type="html"><![CDATA[<p><code>fnm</code> 会根据当前 Node 版本创建独立的模块目录，若频繁切换版本，则需要重新安装模块。</p>
 <p>为了提高开发体验，我们可能需要全局共享模块，虽然这会在一定程度上造成版本冲突的可能性，但可以减少切换版本时重新安装模块的麻烦。</p>
-<p><code>fnm</code> 设置全局共享模块步骤：</p>
+<p><code>fnm</code> 设置全局共享模块步骤如下。</p>
+<h2>macOS</h2>
 <ol>
 <li>创建全局共享模块目录<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> ~/.npm_global
 </code></pre></div></li>
@@ -1052,6 +1054,21 @@ brew <span class="token function">install</span> fnm
 <li>更新环境变量<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token string">"export PATH=~/.npm_global/bin:\<span class="token environment constant">$PATH</span>"</span> <span class="token operator">&gt;&gt;</span> ~/.zshrc
 <span class="token builtin class-name">source</span> ~/.zshrc
 </code></pre></div></li>
+</ol>
+<h2>Windows</h2>
+<ol>
+<li>创建一个共享的全局模块目录：你可以在任意位置创建一个共享目录，比如 <code>C:\fnm-global-modules</code>。<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> C:<span class="token punctuation">\</span>fnm-global-modules
+</code></pre></div></li>
+<li>设置 <code>npm</code> 全局模块目录<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">npm</span> config <span class="token builtin class-name">set</span> prefix C:<span class="token punctuation">\</span>fnm-global-modules
+</code></pre></div></li>
+<li>更新环境变量
+<ol>
+<li>打开 系统环境变量设置（按 Win + X，选择 系统 &gt; 高级系统设置 &gt; 环境变量）。</li>
+<li>在 系统变量 部分找到 Path，点击 编辑。</li>
+<li>添加新的路径：<code>C:\fnm-global-modules\bin</code>。</li>
+</ol>
+</li>
+<li>重启终端使配置生效。</li>
 </ol>
 <p>配置完成后，通过 <code>npm install -g</code> 安装的全局模块会存储在 <code>~/.npm_global</code> 中，不再受 Node.js 版本切换的影响。</p>
 ]]></content>
@@ -1062,7 +1079,7 @@ brew <span class="token function">install</span> fnm
     <title type="text">单例模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/11-singleton-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/11-singleton-pattern.html"/>
-    <updated>2024-10-28T03:37:52.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>单例是指只需实例化一次就可以全局访问的类。单例可以在整个应用程序中共享，这使得单例非常适合管理应用程序中的全局状态。</p>
 <p>比如一个邮件应用，可以使用单例模式来共享一个 <code>EmailClient</code> 对象。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">class</span> <span class="token class-name">EmailClient</span> <span class="token punctuation">{</span>
@@ -1153,7 +1170,7 @@ brew <span class="token function">install</span> fnm
     <title type="text">Provider 模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/react/01-provider-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/react/01-provider-pattern.html"/>
-    <updated>2024-10-15T11:22:34.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>Provider 解决了多层嵌套组件中 <code>props</code> 传递的问题。</p>
 <h2>基础使用</h2>
 <p>react 提供了 <code>createContext</code> 方法来创建上下文，可以方便的在多层嵌套组件中共享数据。</p>
@@ -1256,7 +1273,7 @@ brew <span class="token function">install</span> fnm
     <title type="text">原型模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/09-prototype-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/09-prototype-pattern.html"/>
-    <updated>2024-10-15T11:06:14.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>详见 。</p>
 ]]></summary>
     <content type="html"><![CDATA[<p>详见 。</p>
@@ -1275,7 +1292,7 @@ brew <span class="token function">install</span> fnm
     <title type="text">Turso 集成 Prisma</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/practice/001-integrate-turso-prisma.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/practice/001-integrate-turso-prisma.html"/>
-    <updated>2024-09-24T04:09:22.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在现代应用开发中，数据库和 ORM（对象关系映射）工具的选择对项目的开发效率和数据管理至关重要。<a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a> 是一款优秀的 ORM，它不仅能为你生成类型安全的数据库查询，还可以通过自动迁移管理数据库模式。而 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">Turso</a> 是一种基于 libSQL 的托管云数据库，提供了生产环境级别的 SQLite 数据库。本文将介绍如何将 Turso 和 Prisma 结合使用，帮助你快速集成并管理数据库。</p>]]></summary>
     <content type="html"><![CDATA[<p>在现代应用开发中，数据库和 ORM（对象关系映射）工具的选择对项目的开发效率和数据管理至关重要。<a href="https://www.prisma.io/" target="_blank" rel="noopener noreferrer">Prisma</a> 是一款优秀的 ORM，它不仅能为你生成类型安全的数据库查询，还可以通过自动迁移管理数据库模式。而 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">Turso</a> 是一种基于 libSQL 的托管云数据库，提供了生产环境级别的 SQLite 数据库。本文将介绍如何将 Turso 和 Prisma 结合使用，帮助你快速集成并管理数据库。</p>
 <h2>什么是 Turso？</h2>
@@ -1398,7 +1415,7 @@ datasource db {
     <title type="text">观察者模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/08-observer-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/08-observer-pattern.html"/>
-    <updated>2024-09-20T05:05:01.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>观察者模式（Observer Pattern）是一种行为设计模式，用于创建一种对象之间的「一对多」关系，使得当一个对象的状态发生变化时，所有依赖于它的对象都能得到通知并自动更新。这个模式非常适合用来实现事件系统或数据绑定功能。</p>
 <figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240920125941.png" alt="观察者模式" tabindex="0" loading="lazy"><figcaption>观察者模式</figcaption></figure>]]></summary>
     <content type="html"><![CDATA[<p>观察者模式（Observer Pattern）是一种行为设计模式，用于创建一种对象之间的「一对多」关系，使得当一个对象的状态发生变化时，所有依赖于它的对象都能得到通知并自动更新。这个模式非常适合用来实现事件系统或数据绑定功能。</p>
@@ -1584,7 +1601,7 @@ subject<span class="token punctuation">.</span><span class="token function">noti
     <title type="text">模块模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/07-module-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/07-module-pattern.html"/>
-    <updated>2024-09-19T09:44:12.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>随着应用程序和代码库的增长，保持代码的可维护性和分离性变得越来越重要。模块模式可以将代码分割成更小的、可重复使用的片段。</p>
 <p>除了可以将代码分割成更小的、可重复使用的片段外，模块还可以将文件中的某些值保持私有。默认情况下，模块中的声明会被作用域（封装）到该模块。如果我们没有明确导出某个值，那么该值在该模块之外就不可用。这就降低了代码库其他部分声明的值发生名称冲突的风险，因为这些值在全局范围内不可用。</p>
 <p>更详细的内容可以见 。</p>
@@ -1607,7 +1624,7 @@ subject<span class="token punctuation">.</span><span class="token function">noti
     <title type="text">混入模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/06-mixin-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/06-mixin-pattern.html"/>
-    <updated>2024-09-19T09:21:50.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>混入模式</h2>
 <p><code>mixin</code> 是一种对象，我们可以使用它为另一个对象或类添加可重复使用的功能，而无需使用继承。我们不能单独使用 mixins：mixins 的唯一目的是在不使用继承的情况下为对象或类添加功能。</p>
 <p>假设我们的应用程序需要创建多条狗。然而，我们创建的基本狗没有任何属性，只有一个名称属性。</p>
@@ -1729,7 +1746,7 @@ pet1<span class="token punctuation">.</span><span class="token function">bark</s
     <title type="text">中间件模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/05-middleware-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/05-middleware-pattern.html"/>
-    <updated>2024-09-18T10:01:10.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>中间件模式</h2>
 <p>中间件模式是一种行为设计模式， 允许你将请求沿着处理者链进行发送。收到请求后，每个处理者均可对请求进行处理，或将其传递给链上的下个处理者。</p>
 <div class="hint-container info">
@@ -1802,7 +1819,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">中介者模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/04-mediator-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/04-mediator-pattern.html"/>
-    <updated>2024-09-20T05:17:54.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>中介者模式使组件之间通过一个中心点（调解器）进行交互成为可能。它允许组件接收请求并将其发送出去，而不是彼此直接对话！在 JavaScript 中，中介者通常只是一个对象字面或函数。</p>
 <p>你可以把这种模式比作空中交通管制员和飞行员之间的关系。飞行员与空中交通管制员之间的对话可能会导致混乱，而不是让飞行员直接对话。空中交通管制员确保所有飞机都能收到所需的信息，以便安全飞行，不撞击其他飞机。</p>
 <p>虽然我们不希望在 JavaScript 中控制飞机，但我们经常需要处理对象之间的多向数据。如果组件数量较多，组件之间的通信可能会变得相当混乱。</p>
@@ -1834,7 +1851,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">享元模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/03-flyweight-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/03-flyweight-pattern.html"/>
-    <updated>2024-09-18T08:45:50.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>享元模式</h2>
 <p>当我们创建大量对象时，我们可以使用享元模式来减少内存使用。</p>
 <p>在我们的应用程序中，我们希望用户能够添加书籍。所有书籍都有 <code>title</code>、<code>author</code> 和 <code>isbn</code>！然而，一个图书馆通常不会只有一本书：它通常有同一本书的多本副本。</p>
@@ -1945,7 +1962,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">覆盖输入框 autofill 样式</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/018-autofill.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/018-autofill.html"/>
-    <updated>2024-09-14T09:21:57.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>浏览器自动填充密码会有一些默认样式：</p>
 <figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240914171559.png" alt="autofill 默认样式" tabindex="0" loading="lazy"><figcaption>autofill 默认样式</figcaption></figure>
 <h2>方法一</h2>
@@ -1977,7 +1994,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">实现 loading spinner</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/017-loading-spinner.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/017-loading-spinner.html"/>
-    <updated>2024-09-18T07:24:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>实现一个 loading spinner 可以使用 CSS 动画和边框。</p>
 
 ]]></summary>
@@ -1991,7 +2008,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">iOS 图片兼容</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/020-ios-img.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/020-ios-img.html"/>
-    <updated>2024-09-11T07:08:05.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>长按图片，弹出菜单</h2>
 <p>在 iOS 中，用户可以通过长按图片来弹出菜单，可以通过以下方式阻止。</p>
 <div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
@@ -2021,7 +2038,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">iOS 阻止 touch 事件默认行为</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/019-ios-prevent-touch.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/019-ios-prevent-touch.html"/>
-    <updated>2024-09-11T06:46:55.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>webview 开发时，iOS 中 safari 浏览器通过 <code>preventDefault</code> 方法来阻止默认行为。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
 
@@ -2096,7 +2113,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <title type="text">Maven</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/java/tool/01-maven.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/java/tool/01-maven.html"/>
-    <updated>2024-08-30T11:36:15.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>什么是 Maven</h2>
 <p>Maven 是一个项目管理和构建工具，主要用于 Java 项目。它通过 POM（Project Object Model）文件来管理项目的依赖、编译、测试和打包等任务。Maven 的核心功能包括：</p>
 <ul>
@@ -2182,7 +2199,7 @@ A -<span class="token operator">&gt;</span> C -<span class="token operator">&gt;
     <title type="text">finalhandler</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/node/module/001-finalhandler.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/node/module/001-finalhandler.html"/>
-    <updated>2024-08-27T08:07:17.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/pillarjs/finalhandler" target="_blank" rel="noopener noreferrer">finalhandler</a> 模块在 Express.js 中用于处理未处理的请求或错误，是请求处理的最后一个步骤。它确保了当请求经过所有中间件和路由后，如果没有响应或者发生了错误，应用仍然能够正确地处理这些情况，并返回适当的 HTTP 响应。</p>
 <p>具体来说，<code>finalhandler</code> 模块实现了以下功能：</p>
 <h2>处理未匹配的路由</h2>
@@ -2206,7 +2223,7 @@ A -<span class="token operator">&gt;</span> C -<span class="token operator">&gt;
     <title type="text">express.js</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/node/express/02-express.js.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/node/express/02-express.js.html"/>
-    <updated>2024-09-19T10:58:41.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>express.js</code> 文件定义了 Express 应用的主入口。它的核心功能是创建一个新的 Express 应用实例，并暴露相关的原型和构造函数，使应用能够处理 HTTP 请求并管理中间件（<code>middleware</code>）。</p>
 <h2>Hello World</h2>
 <p>先看看官网的 Hello World：</p>
@@ -2374,7 +2391,7 @@ removedMiddlewares<span class="token punctuation">.</span><span class="token fun
     <title type="text">总体架构</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/node/express/01-overview-architecture.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/node/express/01-overview-architecture.html"/>
-    <updated>2024-09-19T10:58:41.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/expressjs/express" target="_blank" rel="noopener noreferrer">Express</a> 是适用于 Node.js 的极简网络应用程序框架。它为构建网络和移动应用程序提供了一套强大的功能。尽管简单，Express 却具有很强的可扩展性，允许开发人员添加中间件并自定义应用程序的行为。</p>
 <div class="hint-container warning">
 <p class="hint-container-title">注意</p>
@@ -2464,7 +2481,7 @@ removedMiddlewares<span class="token punctuation">.</span><span class="token fun
     <title type="text">monaco-editor/react</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/018-monaco-editor-react.html"/>
-    <updated>2024-08-14T03:05:10.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/microsoft/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco Editor</a> 是由微软开发的开源代码编辑器，使用于 VS Code。然而他本身是用 JavaScript/TypeScript 编写的一个独立库，提供了丰富的 API 来实现代码编辑器的功能。因此无法直接在 React 中使用。</p>
 <p><a href="https://github.com/suren-atoyan/monaco-react" target="_blank" rel="noopener noreferrer">@monaco-editor/react</a> 这个库是对 monaco-editor 的 React 封装，使得你在 React 项目中更方便地使用 Monaco Editor。</p>]]></summary>
     <content type="html"><![CDATA[<p><a href="https://github.com/microsoft/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco Editor</a> 是由微软开发的开源代码编辑器，使用于 VS Code。然而他本身是用 JavaScript/TypeScript 编写的一个独立库，提供了丰富的 API 来实现代码编辑器的功能。因此无法直接在 React 中使用。</p>
@@ -2579,7 +2596,7 @@ loader<span class="token punctuation">.</span><span class="token function">confi
     <title type="text">场景图像</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/04-scene-graph.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/04-scene-graph.html"/>
-    <updated>2024-08-08T08:34:48.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>每一帧，PixiJS 都会更新并渲染场景图。让我们来谈谈场景图中有哪些内容，以及它如何影响项目开发。</p>
 <h2>场景图是一棵树</h2>
 <p>场景图的根节点是由应用程序维护的容器，用 <code>app.stage</code> 引用。将 sprite 或其他可渲染对象作为子对象添加到 stage 时，它就会被添加到场景图中，并进行渲染和交互。</p>
@@ -2731,7 +2748,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">渲染循环</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/03-render-loop.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/03-render-loop.html"/>
-    <updated>2024-08-08T02:49:23.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>现在您已经了解了系统的主要部分，让我们来看看这些部分是如何协同工作，将您的项目呈现在屏幕上的。 与网页不同的是，PixiJS 会不断更新和重新绘制，一遍又一遍。 你更新对象，然后 PixiJS 将它们渲染到屏幕上，然后重复这个过程。 我们称这个循环为渲染循环。</p>
 <p>任何 PixiJS 项目最主要的部分包含更新 + 渲染循环，编写更新，PixiJS 会处理整个渲染。</p>
 <p>发生在渲染循环中的每一帧主要包含三个部分。</p>
@@ -2759,7 +2776,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">务实的项目</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/09-pragmatic-project.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/09-pragmatic-project.html"/>
-    <updated>2024-08-07T10:33:41.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>一旦项目不只你一个人，就需要建立一些基本规则，并依次将项目的各部分分配出去。</p>
 <h2>务实的团队</h2>
 <ul>
@@ -2813,7 +2830,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">项目启动前</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/08-before-start-project.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/08-before-start-project.html"/>
-    <updated>2024-08-07T10:23:44.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在项目的最早期，你和团队需要了解需求。仅仅是被人告知要做什么或是倾听用户是不够的：读一下需求之坑，学习如何避免常见的陷阱。</p>
 <h2>需求之坑</h2>
 <p>需求很少停留在表面。通常情况下，它们被埋在层层的假设、误解和政治之下。更糟糕的是，需求通常根本不存在。</p>
@@ -2859,7 +2876,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">当你编码时</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/07-when-coding.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/07-when-coding.html"/>
-    <updated>2024-08-07T10:07:24.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>对所有代码进行批判性思考，包括自己的代码。不断看到程序和设计的改进空间。</p>
 <h2>听从蜥蜴脑</h2>
 <p>一种有效的脑力突破的方法：</p>
@@ -2903,7 +2920,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">并发</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/06-concurrent.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/06-concurrent.html"/>
-    <updated>2024-08-07T09:50:07.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>打破时域耦合</h2>
 <p>时域耦合——在时间范畴上产生耦合：A 方法必须在 B 方法之前调用；一次只能运行一个报告；在按钮按下前必须等屏幕先重绘；“嘀嘀”一定在“嗒嗒”之前发生。</p>
 <p>我们需要考虑并发性，并且考虑对时间依赖或顺序依赖解耦。</p>
@@ -2927,7 +2944,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">手写 call、apply、bind</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/017-implement-call-apply-bind.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/017-implement-call-apply-bind.html"/>
-    <updated>2024-08-07T08:29:51.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>call()</code>、<code>apply()</code> 和 <code>bind()</code> 三者都可以改变 JavaScript 中的 this 指向，关于三者的区别在 中有详细记录。</p>
 <p>这三个函数实际上是由 C++ 实现的，这里只考虑功能上的实现，不会考虑太多边界情况。</p>
 <h2><code>call()</code></h2>
@@ -3026,7 +3043,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">函数</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/015-function.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/015-function.html"/>
-    <updated>2024-08-07T08:19:27.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>箭头函数</h2>
 <p>ES6 中新增了 <code>=&gt;</code>，它可以将函数定义成箭头函数。</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> b
@@ -3399,7 +3416,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">this 指向</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/016-this.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/016-this.html"/>
-    <updated>2024-08-07T08:19:27.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在常见的编程语言中，几乎都有 <code>this</code> 关键字，但是 JavaScript 中的 <code>this</code> 和常见的面向对象语言中的 <code>this</code> 不太一样：</p>
 <ul>
 <li>常见的面向对象的编程语言中，如 Java、C++、Swift 等，<code>this</code> 通常只会出现在类的方法中，<code>this</code> 代表的是当前调用对象；</li>
@@ -3637,7 +3654,7 @@ obj<span class="token punctuation">.</span><span class="token function">getData<
     <title type="text">架构概述</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/02-architecture-overview.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/02-architecture-overview.html"/>
-    <updated>2024-07-29T10:55:38.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://github.com/pixijs/pixijs" target="_blank" rel="noopener noreferrer">PixiJS</a> 源代码中主要模块的关系如下：</p>
 <table>
 <thead>
@@ -3688,7 +3705,7 @@ obj<span class="token punctuation">.</span><span class="token function">getData<
     <title type="text">whistle 调试真机</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/017-whistle-debug-real-phone.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/017-whistle-debug-real-phone.html"/>
-    <updated>2024-08-21T06:16:31.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在前端开发中移动端开发技能必不可少。当我们遇到类似于这样的问题：</p>
 <ul>
 <li>移动端 <code>Canvas</code> 渲染失败</li>
@@ -3775,7 +3792,7 @@ obj<span class="token punctuation">.</span><span class="token function">getData<
     <title type="text">快速开始</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/01-quick-start.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/pixi/01-quick-start.html"/>
-    <updated>2024-07-23T11:09:05.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://pixijs.com/" target="_blank" rel="noopener noreferrer">PixiJS</a> 的核心是一个使用 WebGL（或 Canvas）显示图像或其他 <strong>2D</strong> 可视化内容的呈现系统。</p>
 <p>它提供了一个完整的场景图（要呈现的对象的层次结构），并提供交互支持以处理点击和触摸事件。</p>
 <p>在现代 HTML5 世界中，它是 Flash 的天然替代品，但却能提供更好的性能和像素级的效果，超越了 Flash 所能达到的水平。</p>
@@ -3869,7 +3886,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">数据库结构设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/03-database.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/03-database.html"/>
-    <updated>2024-07-23T10:53:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>数据库选择</h2>
 <p>选择使用云数据库 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">turso</a>。</p>
 <p>Turso 是一个兼容 SQLite 的数据库，基于 libSQL（SQLite 的开放贡献分叉）构建。 它可以将每个组织的数据库扩展到数十万个，并支持复制到任何位置，包括您自己的服务器，以实现微秒级延迟访问。</p>
@@ -3917,7 +3934,7 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <title type="text">接口设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-api.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-api.html"/>
-    <updated>2024-07-23T10:53:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2><code>category</code></h2>
 <p>接口路径：<code>/category</code>。</p>
 <h3><code>list</code></h3>
@@ -3972,7 +3989,7 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <title type="text">服务器架构设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/02-server.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/02-server.html"/>
-    <updated>2024-07-23T09:41:43.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>分层架构</h2>
 <h3>route</h3>
 <p>分发路由，如：<code>/category</code>。匹配后的路由包含 <code>controller</code> 和 路由特定的 <code>middleware</code>。</p>
@@ -4301,7 +4318,7 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <title type="text">rest client 无法调试 localhost</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/016-rest-client-error.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/016-rest-client-error.html"/>
-    <updated>2024-07-19T06:38:02.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>故障描述</h2>
 <p>REST Client 插件无法调试 localhost。</p>
 <ul>
@@ -4334,7 +4351,7 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <title type="text">dnd-kit 踩坑</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/001-dnd-kit.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/001-dnd-kit.html"/>
-    <updated>2024-07-18T09:07:14.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>@dnd-kit - 用于 React 的轻量级、模块化、高性能、可访问和可扩展的拖放工具包。</p>
 <h2>Context Provider</h2>
 <div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">const</span> <span class="token function-variable function">SortableItem</span> <span class="token operator">=</span> <span class="token punctuation">(</span>props<span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -4437,7 +4454,7 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <title type="text">自动切换 node 版本</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/015-auto-change-node.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/015-auto-change-node.html"/>
-    <updated>2024-07-18T07:25:19.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>环境准备</h2>
 <ol>
 <li>安装 <code>nvm</code><div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
@@ -4496,7 +4513,7 @@ load-nvmrc
     <title type="text">快速开始</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/database/sql/01-quick-start.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/database/sql/01-quick-start.html"/>
-    <updated>2024-07-18T03:15:15.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>SQL (Structured Query Language:结构化查询语言) 是用于管理关系数据库管理系统。</p>
 <p>SQL 通过一系列的语句和命令来执行数据定义、数据查询、数据操作和数据控制等功能,包括数据插入、查询、更新和删除，数据库模式创建和修改，以及数据访问控制。</p>
 <h2>SQL 是什么？</h2>
@@ -4581,7 +4598,7 @@ load-nvmrc
     <title type="text">登陆失败 HTTP 状态码</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/009-http-code-when-authorized-refused.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/009-http-code-when-authorized-refused.html"/>
-    <updated>2024-07-10T09:58:28.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>如果用户尝试登陆，但用户名或密码不正确，应该返回什么状态码？</p>
 <p>这个问题在社区中有一定争议，有些人认为应该返回 <code>403 Forbidden</code>，有些人认为应该返回 <code>404 Not Found</code>，有些人认为应该返回 <code>400 Bad Request</code>，有些人认为应该返回 <code>401 Unauthorized</code>。</p>
 <p><code>403 Forbidden</code> 表示拒绝访问，但是请求接口是可以访问的，因此该状态码肯定不正确。</p>
@@ -4601,7 +4618,7 @@ load-nvmrc
     <title type="text">修改提交</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html"/>
-    <updated>2024-07-10T03:00:38.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>修改提交信息</h2>
 <p>在 Git 中，修改提交是通过 <code>git commit --amend</code> 命令来完成的。</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> commit <span class="token parameter variable">--amend</span>
@@ -4622,7 +4639,7 @@ load-nvmrc
     <title type="text">手写 new 操作符</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/014-implement-new.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/014-implement-new.html"/>
-    <updated>2024-06-27T07:26:14.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>new</code> 操作符的实现过程：</p>
 <ol>
 <li>首先创建一个空对象；</li>
@@ -4692,7 +4709,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">类</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/013-class.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/013-class.html"/>
-    <updated>2024-06-26T11:03:01.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>声明</h2>
 <p>与函数类型相似，定义类也有两种主要方式：类声明和类表达式。这两种方式都使用 <code>class</code> 关键字加大括号：</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token comment">// 类声明</span>
@@ -4961,7 +4978,7 @@ b<span class="token punctuation">.</span><span class="token function">baz</span>
     <title type="text">宁弯不折</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/05-work-around.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/05-work-around.html"/>
-    <updated>2024-05-29T14:30:37.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>尽量编写宽松灵活的代码，增强代码的健壮性。</p>
 <p>有一个保持灵活性的好方法，那就是编写更少的代码。修改代码可能会引入新的 Bug</p>
 <h2>解耦</h2>
@@ -5046,7 +5063,7 @@ b<span class="token punctuation">.</span><span class="token function">baz</span>
     <title type="text">继承</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/012-extends.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/012-extends.html"/>
-    <updated>2024-05-29T14:23:59.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>继承是面向对象编程中讨论最多的话题。很多面向对象语言都支持两种继承：接口继承和实现继承。</p>
 <p>前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，因为函数没有签名。实现继承是 ECMAScript 唯一支持的继承方式，而这主要是通过原型链实现的。</p>
 <h2>原型链</h2>
@@ -5318,7 +5335,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">创建对象</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/011-create-object.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/011-create-object.html"/>
-    <updated>2024-05-29T13:16:51.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在 JavaScript 中使用 <code>class</code> 时，可以很方便地创建类和继承，然而在 ES6 之前的规范中，是使用构造函数和基于原型的继承模式，而 <code>class</code> 仅仅是它们的语法糖。因此在了解 ES6 <code>class</code> 之前，有必要了解以前模拟类和继承的方法。</p>
 <p>首先来看看在 JavaScript 中是如何创建一个对象的。</p>
 <h2>工厂模式</h2>
@@ -5568,7 +5585,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">初始化项目</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html"/>
-    <updated>2024-05-15T15:05:48.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>技术方案选型</h2>
 <h3>Flutter vs React Native</h3>
 <p>目前，<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> 和 <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 是最流行的跨端解决方案。</p>
@@ -5624,7 +5641,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">Imperial Kitchen 御膳房</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/"/>
-    <updated>2024-09-20T07:16:48.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>欢迎来到 Imperial Kitchen 御膳房项目！项目地址：<a href="https://github.com/dribble-njr/imperial-kitchen.git%E3%80%82" target="_blank" rel="noopener noreferrer">https://github.com/dribble-njr/imperial-kitchen.git。</a></p>
 <h2>项目简介</h2>
 <p>Imperial Kitchen 御膳房是一个家庭厨房的点菜应用，旨在帮助方便快捷地选择菜品并下单。</p>
@@ -5720,7 +5737,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">对象属性</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/010-object-property.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/010-object-property.html"/>
-    <updated>2024-04-30T08:41:59.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在 JavaScript 中，对象是一组属性的「无序集合」，由键值对组成。创建对象共有两种方式：字面量和 <code>new</code>。一般开发中为了方便通常使用字面量来创建对象。</p>
 <p>对象中的属性有一些内部特性，这些内部特性的名称会用两个中括号括起来，如 <code>[[Enumerable]]</code>，根据内部特性的不同，可以将属性分为 <strong>数据属性</strong> 和 <strong>访问器属性</strong>。</p>
 <h2>数据属性</h2>
@@ -5829,7 +5846,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">集合引用类型</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/008-collection-reference-type.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/008-collection-reference-type.html"/>
-    <updated>2024-04-30T07:44:46.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2><code>Object</code></h2>
 <p>创建方式：</p>
 <ul>
@@ -5910,7 +5927,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">类数组对象</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/009-array-like-object.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/009-array-like-object.html"/>
-    <updated>2024-04-24T04:51:59.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>概念</h2>
 <p>在 Javascript 里，有一个特殊的对象，它拥有 <code>length</code> 属性和若干索引属性，被称为类数组对象。常见的类数组对象有 <code>arguments</code> 和 DOM 方法返回的结果。</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> arrLike <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -5976,7 +5993,7 @@ Array<span class="token punctuation">.</span><span class="token function">from</
     <title type="text">对象转换方法</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/006-toString-toLocalString-valueOf.html"/>
-    <updated>2024-04-30T07:44:46.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>Object 原型上有三个方法 <code>toString()</code>、<code>toLocalString</code>、<code>valueOf()</code> 可以将对象转换为原始值，然而对于不同的对象类型调用这几种方法会有不同的行为。</p>
 <h2><code>toString()</code></h2>
 <p><code>toString()</code> 方法用于将一个对象转换为字符串表示形式。对于基本数据类型（如数字、布尔值、字符串等），<code>toString()</code> 方法会返回对应的字符串表示。</p>
@@ -6040,7 +6057,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">基本引用类型</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/007-basic-reference-type.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/007-basic-reference-type.html"/>
-    <updated>2024-04-19T05:03:42.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>引用值（或者对象）是某个特定 <strong>引用类型</strong> 的实例。</p>
 <p>新对象通过使用 <code>new</code> 操作符后跟一个构造函数（constructor）来创建。构造函数就是用来创建新对象的函数，比如下面这行代码：</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">let</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -6329,7 +6346,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">执行上下文</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/005-execution-context.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/005-execution-context.html"/>
-    <updated>2024-04-16T05:23:03.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>执行上下文</h2>
 <p>执行上下文（Execution Context）是 JavaScript 代码执行时所在的环境，一共有三种不同的执行上下文：</p>
 <ul>
@@ -6531,7 +6548,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">原始值和引用值</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/004-primitive-value-reference-value.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/004-primitive-value-reference-value.html"/>
-    <updated>2024-04-16T04:38:18.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>按值访问和按引用访问</h2>
 <p>ECMAScript 变量可以包含两种不同类型的数据：原始值和引用值。原始值（primitive value）就是最简单的数据，引用值（reference value）则是由多个值构成的对象。</p>
 <p>在把一个值赋给变量时，JavaScript 引擎必须确定这个值是原始值还是引用值。</p>
@@ -6599,7 +6616,7 @@ foo:          |
     <title type="text">浏览器渲染原理</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/browser/01-how-browser-rendering-works.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/01-how-browser-rendering-works.html"/>
-    <updated>2024-04-15T05:32:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>浏览器渲染主要是依靠浏览器内核也就是浏览器渲染引擎，它通过一系列的解析将 HTML 文档渲染在浏览器上。</p>
 <h2>主要流程</h2>
 <p>渲染引擎会从网络层中获取将要渲染的文档，主要的工作流程如下：</p>
@@ -6654,7 +6671,7 @@ foo:          |
     <title type="text">V8 引擎</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/browser/02-V8.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/02-V8.html"/>
-    <updated>2024-04-15T05:32:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>在 JavaScript 引擎中，V8 无疑是最流行的，Chrome 与 Node.js 都使用了 V8 引擎。</p>
 <p>V8 由很多子模块构成，有几个核心模块：</p>
 <ul>
@@ -6743,7 +6760,7 @@ foo:          |
     <title type="text">内存管理</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/browser/03-memory-management.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/03-memory-management.html"/>
-    <updated>2024-04-15T05:32:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>像 C、C++ 等编程语言都需要手动管理内存，在创建变量时需要申请（<code>malloc()</code>），不需要用了之后在释放内存空间（<code>free()</code>）。而 JavaScript、Java、Python 等都是自动管理内存，在创建变量时自动分配内存，而在不使用后自动释放，释放的过程称为 <strong>垃圾回收</strong>。</p>
 <p>虽然不同语言管理内存的方式不同，但是内存声明周期是基本一致的：</p>
 <ol>
@@ -6887,7 +6904,7 @@ foo:          |
     <title type="text">跨域</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/browser/04-cross-domain.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/04-cross-domain.html"/>
-    <updated>2024-04-15T05:32:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>跨域是因为浏览器的同源策略，协议、域名、端口三者不一致即会造成跨域问题。</p>
 <h2>CORS</h2>
 <p>简单请求和非简单请求</p>
@@ -6951,7 +6968,7 @@ Access-Control-Max-Age: 1728000 本次预检的有效期，秒
     <title type="text">输入 URL 后发生了什么</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/browser/05-what-happens-after-entering-the-URL.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/browser/05-what-happens-after-entering-the-URL.html"/>
-    <updated>2024-04-15T05:32:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>先看看大致流程：</p>
 <ol>
 <li>生成 HTTP 请求消息：当用户在浏览器中输入网址，浏览器就会对 URL 进行解析；然后浏览器会根据网址的含义来生成请求消息；</li>
@@ -7012,7 +7029,7 @@ Access-Control-Max-Age: 1728000 本次预检的有效期，秒
     <title type="text">判断数据类型</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/003-judge-type.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/003-judge-type.html"/>
-    <updated>2024-04-14T15:32:30.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>ECMAScript</code> 有 8 种基本的数据类型（ 7 种原始类型和 1 种引用类型）。</p>
 <ul>
 <li>原始类型：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code>、<code>BigInt</code>；</li>
@@ -7123,7 +7140,7 @@ Access-Control-Max-Age: 1728000 本次预检的有效期，秒
     <title type="text">数据类型</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/002-types.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/002-types.html"/>
-    <updated>2024-04-15T05:32:00.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>ECMAScript 有 7 种简单数据类型（也称为原始类型）：<code>Undefined</code>、<code>Null</code>、<code>Boolean</code>、<code>Number</code>、<code>String</code>、<code>Symbol</code> 和 <code>BigInt</code>。</p>
 <p><code>Symbol</code>（符号）是 ES6 新增的，<code>BigInt</code> 是 ES10 新增。</p>
 <p>还有一种复杂数据类型叫 <code>Object</code>（对象）。<code>Object</code> 是一种 <strong>无序</strong> 键值对的集合。</p>]]></summary>
@@ -7164,7 +7181,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">var、let、const 区别</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html"/>
-    <updated>2024-04-16T04:38:18.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>
 <table>
 <thead>
@@ -7219,7 +7236,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">placeholder 支持换行展示</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html"/>
-    <updated>2024-04-08T10:29:30.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>placeholder</code> 内容有时需要支持换行，查了网上一些例子，结果都无法实现。</p>
 <h2>错误 demo</h2>
 <h3>直接使用 <code>\n</code></h3>
@@ -7268,7 +7285,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">务实的偏执</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html"/>
-    <updated>2024-04-08T09:07:59.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>契约式设计</h2>
 <p>文档化及对主张进行检验是契约式设计（缩写为 DBC）的核心。</p>
 <div class="hint-container tip">
@@ -7305,7 +7322,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">SEO</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/013-seo.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/013-seo.html"/>
-    <updated>2024-03-24T12:23:26.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>什么是 SEO</h2>
 <p>SEO（Search Engine Optimization，搜索引擎优化）。这是一套指导原则，旨在使网站在搜索结果中的排名高于其他网站。特别是针对有机（未付费）搜索结果。</p>
 <div class="hint-container tip">
@@ -7379,7 +7396,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">表单数据校验</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/012-form-validation.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/012-form-validation.html"/>
-    <updated>2024-03-24T07:43:55.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>表单校验帮助我们确保用户以正确格式填写表单数据，确保提交的数据能使我们的应用程序正常工作。</p>
 <h2>什么是表单数据校验</h2>
 <p>表单校验——验证你输入表单的数据是否正确。</p>
@@ -7498,7 +7515,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">Style Props</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/02-style-props.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/02-style-props.html"/>
-    <updated>2024-03-07T10:41:37.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>Style Props 是一种通过简单传递 <code>prop</code> 来改变组件样式的方法。它通过提供有用的速记方法来改变组件的样式，从而节省时间。</p>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
@@ -7794,7 +7811,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">快速开始</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/01-getting-started.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/01-getting-started.html"/>
-    <updated>2024-03-07T10:41:37.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><a href="https://chakra-ui.com/" target="_blank" rel="noopener noreferrer">Chakra UI</a> 是一个简单、模块化和可访问的组件库，可提供构建 React 应用程序所需的组件。</p>
 <div class="hint-container tip">
 <p class="hint-container-title">总结</p>
@@ -7875,14 +7892,14 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">chakra</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/"/>
-    <updated>2024-03-07T09:35:01.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <published>2024-03-07T09:35:01.000Z</published>
   </entry>
   <entry>
     <title type="text">页面和布局</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/next/pages-router/01-pages-layouts.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/next/pages-router/01-pages-layouts.html"/>
-    <updated>2024-03-05T05:06:40.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>pages router</code> 是基于文件系统的路由器，以页面概念为基础。</p>
 <p>当一个文件被添加到 <code>pages</code> 目录时，它就会自动成为一个路由。</p>
 <p>在 Next.js 中，页面是从页面目录中的 <code>.js</code>、<code>.jsx</code>、<code>.ts</code> 或 <code>.tsx</code> 文件导出的 React 组件。每个页面都根据其文件名与路由相关联。</p>
@@ -8034,7 +8051,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">defer 和 async 的区别</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/011-defer-vs-async.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/011-defer-vs-async.html"/>
-    <updated>2024-03-04T11:59:34.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>HTML 中在页面插入 JavaScript 的主要方式就是使用 <code>&lt;script&gt;</code> 元素，可以直接在页面中嵌入 JavaScript 代码，但是一般来说，通常会通过 <code>src</code> 属性来引入外部脚本。</p>
 <p>在  中提到了 <code>src</code> 会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。这样就会阻塞后续文档的加载。</p>
 <p>而使用 <code>defer</code> 和 <code>async</code> 都可以 <strong>异步加载</strong> 外部的 JavaScript 脚本，主要区别如下：</p>]]></summary>
@@ -8053,7 +8070,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">HTML5 新特性</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/010-html5.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/010-html5.html"/>
-    <updated>2024-03-04T11:54:28.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>HTML5 总共以下新特性，但不支持 IE8 及以下版本浏览器。</p>
 <ol>
 <li>语义化标签</li>
@@ -8091,7 +8108,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">src 和 href 的区别</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/009-src-vs-href.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/009-src-vs-href.html"/>
-    <updated>2024-03-04T11:50:03.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>src</code> 和 <code>href</code> 之间存在区别，不能互换使用。</p>
 <ul>
 <li><code>src</code>：表示对资源的 <strong>引入</strong>，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置；</li>
@@ -8127,7 +8144,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">怎样实现响应式网页布局</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html"/>
-    <updated>2024-03-04T10:51:20.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>设置响应式断点</h2>
 <p><a href="https://tailwindcss.com/docs/responsive-design" target="_blank" rel="noopener noreferrer"><code>tailwind</code></a> 典型的断点如下：</p>
 <div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 640px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
@@ -8276,7 +8293,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">响应式设计介绍</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design-intro.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design-intro.html"/>
-    <updated>2024-03-04T10:51:20.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>响应式设计是一种使网页内容适应各种设备的不同屏幕和窗口尺寸的网页设计方法。</p>
 <p>它并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
 <h2>固定宽度设计</h2>
@@ -8315,7 +8332,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">响应式设计</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/015-responsive-design.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/015-responsive-design.html"/>
-    <updated>2024-03-04T09:14:57.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>概念</h2>
 <ul>
 <li>响应式网页设计可让网页在所有设备上都美观大方。</li>
@@ -8837,7 +8854,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">Vuepress Plugin Ordered Header</title>
     <id>https://dribble-njr.github.io/blog/blog/project/plugin/01.vuepress-plugin-ordered-header.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/plugin/01.vuepress-plugin-ordered-header.html"/>
-    <updated>2024-02-29T11:17:41.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container tip">
 <p class="hint-container-title">提示</p>
 <p>该插件已经发布至：<a href="https://github.com/dribble-njr/vuepress-plugin-ordered-header" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.npmjs.com/package/vuepress-plugin-ordered-heade" target="_blank" rel="noopener noreferrer">npm</a>。</p>
@@ -8996,7 +9013,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">Plugin</title>
     <id>https://dribble-njr.github.io/blog/blog/project/plugin/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/plugin/"/>
-    <updated>2024-02-29T11:17:41.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<ul>
 <li></li>
 </ul>
@@ -9011,7 +9028,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">静态站点生成器</title>
     <id>https://dribble-njr.github.io/blog/blog/project/ssg/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/ssg/"/>
-    <updated>2024-02-29T11:17:41.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>静态站点生成器（static site generation, ssg）。</p>
 <h2>VuePress</h2>
 <h2>Docusaurus</h2>
@@ -9043,7 +9060,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">基础工具</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/03-basic-tool.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/03-basic-tool.html"/>
-    <updated>2024-02-29T06:16:22.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>让需求来驱使你不断选购新的工具。</p>
 <h2>纯文本的威力</h2>
 <p>用纯文本保存知识。</p>
@@ -9110,7 +9127,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">useEffect</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/02-useEffect.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/02-useEffect.html"/>
-    <updated>2024-04-02T03:14:43.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>useEffect</code> 可以将组件与外部系统同步。</p>
 <div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
@@ -9168,7 +9185,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">useState</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/01-useState.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/01-useState.html"/>
-    <updated>2024-03-25T07:44:17.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>useState</code> 声明一个可以直接更新的状态变量。</p>
 <p>一般在组件 <strong>最顶层</strong> 调用 <code>useState</code> 给组件添加状态变量，一般使用数组解构来命名状态变量，如 <code>[something, setSomething]</code>。</p>
 <div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
@@ -9281,7 +9298,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">高级数据库模型</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html"/>
-    <updated>2024-02-27T08:39:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>数据库建立的过程从设计阶段开始，需要提出并回答存储什么信息，信息元素之间如何关联，假定有什么样的约束，诸如键或者参考的完整性等等。</p>
 <div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>思考 ---&gt; 高级设计 ---&gt; 关系数据库模式 ---&gt; 关系 DBMS
 </code></pre></div><p>有几种用符号表达设计的方法。</p>
@@ -9299,7 +9316,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">集中管理碎片化知识</title>
     <id>https://dribble-njr.github.io/blog/blog/project/RSSHub/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/RSSHub/"/>
-    <updated>2024-02-27T03:18:09.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>将不同平台的信息汇总到一个平台中。</p>
 <h2>信息获取的问题</h2>
 <ul>
@@ -9527,7 +9544,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">务实的哲学</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html"/>
-    <updated>2024-02-20T02:22:03.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>人生是你的</h2>
 <blockquote>
 <p>我活着不是为了满足你的期望，正如你活着也不是为了满足我的期望。——李小龙</p>
@@ -9621,7 +9638,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">务实的方法</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html"/>
-    <updated>2024-02-19T14:34:11.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>优秀设计的精髓</h2>
 <p>ETC 原则（Easier To Change）：</p>
 <ul>
@@ -9709,7 +9726,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">数组</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html"/>
-    <updated>2024-09-19T04:34:08.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p><code>JavaScript</code> 中数组是一种特殊的对象，用于存储多个值。数组的每个元素都有一个数字索引，用于访问数组中的元素。</p>
 <p>常见初始化数组的方式：</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
@@ -10136,7 +10153,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">自动点亮 GitHub 热点图</title>
     <id>https://dribble-njr.github.io/blog/blog/project/github-auto-commit/</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/github-auto-commit/"/>
-    <updated>2024-05-12T06:37:11.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>灵感来源：某天在 GitHub 上看到一个用户的热点图，发现他每天都有提交记录，非常帅！</p>
 <p>于是先搜搜有没有自动提交的工具，但是找到的结果有些需要在本地运行；有些则没有检查当天是否有提交记录，如果有提交当然不希望有一个虚拟的提交。</p>
 <p>于是就有了这个项目，使用 GitHub Actions 自动提交代码，保持 GitHub 热点图常绿。</p>
@@ -10248,7 +10265,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">服务器上的 Git</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pro-git/04-git-server.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pro-git/04-git-server.html"/>
-    <updated>2024-02-07T09:12:42.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container tip">
 <p class="hint-container-title">提示</p>
 <p><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">PRO Git 原文</a></p>
@@ -10276,7 +10293,7 @@ Page<span class="token punctuation">.</span><span class="token function-variable
     <title type="text">Git 分支</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pro-git/03-git-branch.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pro-git/03-git-branch.html"/>
-    <updated>2024-02-07T08:47:58.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>分支简介</h2>
 <p>Git 仓库中有五个对象：三个 <em>blob</em> 对象（保存着文件快照）、一个 <strong>树</strong> 对象 （记录着目录结构和 blob 对象索引）以及一个 <strong>提交</strong> 对象（包含着指向前述树对象的指针和所有提交信息）。</p>
 <p>做些修改后再次提交，那么这次产生的提交对象会包含一个指向上次提交对象（父对象）的指针。</p>
@@ -10602,7 +10619,7 @@ $ <span class="token function">git</span> merge experiment
     <title type="text">GET 和 POST 的区别</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html"/>
-    <updated>2024-02-07T05:30:24.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>概述</h2>
 <p>GET 和 POST 是 HTTP 协议中发送请求的方法。</p>
 <ul>
@@ -10682,7 +10699,7 @@ $ <span class="token function">git</span> merge experiment
     <title type="text">TCP 与 UDP 的区别</title>
     <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/008-tcp-udp.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/008-tcp-udp.html"/>
-    <updated>2024-02-07T05:30:24.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<p>TCP 和 UDP 都是传输层协议，属于 TCP/IP 协议族。</p>
 <h2>UDP</h2>
 <p>用户数据报协议（User Datagram Protocol，UDP）用来处理数据包，是一种无连接的协议，它的特点如下：</p>
@@ -10732,7 +10749,7 @@ $ <span class="token function">git</span> merge experiment
     <title type="text">命令模式</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/01-command-pattern.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/01-command-pattern.html"/>
-    <updated>2024-09-18T08:46:06.000Z</updated>
+    <updated>2024-11-06T15:43:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>命令模式</h2>
 <p>通过命令模式，我们可以将执行特定任务的对象与调用方法的对象 <em>解耦</em>。</p>
 <p>假设我们有一个在线食品配送平台。用户可以下单、跟踪和取消订单。</p>

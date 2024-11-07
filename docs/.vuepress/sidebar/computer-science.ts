@@ -28,6 +28,6 @@ export default [
     collapsible: true,
     icon: 'caozuoxitong',
     prefix: '/computer-science/operating-system/',
-    children: ['', '01-character-encoding']
+    children: ['01-character-encoding', '02-windows-terminal-beauty']
   }
 ]

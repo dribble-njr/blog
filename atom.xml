@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-11-06T15:46:20.053Z</updated>
+  <updated>2024-11-09T11:54:19.298Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -1028,7 +1028,7 @@ brew <span class="token function">install</span> fnm
     <title type="text">fnm 全局共享模块</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/07-fnm-global-module-shared.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/07-fnm-global-module-shared.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
+    <updated>2024-11-09T11:51:37.000Z</updated>
     <summary type="html"><![CDATA[<p><code>fnm</code> 会根据当前 Node 版本创建独立的模块目录，若频繁切换版本，则需要重新安装模块。</p>
 <p>为了提高开发体验，我们可能需要全局共享模块，虽然这会在一定程度上造成版本冲突的可能性，但可以减少切换版本时重新安装模块的麻烦。</p>
 <p><code>fnm</code> 设置全局共享模块步骤如下。</p>
@@ -1064,8 +1064,8 @@ brew <span class="token function">install</span> fnm
 <li>更新环境变量
 <ol>
 <li>打开 系统环境变量设置（按 Win + X，选择 系统 &gt; 高级系统设置 &gt; 环境变量）。</li>
-<li>在 系统变量 部分找到 Path，点击 编辑。</li>
-<li>添加新的路径：<code>C:\fnm-global-modules\bin</code>。</li>
+<li>在「系统变量和用户变量」部分找到 Path，点击 编辑。</li>
+<li>添加新的路径：<code>C:\fnm-global-modules\</code>。</li>
 </ol>
 </li>
 <li>重启终端使配置生效。</li>

@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 06 Nov 2024 15:46:20 GMT</pubDate>
-    <lastBuildDate>Wed, 06 Nov 2024 15:46:20 GMT</lastBuildDate>
+    <pubDate>Sat, 09 Nov 2024 11:54:19 GMT</pubDate>
+    <lastBuildDate>Sat, 09 Nov 2024 11:54:19 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>工程化</category>
@@ -1009,8 +1009,8 @@ brew <span class="token function">install</span> fnm
 <li>更新环境变量
 <ol>
 <li>打开 系统环境变量设置（按 Win + X，选择 系统 &gt; 高级系统设置 &gt; 环境变量）。</li>
-<li>在 系统变量 部分找到 Path，点击 编辑。</li>
-<li>添加新的路径：<code>C:\fnm-global-modules\bin</code>。</li>
+<li>在「系统变量和用户变量」部分找到 Path，点击 编辑。</li>
+<li>添加新的路径：<code>C:\fnm-global-modules\</code>。</li>
 </ol>
 </li>
 <li>重启终端使配置生效。</li>

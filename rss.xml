@@ -6,10 +6,12 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 09 Nov 2024 11:54:19 GMT</pubDate>
-    <lastBuildDate>Sat, 09 Nov 2024 11:54:19 GMT</lastBuildDate>
+    <pubDate>Tue, 12 Nov 2024 08:58:14 GMT</pubDate>
+    <lastBuildDate>Tue, 12 Nov 2024 08:58:14 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>操作系统</category>
+    <category>operating-system</category>
     <category>工程化</category>
     <category>reading</category>
     <category>practice</category>
@@ -27,6 +29,120 @@
     <category>next</category>
     <category>react</category>
     <category>algorithm</category>
+    <item>
+      <title>美化 Windows 终端</title>
+      <link>https://dribble-njr.github.io/blog/blog/computer-science/operating-system/02-windows-terminal-beauty.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/computer-science/operating-system/02-windows-terminal-beauty.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">美化 Windows 终端</source>
+      <description>在 Windows 上的开发体验，特别是在终端方面，相较于 macOS，常常让人觉得差了一点「味道」。macOS 上的 iTerm2 配合 oh-my-zsh，颜值高、功能强大，让开发者得以拥有流畅且美观的工作体验。而 Windows 默认的命令提示符（cmd）和 PowerShell，外观简单，功能也不够灵活。 幸运的是，随着 Windows Ter...</description>
+      <category>操作系统</category>
+      <pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>在 Windows 上的开发体验，特别是在终端方面，相较于 macOS，常常让人觉得差了一点「味道」。macOS 上的 iTerm2 配合 oh-my-zsh，颜值高、功能强大，让开发者得以拥有流畅且美观的工作体验。而 Windows 默认的命令提示符（cmd）和 PowerShell，外观简单，功能也不够灵活。</p>
+<p>幸运的是，随着 <a href="https://github.com/microsoft/terminal" target="_blank" rel="noopener noreferrer">Windows Terminal</a> 的推出，我们终于可以在 Windows 上获得更现代的终端体验。Windows Terminal 拥有标签页支持、强大的配色和字体自定义功能，通过集成 <a href="https://github.com/JanDeDobbeleer/oh-my-posh" target="_blank" rel="noopener noreferrer">oh-my-posh</a> 进行美化、安装支持丰富符号的字体、以及配置一些常用的开发工具，我们可以让 Windows 终端焕然一新，达到高颜值和高效兼具的效果。</p>
+<p>接下来，让我们一步步将 Windows 终端打造成一个高效、好看且符合开发者习惯的环境，为平时的开发工作增添一份愉悦和舒适。</p>
+<h2>安装 Windows Terminal</h2>
+<p>Windows Terminal 是微软官方推出的现代终端工具，支持多标签页、GPU 加速、Unicode 和 Emoji 显示等特性，推荐直接在 <a href="https://apps.microsoft.com/detail/9n0dx20hk701?rtc=1&amp;hl=zh-cn&amp;gl=CN" target="_blank" rel="noopener noreferrer">微软商店</a> 直接安装 Windows Terminal。</p>
+<p>然后设置一下透明度，这里我选择的是 80%，并打开亚克力效果，这会让终端跟随底色增加透明模糊效果。</p>
+<h2>升级 PowerShell 7.x</h2>
+<p>Windows 10 或 Windows 11 默认的 PowerShell 版本较低，无法使用更多新特性，推荐升级到 PowerShell 7.x，PowerShell 7.x 是跨平台的，并且修复了很多 PowerShell 5.1 中的兼容性问题。</p>
+<p>安装方式：</p>
+<ul>
+<li>访问 <a href="https://github.com/PowerShell/PowerShell/releases" target="_blank" rel="noopener noreferrer">PowerShell GitHub Release 页面</a> 下载适合你系统的版本。</li>
+<li>或者，可以直接通过 Windows 包管理器 安装（需要 Windows 10 1809 或更高版本）：<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>winget install <span class="token operator">--</span>id Microsoft<span class="token punctuation">.</span>Powershell <span class="token operator">--</span>source winget
+</code></pre></div></li>
+<li>如果你使用 Chocolatey 包管理器，也可以通过以下命令安装：<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install powershell-core
+</code></pre></div></li>
+</ul>
+<p>安装完后，重新启动 Windows Terminal 以使用 PowerShell 7。</p>
+<h2>安装 oh-my-posh</h2>
+<p><a href="https://ohmyposh.dev/docs/installation/windows" target="_blank" rel="noopener noreferrer">安装 oh-my-posh</a> 可以使用如下命令：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>winget install JanDeDobbeleer<span class="token punctuation">.</span>OhMyPosh <span class="token operator">-</span>s winget
+</code></pre></div><p>这会安装 <code>oh-my-posh.exe</code> 和 oh-my-posh 的所有最新 <a href="https://ohmyposh.dev/docs/themes" target="_blank" rel="noopener noreferrer">主题</a>。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>为了重新加载 PATH，建议重新启动终端。如果 oh-my-posh 未被识别为命令，可以重新运行安装程序，或手动将其添加到 PATH。 例如：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code><span class="token variable">$env</span>:PATH <span class="token operator">+=</span> <span class="token string">";C:\Users\&lt;username&gt;\AppData\Local\Programs\oh-my-posh\bin"</span>
+</code></pre></div></div>
+<p>为了在打开终端后自动加载 oh-my-posh，需要在 PowerShell 配置文件 <code>$PROFILE</code> 中添加以下内容：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>oh-my-posh init pwsh <span class="token operator">--</span>config <span class="token string">"<span class="token variable">$env</span>:POSH_THEMES_PATH\jandedobbeleer.omp.json"</span> <span class="token punctuation">|</span> <span class="token function">Invoke-Expression</span>
+</code></pre></div><p><code>--config</code> 参数指定主题配置文件路径，<code>$env:POSH_THEMES_PATH</code> 是 oh-my-posh 主题文件夹路径，可以通过 <code>Get-PoshThemes</code> 查看所有主题。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><code>$PROFILE</code> 文件类似 <code>~/.zshrc</code> 或 <code>~/.bashrc</code>，以下命令会使用系统默认的文本编辑器打开：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>notepad <span class="token variable">$PROFILE</span>
+</code></pre></div><p>编辑完成后，可以使用 <code>. $PROFILE</code> 重新加载配置。</p>
+</div>
+<h3>设置字体</h3>
+<p>oh-my-posh 使用 <a href="https://www.nerdfonts.com/" target="_blank" rel="noopener noreferrer">Nerd Fonts</a> 做为设计字体，官方推荐安装 <a href="https://www.nerdfonts.com/font-downloads" target="_blank" rel="noopener noreferrer">Meslo Nerd Font</a>。这里我选择了 <a href="https://www.nerdfonts.com/font-downloads" target="_blank" rel="noopener noreferrer">BitstromWera Nerd Font</a>。</p>
+<p>可以在 <a href="https://www.nerdfonts.com/font-downloads" target="_blank" rel="noopener noreferrer">Nerd Fonts</a> 页面下载和预览字体。也可以通过 oh-my-posh 提供的 CLI 安装：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>oh-my-posh font install
+</code></pre></div><p>安装完成后，需要在 Windows Terminal 中设置字体，按 <code>CTRL + SHIFT + ,</code> 打开配置文件，在 <code>defaults</code> 属性下添加：</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">"profiles"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"defaults"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"font"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"face"</span><span class="token operator">:</span> <span class="token string">"MesloLGM Nerd Font"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>如果使用了 VSCode，可以在 <code>settings.json</code> 中添加：</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token property">"terminal.integrated.fontFamily"</span><span class="token operator">:</span> <span class="token string">"Bitstream Vera Sans Mono Nerd Font"</span>
+</code></pre></div><h2>环境配置</h2>
+<h3>Chocolatey</h3>
+<p><a href="https://chocolatey.org/" target="_blank" rel="noopener noreferrer">Chocolatey</a> 是一个 Windows 下的包管理器，可以方便地安装和管理软件。</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code><span class="token function">Set-ExecutionPolicy</span> Bypass <span class="token operator">-</span>Scope <span class="token keyword">Process</span> <span class="token operator">-</span>Force<span class="token punctuation">;</span> <span class="token namespace">[System.Net.ServicePointManager]</span>::SecurityProtocol = <span class="token namespace">[System.Net.SecurityProtocolType]</span>::Tls12<span class="token punctuation">;</span> <span class="token function">iex</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">New-Object</span> System<span class="token punctuation">.</span>Net<span class="token punctuation">.</span>WebClient<span class="token punctuation">)</span><span class="token punctuation">.</span>DownloadString<span class="token punctuation">(</span><span class="token string">'https://community.chocolatey.org/install.ps1'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><h3>vim</h3>
+<p>PowerShell 默认不支持 vim，需要安装 <a href="https://github.com/vim/vim" target="_blank" rel="noopener noreferrer">vim</a> 或 <a href="https://github.com/neovim/neovim" target="_blank" rel="noopener noreferrer">neovim</a>。</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install vim
+</code></pre></div><p>安装完成后即可使用 <code>vim</code> 命令，再也不用使用 <code>notepad</code> 打开文件了。</p>
+<h3>autojump</h3>
+<p><a href="https://github.com/wting/autojump" target="_blank" rel="noopener noreferrer">autojump</a> 是一个跨平台的命令行工具，可以快速跳转到指定目录，类似 oh-my-zsh 的 <code>z</code> 插件。</p>
+<p>下载并安装 <a href="https://mridgers.github.io/clink/" target="_blank" rel="noopener noreferrer">Clink</a>，它会将一些命令行增强功能添加到 Windows 命令提示符中。Clink 安装后需要在系统路径中添加，以便 PowerShell 和其他终端可以调用它。</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install autojump
+</code></pre></div><p>安装完成后，在 PowerShell 中运行 <code>j</code> 即可使用。</p>
+<h3>git</h3>
+<p>使用 Chocolatey 安装 git：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install git
+</code></pre></div><p>安装完成后，配置 git 用户信息：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>name <span class="token string">"Your Name"</span>
+git config <span class="token operator">--</span>global user<span class="token punctuation">.</span>email <span class="token string">"your.email@example.com"</span>
+</code></pre></div><h3>ssh</h3>
+<p>PowerShell 默认自带 ssh 客户端，可以直接使用。</p>
+<p>生成 ssh key：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>ssh-keygen <span class="token operator">-</span>t rsa <span class="token operator">-</span>C <span class="token string">"your_email@example.com"</span>
+</code></pre></div><p>将生成的 ssh key 添加到 GitHub，在 <code>Settings</code> -&gt; <code>SSH and GPG keys</code> 页面添加。</p>
+<p>然后使用 <code>ssh -T git@github.com</code> 测试连接。</p>
+<p>如果出现以下报错，可以更改 ssh 客户端配置。</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>ssh: connect to host github<span class="token punctuation">.</span>com port 22: Connection refused
+</code></pre></div><p>在 <code>C:\Users\&lt;username&gt;\.ssh\config</code> 文件（没有则创建）中添加以下内容：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>Host github.com
+  HostName ssh.github.com
+  Port 443
+</code></pre></div><p>这时再使用 <code>ssh -T git@github.com</code> 测试连接，应该就可以正常连接了。</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>ssh <span class="token operator">-</span>T git@github<span class="token punctuation">.</span>com
+</code></pre></div><h3>node</h3>
+<p>推荐使用  安装 node。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>字符编码</title>
+      <link>https://dribble-njr.github.io/blog/blog/computer-science/operating-system/01-character-encoding.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/computer-science/operating-system/01-character-encoding.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">字符编码</source>
+      <description>在计算机中，所有数据都是以二进制数的形式存储的，字符也不例外。为了表示字符，我们需要建立一套「字符集」，规定每个字符和二进制数之间的一一对应关系。有了字符集之后，计算机就可以通过查表完成二进制数到字符的转换。 Joel Spolsky The Absolute Minimum Every Software Developer Absolutely, P...</description>
+      <category>operating-system</category>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>在计算机中，所有数据都是以二进制数的形式存储的，字符也不例外。为了表示字符，我们需要建立一套「字符集」，规定每个字符和二进制数之间的一一对应关系。有了字符集之后，计算机就可以通过查表完成二进制数到字符的转换。</p>
+<p>Joel Spolsky</p>
+<p>The Absolute<br>
+Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and<br>
+Character Sets (No Excuses!)</p>
+<p>Mathias Bynens</p>
+<p>JavaScript’s Internal Character Encoding:<br>
+UCS-2 or UTF-16?</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>模块化</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/engineering/basic/01-modularization.html</link>
@@ -9695,142 +9811,6 @@ $ <span class="token function">git</span> merge experiment
 <li><a href="https://stackoverflow.com/questions/3063530/what-is-the-difference-between-get-and-post-encryption" target="_blank" rel="noopener noreferrer">https - What is the difference between GET and POST encryption? - Stack Overflow</a></li>
 <li><a href="https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&amp;mid=100000054&amp;idx=1&amp;sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd" target="_blank" rel="noopener noreferrer">99%的人都理解错了 HTTP 中 GET 与 POST 的区别 (qq.com)</a></li>
 <li><a href="https://github.com/febobo/web-interview/issues/145" target="_blank" rel="noopener noreferrer">面试官：说一下 GET 和 POST 的区别？ · Issue #145 · febobo/web-interview (github.com)</a></li>
-</ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>TCP 与 UDP 的区别</title>
-      <link>https://dribble-njr.github.io/blog/blog/computer-science/networking/008-tcp-udp.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/computer-science/networking/008-tcp-udp.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">TCP 与 UDP 的区别</source>
-      <description>TCP 和 UDP 都是传输层协议，属于 TCP/IP 协议族。 UDP 用户数据报协议（User Datagram Protocol，UDP）用来处理数据包，是一种无连接的协议，它的特点如下： 无连接 不需要像 TCP 一样进行三次握手进行连接，并且也只是数据报文的搬运工，不会对报文进行任何的加工处理。 单播、多播、广播 UDP 支持一对一、一对多、...</description>
-      <category>计算机网络</category>
-      <pubDate>Fri, 06 May 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>TCP 和 UDP 都是传输层协议，属于 TCP/IP 协议族。</p>
-<h2>UDP</h2>
-<p>用户数据报协议（User Datagram Protocol，UDP）用来处理数据包，是一种无连接的协议，它的特点如下：</p>
-<p><strong>无连接</strong></p>
-<p>不需要像 TCP 一样进行三次握手进行连接，并且也只是数据报文的搬运工，不会对报文进行任何的加工处理。</p>
-<p><strong>单播、多播、广播</strong></p>
-<p>UDP 支持一对一、一对多、多对多、多对一的传输方式。</p>
-<p><strong>面向报文</strong></p>
-<p>在发送端，应用层将数据传递给传输层，UDP 只会给数据增加一个 UDP 头标识这是一个 UDP 协议报文，然后就传给网络层，对应用层交付的报文既不合并也不拆分，保留报文的边界，一次发送一个报文。</p>
-<p>在接收端，网络层将 UDP 数据报传输给 UDP，UDP 去除首部后就会将数据原封不动地传递给应用层，一次交付一个完整的报文。</p>
-<p><strong>不可靠</strong></p>
-<p>首先体现在无连接上，通信双方想发就发，必然不可靠。没有像 TCP 做重传机制、流量控制和拥塞控制。</p>
-<p><strong>头部开销小</strong></p>
-<p>UDP 头部只有 8 字节，相比 TCP 20 个字节少得多，传输数据时比较高效。</p>
-<p><strong>应用场景</strong></p>
-<p>UDP 应用于效率要求高，但可靠性要求相对较低的场景，例如：即时通讯，速度要求高，但是偶尔出现断续不是太大问题，完全可以不使用重传机制，场景有在线视频、网络语音通话、广播通信等。</p>
-<h2>TCP</h2>
-<p>传输控制协议（Transmission Control Protocol，TCP）是一种面向连接的、可靠的、基于字节流的传输层通讯协议，它的特点如下：</p>
-<p><strong>面向连接</strong></p>
-<p>在发送前必须进行 TCP 三次握手在两端建立连接。</p>
-<p><strong>仅支持单播传输</strong></p>
-<p>每个 TCP 只能进行一对一传输，不支持多播和广播的形式。</p>
-<p><strong>面向字节流</strong></p>
-<p>TCP 不像 UDP 那样一个一个报文独立传输，而是在不保留报文边界的情况下以字节流方式进行传输。</p>
-<p><strong>可靠传输</strong></p>
-<p>TCP 为了实现可靠传输，使用了重传机制、流量控制和拥塞控制。</p>
-<p><strong>头部开销大</strong></p>
-<p>TCP 头部最小 20 个字节，最大 60 个字节，传输效率慢。</p>
-<p><strong>应用场景</strong></p>
-<p>TCP 应用于效率要求相对低，但可靠性要求高的场景，例如：文件传输、邮件传输等。</p>
-<h2>区别</h2>
-<p>|              | UDP                   | TCP                                          |<br>
-|</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>命令模式</title>
-      <link>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/01-command-pattern.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/reading/patterns/vanilla/01-command-pattern.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">命令模式</source>
-      <description>命令模式 通过命令模式，我们可以将执行特定任务的对象与调用方法的对象 解耦。 假设我们有一个在线食品配送平台。用户可以下单、跟踪和取消订单。 在 OrderManager 类中，我们可以直接访问 placeOrder、trackOrder 和 cancelOrder 方法。 不过，直接在 manager 实例上调用方法也有缺点。我们可能会决定重新命名某...</description>
-      <category>reading</category>
-      <pubDate>Sun, 04 Feb 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>命令模式</h2>
-<p>通过命令模式，我们可以将执行特定任务的对象与调用方法的对象 <em>解耦</em>。</p>
-<p>假设我们有一个在线食品配送平台。用户可以下单、跟踪和取消订单。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">OrderManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>orders <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">placeOrder</span><span class="token punctuation">(</span><span class="token parameter">order<span class="token punctuation">,</span> id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You have successfully ordered </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>order<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> (</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">trackOrder</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Your order </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> will arrive in 20 minutes.</span><span class="token template-punctuation string">`</span></span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">cancelOrder</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>orders <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>orders<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">order</span> <span class="token operator">=&gt;</span> order<span class="token punctuation">.</span>id <span class="token operator">!==</span> id<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You have canceled your order </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>在 <code>OrderManager</code> 类中，我们可以直接访问 <code>placeOrder</code>、<code>trackOrder</code> 和 <code>cancelOrder</code> 方法。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">const</span> manager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OrderManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-manager<span class="token punctuation">.</span><span class="token function">placeOrder</span><span class="token punctuation">(</span><span class="token string">'Pad Thai'</span><span class="token punctuation">,</span> <span class="token string">'1234'</span><span class="token punctuation">)</span>
-manager<span class="token punctuation">.</span><span class="token function">trackOrder</span><span class="token punctuation">(</span><span class="token string">'1234'</span><span class="token punctuation">)</span>
-manager<span class="token punctuation">.</span><span class="token function">cancelOrder</span><span class="token punctuation">(</span><span class="token string">'1234'</span><span class="token punctuation">)</span>
-</code></pre></div><p>不过，直接在 <code>manager</code> 实例上调用方法也有缺点。我们可能会决定重新命名某些方法，或者方法的功能发生变化。</p>
-<p>假设我们现在不调用 <code>placeOrder</code>，而是将其重命名为 <code>addOrder</code>！这意味着我们必须确保不在代码库的任何地方调用 <code>placeOrder</code> 方法，这在大型应用程序中可能会非常棘手。</p>
-<p>相反，我们希望将这些方法与管理器对象分离，并为每个命令创建单独的命令函数！</p>
-<p>让我们重构 <code>OrderManager</code> 类：它将不再有 <code>placeOrder</code>、<code>cancelOrder</code> 和 <code>trackOrder</code> 方法，而只有一个方法：<code>execute</code>。该方法将执行给定的任何命令。</p>
-<p>每个命令都应能访问 <code>OrderManager</code> 的 <code>orders</code>，我们将把它作为第一个参数传递。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">OrderManager</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>orders <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token function">execute</span><span class="token punctuation">(</span><span class="token parameter">command<span class="token punctuation">,</span> <span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> command<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>orders<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>我们需要为订单管理器创建三个命令：</p>
-<ul>
-<li><code>PlaceOrderCommand</code></li>
-<li><code>CancelOrderCommand</code></li>
-<li><code>TrackOrderCommand</code></li>
-</ul>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">class</span> <span class="token class-name">Command</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">execute</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>execute <span class="token operator">=</span> execute
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">PlaceOrderCommand</span><span class="token punctuation">(</span><span class="token parameter">order<span class="token punctuation">,</span> id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Command</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">orders</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    orders<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You have successfully ordered </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>order<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> (</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">CancelOrderCommand</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Command</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">orders</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-    orders <span class="token operator">=</span> orders<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">order</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> order<span class="token punctuation">.</span>id <span class="token operator">!==</span> id<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You have canceled your order </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">TrackOrderCommand</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Command</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Your order </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> will arrive in 20 minutes.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>完美！现在，这些方法不再直接与 <code>OrderManager</code> 实例耦合，而是成为独立的解耦函数，我们可以通过 <code>OrderManager</code> 上可用的执行方法来调用它们。</p>
-
-<h2>优点</h2>
-<p>命令模式允许我们将方法与执行操作的对象解耦。如果您要处理的命令有一定的生命周期，或者命令需要排队并在特定时间执行，那么它能让您获得更多控制权。</p>
-<h2>缺点</h2>
-<p>命令模式的用例非常有限，而且往往会给应用程序增加不必要的模板。</p>
-<h2>参考</h2>
-<ul>
-<li><a href="https://sourcemaking.com/design_patterns/command" target="_blank" rel="noopener noreferrer">Command Design Pattern</a> - SourceMaking</li>
-<li><a href="https://refactoring.guru/design-patterns/command" target="_blank" rel="noopener noreferrer">Command Pattern</a> - Refactoring Guru</li>
-<li><a href="https://www.carloscaballero.io/design-patterns-command/" target="_blank" rel="noopener noreferrer">Command Pattern</a> - Carlos Caballero</li>
 </ul>
 ]]></content:encoded>
     </item>

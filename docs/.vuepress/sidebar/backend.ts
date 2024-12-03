@@ -18,11 +18,11 @@ export default [
         icon: 'practice',
         prefix: 'practice/',
         children: [
-          '001-set-the-ssh',
-          '002-build-git-server',
-          '003-configure-bt',
-          '004-automated-deployment',
-          '005-install-docker'
+          '01-set-the-ssh',
+          '02-build-git-server',
+          '03-configure-bt',
+          '04-automated-deployment',
+          '05-install-docker'
         ]
       }
     ]
@@ -45,7 +45,7 @@ export default [
         collapsible: true,
         icon: 'mysql',
         prefix: 'mysql/',
-        children: ['001-install-mysql']
+        children: ['01-install-mysql']
       },
       {
         text: 'SQL',

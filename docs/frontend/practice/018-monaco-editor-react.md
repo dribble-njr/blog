@@ -113,6 +113,8 @@ Rspack 配置与 Vite 一致，详细见 [Rspack demo monaco-editor-react](https
 
 需要注意的是 `publicPath` 需要设置为 `'auto'`，否则 web worker 内引用的文件会添加重复路径。
 
+See [Rspack output.publicPath](https://rspack.dev/config/output#outputpublicpath)。
+
 :::
 
 ### ~~本地路径~~

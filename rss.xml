@@ -6,10 +6,12 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 12 Nov 2024 08:58:14 GMT</pubDate>
-    <lastBuildDate>Tue, 12 Nov 2024 08:58:14 GMT</lastBuildDate>
+    <pubDate>Tue, 03 Dec 2024 06:27:38 GMT</pubDate>
+    <lastBuildDate>Tue, 03 Dec 2024 06:27:38 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>database</category>
+    <category>linux</category>
     <category>操作系统</category>
     <category>operating-system</category>
     <category>工程化</category>
@@ -21,14 +23,459 @@
     <category>READING</category>
     <category>JavaScript</category>
     <category>Project</category>
-    <category>database</category>
     <category>计算机网络</category>
     <category>browser</category>
     <category>HTML</category>
     <category>chakra</category>
     <category>next</category>
     <category>react</category>
-    <category>algorithm</category>
+    <item>
+      <title>Docker 安装 MySQL</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/database/mysql/01-install-mysql.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/database/mysql/01-install-mysql.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Docker 安装 MySQL</source>
+      <description>使用 Docker 安装 MySQL。 安装 从 docker-hub 镜像源中找到想要安装的版本号。 这里直接安装最新版本。 等待一段时间安装完成后，启动 MySQL 容器： 这个命令的参数解释如下： -d: 后台运行容器。 --name mysql-container: 给容器起一个名字。 -e MYSQL_ROOT_PASSWORD=my-sec...</description>
+      <category>database</category>
+      <pubDate>Sun, 14 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>使用 Docker 安装 MySQL。</p>
+<h2>安装</h2>
+<p>从 <a href="https://hub.docker.com/_/mysql/" target="_blank" rel="noopener noreferrer">docker-hub</a> 镜像源中找到想要安装的版本号。</p>
+<p>这里直接安装最新版本。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> pull mysql
+</code></pre></div><p>等待一段时间安装完成后，启动 MySQL 容器：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> mysql-container <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>my-secret-pw <span class="token parameter variable">-p</span> <span class="token number">3306</span>:3306 mysql
+</code></pre></div><p>这个命令的参数解释如下：</p>
+<ul>
+<li><code>-d</code>: 后台运行容器。</li>
+<li><code>--name mysql-container</code>: 给容器起一个名字。</li>
+<li><code>-e MYSQL_ROOT_PASSWORD=my-secret-pw</code>: 设置 MySQL root 用户的密码。</li>
+<li><code>-p 3306:3306</code>: 将容器的 MySQL 服务端口（默认为 3306）映射到主机的 3306 端口。</li>
+</ul>
+<p>启动容器后进入 MySQL 容器的命令行界面：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql-container <span class="token function">bash</span>
+</code></pre></div><p>输入密码即可进入 MySQL 命令行界面。</p>
+<h2>设置 MySQL</h2>
+<p>进入到命令行界面后，设置一些基本的配置。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>MySQL 命令以 <code>;</code> 表示一行结束。</p>
+</div>
+<ol>
+<li>登陆 MySQL</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span>
+</code></pre></div><ol start="2">
+<li>创建数据库</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>create database your_data_base_name<span class="token punctuation">;</span>
+</code></pre></div><ol start="3">
+<li>创建用户</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>CREATE <span class="token environment constant">USER</span> <span class="token string">'your_username'</span>@<span class="token string">'localhost'</span> IDENTIFIED BY <span class="token string">'your_password'</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="4">
+<li>设置权限</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>GRANT ALL PRIVILEGES ON your_database_name.* TO <span class="token string">'your_username'</span>@<span class="token string">'localhost'</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="5">
+<li>刷新权限</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>FLUSH PRIVILEGES<span class="token punctuation">;</span>
+</code></pre></div><div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>必要步骤，否则权限会不生效。</p>
+</div>
+<p>做完基本的配置之后，就可以使用下面命令退出命令行界面：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">exit</span><span class="token punctuation">;</span>
+</code></pre></div><h2>服务器开放端口</h2>
+<p>参考 。</p>
+<p>接下来就可以使用 Navicat 连接数据库了。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>服务器设置 ssh 密钥登录</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/01-set-the-ssh.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/01-set-the-ssh.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">服务器设置 ssh 密钥登录</source>
+      <description> 提示 使用密码登录服务器并不安全，因此我们需要设置密钥登录。 创建密钥对 登录阿里云控制台 -&amp;gt; 云服务 ECS -&amp;gt; 网络与安全 -&amp;gt; 密钥对 -&amp;gt; 创建密钥对。 step1-create-sshstep1-create-ssh 创建成功之后，浏览器会自动下载一个 .pem 私钥文件，记住这个文件的位置，之后要用。 绑定密钥对 选中刚才创建的密钥对...</description>
+      <category>linux</category>
+      <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>使用密码登录服务器并不安全，因此我们需要设置密钥登录。</p>
+</div>
+<h2>创建密钥对</h2>
+<p>登录阿里云控制台 -&gt; 云服务 ECS -&gt; 网络与安全 -&gt; 密钥对 -&gt; 创建密钥对。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-create-ssh.png" alt="step1-create-ssh" tabindex="0" loading="lazy"><figcaption>step1-create-ssh</figcaption></figure>
+<p>创建成功之后，浏览器会自动下载一个 <code>.pem</code> 私钥文件，记住这个文件的位置，之后要用。</p>
+<h2>绑定密钥对</h2>
+<p>选中刚才创建的密钥对，点击右侧<strong>绑定密钥对</strong>，将密钥对绑定到实例。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-bind-ssh.png" alt="step2-bind-ssh" tabindex="0" loading="lazy"><figcaption>step2-bind-ssh</figcaption></figure>
+<h2>添加安全组规则</h2>
+<p>云服务 ECS -&gt; 网络与安全 -&gt; 安全组 -&gt; 入方向 -&gt; 手动添加。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step3-add-port.png" alt="step3-add-port" tabindex="0" loading="lazy"><figcaption>step3-add-port</figcaption></figure>
+<p>执行完后重启实例。</p>
+<h2>密钥验证并禁用密码登录</h2>
+<ol>
+<li>
+<p>安装 MobaXterm</p>
+</li>
+<li>
+<p>在 MobaXterm 下输入命令（<a href="https://help.aliyun.com/document_detail/51798.html#title-7je-5ba-sm2" target="_blank" rel="noopener noreferrer">参考阿里云官网文档</a>）</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">chmod</span> <span class="token number">400</span> <span class="token punctuation">[</span>.pem私钥文件在本地机上的存储路径<span class="token punctuation">]</span>
+</code></pre></div><div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">ssh</span> <span class="token parameter variable">-i</span> <span class="token punctuation">[</span>.pem私钥文件在本地机上的存储路径<span class="token punctuation">]</span> root@<span class="token punctuation">[</span>公网IP地址<span class="token punctuation">]</span>
+</code></pre></div></li>
+<li>
+<p>输入以下命令修改 config 文件</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">vi</span> /etc/ssh/sshd_config
+</code></pre></div></li>
+<li>
+<p>按 <code>i</code> 进入编辑模式</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token comment">#禁用密码验证</span>
+PasswordAuthentication no
+<span class="token comment">#启用密钥验证</span>
+PubkeyAuthentication <span class="token function">yes</span>
+</code></pre></div></li>
+<li>
+<p>重启 ssh 服务</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">service</span> sshd restart
+</code></pre></div></li>
+</ol>
+<p>接下来在阿里云控制台使用 Workbench 远程连接，可以发现密码登录已经被禁用了，只能使用密钥登录。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step4-pw-fail.png" alt="step4-pw-fail" tabindex="0" loading="lazy"><figcaption>step4-pw-fail</figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-create-ssh.png" type="image/png"/>
+    </item>
+    <item>
+      <title>搭建 git 私服</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/02-build-git-server.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/02-build-git-server.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">搭建 git 私服</source>
+      <description> 提示 git 私服作用： 自己电脑和公司（或者实验室）电脑随时同步资料 GitHub、Gitee 私有仓库都是限流的，文件一旦多了，或者有图片文件，git pull 的时候半天拉不下来 保存一些隐私文件 开始搭建 服务器：centos7.9 本地电脑: Windows10 如果服务器没装 git 可以使用以下命令安装： 创建 git 用户 创建一个 ...</description>
+      <category>linux</category>
+      <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><strong>git 私服作用：</strong></p>
+<ul>
+<li>自己电脑和公司（或者实验室）电脑随时同步资料</li>
+<li>GitHub、Gitee 私有仓库都是限流的，文件一旦多了，或者有图片文件，<code>git pull</code> 的时候半天拉不下来</li>
+<li>保存一些隐私文件</li>
+</ul>
+</div>
+<h2>开始搭建</h2>
+<ul>
+<li>服务器：centos7.9</li>
+<li>本地电脑: Windows10</li>
+</ul>
+<p>如果服务器没装 git 可以使用以下命令安装：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token function">git</span>
+</code></pre></div><h2>创建 git 用户</h2>
+<p>创建一个 Git 的 Linux 账户，这个账户只做 Git 私服的操作，之后就要设置 Linux Git 账户的密码，但由于我之前已经 ，因此不用设置密码。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>adduser <span class="token function">git</span>
+</code></pre></div><p><strong>后面所有的操作都在 git 用户下进行：</strong></p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@instance-5fcyjde7 ~<span class="token punctuation">]</span>su - <span class="token function">git</span>
+</code></pre></div><p>看一下自己所在的目录，是不是在 git 目录下面：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>git@instance-5fcyjde7 ~<span class="token punctuation">]</span>$ <span class="token builtin class-name">pwd</span>
+/home/git
+</code></pre></div><h2>服务器端密钥管理</h2>
+<p>创建 <code>.ssh</code> 目录，如果 <code>.ssh</code> 已经存在了，可以忽略这一项。方便每次操作 Git 仓库的时候不用再去输入密码。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/
+<span class="token function">mkdir</span> .ssh
+</code></pre></div><p>进入 <code>.ssh</code> 文件下，创建一个 <code>authorized_keys</code> 文件，并给 <code>authorized_keys</code> 文件设置权限。这个文件用来存放客户端的公钥。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/.ssh
+<span class="token function">touch</span> authorized_keys
+<span class="token function">chmod</span> <span class="token number">700</span> /home/git/.ssh
+<span class="token function">chmod</span> <span class="token number">600</span> /home/git/.ssh/authorized_keys
+</code></pre></div><p>接下来要把客户端的公钥放在 Git 服务器上，我们再回到客户端，创建一个公钥。</p>
+<p>在我们自己的电脑上，有公钥和私钥。两个文件分别是：<code>id_rsa</code> 和 <code>id_rsa.pub</code>。</p>
+<p>如果是 Windows 系统公钥私钥的目录在 <code>C:\Users\用户名.ssh</code> 下。</p>
+<p>如果是 Mac 或者 Linux， 公钥和私钥的目录这里 <code>cd ~/.ssh/</code>， 如果发现自己的电脑上没有公钥私钥，那就自己创建一个。</p>
+<p>创建密钥的命令：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>ssh-keygen <span class="token parameter variable">-t</span> rsa
+</code></pre></div><p>创建密钥的过程中，一路点击回车就可以了，不需要填任何东西。把刚刚生成的 <code>id_rsa.pub</code>，拷贝到 Git 服务器的 <code>/home/git/.ssh/</code> 目录。</p>
+<p>在 Git 服务器上，将公钥添加到 <code>authorized_keys</code> 文件中：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home/git/.ssh/
+<span class="token function">cat</span> id_rsa.pub <span class="token operator">&gt;&gt;</span> authorized_keys
+</code></pre></div><p>在客户直接登录 Git 服务器，验证是否配置成功：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">ssh</span> git@git 服务器 <span class="token function">ip</span>
+<span class="token comment"># 例如：</span>
+<span class="token function">ssh</span> git@127.0.0.1
+</code></pre></div><p>如果可以免密登录，那就说明服务器端密钥配置成功了。</p>
+<p>在这里我还出现了一个错误：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
+Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
+It is also possible that a <span class="token function">host</span> key has just been changed.
+The fingerprint <span class="token keyword">for</span> the RSA key sent by the remote <span class="token function">host</span> is
+<span class="token number">51</span>:82:00:1c:7e:6f:ac:ac:de:f1:53:08:1c:7d:55:68.
+Please contact your system administrator.
+Add correct <span class="token function">host</span> key <span class="token keyword">in</span> /Users/isaacalves/.ssh/known_hosts to get rid of this message.
+Offending RSA key <span class="token keyword">in</span> /Users/isaacalves/.ssh/known_hosts:12
+RSA <span class="token function">host</span> key <span class="token keyword">for</span> <span class="token number">104.131</span>.16.158 has changed and you have requested strict checking.
+Host key verification failed.
+</code></pre></div><p>出现这个错误的原因是因为我更新了 <code>ssh key</code>，使用以下命令删除无效的 key 即可：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>ssh-keygen <span class="token parameter variable">-R</span> <span class="token string">"服务器 ip"</span>
+</code></pre></div><h2>服务器端部署 Git 仓库</h2>
+<p>接下来在服务器上部署 git 仓库。</p>
+<p>登录到 Git 服务器端，切换为 Git 账户。如果是 root 账户切换成 Git 账户：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">su</span> - <span class="token function">git</span>
+</code></pre></div><p>如果是其他账户切换为 Git 账户：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">su</span> - <span class="token function">git</span>
+</code></pre></div><p>进入 git 目录下：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> ~/git
+</code></pre></div><p>创建一个文件夹名为 <code>world.git</code>，<code>.git</code> 后缀表明这是一个 git 仓库而不是别的什么文件。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>git@localhost git<span class="token punctuation">]</span><span class="token comment"># mkdir world.git</span>
+<span class="token punctuation">[</span>git@localhost git<span class="token punctuation">]</span><span class="token comment"># cd word.git</span>
+</code></pre></div><p>初始化 word 仓库：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> init <span class="token parameter variable">--bare</span>
+</code></pre></div><p>如果想创建多个仓库，就在 <strong>git</strong> 用户下的 <code>~/git</code> 目录创建多个文件夹并<strong>初始化</strong>就可以了。</p>
+<p>现在服务端的 Git 仓库就部署完了，接下来就能像平时使用 github 一样使用这个 Git 私服了。</p>
+<h2>客户端连接远程仓库</h2>
+<p>在自己的电脑上创建一个文件夹也叫做 <code>world</code>。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>其实这里命名是随意的，但是我们为了和 Git 服务端的仓库名称保持同步。这样更直观我们操作的是哪一个仓库。</p>
+</div>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> world
+<span class="token builtin class-name">cd</span> world
+</code></pre></div><p>进入 <code>world</code> 文件，并初始化操作：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> world
+<span class="token function">git</span> init
+</code></pre></div><p>在 <code>world</code> 目录上创建一个测试文件，并且将其添加到 Git 私服中：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">touch</span> <span class="token builtin class-name">test</span>
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">test</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"test git server"</span>
+</code></pre></div><p>将本地仓库和远端仓库同步：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">git</span> remote <span class="token function">add</span> origin git@服务器 ip:world.git
+<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin master
+</code></pre></div><p>此时这个 <code>test</code> 测试文件就已经提交到我们的 Git 远端私服上了。</p>
+<h2>参考链接</h2>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/8m5zK29sX0D9NM_YB8KDNQ" target="_blank" rel="noopener noreferrer">手把手来搭建 Git 私服！</a></li>
+<li><a href="https://www.digitalocean.com/community/questions/warning-remote-host-identification-has-changed" target="_blank" rel="noopener noreferrer">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</a></li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>配置宝塔面板</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/03-configure-bt.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/03-configure-bt.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">配置宝塔面板</source>
+      <description> 提示 服务器系统：centos 7.9。 其他系统可以参照 官网 进行搭建。 为了方便一键配置部署环境，因此选择宝塔面板。 安装宝塔面板 大概过两分钟即可安装成功，复制外网面板地址到浏览器打开，输入下面的 username 和 password。进去之后会弹出 推荐安装套件，因为只要部署 vuepress， 因此这里安装 nginx 就好。选择编译安...</description>
+      <category>linux</category>
+      <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>服务器系统：centos 7.9。</p>
+<p>其他系统可以参照 <a href="https://www.bt.cn/bbs/thread-19376-1-1.html" target="_blank" rel="noopener noreferrer">官网</a> 进行搭建。</p>
+<p>为了方便一键配置部署环境，因此选择宝塔面板。</p>
+</div>
+<h2>安装宝塔面板</h2>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token function">wget</span> <span class="token operator">&amp;&amp;</span> <span class="token function">wget</span> <span class="token parameter variable">-O</span> install.sh http://download.bt.cn/install/install_6.0.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sh</span> install.sh
+</code></pre></div><p>大概过两分钟即可安装成功，复制外网面板地址到浏览器打开，输入下面的 <code>username</code> 和 <code>password</code>。进去之后会弹出 <code>推荐安装套件</code>，因为只要部署 <code>vuepress</code>， 因此这里安装 <code>nginx</code> 就好。选择编译安装，更加稳定。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-install-bt.png" alt="step1-install-bt" tabindex="0" loading="lazy"><figcaption>step1-install-bt</figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-install-nginx.png" alt="step2-install-nginx" tabindex="0" loading="lazy"><figcaption>step2-install-nginx</figcaption></figure>
+<p>如果之后忘记用户名和密码，可以通过以下命令查找：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@xxxx ~<span class="token punctuation">]</span><span class="token comment"># bt</span>
+<span class="token punctuation">[</span>root@xxxx ~<span class="token punctuation">]</span><span class="token comment"># 14</span>
+</code></pre></div><h2>参考链接</h2>
+<ul>
+<li><a href="https://www.bt.cn/bbs/thread-19376-1-1.html" target="_blank" rel="noopener noreferrer">宝塔 Linux 面板安装教程</a></li>
+<li><a href="https://www.bilibili.com/video/BV12T4y1N7T9?from=search&amp;seid=2220018938681661072&amp;spm_id_from=333.337.0.0" target="_blank" rel="noopener noreferrer">阿里云服务器 ECS 新手搭建网站视频教程（详细版）</a></li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-install-bt.png" type="image/png"/>
+    </item>
+    <item>
+      <title>自动部署 Vuepress 到服务器</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/04-automated-deployment.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/04-automated-deployment.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">自动部署 Vuepress 到服务器</source>
+      <description> 提示 服务器：centos 7.9 本地电脑：Windows 10 服务器端 配置 nginx 登录宝塔面板，可以参考 。点击左侧网站 -&amp;gt; 添加站点。 step1-add-sitestep1-add-site 新增之后，点击设置 -&amp;gt; 配置文件。这三项按自己的情况配置，在后面 中会将 dist 文件推送到 root 配置项设置的文件夹下。 step...</description>
+      <category>linux</category>
+      <pubDate>Wed, 12 May 2021 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>服务器：centos 7.9</p>
+<p>本地电脑：Windows 10</p>
+</div>
+<h2>服务器端</h2>
+<h3>配置 nginx</h3>
+<p>登录宝塔面板，可以参考 。点击左侧网站 -&gt; 添加站点。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-add-site.png" alt="step1-add-site" tabindex="0" loading="lazy"><figcaption>step1-add-site</figcaption></figure>
+<p>新增之后，点击设置 -&gt; 配置文件。这三项按自己的情况配置，在后面  中会将 dist 文件推送到 <code>root</code> 配置项设置的文件夹下。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step2-nginx-conf.png" alt="step2-nginx-conf" tabindex="0" loading="lazy"><figcaption>step2-nginx-conf</figcaption></figure>
+<p>先测试下 nginx 有没有配置成功，本地打包文件：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">yarn</span> build
+</code></pre></div><p>然后将生成的 <code>dist</code> 文件里的内容复制到刚才设置的项目根目录下。</p>
+<p>接着输入 <code>http://xxx.xxx.xxx.xxx:端口号</code>，就能访问成功了。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>地址得用 http 协议，因为我们还没有配置 ssl 证书。</p>
+</div>
+<h3>配置 git 仓库</h3>
+<p>在  中已经搭建好了 git 私服，因此只需要初始化 <code>vuepress.git</code> 仓库即可。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home/git
+<span class="token function">mkdir</span> vuepress.git
+<span class="token builtin class-name">cd</span> vuepress.git
+<span class="token function">git</span> init <span class="token parameter variable">--bare</span> vuepress.git
+</code></pre></div><h3>配置 hooks</h3>
+<p>先切换到 root 用户（<code>ctrl + d</code>），在 home 文件夹下创建一个临时存放 dist 文件夹的地方。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>我这里选择存放到 home 文件夹下，但是 git 用户是没有权限的，因此切换到 root 用户，也可以存放到其他文件夹。</p>
+</div>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home
+<span class="token function">mkdir</span> tmp
+<span class="token builtin class-name">cd</span> tmp
+<span class="token function">mkdir</span> vuepress
+</code></pre></div><p>接着将文件的所有权换成 git：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">chown</span> git:git <span class="token parameter variable">-R</span> vuepress
+</code></pre></div><p>然后，有一个关键的地方，要将 <code>/www/wwwroot</code> 的所有权换成 git：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">chown</span> git:git /www/wwwroot
+</code></pre></div><p>做好这些准备之后，就可以开始配置 <code>hooks</code> 了。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home/git/vuepress.git/hooks
+<span class="token comment"># 通过 copy 新建 post-update 文件</span>
+<span class="token function">cp</span> post-update.sample post-update
+<span class="token function">vim</span> post-update
+</code></pre></div><p>接着将下面代码复制进去：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token builtin class-name">echo</span> <span class="token string">"auto deploy start ==================================="</span>
+<span class="token builtin class-name">unset</span> GIT_DIR
+
+<span class="token comment"># 项目文件夹</span>
+<span class="token assign-left variable">PUBLIC_WWW</span><span class="token operator">=</span>/www/wwwroot/vuepress
+<span class="token comment"># git 仓库文件夹</span>
+<span class="token assign-left variable">GIT_REPO</span><span class="token operator">=</span>/home/git/vuepress.git
+<span class="token comment"># 临时文件夹</span>
+<span class="token assign-left variable">TMP_GIT_CLONE</span><span class="token operator">=</span>/home/tmp/vuepress
+
+<span class="token comment"># 移除临时文件夹</span>
+<span class="token function">rm</span> <span class="token parameter variable">-rf</span> <span class="token variable">${TMP_GIT_CLONE}</span>
+<span class="token comment"># 克隆 git 仓库到临时文件夹</span>
+<span class="token function">git</span> clone <span class="token variable">$GIT_REPO</span> <span class="token variable">$TMP_GIT_CLONE</span>
+<span class="token comment"># 移除项目文件夹</span>
+<span class="token comment"># 宝塔为了安全，为自动在项目文件夹下新增 .user.ini 文件</span>
+<span class="token comment"># 需要先关闭这个文件的功能才能删除项目文件夹</span>
+<span class="token builtin class-name">cd</span> <span class="token variable">${PUBLIC_WWW}</span>
+chattr <span class="token parameter variable">-i</span> .user.ini
+<span class="token function">rm</span> <span class="token parameter variable">-rf</span> <span class="token variable">${PUBLIC_WWW}</span>
+<span class="token comment"># 将临时文件夹复制到项目文件夹</span>
+<span class="token function">cp</span> <span class="token parameter variable">-rf</span> <span class="token variable">${TMP_GIT_CLONE}</span> <span class="token variable">${PUBLIC_WWW}</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"auto deploy end ===================================="</span>
+</code></pre></div><p>现在服务器端的准备工作已经完成了，接下来看看本地电脑的配置。</p>
+<h2>本地电脑</h2>
+<p>在本地项目根目录下新建 <code>deploy.sh</code> 脚本文件，内容如下：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token shebang important">#!/usr/bin/env sh</span>
+
+<span class="token comment"># 确保脚本抛出遇到的错误</span>
+<span class="token builtin class-name">set</span> <span class="token parameter variable">-e</span>
+
+<span class="token comment"># 生成静态文件</span>
+<span class="token function">yarn</span> build
+
+<span class="token comment"># 进入生成的文件夹</span>
+<span class="token builtin class-name">cd</span> docs/.vuepress/dist
+
+<span class="token comment"># 初始化 git 仓库，并提交修改</span>
+<span class="token function">git</span> init
+<span class="token function">git</span> <span class="token function">add</span> <span class="token parameter variable">-A</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">'deploy'</span>
+
+<span class="token comment"># 发布到 git 私服， -f 强制覆盖</span>
+<span class="token function">git</span> remote <span class="token function">add</span> origin git@119.23.65.118:/home/git/vuepress.git
+<span class="token function">git</span> push <span class="token parameter variable">-f</span> git@119.23.65.118:/home/git/vuepress.git master
+
+<span class="token builtin class-name">cd</span> -
+</code></pre></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>了解更多 git 命令，可以查询<a href="https://git-scm.com/docs" target="_blank" rel="noopener noreferrer">官方文档</a>。</p>
+</div>
+<h2>测试</h2>
+<p>vscode 终端中输入 <code>sh depoly.sh</code>，报错：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sh</span> <span class="token builtin class-name">:</span> 无法将“sh”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。
+请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。
+</code></pre></div><p>了解到 windows 上可以使用 git bash 执行 shell 脚本，但我可不想每次执行的时候都打开 git bash，当然得找如何在 vscode 中执行 shell 脚本的办法。</p>
+<ol>
+<li>首先得在 vscode 中安装 code runner，之前一直用它来调试力扣上的题，已经安装过了。</li>
+<li>安装 git bash，这个不用说，安装 git 的时候就已经有了</li>
+<li>配置 bash 环境，找到 bash.exe 的安装目录，将它的位置添加到系统的环境变量中。</li>
+<li>配置 code runner：文件 -&gt; 首选项 -&gt; 设置 -&gt; 搜索 code runner</li>
+<li>打开终端，输入 <code>bash</code> 切换到 bash 环境，点击右上角的三角形即可运行。</li>
+</ol>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step3-code-runner.png" alt="step3-code-runner" tabindex="0" loading="lazy"><figcaption>step3-code-runner</figcaption></figure>
+<p>现在随便更新点内容，并执行 <code>deploy.sh</code> 脚本：</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step4-complete.png" alt="step4-complete" tabindex="0" loading="lazy"><figcaption>step4-complete</figcaption></figure>
+<p>再次访问 <code>http://xxx.xxx.xxx.xxx:端口号</code> 发现已经更新了。</p>
+<h2>参考链接</h2>
+<ul>
+<li><a href="http://chanwingwah.info/article/604eb2273c8ec67668f6fd41" target="_blank" rel="noopener noreferrer">只需三步， 部署 Vuepress 并实现本地一行命令更新部署到服务器</a></li>
+<li><a href="https://www.imqianduan.com/git-svn/335.html" target="_blank" rel="noopener noreferrer">使用 git hooks(post-receive)实现简单的远程自动部署</a></li>
+<li><a href="https://hjxlog.com/posts/20191130a1.html#7-%E9%85%8D%E7%BD%AENginx" target="_blank" rel="noopener noreferrer">将 Hexo 部署到阿里云轻量服务器（保姆级教程）</a></li>
+<li><a href="https://www.cnblogs.com/yongdaimi/p/15247771.html" target="_blank" rel="noopener noreferrer">VSCode: Windows 下配置 VSCode 运行 shell</a></li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/step1-add-site.png" type="image/png"/>
+    </item>
+    <item>
+      <title>centos 安装 docker</title>
+      <link>https://dribble-njr.github.io/blog/blog/backend/linux/practice/05-install-docker.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/backend/linux/practice/05-install-docker.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">centos 安装 docker</source>
+      <description> 提示 需要保证 centos 版本： centos 7 centos 8 centos 9 卸载旧版本 注意 必须先完成这一步，否则会出现不可预见的错误。 运行下列命令： 出现成功提示后即可。 使用 rpm repository 安装 设置镜像 安装 yum-utils 软件包（提供 yum-config-manager 实用工具）并设置软件源。 安...</description>
+      <category>linux</category>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>需要保证 centos 版本：</p>
+<ul>
+<li>centos 7</li>
+<li>centos 8</li>
+<li>centos 9</li>
+</ul>
+</div>
+<h2>卸载旧版本</h2>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>必须先完成这一步，否则会出现不可预见的错误。</p>
+</div>
+<p>运行下列命令：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> yum remove <span class="token function">docker</span> <span class="token punctuation">\</span>
+                  docker-client <span class="token punctuation">\</span>
+                  docker-client-latest <span class="token punctuation">\</span>
+                  docker-common <span class="token punctuation">\</span>
+                  docker-latest <span class="token punctuation">\</span>
+                  docker-latest-logrotate <span class="token punctuation">\</span>
+                  docker-logrotate <span class="token punctuation">\</span>
+                  docker-engine
+</code></pre></div><p>出现成功提示后即可。</p>
+<h2>使用 rpm repository 安装</h2>
+<h3>设置镜像</h3>
+<p>安装 <code>yum-utils</code> 软件包（提供 <code>yum-config-manager</code> 实用工具）并设置软件源。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> yum <span class="token function">install</span> <span class="token parameter variable">-y</span> yum-utils
+<span class="token function">sudo</span> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+</code></pre></div><h3>安装 docker engin</h3>
+<ol>
+<li>安装最新版：</li>
+</ol>
+
+<ol start="2">
+<li>启动 docker</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl start <span class="token function">docker</span>
+</code></pre></div><ol start="3">
+<li>运行 <code>hello-world</code> 映像，验证 Docker Engine 安装是否成功。</li>
+</ol>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">docker</span> run hello-world
+</code></pre></div><p>这条命令会下载一个测试镜像，并在一个容器中运行。当容器运行时，它会打印一条确认信息并退出。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>可以不去执行，只要安装过程不报错就表明成功。</p>
+</div>
+]]></content:encoded>
+    </item>
     <item>
       <title>美化 Windows 终端</title>
       <link>https://dribble-njr.github.io/blog/blog/computer-science/operating-system/02-windows-terminal-beauty.html</link>
@@ -2408,6 +2855,7 @@ loader<span class="token punctuation">.</span><span class="token function">init<
 <div class="hint-container warning">
 <p class="hint-container-title">注意</p>
 <p>需要注意的是 <code>publicPath</code> 需要设置为 <code>'auto'</code>，否则 web worker 内引用的文件会添加重复路径。</p>
+<p>See <a href="https://rspack.dev/config/output#outputpublicpath" target="_blank" rel="noopener noreferrer">Rspack output.publicPath</a>。</p>
 </div>
 <h3><s>本地路径</s></h3>
 <div class="hint-container tip">
@@ -8803,1015 +9251,6 @@ Page<span class="token punctuation">.</span><span class="token function-variable
 <li>记得回复他人。</li>
 </ul>
 <p>注释源码，建议给模块和导出函数都加上注释，这能在其他开发者使用的时候，给他们很大的助力。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>务实的方法</title>
-      <link>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/02-a-pragmatic-approach.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">务实的方法</source>
-      <description>优秀设计的精髓 ETC 原则（Easier To Change）： 解耦：隔离关注焦点，可以更容易地进行修改。 单一职责原则：一个需求的变化只会影响一个模块。 命名：良好的命名可以使代码更容易阅读。 DRY——邪恶的重复 DRY（Don&amp;apos;t Repeat Yourself）原则： 代码中的重复。 文档中的重复。 数据中的重复。 正交性 对于两个或多个事...</description>
-      <category>READING</category>
-      <pubDate>Mon, 19 Feb 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>优秀设计的精髓</h2>
-<p>ETC 原则（Easier To Change）：</p>
-<ul>
-<li>解耦：隔离关注焦点，可以更容易地进行修改。</li>
-<li>单一职责原则：一个需求的变化只会影响一个模块。</li>
-<li>命名：良好的命名可以使代码更容易阅读。</li>
-</ul>
-<h2>DRY——邪恶的重复</h2>
-<p>DRY（Don't Repeat Yourself）原则：</p>
-<ul>
-<li>代码中的重复。</li>
-<li>文档中的重复。</li>
-<li>数据中的重复。</li>
-</ul>
-<h2>正交性</h2>
-<p>对于两个或多个事物，如果它们的行为不会相互影响，那么它们就是正交的。</p>
-<p>象征着独立性和解耦。</p>
-<ul>
-<li>保持代码解耦。</li>
-<li>避免全局数据。</li>
-<li>避免相似的函数，每个函数都有不同的中心算法，可以使用「策略模式」进行优化。</li>
-<li>编写单元测试。</li>
-</ul>
-<h2>可逆性</h2>
-<ul>
-<li>将第三方的 API 隐藏在自己的抽象层之后。</li>
-<li>将代码分解为多个组件。</li>
-</ul>
-<h2>曳光弹</h2>
-<p>先实现最小可行产品（MVP）。</p>
-<h2>原型与便签</h2>
-<p>你可以为下列事物做原型：</p>
-<ul>
-<li>架构</li>
-<li>已存在的系统中的新功能</li>
-<li>数据结构或外部数据的内容</li>
-<li>第三方工具或组件</li>
-<li>性能问题</li>
-<li>用户界面设计</li>
-</ul>
-<p>当制作一个原型时，下面几个方面可以忽略：</p>
-<ul>
-<li>正确性：你可以在适当的地方使用替代数据。</li>
-<li>完整性：原型只需要满足有限的功能，可能只有一个预先选好的输入数据片段及单个菜单选项。</li>
-<li>健壮性：错误检查可以不完整，甚至完全没有都行。如果你偏离了预定的航线，原型机很可能烧毁在绚丽的烟火中——那又如何！</li>
-<li>格式：原型代码可能并不需要太多注释和文档（尽管围绕从原型中获取的经验，可能会产生大量文档，但是相对而言，原型系统本身的文档要少得多）。</li>
-</ul>
-<p>制作架构原型：</p>
-<ul>
-<li>主要组件的职责是否恰当，有没有定义清晰？</li>
-<li>主要组件之间的协作是否定义清晰？</li>
-<li>耦合度最小化了吗？</li>
-<li>你能确定重复的潜在来源吗？</li>
-<li>接口的定义和约束能否接受？</li>
-<li>在执行过程中是否每个模块都有访问所需数据的途径？在需要数据的时候，能访问到吗？</li>
-</ul>
-<h2>领域语言</h2>
-<p>计算机的语言会影响你怎样思考问题，影响你怎样看待信息的传播。</p>
-<p>每一门语言都有一个特性列表——比如这些时髦的术语：静态类型还是动态类型，早期绑定还是晚期绑定，函数式还是面向对象，继承模型，mixin，宏机制——所有这些对问题的解决方案，既可能提供建议也可能扰乱视听。</p>
-<p>同样是设计解决方案，用 C++ 的方式和用 Haskell 的思想，得到的结果会大为不同，反之亦然。</p>
-<h2>估算</h2>
-<p>通过估算来避免意外。</p>
-<p>估算项目进度，根据代码不断迭代项目进度表。（TODO 看板？）</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>数组</title>
-      <link>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/computer-science/algorithm/01-array.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">数组</source>
-      <description>JavaScript 中数组是一种特殊的对象，用于存储多个值。数组的每个元素都有一个数字索引，用于访问数组中的元素。 常见初始化数组的方式： 数组是一种线性表数据结构，它用一组连续的内存空间，来存储一组具有相同类型的数据。 常见的解题思路有： 二分查找 双指针 滑动窗口 暴力解法 n 数之和 一般思路为使用哈希表、双指针、排序等方法。 两数之和 原题链...</description>
-      <category>algorithm</category>
-      <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p><code>JavaScript</code> 中数组是一种特殊的对象，用于存储多个值。数组的每个元素都有一个数字索引，用于访问数组中的元素。</p>
-<p>常见初始化数组的方式：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Array</span></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Array</span></span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre></div><p>数组是一种线性表数据结构，它用一组连续的内存空间，来存储一组具有相同类型的数据。</p>
-<p>常见的解题思路有：</p>
-<ul>
-<li>二分查找</li>
-<li>双指针</li>
-<li>滑动窗口</li>
-<li>暴力解法</li>
-</ul>
-<h2>n 数之和</h2>
-<p>一般思路为使用哈希表、双指针、排序等方法。</p>
-<h3>两数之和</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener noreferrer">1. 两数之和</a></p>
-</div>
-<p>思路：使用哈希表存储遍历过的元素，每次遍历时，判断哈希表中是否存在 <code>target - nums[i]</code>，如果存在则返回结果。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> diff <span class="token operator">=</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>diff<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">[</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>diff<span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-
-    map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>三数之和</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode-cn.com/problems/3sum" target="_blank" rel="noopener noreferrer">15. 三数之和</a></p>
-</div>
-<h4>思路</h4>
-<p>这个题能否使用两数之和的解法？应该可以。</p>
-<p>首先需要注意一点，这里需要返回不重复的结果，因此无论是使用三重循环暴力解法还是使用外层循环 + 两数之和，首先应该排序，否则将很难过滤掉重复结果。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>试想一下，由于需要过滤掉重复结果，那么外层循环必须要跳过之前重复的元素，若不先进行排序，那么需要一个额外的结构如 <code>set</code> 存储已经循环的数据。</p>
-</div>
-<h4>解法</h4>
-<h5>两数之和</h5>
-<p>首先尝试使用两数之和去解，发现第一个 <code>case</code> 会少一个结果，<code>[-1,0,1,2,-1,-4]</code> 只会返回 <code>[[-1,0,1]]</code> ，简单分析一下：</p>
-<ul>
-<li>首先排序 <code>[-4, -1, -1, 0, 1, 2, 4]</code></li>
-<li>第一轮 <code>-4</code> 可以忽略，因为后续没有答案</li>
-<li>第二轮 <code>-1</code> 时，开始传入 <code>twoSum([-1, 0, 1, 2, 4], 1)</code> ，这里会直接返回 <code>[0, 1]</code> ，在这里明显漏掉了 <code>[-1, 2]</code> 这个答案，原因在于这个函数找到结果后会直接返回</li>
-</ul>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">threeSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">continue</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">const</span> target <span class="token operator">=</span> <span class="token operator">-</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>res <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">continue</span>
-    result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">...</span>res<span class="token punctuation">]</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> result
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">[</span>target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>找到问题所在后，需要对 <code>twoSum</code> 函数进行改造。但是又出现一个问题，怎么对 <code>twoSum</code> 返回的结果进行去重？</p>
-<p>这里借助一个 <code>set</code> 结构，能确保返回的数对不重复。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">threeSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">continue</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">const</span> target <span class="token operator">=</span> <span class="token operator">-</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
-
-    <span class="token comment">// 这里返回的结果为多个，因此也需要更改一下逻辑</span>
-    res<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">...</span>arr<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> result
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">twoSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> resultSet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> complement <span class="token operator">=</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>complement<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> pair <span class="token operator">=</span> <span class="token punctuation">[</span>complement<span class="token punctuation">,</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span> <span class="token comment">// 确保数对顺序一致</span>
-      <span class="token keyword">const</span> pairKey <span class="token operator">=</span> pair<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span>
-
-      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>resultSet<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>pairKey<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        resultSet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>pairKey<span class="token punctuation">)</span> <span class="token comment">// 记录这个数对，避免重复</span>
-        result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>pair<span class="token punctuation">)</span> <span class="token comment">// 添加到结果数组中</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> result
-<span class="token punctuation">}</span>
-</code></pre></div><p>然而该方法效率过低：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240919114159.png" alt="效率低" tabindex="0" loading="lazy"><figcaption>效率低</figcaption></figure>
-<h5>双指针</h5>
-<p>刚才的算法时间复杂度为 <code>O(n^2)</code> ，但是由于调用了 <code>slice</code> 并且在内部又进行了一系列的去重操作，因此耗时较多。</p>
-<p>在前面的分析中，由于排序是我们第一步的必要操作（为了方便去重），因此有了下面的思考：</p>
-<ul>
-<li>排序后，问题简化为寻找两数之和</li>
-<li>而对于排序数组，使用双指针线性扫描更为高效</li>
-</ul>
-<p>双指针的前提在于有序数组（这里我们已经从小到大排序），让双指针从数组两端逐渐向中间靠拢。每当计算出三数之和时：</p>
-<ul>
-<li>如果和太小（小于目标值），我们可以增加左指针的值，因为增加左指针意味着增加总和。</li>
-<li>如果和太大（大于目标值），我们可以减少右指针的值，因为减少右指针意味着减小总和。</li>
-</ul>
-<p>因此，最终<strong>步骤</strong>：</p>
-<ol>
-<li>先对数组排序。</li>
-<li>固定一个数，然后使用双指针分别指向剩余部分的开头和结尾，寻找符合条件的另外两个数。</li>
-<li>如果找到三数之和为 0，则添加到结果中，并跳过重复的数字以避免重复解。</li>
-</ol>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">threeSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-	nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 先排序</span>
-	<span class="token keyword">const</span> result<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-	
-	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span> <span class="token comment">// 跳过重复的数字</span>
-		
-		<span class="token keyword">let</span> left <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-		<span class="token keyword">let</span> right <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-		
-		<span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-			<span class="token keyword">const</span> sum <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">;</span>
-			
-			<span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				
-				<span class="token comment">// 跳过重复的左侧元素</span>
-				<span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					left<span class="token operator">++</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span>
-				
-				<span class="token comment">// 跳过重复的右侧元素</span>
-				<span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">&gt;</span> left <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>right <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-					right<span class="token operator">--</span><span class="token punctuation">;</span>
-				<span class="token punctuation">}</span>
-				
-				left<span class="token operator">++</span><span class="token punctuation">;</span>
-				right<span class="token operator">--</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				right<span class="token operator">--</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-				left<span class="token operator">++</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-		<span class="token punctuation">}</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h4>总结</h4>
-<p>双指针法的核心思路是通过排序让数组变得有序，再通过指针逐步调整找到符合条件的数对。</p>
-<p>它不仅能优化算法复杂度，还能通过简单的跳过重复元素的逻辑来避免冗余计算。</p>
-<p>在考虑解决「三数之和」这类问题时，双指针法自然而然成为优化的关键，因为它能在保持可读性和逻辑清晰的同时，大幅提高效率。</p>
-<p>解法对比：</p>
-<ul>
-<li>原始解法使用 <code>twoSum</code> 子函数来查找符合条件的两数之和，但每次都需要生成新数组并调用线性查找，这引入了不必要的开销。</li>
-<li>双指针法通过直接操作排序后的数组，避免了子数组的生成，并在一次遍历中完成两数查找，显著提高了时间效率。</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>思考一个问题，两数之和是不是也能使用双指针来完成？</p>
-<p>答案是肯定的，但是这样时间复杂度会上升到 <code>O(nlogn)</code>，因为排序的时间复杂度是 <code>O(nlogn)</code>，双指针的时间复杂度是 <code>O(n)</code>，所以总的时间复杂度是 <code>O(nlogn)</code>。</p>
-</div>
-<h3>最接近的三数之和</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode-cn.com/problems/3sum-closest" target="_blank" rel="noopener noreferrer">16. 最接近的三数之和</a></p>
-</div>
-<h4>暴力解法</h4>
-<p>思路：使用三重循环，遍历数组，计算三数之和，然后比较与目标值的差值，找到最接近的结果。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">threeSumClosest</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> k <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">const</span> sum <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>sum <span class="token operator">-</span> target<span class="token punctuation">)</span> <span class="token operator">&lt;</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>res <span class="token operator">-</span> target<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          res <span class="token operator">=</span> sum
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span>
-</code></pre></div><h4>双指针</h4>
-<p>思路：使用双指针，先对数组进行排序，然后遍历数组，使用双指针分别指向当前元素的下一个元素和数组的最后一个元素，计算三数之和，然后移动指针。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">threeSumClosest</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> nums<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
-
-  nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> left <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
-    <span class="token keyword">let</span> right <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> sum <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
-
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>sum <span class="token operator">-</span> target<span class="token punctuation">)</span> <span class="token operator">&lt;</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>res <span class="token operator">-</span> target<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        res <span class="token operator">=</span> sum
-      <span class="token punctuation">}</span>
-
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&gt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        right<span class="token operator">--</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        left<span class="token operator">++</span>
-      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> res
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span>
-</code></pre></div><h3>四数之和</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode-cn.com/problems/4sum" target="_blank" rel="noopener noreferrer">18. 四数之和</a></p>
-</div>
-<p>思路：参照 <a href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C">三数之和</a>，使用双指针，先对数组进行排序，然后遍历数组，使用双指针分别指向当前元素的下一个元素和数组的最后一个元素，计算四数之和，然后移动指针。</p>
-<div class="hint-container warning">
-<p class="hint-container-title">易错提示</p>
-<ul>
-<li>在遍历数组时，需要判断是否和前一个元素相等，如果相等则跳过。</li>
-<li><code>i</code> 从 0 开始，<code>j</code> 从 <code>i + 1</code> 开始，<code>left</code> 从 <code>j + 1</code> 开始，<code>right</code> 从 <code>nums.length - 1</code> 开始。</li>
-</ul>
-</div>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">fourSum</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> target<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-  nums<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">-</span> b<span class="token punctuation">)</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">continue</span>
-
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> i <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">continue</span>
-
-      <span class="token keyword">let</span> left <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>
-        right <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
-
-      <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">const</span> sum <span class="token operator">=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span>
-
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&gt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          right<span class="token operator">--</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          left<span class="token operator">++</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-          res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-          <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> left<span class="token operator">++</span>
-          <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;</span> right <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">===</span> nums<span class="token punctuation">[</span>right <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> right<span class="token operator">--</span>
-
-          left<span class="token operator">++</span>
-          right<span class="token operator">--</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span>
-</code></pre></div><h2>双指针</h2>
-<h3>接雨水</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode.cn/problems/container-with-most-water" target="_blank" rel="noopener noreferrer">11. 盛最多水的容器</a></p>
-<p><a href="https://leetcode-cn.com/problems/trapping-rain-water" target="_blank" rel="noopener noreferrer">42. 接雨水</a></p>
-</div>
-<p>思路：使用双指针，分别指向数组的头尾，计算当前面积，然后移动高度较小的指针。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">maxArea</span><span class="token punctuation">(</span>height<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token number">0</span>
-  <span class="token keyword">let</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    right <span class="token operator">=</span> height<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
-
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> weight <span class="token operator">=</span> right <span class="token operator">-</span> left
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>height<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">&lt;</span> height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      res <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">*</span> weight<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
-      left<span class="token operator">++</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-      res <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">*</span> weight<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
-      right<span class="token operator">--</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> res
-<span class="token punctuation">}</span>
-</code></pre></div><h3>删除有序数组中的重复项</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener noreferrer">26. 删除有序数组中的重复项</a></p>
-</div>
-<p>思路：使用双指针，一个指针用于遍历数组，另一个指针用于指向不重复的元素。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">removeDuplicates</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
-
-  <span class="token keyword">let</span> slow <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> fast <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> fast <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> fast<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span> <span class="token operator">!==</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      slow<span class="token operator">++</span>
-      nums<span class="token punctuation">[</span>slow<span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> slow <span class="token operator">+</span> <span class="token number">1</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>移除元素</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode-cn.com/problems/remove-element" target="_blank" rel="noopener noreferrer">27. 移除元素</a></p>
-</div>
-<p>思路：使用双指针，一个指针用于遍历数组，另一个指针用于指向不等于目标值的元素。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">function</span> <span class="token function">removeElement</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> val<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> slow <span class="token operator">=</span> <span class="token number">0</span>
-
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> fast <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> fast <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> fast<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span> <span class="token operator">!==</span> val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      nums<span class="token punctuation">[</span>slow<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">return</span> slow
-<span class="token punctuation">}</span>
-</code></pre></div><h3>下一个排列</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">原题链接</p>
-<p><a href="https://leetcode.cn/problems/next-permutation/description/" target="_blank" rel="noopener noreferrer">31. 下一个排列</a></p>
-</div>
-<p>思路：关键找到「较小数」与「较大数」。</p>
-<ol>
-<li>我们需要将一个左边的「较小数」与一个右边的「较大数」交换，以能够让当前排列变大，从而得到下一个排列。</li>
-<li>同时我们要让这个「较小数」尽量靠右，而「较大数」尽可能小。当交换完成后，「较大数」右边的数需要按照升序重新排列。这样可以在保证新排列大于原来排列的情况下，使变大的幅度尽可能小。</li>
-</ol>
-<p>以排列 <code>[4,5,2,6,3,1]</code> 为例：</p>
-<ul>
-<li>我们能找到的符合条件的一对「较小数」与「较大数」的组合为 <code>2</code> 与 <code>3</code>，满足「较小数」尽量靠右，而「较大数」尽可能小。</li>
-<li>当我们完成交换后排列变为 <code>[4,5,3,6,2,1]</code>，此时我们可以重排「较小数」右边的序列，序列变为 <code>[4,5,3,1,2,6]</code>。</li>
-</ul>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
- Do not return anything, modify nums in-place instead.
- */</span>
-<span class="token keyword">function</span> <span class="token function">nextPermutation</span><span class="token punctuation">(</span>nums<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
-  <span class="token keyword">let</span> i <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span>
-
-  <span class="token comment">// find smaller num</span>
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> nums<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    i<span class="token operator">--</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token comment">// now [i + 1, end) is decreasing</span>
-
-  <span class="token comment">// find bigger num</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> j <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&gt;=</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      j<span class="token operator">--</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">// swap</span>
-    <span class="token punctuation">;</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token comment">// reverse [i, end)</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> l <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> r <span class="token operator">=</span> nums<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> l <span class="token operator">&lt;</span> r<span class="token punctuation">;</span> l<span class="token operator">++</span><span class="token punctuation">,</span> r<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">;</span><span class="token punctuation">[</span>nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>nums<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240919114159.png" type="image/png"/>
-    </item>
-    <item>
-      <title>自动点亮 GitHub 热点图</title>
-      <link>https://dribble-njr.github.io/blog/blog/project/github-auto-commit/</link>
-      <guid>https://dribble-njr.github.io/blog/blog/project/github-auto-commit/</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">自动点亮 GitHub 热点图</source>
-      <description>灵感来源：某天在 GitHub 上看到一个用户的热点图，发现他每天都有提交记录，非常帅！ 于是先搜搜有没有自动提交的工具，但是找到的结果有些需要在本地运行；有些则没有检查当天是否有提交记录，如果有提交当然不希望有一个虚拟的提交。 于是就有了这个项目，使用 GitHub Actions 自动提交代码，保持 GitHub 热点图常绿。 项目地址：githu...</description>
-      <category>Project</category>
-      <pubDate>Sat, 10 Feb 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>灵感来源：某天在 GitHub 上看到一个用户的热点图，发现他每天都有提交记录，非常帅！</p>
-<p>于是先搜搜有没有自动提交的工具，但是找到的结果有些需要在本地运行；有些则没有检查当天是否有提交记录，如果有提交当然不希望有一个虚拟的提交。</p>
-<p>于是就有了这个项目，使用 GitHub Actions 自动提交代码，保持 GitHub 热点图常绿。</p>
-<p>项目地址：<a href="https://github.com/dribble-njr/github-auto-commit" target="_blank" rel="noopener noreferrer">github-auto-commit</a>。</p>
-<h2>功能特点</h2>
-<ul>
-<li><strong>自动提交与推送</strong>: 如果所有代码仓库今天没有任何提交，工作流程将自动提交一个虚拟的提交，并将其推送到代码仓库。</li>
-<li><strong>支持配置</strong>: 可以根据自己的需求进行配置，包括调整定时任务时间、更改 Git 设置信息以及自定义提交信息等。</li>
-</ul>
-<h2>使用方法</h2>
-<ol>
-<li><strong>Fork 本仓库</strong>: 首先，将本仓库 Fork 到你自己的 GitHub 账号下。</li>
-<li><strong>生成个人访问令牌（PAT）</strong>: 在 GitHub 设置中生成一个具有 <code>repo</code> 权限范围的个人访问令牌。</li>
-<li><strong>设置仓库 Secrets</strong>: 在仓库的设置中，添加一个名为 <code>TOKEN</code> 的 Secrets，将在步骤 2 中生成的 PAT 值作为其值。</li>
-</ol>
-<h2>配置</h2>
-<p>可以根据自己的需求对工作流程进行以下配置：</p>
-<ol>
-<li><strong>调整定时任务时间</strong>: 可以在工作流程文件中修改 <code>schedule</code> 部分的 cron 表达式，以更改工作流程的触发时间。</li>
-<li><strong>更改 Git 设置信息</strong>: 在工作流程文件中的 <code>Set up Git</code> 步骤中，更改 Git 的用户邮箱和用户名。</li>
-<li><strong>自定义提交信息</strong>: 在工作流程文件的最后一步中，根据需要修改 <code>date_today</code>、<code>time_start</code>、<code>time_end</code>、<code>repo</code> 和 <code>commit_message</code> 等变量，以调整自动提交的内容和提交信息。</li>
-</ol>
-<h2>实现</h2>
-<p>整体工作原理是使用 GitHub Actions 实现定时触发任务。</p>
-<p>使用 GitHub 提供的 API 来获取用户所有的代码仓库，并获取取每个仓库的提交信息。</p>
-<p>如果在所有仓库中都没有找到今天的提交记录，工作流程会自动创建一个虚拟的提交并推送到代码仓库中。</p>
-<p>完整代码如下：</p>
-<div class="language-yaml" data-ext="yml" data-title="yml"><pre class="language-yaml"><code><span class="token key atrule">name</span><span class="token punctuation">:</span> Auto Commit
-
-<span class="token key atrule">on</span><span class="token punctuation">:</span>
-  <span class="token key atrule">schedule</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> <span class="token key atrule">cron</span><span class="token punctuation">:</span> <span class="token string">'50 15 * * *'</span> <span class="token comment"># run at 23:50 in China time</span>
-  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span>
-
-<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
-  <span class="token key atrule">check_commits</span><span class="token punctuation">:</span>
-    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
-    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout this repository
-        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
-
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Set up Git
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          # You should set your email and name here.</span>
-
-          git config <span class="token punctuation">-</span><span class="token punctuation">-</span>global user.email "wzw15292257101@163.com"
-          git config <span class="token punctuation">-</span><span class="token punctuation">-</span>global user.name "dribble<span class="token punctuation">-</span>njr"
-
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Get all repositories
-        <span class="token key atrule">id</span><span class="token punctuation">:</span> get<span class="token punctuation">-</span>repos
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          echo "Fetching all repositories..."
-          response=$(curl -s -w "\n%{http_code}" -H "Authorization: token ${{ secrets.TOKEN }}" "https://api.github.com/user/repos?type=all")
-          http_code=$(echo "$response" | tail -n1)
-          response_body=$(echo "$response" | sed '$d')</span>
-
-          echo "<span class="token punctuation">[</span>HTTP status code<span class="token punctuation">]</span><span class="token punctuation">:</span> $http_code"
-
-          contained_repos=$(echo "$response_body" <span class="token punctuation">|</span> jq <span class="token punctuation">-</span>r '.<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">|</span> .full_name')
-          <span class="token key atrule">echo "Contained repositories</span><span class="token punctuation">:</span> $contained_repos"
-
-          echo "<span class="token punctuation">:</span><span class="token punctuation">:</span>set<span class="token punctuation">-</span>output name=repos<span class="token punctuation">:</span><span class="token punctuation">:</span>$(echo "$contained_repos" <span class="token punctuation">|</span> tr '\n' '<span class="token punctuation">,</span>')" <span class="token comment"># output repos</span>
-
-      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Read repositories list and check commits
-        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
-          # Set custom timezone and other config by yourself.</span>
-
-          date_today=$(TZ='Asia/Shanghai' date <span class="token punctuation">-</span>I) <span class="token comment"># Date part</span>
-          time_start="$<span class="token punctuation">{</span>date_today<span class="token punctuation">}</span>T00<span class="token punctuation">:</span>00<span class="token punctuation">:</span>00"
-          time_end="$<span class="token punctuation">{</span>date_today<span class="token punctuation">}</span>T23<span class="token punctuation">:</span>55<span class="token punctuation">:</span>00"
-          repo="https<span class="token punctuation">:</span>//github.com/dribble<span class="token punctuation">-</span>njr/github<span class="token punctuation">-</span>auto<span class="token punctuation">-</span>commit.git"
-          commit_message="Auto commit on $(TZ='Asia/Shanghai' date '+%Y<span class="token punctuation">-</span>%m<span class="token punctuation">-</span>%d %H<span class="token punctuation">:</span>%M<span class="token punctuation">:</span>%S')"
-
-          commits_exist=false
-          echo "Checking commits between $time_start and $time_end"
-
-          IFS='<span class="token punctuation">,</span> ' read <span class="token punctuation">-</span>r <span class="token punctuation">-</span>a repos &lt;&lt;&lt; "$<span class="token punctuation">{</span><span class="token punctuation">{</span> steps.get<span class="token punctuation">-</span>repos.outputs.repos <span class="token punctuation">}</span><span class="token punctuation">}</span>"
-          for repo in "$<span class="token punctuation">{</span>repos<span class="token punctuation">[</span>@<span class="token punctuation">]</span><span class="token punctuation">}</span>"; do
-            echo "Checking commits for $repo"
-            <span class="token key atrule">commit_today=$(curl -H "Authorization</span><span class="token punctuation">:</span> token $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>" <span class="token punctuation">-</span>s "https<span class="token punctuation">:</span>//api.github.com/repos/$repo/commits<span class="token punctuation">?</span>since=$time_start<span class="token important">&amp;until=$time_end")</span>
-            if echo "$commit_today" <span class="token punctuation">|</span> jq <span class="token punctuation">-</span>e '.<span class="token punctuation">[</span><span class="token punctuation">]</span>' <span class="token punctuation">&gt;</span> /dev/null; then
-                echo "Commits today in $repo<span class="token punctuation">:</span>"
-                echo "$commit_today"
-                commits_exist=true
-                break
-            fi
-          done
-
-          if <span class="token punctuation">[</span><span class="token punctuation">[</span> "$commits_exist" == "false" <span class="token punctuation">]</span><span class="token punctuation">]</span>; then
-            echo "No commits found today across all repositories. Creating a dummy commit<span class="token punctuation">...</span>"
-            git clone $repo
-            cd github<span class="token punctuation">-</span>auto<span class="token punctuation">-</span>commit
-            echo "$date_today No commits found today<span class="token punctuation">,</span> auto commited." <span class="token punctuation">&gt;</span><span class="token punctuation">&gt;</span> dummy.txt
-            git add dummy.txt
-            git commit <span class="token punctuation">-</span>m "$commit_message"
-            git push https<span class="token punctuation">:</span>//$<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span>@github.com/$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.repository <span class="token punctuation">}</span><span class="token punctuation">}</span>.git
-          else
-            echo "Commits found today."
-          fi
-</code></pre></div>]]></content:encoded>
-    </item>
-    <item>
-      <title>服务器上的 Git</title>
-      <link>https://dribble-njr.github.io/blog/blog/reading/pro-git/04-git-server.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/reading/pro-git/04-git-server.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">服务器上的 Git</source>
-      <description> 提示 PRO Git 原文 直接看实战： </description>
-      <category>READING</category>
-      <pubDate>Wed, 07 Feb 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><a href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener noreferrer">PRO Git 原文</a></p>
-</div>
-<p>直接看实战：</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Git 分支</title>
-      <link>https://dribble-njr.github.io/blog/blog/reading/pro-git/03-git-branch.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/reading/pro-git/03-git-branch.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Git 分支</source>
-      <description>分支简介 Git 仓库中有五个对象：三个 blob 对象（保存着文件快照）、一个 树 对象 （记录着目录结构和 blob 对象索引）以及一个 提交 对象（包含着指向前述树对象的指针和所有提交信息）。 做些修改后再次提交，那么这次产生的提交对象会包含一个指向上次提交对象（父对象）的指针。 提交对象及其父对象提交对象及其父对象 Git 的分支，其实本质上仅...</description>
-      <category>READING</category>
-      <pubDate>Wed, 07 Feb 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>分支简介</h2>
-<p>Git 仓库中有五个对象：三个 <em>blob</em> 对象（保存着文件快照）、一个 <strong>树</strong> 对象 （记录着目录结构和 blob 对象索引）以及一个 <strong>提交</strong> 对象（包含着指向前述树对象的指针和所有提交信息）。</p>
-<p>做些修改后再次提交，那么这次产生的提交对象会包含一个指向上次提交对象（父对象）的指针。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/image-20231012172546292.png" alt="提交对象及其父对象" tabindex="0" loading="lazy"><figcaption>提交对象及其父对象</figcaption></figure>
-<p>Git 的分支，其实本质上仅仅是指向提交对象的可变指针。 Git 的默认分支名字是 <code>master</code>。 在多次提交操作之后，你其实已经有一个指向最后那个提交对象的 <code>master</code> 分支。 <code>master</code> 分支会在每次提交时自动向前移动。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/image-20231012172739646.png" alt="分支及其提交历史" tabindex="0" loading="lazy"><figcaption>分支及其提交历史</figcaption></figure>
-<h3>新建分支</h3>
-<p>Git 在新建分支时创建了一个可以移动的新的指针。 比如，创建一个 testing 分支， 你需要使用 <code>git branch</code> 命令：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">git</span> branch testing
-</code></pre></div><p>这会在当前所在的提交对象上创建一个指针。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/two-branches.png" alt="两个指向相同提交历史的分支" tabindex="0" loading="lazy"><figcaption>两个指向相同提交历史的分支</figcaption></figure>
-<p>Git 使用 Head 指针确定当前在哪一个分支上，指向当前所在的本地分支。在本例中，你仍然在 <code>master</code> 分支上。 因为 <code>git branch</code> 命令仅仅 <strong>创建</strong> 一个新分支，并不会自动切换到新分支中去。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/head-to-master.png" alt="HEAD 指向当前所在的分支" tabindex="0" loading="lazy"><figcaption>HEAD 指向当前所在的分支</figcaption></figure>
-<h3>分支切换</h3>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>新版本使用 <code>git switch</code> 进行分支切换。</p>
-</div>
-<p>要切换到一个已存在的分支，你需要使用 <code>git checkout</code> 命令。 我们现在切换到新创建的 <code>testing</code> 分支去：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">git</span> checkout testing
-</code></pre></div><p>这样 <code>HEAD</code> 就指向 <code>testing</code> 分支了。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/head-to-testing.png" alt="HEAD 指向当前所在的分支。" tabindex="0" loading="lazy"><figcaption>HEAD 指向当前所在的分支。</figcaption></figure>
-<p>现在不妨再提交一次：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">vim</span> test.rb
-$ <span class="token function">git</span> commit <span class="token parameter variable">-a</span> <span class="token parameter variable">-m</span> <span class="token string">'made a change'</span>
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/advance-testing-20231016151948599.png" alt="HEAD 分支随着提交操作自动向前移动" tabindex="0" loading="lazy"><figcaption>HEAD 分支随着提交操作自动向前移动</figcaption></figure>
-<p>如图所示，你的 <code>testing</code> 分支向前移动了，但是 <code>master</code> 分支却没有，它仍然指向运行 <code>git checkout</code> 时所指的对象。 这就有意思了，现在我们切换回 <code>master</code> 分支看看：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">git</span> checkout master
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/checkout-master.png" alt="检出时 HEAD 随之移动" tabindex="0" loading="lazy"><figcaption>检出时 HEAD 随之移动</figcaption></figure>
-<p>这条命令做了两件事。 一是使 HEAD 指回 <code>master</code> 分支，二是将工作目录恢复成 <code>master</code> 分支所指向的快照内容。 也就是说，你现在做修改的话，项目将始于一个较旧的版本。 本质上来讲，这就是忽略 <code>testing</code> 分支所做的修改，以便于向另一个方向进行开发。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">分支新建与切换</p>
-<p><code>git checkout -b branch_name</code> 可以快速创建新分支并切换到该分支上。</p>
-</div>
-<div class="hint-container tip">
-<p class="hint-container-title">分支切换会改变你工作目录中的文件</p>
-<p>在切换分支时，一定要注意你工作目录里的文件会被改变。 如果是切换到一个较旧的分支，你的工作目录会恢复到该分支最后一次提交时的样子。 如果 Git 不能干净利落地完成这个任务，它将禁止切换分支。</p>
-</div>
-<p>我们不妨再稍微做些修改并提交：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ vim test.rb
-$ git commit -a -m 'made other changes'
-</code></pre></div><p>现在，这个项目的提交历史已经产生了分叉（参见 <a href="https://git-scm.com/book/zh/v2/ch00/divergent_history" target="_blank" rel="noopener noreferrer">项目分叉历史</a>）。 因为刚才你创建了一个新分支，并切换过去进行了一些工作，随后又切换回 master 分支进行了另外一些工作。 上述两次改动针对的是不同分支：你可以在不同分支间不断地来回切换和工作，并在时机成熟时将它们合并起来。 而所有这些工作，你需要的命令只有 <code>branch</code>、<code>checkout</code> 和 <code>commit</code>。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/advance-master.png" alt="项目分叉历史。" tabindex="0" loading="lazy"><figcaption>项目分叉历史。</figcaption></figure>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>由于 Git 的分支实质上仅是包含所指对象校验和（长度为 40 的 SHA-1 值字符串）的文件，所以它的创建和销毁都异常高效。创建一个新分支就相当于往一个文件中写入 41 个字节（40 个字符和 1 个换行符），<br>
-如此的简单能不快吗？</p>
-</div>
-<h2>分支合并</h2>
-<p>让我们来看一个简单的分支新建与分支合并的例子，实际工作中你可能会用到类似的工作流。 你将经历如下步骤：</p>
-<ol>
-<li>开发某个网站。</li>
-<li>为实现某个新的用户需求，创建一个分支。</li>
-<li>在这个分支上开展工作。</li>
-</ol>
-<p>正在此时，你突然接到一个电话说有个很严重的问题需要紧急修补。 你将按照如下方式来处理：</p>
-<ol>
-<li>切换到你的线上分支（production branch）。</li>
-<li>为这个紧急任务新建一个分支，并在其中修复它。</li>
-<li>在测试通过之后，切换回线上分支，然后合并这个修补分支，最后将改动推送到线上分支。</li>
-<li>切换回你最初工作的分支上，继续工作。</li>
-</ol>
-<h3>新建分支</h3>
-<p>首先，我们假设你正在你的项目上工作，并且在 <code>master</code> 分支上已经有了一些提交。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-branching-1.png" alt="一个简单的提交历史。" tabindex="0" loading="lazy"><figcaption>一个简单的提交历史。</figcaption></figure>
-<p>现在，你已经决定要解决你的公司使用的问题追踪系统中的 #53 问题。 想要新建一个分支并同时切换到那个分支上，你可以运行一个带有 <code>-b</code> 参数的 <code>git checkout</code> 命令：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout -b iss53
-Switched to a new branch "iss53"
-</code></pre></div><p>它是下面两条命令的简写：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git branch iss53
-$ git checkout iss53
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-branching-2.png" alt="创建一个新分支指针" tabindex="0" loading="lazy"><figcaption>创建一个新分支指针</figcaption></figure>
-<p>你继续在 #53 问题上工作，并且做了一些提交。 在此过程中，<code>iss53</code> 分支在不断的向前推进，因为你已经检出到该分支 （也就是说，你的 <code>HEAD</code> 指针指向了 <code>iss53</code> 分支）</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ vim index.html
-$ git commit -a -m 'added a new footer [issue 53]'
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-branching-3.png" alt=" 分支随着工作的进展向前推进。" tabindex="0" loading="lazy"><figcaption><code>iss53</code> 分支随着工作的进展向前推进。</figcaption></figure>
-<p>现在你接到那个电话，有个紧急问题等待你来解决。有了 Git 的帮助，现在只需要切换回 <code>master</code> 分支。在切换分支之前，需要提交一个 <code>commit</code> <strong>保持干净的工作区</strong>。</p>
-<p>现在，我们假设你已经把你的修改全部提交了，这时你可以切换回 <code>master</code> 分支了：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout master
-Switched to branch 'master'
-</code></pre></div><p>这个时候，你的工作目录和你在开始 #53 问题之前一模一样，现在你可以专心修复紧急问题了。建立一个 <code>hotfix</code> 分支，在该分支上工作直到问题解决：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout -b hotfix
-Switched to a new branch 'hotfix'
-$ vim index.html
-$ git commit -a -m 'fixed the broken email address'
-[hotfix 1fb7853] fixed the broken email address
- 1 file changed, 2 insertions(+)
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-branching-4.png" alt="基于  分支的紧急问题分支（hotfix branch）。" tabindex="0" loading="lazy"><figcaption>基于 <code>master</code> 分支的紧急问题分支（hotfix branch）。</figcaption></figure>
-<p>你可以运行你的测试，确保你的修改是正确的，然后将 <code>hotfix</code> 分支合并回你的 <code>master</code> 分支来部署到线上。 你可以使用 <code>git merge</code> 命令来达到上述目的：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout master
-$ git merge hotfix
-Updating f42c576..3a0874c
-Fast-forward
- index.html | 2 ++
- 1 file changed, 2 insertions(+)
-</code></pre></div><p>在合并的时候，你应该注意到了「快进（fast-forward）」这个词。</p>
-<p>由于你想要合并的分支 <code>hotfix</code> 所指向的提交 <code>C4</code> 是你所在的提交 <code>C2</code> 的直接后继， 因此 Git 会直接将指针向前移动。换句话说，当你试图合并两个分支时， 如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者的时候， 只会简单的将指针向前推进（指针右移），因为这种情况下的合并操作没有需要解决的分歧——这就叫做「快进（fast-forward）」。</p>
-<p>现在，最新的修改已经在 <code>master</code> 分支所指向的提交快照中，你可以着手发布该修复了。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-branching-5.png" alt=" 被快进到 。" tabindex="0" loading="lazy"><figcaption><code>master</code> 被快进到 <code>hotfix</code>。</figcaption></figure>
-<p>关于这个紧急问题的解决方案发布之后，你准备回到被打断之前时的工作中。然而，你应该先删除 <code>hotfix</code> 分支，因为你已经不再需要它了——<code>master</code> 分支已经指向了同一个位置。 你可以使用带 <code>-d</code> 选项的 <code>git branch</code> 命令来删除分支：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git branch -d hotfix
-Deleted branch hotfix (3a0874c).
-</code></pre></div><p>现在你可以切换回你正在工作的分支继续你的工作，也就是针对 #53 问题的那个分支（iss53 分支）。</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout iss53
-Switched to branch "iss53"
-$ vim index.html
-$ git commit -a -m 'finished the new footer [issue 53]'
-[iss53 ad82d7a] finished the new footer [issue 53]
-1 file changed, 1 insertion(+)
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-branching-6-20231016171324548.png" alt="继续在  分支上的工作" tabindex="0" loading="lazy"><figcaption>继续在 <code>iss53</code> 分支上的工作</figcaption></figure>
-<h3>分支合并</h3>
-<p>假设你已经修正了 #53 问题，并且打算将你的工作合并入 <code>master</code> 分支。 为此，你需要合并 <code>iss53</code> 分支到 <code>master</code> 分支，这和之前你合并 <code>hotfix</code> 分支所做的工作差不多。 你只需要检出到你想合并入的分支，然后运行 <code>git merge</code> 命令：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout master
-Switched to branch 'master'
-$ git merge iss53
-Merge made by the 'recursive' strategy.
-index.html |    1 +
-1 file changed, 1 insertion(+)
-</code></pre></div><p>这和你之前合并 <code>hotfix</code> 分支的时候看起来有一点不一样。 在这种情况下，你的开发历史从一个更早的地方开始分叉开来（diverged）。 因为，<code>master</code> 分支所在提交并不是 <code>iss53</code> 分支所在提交的直接祖先，Git 不得不做一些额外的工作。 出现这种情况的时候，Git 会使用两个分支的末端所指的快照（<code>C4</code> 和 <code>C5</code>）以及这两个分支的公共祖先（<code>C2</code>），做一个简单的三方合并。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-merging-1.png" alt="一次典型合并中所用到的三个快照" tabindex="0" loading="lazy"><figcaption>一次典型合并中所用到的三个快照</figcaption></figure>
-<p>和之前将分支指针向前推进所不同的是，Git 将此次三方合并的结果做了一个新的快照并且自动创建一个新的提交指向它。 这个被称作一次合并提交，它的特别之处在于他有不止一个父提交。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/basic-merging-2.png" alt="一个合并提交" tabindex="0" loading="lazy"><figcaption>一个合并提交</figcaption></figure>
-<h3>解决冲突</h3>
-<p>如果你在两个不同的分支中，对同一个文件的同一个部分进行了不同的修改，Git 就没法干净的合并它们。 如果你对 #53 问题的修改和有关 <code>hotfix</code> 分支的修改都涉及到同一个文件的同一处，在合并它们的时候就会产生合并冲突：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git merge iss53
-Auto-merging index.html
-CONFLICT (content): Merge conflict in index.html
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre></div><p>此时 Git 做了合并，但是没有自动地创建一个新的合并提交。 Git 会暂停下来，等待你去解决合并产生的冲突。 你可以在合并冲突后的任意时刻使用 <code>git status</code> 命令来查看那些因包含合并冲突而处于未合并（unmerged）状态的文件：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git status
-On branch master
-You have unmerged paths.
-  (fix conflicts and run "git commit")
-
-Unmerged paths:
-  (use "git add &lt;file&gt;..." to mark resolution)
-
-    both modified:      index.html
-
-no changes added to commit (use "git add" and/or "git commit -a")
-</code></pre></div><p>任何因包含合并冲突而有待解决的文件，都会以未合并状态标识出来。 Git 会在有冲突的文件中加入标准的冲突解决标记，这样你可以打开这些包含冲突的文件然后手动解决冲突。 出现冲突的文件会包含一些特殊区段，看起来像下面这个样子：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>contact : email.support@github.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-=======
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>please contact us at support@github.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html
-</code></pre></div><p>这表示 <code>HEAD</code> 所指示的版本（也就是你的 <code>master</code> 分支所在的位置，因为你在运行 merge 命令的时候已经检出到了这个分支）在这个区段的上半部分（<code>=======</code> 的上半部分），而 <code>iss53</code> 分支所指示的版本在 <code>=======</code> 的下半部分。 为了解决冲突，你必须选择使用由 <code>=======</code> 分割的两部分中的一个，或者你也可以自行合并这些内容。 例如，你可以通过把这段内容换成下面的样子来解决冲突：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>please contact us at email.support@github.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p>上述的冲突解决方案仅保留了其中一个分支的修改，并且 <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> , <code>=======</code> , 和 <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> 这些行被完全删除了。 在你解决了所有文件里的冲突之后，对每个文件使用 <code>git add</code> 命令来将其标记为冲突已解决。 一旦暂存这些原本有冲突的文件，Git 就会将它们标记为冲突已解决。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>VScode 提供了图形化工具用以解决冲突。</p>
-</div>
-<p>等你退出合并工具之后，Git 会询问刚才的合并是否成功。 如果你回答是，Git 会暂存那些文件以表明冲突已解决： 你可以再次运行 <code>git status</code> 来确认所有的合并冲突都已被解决：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git status
-On branch master
-All conflicts fixed but you are still merging.
-  (use "git commit" to conclude merge)
-
-Changes to be committed:
-
-    modified:   index.html
-</code></pre></div><p>如果你对结果感到满意，并且确定之前有冲突的的文件都已经暂存了，这时你可以输入 <code>git commit</code> 来完成合并提交。 默认情况下提交信息看起来像下面这个样子：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>Merge branch 'iss53'
-
-Conflicts:
-    index.html
-#
-# It looks like you may be committing a merge.
-# If this is not correct, please remove the file
-#	.git/MERGE_HEAD
-# and try again.
-
-
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-# On branch master
-# All conflicts fixed but you are still merging.
-#
-# Changes to be committed:
-#	modified:   index.html
-#
-</code></pre></div><p>如果你觉得上述的信息不够充分，不能完全体现分支合并的过程，你可以修改上述信息，添加一些细节给未来检视这个合并的读者一些帮助，告诉他们你是如何解决合并冲突的，以及理由是什么。</p>
-<h2>分支管理</h2>
-<p><code>git branch</code> 命令不只是可以创建与删除分支。 如果不加任何参数运行它，会得到当前所有分支的一个列表：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git branch
-  iss53
-* master
-  testing
-</code></pre></div><p>注意 <code>master</code> 分支前的 <code>*</code> 字符：它代表现在检出的那一个分支（也就是说，当前 <code>HEAD</code> 指针所指向的分支）。</p>
-<p>如果需要查看每一个分支的最后一次提交，可以运行 <code>git branch -v</code> 命令：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git branch -v
-  iss53   93b412c fix javascript issue
-* master  7a98805 Merge branch 'iss53'
-  testing 782fd34 add scott to the author list in the readmes
-</code></pre></div><p><code>--merged</code> 与 <code>--no-merged</code> 这两个有用的选项可以过滤这个列表中已经合并或尚未合并到当前分支的分支。 如果要查看哪些分支已经合并到当前分支，可以运行 <code>git branch --merged</code>：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git branch --merged
-  iss53
-* master
-</code></pre></div><p>因为之前已经合并了 <code>iss53</code> 分支，所以现在看到它在列表中。 在这个列表中分支名字前没有 <code>*</code> 号的分支通常可以使用 <code>git branch -d</code> 删除掉；你已经将它们的工作整合到了另一个分支，所以并不会失去任何东西。</p>
-<p>这里显示了其他分支。 因为它包含了还未合并的工作，尝试使用 <code>git branch -d</code> 命令删除它时会失败：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git branch -d testing
-error: The branch 'testing' is not fully merged.
-If you are sure you want to delete it, run 'git branch -D testing'.
-</code></pre></div><p>如果真的想要删除分支并丢掉那些工作，如同帮助信息里所指出的，可以使用 <code>-D</code> 选项强制删除它。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>上面描述的选项 <code>--merged</code> 和 <code>--no-merged</code> 会在没有给定提交或分支名作为参数时， 分别列出已合并或未合并到 <strong>当前</strong> 分支的分支。</p>
-<p>你总是可以提供一个附加的参数来查看其它分支的合并状态而不必检出它们。 例如，尚未合并到 <code>master</code> 分支的有哪些？</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout testing
-$ git branch --no-merged master
-topicA
-featureB
-</code></pre></div></div>
-<h2>分支开发工作流</h2>
-<p>在整个项目开发周期的不同阶段，你可以同时拥有多个开发的分支；你可以定期地把某些主题分支合并入其他分支中。</p>
-<p>只在 <code>master</code> 分支上保留完全稳定的代码——有可能仅仅是已经发布或即将发布的代码。 他们还有一些名为 <code>develop</code> 或者 <code>next</code> 的平行分支，被用来做后续开发或者测试稳定性——这些分支不必保持绝对稳定，但是一旦达到稳定状态，它们就可以被合并入 <code>master</code> 分支了。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/lr-branches-2.png" alt="趋于稳定分支的工作流（“silo”）视图。" tabindex="0" loading="lazy"><figcaption>趋于稳定分支的工作流（“silo”）视图。</figcaption></figure>
-<h2>远程分支</h2>
-<p>远程分支以 <code>&lt;remote&gt;/&lt;branch&gt;</code> 的形式命名。 例如，<code>origin/master</code> 分支。</p>
-<p>假设你的网络里有一个在 <code>git.ourcompany.com</code> 的 Git 服务器。</p>
-<p>如果你从这里克隆，Git 的 <code>clone</code> 命令会为你自动将该远程分支命名为 <code>origin</code>，拉取它的所有数据，创建一个指向它的 <code>master</code> 分支的指针，并且在本地将其命名为 <code>origin/master</code>。</p>
-<p>Git 也会给你一个与 <code>origin</code> 的 <code>master</code> 分支在指向同一个地方的本地 <code>master</code> 分支。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207145750.png" alt="克隆之后的服务器与本地仓库" tabindex="0" loading="lazy"><figcaption>克隆之后的服务器与本地仓库</figcaption></figure>
-<p>如果你在本地的 <code>master</code> 分支做了一些工作，在同一段时间内有其他人推送提交到 <code>git.ourcompany.com</code> 并且更新了它的 <code>master</code> 分支，这就是说你们的提交历史已走向不同的方向。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207145827.png" alt="本地与远程的工作可以分叉" tabindex="0" loading="lazy"><figcaption>本地与远程的工作可以分叉</figcaption></figure>
-<p>如果要与给定的远程仓库同步数据，运行 <code>git fetch &lt;remote&gt;</code> 命令（在本例中为 <code>git fetch origin</code>）。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>通常可以省略 <code>&lt;remote&gt;</code>。</p>
-</div>
-<p>这个命令查找 <code>origin</code> 是哪一个服务器（在本例中，它是 <code>git.ourcompany.com</code>），从中抓取本地没有的数据，并且更新本地数据库，移动 <code>origin/master</code> 指针到更新之后的位置。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207145928.png" alt="git fetch 更新你的远程跟踪分支" tabindex="0" loading="lazy"><figcaption>git fetch 更新你的远程跟踪分支</figcaption></figure>
-<p>为了演示有多个远程仓库与远程分支的情况，我们假定你有另一个内部 Git 服务器，仅服务于你的某个敏捷开发团队。这个服务器位于 <code>git.team1.ourcompany.com</code>。 你可以运行 <code>git remote add</code> 命令添加一个新的远程仓库引用到当前的项目。将这个远程仓库命名为 <code>teamone</code>，将其作为完整 URL 的缩写。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207150645.png" alt="添加另一个远程仓库" tabindex="0" loading="lazy"><figcaption>添加另一个远程仓库</figcaption></figure>
-<p>现在，可以运行 <code>git fetch teamone</code> 来抓取远程仓库 <code>teamone</code> 有而本地没有的数据。 因为那台服务器上现有的数据是 <code>origin</code> 服务器上的一个子集， 所以 Git 并不会抓取数据而是会设置远程跟踪分支 <code>teamone/master</code> 指向 <code>teamone</code> 的 <code>master</code> 分支。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207150743.png" alt="远程跟踪分支 teamone/master" tabindex="0" loading="lazy"><figcaption>远程跟踪分支 teamone/master</figcaption></figure>
-<h3>推送</h3>
-<p>本地的分支并不会自动与远程仓库同步——你必须显式地推送想要分享的分支。</p>
-<p>如果希望和别人一起在名为 <code>serverfix</code> 的分支上工作，你可以像推送第一个分支那样推送它。 运行 <code>git push &lt;remote&gt; &lt;branch&gt;</code>:</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git push origin serverfix
-Counting objects: 24, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (15/15), done.
-Writing objects: 100% (24/24), 1.91 KiB | 0 bytes/s, done.
-Total 24 (delta 2), reused 0 (delta 0)
-To https://github.com/schacon/simplegit
-
-- [new branch] serverfix -&gt; serverfix
-</code></pre></div><p>你也可以运行 <code>git push origin serverfix:serverfix</code>， 它会「推送本地的 <code>serverfix</code> 分支，将其作为远程仓库的 <code>serverfix</code> 分支」。</p>
-<p>可以通过这种格式来推送本地分支到一个命名不相同的远程分支。如果并不想让远程仓库上的分支叫做 <code>serverfix</code>，可以运行 <code>git push origin serverfix:awesomebranch</code> 来将本地的 <code>serverfix</code> 分支推送到远程仓库上的 <code>awesomebranch</code> 分支。</p>
-<p>下一次其他协作者从服务器上抓取数据时，他们会在本地生成一个远程分支 <code>origin/serverfix</code>，指向服务器的 <code>serverfix</code> 分支的引用：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git fetch origin
-remote: Counting objects: 7, done.
-remote: Compressing objects: 100% (2/2), done.
-remote: Total 3 (delta 0), reused 3 (delta 0)
-Unpacking objects: 100% (3/3), done.
-From https://github.com/schacon/simplegit
- * [new branch]      serverfix    -&gt; origin/serverfix
-</code></pre></div><p>要特别注意的一点是使用 <code>git fetch</code> 获取到新的远程跟踪分支时，本地不会有一个新的 <code>serverfix</code> 分支——只有一个不可以修改的 <code>origin/serverfix</code> 指针。</p>
-<p>可以运行 <code>git merge origin/serverfix</code> 将这些工作合并到当前所在的分支。 如果想要在自己的 <code>serverfix</code> 分支上工作，可以将其建立在远程跟踪分支之上：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git checkout -b serverfix origin/serverfix
-Branch serverfix set up to track remote branch serverfix from origin.
-Switched to a new branch 'serverfix'
-</code></pre></div><p>这会给你一个用于工作的本地分支，并且起点位于 <code>origin/serverfix</code>。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>也可以使用 <code>git switch &lt;branch&gt;</code>，Git 会自动新建一个分支并跟踪拉取下来的远程分支。</p>
-</div>
-<h3>拉取</h3>
-<p>当 <code>git fetch</code> 命令从服务器上抓取本地没有的数据时，它并不会修改工作目录中的内容。 它只会获取数据然后让你自己合并。</p>
-<p>然而，有一个命令叫作 <code>git pull</code> 在大多数情况下它的含义是一个 <code>git fetch</code> 紧接着一个 <code>git merge</code> 命令。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>由于 <code>git pull</code> 的魔法经常令人困惑所以通常单独显式地使用 <code>fetch</code> 与 <code>merge</code> 命令会更好一些。</p>
-</div>
-<h3>删除</h3>
-<p>假设你已经通过远程分支做完所有的工作了——也就是说你和你的协作者已经完成了一个特性， 并且将其合并到了远程仓库的 <code>master</code> 分支（或任何其他稳定代码分支）。 可以运行带有 <code>--delete</code> 选项的 <code>git push</code> 命令来删除一个远程分支。 如果想要从服务器上删除 <code>serverfix</code> 分支，运行下面的命令：</p>
-<div class="language-console" data-ext="console" data-title="console"><pre class="language-console"><code>$ git push origin --delete serverfix
-To https://github.com/schacon/simplegit
-
-- [deleted] serverfix
-</code></pre></div><p>基本上这个命令做的只是从服务器上移除这个指针。 Git 服务器通常会保留数据一段时间直到垃圾回收运行，所以如果不小心删除掉了，通常是很容易恢复的。</p>
-<h2>变基</h2>
-<p>在 Git 中整合来自不同分支的修改主要有两种方法：<code>merge</code> 以及 <code>rebase</code>。</p>
-<h3>基本操作</h3>
-<p>当你的项目目前分叉到两个分支，又各自提交了更新。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207161737.png" alt="分叉的提交历史" tabindex="0" loading="lazy"><figcaption>分叉的提交历史</figcaption></figure>
-<p>之前介绍过，整合分支最容易的方法是 <code>merge</code> 命令。 它会把两个分支的最新快照（<code>C3</code> 和 <code>C4</code>）以及二者最近的共同祖先（<code>C2</code>）进行三方合并，合并的结果是生成一个新的快照（并提交）。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207161821.png" alt="通过合并操作来整合分叉的历史" tabindex="0" loading="lazy"><figcaption>通过合并操作来整合分叉的历史</figcaption></figure>
-<p>其实，还有一种方法：你可以提取在 <code>C4</code> 中引入的补丁和修改，然后在 <code>C3</code> 的基础上应用一次。 在 Git 中，这种操作就叫做「变基（rebase）」。 你可以使用 <code>rebase</code> 命令将提交到某一分支上的所有修改都移至另一分支上，就好像 <strong>重新播放</strong> 一样。</p>
-<p>在这个例子中，你可以检出 <code>experiment</code> 分支，然后将它变基到 <code>master</code> 分支上：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">git</span> checkout experiment
-$ <span class="token function">git</span> rebase master
-First, rewinding <span class="token function">head</span> to replay your work on <span class="token function">top</span> of it<span class="token punctuation">..</span>.
-Applying: added staged <span class="token builtin class-name">command</span>
-</code></pre></div><p>它的原理是首先找到这两个分支（即当前分支 <code>experiment</code>、变基操作的目标基底分支 <code>master</code>） 的最近共同祖先 <code>C2</code>，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件，然后将当前分支指向目标基底 <code>C3</code>, 最后以此将之前另存为临时文件的修改依序应用。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207162127.png" alt="将 C4 中的修改变基到 C3 上" tabindex="0" loading="lazy"><figcaption>将 C4 中的修改变基到 C3 上</figcaption></figure>
-<p>现在回到 master 分支，进行一次快进合并。</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">git</span> checkout master
-$ <span class="token function">git</span> merge experiment
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240207163046.png" alt="master 分支的快进合并" tabindex="0" loading="lazy"><figcaption>master 分支的快进合并</figcaption></figure>
-<p>这两种整合方法的最终结果没有任何区别，但是变基使得提交历史更加整洁。你在查看一个经过变基的分支的历史记录时会发现，尽管实际的开发工作是并行的，但它们看上去就像是串行的一样，提交历史是一条直线没有分叉。</p>
-<p>请注意，无论是通过变基，还是通过三方合并，整合的最终结果所指向的快照始终是一样的，只不过提交历史不同罢了。变基是将一系列提交按照原有次序依次应用到另一分支上，而合并是把最终结果合在一起。</p>
-<h3>变基的风险</h3>
-<p>呃，奇妙的变基也并非完美无缺，要用它得遵守一条准则：</p>
-<p><strong>如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。</strong></p>
-<p>因为 <code>rebase</code> 会修改 <code>commit</code>，若你拉取的是 <code>rebase</code> 后的代码，则会遇到冲突。</p>
-<p>若发生 <code>git pull</code> 拉取冲突，需要使用 <code>git pull --rebase</code> 解决。</p>
-<h3>变基 vs. 合并</h3>
-<p>有一种观点认为，仓库的提交历史即是 <strong>记录实际发生过什么</strong>。 它是针对历史的文档，本身就有价值，不能乱改。从这个角度看来，改变提交历史是一种亵渎，你使用 <strong>谎言</strong> 掩盖了实际发生过的事情。 如果由合并产生的提交历史是一团糟怎么办？ 既然事实就是如此，那么这些痕迹就应该被保留下来，让后人能够查阅。</p>
-<p>另一种观点则正好相反，他们认为提交历史是 <strong>项目过程中发生的事</strong>。 没人会出版一本书的第一版草稿，软件维护手册也是需要反复修订才能方便使用。 持这一观点的人会使用 <code>rebase</code> 及 <code>filter-branch</code> 等工具来编写故事，怎么方便后来的读者就怎么写。</p>
-<p>总的原则是，只对尚未推送或分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作，这样，你才能享受到两种方式带来的便利。</p>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/image-20231012172546292.png" type="image/png"/>
-    </item>
-    <item>
-      <title>GET 和 POST 的区别</title>
-      <link>https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/computer-science/networking/003-get-post-difference.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">GET 和 POST 的区别</source>
-      <description>概述 GET 和 POST 是 HTTP 协议中发送请求的方法。 GET：请求资源，从服务器获取数据； POST：将数据提交到指定地址。 二者本质上都是 TCP 链接，因此本质上没有区别，但由于 HTTP 规定和浏览器/服务器的限制，导致它们在实际操作中会有一定区别。 区别 GET 在浏览器回退时是无害的，而 POST 会再次提交请求。 GET 产生的...</description>
-      <category>计算机网络</category>
-      <pubDate>Sun, 24 Apr 2022 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h2>概述</h2>
-<p>GET 和 POST 是 HTTP 协议中发送请求的方法。</p>
-<ul>
-<li>GET：请求资源，从服务器获取数据；</li>
-<li>POST：将数据提交到指定地址。</li>
-</ul>
-<p>二者本质上都是 TCP 链接，因此本质上<strong>没有区别</strong>，但由于 HTTP 规定和浏览器/服务器的限制，导致它们在实际操作中会有一定区别。</p>
-<h2>区别</h2>
-<ul>
-<li>GET 在浏览器回退时是无害的，而 POST 会再次提交请求。</li>
-<li>GET 产生的 URL 地址可以被 Bookmarked，而 POST 不可以。</li>
-<li>GET 请求会被浏览器主动 cache，而 POST 不会，除非手动设置。</li>
-<li>GET 请求只能进行 url 编码，而 POST 支持多种编码方式。</li>
-<li>GET 请求参数会被完整保留在浏览器历史记录里，而 POST 中的参数不会被保留。</li>
-<li>GET 请求在 URL 中传送的参数是有长度限制的，而 POST 没有。</li>
-<li>对参数的数据类型，GET 只接受 ASCII 字符，而 POST 没有限制。</li>
-<li>GET 比 POST 更不安全，因为参数直接暴露在 URL 上，所以不能用来传递敏感信息。</li>
-<li>GET 参数通过 URL 传递，POST 放在 Request body 中。</li>
-<li>GET 方法是安全且幂等的，POST 方法是<strong>不安全且不幂等</strong>的。</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<ul>
-<li>安全：请求方法不会破坏服务器上的资源；</li>
-<li>幂等：执行多次相同的操作，结果都是相同的。</li>
-</ul>
-</div>
-<h2>误区</h2>
-<h3>参数长度</h3>
-<p>GET 参数有长度限制，但这是因为浏览器对 URL 的长度限制，而不是 HTTP 协议本身对参数长度的限制。HTTP 同样对 POST 参数长度没有限制，而是靠服务器的设置来限制大小的。</p>
-<h3>安全性</h3>
-<p>POST <strong>相对</strong>比 GET 安全性要高。</p>
-<p>通过 GET 提交的请求都将显示到 URL 上，页面会被浏览器缓存，其他人查看历史记录会看到提交的数据。</p>
-<p>这里的相对在于：<strong>HTTP 本身是明文传输的协议</strong>，无论使用 GET 还是 POST 都有可能受到中间人攻击而造成数据泄露。</p>
-<p>如果 HTTP 链接使用 SSL/TLS，那么 GET 参数也会被加密，但是仍然会在某些地方出现，比如服务器日志、浏览器插件和其他应用。而 POST 数据会被加密并且不会被任何方式泄露。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>因此如果想要保证总是安全地传输数据，需要使用 HTTPS 上的 POST。</p>
-</div>
-<h3>Request Body</h3>
-<p>GET 可以带 Request Body，但不能保证一定能被接收到。如果你用 GET 请求，在 Request Body 携带数据，不同服务器的处理方式也是不同的，有些服务器会帮你读出数据，有些服务器直接忽略。</p>
-<h3>数据包</h3>
-<p>对于 GET 请求，浏览器会把 http header 和 data 一并发送出去，服务器响应 200（返回数据）。</p>
-<p>对于 POST，浏览器先发送 header，服务器响应 100 continue，浏览器再发送 data，服务器响应 200 ok。</p>
-<p>并不是所有浏览器都会在 POST 中发送两次包，Firefox 就只发送一次。</p>
-<h2>参考链接</h2>
-<ul>
-<li><a href="https://stackoverflow.com/questions/3063530/what-is-the-difference-between-get-and-post-encryption" target="_blank" rel="noopener noreferrer">https - What is the difference between GET and POST encryption? - Stack Overflow</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&amp;mid=100000054&amp;idx=1&amp;sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd" target="_blank" rel="noopener noreferrer">99%的人都理解错了 HTTP 中 GET 与 POST 的区别 (qq.com)</a></li>
-<li><a href="https://github.com/febobo/web-interview/issues/145" target="_blank" rel="noopener noreferrer">面试官：说一下 GET 和 POST 的区别？ · Issue #145 · febobo/web-interview (github.com)</a></li>
-</ul>
 ]]></content:encoded>
     </item>
   </channel>

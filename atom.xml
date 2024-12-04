@@ -4,12 +4,12 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-12-03T06:27:38.367Z</updated>
+  <updated>2024-12-04T08:54:44.722Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
-  <category term="database"/>
   <category term="linux"/>
+  <category term="database"/>
   <category term="操作系统"/>
   <category term="operating-system"/>
   <category term="工程化"/>
@@ -31,10 +31,102 @@
     <name>patterns</name>
   </contributor>
   <entry>
+    <title type="text">云服务器设置代理</title>
+    <id>https://dribble-njr.github.io/blog/blog/backend/linux/practice/06-server-proxy.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/backend/linux/practice/06-server-proxy.html"/>
+    <updated>2024-12-04T08:46:00.000Z</updated>
+    <summary type="html"><![CDATA[<p>在许多开发和部署场景中，使用代理服务器能够帮助我们绕过网络限制，提升安全性，或者加速访问。在本篇文章中，我们将讨论如何在云服务器上设置代理，主要包括通过隧道技术与使用 Clash for Linux 两种方式。</p>
+<h2>使用 SSH 隧道设置代理</h2>
+<p>SSH 隧道是一种通过安全通道将本地端口转发到远程服务器的方法。使用 SSH 隧道可以通过云服务器作为中介，绕过局域网或区域性网络的限制，访问外部服务。下面是如何设置 SSH 隧道代理。</p>
+<p>一般云服务器都支持 SSH 隧道，如果是基于 Ubuntu 的系统，可以通过以下命令来确认：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl status <span class="token function">ssh</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>在许多开发和部署场景中，使用代理服务器能够帮助我们绕过网络限制，提升安全性，或者加速访问。在本篇文章中，我们将讨论如何在云服务器上设置代理，主要包括通过隧道技术与使用 Clash for Linux 两种方式。</p>
+<h2>使用 SSH 隧道设置代理</h2>
+<p>SSH 隧道是一种通过安全通道将本地端口转发到远程服务器的方法。使用 SSH 隧道可以通过云服务器作为中介，绕过局域网或区域性网络的限制，访问外部服务。下面是如何设置 SSH 隧道代理。</p>
+<p>一般云服务器都支持 SSH 隧道，如果是基于 Ubuntu 的系统，可以通过以下命令来确认：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> systemctl status <span class="token function">ssh</span>
+</code></pre></div><p>如果看到 <code>active (running)</code> 字样，说明 SSH 服务正在运行。</p>
+<p>如果没有安装，可以使用以下命令安装：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openssh-server
+</code></pre></div><p>在本地电脑上，使用 SSH 连接到云服务器：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">ssh</span> <span class="token parameter variable">-R</span> <span class="token number">7890</span>:127.0.0.1:7890 root@<span class="token operator">&lt;</span>your-server-ip<span class="token operator">&gt;</span>
+</code></pre></div><p>然后在云服务器上，设置环境变量，编辑 <code>~/.bashrc</code>（或 <code>~/.zshrc</code>，取决于你使用的 shell） 文件：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">vi</span> ~/.bashrc
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:7890
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:7890
+</code></pre></div><p>这样，云服务器上的所有请求，都会经过本地的 7890 端口。</p>
+<div class="hint-container note">
+<p class="hint-container-title">注</p>
+<p>该方式优点在于简单，在一些简单的场景下可以满足需求。</p>
+<p>缺点在于依赖 SSH 隧道，如果使用 GitHub Action 触发 CI，由于没有 SSH 隧道，所以会导致无法使用代理。</p>
+<p>除非你能保证本地电脑一直处于连接状态，否则不建议使用该方式。</p>
+</div>
+<h2>使用 Clash for Linux 设置代理</h2>
+<p><a href="https://github.com/Elegycloud/clash-for-linux-backup" target="_blank" rel="noopener noreferrer">Clash for Linux</a> 是一款功能强大的代理工具，支持多种协议，包括 HTTP、SOCKS5 等。通过 Clash for Linux，我们可以方便地在本地电脑上设置代理，并将其同步到云服务器上。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">git</span> clone https://github.com/Elegycloud/clash-for-linux-backup.git
+</code></pre></div><p>进入到项目目录，编辑 <code>.env</code> 文件，修改变量 <code>CLASH_URL</code> 的值。</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token builtin class-name">cd</span> clash-for-linux-backup
+$ <span class="token function">vi</span> .env
+</code></pre></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p><code>CLASH_SECRET</code> 变量会用于登陆 dashboard。</p>
+</div>
+<p>启动代理：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">sudo</span> <span class="token function">bash</span> start.sh
+正在检测订阅地址<span class="token punctuation">..</span>.
+Clash订阅地址可访问！                                      <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+
+正在下载Clash配置文件<span class="token punctuation">..</span>.
+配置文件config.yaml下载成功！                              <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+
+正在启动Clash服务<span class="token punctuation">..</span>.
+服务启动成功！                                             <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+
+Clash Dashboard 访问地址：http://<span class="token operator">&lt;</span>ip<span class="token operator">&gt;</span>:9090/ui
+Secret：xxxxxxxxxxxxx
+
+请执行以下命令加载环境变量: <span class="token builtin class-name">source</span> /etc/profile.d/clash.sh
+
+请执行以下命令开启系统代理: proxy_on
+
+若要临时关闭系统代理，请执行: proxy_off
+</code></pre></div><p>加载环境变量并启动服务：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token builtin class-name">source</span> /etc/profile.d/clash.sh
+$ proxy_on
+</code></pre></div><p>检查服务端口：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">sudo</span> <span class="token function">netstat</span> <span class="token parameter variable">-tuln</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">7890</span>
+$ <span class="token function">netstat</span> <span class="token parameter variable">-tln</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">'9090|789.'</span>
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::7892                 :::*                    LISTEN     
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::7890                 :::*                    LISTEN     
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::7891                 :::*                    LISTEN     
+tcp6       <span class="token number">0</span>      <span class="token number">0</span> :::9090                 :::*                    LISTEN
+</code></pre></div><p>检查环境变量：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">env</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">'http_proxy|https_proxy'</span>
+<span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://127.0.0.1:7890
+<span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://127.0.0.1:7890
+</code></pre></div><p>这样，云服务器上的代理即设置完成。若要查看 dashboard，可以使用 VS Code 插件 <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh" target="_blank" rel="noopener noreferrer">Remote - SSH</a> 连接到云服务器，设置端口转发，然后在浏览器中访问 <code>http://127.0.0.1:9090/ui</code>。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20241204164400.png" alt="端口转发" tabindex="0" loading="lazy"><figcaption>端口转发</figcaption></figure>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>配置完成后，dashboard 会在关闭连接后停止，所以可以进行持久化。</p>
+</div>
+<p>编辑 <code>~/.bashrc</code> 文件，添加以下内容：</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code>$ <span class="token function">vi</span> ~/.bashrc
+<span class="token function">bash</span> /path/to/clash-for-linux-backup/start.sh
+<span class="token builtin class-name">source</span> /etc/profile.d/clash.sh
+proxy_on
+</code></pre></div><p>这样，每次连接到云服务器后，都会自动启动代理。</p>
+]]></content>
+    <category term="linux"/>
+    <published>2024-12-04T00:00:00.000Z</published>
+  </entry>
+  <entry>
     <title type="text">Docker 安装 MySQL</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/database/mysql/01-install-mysql.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/backend/database/mysql/01-install-mysql.html"/>
-    <updated>2024-12-03T06:25:23.000Z</updated>
+    <updated>2024-12-04T08:03:38.000Z</updated>
     <summary type="html"><![CDATA[<p>使用 Docker 安装 MySQL。</p>
 <h2>安装</h2>
 <p>从 <a href="https://hub.docker.com/_/mysql/" target="_blank" rel="noopener noreferrer">docker-hub</a> 镜像源中找到想要安装的版本号。</p>
@@ -47,13 +139,15 @@
 <p>这里直接安装最新版本。</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> pull mysql
 </code></pre></div><p>等待一段时间安装完成后，启动 MySQL 容器：</p>
-<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> mysql-container <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>my-secret-pw <span class="token parameter variable">-p</span> <span class="token number">3306</span>:3306 mysql
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">--name</span> mysql-container <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>my-secret-pw <span class="token parameter variable">-v</span> /path/to/data:/var/lib/mysql <span class="token parameter variable">-e</span> <span class="token assign-left variable">TZ</span><span class="token operator">=</span>Asia/Shanghai <span class="token parameter variable">-p</span> <span class="token number">3306</span>:3306 mysql
 </code></pre></div><p>这个命令的参数解释如下：</p>
 <ul>
 <li><code>-d</code>: 后台运行容器。</li>
 <li><code>--name mysql-container</code>: 给容器起一个名字。</li>
 <li><code>-e MYSQL_ROOT_PASSWORD=my-secret-pw</code>: 设置 MySQL root 用户的密码。</li>
 <li><code>-p 3306:3306</code>: 将容器的 MySQL 服务端口（默认为 3306）映射到主机的 3306 端口。</li>
+<li><code>-v /path/to/data:/var/lib/mysql</code>: 将容器中的 MySQL 数据目录挂载到主机上的 <code>/path/to/data</code> 目录。</li>
+<li><code>-e TZ=Asia/Shanghai</code>: 设置时区。</li>
 </ul>
 <p>启动容器后进入 MySQL 容器的命令行界面：</p>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql-container <span class="token function">bash</span>
@@ -10162,99 +10256,5 @@ Page<span class="token punctuation">.</span><span class="token function-variable
 ]]></content>
     <category term="Project"/>
     <published>2024-02-24T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">务实的哲学</title>
-    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/01-a-pragmatic-philosophy.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>人生是你的</h2>
-<blockquote>
-<p>我活着不是为了满足你的期望，正如你活着也不是为了满足我的期望。——李小龙</p>
-</blockquote>
-<p>你有权选择。</p>
-<ul>
-<li>工作无聊，技术过时，尝试主动改变，为此而加班才是合理的。</li>
-<li>这个行业给了你一系列非凡的机遇。积极主动点，掌控这些机遇。</li>
-</ul>
-<h2>我的源码被猫吃了</h2>
-<ul>
-<li>为问题负责，提供解决方案。</li>
-<li>增强自己在团队中的信任力。</li>
-</ul>
-<h2>软件的熵</h2>
-<p>破窗——糟糕的设计、错误的决定、低劣的代码。</p>]]></summary>
-    <content type="html"><![CDATA[<h2>人生是你的</h2>
-<blockquote>
-<p>我活着不是为了满足你的期望，正如你活着也不是为了满足我的期望。——李小龙</p>
-</blockquote>
-<p>你有权选择。</p>
-<ul>
-<li>工作无聊，技术过时，尝试主动改变，为此而加班才是合理的。</li>
-<li>这个行业给了你一系列非凡的机遇。积极主动点，掌控这些机遇。</li>
-</ul>
-<h2>我的源码被猫吃了</h2>
-<ul>
-<li>为问题负责，提供解决方案。</li>
-<li>增强自己在团队中的信任力。</li>
-</ul>
-<h2>软件的熵</h2>
-<p>破窗——糟糕的设计、错误的决定、低劣的代码。</p>
-<ul>
-<li>不要容忍破窗。</li>
-<li>不要打破窗户。</li>
-</ul>
-<h2>石头汤与煮青蛙</h2>
-<ul>
-<li>主动 Own 一件事情，做变革的催化剂。</li>
-<li>留意大局，持续观察周围的事情，不局限于自己的工作。</li>
-</ul>
-<h2>够好即可的软件</h2>
-<p>写出够好的软件即可。</p>
-<ul>
-<li>让质量成为需求问题（先交付再持续根据用户反馈进行优化）。</li>
-<li>不要过度设计。</li>
-</ul>
-<h2>知识资产</h2>
-<p>经营你的资产：</p>
-<ul>
-<li>不断学习，不断提升自己的技能。</li>
-<li>保持学习的广度。</li>
-<li>在新的技术流行之前学习。</li>
-</ul>
-<p>目标：</p>
-<ul>
-<li>每年至少学习一种新语言（或框架）。</li>
-<li>每季度阅读一本技术书籍。</li>
-<li>也要阅读一些非技术类的书籍。</li>
-<li>上课。</li>
-<li>参加技术会议。</li>
-<li>试验不同的环境。</li>
-<li>订阅技术杂志，与时俱进。</li>
-</ul>
-<p>在学习时，需要批判地进行思考，不要盲目地接受。</p>
-<ul>
-<li>问「五个为什么」。</li>
-<li>谁从中受益。</li>
-<li>有什么背景。</li>
-<li>什么时候在哪里可以工作。</li>
-<li>为什么这是个问题。</li>
-</ul>
-<h2>交流</h2>
-<p>作为开发人员，我们必须在多个层次上进行交流。</p>
-<ul>
-<li>知道你要说什么。</li>
-<li>了解你的听众。</li>
-<li>选择时机。</li>
-<li>选择风格。</li>
-<li>让文档美观。</li>
-<li>让听众参与。</li>
-<li>做倾听者，如果你不听观众说话，那观众也不会听你说话。</li>
-<li>记得回复他人。</li>
-</ul>
-<p>注释源码，建议给模块和导出函数都加上注释，这能在其他开发者使用的时候，给他们很大的助力。</p>
-]]></content>
-    <category term="READING"/>
-    <published>2024-02-18T00:00:00.000Z</published>
   </entry>
 </feed>

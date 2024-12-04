@@ -25,7 +25,7 @@ docker pull mysql
 等待一段时间安装完成后，启动 MySQL 容器：
 
 ```bash
-docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 mysql
+docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw -v /path/to/data:/var/lib/mysql -e TZ=Asia/Shanghai -p 3306:3306 mysql
 ```
 
 这个命令的参数解释如下：
@@ -34,6 +34,8 @@ docker run -d --name mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306
 - `--name mysql-container`: 给容器起一个名字。
 - `-e MYSQL_ROOT_PASSWORD=my-secret-pw`: 设置 MySQL root 用户的密码。
 - `-p 3306:3306`: 将容器的 MySQL 服务端口（默认为 3306）映射到主机的 3306 端口。
+- `-v /path/to/data:/var/lib/mysql`: 将容器中的 MySQL 数据目录挂载到主机上的 `/path/to/data` 目录。
+- `-e TZ=Asia/Shanghai`: 设置时区。
 
 启动容器后进入 MySQL 容器的命令行界面：
 

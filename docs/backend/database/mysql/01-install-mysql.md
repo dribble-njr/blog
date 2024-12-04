@@ -99,6 +99,6 @@ exit;
 
 ## 服务器开放端口
 
-参考 [添加安全组规则](./001-set-the-ssh.html#添加安全组规则)。
+参考 [添加安全组规则](../../linux/practice/01-set-the-ssh.md#添加安全组规则)。
 
 接下来就可以使用 Navicat 连接数据库了。

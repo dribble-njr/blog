@@ -22,7 +22,8 @@ export default [
           '02-build-git-server',
           '03-configure-bt',
           '04-automated-deployment',
-          '05-install-docker'
+          '05-install-docker',
+          '06-server-proxy'
         ]
       }
     ]

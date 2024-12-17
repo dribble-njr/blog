@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-12-17T09:49:20.569Z</updated>
+  <updated>2024-12-17T10:18:42.916Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -34,7 +34,7 @@
     <title type="text">国际化</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-i18n.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-i18n.html"/>
-    <updated>2024-12-17T09:47:29.000Z</updated>
+    <updated>2024-12-17T10:16:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>配置</h2>
 <div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">yarn</span> workspace mobile <span class="token function">add</span> i18next react-i18next expo-localization
 </code></pre></div><p>配置 app.json</p>
@@ -4672,7 +4672,7 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">数据库结构设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/03-database.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/03-database.html"/>
-    <updated>2024-12-17T09:47:29.000Z</updated>
+    <updated>2024-12-17T10:16:46.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container warning">
 <p class="hint-container-title">注意</p>
 <p>Deprecated. 已改用 prisma + Mysql 数据库。</p>
@@ -4721,7 +4721,7 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <title type="text">服务器架构设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/02-server.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/02-server.html"/>
-    <updated>2024-12-17T09:47:29.000Z</updated>
+    <updated>2024-12-17T10:16:46.000Z</updated>
     <summary type="html"><![CDATA[<div class="hint-container warning">
 <p class="hint-container-title">注意</p>
 <p>Deprecated. 已改用 nest.js 框架。</p>
@@ -6325,7 +6325,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">初始化项目</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html"/>
-    <updated>2024-12-17T09:47:29.000Z</updated>
+    <updated>2024-12-17T10:16:46.000Z</updated>
     <summary type="html"><![CDATA[<h2>技术方案选型</h2>
 <h3>Flutter vs React Native</h3>
 <p>目前，<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> 和 <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 是最流行的跨端解决方案。</p>

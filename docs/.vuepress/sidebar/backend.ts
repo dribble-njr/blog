@@ -76,6 +76,13 @@ export default [
         icon: 'npm',
         prefix: 'module/',
         children: ['001-finalhandler']
+      },
+      {
+        text: 'Prisma',
+        collapsible: true,
+        icon: 'prisma',
+        prefix: 'prisma/',
+        children: ['01-quick-start']
       }
     ]
   },

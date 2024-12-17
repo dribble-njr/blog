@@ -35,6 +35,6 @@ export default [
     icon: 'kitchen',
     collapsible: true,
     prefix: '/project/imperial-kitchen/',
-    children: ['', '01-init', '02-server', '03-database', '04-api']
+    children: ['', '01-init', '02-server', '03-database', '04-i18n']
   }
 ]

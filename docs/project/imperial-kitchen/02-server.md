@@ -8,6 +8,12 @@ tag:
   - kitchen
 ---
 
+::: warning
+
+Deprecated. 已改用 nest.js 框架。
+
+:::
+
 ## 分层架构
 
 ### route

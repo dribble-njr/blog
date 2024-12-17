@@ -8,6 +8,12 @@ tag:
   - kitchen
 ---
 
+::: warning
+
+Deprecated. 已改用 prisma + Mysql 数据库。
+
+:::
+
 ## 数据库选择
 
 选择使用云数据库 [turso](https://docs.turso.tech/introduction)。

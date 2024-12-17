@@ -34,6 +34,12 @@ tag:
 
 因此确定使用 Expo + Node.js + Monorepo 的方案，这样可以使得项目结构更加清晰，便于管理和维护。
 
+::: warning
+
+Deprecated. 已改用 nest.js 框架。
+
+:::
+
 ## Monorepo 搭建
 
 最初使用 `pnpm` workspaces 搭建 Monorepo 项目，然而安装依赖后启动报错：

@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-12-04T08:54:44.722Z</updated>
+  <updated>2024-12-17T09:49:20.569Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="Project"/>
   <category term="linux"/>
   <category term="database"/>
   <category term="操作系统"/>
@@ -20,7 +21,6 @@
   <category term="Pixi"/>
   <category term="READING"/>
   <category term="JavaScript"/>
-  <category term="Project"/>
   <category term="计算机网络"/>
   <category term="browser"/>
   <category term="HTML"/>
@@ -30,6 +30,75 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">国际化</title>
+    <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-i18n.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-i18n.html"/>
+    <updated>2024-12-17T09:47:29.000Z</updated>
+    <summary type="html"><![CDATA[<h2>配置</h2>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">yarn</span> workspace mobile <span class="token function">add</span> i18next react-i18next expo-localization
+</code></pre></div><p>配置 app.json</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">"expo"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"expo-localization"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<h2>配置</h2>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token function">yarn</span> workspace mobile <span class="token function">add</span> i18next react-i18next expo-localization
+</code></pre></div><p>配置 app.json</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">"expo"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"expo-localization"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2>集成</h2>
+<p><code>apps/mobile/locales/index.ts</code></p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> i18n <span class="token keyword">from</span> <span class="token string">'i18next'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> initReactI18next <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-i18next'</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> Localization <span class="token keyword">from</span> <span class="token string">'expo-localization'</span>
+<span class="token keyword">import</span> English <span class="token keyword">from</span> <span class="token string">'./en'</span>
+<span class="token keyword">import</span> Chinese <span class="token keyword">from</span> <span class="token string">'./zh'</span>
+
+<span class="token keyword">const</span> resources <span class="token operator">=</span> <span class="token punctuation">{</span>
+  en<span class="token operator">:</span> <span class="token punctuation">{</span> translation<span class="token operator">:</span> English <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  zh<span class="token operator">:</span> <span class="token punctuation">{</span> translation<span class="token operator">:</span> Chinese <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getUserLanguage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> locales <span class="token operator">=</span> Localization<span class="token punctuation">.</span><span class="token function">getLocales</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>locales<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> locales<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>languageCode <span class="token operator">??</span> <span class="token string">'zh'</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token string">'zh'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// console.error('Error retrieving language preference:', error);</span>
+    <span class="token keyword">return</span> <span class="token string">'zh'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> language <span class="token operator">=</span> <span class="token function">getUserLanguage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+i18n<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>initReactI18next<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  resources<span class="token punctuation">,</span>
+  compatibilityJSON<span class="token operator">:</span> <span class="token string">'v3'</span><span class="token punctuation">,</span>
+  lng<span class="token operator">:</span> language<span class="token punctuation">,</span>
+  fallbackLng<span class="token operator">:</span> <span class="token string">'zh'</span><span class="token punctuation">,</span>
+  interpolation<span class="token operator">:</span> <span class="token punctuation">{</span>
+    escapeValue<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token comment">// react already safes from xss</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  react<span class="token operator">:</span> <span class="token punctuation">{</span>
+    useSuspense<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token comment">// avoid suspense problem</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> i18n
+</code></pre></div>]]></content>
+    <category term="Project"/>
+    <published>2024-09-29T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">云服务器设置代理</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/linux/practice/06-server-proxy.html</id>
@@ -4603,18 +4672,19 @@ app<span class="token punctuation">.</span>ticker<span class="token punctuation"
     <title type="text">数据库结构设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/03-database.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/03-database.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>数据库选择</h2>
+    <updated>2024-12-17T09:47:29.000Z</updated>
+    <summary type="html"><![CDATA[<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>Deprecated. 已改用 prisma + Mysql 数据库。</p>
+</div>
+<h2>数据库选择</h2>
 <p>选择使用云数据库 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">turso</a>。</p>
-<p>Turso 是一个兼容 SQLite 的数据库，基于 libSQL（SQLite 的开放贡献分叉）构建。 它可以将每个组织的数据库扩展到数十万个，并支持复制到任何位置，包括您自己的服务器，以实现微秒级延迟访问。</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> InStatement<span class="token punctuation">,</span> LibsqlError<span class="token punctuation">,</span> createClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@libsql/client'</span>
-
-<span class="token keyword">const</span> client <span class="token operator">=</span> <span class="token function">createClient</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  url<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">TURSO_URL</span> <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">,</span>
-  authToken<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">TURSO_AUTH_TOKEN</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<h2>数据库选择</h2>
+<p>Turso 是一个兼容 SQLite 的数据库，基于 libSQL（SQLite 的开放贡献分叉）构建。 它可以将每个组织的数据库扩展到数十万个，并支持复制到任何位置，包括您自己的服务器，以实现微秒级延迟访问。</p>]]></summary>
+    <content type="html"><![CDATA[<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>Deprecated. 已改用 prisma + Mysql 数据库。</p>
+</div>
+<h2>数据库选择</h2>
 <p>选择使用云数据库 <a href="https://docs.turso.tech/introduction" target="_blank" rel="noopener noreferrer">turso</a>。</p>
 <p>Turso 是一个兼容 SQLite 的数据库，基于 libSQL（SQLite 的开放贡献分叉）构建。 它可以将每个组织的数据库扩展到数十万个，并支持复制到任何位置，包括您自己的服务器，以实现微秒级延迟访问。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> InStatement<span class="token punctuation">,</span> LibsqlError<span class="token punctuation">,</span> createClient <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@libsql/client'</span>
@@ -4648,66 +4718,15 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
     <published>2024-07-11T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">接口设计</title>
-    <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-api.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/04-api.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2><code>category</code></h2>
-<p>接口路径：<code>/category</code>。</p>
-<h3><code>list</code></h3>
-<p>请求方法：<code>GET</code>。</p>
-<p>描述：获取所有分类的列表。</p>
-<p>请求参数：无。</p>
-<p>响应数据：<code>Category[]</code>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Category</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">id</span><span class="token operator">:</span> number<span class="token punctuation">;</span>
-  <span class="token literal-property property">name</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-  description<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-  <span class="token literal-property property">goods</span><span class="token operator">:</span> Commodity<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Commodity</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">id</span><span class="token operator">:</span> number<span class="token punctuation">;</span>
-  <span class="token literal-property property">name</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-  <span class="token literal-property property">price</span><span class="token operator">:</span> number<span class="token punctuation">;</span>
-  description<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<h2><code>category</code></h2>
-<p>接口路径：<code>/category</code>。</p>
-<h3><code>list</code></h3>
-<p>请求方法：<code>GET</code>。</p>
-<p>描述：获取所有分类的列表。</p>
-<p>请求参数：无。</p>
-<p>响应数据：<code>Category[]</code>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Category</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">id</span><span class="token operator">:</span> number<span class="token punctuation">;</span>
-  <span class="token literal-property property">name</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-  description<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-  <span class="token literal-property property">goods</span><span class="token operator">:</span> Commodity<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Commodity</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">id</span><span class="token operator">:</span> number<span class="token punctuation">;</span>
-  <span class="token literal-property property">name</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-  <span class="token literal-property property">price</span><span class="token operator">:</span> number<span class="token punctuation">;</span>
-  description<span class="token operator">?</span><span class="token operator">:</span> string<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3><code>create</code></h3>
-<p>请求方法：<code>POST</code>。</p>
-<p>描述：创建分类。</p>
-<p>请求参数：<code>Category</code>。</p>
-<p>响应数据：<code>category_id: number</code>。</p>
-]]></content>
-    <category term="Project"/>
-    <published>2024-07-11T00:00:00.000Z</published>
-  </entry>
-  <entry>
     <title type="text">服务器架构设计</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/02-server.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/02-server.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>分层架构</h2>
+    <updated>2024-12-17T09:47:29.000Z</updated>
+    <summary type="html"><![CDATA[<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>Deprecated. 已改用 nest.js 框架。</p>
+</div>
+<h2>分层架构</h2>
 <h3>route</h3>
 <p>分发路由，如：<code>/category</code>。匹配后的路由包含 <code>controller</code> 和 路由特定的 <code>middleware</code>。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">interface</span> <span class="token class-name">Router</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> Route <span class="token punctuation">}</span>
@@ -4717,7 +4736,11 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   middlewares<span class="token operator">?</span><span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// route-specific middleware</span>
 <span class="token punctuation">}</span>
 </code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<h2>分层架构</h2>
+    <content type="html"><![CDATA[<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>Deprecated. 已改用 nest.js 框架。</p>
+</div>
+<h2>分层架构</h2>
 <h3>route</h3>
 <p>分发路由，如：<code>/category</code>。匹配后的路由包含 <code>controller</code> 和 路由特定的 <code>middleware</code>。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">interface</span> <span class="token class-name">Router</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">:</span> Route <span class="token punctuation">}</span>
@@ -6302,7 +6325,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <title type="text">初始化项目</title>
     <id>https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/project/imperial-kitchen/01-init.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
+    <updated>2024-12-17T09:47:29.000Z</updated>
     <summary type="html"><![CDATA[<h2>技术方案选型</h2>
 <h3>Flutter vs React Native</h3>
 <p>目前，<a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer">Flutter</a> 和 <a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 是最流行的跨端解决方案。</p>
@@ -6322,6 +6345,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h3>Next or Node</h3>
 <p>最初，考虑使用 Expo 与 Next.js 结合的方案来实现前后端不分离的全栈项目。然而，<a href="https://docs.expo.dev/guides/using-nextjs/" target="_blank" rel="noopener noreferrer">Expo 官方</a> 提到 Next.js 只能用于 Expo for Web，无法实现跨端需求。</p>
 <p>因此确定使用 Expo + Node.js + Monorepo 的方案，这样可以使得项目结构更加清晰，便于管理和维护。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>Deprecated. 已改用 nest.js 框架。</p>
+</div>
 <h2>Monorepo 搭建</h2>
 <p>最初使用 <code>pnpm</code> workspaces 搭建 Monorepo 项目，然而安装依赖后启动报错：</p>
 <ul>

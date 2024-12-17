@@ -5,7 +5,8 @@ icon: server
 category:
   - Project
 tag:
-  - kitchen
+  - imperial-kitchen
+  - 系统设计
 ---
 
 ::: warning

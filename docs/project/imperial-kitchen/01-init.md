@@ -5,8 +5,8 @@ icon: STARTUP
 category:
   - Project
 tag:
-  - init project
-  - kitchen
+  - imperial-kitchen
+  - 系统设计
 ---
 
 ## 技术方案选型

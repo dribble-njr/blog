@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-12-17T11:04:27.889Z</updated>
+  <updated>2024-12-23T03:29:01.169Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="backend"/>
   <category term="node"/>
   <category term="Project"/>
   <category term="linux"/>
@@ -30,6 +31,88 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">Prisma</title>
+    <id>https://dribble-njr.github.io/blog/blog/backend/node/prisma/</id>
+    <link href="https://dribble-njr.github.io/blog/blog/backend/node/prisma/"/>
+    <updated>2024-12-23T03:21:07.000Z</updated>
+    <summary type="html"><![CDATA[<p>Prisma ORM 是一套用于与数据库进行交互的下一代 ORM（对象关系映射，Object-Relational Mapping）工具，包括以下组件：</p>
+<ul>
+<li>Prisma Client: 自动生成且类型安全的查询构建器，用于 Node.js 和 TypeScript</li>
+<li>Prisma Migrate: 声明式数据建模和迁移系统</li>
+<li>Prisma Studio: 用于查看和编辑数据库中数据的 GUI</li>
+</ul>
+<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>Prisma Studio 是 Prisma ORM 中唯一不是开源的部分。你只能在本地运行 Prisma Studio。</p>
+</div>]]></summary>
+    <content type="html"><![CDATA[<p>Prisma ORM 是一套用于与数据库进行交互的下一代 ORM（对象关系映射，Object-Relational Mapping）工具，包括以下组件：</p>
+<ul>
+<li>Prisma Client: 自动生成且类型安全的查询构建器，用于 Node.js 和 TypeScript</li>
+<li>Prisma Migrate: 声明式数据建模和迁移系统</li>
+<li>Prisma Studio: 用于查看和编辑数据库中数据的 GUI</li>
+</ul>
+<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>Prisma Studio 是 Prisma ORM 中唯一不是开源的部分。你只能在本地运行 Prisma Studio。</p>
+</div>
+<h2>为什么使用 Prisma ORM</h2>
+<p>Prisma ORM 不仅提供了现代化的开发体验，还显著提高了与数据库交互的效率和安全性。以下是 Prisma ORM 的主要优势，并与原始 SQL 进行对比。</p>
+<h3>类型安全 vs SQL 静态查询</h3>
+<p>Prisma Client 提供了强大的类型安全功能，每个查询都与 Prisma schema 紧密结合，使得查询语法和返回值均受到 TypeScript 的静态类型检查支持：</p>
+<p>Prisma 查询：</p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">await</span> prisma<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">findMany</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  where<span class="token operator">:</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token punctuation">{</span> contains<span class="token operator">:</span> <span class="token string">'Alice'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>SQL 查询：</p>
+<div class="language-sql" data-ext="sql" data-title="sql"><pre class="language-sql"><code><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token keyword">user</span> <span class="token keyword">WHERE</span> name <span class="token operator">LIKE</span> <span class="token string">'%Alice%'</span><span class="token punctuation">;</span>
+</code></pre></div><p>Prisma 查询中，错误可以在开发阶段被捕获，而 SQL 查询需要额外的测试或运行时调试，容易引入拼写或逻辑错误。</p>
+<h3>开发效率 vs 手动编写 SQL</h3>
+<p>使用 Prisma ORM，可以通过高层抽象简化常见的数据库操作，而不需要重复编写大量 SQL 查询。</p>
+<p>创建一个用户和关联帖子：</p>
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">await</span> prisma<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  data<span class="token operator">:</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'Alice'</span><span class="token punctuation">,</span>
+    email<span class="token operator">:</span> <span class="token string">'alice@example.com'</span><span class="token punctuation">,</span>
+    posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+      create<span class="token operator">:</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">'Prisma is amazing!'</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>SQL：</p>
+<div class="language-sql" data-ext="sql" data-title="sql"><pre class="language-sql"><code><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token string">"User"</span> <span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"email"</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'Alice'</span><span class="token punctuation">,</span> <span class="token string">'alice@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token string">"Post"</span> <span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">,</span> <span class="token string">"authorId"</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'Prisma is amazing!'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Prisma 的高层 API 不仅易读，还避免了处理 SQL 中外键关系和手动关联数据的复杂性。</p>
+<h3>声明式数据建模 vs 手动设计数据库</h3>
+<p>Prisma schema 提供了直观的声明式语法来定义数据模型，与数据库结构直接同步，而 SQL 通常需要手动设计表结构并维护复杂的迁移脚本。</p>
+<p>Prisma schema：</p>
+<div class="language-prisma" data-ext="prisma" data-title="prisma"><pre class="language-prisma"><code>model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  posts Post[]
+}
+</code></pre></div><p>SQL：</p>
+<div class="language-sql" data-ext="sql" data-title="sql"><pre class="language-sql"><code><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token string">"User"</span> <span class="token punctuation">(</span>
+  <span class="token string">"id"</span> <span class="token keyword">INT</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+  <span class="token string">"email"</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token string">"Post"</span> <span class="token punctuation">(</span>
+  <span class="token string">"id"</span> <span class="token keyword">INT</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span><span class="token punctuation">,</span>
+  <span class="token string">"title"</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token string">"authorId"</span> <span class="token keyword">INT</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+  <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token string">"authorId"</span><span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> <span class="token string">"User"</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Prisma schema 自动生成相关的迁移脚本，而 SQL 的表定义需要开发者手动编写，容易出错。</p>
+<h3>总结</h3>
+<p>Prisma ORM 通过提供类型安全、自动迁移、高层抽象和声明式数据建模，显著提高了与数据库交互的效率和安全性。</p>
+<p>| 特性             | Prisma ORM                       | 原始 SQL             |<br>
+|</p>
+]]></content>
+    <category term="backend"/>
+    <category term="node"/>
+    <published>2024-12-20T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">Prisma 入门</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/node/prisma/01-quick-start.html</id>
@@ -10250,23 +10333,5 @@ Page<span class="token punctuation">.</span><span class="token function-variable
 ]]></content>
     <category term="react"/>
     <published>2024-02-27T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">高级数据库模型</title>
-    <id>https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/backend/database/basic/004-advanced-db-model.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>数据库建立的过程从设计阶段开始，需要提出并回答存储什么信息，信息元素之间如何关联，假定有什么样的约束，诸如键或者参考的完整性等等。</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>思考 ---&gt; 高级设计 ---&gt; 关系数据库模式 ---&gt; 关系 DBMS
-</code></pre></div><p>有几种用符号表达设计的方法。</p>
-<ul>
-<li>实体-关系图（E-R 图）</li>
-<li>UML（统一建模语言）</li>
-<li>ODL（对象描述语言）</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>数据库建立的过程从设计阶段开始，需要提出并回答存储什么信息，信息元素之间如何关联，假定有什么样的约束，诸如键或者参考的完整性等等。</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>思考 </code></pre></div>]]></content>
-    <category term="database"/>
-    <published>2024-01-24T00:00:00.000Z</published>
   </entry>
 </feed>

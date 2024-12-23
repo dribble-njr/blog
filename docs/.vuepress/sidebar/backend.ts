@@ -82,7 +82,7 @@ export default [
         collapsible: true,
         icon: 'prisma',
         prefix: 'prisma/',
-        children: ['01-quick-start']
+        children: ['', '01-quick-start']
       }
     ]
   },

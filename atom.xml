@@ -4,10 +4,11 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2024-12-23T03:29:01.169Z</updated>
+  <updated>2024-12-31T10:21:35.946Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="news"/>
   <category term="backend"/>
   <category term="node"/>
   <category term="Project"/>
@@ -31,6 +32,18 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">W52</title>
+    <id>https://dribble-njr.github.io/blog/blog/news/2024/W52.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/news/2024/W52.html"/>
+    <updated>2024-12-31T10:19:45.000Z</updated>
+    <summary type="html"><![CDATA[<p><a href="http://tsh.io" target="_blank" rel="noopener noreferrer">tsh.io</a> 2024 年 <a href="https://tsh.io/state-of-frontend/" target="_blank" rel="noopener noreferrer">前端生态的报告</a>。</p>
+]]></summary>
+    <content type="html"><![CDATA[<p><a href="http://tsh.io" target="_blank" rel="noopener noreferrer">tsh.io</a> 2024 年 <a href="https://tsh.io/state-of-frontend/" target="_blank" rel="noopener noreferrer">前端生态的报告</a>。</p>
+]]></content>
+    <category term="news"/>
+    <published>2024-12-29T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">Prisma</title>
     <id>https://dribble-njr.github.io/blog/blog/backend/node/prisma/</id>
@@ -10217,119 +10230,6 @@ Page<span class="token punctuation">.</span><span class="token function-variable
 <p>每次渲染都是一个 <em>不同的函数</em> ，每一个 effect 版本「看到」的 <code>props</code> 和 <code>state</code> 值都来自于它属于的那次特定渲染。</p>
 <p>从官方文档中的描述中也可以确认这一点：<strong>在每次重新渲染依赖关系发生变化后，React 将首先使用旧值运行清理函数，然后使用新值运行设置函数。</strong></p>
 <p>每一次渲染的任何东西都是独立的。**在组件内什么时候去读取 props 或者 state 是无关紧要的。**因为在单次渲染的范围内，props 和 state 始终保持不变。</p>
-]]></content>
-    <category term="react"/>
-    <published>2024-02-27T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">useState</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/01-useState.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/01-useState.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p><code>useState</code> 声明一个可以直接更新的状态变量。</p>
-<p>一般在组件 <strong>最顶层</strong> 调用 <code>useState</code> 给组件添加状态变量，一般使用数组解构来命名状态变量，如 <code>[something, setSomething]</code>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
-
-<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>age<span class="token punctuation">,</span> setAge<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> setName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">'Taylor'</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>todos<span class="token punctuation">,</span> setTodos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">createTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<p><code>useState</code> 声明一个可以直接更新的状态变量。</p>
-<p>一般在组件 <strong>最顶层</strong> 调用 <code>useState</code> 给组件添加状态变量，一般使用数组解构来命名状态变量，如 <code>[something, setSomething]</code>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
-
-<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>age<span class="token punctuation">,</span> setAge<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> setName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">'Taylor'</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> <span class="token punctuation">[</span>todos<span class="token punctuation">,</span> setTodos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">createTodos</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token comment">// ...</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>useState(initialState)</h2>
-<p><strong>参数：</strong></p>
-<p><code>initialState</code>：初始状态，可以是任何类型的值，初始渲染后，该参数将被忽略。</p>
-<p>如果传递一个函数作为 <code>initialState</code>，它将被视为「初始化函数」。</p>
-<p>它应该：</p>
-<ul>
-<li>是 <strong>纯函数</strong></li>
-<li>不带参数</li>
-<li>返回任意类型的值</li>
-</ul>
-<p>React 将在初始化组件时调用初始化函数，并将其返回值存储为初始状态。</p>
-
-<div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<p>尽管 <code>createInitialTodos()</code> 的结果仅用于初始渲染，但你仍然在每次渲染时调用此函数。如果它创建大数组或执行昂贵的计算，这可能会浪费资源。</p>
-<p>所以对于大型数组的创建，一般传入初始化函数。</p>
-</div>
-<p><strong>返回值：</strong></p>
-<p><code>useState</code> 返回一个数组，使用数组解构接收，其中包含两个值：</p>
-<ol>
-<li>当前状态。在第一次渲染时，它将与传递的初始状态 <code>initialState</code> 相匹配。</li>
-<li><code>set</code> 函数，用于 <strong>状态更新</strong> 并 <strong>触发重新渲染</strong>。</li>
-</ol>
-<p><strong>注意：</strong></p>
-<ul>
-<li><code>useState</code> 是一个钩子，所以 <strong>只能</strong> 在组件的顶层或者你自己的钩子中调用它，<strong>不能</strong> 在循环或条件中调用它。</li>
-<li>在严格模式下，React 会 <strong>调用两次初始化函数</strong>，其中一次调用的结果将被忽略，以帮助你找到意外的杂质。这是开发专用行为，不会影响生产环境。如果初始化函数是纯函数，就不会影响应用实际行为（因此初始化函数必须是纯函数）。</li>
-</ul>
-<div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<p>若循环调用，则可能造成状态管理混乱、组件不一致、难以调试的问题。</p>
-</div>
-<h2>setSomething(nextState)</h2>
-<p><code>set</code> 函数会 <strong>更新状态并触发重新渲染</strong>，可以直接传入 <code>next state</code>，或者传入一个纯函数。<code>set</code> 函数没有返回值。</p>
-<p><code>setSomething()</code> 是一个异步函数，如下所示，<code>handleClick1</code> 点击一次后，年龄将变为 <code>43</code> 岁，而不是 <code>45</code> 岁。</p>
-<p>这是因为调用 <code>set</code> 函数 <strong>不会同步</strong> 更新已运行代码中的年龄状态变量。</p>
-<p>因此，每次调用 <code>setAge(age + 1)</code> 都会变成 <code>setAge(43)</code>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">handleClick1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">setAge</span><span class="token punctuation">(</span>age <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 + 1)</span>
-  <span class="token function">setAge</span><span class="token punctuation">(</span>age <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 + 1)</span>
-  <span class="token function">setAge</span><span class="token punctuation">(</span>age <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 + 1)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><a href="https://github.com/facebook/react/issues/11527" target="_blank" rel="noopener noreferrer">RFClarification: why is setState asynchronous?</a></p>
-</div>
-<p>如果传递一个函数作为 <code>nextState</code>，它将被视为一个更新函数。它必须是「纯函数」，应将待处理状态作为唯一参数，并返回下一个状态。</p>
-<p>React 会将更新函数 <strong>放入队列</strong>，然后重新渲染组件。</p>
-<p>在下一次渲染中，React 将通过将所有队列中的更新器 <strong>应用上一个状态来计算下一个状态(<code>previous state</code> to <code>next state</code>)</strong>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">handleClick2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(42 =&gt; 43)</span>
-  <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(43 =&gt; 44)</span>
-  <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// setAge(44 =&gt; 45)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>上述代码的处理过程如下：</p>
-<ol>
-<li><code>a =&gt; a + 1</code> 将接收 <code>42</code> 作为待处理状态，并返回 <code>43</code> 作为下一状态。</li>
-<li><code>a =&gt; a + 1</code> 将接收 <code>43</code> 作为待处理状态，并返回 <code>44</code> 作为下一个状态。</li>
-<li><code>a =&gt; a + 1</code> 将接收 <code>44</code> 作为待处理状态，并返回 <code>45</code> 作为下一个状态。</li>
-</ol>
-<p>没有其他队列更新，所以 React 会将 <code>45</code> 作为当前状态保存。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>按照惯例，通常以状态变量名称的首字母来命名待处理状态参数，如年龄的 <code>a</code>，也可以使用更加清晰的名称 <code>prevAge</code>。</p>
-</div>
-<div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<ul>
-<li><code>set</code> 函数只更新 <strong>下一次渲染</strong> 的状态变量。如果在调用 <code>set</code> 函数后读取状态变量，您仍然会得到调用前屏幕上的旧值。</li>
-<li>如果提供的新值与当前状态相同（由 <code>Object.is</code> 比较确定），React 将 <strong>跳过重新渲染组件及其子代</strong>。</li>
-<li>React 会批量更新状态。它会 <strong>在所有事件处理程序运行并调用其设置函数后更新屏幕</strong>。这可以防止在单个事件中多次重新渲染。在极少数情况下，需要强制 React 提前更新屏幕，例如访问 DOM，可以使用 <code>flushSync</code>。</li>
-<li>与初始化函数类似，在严格模式下，React 会调用更新器函数 <strong>两次</strong>，以验证它们是否纯粹。</li>
-</ul>
-</div>
-<h2>Usage</h2>
-<ul>
-<li><a href="https://react.dev/reference/react/useState#adding-state-to-a-component" target="_blank" rel="noopener noreferrer">Adding state to a component</a></li>
-<li><a href="https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state" target="_blank" rel="noopener noreferrer">Updating state based on the previous state</a></li>
-<li><a href="https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state" target="_blank" rel="noopener noreferrer">Updating objects and arrays in state</a></li>
-<li><a href="https://react.dev/reference/react/useState#avoiding-recreating-the-initial-state" target="_blank" rel="noopener noreferrer">Avoiding recreating the initial state</a></li>
-<li><a href="https://react.dev/reference/react/useState#resetting-state-with-a-key" target="_blank" rel="noopener noreferrer">Resetting state with a key</a></li>
-<li><a href="https://react.dev/reference/react/useState#storing-information-from-previous-renders" target="_blank" rel="noopener noreferrer">Storing information from previous renders</a></li>
-</ul>
 ]]></content>
     <category term="react"/>
     <published>2024-02-27T00:00:00.000Z</published>

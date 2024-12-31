@@ -1,11 +1,4 @@
-import {
-  backend,
-  computerScience,
-  frontend,
-  project,
-  reading,
-  survival
-} from './sidebar/index'
+import { backend, computerScience, frontend, project, reading, news } from './sidebar/index'
 
 import { sidebar } from 'vuepress-theme-hope'
 
@@ -17,6 +10,6 @@ export const Sidebar = sidebar({
   '/frontend/': frontend,
   '/project/': project,
   '/reading/': reading,
-  ...(!isProduction && { '/survival': survival }),
+  '/news/': news,
   '/': ['']
 })

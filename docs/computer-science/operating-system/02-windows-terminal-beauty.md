@@ -14,6 +14,8 @@ tag:
 
 幸运的是，随着 [Windows Terminal](https://github.com/microsoft/terminal) 的推出，我们终于可以在 Windows 上获得更现代的终端体验。Windows Terminal 拥有标签页支持、强大的配色和字体自定义功能，通过集成 [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) 进行美化、安装支持丰富符号的字体、以及配置一些常用的开发工具，我们可以让 Windows 终端焕然一新，达到高颜值和高效兼具的效果。
 
+![最终效果](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20250111181530.png)
+
 接下来，让我们一步步将 Windows 终端打造成一个高效、好看且符合开发者习惯的环境，为平时的开发工作增添一份愉悦和舒适。
 
 ## 安装 Windows Terminal
@@ -126,17 +128,31 @@ choco install vim
 
 安装完成后即可使用 `vim` 命令，再也不用使用 `notepad` 打开文件了。
 
-### autojump
+### zoxide
 
-[autojump](https://github.com/wting/autojump) 是一个跨平台的命令行工具，可以快速跳转到指定目录，类似 oh-my-zsh 的 `z` 插件。
-
-下载并安装 [Clink](https://mridgers.github.io/clink/)，它会将一些命令行增强功能添加到 Windows 命令提示符中。Clink 安装后需要在系统路径中添加，以便 PowerShell 和其他终端可以调用它。
+[zoxide](https://github.com/ajeetdsouza/zoxide) 是一个跨平台的命令行工具，可以快速跳转到指定目录。
 
 ```powershell
-choco install autojump
+choco install zoxide
 ```
 
-安装完成后，在 PowerShell 中运行 `j` 即可使用。
+安装完成后，配置 zoxide 到 PowerShell 中：
+
+```powershell
+notepad $PROFILE
+```
+
+在文件末尾添加：
+
+```powershell
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+```
+
+重新加载 PowerShell 配置文件：
+
+```powershell
+. $PROFILE
+```
 
 ### git
 

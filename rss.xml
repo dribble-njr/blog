@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 31 Dec 2024 10:51:26 GMT</pubDate>
-    <lastBuildDate>Tue, 31 Dec 2024 10:51:26 GMT</lastBuildDate>
+    <pubDate>Sat, 11 Jan 2025 10:22:47 GMT</pubDate>
+    <lastBuildDate>Sat, 11 Jan 2025 10:22:47 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>news</category>
@@ -1064,6 +1064,7 @@ chattr <span class="token parameter variable">-i</span> .user.ini
       <pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<p>在 Windows 上的开发体验，特别是在终端方面，相较于 macOS，常常让人觉得差了一点「味道」。macOS 上的 iTerm2 配合 oh-my-zsh，颜值高、功能强大，让开发者得以拥有流畅且美观的工作体验。而 Windows 默认的命令提示符（cmd）和 PowerShell，外观简单，功能也不够灵活。</p>
 <p>幸运的是，随着 <a href="https://github.com/microsoft/terminal" target="_blank" rel="noopener noreferrer">Windows Terminal</a> 的推出，我们终于可以在 Windows 上获得更现代的终端体验。Windows Terminal 拥有标签页支持、强大的配色和字体自定义功能，通过集成 <a href="https://github.com/JanDeDobbeleer/oh-my-posh" target="_blank" rel="noopener noreferrer">oh-my-posh</a> 进行美化、安装支持丰富符号的字体、以及配置一些常用的开发工具，我们可以让 Windows 终端焕然一新，达到高颜值和高效兼具的效果。</p>
+<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20250111181530.png" alt="最终效果" tabindex="0" loading="lazy"><figcaption>最终效果</figcaption></figure>
 <p>接下来，让我们一步步将 Windows 终端打造成一个高效、好看且符合开发者习惯的环境，为平时的开发工作增添一份愉悦和舒适。</p>
 <h2>安装 Windows Terminal</h2>
 <p>Windows Terminal 是微软官方推出的现代终端工具，支持多标签页、GPU 加速、Unicode 和 Emoji 显示等特性，推荐直接在 <a href="https://apps.microsoft.com/detail/9n0dx20hk701?rtc=1&amp;hl=zh-cn&amp;gl=CN" target="_blank" rel="noopener noreferrer">微软商店</a> 直接安装 Windows Terminal。</p>
@@ -1121,12 +1122,16 @@ chattr <span class="token parameter variable">-i</span> .user.ini
 <p>PowerShell 默认不支持 vim，需要安装 <a href="https://github.com/vim/vim" target="_blank" rel="noopener noreferrer">vim</a> 或 <a href="https://github.com/neovim/neovim" target="_blank" rel="noopener noreferrer">neovim</a>。</p>
 <div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install vim
 </code></pre></div><p>安装完成后即可使用 <code>vim</code> 命令，再也不用使用 <code>notepad</code> 打开文件了。</p>
-<h3>autojump</h3>
-<p><a href="https://github.com/wting/autojump" target="_blank" rel="noopener noreferrer">autojump</a> 是一个跨平台的命令行工具，可以快速跳转到指定目录，类似 oh-my-zsh 的 <code>z</code> 插件。</p>
-<p>下载并安装 <a href="https://mridgers.github.io/clink/" target="_blank" rel="noopener noreferrer">Clink</a>，它会将一些命令行增强功能添加到 Windows 命令提示符中。Clink 安装后需要在系统路径中添加，以便 PowerShell 和其他终端可以调用它。</p>
-<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install autojump
-</code></pre></div><p>安装完成后，在 PowerShell 中运行 <code>j</code> 即可使用。</p>
-<h3>git</h3>
+<h3>zoxide</h3>
+<p><a href="https://github.com/ajeetdsouza/zoxide" target="_blank" rel="noopener noreferrer">zoxide</a> 是一个跨平台的命令行工具，可以快速跳转到指定目录。</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install zoxide
+</code></pre></div><p>安装完成后，配置 zoxide 到 PowerShell 中：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>notepad <span class="token variable">$PROFILE</span>
+</code></pre></div><p>在文件末尾添加：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code><span class="token function">Invoke-Expression</span> <span class="token punctuation">(</span>&amp; <span class="token punctuation">{</span> <span class="token punctuation">(</span>zoxide init powershell <span class="token punctuation">|</span> <span class="token function">Out-String</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>重新加载 PowerShell 配置文件：</p>
+<div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code><span class="token punctuation">.</span> <span class="token variable">$PROFILE</span>
+</code></pre></div><h3>git</h3>
 <p>使用 Chocolatey 安装 git：</p>
 <div class="language-powershell" data-ext="powershell" data-title="powershell"><pre class="language-powershell"><code>choco install git
 </code></pre></div><p>安装完成后，配置 git 用户信息：</p>
@@ -1149,6 +1154,7 @@ git config <span class="token operator">--</span>global user<span class="token p
 </code></pre></div><h3>node</h3>
 <p>推荐使用  安装 node。</p>
 ]]></content:encoded>
+      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20250111181530.png" type="image/png"/>
     </item>
     <item>
       <title>字符编码</title>
@@ -4688,13 +4694,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * @export
- * @class MiddlewareManager
+ * <span class="token keyword">@export</span>
+ * <span class="token keyword">@class</span> MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -4921,12 +4927,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
  * Execute route's middleware and controller.
  *
- * @param {CustomIncomingMessage} req
- * @param {ServerResponse} res
- * @param {Route} route
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -4949,12 +4955,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * @param {string} method - The HTTP method to match.
- * @param {string} pathname - The URL pathname to match.
- * @return {Object} An object containing the matched route and parameters.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
+ * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>

@@ -96,6 +96,13 @@ export default [
         children: ['01-useState', '02-useEffect']
       },
       {
+        text: 'Expo',
+        collapsible: true,
+        prefix: 'expo/',
+        icon: 'expo',
+        children: ['']
+      },
+      {
         text: 'Vue',
         collapsible: true,
         prefix: 'vue/',

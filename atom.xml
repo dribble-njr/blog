@@ -4,10 +4,12 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2025-01-11T10:22:47.585Z</updated>
+  <updated>2025-02-11T08:04:58.980Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
+  <category term="计算机网络"/>
+  <category term="expo"/>
   <category term="news"/>
   <category term="backend"/>
   <category term="node"/>
@@ -23,15 +25,617 @@
   <category term="Pixi"/>
   <category term="READING"/>
   <category term="JavaScript"/>
-  <category term="计算机网络"/>
   <category term="browser"/>
   <category term="HTML"/>
   <category term="chakra"/>
   <category term="next"/>
-  <category term="react"/>
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">网络模型</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/01-network-model.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/01-network-model.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<h2>TCP/IP 网络体系</h2>
+<p>TCP/IP 体系结构分为四层，是事实上的国际标准，各层如下所示：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>--- 应用层 ---
+--- 运输层 ---
+--- 网络层 ---
+--- 网络接口层 ---
+</code></pre></div><ul>
+<li><strong>应用层</strong> 为用户提供应用功能，拥有不同的应用层协议，用来定义应用进程间的交互规则，以完成特定的网络应用，例如 HTTP（万维网）、SMTP（电子邮件）、DNS（域名查询）、FTP（文件传输） 等等；</li>
+<li><strong>运输层</strong> 负责为 <strong>两台主机中的进程</strong> 提供通信服务，其中的两个重要协议是 TCP 和 UDP：
+<ul>
+<li>TCP 提供 <strong>面向连接的、可靠的</strong> 数据传输服务；</li>
+<li>UDP 提供 <strong>无连接的、不可靠的</strong> 传输服务。</li>
+</ul>
+</li>
+<li><strong>网络层</strong> 中负责为两台主机提供通信服务，选择合适的路由将数据传递到目标主机，它的核心协议是 IP 协议；</li>
+<li><strong>网络接口层</strong> 并没有规定什么具体的内容，目的是可以互联全世界不同的网络接口。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2>TCP/IP 网络体系</h2>
+<p>TCP/IP 体系结构分为四层，是事实上的国际标准，各层如下所示：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code></code></pre></div>]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTP 概述</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/02-http-overview.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/02-http-overview.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<p>超文本传输协议（HyperText Transfer Protocol, HTTP）一般是用于浏览器和服务器之间传输文字、图片、音频视频等超文本数据的应用层协议。</p>
+<h2>HTTP 协议特性</h2>
+<ul>
+<li>简单：HTTP 基本的报文格式就是 header + body，头部信息也是 key-value 的简单文本形式，易于理解，降低了学习和使用的门槛。</li>
+<li>灵活易扩展：HTTP/1.0 出现的 HTTP headers 让协议扩展变得非常容易，只要服务端和客户端对新 headers 达成语义一致，新功能就可以被添加进来。</li>
+<li>无连接：每次连接只处理一个请求。服务器处理完客户端的请求，并收到客户端的应答后，就会断开连接，HTTP 1.1 可以开启长连接。</li>
+<li>无状态：对于事物处理没有记忆能力。因此浏览器无法保存用户的登录信息，每次进行需要登录才能执行的操作时，都需要输入用户名和密码。而 cookie 可以创建有状态的会话。好处在于服务器不会记忆 HTTP 的状态，能减轻服务器的压力。</li>
+<li>明文传输：给调试带来便利性，但是用户毫无隐私可言，不安全。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>超文本传输协议（HyperText Transfer Protocol, HTTP）一般是用于浏览器和服务器之间传输文字、图片、音频视频等超文本数据的应用层协议。</p>
+<h2>HTTP 协议特性</h2>
+<ul>
+<li>简单：HTTP 基本的报文格式就是 header + body，头部信息也是 key-value 的简单文本形式，易于理解，降低了学习和使用的门槛。</li>
+<li>灵活易扩展：HTTP/1.0 出现的 HTTP headers 让协议扩展变得非常容易，只要服务端和客户端对新 headers 达成语义一致，新功能就可以被添加进来。</li>
+<li>无连接：每次连接只处理一个请求。服务器处理完客户端的请求，并收到客户端的应答后，就会断开连接，HTTP 1.1 可以开启长连接。</li>
+<li>无状态：对于事物处理没有记忆能力。因此浏览器无法保存用户的登录信息，每次进行需要登录才能执行的操作时，都需要输入用户名和密码。而 cookie 可以创建有状态的会话。好处在于服务器不会记忆 HTTP 的状态，能减轻服务器的压力。</li>
+<li>明文传输：给调试带来便利性，但是用户毫无隐私可言，不安全。</li>
+</ul>
+<h2>HTTP 报文格式</h2>
+<h3>请求报文格式</h3>
+<p>客户端发送 HTTP 请求到服务器的请求消息：<strong>请求行、请求头、空行和请求体四个部分组成。</strong></p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>POST / HTTP1.1
+Host:www.wrox.com
+User-Agent:Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)
+Content-Type:application/x-www-form-urlencoded
+Content-Length:40
+Connection: Keep-Alive
+
+name=Professional%20Ajax&amp;publisher=Wiley
+</code></pre></div><p>第一部分：请求行，请求方法 + URI + HTTP 版本。</p>
+<p>第二部分：请求头部。</p>
+<p>第三部分：空行。</p>
+<p>第四部分：请求数据。</p>
+<h3>响应报文格式</h3>
+<p>服务器响应也由四个部分组成，分别是：<strong>响应行、响应头、空行和响应体</strong>。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>HTTP/1.1 200 OK
+Date: Fri, 22 May 2009 06:07:21 GMT
+Content-Type: text/html; charset=UTF-8
+
+&lt;html&gt;
+  &lt;head&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;!--body goes here--&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div><h2>HTTP 常见状态码</h2>
+<ul>
+<li>1xx：提示信息，表示目前是协议处理的中间状态，还需进一步操作；</li>
+<li>2xx：成功，表示请求已被成功收到并正确处理；</li>
+<li>3xx：重定向，资源位置发生变动，需要客户端重新发送请求；</li>
+<li>4xx：客户端错误，请求报文有误，服务器无法处理；</li>
+<li>5xx：服务器错误，服务器在处理请求时内部发生了错误。</li>
+</ul>
+<p>| 常见状态码                | 状态描述                                                         |<br>
+|</p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-04-20T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">GET 和 POST 的区别</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/03-get-post-difference.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/03-get-post-difference.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<h2>概述</h2>
+<p>GET 和 POST 是 HTTP 协议中发送请求的方法。</p>
+<ul>
+<li>GET：请求资源，从服务器获取数据；</li>
+<li>POST：将数据提交到指定地址。</li>
+</ul>
+<p>二者本质上都是 TCP 链接，因此本质上<strong>没有区别</strong>，但由于 HTTP 规定和浏览器/服务器的限制，导致它们在实际操作中会有一定区别。</p>
+<h2>区别</h2>
+<ul>
+<li>GET 在浏览器回退时是无害的，而 POST 会再次提交请求。</li>
+<li>GET 产生的 URL 地址可以被 Bookmarked，而 POST 不可以。</li>
+<li>GET 请求会被浏览器主动 cache，而 POST 不会，除非手动设置。</li>
+<li>GET 请求只能进行 url 编码，而 POST 支持多种编码方式。</li>
+<li>GET 请求参数会被完整保留在浏览器历史记录里，而 POST 中的参数不会被保留。</li>
+<li>GET 请求在 URL 中传送的参数是有长度限制的，而 POST 没有。</li>
+<li>对参数的数据类型，GET 只接受 ASCII 字符，而 POST 没有限制。</li>
+<li>GET 比 POST 更不安全，因为参数直接暴露在 URL 上，所以不能用来传递敏感信息。</li>
+<li>GET 参数通过 URL 传递，POST 放在 Request body 中。</li>
+<li>GET 方法是安全且幂等的，POST 方法是<strong>不安全且不幂等</strong>的。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2>概述</h2>
+<p>GET 和 POST 是 HTTP 协议中发送请求的方法。</p>
+<ul>
+<li>GET：请求资源，从服务器获取数据；</li>
+<li>POST：将数据提交到指定地址。</li>
+</ul>
+<p>二者本质上都是 TCP 链接，因此本质上<strong>没有区别</strong>，但由于 HTTP 规定和浏览器/服务器的限制，导致它们在实际操作中会有一定区别。</p>
+<h2>区别</h2>
+<ul>
+<li>GET 在浏览器回退时是无害的，而 POST 会再次提交请求。</li>
+<li>GET 产生的 URL 地址可以被 Bookmarked，而 POST 不可以。</li>
+<li>GET 请求会被浏览器主动 cache，而 POST 不会，除非手动设置。</li>
+<li>GET 请求只能进行 url 编码，而 POST 支持多种编码方式。</li>
+<li>GET 请求参数会被完整保留在浏览器历史记录里，而 POST 中的参数不会被保留。</li>
+<li>GET 请求在 URL 中传送的参数是有长度限制的，而 POST 没有。</li>
+<li>对参数的数据类型，GET 只接受 ASCII 字符，而 POST 没有限制。</li>
+<li>GET 比 POST 更不安全，因为参数直接暴露在 URL 上，所以不能用来传递敏感信息。</li>
+<li>GET 参数通过 URL 传递，POST 放在 Request body 中。</li>
+<li>GET 方法是安全且幂等的，POST 方法是<strong>不安全且不幂等</strong>的。</li>
+</ul>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<ul>
+<li>安全：请求方法不会破坏服务器上的资源；</li>
+<li>幂等：执行多次相同的操作，结果都是相同的。</li>
+</ul>
+</div>
+<h2>误区</h2>
+<h3>参数长度</h3>
+<p>GET 参数有长度限制，但这是因为浏览器对 URL 的长度限制，而不是 HTTP 协议本身对参数长度的限制。HTTP 同样对 POST 参数长度没有限制，而是靠服务器的设置来限制大小的。</p>
+<h3>安全性</h3>
+<p>POST <strong>相对</strong>比 GET 安全性要高。</p>
+<p>通过 GET 提交的请求都将显示到 URL 上，页面会被浏览器缓存，其他人查看历史记录会看到提交的数据。</p>
+<p>这里的相对在于：<strong>HTTP 本身是明文传输的协议</strong>，无论使用 GET 还是 POST 都有可能受到中间人攻击而造成数据泄露。</p>
+<p>如果 HTTP 链接使用 SSL/TLS，那么 GET 参数也会被加密，但是仍然会在某些地方出现，比如服务器日志、浏览器插件和其他应用。而 POST 数据会被加密并且不会被任何方式泄露。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>因此如果想要保证总是安全地传输数据，需要使用 HTTPS 上的 POST。</p>
+</div>
+<h3>Request Body</h3>
+<p>GET 可以带 Request Body，但不能保证一定能被接收到。如果你用 GET 请求，在 Request Body 携带数据，不同服务器的处理方式也是不同的，有些服务器会帮你读出数据，有些服务器直接忽略。</p>
+<h3>数据包</h3>
+<p>对于 GET 请求，浏览器会把 http header 和 data 一并发送出去，服务器响应 200（返回数据）。</p>
+<p>对于 POST，浏览器先发送 header，服务器响应 100 continue，浏览器再发送 data，服务器响应 200 ok。</p>
+<p>并不是所有浏览器都会在 POST 中发送两次包，Firefox 就只发送一次。</p>
+<h2>参考链接</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/3063530/what-is-the-difference-between-get-and-post-encryption" target="_blank" rel="noopener noreferrer">https - What is the difference between GET and POST encryption? - Stack Overflow</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&amp;mid=100000054&amp;idx=1&amp;sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd" target="_blank" rel="noopener noreferrer">99%的人都理解错了 HTTP 中 GET 与 POST 的区别 (qq.com)</a></li>
+<li><a href="https://github.com/febobo/web-interview/issues/145" target="_blank" rel="noopener noreferrer">面试官：说一下 GET 和 POST 的区别？ · Issue #145 · febobo/web-interview (github.com)</a></li>
+</ul>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-04-24T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTP 性能演变</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/04-http-development.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/04-http-development.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<p>整个 HTTP 的演变史就是一个在不断优化性能的过程。</p>
+<h2>HTTP/0.9 - 单行协议</h2>
+<p>最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。</p>
+<p>HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>GET /mypage.html
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>整个 HTTP 的演变史就是一个在不断优化性能的过程。</p>
+<h2>HTTP/0.9 - 单行协议</h2>
+<p>最初版本的 HTTP 协议并没有版本号，后来它的版本号被定位在 0.9 以区分后来的版本。</p>
+<p>HTTP/0.9 极其简单：请求由单行指令构成，以唯一可用方法 GET 开头，其后跟目标资源的路径（一旦连接到服务器，协议、服务器、端口号这些都不是必须的）。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>GET /mypage.html
+</code></pre></div><p>HTTP/0.9 的响应内容不包含 HTTP 头，这意味着只有 HTML 文件可以传送，无法传送其他类型的文件；也没有状态码或错误代码；一旦出现问题，一个特殊的包含问题描述信息的 HTML 文件将会被返回。</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>&lt;HTML&gt;
+这是一个非常简单的HTML页面
+&lt;/HTML&gt;
+</code></pre></div><p><strong>总结：</strong></p>
+<ul>
+<li>请求只有一个请求行；</li>
+<li>响应只有一个响应体，且只能返回 HTML 文件；</li>
+</ul>
+<h2>HTTP/1.0 - 构建可扩展性</h2>
+<p>由于 HTTP/0.9 协议的应用十分有限，HTTP/1.0 在其基础上增加了很多新特性：</p>
+<ul>
+<li>协议版本信息现在会随着每个请求行发送。</li>
+<li>状态码在响应开始时发送，使浏览器能了解请求执行成功或失败，并调整相应行为（如更新或使用本地缓存）。</li>
+<li>引入了 HTTP 头的概念，使协议变得灵活易扩展。</li>
+<li>Content-Type 头使传输除 HTML 文件以为其他类型文件的可能。</li>
+</ul>
+<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>// 请求
+GET /mypage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+// 响应
+200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+&lt;HTML&gt;
+一个包含图片的页面
+  &lt;IMG SRC="/myimage.gif"&gt;
+&lt;/HTML&gt;
+</code></pre></div><h2>HTTP/1.1</h2>
+<p>HTTP/1.0 采用短连接方式，即每次请求一个文件都需要和浏览器建立 TCP 连接，当收到响应后就会立即关闭连接，这样会造成不必要的时间开销。</p>
+<p>为了减少时延，浏览器通常会建立多个并行的 TCP 连接同时请求多个对象。但是这会占用大量服务器的资源。</p>
+<p>HTTP/1.1 相比于 HTTP/1.0 性能上的改进：</p>
+<ul>
+<li>使用 TCP 长连接的方式改善了 HTTP/1.0 短连接造成的性能开销；</li>
+<li>支持管道网络传输，只要第一个请求发出，不必等待响应，就可以直接发送第二个请求，减少整体的响应时间（流水线方式工作）。</li>
+</ul>
+<p>但是 HTTP/1.1 还是有性能瓶颈：</p>
+<ul>
+<li>只能压缩 body 部分，请求/响应头部未经压缩就发送，头部信息越多延迟越大；</li>
+<li>发送冗长的首部，每次互相发送相同的首部造成的浪费比较多；</li>
+<li>服务器是按请求顺序响应的，如果服务器响应过慢，会导致客户端一直请求不到后面的数据，也就是<strong>队头阻塞</strong>；</li>
+<li>没有请求优先级控制；</li>
+<li>请求只能从客户端开始，服务器只能被动响应。</li>
+</ul>
+<h2>HTTP/2.0</h2>
+<p>HTTP/2.0 是基于 HTTPS 的，所以安全性有所保证。HTTP/2.0 相比 HTTP/1.1 性能上的改进：</p>
+<ul>
+<li>头部压缩：如果同时发出多个请求，他们的头是一样或相似的，那么协议会消除重复的部分；</li>
+<li>采用二进制格式：头信息和数据体都是二进制，并统称为帧，头信息帧和数据帧，增加了数据传输的效率；</li>
+<li>多路复用：可以在一个连接中并发多个请求或响应，而不用按照顺序一一对应，解决了队头阻塞的问题；</li>
+<li>可以指定数据流的优先级；</li>
+<li>服务器可以主动向客户端发送消息。</li>
+</ul>
+<p>缺陷在于：多个 HTTP 请求复用一个 TCP 连接，一旦发生丢包现象，就会触发 TCP 的重传机制，这样在一个 TCP 连接中的所有 HTTP 请求都必须等待这个丢了的包被重传回来。</p>
+<h2>HTTP/3.0</h2>
+<p>HTTP/2.0 基于 TCP 传输层，导致丢包下阻塞所有 HTTP 请求的问题，因此 HTTP/3.0 把 HTTP 下层的 TCP 协议改成了 UDP。</p>
+<p>UDP 是不可靠传输，但是基于 UDP 的 QUIC 协议可以实现类似 TCP 的可靠传输。</p>
+<h2>参考链接</h2>
+<p><a href="https://xiaolincoding.com/network/2_http/http_interview.html#http-1-1%E3%80%81http-2%E3%80%81http-3-%E6%BC%94%E5%8F%98" target="_blank" rel="noopener noreferrer">3.1 HTTP 常见面试题 | 小林 coding (xiaolincoding.com)</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP#%E5%90%8Ehttp2%E8%BF%9B%E5%8C%96" target="_blank" rel="noopener noreferrer">HTTP 的发展 - HTTP | MDN (mozilla.org)</a></p>
+<p><a href="https://www.bilibili.com/video/BV1c4411d7jb?p=73" target="_blank" rel="noopener noreferrer">计算机网络微课堂（有字幕无背景音乐版）_哔哩哔哩_bilibili</a></p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-04-26T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTP 缓存</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/05-http-cache.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/05-http-cache.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<p>对于一些相同的请求，通过复用以前获取的资源，显著提高网页的性能。Web 缓存减少了等待时间和流量，因此减少了显示资源的渲染时间。</p>
+<p>HTTP 缓存的实现有两种方式，分别是<strong>强制缓存</strong>和<strong>协商缓存</strong>。</p>
+<h2>强缓存</h2>
+<p>强缓存是指：只要浏览器判断缓存没有过期，则直接使用本地缓存，不会向服务器发送请求。</p>
+<p>强缓存是利用下面这两个字段实现的，它们都用来表示资源在客户端缓存的有效期。</p>
+<ul>
+<li><code>Expires</code>：绝对时间；</li>
+<li><code>Cache-Control</code>：缓存指令。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>对于一些相同的请求，通过复用以前获取的资源，显著提高网页的性能。Web 缓存减少了等待时间和流量，因此减少了显示资源的渲染时间。</p>
+<p>HTTP 缓存的实现有两种方式，分别是<strong>强制缓存</strong>和<strong>协商缓存</strong>。</p>
+<h2>强缓存</h2>
+<p>强缓存是指：只要浏览器判断缓存没有过期，则直接使用本地缓存，不会向服务器发送请求。</p>
+<p>强缓存是利用下面这两个字段实现的，它们都用来表示资源在客户端缓存的有效期。</p>
+<ul>
+<li><code>Expires</code>：绝对时间；</li>
+<li><code>Cache-Control</code>：缓存指令。</li>
+</ul>
+<h3>Expires</h3>
+<p>响应头包含的日期时间，在这个时间前，浏览器都不会再发起请求，而是直接使用缓存资源。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token literal-property property">Expires</span><span class="token operator">:</span> Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">:</span><span class="token number">00</span> <span class="token constant">GMT</span>
+</code></pre></div><h3>Cache-Control</h3>
+<p>通用消息头字段，通过指定指令来实现缓存机制。缓存指令是单向的，这意味着在请求中设置的指令，不一定被包含在响应中。</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>Cache<span class="token operator">-</span>Control<span class="token operator">:</span> max<span class="token operator">-</span>age<span class="token operator">=</span><span class="token number">20000</span>
+</code></pre></div><p><code>max-age=&lt;seconds&gt;</code> 可以设置过期时间（单位秒），相对于请求的时间计算。</p>
+<p>具体流程：</p>
+<ol>
+<li>当浏览器第一次向服务器发起请求时，服务器响应头会带上 <code>Cache-Control</code>，其中设置了过期时间 <code>max-age</code>；</li>
+<li>浏览器再次向服务器发起请求后，会计算<strong>当前请求时间和过期时间</strong>差值，来判断是否过期，如果过期则重新请求服务器，否则使用本地缓存；</li>
+<li>如果已经过期，服务器再次收到请求后，会更新响应头的 <code>Cache-Control</code>。</li>
+</ol>
+<p>除了 <code>max-age</code> 外，还有其他指令，详见 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control" target="_blank" rel="noopener noreferrer">Cache-Control</a>。</p>
+<h3>优先级</h3>
+<p>当同时有 <code>Expires</code> 和 <code>Cache-Control</code> 字段时，如果 <code>Cache-Control</code> 响应头设置了 <code>max-age</code> 或 <code>s-maxage</code> 指令，那么 <code>Expires</code> 会被忽略。</p>
+<h2>协商缓存</h2>
+<p>为了知道服务器有没有更新内容，必须和服务器沟通，然后根据服务器返回的信息判断是否使用本地缓存，这种方式称为<strong>协商缓存</strong>。</p>
+<p>协商缓存通过两种头部实现：</p>
+<ul>
+<li>请求头部的 <code>If-Modified-Since</code> 和响应头部的 <code>Last-Modified</code>；</li>
+<li>请求头部的 <code>If-None-Match</code> 和响应头部的 <code>ETag</code>。</li>
+</ul>
+<h3><code>If-Modified-Since</code> 和 <code>Last-Modified</code></h3>
+<p>这种方式是基于时间实现的。</p>
+<p>响应头 <code>Last-Modified</code> 存放的是资源最后修改时间：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>Last<span class="token operator">-</span>Modified<span class="token operator">:</span> Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">:</span><span class="token number">00</span> <span class="token constant">GMT</span>
+</code></pre></div><p>请求头中的 <code>If-Modified-Since</code> 含义为资源从 xxx 时间后是否有更新：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>If<span class="token operator">-</span>Modified<span class="token operator">-</span>Since<span class="token operator">:</span> Wed<span class="token punctuation">,</span> <span class="token number">21</span> Oct <span class="token number">2015</span> <span class="token number">07</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">:</span><span class="token number">00</span> <span class="token constant">GMT</span>
+</code></pre></div><p>当服务器收到浏览器这个请求头后，会跟当前版本的时间进行比较：</p>
+<ol>
+<li>当前版本的修改时间比这个晚，也就是内容发生变化了，那么会返回 200 和新的内容；</li>
+<li>若当前版本的修改时间较早，也就是没有更新，那么会返回 304，浏览器会从缓存中读取内容。</li>
+</ol>
+<h3><code>ETag</code> 和 <code>If-None-Match</code></h3>
+<p>这种方式是通过唯一标识实现。</p>
+<p><code>ETag</code> 是资源的特定版本的标识符，响应头会根据返回内容返回一个标识符，具体返回值看服务器的计算策略，可能如下所示：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token literal-property property">ETag</span><span class="token operator">:</span> <span class="token string">'33a64df551425fcc55e4d42a148795d9f25f89d4'</span>
+</code></pre></div><p>当客户端收到这个响应后，会将这个 <code>ETag</code> 保存起来，等下个请求时，会将它放到请求体的 <code>If-None-Match</code> 字段中：</p>
+<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>If<span class="token operator">-</span>None<span class="token operator">-</span>Match<span class="token operator">:</span> <span class="token string">"33a64df551425fcc55e4d42a148795d9f25f89d4"</span>
+</code></pre></div><p>当服务器收到浏览器这个请求头后，会跟当前版本的 <code>ETag</code> 进行比较：</p>
+<ol>
+<li>如果标识符不一致，也就是内容发生变化了，那么会返回 200 和新的内容；</li>
+<li>如果标识符一致，也就是没有更新，那么会返回 304，浏览器会从缓存中读取内容。</li>
+</ol>
+<h3>优先级</h3>
+<p>协商缓存先检查上一次响应头中是否有 <code>ETag</code>，如果有，则发起请求中请求头带上 <code>If-None-Match</code> 字段；如果没有，则检查上一次响应头中是否有 <code>Last-Modified</code> 字段，发起请求中请求头带上 <code>If-Modified-Since</code> 字段。</p>
+<h2>总结</h2>
+<p>HTTP 缓存机制分为两种：强缓存和协商缓存。</p>
+<p>浏览器会首先判断强缓存，如果强缓存生效，那么直接从缓存中获取资源；若没有生效，则会使用协商缓存，发送请求与服务器协商。</p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-04T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">HTTPS 略解</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/06-https-overview.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/06-https-overview.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<h2>HTTP 和 HTTPS</h2>
+<h3>区别</h3>
+<ul>
+<li>HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；</li>
+<li>HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；</li>
+<li>HTTP 端口号为 80，HTTPS 端口号为 443；</li>
+<li>HTTPS 需要向 CA 申请数字证书。</li>
+</ul>
+<figure><img src="/assets/image/computer-science/networking/006/HTTP.png" alt="http" tabindex="0" loading="lazy"><figcaption>http</figcaption></figure>]]></summary>
+    <content type="html"><![CDATA[<h2>HTTP 和 HTTPS</h2>
+<h3>区别</h3>
+<ul>
+<li>HTTP 是明文传输，不安全，而 HTTPS 加入了 SSL/TLS 安全协议，使得报文能加密传输；</li>
+<li>HTTP 建立连接只需 TCP 三次握手，而 HTTPS 在三次握手后，还需要进行 SSL/TLS 握手；</li>
+<li>HTTP 端口号为 80，HTTPS 端口号为 443；</li>
+<li>HTTPS 需要向 CA 申请数字证书。</li>
+</ul>
+<figure><img src="/assets/image/computer-science/networking/006/HTTP.png" alt="http" tabindex="0" loading="lazy"><figcaption>http</figcaption></figure>
+<figure><img src="/assets/image/computer-science/networking/006/HTTPS.png" alt="https" tabindex="0" loading="lazy"><figcaption>https</figcaption></figure>
+<h3>HTTPS 缺点</h3>
+<ul>
+<li>在相同网络环境中，HTTPS 相比 HTTP 无论是响应时间还是耗电量都有大幅度上升；</li>
+<li>HTTPS 的安全是有范围的，在黑客攻击、服务器劫持等情况下几乎起不到作用；</li>
+<li>在现有的证书机制下，中间人攻击依然有可能发生；</li>
+<li>HTTPS 需要更多的服务器资源，也会导致成本的升高。</li>
+</ul>
+<h2>加密算法</h2>
+<p>HTTPS 使用混合加密算法解决数据安全传输问题，即<strong>对称加密</strong>和<strong>非对称加密</strong>混合使用。</p>
+<h3>对称加密</h3>
+<p>加密和解密都是同一个密钥，优缺点如下：</p>
+<p><strong>优点：</strong></p>
+<ol>
+<li>由于密钥相同，因此加密解密速度快，适合加密比较大的数据。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>交易双方在传输过程中需要使用相同的密钥，因此需要在<strong>首次</strong>传输过程中必然需要由一方将密钥传给另一方，这样就无法保证保证密钥的安全性，有可能会被截获；</li>
+<li>不同用户访问的密钥需要不同，这会造成服务器管理密钥困难，成本高。</li>
+</ol>
+<h3>非对称加密</h3>
+<p>加密和解密使用不同的密钥：公钥（public key）加密和私钥（private key）解密。流程如下：</p>
+<ol>
+<li>发送方向接收方请求一个公钥；</li>
+<li>发送方使用公钥加密，公钥和加密的数据泄露并没有关系，因为只有私钥才能解密；</li>
+<li>接收方用私钥解密消息。</li>
+</ol>
+<p><strong>优点：</strong></p>
+<ol>
+<li>加密和解密使用不同的密钥，私钥不需要通过网络传输，安全性高。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>计算量比较大，加密解密速度比对称加密慢；</li>
+<li>中间人攻击：中间人进行拦截，无法保证公钥是接收方提供的。</li>
+</ol>
+<figure><img src="/assets/image/computer-science/networking/006/mid-attack.png" alt="中间人攻击" tabindex="0" loading="lazy"><figcaption>中间人攻击</figcaption></figure>
+<h2>数字证书和数字签名</h2>
+<p>中间人攻击使我们无法验证公钥的真假。因此引入<strong>数字证书</strong>，用它来证明身份是真实的，并且防止被中间人攻击。</p>
+<p>由数字证书认证机构（Certificate Authority，简称 CA）负责给用户签发数字证书，证书中包括：签发者、使用者公钥、使用的 HASH 算法、证书到期时间等。</p>
+<p>但是问题来了，如果中间人篡改了证书，如何保证身份证明是有效的？这时需要引进<strong>数字签名</strong>。</p>
+<p>首先使用 CA 自带的 HASH 算法对证书的内容进行 HASH 得到一个信息摘要，再用 CA 的私钥进行加密，最终组成数字签名。当服务器将原始信息和数字签名发送过来时，客户端先使用 CA 的公钥对数字签名进行解密，得到 CA 创建的信息摘要，再使用同样的 HASH 算法生成原始信息的信息摘要，两者进行对比，就知道证书是否被篡改了。</p>
+<p>通过数字签名的证书验证，能最大程度的保证数据传输安全。</p>
+<h2>HTTPS 工作流程</h2>
+<p>前面提到，HTTPS 使用了混合加密解决安全传输问题，整个工作过程分为三大步：证书验证、非对称加密和对称加密。</p>
+<figure><img src="/assets/image/computer-science/networking/006/https-flow.png" alt="https工作流程" tabindex="0" loading="lazy"><figcaption>https工作流程</figcaption></figure>
+<p><strong>证书验证：</strong></p>
+<ol>
+<li>Client 发起一个 HTTPS 的请求；</li>
+<li>Server 把事先配置好的公钥证书返回给客户端；</li>
+<li>Client 验证公钥证书：如果验证通过则继续，不通过则显示警告信息；</li>
+</ol>
+<p><strong>非对称加密：</strong></p>
+<ol start="4">
+<li>Client 生成加密所使用的会话密钥，然后用证书的公钥加密这个会话密钥，发给 Server。</li>
+<li>Server 使用自己的私钥解密这个消息，得到会话密钥。至此，Client 和 Server 双方都持有了相同的会话密钥。</li>
+</ol>
+<p><strong>对称加密：</strong></p>
+<ol start="6">
+<li>Server 使用会话密钥加密“明文内容 A”，发送给 Client。</li>
+<li>Client 使用会话密钥解密响应的密文，得到“明文内容 A”。</li>
+<li>Client 再次发起 HTTPS 的请求，使用会话密钥加密请求的“明文内容 B”，然后 Server 使用会话密钥解密密文，得到“明文内容 B”。</li>
+</ol>
+<h2>参考链接</h2>
+<p><a href="https://www.cnblogs.com/linianhui/p/security-based-toolbox.html" target="_blank" rel="noopener noreferrer">[信息安全] 1.密码工具箱 </a></p>
+<p><a href="https://www.cnblogs.com/linianhui/p/security-complex-toolbox.html" target="_blank" rel="noopener noreferrer">[信息安全] 2.密码工具箱（续）</a></p>
+<p><a href="https://www.cnblogs.com/linianhui/p/security-https-workflow.html" target="_blank" rel="noopener noreferrer">[信息安全] 3.HTTPS 工作流程</a></p>
+<p><a href="https://segmentfault.com/a/1190000021494676" target="_blank" rel="noopener noreferrer">HTTPS 详解一：附带最精美详尽的 HTTPS 原理图</a></p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-05T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">TCP 三次握手与四次挥手</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/07-tcp-three-handshakes-and-four-waves.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/07-tcp-three-handshakes-and-four-waves.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<p>传输层控制协议（Transmission Control Protocol, TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<h2>三次握手</h2>
+<p>三报文握手具体过程（客户端和服务端交换三个报文段）：</p>
+<figure><img src="/assets/image/computer-science/networking/007/three.png" alt="三次握手" tabindex="0" loading="lazy"><figcaption>三次握手</figcaption></figure>
+<p><strong>第一次握手：</strong></p>]]></summary>
+    <content type="html"><![CDATA[<p>传输层控制协议（Transmission Control Protocol, TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+<h2>三次握手</h2>
+<p>三报文握手具体过程（客户端和服务端交换三个报文段）：</p>
+<figure><img src="/assets/image/computer-science/networking/007/three.png" alt="三次握手" tabindex="0" loading="lazy"><figcaption>三次握手</figcaption></figure>
+<p><strong>第一次握手：</strong></p>
+<p>起初两端都处于 <code>CLOSED</code> 关闭状态。一开始，服务器就进入监听状态，被动等待客户端的连接请求。</p>
+<p>在打算建立 TCP 连接时，客户端将同步请求标志 <code>SYN=1</code> 和随机初始序号 <code>seq=x</code> 发送给服务器，客户端进入 <code>SYN-SENT</code> （同步已发送）状态，等待服务器确认。</p>
+<p><strong>第二次握手：</strong></p>
+<p>服务器收到数据包后由同步位 <code>SYN=1</code> 得知客户端请求建立连接。</p>
+<p>服务器发送同步请求标志 <code>SYN=1</code>、确认标志 <code>ACK=1</code>、随机初始序号 <code>seq=y</code> 以及确认号字段 <code>ack=x+1</code>，发送给客户端，并进入 <code>SYN-RCVD</code> （同步已接收）状态。</p>
+<p><strong>第三次握手：</strong></p>
+<p>客户端收到确认后，检查 <code>ack</code> 是否为 <code>x+1</code>，<code>ACK</code> 是否为 <code>1</code>，如果正确则发送确认标志 <code>ACK=1</code>、序号 <code>seq=x+1</code> 以及确认号 <code>ack=y+1</code>，并进入连接已建立状态 <code>ESTABLISHED</code>。</p>
+<p>服务器收到消息后，检查 <code>ack</code> 是否为 <code>y+1</code>，<code>ACK</code> 是否为 <code>1</code>，如果成功则建立连接。 进入连接已建立状态 <code>ESTABLISHED</code>。</p>
+<p><strong>能否采用两报文握手？</strong></p>
+<p>如果客户端发出连接请求，但因网络延迟而未收到确认，于是客户端再次发送一个连接请求，服务端收到确认，由于是两次握手，此时就会建立连接，等数据传输完毕后，释放连接。</p>
+<p>此时第一个请求报文经过一段时间到达服务端，于是服务端收到确认，由于采用两次握手，此时就已同意建立连接，客户端不需要对服务端的确认报文发出响应，也不继续发送数据，导致连接一直建立，浪费资源。</p>
+<h2>四次挥手</h2>
+<p>四报文挥手来释放连接（现二者均处于连接已建立状态，假设客户端主动关闭 TCP 连接）：</p>
+<figure><img src="/assets/image/computer-science/networking/007/four.png" alt="四次挥手" tabindex="0" loading="lazy"><figcaption>四次挥手</figcaption></figure>
+<p><strong>第一次挥手：</strong></p>
+<p>客户端发送 TCP 连接释放报文段，并进入<strong>终止等待 1 状态</strong>。</p>
+<p>该报文段首部种的终止位 FIN 和确认位 ACK 都设置为 1 ，表明这是一个 TCP 连接释放报文段，同时也对之前收到的报文段进行确认。</p>
+<p>序号 seq = u，它等于之前客户端已经传送过的数据的最后一个字节的序号加 1 。确认号 ack 的值设置为 v ，它等于 TCP 客户进程之前已收到的数据的最后一个字节的序号加 1 。</p>
+<p><strong>第二次挥手：</strong></p>
+<p>服务端收到连接释放报文段后，会发送一个普通的 TCP 确认报文段并进入<strong>关闭等待状态</strong>。</p>
+<p>该报文段首部中的确认位 ACK 被设置为 1；seq 设置为 v，它等于服务端之前已传送过的数据的最后一个字节的序号加 1 。确认号 ack 字段的值被设置为 u + 1，这是对连接释放报文的确认。</p>
+<p>这个时候，客户端不能给服务端发送信息报文，只能接收。但是服务端要是还有信息要传给客户端，仍能传送。</p>
+<p><strong>第三次挥手：</strong></p>
+<p>客户端收到确认报文段后就进入<strong>终止等待 2 状态</strong>，当服务器数据发送完毕后，给客户端发送 TCP 连接释放报文段并进入<strong>最后确认状态</strong>。</p>
+<p>该报文段首部中的终止位 FIN 和确认位 ACK 的值都设置为 1 ，seq = w ，ack = u + 1 。</p>
+<p><strong>第四次挥手：</strong></p>
+<p>客户端收到连接释放报文段后，需要向服务端发送 TCP 确认报文段，并进入<strong>时间等待状态</strong>。</p>
+<p>首部中的确认位 ACK = 1 ，seq = u + 1 ，ack = w + 1 ，这是对 TCP 连接释放报文段的确认。</p>
+<p>服务端 收到该报文后就进入<strong>关闭状态</strong>，而 客户端 还要经过 2MSL 后才能进入<strong>关闭状态</strong>。</p>
+<blockquote>
+<p>MSL，最长报文段寿命，一般为 2 分钟。</p>
+</blockquote>
+<p><strong>为什么最后还要等待两个时间周期呢？</strong></p>
+<ul>
+<li>客户端的最后一个 ACK 报文在传输的时候丢失，服务器并没有接收到这个报文。这个候时候服务器就会超时重传这个 FIN 消息，然后客户端就会重新返回最后一个 ACK 报文，等待两个时间周期，完成关闭。</li>
+<li>如果不等待这两个时间周期，服务器重传的那条消息就不会收到。服务器就因为接收不到客户端的信息而无法正常关闭。</li>
+</ul>
+<h2>参考链接</h2>
+<p><a href="https://www.bilibili.com/video/BV1c4411d7jb" target="_blank" rel="noopener noreferrer">计算机网络微课堂</a></p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">TCP 与 UDP 的区别</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/08-tcp-udp.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/08-tcp-udp.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<p>TCP 和 UDP 都是传输层协议，属于 TCP/IP 协议族。</p>
+<h2>UDP</h2>
+<p>用户数据报协议（User Datagram Protocol，UDP）用来处理数据包，是一种无连接的协议，它的特点如下：</p>
+<p><strong>无连接</strong></p>
+<p>不需要像 TCP 一样进行三次握手进行连接，并且也只是数据报文的搬运工，不会对报文进行任何的加工处理。</p>
+<p><strong>单播、多播、广播</strong></p>
+<p>UDP 支持一对一、一对多、多对多、多对一的传输方式。</p>
+<p><strong>面向报文</strong></p>]]></summary>
+    <content type="html"><![CDATA[<p>TCP 和 UDP 都是传输层协议，属于 TCP/IP 协议族。</p>
+<h2>UDP</h2>
+<p>用户数据报协议（User Datagram Protocol，UDP）用来处理数据包，是一种无连接的协议，它的特点如下：</p>
+<p><strong>无连接</strong></p>
+<p>不需要像 TCP 一样进行三次握手进行连接，并且也只是数据报文的搬运工，不会对报文进行任何的加工处理。</p>
+<p><strong>单播、多播、广播</strong></p>
+<p>UDP 支持一对一、一对多、多对多、多对一的传输方式。</p>
+<p><strong>面向报文</strong></p>
+<p>在发送端，应用层将数据传递给传输层，UDP 只会给数据增加一个 UDP 头标识这是一个 UDP 协议报文，然后就传给网络层，对应用层交付的报文既不合并也不拆分，保留报文的边界，一次发送一个报文。</p>
+<p>在接收端，网络层将 UDP 数据报传输给 UDP，UDP 去除首部后就会将数据原封不动地传递给应用层，一次交付一个完整的报文。</p>
+<p><strong>不可靠</strong></p>
+<p>首先体现在无连接上，通信双方想发就发，必然不可靠。没有像 TCP 做重传机制、流量控制和拥塞控制。</p>
+<p><strong>头部开销小</strong></p>
+<p>UDP 头部只有 8 字节，相比 TCP 20 个字节少得多，传输数据时比较高效。</p>
+<p><strong>应用场景</strong></p>
+<p>UDP 应用于效率要求高，但可靠性要求相对较低的场景，例如：即时通讯，速度要求高，但是偶尔出现断续不是太大问题，完全可以不使用重传机制，场景有在线视频、网络语音通话、广播通信等。</p>
+<h2>TCP</h2>
+<p>传输控制协议（Transmission Control Protocol，TCP）是一种面向连接的、可靠的、基于字节流的传输层通讯协议，它的特点如下：</p>
+<p><strong>面向连接</strong></p>
+<p>在发送前必须进行 TCP 三次握手在两端建立连接。</p>
+<p><strong>仅支持单播传输</strong></p>
+<p>每个 TCP 只能进行一对一传输，不支持多播和广播的形式。</p>
+<p><strong>面向字节流</strong></p>
+<p>TCP 不像 UDP 那样一个一个报文独立传输，而是在不保留报文边界的情况下以字节流方式进行传输。</p>
+<p><strong>可靠传输</strong></p>
+<p>TCP 为了实现可靠传输，使用了重传机制、流量控制和拥塞控制。</p>
+<p><strong>头部开销大</strong></p>
+<p>TCP 头部最小 20 个字节，最大 60 个字节，传输效率慢。</p>
+<p><strong>应用场景</strong></p>
+<p>TCP 应用于效率要求相对低，但可靠性要求高的场景，例如：文件传输、邮件传输等。</p>
+<h2>区别</h2>
+<p>|              | UDP                   | TCP                                          |<br>
+|</p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2022-05-06T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">登陆失败 HTTP 状态码</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/09-http-code-when-authorized-refused.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/09-http-code-when-authorized-refused.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<p>如果用户尝试登陆，但用户名或密码不正确，应该返回什么状态码？</p>
+<p>这个问题在社区中有一定争议，有些人认为应该返回 <code>403 Forbidden</code>，有些人认为应该返回 <code>404 Not Found</code>，有些人认为应该返回 <code>400 Bad Request</code>，有些人认为应该返回 <code>401 Unauthorized</code>。</p>
+<p><code>403 Forbidden</code> 表示拒绝访问，但是请求接口是可以访问的，因此该状态码肯定不正确。</p>
+<p><code>404 Not Found</code> 表示请求的资源不存在，但是请求接口是存在的，因此该状态码也不正确。</p>]]></summary>
+    <content type="html"><![CDATA[<p>如果用户尝试登陆，但用户名或密码不正确，应该返回什么状态码？</p>
+<p>这个问题在社区中有一定争议，有些人认为应该返回 <code>403 Forbidden</code>，有些人认为应该返回 <code>404 Not Found</code>，有些人认为应该返回 <code>400 Bad Request</code>，有些人认为应该返回 <code>401 Unauthorized</code>。</p>
+<p><code>403 Forbidden</code> 表示拒绝访问，但是请求接口是可以访问的，因此该状态码肯定不正确。</p>
+<p><code>404 Not Found</code> 表示请求的资源不存在，但是请求接口是存在的，因此该状态码也不正确。</p>
+<p><code>400 Bad Request</code> 表示请求参数错误，但是用户输入的数据格式也是完全正确的，因此也不应该用该状态码。</p>
+<p>而根据 <a href="https://stackoverflow.com/questions/32752578/whats-the-appropriate-http-status-code-to-return-if-a-user-tries-logging-in-wit" target="_blank" rel="noopener noreferrer">What's the appropriate HTTP status code to return if a user tries logging in with an incorrect username / password, but correct format?</a> 讨论，应该返回 <code>401 Unauthorized</code>。</p>
+<p>根据 <a href="https://www.rfc-editor.org/rfc/rfc7235#section-3.1" target="_blank" rel="noopener noreferrer">RFC7235</a>：如果请求中包含身份验证凭据，则 <code>401</code> 响应表示拒绝对这些凭据进行授权。</p>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2024-07-10T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">401 和 403 状态码</title>
+    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/10-401-403.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/10-401-403.html"/>
+    <updated>2025-02-11T08:02:34.000Z</updated>
+    <summary type="html"><![CDATA[<h2>401 Unauthorized（未授权）</h2>
+<ul>
+<li><strong>含义</strong>：表示客户端请求的资源需要身份验证，但身份验证失败或未提供正确的认证信息。</li>
+<li><strong>触发情况</strong>：当服务器要求用户提供凭据（例如用户名和密码），但用户未提供凭据，或提供的凭据无效时，服务器返回 401。</li>
+<li><strong>处理方式</strong>：
+<ul>
+<li>客户端应该提供有效的凭据，如登录信息、API 密钥或 token。</li>
+<li>一般情况下，服务器会在响应中包含一个 <code>WWW-Authenticate</code> 头，提示客户端应该如何提供凭证。</li>
+</ul>
+</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2>401 Unauthorized（未授权）</h2>
+<ul>
+<li><strong>含义</strong>：表示客户端请求的资源需要身份验证，但身份验证失败或未提供正确的认证信息。</li>
+<li><strong>触发情况</strong>：当服务器要求用户提供凭据（例如用户名和密码），但用户未提供凭据，或提供的凭据无效时，服务器返回 401。</li>
+<li><strong>处理方式</strong>：
+<ul>
+<li>客户端应该提供有效的凭据，如登录信息、API 密钥或 token。</li>
+<li>一般情况下，服务器会在响应中包含一个 <code>WWW-Authenticate</code> 头，提示客户端应该如何提供凭证。</li>
+</ul>
+</li>
+</ul>
+<p><strong>示例场景</strong>：</p>
+<ul>
+<li>用户访问一个需要登录才能查看的页面，但没有登录或登录信息无效。</li>
+<li>API 请求缺少认证信息（如缺少 Authorization Header 或 token 错误）。</li>
+</ul>
+]]></content>
+    <category term="计算机网络"/>
+    <published>2025-02-11T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">从 React Native 到 Expo：快速实现跨平台开发</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/expo/</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/expo/"/>
+    <updated>2025-01-24T09:10:50.000Z</updated>
+    <summary type="html"><![CDATA[<p>随着移动开发的需求日益增长，跨平台开发框架成为开发者的首选。其中，<a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 和 <a href="https://expo.dev/" target="_blank" rel="noopener noreferrer">Expo</a> 是两种备受关注的技术路线。这篇文章将从 React Native 的基础出发，探讨 Expo 的优势，并介绍如何搭建 Expo 项目、CI/CD 流程及开发体验。</p>
+<hr>]]></summary>
+    <content type="html"><![CDATA[<p>随着移动开发的需求日益增长，跨平台开发框架成为开发者的首选。其中，<a href="https://reactnative.dev/" target="_blank" rel="noopener noreferrer">React Native</a> 和 <a href="https://expo.dev/" target="_blank" rel="noopener noreferrer">Expo</a> 是两种备受关注的技术路线。这篇文章将从 React Native 的基础出发，探讨 Expo 的优势，并介绍如何搭建 Expo 项目、CI/CD 流程及开发体验。</p>
+]]></content>
+    <category term="expo"/>
+    <published>2025-01-24T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">2024 前端生态报告</title>
     <id>https://dribble-njr.github.io/blog/blog/news/2024/W52/state-of-fe-2024.html</id>
@@ -5786,26 +6390,6 @@ load-nvmrc
     <published>2024-07-17T00:00:00.000Z</published>
   </entry>
   <entry>
-    <title type="text">登陆失败 HTTP 状态码</title>
-    <id>https://dribble-njr.github.io/blog/blog/computer-science/networking/009-http-code-when-authorized-refused.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/computer-science/networking/009-http-code-when-authorized-refused.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>如果用户尝试登陆，但用户名或密码不正确，应该返回什么状态码？</p>
-<p>这个问题在社区中有一定争议，有些人认为应该返回 <code>403 Forbidden</code>，有些人认为应该返回 <code>404 Not Found</code>，有些人认为应该返回 <code>400 Bad Request</code>，有些人认为应该返回 <code>401 Unauthorized</code>。</p>
-<p><code>403 Forbidden</code> 表示拒绝访问，但是请求接口是可以访问的，因此该状态码肯定不正确。</p>
-<p><code>404 Not Found</code> 表示请求的资源不存在，但是请求接口是存在的，因此该状态码也不正确。</p>]]></summary>
-    <content type="html"><![CDATA[<p>如果用户尝试登陆，但用户名或密码不正确，应该返回什么状态码？</p>
-<p>这个问题在社区中有一定争议，有些人认为应该返回 <code>403 Forbidden</code>，有些人认为应该返回 <code>404 Not Found</code>，有些人认为应该返回 <code>400 Bad Request</code>，有些人认为应该返回 <code>401 Unauthorized</code>。</p>
-<p><code>403 Forbidden</code> 表示拒绝访问，但是请求接口是可以访问的，因此该状态码肯定不正确。</p>
-<p><code>404 Not Found</code> 表示请求的资源不存在，但是请求接口是存在的，因此该状态码也不正确。</p>
-<p><code>400 Bad Request</code> 表示请求参数错误，但是用户输入的数据格式也是完全正确的，因此也不应该用该状态码。</p>
-<p>而根据 <a href="https://stackoverflow.com/questions/32752578/whats-the-appropriate-http-status-code-to-return-if-a-user-tries-logging-in-wit" target="_blank" rel="noopener noreferrer">What's the appropriate HTTP status code to return if a user tries logging in with an incorrect username / password, but correct format?</a> 讨论，应该返回 <code>401 Unauthorized</code>。</p>
-<p>根据 <a href="https://www.rfc-editor.org/rfc/rfc7235#section-3.1" target="_blank" rel="noopener noreferrer">RFC7235</a>：如果请求中包含身份验证凭据，则 <code>401</code> 响应表示拒绝对这些凭据进行授权。</p>
-]]></content>
-    <category term="计算机网络"/>
-    <published>2024-07-10T00:00:00.000Z</published>
-  </entry>
-  <entry>
     <title type="text">修改提交</title>
     <id>https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html</id>
     <link href="https://dribble-njr.github.io/blog/blog/reading/pro-git/06-change-commit.html"/>
@@ -9260,1120 +9844,5 @@ Page<span class="token punctuation">.</span><span class="token function-variable
 ]]></content>
     <category term="HTML"/>
     <published>2022-07-25T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">HTML5 新特性</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/010-html5.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/010-html5.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>HTML5 总共以下新特性，但不支持 IE8 及以下版本浏览器。</p>
-<ol>
-<li>语义化标签</li>
-<li>增强型表单</li>
-<li>视频和音频</li>
-<li>Canvas 绘图</li>
-<li>SVG 绘图</li>
-<li>地理定位 API</li>
-<li>拖拽 API</li>
-<li>WebWorker</li>
-<li>WebStorage</li>
-<li>WebSocket</li>
-<li>选择器 <code>query.selector</code> 和 <code>query.selectorAll</code></li>
-</ol>
-]]></summary>
-    <content type="html"><![CDATA[<p>HTML5 总共以下新特性，但不支持 IE8 及以下版本浏览器。</p>
-<ol>
-<li>语义化标签</li>
-<li>增强型表单</li>
-<li>视频和音频</li>
-<li>Canvas 绘图</li>
-<li>SVG 绘图</li>
-<li>地理定位 API</li>
-<li>拖拽 API</li>
-<li>WebWorker</li>
-<li>WebStorage</li>
-<li>WebSocket</li>
-<li>选择器 <code>query.selector</code> 和 <code>query.selectorAll</code></li>
-</ol>
-]]></content>
-    <category term="HTML"/>
-    <published>2022-04-30T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">src 和 href 的区别</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/009-src-vs-href.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/009-src-vs-href.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p><code>src</code> 和 <code>href</code> 之间存在区别，不能互换使用。</p>
-<ul>
-<li><code>src</code>：表示对资源的 <strong>引入</strong>，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置；</li>
-<li><code>href</code>：表示对资源的 <strong>引用</strong>，建立当前元素或当前文档和外部资源之间的链接关系。</li>
-</ul>
-<h2>src</h2>
-<p><code>src</code>(Source) 属性仅仅表示会在此文档当前元素的位置上嵌入资源，它会 <strong>暂停其他资源的下载和处理</strong>。比如，当浏览器读到：</p>]]></summary>
-    <content type="html"><![CDATA[<p><code>src</code> 和 <code>href</code> 之间存在区别，不能互换使用。</p>
-<ul>
-<li><code>src</code>：表示对资源的 <strong>引入</strong>，它指向的内容会被浏览器替换，嵌入到当前标签所在的位置；</li>
-<li><code>href</code>：表示对资源的 <strong>引用</strong>，建立当前元素或当前文档和外部资源之间的链接关系。</li>
-</ul>
-<h2>src</h2>
-<p><code>src</code>(Source) 属性仅仅表示会在此文档当前元素的位置上嵌入资源，它会 <strong>暂停其他资源的下载和处理</strong>。比如，当浏览器读到：</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"script.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
-</code></pre></div><p>那么浏览器会暂停当前页面的加载，直到获取、解析并执行完这个 JS 文件。它类似于将 JS 文件的内容转存到 <code>&lt;script&gt;</code> 标签中。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>这就是为什么需要将 <code>&lt;script&gt;</code> 标签放到最后。</p>
-</div>
-<p><code>&lt;img&gt;</code> 标签也类似，它是一个空标签，包含的内容由 <code>src</code> 属性定义，当遇到这个标签，浏览器也会停止加载页面，直到获取并加载这个图片。</p>
-<p>类似的，<code>&lt;iframe&gt;</code> 标签也一样。</p>
-<h2>href</h2>
-<p><code>href</code>(Hypertext Reference) 属性即超文本引用，它会指定 Web 资源的位置，从而定义当前链接（<code>&lt;a&gt;</code> 标签）或当前文档（<code>link</code> 标签）与目标之间的联系，<strong>不会暂停对当前文档的解析</strong>。</p>
-<p>比如：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>style.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-</code></pre></div><p>浏览器会知道这是个 CSS 文件，HTML 的解析 <strong>不会</strong> 暂停，但是渲染有可能暂停，因为浏览器需要知道样式规则。</p>
-]]></content>
-    <category term="HTML"/>
-    <published>2022-04-28T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">怎样实现响应式网页布局</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/016-how-to-responsive.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>设置响应式断点</h2>
-<p><a href="https://tailwindcss.com/docs/responsive-design" target="_blank" rel="noopener noreferrer"><code>tailwind</code></a> 典型的断点如下：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 640px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1280px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1536px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<h2>设置响应式断点</h2>
-<p><a href="https://tailwindcss.com/docs/responsive-design" target="_blank" rel="noopener noreferrer"><code>tailwind</code></a> 典型的断点如下：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 640px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1024px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1280px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1536px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><a href="">Bootstrap</a> 断点如下：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 576px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>用百分比确定布局元素的大小或创建 CSS 网格布局</h2>
-<p>布局容器的数量取决于设计，但大多数网站都将重点放在以下元素上：</p>
-<ul>
-<li>Wrapper or Container</li>
-<li>Header</li>
-<li>Content</li>
-<li>Sidebar</li>
-<li>Footer</li>
-</ul>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240304183547.png" alt="Common layout" tabindex="0" loading="lazy"><figcaption>Common layout</figcaption></figure>
-<p>根据 ，你可以像这样设计主要布局元素的样式（针对手机的基本样式不使用媒体查询）：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 95%<span class="token punctuation">;</span>
-  <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">#header</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">#content</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">#footer</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Small devices (landscape phones, 576px and up) */</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 576px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Medium devices (tablets, 768px and up) */</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token selector">#content</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 70%<span class="token punctuation">;</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 30%<span class="token punctuation">;</span>
-    <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Large devices (desktops, 992px and up) */</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* ... */</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Extra large devices (large desktops, 1200px and up) */</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">#wrapper</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
-    <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>在基于百分比的方法中， 属性控制元素显示在屏幕的左侧或右侧。</p>
-<p>如果要完成响应式设计，还需要熟悉 CSS 的  布局及其它属性，如 。</p>
-<h2>响应式图片</h2>
-<p>见 。</p>
-<h2>响应式文字</h2>
-<p>响应式网页设计的重点在于布局块、元素和媒体的响应性。文字往往是事后才考虑的问题。</p>
-<p>但要实现真正的响应式设计，还应该根据屏幕尺寸适当调整字体大小。</p>
-<p>最简单的方法是为字体大小设置一个静态值，如 <code>22px</code>，并在每个媒体查询中进行调整。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240304184534.png" alt="Font size vs view size scatter points" tabindex="0" loading="lazy"><figcaption>Font size vs view size scatter points</figcaption></figure>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>一般设置 <code>html</code> 字体大小，并使用 <code>rem</code> 单位，或使用插件转换为「视口」单位。</p>
-<p>相关阅读：</p>
-<ul>
-<li></li>
-<li></li>
-</ul>
-</div>
-]]></content>
-    <category term="CSS"/>
-    <published>2024-03-04T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">响应式设计介绍</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design-intro.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/014-responsive-design-intro.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>响应式设计是一种使网页内容适应各种设备的不同屏幕和窗口尺寸的网页设计方法。</p>
-<p>它并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
-<h2>固定宽度设计</h2>
-<p>20 世纪 90 年代初，当网络开始流行时，大多数显示器的屏幕尺寸为宽 <code>640</code> 像素、高 <code>480</code> 像素。这些显示器是凸面阴极射线管，与现在的平面液晶显示器不同。</p>
-<p>在早期网页设计的雏形时期，设计宽度为 <code>640</code> 像素的网页是比较安全的。但是，在手机和相机等其他技术不断微型化的同时，屏幕却越来越大（最终变得越来越扁平）。</p>]]></summary>
-    <content type="html"><![CDATA[<p>响应式设计是一种使网页内容适应各种设备的不同屏幕和窗口尺寸的网页设计方法。</p>
-<p>它并不是设计网站的第一种方法。在采用响应式设计之前的几年里，网页设计师和开发人员尝试过许多不同的技术。</p>
-<h2>固定宽度设计</h2>
-<p>20 世纪 90 年代初，当网络开始流行时，大多数显示器的屏幕尺寸为宽 <code>640</code> 像素、高 <code>480</code> 像素。这些显示器是凸面阴极射线管，与现在的平面液晶显示器不同。</p>
-<p>在早期网页设计的雏形时期，设计宽度为 <code>640</code> 像素的网页是比较安全的。但是，在手机和相机等其他技术不断微型化的同时，屏幕却越来越大（最终变得越来越扁平）。</p>
-<p>不久之后，大多数屏幕的尺寸都达到了 <code>800 x 600</code> 像素。网页设计也随之改变。设计师和开发人员开始认为 <code>800</code> 像素是一个安全的默认值。</p>
-<p>后来，屏幕又变大了。<code>1024 x 768</code> 成为默认值。这感觉就像是网页设计师和硬件制造商之间的军备竞赛。</p>
-<p>无论是 <code>640</code>、<code>800</code> 还是 <code>1024</code> 像素，选择一种特定宽度进行设计被称为「固定宽度设计」。</p>
-<p>如果你为布局指定了一个固定的宽度，那么你的布局只能在这个特定的宽度下才好看。如果访问者的屏幕比你选择的宽度更宽，那么屏幕上就会出现浪费的空间。你可以将页面内容居中，使空间分布更均匀（而不是一边空着），但你仍然无法充分利用可用空间。</p>
-<p>同样，如果访客的屏幕比您选择的宽度窄，那么您的内容就无法横向显示。浏览器会生成一个爬行条--相当于水平滚动条，用户必须左右移动整个页面才能看到所有内容。</p>
-
-<h2>流体布局</h2>
-<p>虽然大多数设计者都使用固定宽度布局，但也有一些设计者选择流体布局。与使用固定宽度的布局相比，你可以使用百分比作为列宽来制作流体布局。与只能在特定尺寸下看起来合适的固定宽度布局相比，这些设计适用于更多情况。</p>
-<p>这就是所谓的流体布局。不过，虽然液态布局在各种宽度下都很美观，但在极端情况下就会开始恶化。在宽屏幕上，布局看起来被拉伸。而在窄屏幕上，布局则显得拥挤。这两种情况都不理想。</p>
-<p>使用 <code>min-width</code> 和 <code>max-width</code> 布局可以缓解这些问题。但是，在 <code>min-width</code> 以下或 <code>max-width</code> 以上的任何尺寸下，都会出现与固定宽度布局相同的问题。在宽屏幕上，未使用的空间会被浪费。在窄屏幕上，用户必须左右移动整个页面才能看到所有内容。</p>
-
-<h2>自适应布局</h2>
-<p>当 CSS 出现媒体查询时，可以实现更灵活的布局。</p>
-<p>其中一种技术就是在指定宽度的几个固定宽度布局之间切换。有人称之为「自适应设计」。</p>
-<p>自适应设计允许设计人员提供在几种不同尺寸下看起来都不错的布局，但在这些尺寸之间查看时，设计看起来总是不太合适。空间过大的问题依然存在，尽管不像固定宽度布局那样严重。</p>
-<p>使用 CSS 媒体查询，可以为用户提供最接近其浏览器宽度的布局。但鉴于设备尺寸的多样性，对于大多数人来说，这种布局很可能看起来并不完美。</p>
-
-<h2>响应式布局</h2>
-<p>如果说自适应布局是媒体查询和固定宽度布局的混合体，那么响应式网页设计就是媒体查询和液体布局的混合体。</p>
-
-]]></content>
-    <category term="CSS"/>
-    <published>2024-03-04T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">响应式设计</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/css/015-responsive-design.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/css/015-responsive-design.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>概念</h2>
-<ul>
-<li>响应式网页设计可让网页在所有设备上都美观大方。</li>
-<li>响应式网页设计只使用 HTML 和 CSS。</li>
-<li>响应式网页设计不是一个程序或 JavaScript。</li>
-</ul>
-<p>网页可以通过多种不同设备浏览：台式电脑、平板电脑和手机。无论使用何种设备，您的网页都应美观大方，易于使用。</p>
-<p>网页不应为了适应较小的设备而遗漏信息，而应调整内容以适应任何设备：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228125357.png" alt="适应任何设备" tabindex="0" loading="lazy"><figcaption>适应任何设备</figcaption></figure>]]></summary>
-    <content type="html"><![CDATA[<h2>概念</h2>
-<ul>
-<li>响应式网页设计可让网页在所有设备上都美观大方。</li>
-<li>响应式网页设计只使用 HTML 和 CSS。</li>
-<li>响应式网页设计不是一个程序或 JavaScript。</li>
-</ul>
-<p>网页可以通过多种不同设备浏览：台式电脑、平板电脑和手机。无论使用何种设备，您的网页都应美观大方，易于使用。</p>
-<p>网页不应为了适应较小的设备而遗漏信息，而应调整内容以适应任何设备：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228125357.png" alt="适应任何设备" tabindex="0" loading="lazy"><figcaption>适应任何设备</figcaption></figure>
-<p>如果使用 CSS 和 HTML 来调整、隐藏、缩小、放大或移动内容，使其在任何屏幕上看起来都很美观，这就是所谓的响应式网页设计。</p>
-
-<p>接下来会逐步介绍相关概念并实现这个例子。</p>
-<h2>视口 <code>viewport</code></h2>
-<h3>概念</h3>
-<p>视口是用户在网页上的可见区域。</p>
-<p>视口因设备而异，手机上的视口会比电脑屏幕上的小。</p>
-<p>在平板电脑和手机出现之前，网页只针对电脑屏幕设计，网页通常采用静态设计和固定尺寸。</p>
-<p>后来，当我们开始使用平板电脑和手机上网时，固定尺寸的网页太大，无法适应视口。为了解决这个问题，这些设备上的浏览器缩小了整个网页以适应屏幕。</p>
-<h3>设置视口</h3>
-<p>HTML5 引入了一种方法，让网页设计师通过 <code>&lt;meta&gt;</code> 标签来控制视口。</p>
-<p>应在所有网页中包含以下 <code>&lt;meta&gt;</code> 视口元素：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-</code></pre></div><p>这就为浏览器提供了如何控制页面尺寸和缩放比例的说明。</p>
-<p><code>width=device-width</code> 部分将页面宽度设置为设备的屏幕宽度（因设备而异）。</p>
-<p><code>initial-scale=1.0</code> 部分设置浏览器首次加载页面时的初始缩放级别。</p>
-<p>下面是一个未使用视口 <code>&lt;meta&gt;</code> 标签的网页和使用视口 <code>&lt;meta&gt;</code> 标签的网页的示例：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228184703.png" alt="未使用视口元标签" tabindex="0" loading="lazy"><figcaption>未使用视口元标签</figcaption></figure>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228184730.png" alt="使用视口元标签" tabindex="0" loading="lazy"><figcaption>使用视口元标签</figcaption></figure>
-<h3>根据视口调整内容大小</h3>
-<p>用户习惯在台式机和移动设备上垂直滚动网站，但不习惯水平滚动！</p>
-<p>因此，如果用户被迫水平滚动或缩放才能看到整个网页，就会造成糟糕的用户体验。</p>
-<p>需要遵循的其他一些规则：</p>
-<ol>
-<li>切勿使用固定宽度的大型元素 —— 例如，如果显示的图片宽度大于视口宽度，就会导致视口水平滚动。切记调整这些内容，使其适合视口宽度。</li>
-<li>不要让内容依赖特定的视口宽度来呈现 —— 由于不同设备的屏幕尺寸和 CSS 像素宽度差异很大，因此内容不应依赖特定的视口宽度来呈现。</li>
-<li>使用 CSS 媒体查询为大屏幕和小屏幕应用不同的样式 —— 为页面元素设置较大的绝对 CSS 宽度会导致元素对于较小设备的视口来说过宽。取而代之的是，考虑使用相对宽度值，如 width: 100%。此外，使用较大的绝对定位值也要小心。它可能会导致元素在小型设备上超出视口。</li>
-</ol>
-<h2>网格</h2>
-<h3>概念</h3>
-<p>许多网页都采用网格视图，即把网页分成几列：</p>
-<p>在设计网页时，使用网格视图非常有帮助。它能让你更轻松地在页面上放置元素。</p>
-<p>响应式网格视图通常有 12 列，总宽度为 100%，会随着浏览器窗口大小的调整而缩小或展开。</p>
-<h3>建立响应式网格视图</h3>
-<p>首先确保所有 HTML 元素的框大小属性都设置为 <code>border-box</code>。这样就能确保元素的总宽度和高度中包含 <code>padding</code> 和 <code>border</code>。</p>
-<p>在 CSS 中添加以下代码：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">*</span> <span class="token punctuation">{</span>
-  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box；<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>有关 <code>box-sizing</code> 属性的更多信息，请参阅 。</p>
-<p>下面的示例展示了一个简单的响应式网页，有两列：</p>
-
-<p>如果网页只包含两列，上面的示例就没问题。</p>
-<p>但是，我们希望使用有 12 列的响应式网格视图，以便对网页有更多的控制。</p>
-<p>首先，我们必须计算一列的百分比：100% / 12 列 = 8.33%。</p>
-<p>然后，我们为 12 列中的每一列创建一个类，<code>class="col-"</code>，并用一个数字定义该部分应跨越多少列：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">.col-1</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 8.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-2</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 16.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-3</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-4</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 33.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-5</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 41.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-6</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-7</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 58.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-8</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 66.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-9</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-10</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 83.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-11</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 91.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-12</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>所有这些列都应向左浮动，并有 <code>15px</code> 的边距：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">[class*='col-']</span> <span class="token punctuation">{</span>
-  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span>
-  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>每一行都应包裹在 <code>&lt;div&gt;</code> 中。一行内的列数相加应为 12：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token comment">&lt;!-- 25% --&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col-9<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-  <span class="token comment">&lt;!-- 75% --&gt;</span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><p>行内的列都会向左浮动，因此会脱离页面的流程，其他元素的放置就好像这些列不存在一样。为了避免这种情况，添加一种样式来 ：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">.row::after</span> <span class="token punctuation">{</span>
-  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">;</span>
-  <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> table<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>最后添加一些样式：</p>
-
-<div class="hint-container tip">
-<p class="hint-container-title">注意</p>
-<p>将浏览器窗口调整到非常小的宽度时，示例中的网页看起来并不好。在下一章中，你将学习如何解决这个问题。</p>
-</div>
-<h2>媒体查询</h2>
-<h3>概念</h3>
-<p>媒体查询是 CSS3 中引入的一种 CSS 技术。</p>
-<p>它使用 <code>@media</code> 规则，只有在特定条件为真的情况下才会包含 CSS 属性块。</p>
-
-<h3>添加手机断点</h3>
-<p>前面制作了一个有行和列的网页，它是响应式的，但在小屏幕上看起来并不好。</p>
-<p>媒体查询可以帮助我们解决这个问题。我们可以添加一个断点，在断点两侧，设计的某些部分会有不同的表现。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228205102.png" alt="desktop" tabindex="0" loading="lazy"><figcaption>desktop</figcaption></figure>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228205114.png" alt="phone" tabindex="0" loading="lazy"><figcaption>phone</figcaption></figure>
-<p>使用媒体查询在 <code>768px</code> 处添加断点：</p>
-<p>当屏幕（浏览器窗口）小于 <code>768px</code> 时，每列的宽度应为 <code>100%</code>：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For desktop: */</span>
-<span class="token selector">.col-1</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 8.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-2</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 16.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-3</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-4</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 33.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-5</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 41.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-6</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-7</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 58.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-8</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 66.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-9</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-10</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 83.33%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-11</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 91.66%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token selector">.col-12</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* For mobile phones: */</span>
-  <span class="token selector">[class*='col-']</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<h3>始终坚持移动端优先的设计理念</h3>
-<p>移动优先是指在为台式机或其他设备设计之前，先为移动设备设计（这将使页面在较小的设备上显示更快）。</p>
-<p>这意味着我们必须对 CSS 进行一些修改。</p>
-<p>我们不应在宽度小于 <code>768px</code> 时更改样式，而应在宽度大于 <code>768px</code> 时更改设计。这将使我们的设计成为 「移动端优先」：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For mobile phones: */</span>
-<span class="token selector">[class*='col-']</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* For desktop: */</span>
-  <span class="token selector">.col-1</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 8.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-2</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 16.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-3</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-4</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 33.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-5</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 41.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-6</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-7</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 58.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-8</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 66.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-9</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-10</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 83.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-11</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 91.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-12</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>添加平板电脑断点</h3>
-<p>我们可以随意添加断点。</p>
-<p>我们还将在平板电脑和手机之间插入一个断点。</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240228205615.png" alt="平板电脑" tabindex="0" loading="lazy"><figcaption>平板电脑</figcaption></figure>
-<p>为此，我们增加了一个媒体查询（<code>600px</code>），并为大于 <code>600px</code>（但小于 <code>768px</code>）的设备增加了一组新的类：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For mobile phones: */</span>
-<span class="token selector">[class*='col-']</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* For tablets: */</span>
-  <span class="token selector">.col-s-1</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 8.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-2</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 16.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-3</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-4</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 33.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-5</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 41.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-6</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-7</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 58.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-8</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 66.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-9</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-10</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 83.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-11</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 91.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-s-12</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token comment">/* For desktop: */</span>
-  <span class="token selector">.col-1</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 8.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-2</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 16.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-3</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 25%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-4</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 33.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-5</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 41.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-6</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-7</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 58.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-8</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 66.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-9</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 75%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-10</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 83.33%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-11</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 91.66%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-  <span class="token selector">.col-12</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>我们有两组完全相同的类，这似乎有点奇怪，但这给了我们在 HTML 中决定在每个断点处如何处理列的机会：</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><strong>用于电脑：</strong></p>
-<p>第一部分和第三部分各占 3 列。中间部分将横跨 6 列。</p>
-<p><strong>平板电脑：</strong></p>
-<p>第一部分跨 3 列，第二部分跨 9 列，第三部分显示在前两个部分的下方，跨 12 列：</p>
-</div>
-
-<h3>典型设备断点</h3>
-<p>屏幕和设备的高度和宽度各不相同，因此很难为每种设备创建精确的断点。为了简单起见，可以将目标锁定为五组：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* Extra small devices (phones, 600px and down) */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  ...<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Small devices (portrait tablets and large phones, 600px and up) */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  ...<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Medium devices (landscape tablets, 768px and up) */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  ...<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Large devices (laptops/desktops, 992px and up) */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  ...<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* Extra large devices (large laptops and desktops, 1200px and up) */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  ...<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>方向纵向/横向</h3>
-<p>媒体查询还可用于根据浏览器的方向改变页面布局。</p>
-<p>您可以设置一组 CSS 属性，只有当浏览器窗口的宽度大于高度（即所谓的「横向」方向）时才适用：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">orientation</span><span class="token punctuation">:</span> landscape<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">body</span> <span class="token punctuation">{</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> lightblue<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>使用媒体查询隐藏元素</h3>
-<p>媒体查询的另一个常见用途是在不同尺寸的屏幕上隐藏元素：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* If the screen size is 600px wide or less, hide the element */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">div.example</span> <span class="token punctuation">{</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>实际上可以使用这实现侧边栏。</p>
-<p>屏幕宽度小于 900px 时显示菜单按钮，并隐藏菜单项。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">.menu-content.active</span> <span class="token punctuation">{</span>
-  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 900px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">.menu-content</span> <span class="token punctuation">{</span>
-    <span class="token property">z-index</span><span class="token punctuation">:</span> 125<span class="token punctuation">;</span>
-    <span class="token property">box-shadow</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>-100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token selector">.menu-button</span> <span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 900px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">.menu-button</span> <span class="token punctuation">{</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div></div>
-
-<h3>通过媒体查询改变字体大小</h3>
-<p>还可以使用媒体查询来改变元素在不同屏幕尺寸下的字体大小：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* If the screen size is 601px or more, set the font-size of &lt;div&gt; to 80px */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">div.example</span> <span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* If the screen size is 600px or less, set the font-size of &lt;div&gt; to 30px */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">div.example</span> <span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>实际上可以使用媒体查询改变 HTML 字体大小，并使用 <code>rem</code> 单位设置其他字体大小。</p>
-<p>相关阅读：。</p>
-</div>
-<h2>响应式图片</h2>
-<h3>使用 <code>width</code> 属性</h3>
-<p>如果将 <code>width</code> 属性设置为百分比，而 <code>height</code> 属性设置为 <code>auto</code>，图像就会响应并上下缩放。</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div>
-<div class="hint-container warning">
-<p class="hint-container-title">注意</p>
-<p>在上面的示例中，图片可以按比例放大到比原始尺寸更大。在许多情况下，更好的解决方案是使用 <code>max-width</code> 属性。</p>
-</div>
-<h3>使用 <code>max-width</code> 属性</h3>
-<p>如果 <code>max-width</code> 属性设置为 100%，图片会在必要时缩小，但绝不会放大到大于原始尺寸：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">img</span> <span class="token punctuation">{</span>
-  <span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>背景图片</h3>
-<p>背景图片还可以对大小和比例进行调整。</p>
-<ol>
-<li>如果 <code>background-size</code> 属性设置为 <code>contain</code>，背景图片就会缩放，并尽量适应内容区域。不过，图像将保持其宽高比（图像宽度和高度之间的比例关系）：</li>
-</ol>
-
-<ol start="2">
-<li>如果 <code>background-size</code> 属性设置为 <code>100% 100%</code>，背景图片就会拉伸以覆盖整个内容区域：</li>
-</ol>
-
-<ol start="3">
-<li>如果 <code>background-size</code> 属性设置为 <code>cover</code>，背景图片将按比例覆盖整个内容区域。请注意，<code>cover</code> 将保持纵横比，背景图片的某些部分可能会被剪切：</li>
-</ol>
-
-<h3>不同设备使用不同图像</h3>
-<p>大尺寸图片在电脑大屏幕上可能非常完美，但在小设备上却毫无用处。既然要缩小图片，为什么还要加载大图片呢？为了减少加载或出于其他原因，您可以使用媒体查询在不同设备上显示不同的图片。</p>
-<p>下面是将在不同设备上显示的一张大图和一张小图：</p>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240229125238.png" alt="不同设备使用不同图像" tabindex="0" loading="lazy"><figcaption>不同设备使用不同图像</figcaption></figure>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For width smaller than 400px: */</span>
-<span class="token selector">body</span> <span class="token punctuation">{</span>
-  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_smallflower.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* For width 400px and larger: */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">body</span> <span class="token punctuation">{</span>
-    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_flowers.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>可以使用媒体查询 <code>min-device-width</code> 代替 <code>min-width</code>，后者检查的是设备宽度，而不是浏览器宽度。这样，当调整浏览器窗口大小时，图片就不会改变：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token comment">/* For devices smaller than 400px: */</span>
-<span class="token selector">body</span> <span class="token punctuation">{</span>
-  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_smallflower.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* For devices 400px and larger: */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-device-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-  <span class="token selector">body</span> <span class="token punctuation">{</span>
-    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'img_flowers.jpg'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>HTML <code>&lt;picture&gt;</code> 元素</h3>
-<p>HTML <code>&lt;picture&gt;</code> 元素为网络开发人员指定图像资源提供了更大的灵活性。</p>
-<p><code>&lt;picture&gt;</code> 元素最常用于响应式设计中使用的图像。与根据视口宽度放大或缩小一张图片的做法不同，可以设计多张图片，以便更好地填充浏览器视口。</p>
-<p><code>&lt;picture&gt;</code> 元素的工作原理与 <code>&lt;video&gt;</code> 和 <code>&lt;audio&gt;</code> 元素类似。可以设置不同的来源，符合偏好的第一个来源就是正在使用的来源：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code>&lt;picture&gt;
-  &lt;source srcset=<span class="token string">"img_small_flower.jpg"</span> media=<span class="token string">"(max-width: 400px)"</span>&gt;
-  &lt;source srcset=<span class="token string">"img_flowers.jpg"</span>&gt;
-  &lt;img src=<span class="token string">"img_flowers.jpg"</span> alt=<span class="token string">"Flowers"</span>&gt;
-&lt;/picture&gt;
-</code></pre></div><p><code>srcset</code> 属性为必填项，用于定义图像的来源。</p>
-<p><code>media</code> 属性是可选属性，可接受 CSS <code>@media</code> 规则中的媒体查询。</p>
-<p>还应为不支持 <code>&lt;picture&gt;</code> 元素的浏览器定义 <code>&lt;img&gt;</code> 元素。</p>
-<h2>响应式视频</h2>
-<h3>使用 <code>width</code> 属性</h3>
-<p>如果将 <code>width</code> 属性设置为 <code>100%</code>，视频播放器就会响应并上下缩放：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">video</span> <span class="token punctuation">{</span>
-  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>使用 <code>max-width</code> 属性</h3>
-<p>和 <a href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87">响应式图片</a> 一样，最好使用 <code>max-width</code> 属性，视频会在必要时缩小，但绝不会放大到大于原始尺寸：</p>
-<div class="language-css" data-ext="css" data-title="css"><pre class="language-css"><code><span class="token selector">video</span> <span class="token punctuation">{</span>
-  <span class="token property">max-width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
-  <span class="token property">height</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>HTML <code>&lt;video&gt;</code> 元素</h3>
-<p><code>&lt;video&gt;</code> 元素的工作原理与 <a href="#html-picture-%E5%85%83%E7%B4%A0"><code>&lt;picture&gt;</code></a> 元素类似。可以设置不同的来源，符合偏好的第一个来源就是正在使用的来源：</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>400<span class="token punctuation">"</span></span> <span class="token attr-name">controls</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mov_bbb.mp4<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/mp4<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mov_bbb.ogg<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>video/ogg<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-  Your browser does not support HTML5 video.
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><h2>参考</h2>
-<ul>
-<li><a href="https://www.w3schools.com/css/css_rwd_intro.asp" target="_blank" rel="noopener noreferrer">Responsive Web Design</a></li>
-</ul>
-]]></content>
-    <category term="CSS"/>
-    <published>2024-02-28T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">Vuepress Plugin Ordered Header</title>
-    <id>https://dribble-njr.github.io/blog/blog/project/plugin/01.vuepress-plugin-ordered-header.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/project/plugin/01.vuepress-plugin-ordered-header.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>该插件已经发布至：<a href="https://github.com/dribble-njr/vuepress-plugin-ordered-header" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.npmjs.com/package/vuepress-plugin-ordered-heade" target="_blank" rel="noopener noreferrer">npm</a>。</p>
-<p>如有帮助可以点个 star 支持一下~。</p>
-</div>]]></summary>
-    <content type="html"><![CDATA[<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>该插件已经发布至：<a href="https://github.com/dribble-njr/vuepress-plugin-ordered-header" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://www.npmjs.com/package/vuepress-plugin-ordered-heade" target="_blank" rel="noopener noreferrer">npm</a>。</p>
-<p>如有帮助可以点个 star 支持一下~。</p>
-</div>
-<p><a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">VuePress</a> 默认不支持生成有序目录，比如想要下面这种效果：</p>
-<div class="language-markdown" data-ext="md" data-title="md"><pre class="language-markdown"><code><span class="token title important"><span class="token punctuation">#</span> 标题 1</span>
-
-<span class="token title important"><span class="token punctuation">##</span> 标题 1-1</span>
-
-<span class="token title important"><span class="token punctuation">###</span> 标题 1-1-1</span>
-
-<span class="token title important"><span class="token punctuation">##</span> 标题 1-2</span>
-
-<span class="token title important"><span class="token punctuation">#</span> 标题 2</span>
-</code></pre></div><p>目录将显示为：</p>
-<div class="language-text" data-ext="text" data-title="text"><pre class="language-text"><code>1 header 1
-
-1.1 header 1-1
-
-1.1.1 header 1-1-1
-
-1.2 header 1-2
-
-2 header 2
-</code></pre></div><p>于是花了一点时间研究了 VuePress 的插件系统。</p>
-<h2>VuePress 架构</h2>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>以下内容来自 <a href="https://v2.vuepress.vuejs.org/zh/advanced/architecture.html" target="_blank" rel="noopener noreferrer">VuePress - 架构</a></p>
-</div>
-<h3>概览</h3>
-<p>VuePress 的简要架构：</p>
-<ul>
-<li>Node App 会生成临时文件，包括页面、路由等。</li>
-<li>Bundler 会将 Client App 和临时文件一起进行打包，就像处理一个普通的 Vue App 一样。</li>
-</ul>
-<p>VuePress 分为两个主要部分： Node App 和 Client App：</p>
-<ul>
-<li>插件或者主题的入口文件会在 Node App 中被加载。</li>
-<li>客户端文件会在 Client App 中被加载，也就是会被 Bundler 处理。比如组件、客户端配置文件等。</li>
-</ul>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240229181754.png" alt="架构" tabindex="0" loading="lazy"><figcaption>架构</figcaption></figure>
-<h3>核心流程和 Hooks</h3>
-<p>VuePress 的核心流程以及 插件 API 的 Hooks ：</p>
-<ul>
-<li>在 <code>init</code> 阶段：
-<ul>
-<li>主题和插件会被加载。这意味着插件需要在初始化之前使用。</li>
-<li>由于我们要使用 <code>markdown-it</code> 来解析 Markdown 文件，因此需要在加载页面文件之前创建 <code>markdown-it</code> 实例：
-<ul>
-<li><code>extendsMarkdownOptions</code> Hook 会被调用，用以创建 <code>markdown-it</code> 实例。</li>
-<li><code>extendsMarkdown</code> Hook 会被调用，用以扩展 <code>markdown-it</code> 实例。</li>
-</ul>
-</li>
-<li>页面文件会被加载：
-<ul>
-<li><code>extendsPageOptions</code> Hook 会被调用，用以创建页面。</li>
-<li><code>extendsPage</code> Hook 会被调用，用以扩展页面对象。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在 <code>prepare</code> 阶段：
-<ul>
-<li>临时文件会被生成，因此所有和客户端文件相关的 Hooks 会在此处调用。</li>
-</ul>
-</li>
-<li>在 <code>dev / build</code> 阶段：
-<ul>
-<li>Bundler 会被加载：</li>
-<li><code>extendsBundlerOptions</code> Hook 会被调用，用以生成 Bundler 的配置。</li>
-<li><code>alias</code> Hook 和 <code>define</code> Hook 会被用在 Bundler 的配置中，所以它们会在此处调用。</li>
-</ul>
-</li>
-</ul>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240229181843.png" alt="核心流程和 Hooks" tabindex="0" loading="lazy"><figcaption>核心流程和 Hooks</figcaption></figure>
-<h2>开发插件</h2>
-<p>开发插件只需要导出一个插件对象，并在对应 Hooks 中实现自己想要的逻辑。</p>
-<p>比如要实现有序标题，那么可以在 <a href="https://v2.vuepress.vuejs.org/zh/reference/plugin-api.html#extendspage" target="_blank" rel="noopener noreferrer"><code>extendsPage</code></a> Hooks 中扩展 <a href="https://v2.vuepress.vuejs.org/zh/reference/node-api.html#page-%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener noreferrer"><code>Page</code></a> 实例的 <a href="https://v2.vuepress.vuejs.org/zh/reference/node-api.html#headers" target="_blank" rel="noopener noreferrer"><code>headers</code></a> 属性。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p><code>extendsPage</code>：</p>
-<ul>
-<li>类型： <code>(page: Page, app: App) =&gt; void | Promise&lt;void&gt;</code></li>
-<li>详情：<br>
-页面扩展。<br>
-该 Hook 接收一个函数，在参数中会收到一个 Page 实例。<br>
-该 Hook 可以用来在 <code>Page</code> 对象上添加额外的属性，或修改现有的属性等。<br>
-值得一提的是，针对 <code>page.data</code> 和 <code>page.routeMeta</code> 的改动可以在客户端代码中使用。</li>
-</ul>
-</div>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'vuepress-plugin-ordered-header'</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">extendsPage</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token comment">// 实现扩展逻辑</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>实现功能</h2>
-<p><code>headers: PageHeader[]</code> 数据结构如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">interface</span> <span class="token class-name">PageHeader</span> <span class="token punctuation">{</span>
-  level<span class="token operator">:</span> <span class="token builtin">number</span>
-  title<span class="token operator">:</span> <span class="token builtin">string</span>
-  slug<span class="token operator">:</span> <span class="token builtin">string</span>
-  children<span class="token operator">:</span> PageHeader<span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>每个标题下的子标题会被放入 <code>children</code> 数组，因此需要利用递归实现。</p>
-<ol>
-<li>首先初始化一个计数数组 <code>counter</code>，代表 <code>h1</code> ~ <code>h6</code> 6 个标题层级。</li>
-<li>在每个标题层级上，首先将对应的层级计数器加一（即 <code>counter[level] = (counter[level] || 0) + 1</code>）。</li>
-<li>然后对于比当前层级更深的计数器（即该标题的子标题）进行重置（即 counter[i] = undefined）。</li>
-<li>再利用 <code>counter</code> 数组给标题增加序号。</li>
-<li>最后返回处理好的 <code>page</code> 对象。</li>
-</ol>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code>module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'vuepress-plugin-ordered-header'</span><span class="token punctuation">,</span>
-    <span class="token function-variable function">extendsPage</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> counter <span class="token operator">=</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span>
-
-      <span class="token keyword">const</span> <span class="token function-variable function">reorderHeaders</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">headers</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-        headers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">header</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-          <span class="token keyword">const</span> level <span class="token operator">=</span> header<span class="token punctuation">.</span>level <span class="token operator">-</span> <span class="token number">1</span>
-
-          counter<span class="token punctuation">[</span>level<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>counter<span class="token punctuation">[</span>level<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
-
-          <span class="token comment">// reset level</span>
-          <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> level <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> counter<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            counter<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">undefined</span>
-          <span class="token punctuation">}</span>
-
-          header<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>counter<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>Number<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>header<span class="token punctuation">.</span>title<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
-
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>header<span class="token punctuation">.</span>children<span class="token punctuation">)</span> <span class="token function">reorderHeaders</span><span class="token punctuation">(</span>header<span class="token punctuation">.</span>children<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token punctuation">}</span>
-
-      <span class="token function">reorderHeaders</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>headers<span class="token punctuation">)</span>
-
-      <span class="token keyword">return</span> page
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></content>
-    <category term="Project"/>
-    <published>2024-02-19T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">Plugin</title>
-    <id>https://dribble-njr.github.io/blog/blog/project/plugin/</id>
-    <link href="https://dribble-njr.github.io/blog/blog/project/plugin/"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<ul>
-<li></li>
-</ul>
-]]></summary>
-    <content type="html"><![CDATA[<ul>
-<li></li>
-</ul>
-]]></content>
-    <published>2024-02-29T11:17:41.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">静态站点生成器</title>
-    <id>https://dribble-njr.github.io/blog/blog/project/ssg/</id>
-    <link href="https://dribble-njr.github.io/blog/blog/project/ssg/"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>静态站点生成器（static site generation, ssg）。</p>
-<h2>VuePress</h2>
-<h2>Docusaurus</h2>
-<p><a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a> 是一款静态网站生成器。</p>
-<p>它利用 React 的全部功能来构建具有快速客户端导航功能的单页应用程序，从而使您的网站具有交互性。</p>
-<p>它提供开箱即用的文档功能，但也可用于创建任何类型的网站（个人网站、产品、博客、营销登陆页面等）。</p>]]></summary>
-    <content type="html"><![CDATA[<p>静态站点生成器（static site generation, ssg）。</p>
-<h2>VuePress</h2>
-<h2>Docusaurus</h2>
-<p><a href="https://docusaurus.io/" target="_blank" rel="noopener noreferrer">Docusaurus</a> 是一款静态网站生成器。</p>
-<p>它利用 React 的全部功能来构建具有快速客户端导航功能的单页应用程序，从而使您的网站具有交互性。</p>
-<p>它提供开箱即用的文档功能，但也可用于创建任何类型的网站（个人网站、产品、博客、营销登陆页面等）。</p>
-<h3>对比</h3>
-<h4>Gatsby​</h4>
-<p><a href="https://www.gatsbyjs.com/" target="_blank" rel="noopener noreferrer">Gatsby</a> 功能丰富，拥有丰富的插件生态系统，可以实现 Docusaurus 的所有功能。</p>
-<p>当然，这带来了较陡的学习曲线。 Gatsby 在许多方面做得都很出色，适合构建许多类型的网站。另一方面，Docusaurus 力图将一件事做到尽善尽美——成为最好的内容撰写与发布工具。</p>
-<p>GraphQL 是 Gatsby 的核心，但搭建 Gatsby 网站不一定要用到它。 而在大多数静态网站中，你更不需要 GraphQL 所提供的灵活性。</p>
-<p>Docusaurus v2+ 的许多方面都被 Gatsby 的出色之处所启发，这是一个优秀的替代品。</p>
-<p>Docz is a Gatsby theme to build documentation websites. 它的功能与 Docusaurus 相比要匮乏。</p>
-<h4>VuePress</h4>
-<p>VuePress 与 Docusaurus 有许多相似之处--两者都非常重视以内容为中心的网站，并提供开箱即用的定制文档功能。</p>
-<p>但是，VuePress 是 Vue 驱动的，而 Docusaurus 则是 React 驱动的。</p>
-<p>如果你想要一个基于 Vue 的解决方案，VuePress 是个不错的选择。</p>
-]]></content>
-    <category term="Project"/>
-    <published>2024-02-29T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">基础工具</title>
-    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/03-basic-tool.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/03-basic-tool.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>让需求来驱使你不断选购新的工具。</p>
-<h2>纯文本的威力</h2>
-<p>用纯文本保存知识。</p>
-<h2>shell 游戏</h2>
-<p>发挥 shell 命令的优势。花费一些精力熟悉 shell。</p>
-<h2>加强编辑器能力</h2>
-<p>熟悉编辑器：</p>
-<ul>
-<li>当编辑文本时，以字符、单词、行、段落为单位移动光标及进行选择。</li>
-<li>当编辑代码时，在各种语法单元（配对的分隔符、函数、模块……）之间移动。</li>
-<li>做完修改后，重新缩进代码。</li>
-<li>用单个指令完成代码块的注释或取消注释。</li>
-<li>Undo 并 Redo 变更。</li>
-<li>把编辑窗口切割成多个面板，然后在它们之间跳转。</li>
-<li>跳转到特定的行号。</li>
-<li>对选出的多行进行排序。</li>
-<li>搜索普通字符串，或用正则表达式搜索，然后重复上一次的搜索。</li>
-<li>基于框选或某个模式匹配的结果，临时创建多个光标，并行地在多个光标处编辑文本。</li>
-<li>显示当前项目的编译错误。</li>
-<li>跑一下当前项目的测试。</li>
-</ul>]]></summary>
-    <content type="html"><![CDATA[<p>让需求来驱使你不断选购新的工具。</p>
-<h2>纯文本的威力</h2>
-<p>用纯文本保存知识。</p>
-<h2>shell 游戏</h2>
-<p>发挥 shell 命令的优势。花费一些精力熟悉 shell。</p>
-<h2>加强编辑器能力</h2>
-<p>熟悉编辑器：</p>
-<ul>
-<li>当编辑文本时，以字符、单词、行、段落为单位移动光标及进行选择。</li>
-<li>当编辑代码时，在各种语法单元（配对的分隔符、函数、模块……）之间移动。</li>
-<li>做完修改后，重新缩进代码。</li>
-<li>用单个指令完成代码块的注释或取消注释。</li>
-<li>Undo 并 Redo 变更。</li>
-<li>把编辑窗口切割成多个面板，然后在它们之间跳转。</li>
-<li>跳转到特定的行号。</li>
-<li>对选出的多行进行排序。</li>
-<li>搜索普通字符串，或用正则表达式搜索，然后重复上一次的搜索。</li>
-<li>基于框选或某个模式匹配的结果，临时创建多个光标，并行地在多个光标处编辑文本。</li>
-<li>显示当前项目的编译错误。</li>
-<li>跑一下当前项目的测试。</li>
-</ul>
-<p>编辑时要自省。每次发现自己又在重复做某件事情的时候，要习惯性地想到「或许有更好的方法」，然后找到这个方法。</p>
-<p>一旦你发掘出一个新的有用的特性，需要尽快把它内化成一种肌肉记忆，这样在使用的时候就能不假思索。</p>
-<p>当你在使用编辑器过程中遇到明显的限制时，可以四处找找有什么扩展可以解决问题。</p>
-<p>更进一步，深入研究一下编辑器的扩展语言。搞明白怎样用它来将一些重复工作自动化——通常也就是一两行代码的事情。</p>
-<p>有时你还会走得更远，不知不觉就写出一个完整的扩展。那么，不妨发布出去：你需要它，其他人也会需要的。</p>
-<h2>版本控制</h2>
-<p>永远使用版本控制。</p>
-<h2>调试</h2>
-<ul>
-<li>复现</li>
-<li>阅读错误信息</li>
-</ul>
-<h2>文本处理</h2>
-<p>学习一门文本处理语言，<code>py</code>、<code>js</code>、<code>ruby</code>。</p>
-<h2>工程日记</h2>
-<p>记录所做的事情、所学的东西、想法的草图——基本上都是各种与工作有关的东西。</p>
-]]></content>
-    <category term="READING"/>
-    <published>2024-02-20T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">useEffect</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/02-useEffect.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/02-useEffect.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p><code>useEffect</code> 可以将组件与外部系统同步。</p>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>外部系统，包括网络、浏览器 API (<code>setTimeout</code>...）、第三方库或浏览器 DOM。</p>
-</div>
-<h2>useEffect(setup, dependencies?)</h2>
-<h3><code>setup</code></h3>
-<p>包含 Effect 逻辑的函数。该 <strong>设置函数</strong> 可以返回一个 <strong>清理函数</strong>。大致运行逻辑如下：</p>]]></summary>
-    <content type="html"><![CDATA[<p><code>useEffect</code> 可以将组件与外部系统同步。</p>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>外部系统，包括网络、浏览器 API (<code>setTimeout</code>...）、第三方库或浏览器 DOM。</p>
-</div>
-<h2>useEffect(setup, dependencies?)</h2>
-<h3><code>setup</code></h3>
-<p>包含 Effect 逻辑的函数。该 <strong>设置函数</strong> 可以返回一个 <strong>清理函数</strong>。大致运行逻辑如下：</p>
-<ol>
-<li>当组件添加到 DOM 时，React 将运行「设置函数」。</li>
-<li>在每次重新渲染依赖关系发生变化后：
-<ul>
-<li>React 将首先使用 <strong>旧值</strong> 运行「清理函数」；</li>
-<li>然后使用 <strong>新值</strong> 运行「设置函数」。</li>
-</ul>
-</li>
-<li>从 DOM 中移除组件后，React 将最后一次运行「清理函数」。</li>
-</ol>
-<h3><code>dependencies</code></h3>
-<p><code>setup</code> 代码中依赖的所有响应值的列表。</p>
-<p>响应值包括 <code>props</code>、<code>state</code> 以及直接在组件主体中声明的所有变量和函数。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>如果为 React 配置了 <a href="https://react.dev/learn/editor-setup#linting" target="_blank" rel="noopener noreferrer">linter</a>，它就会验证是否将每个反应值都正确指定为依赖项。</p>
-</div>
-<p>依赖项列表必须具有恒定的项数，并以 <code>[dep1、dep2、dep3]</code> 这样的内联方式书写。</p>
-<p>React 会使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is" target="_blank" rel="noopener noreferrer"><code>Object.is</code></a> 比较法将每个依赖项与其前一个值进行比较。</p>
-<p>如果省略此参数，每次重新渲染组件后，Effect 都会重新运行。</p>
-
-<h2>useEffect 完整指南</h2>
-<p><a href="https://overreacted.io/a-complete-guide-to-useeffect/" target="_blank" rel="noopener noreferrer">useEffect 完整指南</a></p>
-<h3>每一次渲染都有自己的 props 和 state</h3>
-<p>和 Vue 不同，Vue 的基本原理是数据绑定、观察者模式、proxy。</p>
-<p>React 在状态变更时会重新渲染组件，状态并没有任何的数据绑定。</p>
-<p>每一次组件调用引起的渲染，props 和 state 都独立于其他渲染。</p>
-<h3>每一次渲染都有自己的事件处理程序</h3>
-<p>事件处理函数会记住当前渲染的 <code>props</code> 和 <code>state</code>，从这个角度来说可以印证第一点。</p>
-<h3>每一次渲染都有自己的 Effects</h3>
-<p>每次渲染都是一个 <em>不同的函数</em> ，每一个 effect 版本「看到」的 <code>props</code> 和 <code>state</code> 值都来自于它属于的那次特定渲染。</p>
-<p>从官方文档中的描述中也可以确认这一点：<strong>在每次重新渲染依赖关系发生变化后，React 将首先使用旧值运行清理函数，然后使用新值运行设置函数。</strong></p>
-<p>每一次渲染的任何东西都是独立的。**在组件内什么时候去读取 props 或者 state 是无关紧要的。**因为在单次渲染的范围内，props 和 state 始终保持不变。</p>
-]]></content>
-    <category term="react"/>
-    <published>2024-02-27T00:00:00.000Z</published>
   </entry>
 </feed>

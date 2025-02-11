@@ -12,15 +12,16 @@ export default [
     icon: 'network',
     prefix: '/computer-science/networking/',
     children: [
-      '001-network-model',
-      '002-http-overview',
-      '003-get-post-difference',
-      '004-http-development',
-      '005-http-cache',
-      '006-https-overview',
-      '007-tcp-three-handshakes-and-four-waves',
-      '008-tcp-udp',
-      '009-http-code-when-authorized-refused'
+      '01-network-model',
+      '02-http-overview',
+      '03-get-post-difference',
+      '04-http-development',
+      '05-http-cache',
+      '06-https-overview',
+      '07-tcp-three-handshakes-and-four-waves',
+      '08-tcp-udp',
+      '09-http-code-when-authorized-refused',
+      '10-401-403'
     ]
   },
   {

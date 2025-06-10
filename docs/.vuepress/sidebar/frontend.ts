@@ -93,7 +93,7 @@ export default [
         collapsible: true,
         prefix: 'react/',
         icon: 'react',
-        children: ['01-useState', '02-useEffect']
+        children: ['00-fundaments', '01-useState', '02-useEffect']
       },
       {
         text: 'Expo',

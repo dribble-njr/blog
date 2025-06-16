@@ -10,9 +10,24 @@ tag:
   - state hooks
 ---
 
-`useState` 声明一个可以直接更新的状态变量。
+React 组件生命周期：
 
-一般在组件 **最顶层** 调用 `useState` 给组件添加状态变量，一般使用数组解构来命名状态变量，如 `[something, setSomething]`。
+```mermaid
+graph LR
+    A[Initial Render] --> B[Create the DOM]
+    B --> C[User Interaction]
+    C --> D[State Changes]
+    D --> E[re-render]
+    E --> F[Update the DOM]
+    F --> C
+```
+
+## 基本用法
+
+一般在组件 **最顶层** 调用 `useState` 给组件添加状态变量，返回一个数组，使用数组解构接收，如 `[something, setSomething]`。
+
+- 当前状态。在第一次渲染时，它将与传递的初始状态 `initialState` 相匹配。
+- `set` 函数，用于 **状态更新** 并 **触发重新渲染**。
 
 ```js
 import { useState } from 'react'
@@ -21,7 +36,6 @@ function MyComponent() {
   const [age, setAge] = useState(28)
   const [name, setName] = useState('Taylor')
   const [todos, setTodos] = useState(() => createTodos())
-  // ...
 }
 ```
 
@@ -31,15 +45,7 @@ function MyComponent() {
 
 `initialState`：初始状态，可以是任何类型的值，初始渲染后，该参数将被忽略。
 
-如果传递一个函数作为 `initialState`，它将被视为「初始化函数」。
-
-它应该：
-
-- 是 **纯函数**
-- 不带参数
-- 返回任意类型的值
-
-React 将在初始化组件时调用初始化函数，并将其返回值存储为初始状态。
+如果传递一个函数作为 `initialState`，它将被视为「初始化函数」。React 将在初始化组件时调用初始化函数，并将其返回值存储为初始状态。
 
 :::tabs
 
@@ -153,29 +159,9 @@ export default function TodoList() {
 
 ::: warning
 
-尽管 `createInitialTodos()` 的结果仅用于初始渲染，但你仍然在每次渲染时调用此函数。如果它创建大数组或执行昂贵的计算，这可能会浪费资源。
-
-所以对于大型数组的创建，一般传入初始化函数。
-
-:::
-
-**返回值：**
-
-`useState` 返回一个数组，使用数组解构接收，其中包含两个值：
-
-1. 当前状态。在第一次渲染时，它将与传递的初始状态 `initialState` 相匹配。
-2. `set` 函数，用于 **状态更新** 并 **触发重新渲染**。
-
-**注意：**
-
+- 尽管 `createInitialTodos()` 的结果仅用于初始渲染，但你仍然在每次渲染时调用此函数。如果它创建大数组或执行昂贵的计算，这可能会浪费资源,所以应该保证传入初始化函数。
 - `useState` 是一个钩子，所以 **只能** 在组件的顶层或者你自己的钩子中调用它，**不能** 在循环或条件中调用它。
 - 在严格模式下，React 会 **调用两次初始化函数**，其中一次调用的结果将被忽略，以帮助你找到意外的杂质。这是开发专用行为，不会影响生产环境。如果初始化函数是纯函数，就不会影响应用实际行为（因此初始化函数必须是纯函数）。
-
-::: warning
-
-若循环调用，则可能造成状态管理混乱、组件不一致、难以调试的问题。
-
-:::
 
 ## setSomething(nextState)
 
@@ -229,7 +215,7 @@ function handleClick2() {
 
 :::
 
-::: warning
+## 总结
 
 - `set` 函数只更新 **下一次渲染** 的状态变量。如果在调用 `set` 函数后读取状态变量，您仍然会得到调用前屏幕上的旧值。
 - 如果提供的新值与当前状态相同（由 `Object.is` 比较确定），React 将 **跳过重新渲染组件及其子代**。
@@ -238,7 +224,7 @@ function handleClick2() {
 
 :::
 
-## Usage
+## 参考
 
 - [Adding state to a component](https://react.dev/reference/react/useState#adding-state-to-a-component)
 - [Updating state based on the previous state](https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state)

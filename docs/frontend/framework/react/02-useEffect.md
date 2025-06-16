@@ -30,6 +30,14 @@ tag:
    - 然后使用 **新值** 运行「设置函数」。
 3. 从 DOM 中移除组件后，React 将最后一次运行「清理函数」。
 
+![hook flow](https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20250616153336.png)
+
+::: TIP
+
+所以，当存在一些副作用（定时器等），你需要确保有清理函数，否则可能会导致内存泄漏。
+
+:::
+
 ### `dependencies`
 
 `setup` 代码中依赖的所有响应值的列表。
@@ -294,26 +302,6 @@ export default function App() {
 
 :::
 
-## useEffect 完整指南
+## 参考
 
-[useEffect 完整指南](https://overreacted.io/a-complete-guide-to-useeffect/)
-
-### 每一次渲染都有自己的 props 和 state
-
-和 Vue 不同，Vue 的基本原理是数据绑定、观察者模式、proxy。
-
-React 在状态变更时会重新渲染组件，状态并没有任何的数据绑定。
-
-每一次组件调用引起的渲染，props 和 state 都独立于其他渲染。
-
-### 每一次渲染都有自己的事件处理程序
-
-事件处理函数会记住当前渲染的 `props` 和 `state`，从这个角度来说可以印证第一点。
-
-### 每一次渲染都有自己的 Effects
-
-每次渲染都是一个 _不同的函数_ ，每一个 effect 版本「看到」的 `props` 和 `state` 值都来自于它属于的那次特定渲染。
-
-从官方文档中的描述中也可以确认这一点：**在每次重新渲染依赖关系发生变化后，React 将首先使用旧值运行清理函数，然后使用新值运行设置函数。**
-
-每一次渲染的任何东西都是独立的。**在组件内什么时候去读取 props 或者 state 是无关紧要的。**因为在单次渲染的范围内，props 和 state 始终保持不变。
+- [useEffect 完整指南](https://overreacted.io/a-complete-guide-to-useeffect/)

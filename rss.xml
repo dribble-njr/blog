@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 16 Jun 2025 07:38:03 GMT</pubDate>
-    <lastBuildDate>Mon, 16 Jun 2025 07:38:03 GMT</lastBuildDate>
+    <pubDate>Fri, 20 Jun 2025 03:28:36 GMT</pubDate>
+    <lastBuildDate>Fri, 20 Jun 2025 03:28:36 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>react</category>
@@ -31,7 +31,42 @@
     <category>browser</category>
     <category>HTML</category>
     <category>chakra</category>
-    <category>next</category>
+    <item>
+      <title>Video.js Component 开发指南</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/practice/022-videojs-component.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/practice/022-videojs-component.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Video.js Component 开发指南</source>
+      <description>Video.js Component 基础概念 什么是 Video.js Component？ Video.js Component 是基于 Video.js Player 框架的可扩展 UI 元素，用于增强视频播放器的功能和用户体验。每个 Component 都是独立的、可重用的模块。 Component 继承关系 核心 API Component ...</description>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2><strong>Video.js Component 基础概念</strong></h2>
+<h3>什么是 Video.js Component？</h3>
+<p>Video.js Component 是基于 Video.js Player 框架的可扩展 UI 元素，用于增强视频播放器的功能和用户体验。每个 Component 都是独立的、可重用的模块。</p>
+<h3>Component 继承关系</h3>
+<h3>核心 API</h3>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token comment">// 基础 Component 类</span>
+<span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">videojs</span><span class="token punctuation">.</span><span class="token function">getComponent</span><span class="token punctuation">(</span><span class="token string">'Component'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>player<span class="token operator">:</span> Player<span class="token punctuation">,</span> options<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>player<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 初始化逻辑</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 获取 DOM 元素</span>
+  <span class="token function">el</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> HTMLElement
+
+  <span class="token comment">// 添加/移除 CSS 类</span>
+  <span class="token function">addClass</span><span class="token punctuation">(</span>className<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+  <span class="token function">removeClass</span><span class="token punctuation">(</span>className<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+
+  <span class="token comment">// 事件绑定</span>
+  <span class="token function">on</span><span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> handler<span class="token operator">:</span> <span class="token builtin">Function</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+  <span class="token function">off</span><span class="token punctuation">(</span>event<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> handler<span class="token operator">:</span> <span class="token builtin">Function</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+
+  <span class="token comment">// 清理资源</span>
+  <span class="token function">dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div>]]></content:encoded>
+    </item>
     <item>
       <title>react fundamentals</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/framework/react/00-fundaments.html</link>
@@ -8888,155 +8923,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
       <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/</guid>
       <source url="https://dribble-njr.github.io/blog/blog/rss.xml">chakra</source>
       <pubDate>Thu, 07 Mar 2024 09:35:01 GMT</pubDate>
-    </item>
-    <item>
-      <title>页面和布局</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/next/pages-router/01-pages-layouts.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/next/pages-router/01-pages-layouts.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">页面和布局</source>
-      <description>pages router 是基于文件系统的路由器，以页面概念为基础。 当一个文件被添加到 pages 目录时，它就会自动成为一个路由。 在 Next.js 中，页面是从页面目录中的 .js、.jsx、.ts 或 .tsx 文件导出的 React 组件。每个页面都根据其文件名与路由相关联。 例如如果创建的 pages/about.js 导出了一个 Rea...</description>
-      <category>next</category>
-      <pubDate>Tue, 05 Mar 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p><code>pages router</code> 是基于文件系统的路由器，以页面概念为基础。</p>
-<p>当一个文件被添加到 <code>pages</code> 目录时，它就会自动成为一个路由。</p>
-<p>在 Next.js 中，页面是从页面目录中的 <code>.js</code>、<code>.jsx</code>、<code>.ts</code> 或 <code>.tsx</code> 文件导出的 React 组件。每个页面都根据其文件名与路由相关联。</p>
-<p>例如如果创建的 <code>pages/about.js</code> 导出了一个 React 组件（如下所示），则可通过 <code>/about</code> 访问该组件。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">About</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>About<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>根路由</h2>
-<p>路由器会自动将名为 <code>index</code> 的文件路由到目录根目录。</p>
-<ul>
-<li><code>pages/index.js</code> → <code>/</code></li>
-<li><code>pages/blog/index.js</code> → <code>/blog</code></li>
-</ul>
-<h2>嵌套路由</h2>
-<p>路由器支持嵌套文件。如果创建了嵌套文件夹结构，文件仍会自动以相同方式路由。</p>
-<ul>
-<li><code>pages/blog/first-post.js</code> → <code>/blog/first-post</code></li>
-<li><code>pages/dashboard/settings/username.js</code> → <code>/dashboard/settings/username</code></li>
-</ul>
-<h2>带有动态路由的页面</h2>
-<p>Next.js 支持带有动态路由的页面。例如，如果你创建了一个名为 <code>pages/posts/[id].js</code> 的文件，那么就可以通过 <code>posts/1</code>、<code>posts/2</code> 等路径访问该文件。</p>
-<h2>布局模式</h2>
-<p>React 模型允许我们将页面解构为一系列组件。其中许多组件通常会在页面之间重复使用。例如，您可能会在每个页面上使用相同的导航栏和页脚。</p>
-<p><strong><code>components/layout.js</code></strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> Navbar <span class="token keyword">from</span> <span class="token string">'./navbar'</span>
-<span class="token keyword">import</span> Footer <span class="token keyword">from</span> <span class="token string">'./footer'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span><span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>Navbar <span class="token operator">/</span><span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>main<span class="token operator">&gt;</span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>Footer <span class="token operator">/</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h2>例子</h2>
-<h3>使用自定义应用程序的单一共享布局</h3>
-<p>如果您的整个应用程序只有一个布局，您可以创建一个自定义应用程序，并用该布局包装您的应用程序。</p>
-<p>由于 <code>&lt;Layout /&gt;</code> 组件在更改页面时会被重复使用，因此其组件状态（如输入值）会被保留。</p>
-<p><strong><code>pages/_app.js</code></strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> Layout <span class="token keyword">from</span> <span class="token string">'../components/layout'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> Component<span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Layout<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Layout<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>按页面布局</h3>
-<p>如果需要多种布局，可以在页面中添加 <code>getLayout</code> 属性，这样就可以返回布局的 React 组件，可以实现按页面定义布局。</p>
-<p>由于我们返回的是一个函数，因此如果需要，我们可以使用复杂的嵌套布局。</p>
-<p><strong><code>pages/index.js</code></strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> Layout <span class="token keyword">from</span> <span class="token string">'../components/layout'</span>
-<span class="token keyword">import</span> NestedLayout <span class="token keyword">from</span> <span class="token string">'../components/nested-layout'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token doc-comment comment">/** Your content */</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-Page<span class="token punctuation">.</span><span class="token function-variable function">getLayout</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">getLayout</span><span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Layout<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>NestedLayout<span class="token operator">&gt;</span><span class="token punctuation">{</span>page<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>NestedLayout<span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Layout<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p><strong><code>pages/_app.js</code></strong></p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> Component<span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// Use the layout defined at the page level, if available</span>
-  <span class="token keyword">const</span> getLayout <span class="token operator">=</span> Component<span class="token punctuation">.</span>getLayout <span class="token operator">??</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> page<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> <span class="token function">getLayout</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><p>在页面之间导航时，我们希望持久保存页面状态（输入值、滚动位置等），以获得单页面应用程序 (SPA) 体验。</p>
-<p>这种布局模式可以实现状态持久化，因为 React 组件树会在页面转换之间保持不变。通过组件树，React 可以了解哪些元素发生了变化，从而保持状态。</p>
-<h3>使用 TypeScript</h3>
-<p>使用 TypeScript 时，首先必须为页面创建一个包含 <code>getLayout</code> 函数的新类型。然后，您必须为您的 <code>AppProps</code> 创建一个新类型，重载 <code>Component</code> 属性以使用之前创建的类型。</p>
-<p><strong><code>pages/index.tsx</code></strong></p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> ReactElement <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
-<span class="token keyword">import</span> Layout <span class="token keyword">from</span> <span class="token string">'../components/layout'</span>
-<span class="token keyword">import</span> NestedLayout <span class="token keyword">from</span> <span class="token string">'../components/nested-layout'</span>
-<span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> NextPageWithLayout <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./_app'</span>
-
-<span class="token keyword">const</span> Page<span class="token operator">:</span> <span class="token function-variable function">NextPageWithLayout</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>hello world<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
-<span class="token punctuation">}</span>
-
-Page<span class="token punctuation">.</span><span class="token function-variable function">getLayout</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">getLayout</span><span class="token punctuation">(</span>page<span class="token operator">:</span> ReactElement<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>Layout<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>NestedLayout<span class="token operator">&gt;</span><span class="token punctuation">{</span>page<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>NestedLayout<span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>Layout<span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> Page
-</code></pre></div><p><strong><code>pages/_app.tsx</code></strong></p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> ReactElement<span class="token punctuation">,</span> ReactNode <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
-<span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> NextPage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'next'</span>
-<span class="token keyword">import</span> <span class="token keyword">type</span> <span class="token punctuation">{</span> AppProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'next/app'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">NextPageWithLayout<span class="token operator">&lt;</span><span class="token constant">P</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token constant">IP</span> <span class="token operator">=</span> <span class="token constant">P</span><span class="token operator">&gt;</span></span> <span class="token operator">=</span> NextPage<span class="token operator">&lt;</span><span class="token constant">P</span><span class="token punctuation">,</span> <span class="token constant">IP</span><span class="token operator">&gt;</span> <span class="token operator">&amp;</span> <span class="token punctuation">{</span>
-  getLayout<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">(</span>page<span class="token operator">:</span> ReactElement<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> ReactNode
-<span class="token punctuation">}</span>
-
-<span class="token keyword">type</span> <span class="token class-name">AppPropsWithLayout</span> <span class="token operator">=</span> AppProps <span class="token operator">&amp;</span> <span class="token punctuation">{</span>
-  Component<span class="token operator">:</span> NextPageWithLayout
-<span class="token punctuation">}</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">MyApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span> Component<span class="token punctuation">,</span> pageProps <span class="token punctuation">}</span><span class="token operator">:</span> AppPropsWithLayout<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token comment">// Use the layout defined at the page level, if available</span>
-  <span class="token keyword">const</span> getLayout <span class="token operator">=</span> Component<span class="token punctuation">.</span>getLayout <span class="token operator">??</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> page<span class="token punctuation">)</span>
-
-  <span class="token keyword">return</span> <span class="token function">getLayout</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>Component <span class="token punctuation">{</span><span class="token operator">...</span>pageProps<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div><h3>获取数据</h3>
-<p>在布局中，您可以使用 <code>useEffect</code> 或类似 <a href="https://swr.vercel.app/zh-CN" target="_blank" rel="noopener noreferrer">SWR</a> 的库在客户端获取数据。由于该文件不是页面，因此目前无法使用 <code>getStaticProps</code> 或 <code>getServerSideProps</code>。</p>
-<div class="language-javascript" data-ext="js" data-title="js"><pre class="language-javascript"><code><span class="token keyword">import</span> useSWR <span class="token keyword">from</span> <span class="token string">'swr'</span>
-<span class="token keyword">import</span> Navbar <span class="token keyword">from</span> <span class="token string">'./navbar'</span>
-<span class="token keyword">import</span> Footer <span class="token keyword">from</span> <span class="token string">'./footer'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Layout</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token punctuation">{</span> data<span class="token punctuation">,</span> error <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useSWR</span><span class="token punctuation">(</span><span class="token string">'/api/navigation'</span><span class="token punctuation">,</span> fetcher<span class="token punctuation">)</span>
-
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Failed to load<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>data<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>Loading<span class="token operator">...</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
-
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span><span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>Navbar links<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">.</span>links<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>main<span class="token operator">&gt;</span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>Footer <span class="token operator">/</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">&gt;</span>
-  <span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre></div>]]></content:encoded>
     </item>
   </channel>
 </rss>

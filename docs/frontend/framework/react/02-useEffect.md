@@ -20,6 +20,24 @@ tag:
 
 ## useEffect(setup, dependencies?)
 
+`useEffect` 是一个内置的钩子，允许你在 React 将组件渲染（和重新渲染）到 DOM 后运行一些自定义代码。它接受一个回调函数，React 将在 DOM 更新后调用该函数：
+
+```tsx
+useEffect(() => {
+	// 在这里编写你的副作用代码。
+	// 这里可以与浏览器 API 交互，例如
+	doSomeThing()
+	return function cleanup() {
+		// 如果需要清理副作用（如取消订阅事件），可以在这里进行
+		doSomeCleanup()
+	}
+}, [
+	// 这里放置你的 useEffect 回调函数的依赖项
+	dep1,
+	dep2,
+])
+```
+
 ### `setup`
 
 包含 Effect 逻辑的函数。该 **设置函数** 可以返回一个 **清理函数**。大致运行逻辑如下：

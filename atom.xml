@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2025-06-20T03:28:36.009Z</updated>
+  <updated>2025-06-26T03:55:49.005Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -32,6 +32,93 @@
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">useId</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/04-useId.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/04-useId.html"/>
+    <updated>2025-06-26T03:54:00.000Z</updated>
+    <summary type="html"><![CDATA[<p><code>useId</code> 钩子用于生成唯一且稳定的标识符（ID），可以用于 DOM 元素，传入给 <code>attribute</code>。</p>
+<p>在可重用组件中，特别是在同一页面上多次使用时，这会变得具有挑战性。你不能硬编码一个 <code>id</code> 值，因为那样会有多个具有相同 <code>id</code> 的元素，这是无效的 HTML。你可以使用随机数或字符串，但那样你需要自己管理，并且它不会在渲染之间保持一致。如果你想要服务器渲染你的应用，你需要确保客户端生成的 ID 与服务器生成的 ID 匹配，以避免 bug，这很痛苦。</p>
+<p>这就是 <code>useId</code> 钩子发挥作用的地方。</p>]]></summary>
+    <content type="html"><![CDATA[<p><code>useId</code> 钩子用于生成唯一且稳定的标识符（ID），可以用于 DOM 元素，传入给 <code>attribute</code>。</p>
+<p>在可重用组件中，特别是在同一页面上多次使用时，这会变得具有挑战性。你不能硬编码一个 <code>id</code> 值，因为那样会有多个具有相同 <code>id</code> 的元素，这是无效的 HTML。你可以使用随机数或字符串，但那样你需要自己管理，并且它不会在渲染之间保持一致。如果你想要服务器渲染你的应用，你需要确保客户端生成的 ID 与服务器生成的 ID 匹配，以避免 bug，这很痛苦。</p>
+<p>这就是 <code>useId</code> 钩子发挥作用的地方。</p>
+<p><code>useId</code> 钩子生成一个唯一且稳定的标识符（ID），你可以用于 DOM 元素。</p>
+<p>这是一个如何在表单组件中使用 <code>useId</code> 钩子的示例：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">function</span> <span class="token function">FormField</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> id <span class="token operator">=</span> <span class="token function">useId</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>id<span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Name:</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>id<span class="token punctuation">}</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在这个示例中，<code>useId</code> 生成一个唯一 ID，将标签与输入关联起来，确保屏幕阅读器和其他辅助技术可以正确识别表单字段关系。</p>
+<p>与 <code>useState</code> 或 <code>useEffect</code> 不同，<code>useId</code> 不接受任何参数并返回一个单个字符串值。没有 setter 或 updater 函数，因为提供的 ID 应该在整个组件的生命周期中保持不变且唯一。</p>
+<p>它在服务器端渲染（SSR）上下文中特别有用，因为它确保服务器生成的 ID 与客户端生成的 ID 之间的一致性，避免 hydration 不匹配。</p>
+<p>记住，<code>useId</code> 的主要用途是用于可访问性和管理不同 DOM 元素之间的关系，如标签和输入。它帮助保持你的 UI 可预测且可访问，而无需自己管理唯一 ID。</p>
+<p>一个重要的事情是，你不应该使用 <code>useId</code> 为非 DOM 元素生成 ID，如列表中的键或 React 元素的唯一键。这些 ID 应该来自你的数据，而不是 <code>useId</code>。</p>
+]]></content>
+    <category term="react"/>
+    <published>2025-06-26T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">useRef</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/03-useRef.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/03-useRef.html"/>
+    <updated>2025-06-26T03:44:06.000Z</updated>
+    <summary type="html"><![CDATA[<p>使用 React 时，通常需要直接与 DOM 交互。你可能需要使用一个需要直接与 DOM 交互的非框架特定的库。通常为了使 UI 可访问，你需要考虑焦点管理，这需要你调用输入框的 <code>.focus()</code> 方法。</p>
+<p>记住，当你这样做时：<code>&lt;div&gt;hi&lt;/div&gt;</code>，实际上是 <code>React.createElement</code> 的语法糖，所以你实际上无法在渲染方法中访问 DOM 节点。事实上，DOM 节点在 <code>ReactDOM.createRoot().render()</code> 方法被调用之前根本不存在。你的组件的渲染方法实际上只是负责创建和返回 React 元素，与 DOM 本身无关。</p>]]></summary>
+    <content type="html"><![CDATA[<p>使用 React 时，通常需要直接与 DOM 交互。你可能需要使用一个需要直接与 DOM 交互的非框架特定的库。通常为了使 UI 可访问，你需要考虑焦点管理，这需要你调用输入框的 <code>.focus()</code> 方法。</p>
+<p>记住，当你这样做时：<code>&lt;div&gt;hi&lt;/div&gt;</code>，实际上是 <code>React.createElement</code> 的语法糖，所以你实际上无法在渲染方法中访问 DOM 节点。事实上，DOM 节点在 <code>ReactDOM.createRoot().render()</code> 方法被调用之前根本不存在。你的组件的渲染方法实际上只是负责创建和返回 React 元素，与 DOM 本身无关。</p>
+<p>因此，为了访问 DOM，你需要让 React 在渲染组件时给你提供对特定 DOM 节点的访问。这通过一个特殊的属性 <code>ref</code> 来实现。</p>
+<p>有两种使用 <code>ref</code> 属性的方法：回调和 <code>useRef</code> 钩子。</p>
+<p><strong>ref callback:</strong></p>
+<p>最简单的方法是使用 <code>ref</code> 属性并传递一个回调：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">function</span> <span class="token function">MyDiv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span>
+			<span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>myDiv <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+				<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">here's my div!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> myDiv<span class="token punctuation">)</span>
+				<span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">my div is getting removed from the page!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> myDiv<span class="token punctuation">)</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+		<span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			Hey, this is my div!
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>出于向后兼容的原因，TypeScript 会告诉你 <code>myDiv</code> 可以是 <code>HTMLDivElement</code> 或 <code>null</code>。因此，你可能需要处理 <code>null</code> 的情况（通常，只需提前返回）。在未来，它将永远不会是 <code>null</code>。</p>
+</div>
+<p><strong>ref object:</strong></p>
+<p>对于更复杂的使用场景（例如，需要在初始渲染后与 DOM 交互），可以使用 <code>useRef</code> 钩子。</p>
+<p>这是一个使用 <code>ref</code> 属性和 <code>useRef</code> 的简单示例：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">function</span> <span class="token function">MyDiv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> myDivRef <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useRef</span><span class="token generic class-name"><span class="token operator">&lt;</span>HTMLDivElement<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+	<span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		<span class="token keyword">const</span> myDiv <span class="token operator">=</span> myDivRef<span class="token punctuation">.</span>current
+		<span class="token comment">// myDiv is the div DOM node!</span>
+		<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myDiv<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>myDivRef<span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">hi</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>使用 <code>ref</code> 对象的优点是你可以将 ref 对象存储在变量中，并在 <code>useEffect</code> 回调或事件处理程序中安全地访问它。</p>
+<p>组件渲染后，它被认为是“已挂载”。这就是 <code>useEffect</code> 回调被调用的时候，所以到那时，ref 应该有它的 <code>current</code> 属性设置为 DOM 节点。因此，你通常会在 <code>useEffect</code> 回调中进行直接 DOM 交互/操作。</p>
+<p>每个元素都有一个特殊的 <code>ref</code> 属性（如上所示）。你将 ref 传递给该属性，React 将为你提供对该元素创建的元素的引用。</p>
+<p>你还可以将 <code>ref</code> 传递给函数组件，该组件可以将 <code>ref</code> 转发到另一个元素，或者它可以使用 <code>useImperativeHandle</code> 在上面添加一些方便的方法。</p>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>直接将 <code>ref</code> 传递作为 <code>props</code> 给函数组件，在 React 18 中需要使用 <code>forwardRef</code> 来转发 <code>ref</code>。</p>
+<p>React19 中，<code>forwardRef</code> 已经废弃，直接将 <code>ref</code> 传递作为 <code>props</code> 给函数组件即可。</p>
+</div>
+]]></content>
+    <category term="react"/>
+    <published>2025-06-26T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">Video.js Component 开发指南</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/practice/022-videojs-component.html</id>
@@ -6054,13 +6141,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * <span class="token keyword">@export</span>
- * <span class="token keyword">@class</span> MiddlewareManager
+ * @export
+ * @class MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -6287,12 +6374,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
  * Execute route's middleware and controller.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
+ * @param {CustomIncomingMessage} req
+ * @param {ServerResponse} res
+ * @param {Route} route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -6315,12 +6402,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
- * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
+ * @param {string} method - The HTTP method to match.
+ * @param {string} pathname - The URL pathname to match.
+ * @return {Object} An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -9831,93 +9918,5 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </code></pre></div>]]></content>
     <category term="chakra"/>
     <published>2024-03-07T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">快速开始</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/01-getting-started.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/01-getting-started.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p><a href="https://chakra-ui.com/" target="_blank" rel="noopener noreferrer">Chakra UI</a> 是一个简单、模块化和可访问的组件库，可提供构建 React 应用程序所需的组件。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">总结</p>
-<p>非常灵活自由，但有一定上手门槛。</p>
-</div>
-<h2>设计原则</h2>
-<p>Chakra UI 建立在保持组件一致性的原则之上。了解这些概念将有助于您更好地为 Chakra UI 做出贡献。</p>]]></summary>
-    <content type="html"><![CDATA[<p><a href="https://chakra-ui.com/" target="_blank" rel="noopener noreferrer">Chakra UI</a> 是一个简单、模块化和可访问的组件库，可提供构建 React 应用程序所需的组件。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">总结</p>
-<p>非常灵活自由，但有一定上手门槛。</p>
-</div>
-<h2>设计原则</h2>
-<p>Chakra UI 建立在保持组件一致性的原则之上。了解这些概念将有助于您更好地为 Chakra UI 做出贡献。</p>
-<p>我们的目标是设计简单、可组合的组件，以解决现实生活中的用户界面设计问题。为此，我们制定了一系列原则，帮助我们始终沿着这条道路前进。</p>
-<ul>
-<li>Style Props：所有组件的样式都可以通过 <code>style props</code> 覆盖或扩展，以减少 <code>css prop</code> 或 <code>styled()</code> 的使用。从 Box 中组合新组件。</li>
-<li>简单：努力保持组件应用程序接口（API）相当简单，并展示组件在现实世界中的使用场景。</li>
-<li>组合：将组件分解成具有最小道具的较小部分，以降低复杂性，并将它们组合在一起。这将确保样式和功能的灵活性和可扩展性。</li>
-<li>可访问性：创建组件时，应将可访问性放在首位。这包括键盘导航、焦点管理、色彩对比、语音播报以及正确的 <code>aria-*</code> 属性。</li>
-<li>暗色模式：使组件兼容暗色模式。使用 <code>useColorMode</code> 钩子处理样式。了解有关 <a href="https://chakra-ui.com/docs/styled-system/color-mode" target="_blank" rel="noopener noreferrer">暗色模式</a> 的更多信息。</li>
-<li><code>Naming Props</code>：命名是最难的事情。一般来说，要确保 <code>prop name</code> 能说明其作用。<code>Boolean prop</code> 应使用助动词命名，如 <code>does</code>、<code>has</code>、<code>is</code> 和 <code>should</code>。例如，按钮使用 <code>isDisabled</code>、<code>isLoading</code> 等。</li>
-</ul>
-<h2>对比</h2>
-<h3>Tailwind CSS</h3>
-<h4>总览</h4>
-<p><a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind CSS</a>：CSS 框架，提供原子 CSS 类，帮助你为组件设计样式、可访问性、组件组成、键盘导航、样式重写等。</p>
-<p>Chakra UI：一个由精心创建的 React 组件组成的库，具有 Tailwind 的所有样式优势，并能处理所有细节。</p>
-<h4>学习曲线</h4>
-<p>Tailwind CSS：如果你有过 Bootstrap 或 Bulma CSS 背景，你可能会发现学习 Tailwind 非常容易。但是，如果你是 <code>styled-components</code> 或 <code>emotion</code> 背景，学习曲线可能会相当陡峭。</p>
-<p>Chakra UI：Chakra UI 采用非常直观、类似 CSS 和基于 <code>prop</code> 的组件样式模型，因此很容易上手。组件名称和 <code>prop</code> 名称也非常容易理解。</p>
-<h4>响应式</h4>
-<p>Tailwind CSS：在 Tailwind 中创建响应式样式需要结合伪类。随着项目的增长，这可能会变得相当冗长。</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-16 md:w-32 lg:w-48<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-</code></pre></div><p>Chakra UI：以非常简单直观的方式创建响应式样式。可以使用数组或对象符号：</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Img</span></span> <span class="token attr-name">w</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">48</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Img</span></span> <span class="token attr-name">w</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> base：<span class="token number">16</span><span class="token punctuation">,</span> md：<span class="token number">32</span><span class="token punctuation">,</span> lg：<span class="token number">48</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>...<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
-</span></code></pre></div><h4>样式覆盖</h4>
-<p>在大多数应用中，为满足设计要求而覆盖特定上下文的样式是一项常见的挑战。</p>
-<p>Tailwind CSS：鉴于 Tailwind 是一个 CSS 实用框架，你可能需要找出覆盖特定 classNames 或编写自定义 CSS 的最佳方法。</p>
-<p>Chakra UI：Chakra UI 的样式是基于 <code>prop</code> 的，因此覆盖就像传递 <code>prop</code> 一样简单。</p>
-<h4>可访问性</h4>
-<p>如前所述，Tailwind CSS 只是一个 CSS 框架，类似于 Bootstrap 或 Bulma CSS。这样，用户就可以处理语义 html 结构、满足 WAI-ARIA 要求、键盘导航等。</p>
-<p>Chakra 不仅提供了 Tailwind 的便利性，还具有其他所有优点。</p>
-<h4>暗色模式</h4>
-<p>Tailwind CSS：所有组件均与暗色模式兼容。</p>
-<p>Chakra UI：所有组件均兼容明暗模式。还可以在整个应用程序中创建自己的明暗模式体验。</p>
-<h3>Theme UI</h3>
-<p>Chakra UI 深受 Theme UI 的启发，并遵循系统 UI 规范。</p>
-<p>与 Theme UI 相比，Chakra UI 提供了更多组件、改进的样式 API、可访问性和直观的组件 API。</p>
-<p>可以将 Chakra 视为更强大的 Theme UI 版本，它充分利用了 <code>styled-system</code> 的全部功能，提供更好的组件样式和主题。</p>
-<h3>Material UI</h3>
-<p>Material UI React 库为用户提供了大量 UI 布局工具，但其最著名的地方在于它提供了大量预设样式的 UI 组件，开发人员可以在这些组件上应用自定义样式来覆盖开箱即用的基础样式。</p>
-<p>Chakra UI 是一个更强大、更注重布局的库，它也为开发人员提供了与 Material UI 类似的 UI 组件，但更注重创建灵活、可组合和可扩展的代码。</p>
-<p>在比较这两个框架时，需要考虑的一个核心概念是 "易于修改"。</p>
-<p>相比之下，Material UI 为与导出组件和布局相关的单个 HTML 标签添加了更多的类，这迫使开发人员在定制界面时不得不与基本样式作斗争。</p>
-<p>Chakra 为开发人员提供了更大的自由度来操作导出组件和布局的 CSS 类，而且通常只需较少的代码即可完成。</p>
-<p>例如，Material UI 需要单独的代码来控制基于视口变化的响应式样式，而 Chakra 提供了内置的响应式样式支持，无需创建 CSS 类或媒体查询。</p>
-<p>如果自定义样式并不是项目的主要关注点，Material UI 则是有益的，因为您可以避免创建该库所提供的自定义组件。</p>
-<p>如果可扩展的自定义设计对您的项目很重要（很多时候确实如此），Chakra 对开发人员的便利性比 Material UI 更为突出，尤其是在项目随时间扩展的情况下。</p>
-<h3>Ant Design</h3>
-<p>Ant Design React 库是 ant.design 设计语言的实现。这意味着组件遵循现有的设计规则和值，只允许在有限的范围内自定义某些变量。</p>
-<p>Chakra 不受任何设计系统的束缚，可以更自由地定制组件，实现自己的设计。</p>
-<h4>样式组件</h4>
-<p>Ant Design 组件是为开箱即用而构建的，因此它们的特定样式 <code>prop</code> 和自定义功能非常有限。</p>
-<p>另一方面，Chakra 组件的主要风格化方式是将样式作为 <code>prop</code>。</p>
-<p>以按钮组件为例。Chakra Button 的 <code>colorScheme</code>（色彩主题）道具在默认情况下有许多不同的值，您可以对其进行自定义和/或扩展，以应用自己的设计。</p>
-<p>相比之下，您需要记住，Antd Design 按钮只有在拥有 <code>primary prop</code> 和 <code>danger prop</code> 的情况下才能着色，而不能因为 Ant Design 的现有设计值而着色。</p>
-<p>同样的模式也可以在布局、表单和排版等其他组件中看到。</p>
-<h4>设置和自定义</h4>
-<p>Ant Design 有一长串可修改的默认变量，包括颜色、页边距、边距、动画、阴影、边框、屏幕尺寸、尺寸等，有些是通用变量，有些则是用户界面组件的特定变量。为了尊重底层设计规范，除修改这些现有变量外，不建议进行其他自定义操作。</p>
-<p>Chakra 的特点是所有全局和组件样式默认值都可以轻松定制/扩展。可以为每个组件定义新的尺寸或变体。此外，您还可以使用 Chakra Factory 从现有组件甚至非 Chakra 组件中组合出新的组件。</p>
-]]></content>
-    <category term="chakra"/>
-    <published>2024-03-07T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">chakra</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/chakra/"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <published>2024-03-07T09:35:01.000Z</published>
   </entry>
 </feed>

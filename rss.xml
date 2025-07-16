@@ -6,8 +6,8 @@
     <link>https://dribble-njr.github.io/blog/blog/</link>
     <description>Personal frontend knowledge base</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 04 Jul 2025 11:05:04 GMT</pubDate>
-    <lastBuildDate>Fri, 04 Jul 2025 11:05:04 GMT</lastBuildDate>
+    <pubDate>Wed, 16 Jul 2025 09:21:11 GMT</pubDate>
+    <lastBuildDate>Wed, 16 Jul 2025 09:21:11 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>react</category>
@@ -30,6 +30,62 @@
     <category>JavaScript</category>
     <category>browser</category>
     <category>HTML</category>
+    <item>
+      <title>Portals</title>
+      <link>https://dribble-njr.github.io/blog/blog/frontend/framework/react/06-createPortal.html</link>
+      <guid>https://dribble-njr.github.io/blog/blog/frontend/framework/react/06-createPortal.html</guid>
+      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">Portals</source>
+      <description>有一些场景下，需要将组件渲染在正常的文档流外部，比如一个模态框，需要渲染在 body 元素的顶部。 你可以通过 useEffect 来创建一个 DOM 节点，并将其添加到文档中，然后在组件卸载时将其删除。但是，这个模式非常常见，React 提供了一个内置的方法来实现这个功能，那就是 ReactDOM.createPortal。 createPortal...</description>
+      <pubDate>Wed, 16 Jul 2025 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<p>有一些场景下，需要将组件渲染在正常的文档流外部，比如一个模态框，需要渲染在 <code>body</code> 元素的顶部。</p>
+<p>你可以通过 <code>useEffect</code> 来创建一个 DOM 节点，并将其添加到文档中，然后在组件卸载时将其删除。但是，这个模式非常常见，React 提供了一个内置的方法来实现这个功能，那就是 <code>ReactDOM.createPortal</code>。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createPortal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span>
+
+<span class="token keyword">function</span> <span class="token function">Modal</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	title<span class="token punctuation">,</span>
+	content<span class="token punctuation">,</span>
+	handleClose<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+	title<span class="token operator">:</span> <span class="token builtin">string</span>
+	content<span class="token operator">:</span> <span class="token builtin">string</span>
+	<span class="token function-variable function">handleClose</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token function">createPortal</span><span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">{</span>content<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">,</span>
+		document<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>showModal<span class="token punctuation">,</span> setShowModal<span class="token punctuation">]</span> <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setShowModal</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Show Modal</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>showModal <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Modal</span></span>
+					<span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>My Modal<span class="token punctuation">"</span></span>
+					<span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>This is the content of the modal<span class="token punctuation">"</span></span>
+					<span class="token attr-name">handleClose</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setShowModal</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+				<span class="token punctuation">/&gt;</span></span>
+			<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>createPortal</code> 接收两个参数：</p>
+<ul>
+<li>第一个参数是你要渲染的 UI，它有访问 props、state 等的能力。</li>
+<li>第二个参数是你要渲染到的 DOM 节点。</li>
+</ul>
+<p>在这个例子中，我们把模态框渲染到了 <code>body</code> 元素。</p>
+<ul>
+<li><a href="https://react.dev/reference/react-dom/createPortal" target="_blank" rel="noopener noreferrer">the <code>createPortal</code> docs</a></li>
+</ul>
+]]></content:encoded>
+    </item>
     <item>
       <title>useReducer</title>
       <link>https://dribble-njr.github.io/blog/blog/frontend/framework/react/05-useReducer.html</link>
@@ -5568,13 +5624,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * @export
- * @class MiddlewareManager
+ * <span class="token keyword">@export</span>
+ * <span class="token keyword">@class</span> MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -5801,12 +5857,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
  * Execute route's middleware and controller.
  *
- * @param {CustomIncomingMessage} req
- * @param {ServerResponse} res
- * @param {Route} route
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -5829,12 +5885,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/**
+<span class="token doc-comment comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * @param {string} method - The HTTP method to match.
- * @param {string} pathname - The URL pathname to match.
- * @return {Object} An object containing the matched route and parameters.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
+ * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
+ * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -8588,107 +8644,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>网站响应速度会影响搜索引擎排名，这一部分涉及到性能优化。</p>
 </div>
 ]]></content:encoded>
-    </item>
-    <item>
-      <title>表单数据校验</title>
-      <link>https://dribble-njr.github.io/blog/blog/frontend/basic/html/012-form-validation.html</link>
-      <guid>https://dribble-njr.github.io/blog/blog/frontend/basic/html/012-form-validation.html</guid>
-      <source url="https://dribble-njr.github.io/blog/blog/rss.xml">表单数据校验</source>
-      <description>表单校验帮助我们确保用户以正确格式填写表单数据，确保提交的数据能使我们的应用程序正常工作。 什么是表单数据校验 表单校验——验证你输入表单的数据是否正确。 该字段是必填的 请输入你的电话号码，它的格式是：xxx-xxxx 请输入一个合法的邮箱地址 你的密码长度应该是 8 至 30 位的，并且至少应该包含一个大写字母、一个符号以及一个数字 不同类型的表单...</description>
-      <category>HTML</category>
-      <pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>表单校验帮助我们确保用户以正确格式填写表单数据，确保提交的数据能使我们的应用程序正常工作。</p>
-<h2>什么是表单数据校验</h2>
-<p>表单校验——验证你输入表单的数据是否正确。</p>
-<ul>
-<li>该字段是必填的</li>
-<li>请输入你的电话号码，它的格式是：xxx-xxxx</li>
-<li>请输入一个合法的邮箱地址</li>
-<li>你的密码长度应该是 8 至 30 位的，并且至少应该包含一个大写字母、一个符号以及一个数字</li>
-</ul>
-<h2>不同类型的表单数据校验</h2>
-<p>在 Web 中，你可能会遇见各种不同的表单校验：</p>
-<ul>
-<li>「客户端校验」：这种类型的校验可以进一步细分成下面这些方式：
-<ul>
-<li>JavaScript 校验，这是可以完全自定义的实现方式；</li>
-<li>HTML5 内置校验，这不需要 JavaScript，而且性能更好，但是不能像 JavaScript 那样可自定义。</li>
-</ul>
-</li>
-<li>「服务器端校验」：通常服务器端校验都是发生在将数据写入数据库之前，如果数据没通过校验，则会直接从服务器端返回错误消息。</li>
-</ul>
-<p>在真实的项目开发过程中，开发者一般都倾向于使用客户端校验与服务器端校验的组合校验方式以更好的保证数据的正确性与安全性。</p>
-<h2>HTML5 内置校验</h2>
-<p>HTML5 可以通过表单元素的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Constraint_validation" target="_blank" rel="noopener noreferrer">校验属性</a> 实现对用户的输入进行数据校验。</p>
-<p>这些属性可以让你定义一些规则，用于限定用户的输入，比如某个输入框是否必须输入，或者某个输入框的字符串的最小最大长度限制，或者某个输入框必须输入一个数字、邮箱地址等；还有数据必须匹配的模式。</p>
-<p>如果表单中输入的数据都符合这些限定规则，那么表示这个表单校验通过，否则则认为校验未通过。</p>
-<p>当一个元素校验通过时：</p>
-<ul>
-<li>该元素将可以通过 CSS 伪类 <code>:valid</code> 进行特殊的样式化；</li>
-<li>如果用户尝试提交表单，如果没有其他的控制来阻止该操作（比如 JavaScript 即可阻止提交），那么该表单的数据会被提交。</li>
-</ul>
-<p>如果一个元素未校验通过：</p>
-<ul>
-<li>该元素将可以通过 CSS 伪类 <code>:invalid</code> 进行特殊的样式化；</li>
-<li>如果用户尝试提交表单，浏览器会展示出错误消息，并停止表单的提交。</li>
-</ul>
-<h3>required 属性</h3>
-<p>最简单的 HTML5 校验功能是 <code>required</code> 属性 — 如果要使输入成为必需的，则可以使用此属性标记元素。</p>
-<p>当设置此属性时，如果输入为空，该表单将不会提交（并将显示错误消息），输入也将被视为无效。</p>
-<p>在校验失败时输入框会有一个亮红色的虚线边框，在校验通过时会有一个黄色边框。</p>
-
-<h3>正则表达式</h3>
-<p>另一个常用的校验功能是 <code>pattern</code> 属性，以正则表达式作为 <code>value</code> 值。</p>
-<div class="language-html" data-ext="html" data-title="html"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>choose<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Would you prefer a banana or a cherry?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>choose<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>i_like<span class="token punctuation">"</span></span> <span class="token attr-name">required</span> <span class="token attr-name">pattern</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>banana|cherry<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">&gt;</span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div>
-<h3>demo</h3>
-<p>这里展示一个较为完整的例子：</p>
-
-<h3>自定义错误信息</h3>
-<p>每次我们提交无效的表单数据时，浏览器总会显示错误信息。但是显示的信息取决于你所使用的浏览器。</p>
-<p>这些自动生成的错误有两个缺点：</p>
-<ul>
-<li>没有标准可以让 CSS 来改变他们的界面外观。</li>
-<li>这依赖于他们使用的浏览器环境，意味着你可能在这种语言的页面里得到另一种语言的错误提示。</li>
-</ul>
-<figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240320183034.png" alt="错误信息" tabindex="0" loading="lazy"><figcaption>错误信息</figcaption></figure>
-<p>要自定义这些消息的外观和文本，你必须使用 JavaScript; 不能使用 HTML 和 CSS 来改变。</p>
-<p>HTML5 提供 <a href="https://html.spec.whatwg.org/multipage/forms.html#the-constraint-validation-api" target="_blank" rel="noopener noreferrer">constraint validation API</a> 来检测和自定义表单元素的状态。</p>
-<p>除此之外，它可以改变错误信息的文本。让我们快速的看一个例子：</p>
-
-<h2>JavaScript 校验</h2>
-<h3>约束校验的 API</h3>
-<p>越来越多的浏览器支持限制校验 API，并且这逐渐变得可靠。这些 API 由成组的方法和属性构成，可在特定的表单元素接口上调用：</p>
-<ul>
-<li>HTMLButtonElement</li>
-<li>HTMLFieldSetElement</li>
-<li>HTMLInputElement</li>
-<li>HTMLOutputElement</li>
-<li>HTMLSelectElement</li>
-<li>HTMLTextAreaElement</li>
-</ul>
-<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>具体属性见 <a href="https://developer.mozilla.org/zh-CN/docs/Learn/Forms/Form_validation#%E4%BD%BF%E7%94%A8_javascript_%E6%A0%A1%E9%AA%8C%E8%A1%A8%E5%8D%95" target="_blank" rel="noopener noreferrer">约束校验的 API</a></p>
-</div>
-<h3>demo</h3>
-<p>这个简单的表单使用 <code>novalidate</code> 属性关闭浏览器的自动校验；这允许我们使用脚本控制表单校验。</p>
-<p>但是，这并不禁止对约束校验 API 的支持或是以下 CSS 伪类：<code>:valid</code>、<code>:invalid</code>、<code>:in-range</code> 、<code>:out-of-range</code> 的应用。</p>
-<p>这意味着，即使浏览器在发送数据之前没有自动检查表单的有效性，你仍然可以自己做，并相应地设置表单的样式。</p>
-
-<div class="hint-container info">
-<p class="hint-container-title">一些校验库</p>
-<ul>
-<li><a href="https://github.com/rickharrison/validate.js" target="_blank" rel="noopener noreferrer">Validate.js</a></li>
-<li><a href="https://github.com/react-component/field-form" target="_blank" rel="noopener noreferrer">rc-field-form</a></li>
-</ul>
-</div>
-]]></content:encoded>
-      <enclosure url="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240320183034.png" type="image/png"/>
     </item>
   </channel>
 </rss>

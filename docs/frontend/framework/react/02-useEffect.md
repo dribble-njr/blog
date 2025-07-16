@@ -52,6 +52,14 @@ useEffect(() => {
 
 ::: TIP
 
+`useLayoutEffect` 和 `useEffect` 的执行时机不同，`useLayoutEffect` 会在浏览器渲染前执行，而 `useEffect` 会在浏览器渲染后执行。
+
+`useLayoutEffect` 的执行时机更早，所以它可以在浏览器渲染前执行，操作 DOM从而避免闪烁。
+
+:::
+
+::: TIP
+
 所以，当存在一些副作用（定时器等），你需要确保有清理函数，否则可能会导致内存泄漏。
 
 :::

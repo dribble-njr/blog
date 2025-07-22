@@ -100,7 +100,8 @@ export default [
           '03-useRef',
           '04-useId',
           '05-useReducer',
-          '06-createPortal'
+          '06-createPortal',
+          '07-useImperativeHandle'
         ]
       },
       {

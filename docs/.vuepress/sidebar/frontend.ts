@@ -101,7 +101,8 @@ export default [
           '04-useId',
           '05-useReducer',
           '06-createPortal',
-          '07-useImperativeHandle'
+          '07-useImperativeHandle',
+          '08-flushSync'
         ]
       },
       {

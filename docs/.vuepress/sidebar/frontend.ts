@@ -102,7 +102,8 @@ export default [
           '05-useReducer',
           '06-createPortal',
           '07-useImperativeHandle',
-          '08-flushSync'
+          '08-flushSync',
+          '09-useSyncExternalStore'
         ]
       },
       {
@@ -246,7 +247,8 @@ export default [
       '018-monaco-editor-react',
       '019-ios-prevent-touch',
       '020-ios-img',
-      '022-videojs-component'
+      '022-videojs-component',
+      '023-weixin-video-preload'
     ]
   },
   {

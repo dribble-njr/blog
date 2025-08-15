@@ -4,7 +4,7 @@
   <title/>
   <subtitle>Personal frontend knowledge base</subtitle>
   <icon>https://dribble-njr.github.io/blog/blog/favicon.ico</icon>
-  <updated>2025-07-16T09:21:11.263Z</updated>
+  <updated>2025-08-15T08:51:27.988Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://dribble-njr.github.io/blog/blog/atom.xml"/>
   <link rel="alternate" href="https://dribble-njr.github.io/blog/blog/"/>
@@ -27,10 +27,329 @@
   <category term="READING"/>
   <category term="JavaScript"/>
   <category term="browser"/>
-  <category term="HTML"/>
   <contributor>
     <name>patterns</name>
   </contributor>
+  <entry>
+    <title type="text">微信内置浏览器视频 preload 兼容性问题</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/practice/023-weixin-video-preload.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/023-weixin-video-preload.html"/>
+    <updated>2025-08-15T08:49:38.000Z</updated>
+    <summary type="html"><![CDATA[<h2>背景</h2>
+<p>在 Web 项目中使用 <code>video.js</code> 播放视频时，通常我们会通过 <code>preload="metadata"</code> 或 <code>preload="auto"</code> 来提前加载视频元数据（<code>loadedmetadata</code> 事件）和首帧，以便显示封面或做一些视频时长计算。</p>
+<p>然而，在 <strong>微信内置浏览器（尤其是 iOS 版）</strong> 中，视频的加载行为存在限制：</p>
+<ul>
+<li>即使设置了 <code>autoplay</code>、<code>muted</code>、<code>preload</code>，也<strong>不会自动触发 <code>loadedmetadata</code></strong>。</li>
+<li>视频首帧也不会在未播放时渲染出来。</li>
+<li>这些行为与 Chrome / Safari / Android 微信都有差异。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h2>背景</h2>
+<p>在 Web 项目中使用 <code>video.js</code> 播放视频时，通常我们会通过 <code>preload="metadata"</code> 或 <code>preload="auto"</code> 来提前加载视频元数据（<code>loadedmetadata</code> 事件）和首帧，以便显示封面或做一些视频时长计算。</p>
+<p>然而，在 <strong>微信内置浏览器（尤其是 iOS 版）</strong> 中，视频的加载行为存在限制：</p>
+<ul>
+<li>即使设置了 <code>autoplay</code>、<code>muted</code>、<code>preload</code>，也<strong>不会自动触发 <code>loadedmetadata</code></strong>。</li>
+<li>视频首帧也不会在未播放时渲染出来。</li>
+<li>这些行为与 Chrome / Safari / Android 微信都有差异。</li>
+</ul>
+]]></content>
+    <published>2025-08-15T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">useSyncExternalStore</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/09-useSyncExternalStore.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/09-useSyncExternalStore.html"/>
+    <updated>2025-08-15T08:49:38.000Z</updated>
+    <summary type="html"><![CDATA[<p>不是所有的东西都是用 React 构建的。有很多库和平台 API 是外部于 React 的。将这些东西引入 React 的组件模型和状态管理生命周期是构建全功能应用程序的必要条件。</p>
+<p>任务是同步外部世界与 React 组件的内部状态。为此，我们使用 <code>useSyncExternalStore</code> 钩子。</p>
+<p>让我们以一个组件为例，该组件通过 geolocation API 显示您的当前位置。geolocation API 不是 React 的一部分，因此我们需要同步 geolocation API 的外部状态与组件的内部状态。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useSyncExternalStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+
+<span class="token keyword">type</span> <span class="token class-name">LocationData</span> <span class="token operator">=</span>
+	<span class="token operator">|</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'unavailable'</span><span class="token punctuation">;</span> geo<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">never</span> <span class="token punctuation">}</span>
+	<span class="token operator">|</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'available'</span><span class="token punctuation">;</span> geo<span class="token operator">:</span> GeolocationPosition <span class="token punctuation">}</span>
+<span class="token comment">// this variable is our external store!</span>
+<span class="token keyword">let</span> location<span class="token operator">:</span> LocationData <span class="token operator">=</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'unavailable'</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">subscribeToGeolocation</span><span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> watchId <span class="token operator">=</span> navigator<span class="token punctuation">.</span>geolocation<span class="token punctuation">.</span><span class="token function">watchPosition</span><span class="token punctuation">(</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		location <span class="token operator">=</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'available'</span><span class="token punctuation">,</span> geo<span class="token operator">:</span> position <span class="token punctuation">}</span>
+		<span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		location <span class="token operator">=</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'unavailable'</span> <span class="token punctuation">}</span>
+		<span class="token keyword">return</span> navigator<span class="token punctuation">.</span>geolocation<span class="token punctuation">.</span><span class="token function">clearWatch</span><span class="token punctuation">(</span>watchId<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getGeolocationSnapshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> location
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">MyLocation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> location <span class="token operator">=</span> <span class="token function">useSyncExternalStore</span><span class="token punctuation">(</span>
+		subscribeToGeolocation<span class="token punctuation">,</span>
+		getGeolocationSnapshot<span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>location<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'unavailable'</span> <span class="token operator">?</span> <span class="token punctuation">(</span>
+				<span class="token string">'Your location is unavailable'</span>
+			<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+					Your location is </span><span class="token punctuation">{</span>location<span class="token punctuation">.</span>geo<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>latitude<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+					</span><span class="token punctuation">{</span><span class="token string">'°, '</span><span class="token punctuation">}</span><span class="token plain-text">
+					</span><span class="token punctuation">{</span>location<span class="token punctuation">.</span>geo<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>longitude<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+					</span><span class="token punctuation">{</span><span class="token string">'°'</span><span class="token punctuation">}</span><span class="token plain-text">
+				</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>不是所有的东西都是用 React 构建的。有很多库和平台 API 是外部于 React 的。将这些东西引入 React 的组件模型和状态管理生命周期是构建全功能应用程序的必要条件。</p>
+<p>任务是同步外部世界与 React 组件的内部状态。为此，我们使用 <code>useSyncExternalStore</code> 钩子。</p>
+<p>让我们以一个组件为例，该组件通过 geolocation API 显示您的当前位置。geolocation API 不是 React 的一部分，因此我们需要同步 geolocation API 的外部状态与组件的内部状态。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useSyncExternalStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+
+<span class="token keyword">type</span> <span class="token class-name">LocationData</span> <span class="token operator">=</span>
+	<span class="token operator">|</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'unavailable'</span><span class="token punctuation">;</span> geo<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">never</span> <span class="token punctuation">}</span>
+	<span class="token operator">|</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'available'</span><span class="token punctuation">;</span> geo<span class="token operator">:</span> GeolocationPosition <span class="token punctuation">}</span>
+<span class="token comment">// this variable is our external store!</span>
+<span class="token keyword">let</span> location<span class="token operator">:</span> LocationData <span class="token operator">=</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'unavailable'</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">subscribeToGeolocation</span><span class="token punctuation">(</span><span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> watchId <span class="token operator">=</span> navigator<span class="token punctuation">.</span>geolocation<span class="token punctuation">.</span><span class="token function">watchPosition</span><span class="token punctuation">(</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		location <span class="token operator">=</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'available'</span><span class="token punctuation">,</span> geo<span class="token operator">:</span> position <span class="token punctuation">}</span>
+		<span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+		location <span class="token operator">=</span> <span class="token punctuation">{</span> status<span class="token operator">:</span> <span class="token string">'unavailable'</span> <span class="token punctuation">}</span>
+		<span class="token keyword">return</span> navigator<span class="token punctuation">.</span>geolocation<span class="token punctuation">.</span><span class="token function">clearWatch</span><span class="token punctuation">(</span>watchId<span class="token punctuation">)</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getGeolocationSnapshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> location
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">MyLocation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> location <span class="token operator">=</span> <span class="token function">useSyncExternalStore</span><span class="token punctuation">(</span>
+		subscribeToGeolocation<span class="token punctuation">,</span>
+		getGeolocationSnapshot<span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>location<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">'unavailable'</span> <span class="token operator">?</span> <span class="token punctuation">(</span>
+				<span class="token string">'Your location is unavailable'</span>
+			<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token punctuation">(</span>
+				<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+					Your location is </span><span class="token punctuation">{</span>location<span class="token punctuation">.</span>geo<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>latitude<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+					</span><span class="token punctuation">{</span><span class="token string">'°, '</span><span class="token punctuation">}</span><span class="token plain-text">
+					</span><span class="token punctuation">{</span>location<span class="token punctuation">.</span>geo<span class="token punctuation">.</span>coords<span class="token punctuation">.</span>longitude<span class="token punctuation">.</span><span class="token function">toFixed</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+					</span><span class="token punctuation">{</span><span class="token string">'°'</span><span class="token punctuation">}</span><span class="token plain-text">
+				</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">&gt;</span></span>
+			<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>基本 API 如下：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">const</span> snapshot <span class="token operator">=</span> <span class="token function">useSyncExternalStore</span><span class="token punctuation">(</span>
+	subscribe<span class="token punctuation">,</span>
+	getSnapshot<span class="token punctuation">,</span>
+	getServerSnapshot<span class="token punctuation">,</span> <span class="token comment">// optional</span>
+<span class="token punctuation">)</span>
+</code></pre></div><ul>
+<li><code>subscribe</code> 是一个函数，它接受一个回调函数并返回一个清理函数。每当外部存储发生变化时，回调函数都会被调用，让 React 知道应该调用 <code>getSnapshot</code> 来获取新值。</li>
+<li><code>getSnapshot</code> 是一个函数，它返回外部存储的当前值。</li>
+<li><code>getServerSnapshot</code> 是一个可选函数，它从服务器返回外部存储的当前值。这对于服务器端渲染和重新水合很有用。如果您不提供此函数，则 React 将在服务器上渲染最近的 <code>Suspense</code> 边界 <code>fallback</code>，然后当客户端水合时，它将调用 <code>getSnapshot</code> 来获取当前值。</li>
+</ul>
+<p>参考文档：</p>
+<ul>
+<li><a href="https://react.dev/reference/react/useSyncExternalStore" target="_blank" rel="noopener noreferrer">📜 <code>useSyncExternalStore</code> docs</a></li>
+<li><a href="https://react.dev/reference/react-dom/server" target="_blank" rel="noopener noreferrer">📜 SSR docs</a></li>
+</ul>
+]]></content>
+    <published>2025-08-05T00:00:00.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">flushSync</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/08-flushSync.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/08-flushSync.html"/>
+    <updated>2025-08-04T10:58:10.000Z</updated>
+    <summary type="html"><![CDATA[<p><code>flushSync</code> 是 React 中的一个函数，用于强制同步更新。</p>
+<p>帮助用户将焦点保持在正确的位置是用户体验的关键部分。这对于依赖屏幕阅读器或键盘导航的用户尤其重要。但即使是能够使用键盘的用户也可以从精心设计的焦点管理体验中受益。</p>
+<p>有时，您想要聚焦的元素在状态更新后才会变得可用。例如：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>show<span class="token punctuation">,</span> setShow<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setShow</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Show</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>show <span class="token operator">?</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token punctuation">/&gt;</span></span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p><code>flushSync</code> 是 React 中的一个函数，用于强制同步更新。</p>
+<p>帮助用户将焦点保持在正确的位置是用户体验的关键部分。这对于依赖屏幕阅读器或键盘导航的用户尤其重要。但即使是能够使用键盘的用户也可以从精心设计的焦点管理体验中受益。</p>
+<p>有时，您想要聚焦的元素在状态更新后才会变得可用。例如：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>show<span class="token punctuation">,</span> setShow<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">setShow</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Show</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>show <span class="token operator">?</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token punctuation">/&gt;</span></span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>假设用户点击「显示」后，他们想要在输入框中输入一些内容。良好的焦点管理会在元素变得可见后聚焦该元素。</p>
+<p>React 中的状态更新是批量进行的。因此，状态更新不一定会在调用状态更新函数时立即发生。</p>
+<p>因此，如果尝试在状态更新后立即聚焦元素，它可能无法按预期工作。这是因为您想要聚焦的元素可能还不可用。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> inputRef <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useRef</span><span class="token generic class-name"><span class="token operator">&lt;</span>HTMLInputElement<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>show<span class="token punctuation">,</span> setShow<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+				<span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token function">setShow</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+					inputRef<span class="token punctuation">.</span>current<span class="token operator">?.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// This probably won't work</span>
+				<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+			<span class="token punctuation">&gt;</span></span><span class="token plain-text">
+				Show
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>show <span class="token operator">?</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>inputRef<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>解决此问题的方法是强制 React 同步运行状态和 DOM 更新，以便在您尝试聚焦时，您想要聚焦的元素是可用的。</p>
+<p>您可以通过使用 <code>react-dom</code> 包中的 <code>flushSync</code> 函数来实现这一点。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> flushSync <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span>
+
+<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> inputRef <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useRef</span><span class="token generic class-name"><span class="token operator">&lt;</span>HTMLInputElement<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+	<span class="token keyword">const</span> <span class="token punctuation">[</span>show<span class="token punctuation">,</span> setShow<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>
+				<span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+					<span class="token function">flushSync</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+						<span class="token function">setShow</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+					<span class="token punctuation">}</span><span class="token punctuation">)</span>
+					inputRef<span class="token punctuation">.</span>current<span class="token operator">?.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+				<span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+			<span class="token punctuation">&gt;</span></span><span class="token plain-text">
+				Show
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token punctuation">{</span>show <span class="token operator">?</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>inputRef<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">}</span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>flushSync</code> 的作用是强制 React 同步运行状态和 DOM 更新。这样，在 <code>flushSync</code> 调用后，输入元素将变得可用，您可以尝试聚焦它。</p>
+<p>通常，您应该避免这种优化，但在某些情况下（如焦点管理），它是完美的解决方案。</p>
+<ul>
+<li><a href="https://react.dev/reference/react-dom/flushSync" target="_blank" rel="noopener noreferrer">📜 the <code>flushSync</code> docs</a>.</li>
+</ul>
+]]></content>
+    <published>2025-08-04T10:58:10.000Z</published>
+  </entry>
+  <entry>
+    <title type="text">useImperativeHandle</title>
+    <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/07-useImperativeHandle.html</id>
+    <link href="https://dribble-njr.github.io/blog/blog/frontend/framework/react/07-useImperativeHandle.html"/>
+    <updated>2025-07-22T06:35:28.000Z</updated>
+    <summary type="html"><![CDATA[<p>有时你需要暴露一个方法给父组件，让父组件可以主动与子组件交互。这可以通过 <code>ref</code> 来实现，<code>useRef</code> 钩子可以让你拥有一个与组件实例关联的对象，并且不会改变时触发组件重新渲染。</p>
+<p>父组件可以传递一个 <code>ref</code> 给子组件，然后子组件可以在这个 <code>ref</code> 上挂载方法，父组件可以调用这些方法。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">type</span> <span class="token class-name">InputAPI</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function-variable function">focusInput</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">MyInput</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	ref<span class="token punctuation">,</span>
+	<span class="token operator">...</span>props
+<span class="token punctuation">}</span><span class="token operator">:</span> React<span class="token punctuation">.</span>InputHTMLAttributes<span class="token operator">&lt;</span>HTMLInputElement<span class="token operator">&gt;</span> <span class="token operator">&amp;</span> <span class="token punctuation">{</span>
+	ref<span class="token operator">:</span> React<span class="token punctuation">.</span>RefObject<span class="token operator">&lt;</span>InputAPI<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> inputRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	ref<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token punctuation">{</span>
+		<span class="token function-variable function">focusInput</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> inputRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>inputRef<span class="token punctuation">}</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> myInputRef <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useRef</span><span class="token generic class-name"><span class="token operator">&lt;</span>InputAPI<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyInput</span></span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>myInputRef<span class="token punctuation">}</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Enter your name<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> myInputRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">focusInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+				Focus the input
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div>]]></summary>
+    <content type="html"><![CDATA[<p>有时你需要暴露一个方法给父组件，让父组件可以主动与子组件交互。这可以通过 <code>ref</code> 来实现，<code>useRef</code> 钩子可以让你拥有一个与组件实例关联的对象，并且不会改变时触发组件重新渲染。</p>
+<p>父组件可以传递一个 <code>ref</code> 给子组件，然后子组件可以在这个 <code>ref</code> 上挂载方法，父组件可以调用这些方法。</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">type</span> <span class="token class-name">InputAPI</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function-variable function">focusInput</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">MyInput</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	ref<span class="token punctuation">,</span>
+	<span class="token operator">...</span>props
+<span class="token punctuation">}</span><span class="token operator">:</span> React<span class="token punctuation">.</span>InputHTMLAttributes<span class="token operator">&lt;</span>HTMLInputElement<span class="token operator">&gt;</span> <span class="token operator">&amp;</span> <span class="token punctuation">{</span>
+	ref<span class="token operator">:</span> React<span class="token punctuation">.</span>RefObject<span class="token operator">&lt;</span>InputAPI<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> inputRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	ref<span class="token punctuation">.</span>current <span class="token operator">=</span> <span class="token punctuation">{</span>
+		<span class="token function-variable function">focusInput</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> inputRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>inputRef<span class="token punctuation">}</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> myInputRef <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useRef</span><span class="token generic class-name"><span class="token operator">&lt;</span>InputAPI<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token punctuation">(</span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyInput</span></span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>myInputRef<span class="token punctuation">}</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Enter your name<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span class="token plain-text">
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> myInputRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">focusInput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+				Focus the input
+			</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+		</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+	<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这实际上是可行的，但是当在 React 的 concurrent/suspense 特性中使用时，会出现一些边缘情况的问题（它也不支持回调 ref）。所以，我们使用 <code>useImperativeHandle</code> 钩子来实现这个功能：</p>
+<div class="language-tsx" data-ext="tsx" data-title="tsx"><pre class="language-tsx"><code><span class="token keyword">type</span> <span class="token class-name">InputAPI</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token function-variable function">focusInput</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">MyInput</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	ref<span class="token punctuation">,</span>
+	<span class="token operator">...</span>props
+<span class="token punctuation">}</span><span class="token operator">:</span> React<span class="token punctuation">.</span>InputHTMLAttributes<span class="token operator">&lt;</span>HTMLInputElement<span class="token operator">&gt;</span> <span class="token operator">&amp;</span> <span class="token punctuation">{</span>
+	ref<span class="token operator">:</span> React<span class="token punctuation">.</span>RefObject<span class="token operator">&lt;</span>InputAPI<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> inputRef <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token function">useImperativeHandle</span><span class="token punctuation">(</span>
+		ref<span class="token punctuation">,</span>
+		<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token function-variable function">focusInput</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> inputRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>inputRef<span class="token punctuation">}</span></span> <span class="token spread"><span class="token punctuation">{</span><span class="token operator">...</span>props<span class="token punctuation">}</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>useImperativeHandle</code> 接收三个参数：</p>
+<ul>
+<li><code>ref</code>：与组件实例关联的 <code>ref</code> 对象。</li>
+<li><code>createHandle</code>：一个函数，返回一个对象，这个对象就是暴露给父组件的 API。</li>
+<li><code>dependencies</code>：依赖数组，当依赖数组中的值发生变化时，<code>createHandle</code> 函数会重新执行。</li>
+</ul>
+<p><a href="https://epicreact.dev/why-you-shouldnt-put-refs-in-a-dependency-array" target="_blank" rel="noopener noreferrer">Why you shouldn't put refs in a dependency array</a>.</p>
+<p><code>useImperativeHandle</code> 允许我们暴露一些方法给父组件，这些方法可以被父组件调用。这在某些场景下非常有用，比如你有一个需要手动操作的组件，但是你又不想让父组件直接操作这个组件的内部状态。</p>
+<p>::: TIP</p>
+<p>大多数情况下，你不需要 <code>useImperativeHandle</code>。在决定使用它之前，问问自己是否还有其他方式可以实现你的目标。</p>
+<p><a href="https://tylermcginnis.com/imperative-vs-declarative-programming/" target="_blank" rel="noopener noreferrer">Imperative vs Declarative Programming</a></p>
+<p>:::</p>
+]]></content>
+    <published>2025-07-16T00:00:00.000Z</published>
+  </entry>
   <entry>
     <title type="text">Portals</title>
     <id>https://dribble-njr.github.io/blog/blog/frontend/framework/react/06-createPortal.html</id>
@@ -6302,13 +6621,13 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>中间件，处理请求中间逻辑，比如：<code>cors</code>、<code>auth</code> 等。</p>
 <div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">Middleware</span> <span class="token operator">=</span> <span class="token punctuation">(</span>req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span> res<span class="token operator">:</span> ServerResponse<span class="token punctuation">,</span> <span class="token function-variable function">next</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">void</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Manage the execution order of middleware functions.
  * It allows you to add multiple middleware functions to a queue
  * and execute them sequentially during a request.
  *
- * <span class="token keyword">@export</span>
- * <span class="token keyword">@class</span> MiddlewareManager
+ * @export
+ * @class MiddlewareManager
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">MiddlewareManager</span> <span class="token punctuation">{</span>
   <span class="token keyword">private</span> <span class="token keyword">readonly</span> middlewares<span class="token operator">:</span> Middleware<span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -6535,12 +6854,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
 <p>其中 <code>path</code> 需要进行参数处理，如：<code>/category/:id</code>。处理完后参数类型应为 <code>params: Record&lt;string, string&gt;</code>，因为可能存在多个参数。</p>
 <p>解析完成后，<code>controller</code> 中需要接收 <code>params</code>，需要将 <code>params</code> 转换为 <code>request.params</code>。</p>
 <p>具体逻辑如下：</p>
-<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token doc-comment comment">/**
+<div class="language-typescript" data-ext="ts" data-title="ts"><pre class="language-typescript"><code><span class="token comment">/**
  * Execute route's middleware and controller.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>CustomIncomingMessage<span class="token punctuation">}</span> req
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>ServerResponse<span class="token punctuation">}</span> res
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>Route<span class="token punctuation">}</span> route
+ * @param {CustomIncomingMessage} req
+ * @param {ServerResponse} res
+ * @param {Route} route
  */</span>
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">execute</span><span class="token punctuation">(</span>
   req<span class="token operator">:</span> CustomIncomingMessage<span class="token punctuation">,</span>
@@ -6563,12 +6882,12 @@ category_id <span class="token keyword">INTEGER</span><span class="token punctua
   <span class="token keyword">await</span> mwManager<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token doc-comment comment">/**
+<span class="token comment">/**
  * Matches the provided method and pathname to a route in the Router.
  *
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> method - The HTTP method to match.
- * <span class="token keyword">@param</span> <span class="token punctuation">{</span>string<span class="token punctuation">}</span> pathname - The URL pathname to match.
- * <span class="token keyword">@return</span> <span class="token punctuation">{</span>Object<span class="token punctuation">}</span> An object containing the matched route and parameters.
+ * @param {string} method - The HTTP method to match.
+ * @param {string} pathname - The URL pathname to match.
+ * @return {Object} An object containing the matched route and parameters.
  */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">matchRoute</span> <span class="token operator">=</span> <span class="token punctuation">(</span>method<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> pathname<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> router <span class="token keyword">in</span> Router<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -9449,220 +9768,5 @@ console<span class="token punctuation">.</span><span class="token function">log<
 ]]></content>
     <category term="JavaScript"/>
     <published>2024-04-14T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">var、let、const 区别</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/javascript/001-var-let-const.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>var</th>
-<th>let</th>
-<th>const</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>作用域</strong></td>
-<td>全局作用域和函数作用域</td>
-<td>块级作用域</td>
-<td>块级作用域</td>
-</tr>
-<tr>
-<td><strong>变量提升</strong></td>
-<td>自动提升到作用域顶部</td>
-<td>提升，暂时性死区</td>
-<td>提升，暂时性死区</td>
-</tr>
-<tr>
-<td><strong>冗余声明</strong></td>
-<td>允许冗余声明</td>
-<td>不允许</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td><strong>赋值</strong></td>
-<td>可以重新赋值，且不需初始化</td>
-<td>可以重新赋值，且不需初始化</td>
-<td>不可以重新赋值，必须初始化</td>
-</tr>
-<tr>
-<td><strong>全局声明</strong></td>
-<td>成为 <code>window</code> 对象的属性</td>
-<td>不会</td>
-<td>不会</td>
-</tr>
-</tbody>
-</table>]]></summary>
-    <content type="html"><![CDATA[<p>首先，三者都是 JavaScript 声明变量的方式。区别在于：</p>
-<p>|              | var                        | let                        | const                      |<br>
-|</p>
-]]></content>
-    <category term="JavaScript"/>
-    <published>2022-05-02T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">placeholder 支持换行展示</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/practice/010-antd-textarea-placeholder-pre-line.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<p><code>placeholder</code> 内容有时需要支持换行，查了网上一些例子，结果都无法实现。</p>
-<h2>错误 demo</h2>
-<h3>直接使用 <code>\n</code></h3>
-<p>会被当成字符渲染。</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
-  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
-  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>多个关键词请使用逗号分隔\nShift+Enter换行，Enter搜索<span class="token punctuation">"</span></span>
-<span class="token punctuation">/&gt;</span></span>
-</code></pre></div>]]></summary>
-    <content type="html"><![CDATA[<p><code>placeholder</code> 内容有时需要支持换行，查了网上一些例子，结果都无法实现。</p>
-<h2>错误 demo</h2>
-<h3>直接使用 <code>\n</code></h3>
-<p>会被当成字符渲染。</p>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
-  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
-  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>多个关键词请使用逗号分隔\nShift+Enter换行，Enter搜索<span class="token punctuation">"</span></span>
-<span class="token punctuation">/&gt;</span></span>
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408181616.png" alt="直接使用 " tabindex="0" loading="lazy"><figcaption>直接使用 <code>\n</code></figcaption></figure>
-<h3>使用 ASCII 码</h3>
-<p>若使用 <code>ASCII</code> 码会被处理成空格。</p>
-<ul>
-<li><code>&amp;#10;</code>——换行符 <code>\n</code></li>
-<li><code>&amp;#13;</code>——回车 <code>\r</code></li>
-</ul>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
-  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
-  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>多个关键词请使用逗号分隔<span class="token entity" title="">&amp;#13;</span>Shift+Enter换行，Enter搜索<span class="token punctuation">"</span></span>
-<span class="token punctuation">/&gt;</span></span>
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408182209.png" alt="使用 ASCII 码" tabindex="0" loading="lazy"><figcaption>使用 ASCII 码</figcaption></figure>
-<h2>正确做法 —— 使用 JSX</h2>
-<p>此时应该使用 <code>\n</code> 实现换行。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>在 JSX 中，要在字符串中插入 ASCII 字符，你需要直接使用对应的字符或者使用其 Unicode 表示方式，因为 HTML entities 在 JSX 中不会被解析。</p>
-</div>
-<div class="language-jsx" data-ext="jsx" data-title="jsx"><pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Input.TextArea</span></span>
-  <span class="token attr-name">rows</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span></span>
-  <span class="token attr-name">placeholder</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">多个关键词请使用逗号分隔\nShift+Enter换行，Enter搜索</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span></span>
-<span class="token punctuation">/&gt;</span></span>
-</code></pre></div><figure><img src="https://raw.githubusercontent.com/dribble-njr/typora-njr/master/img/20240408182716.png" alt="JSX" tabindex="0" loading="lazy"><figcaption>JSX</figcaption></figure>
-]]></content>
-    <category term="practice"/>
-    <published>2024-04-08T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">务实的偏执</title>
-    <id>https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/reading/pragmatic-programmer/04-pragmatic-paranoid.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>契约式设计</h2>
-<p>文档化及对主张进行检验是契约式设计（缩写为 DBC）的核心。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>前置条件</p>
-<p>为调用这个例程，必须为真的是什么？例程的需求。一个例程永远不应该在前置条件被违反的时候被调用。传递良好的数据是调用者的责任。</p>
-<p>后置条件</p>
-<p>例程保证要做的是什么？例程完成时世界的状态。例程有后置条件这个事实，意味着能得出这样的结论——不允许无限循环。</p>
-<p>类的不变式</p>
-<p>从调用者的角度来看，类会确保该条件始终为真。在例程的内部处理期间，可以不遵守不变式，但是当例程退出并将控制权返回给调用者时，不变式必须为真。（注意，一个类不能给参与不变式的任何数据成员不受限制的写访问权限。）</p>
-</div>]]></summary>
-    <content type="html"><![CDATA[<h2>契约式设计</h2>
-<p>文档化及对主张进行检验是契约式设计（缩写为 DBC）的核心。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>前置条件</p>
-<p>为调用这个例程，必须为真的是什么？例程的需求。一个例程永远不应该在前置条件被违反的时候被调用。传递良好的数据是调用者的责任。</p>
-<p>后置条件</p>
-<p>例程保证要做的是什么？例程完成时世界的状态。例程有后置条件这个事实，意味着能得出这样的结论——不允许无限循环。</p>
-<p>类的不变式</p>
-<p>从调用者的角度来看，类会确保该条件始终为真。在例程的内部处理期间，可以不遵守不变式，但是当例程退出并将控制权返回给调用者时，不变式必须为真。（注意，一个类不能给参与不变式的任何数据成员不受限制的写访问权限。）</p>
-</div>
-<h2>通过契约进行设计</h2>
-<p>如果你订的契约是可以接受任何东西，并且承诺要回报整个世界，那么你就有很多代码要写！</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>是不是这就是需要解耦？</p>
-</div>
-]]></content>
-    <category term="READING"/>
-    <published>2024-04-08T00:00:00.000Z</published>
-  </entry>
-  <entry>
-    <title type="text">SEO</title>
-    <id>https://dribble-njr.github.io/blog/blog/frontend/basic/html/013-seo.html</id>
-    <link href="https://dribble-njr.github.io/blog/blog/frontend/basic/html/013-seo.html"/>
-    <updated>2024-11-06T15:43:46.000Z</updated>
-    <summary type="html"><![CDATA[<h2>什么是 SEO</h2>
-<p>SEO（Search Engine Optimization，搜索引擎优化）。这是一套指导原则，旨在使网站在搜索结果中的排名高于其他网站。特别是针对有机（未付费）搜索结果。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>谷歌是迄今为止全球最主要的搜索引擎。作为行业领导者，谷歌为其他搜索引擎定下了基调。</p>
-</div>
-<h2>过去</h2>
-<p>在 2000 年代，搜索引擎优化意味着通过一系列肮脏的手段来提高网站在谷歌上的排名。</p>]]></summary>
-    <content type="html"><![CDATA[<h2>什么是 SEO</h2>
-<p>SEO（Search Engine Optimization，搜索引擎优化）。这是一套指导原则，旨在使网站在搜索结果中的排名高于其他网站。特别是针对有机（未付费）搜索结果。</p>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>谷歌是迄今为止全球最主要的搜索引擎。作为行业领导者，谷歌为其他搜索引擎定下了基调。</p>
-</div>
-<h2>过去</h2>
-<p>在 2000 年代，搜索引擎优化意味着通过一系列肮脏的手段来提高网站在谷歌上的排名。</p>
-<p>例如，人们在网页底部放置大量关键词列表。有时，他们还会将关键词重复 1000 次，并将其放在白色区域或隐形 <code>div</code> 内。谷歌被欺骗了，从而提高了他们的排名。</p>
-<p>这种时代已经一去不复返了。谷歌聘请了世界上最优秀的人才，确保用户只能搜索到最有用的网页。</p>
-<p>上述漏洞以及更多漏洞在 <a href="https://support.google.com/webmasters/topic/6001971" target="_blank" rel="noopener noreferrer">谷歌质量指南</a> 中都有详细说明。</p>
-<p>如果您的产品出于某种原因包含任何违反这些指南的内容，即使它们是不小心出现的，我也强烈建议将其删除，因为谷歌现在会对违反指南的网站进行惩罚。</p>
-<h2>搜索引擎优化</h2>
-<p>谷歌的排名算法非常复杂。谷歌的专家多年来一直在研究这些算法。如今，谷歌每天都会进行更新，更大的更新每年发布一到两次。</p>
-<p>有关 Google 如何对网页进行排名的信息一直在发布，有时还会有额外的信息泄露。一些网站试图跟踪这些更新，了解更新对搜索引擎优化的影响。</p>
-<p>对于开发人员来说，许多工具都可以抓取网站，并生成一份可以改进的网站技术方面的清单。例如，如果你没有使用正确的标题或状态代码。以下是其中几种工具：</p>
-<ul>
-<li><a href="https://www.checkbot.io/" target="_blank" rel="noopener noreferrer">checkbot</a></li>
-<li><a href="https://seositecheckup.com/" target="_blank" rel="noopener noreferrer">SEO Site Checkup</a></li>
-<li><a href="https://www.woorank.com/" target="_blank" rel="noopener noreferrer">woorank</a></li>
-<li><a href="https://suite.seotesteronline.com/" target="_blank" rel="noopener noreferrer">SEO Tester Online</a></li>
-<li><a href="https://freetools.seobility.net/" target="_blank" rel="noopener noreferrer">seobility</a></li>
-<li><a href="https://www.screamingfrog.co.uk/seo-spider/" target="_blank" rel="noopener noreferrer">screamingfrog</a></li>
-<li><a href="https://gtmetrix.com/" target="_blank" rel="noopener noreferrer">GTmetrix</a></li>
-</ul>
-<h2>最佳实践</h2>
-<p>作为开发人员，应该考虑：快速，可访问性，使用正确的语义 <code>html</code> 标签，包括正确的结构化数据，移动友好，使用 <code>https</code>， <code>url</code> 清晰，等等。</p>
-<p><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide?visit_id=638468790764088645-267844796&amp;rd=1&amp;hl=zh-cn" target="_blank" rel="noopener noreferrer">谷歌 SEO 指南</a> 有详细介绍，下面是一些较为重要的最佳实践。</p>
-<ul>
-<li><code>&lt;title&gt;</code> 和 <code>&lt;meta name="description"&gt;</code> 是控制网页在 Google 结果页面上显示方式的标签。</li>
-<li>HTML 标签（如标题标签 <code>h1</code>、<code>h2</code>）和 HTML 属性（如 <code>&lt;img&gt;</code> 标签上的 <code>alt</code> 属性）可帮助创建网页结构，以便爬虫更好地解读内容。</li>
-<li>结构化数据将网页中的信息，如排名、位置、营业时间和价格等，显示在谷歌搜索页面上。搜索页面上出现的信息越多，网页被点击的几率就越高。</li>
-<li>使网站对移动设备友好。</li>
-<li>使用 HTTPS 协议。</li>
-<li>让残疾人也能访问您的网站。这样不仅能让更多人访问你的网站，谷歌也会给你更高的排名。</li>
-<li>使用合理且有意义的网站分层。<code>example.com/RunningShoes/Womens</code>而不是 <code>example.com/123123/123123</code></li>
-<li>注意你的 <code>&lt;a href&gt;</code> 链接
-<ul>
-<li>每个链接都必须包含有意义的文本。</li>
-<li>使用 <code>&lt;a&gt;</code> 标签上的额外属性告诉谷歌你的外部网站链接的性质。例如，<code>rel="nofollow"</code> 用于让谷歌知道你与链接的网站没有关联。</li>
-<li>确保您希望谷歌抓取的每个页面都通过 <code>&lt;a href&gt;</code> 从主页链接（可能通过多个链接）。</li>
-</ul>
-</li>
-<li>确保不同版本之间的内容不重复，以免相互竞争：
-<ul>
-<li>如果您对网站进行了结构调整，请使用 301 重定向，这样两个版本就不会被分别收录，也不会相互竞争。</li>
-<li>坚持使用一个版本的网站链接：</li>
-<li>使用 <code>&lt;meta rel="canonical"&gt;</code> 标签来表示不同的页面和 URL 包含相同的内容。</li>
-</ul>
-</li>
-<li>本地化——使用 <code>hreflang meta</code> 标签告诉谷歌一个网页在不同语言中有不同的版本。</li>
-<li>提高网站速度，在 <a href="https://pagespeed.web.dev/?utm_source=psi&amp;utm_medium=redirect" target="_blank" rel="noopener noreferrer">Google PageSpeed Insights</a> 上获得高分。</li>
-</ul>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>网站响应速度会影响搜索引擎排名，这一部分涉及到性能优化。</p>
-</div>
-]]></content>
-    <category term="HTML"/>
-    <published>2024-03-24T00:00:00.000Z</published>
   </entry>
 </feed>
